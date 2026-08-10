@@ -5,6 +5,8 @@ It will feature comprehensive gameplay overhauls, including but not limited to e
 
 ProjectFlint takes inspiration from Vintage Story, TerraFirmaCraft, Better Than Wolves, real-life human history and technological advancement, GregtechCEU, and more.
 
+**ProjectFlint is for Fabric 1.21.11; no other versions have planned support as of this moment.**
+
 # Alpha 0.22.2
 Features clay kiln, campfire, clay grinder, and placed down unrefined clay.
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/1092fb7a-4624-446d-ba38-1808cf658381" />
