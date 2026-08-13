@@ -1,0 +1,27 @@
+{
+  "parent": "projectflint:fired_clay_bowl",
+  "criteria": {
+    "filled_clay_bowl": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Scoop Clay with the Fired Clay Bowl until it produces an Unfired Clay Ball."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:unfired_clay_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Gather a Clay Charge"
+    }
+  },
+  "requirements": [
+    [
+      "filled_clay_bowl"
+    ]
+  ]
+}

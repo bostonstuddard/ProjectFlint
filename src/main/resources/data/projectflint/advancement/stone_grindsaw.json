@@ -1,0 +1,34 @@
+{
+  "parent": "projectflint:02_wood_era/root",
+  "criteria": {
+    "obtained": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "projectflint:stone_grindsaw"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Grind Crushed Stone into a Stone Grindsaw."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:stone_grindsaw"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Stone Grindsaw"
+    }
+  },
+  "requirements": [
+    [
+      "obtained"
+    ]
+  ]
+}

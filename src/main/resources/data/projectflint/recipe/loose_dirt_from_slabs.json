@@ -1,0 +1,8 @@
+{
+  "type": "projectflint:clay_grinding",
+  "ingredient": "projectflint:loose_dirt_slab",
+  "input_count": 2,
+  "result": {
+    "id": "projectflint:loose_dirt"
+  }
+}

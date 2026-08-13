@@ -1,0 +1,9 @@
+{
+  "type": "projectflint:clay_grinding",
+  "ingredient": "projectflint:burnt_branch_block",
+  "input_count": 1,
+  "result": {
+    "id": "projectflint:burnt_branch_slab",
+    "count": 2
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "parent": "projectflint:stone_in_hand",
+  "criteria": {
+    "placed_item_in_world": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Use Place in World to set one held item onto a supported surface."
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:item_frame"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Set It Down"
+    }
+  },
+  "requirements": [
+    [
+      "placed_item_in_world"
+    ]
+  ]
+}

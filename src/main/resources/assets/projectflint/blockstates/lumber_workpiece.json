@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "facing=north,output=0": {
+      "model": "projectflint:block/lumber_workpiece"
+    },
+    "facing=north,output=1": {
+      "model": "projectflint:block/lumber_workpiece"
+    },
+    "facing=east,output=0": {
+      "model": "projectflint:block/lumber_workpiece",
+      "y": 90
+    },
+    "facing=east,output=1": {
+      "model": "projectflint:block/lumber_workpiece",
+      "y": 90
+    },
+    "facing=south,output=0": {
+      "model": "projectflint:block/lumber_workpiece",
+      "y": 180
+    },
+    "facing=south,output=1": {
+      "model": "projectflint:block/lumber_workpiece",
+      "y": 180
+    },
+    "facing=west,output=0": {
+      "model": "projectflint:block/lumber_workpiece",
+      "y": 270
+    },
+    "facing=west,output=1": {
+      "model": "projectflint:block/lumber_workpiece",
+      "y": 270
+    }
+  }
+}

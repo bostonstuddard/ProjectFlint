@@ -1,0 +1,196 @@
+{
+  "multipart": [
+    {
+      "when": {
+        "stones": "1|2|3|4|5|6|7|8|9|10|11|12"
+      },
+      "apply": {
+        "model": "projectflint:block/primitive_campfire_stone_1"
+      }
+    },
+    {
+      "when": {
+        "stones": "2|3|4|5|6|7|8|9|10|11|12"
+      },
+      "apply": {
+        "model": "projectflint:block/primitive_campfire_stone_2"
+      }
+    },
+    {
+      "when": {
+        "stones": "3|4|5|6|7|8|9|10|11|12"
+      },
+      "apply": {
+        "model": "projectflint:block/primitive_campfire_stone_3"
+      }
+    },
+    {
+      "when": {
+        "stones": "4|5|6|7|8|9|10|11|12"
+      },
+      "apply": {
+        "model": "projectflint:block/primitive_campfire_stone_4"
+      }
+    },
+    {
+      "when": {
+        "stones": "5|6|7|8|9|10|11|12"
+      },
+      "apply": {
+        "model": "projectflint:block/primitive_campfire_stone_5"
+      }
+    },
+    {
+      "when": {
+        "stones": "6|7|8|9|10|11|12"
+      },
+      "apply": {
+        "model": "projectflint:block/primitive_campfire_stone_6"
+      }
+    },
+    {
+      "when": {
+        "stones": "7|8|9|10|11|12"
+      },
+      "apply": {
+        "model": "projectflint:block/primitive_campfire_stone_7"
+      }
+    },
+    {
+      "when": {
+        "stones": "8|9|10|11|12"
+      },
+      "apply": {
+        "model": "projectflint:block/primitive_campfire_stone_8"
+      }
+    },
+    {
+      "when": {
+        "stones": "9|10|11|12"
+      },
+      "apply": {
+        "model": "projectflint:block/primitive_campfire_stone_9"
+      }
+    },
+    {
+      "when": {
+        "stones": "10|11|12"
+      },
+      "apply": {
+        "model": "projectflint:block/primitive_campfire_stone_10"
+      }
+    },
+    {
+      "when": {
+        "stones": "11|12"
+      },
+      "apply": {
+        "model": "projectflint:block/primitive_campfire_stone_11"
+      }
+    },
+    {
+      "when": {
+        "stones": "12"
+      },
+      "apply": {
+        "model": "projectflint:block/primitive_campfire_stone_12"
+      }
+    },
+    {
+      "when": {
+        "burnt_twigs": "1|2|3|4|5|6|7|8|9|10|11|12"
+      },
+      "apply": {
+        "model": "projectflint:block/primitive_campfire_twig_1"
+      }
+    },
+    {
+      "when": {
+        "burnt_twigs": "2|3|4|5|6|7|8|9|10|11|12"
+      },
+      "apply": {
+        "model": "projectflint:block/primitive_campfire_twig_2"
+      }
+    },
+    {
+      "when": {
+        "burnt_twigs": "3|4|5|6|7|8|9|10|11|12"
+      },
+      "apply": {
+        "model": "projectflint:block/primitive_campfire_twig_3"
+      }
+    },
+    {
+      "when": {
+        "burnt_twigs": "4|5|6|7|8|9|10|11|12"
+      },
+      "apply": {
+        "model": "projectflint:block/primitive_campfire_twig_4"
+      }
+    },
+    {
+      "when": {
+        "burnt_twigs": "5|6|7|8|9|10|11|12"
+      },
+      "apply": {
+        "model": "projectflint:block/primitive_campfire_twig_5"
+      }
+    },
+    {
+      "when": {
+        "burnt_twigs": "6|7|8|9|10|11|12"
+      },
+      "apply": {
+        "model": "projectflint:block/primitive_campfire_twig_6"
+      }
+    },
+    {
+      "when": {
+        "burnt_twigs": "7|8|9|10|11|12"
+      },
+      "apply": {
+        "model": "projectflint:block/primitive_campfire_twig_7"
+      }
+    },
+    {
+      "when": {
+        "burnt_twigs": "8|9|10|11|12"
+      },
+      "apply": {
+        "model": "projectflint:block/primitive_campfire_twig_8"
+      }
+    },
+    {
+      "when": {
+        "burnt_twigs": "9|10|11|12"
+      },
+      "apply": {
+        "model": "projectflint:block/primitive_campfire_twig_9"
+      }
+    },
+    {
+      "when": {
+        "burnt_twigs": "10|11|12"
+      },
+      "apply": {
+        "model": "projectflint:block/primitive_campfire_twig_10"
+      }
+    },
+    {
+      "when": {
+        "burnt_twigs": "11|12"
+      },
+      "apply": {
+        "model": "projectflint:block/primitive_campfire_twig_11"
+      }
+    },
+    {
+      "when": {
+        "burnt_twigs": "12"
+      },
+      "apply": {
+        "model": "projectflint:block/primitive_campfire_twig_12"
+      }
+    }
+  ]
+}

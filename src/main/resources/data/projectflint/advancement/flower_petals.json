@@ -1,0 +1,27 @@
+{
+  "parent": "projectflint:crude_harvesting_tool",
+  "criteria": {
+    "harvested_flower_petals": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Cut flowers with Crude Cutters or the Crude Multitool to gather Flower Petals."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:flower_petals"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Petal Harvest"
+    }
+  },
+  "requirements": [
+    [
+      "harvested_flower_petals"
+    ]
+  ]
+}

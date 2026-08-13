@@ -1,0 +1,168 @@
+{
+  "textures": {
+    "particle": "projectflint:block/crude_clay_block",
+    "mat": "projectflint:block/crude_clay_block"
+  },
+  "elements": [
+    {
+      "from": [
+        2,
+        0,
+        2
+      ],
+      "to": [
+        14,
+        3,
+        14
+      ],
+      "faces": {
+        "down": {
+          "texture": "#mat"
+        },
+        "up": {
+          "texture": "#mat"
+        },
+        "north": {
+          "texture": "#mat"
+        },
+        "south": {
+          "texture": "#mat"
+        },
+        "west": {
+          "texture": "#mat"
+        },
+        "east": {
+          "texture": "#mat"
+        }
+      }
+    },
+    {
+      "from": [
+        2,
+        3,
+        2
+      ],
+      "to": [
+        5,
+        16,
+        14
+      ],
+      "faces": {
+        "down": {
+          "texture": "#mat"
+        },
+        "up": {
+          "texture": "#mat"
+        },
+        "north": {
+          "texture": "#mat"
+        },
+        "south": {
+          "texture": "#mat"
+        },
+        "west": {
+          "texture": "#mat"
+        },
+        "east": {
+          "texture": "#mat"
+        }
+      }
+    },
+    {
+      "from": [
+        11,
+        3,
+        2
+      ],
+      "to": [
+        14,
+        16,
+        14
+      ],
+      "faces": {
+        "down": {
+          "texture": "#mat"
+        },
+        "up": {
+          "texture": "#mat"
+        },
+        "north": {
+          "texture": "#mat"
+        },
+        "south": {
+          "texture": "#mat"
+        },
+        "west": {
+          "texture": "#mat"
+        },
+        "east": {
+          "texture": "#mat"
+        }
+      }
+    },
+    {
+      "from": [
+        5,
+        3,
+        11
+      ],
+      "to": [
+        11,
+        16,
+        14
+      ],
+      "faces": {
+        "down": {
+          "texture": "#mat"
+        },
+        "up": {
+          "texture": "#mat"
+        },
+        "north": {
+          "texture": "#mat"
+        },
+        "south": {
+          "texture": "#mat"
+        },
+        "west": {
+          "texture": "#mat"
+        },
+        "east": {
+          "texture": "#mat"
+        }
+      }
+    },
+    {
+      "from": [
+        4,
+        13,
+        4
+      ],
+      "to": [
+        12,
+        16,
+        12
+      ],
+      "faces": {
+        "down": {
+          "texture": "#mat"
+        },
+        "up": {
+          "texture": "#mat"
+        },
+        "north": {
+          "texture": "#mat"
+        },
+        "south": {
+          "texture": "#mat"
+        },
+        "west": {
+          "texture": "#mat"
+        },
+        "east": {
+          "texture": "#mat"
+        }
+      }
+    }
+  ]
+}

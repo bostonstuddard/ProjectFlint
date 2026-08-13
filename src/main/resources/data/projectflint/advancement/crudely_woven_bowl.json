@@ -1,0 +1,27 @@
+{
+  "parent": "projectflint:dirt_pile",
+  "criteria": {
+    "assembled_woven_bowl": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Build the dirt-and-fiber bowl assembly to make a Crudely Woven Bowl."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:crudely_woven_bowl"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "A Vessel from Earth and Fiber"
+    }
+  },
+  "requirements": [
+    [
+      "assembled_woven_bowl"
+    ]
+  ]
+}

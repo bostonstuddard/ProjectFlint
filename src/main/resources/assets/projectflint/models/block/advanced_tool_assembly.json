@@ -1,0 +1,8 @@
+{
+  "textures": { "particle": "projectflint:block/mortar_bricks", "base": "projectflint:block/mortar_bricks" },
+  "elements": [
+    { "from": [1,0,1], "to": [15,1,15], "faces": {
+      "north":{"texture":"#base"},"south":{"texture":"#base"},"east":{"texture":"#base"},"west":{"texture":"#base"},"up":{"texture":"#base"},"down":{"texture":"#base"}
+    }}
+  ]
+}

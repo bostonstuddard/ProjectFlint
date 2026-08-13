@@ -1,0 +1,27 @@
+{
+  "parent": "projectflint:crude_hammer",
+  "criteria": {
+    "crushed_stone": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Work Stone with the Crude Stone Hammer to create Crushed Stone and recover Loose Rocks."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:rock"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Breaking Ground"
+    }
+  },
+  "requirements": [
+    [
+      "crushed_stone"
+    ]
+  ]
+}

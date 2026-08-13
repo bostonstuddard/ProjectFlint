@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "count=1": {
+      "model": "projectflint:block/fired_clay_pile_1"
+    },
+    "count=2": {
+      "model": "projectflint:block/fired_clay_pile_2"
+    },
+    "count=3": {
+      "model": "projectflint:block/fired_clay_pile_3"
+    },
+    "count=4": {
+      "model": "projectflint:block/fired_clay_pile_4"
+    }
+  }
+}

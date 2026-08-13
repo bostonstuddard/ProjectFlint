@@ -1,0 +1,150 @@
+{
+  "parent": "minecraft:block/block",
+  "ambientocclusion": false,
+  "textures": {
+    "rock": "projectflint:block/placed/very_refined_stone",
+    "particle": "projectflint:block/placed/very_refined_stone"
+  },
+  "elements": [
+    {
+      "from": [
+        3.0,
+        0.08,
+        3.2
+      ],
+      "to": [
+        6.0,
+        0.22000000000000003,
+        6.2
+      ],
+      "faces": {
+        "up": {
+          "texture": "#rock"
+        },
+        "down": {
+          "texture": "#rock"
+        }
+      }
+    },
+    {
+      "from": [
+        8.2,
+        0.08,
+        7.5
+      ],
+      "to": [
+        11.5,
+        0.22000000000000003,
+        10.5
+      ],
+      "faces": {
+        "up": {
+          "texture": "#rock"
+        },
+        "down": {
+          "texture": "#rock"
+        }
+      },
+      "rotation": {
+        "origin": [
+          8,
+          0.15000000000000002,
+          8
+        ],
+        "axis": "y",
+        "angle": 22.5,
+        "rescale": false
+      }
+    },
+    {
+      "from": [
+        5.8,
+        0.08,
+        10.0
+      ],
+      "to": [
+        9.0,
+        0.22000000000000003,
+        13.0
+      ],
+      "faces": {
+        "up": {
+          "texture": "#rock"
+        },
+        "down": {
+          "texture": "#rock"
+        }
+      },
+      "rotation": {
+        "origin": [
+          8,
+          0.15000000000000002,
+          8
+        ],
+        "axis": "y",
+        "angle": -22.5,
+        "rescale": false
+      }
+    },
+    {
+      "from": [
+        9.5,
+        0.08,
+        2.8
+      ],
+      "to": [
+        12.8,
+        0.22000000000000003,
+        5.8
+      ],
+      "faces": {
+        "up": {
+          "texture": "#rock"
+        },
+        "down": {
+          "texture": "#rock"
+        }
+      },
+      "rotation": {
+        "origin": [
+          8,
+          0.15000000000000002,
+          8
+        ],
+        "axis": "y",
+        "angle": -22.5,
+        "rescale": false
+      }
+    },
+    {
+      "from": [
+        2.5,
+        0.24,
+        8.0
+      ],
+      "to": [
+        5.8,
+        0.38,
+        11.2
+      ],
+      "faces": {
+        "up": {
+          "texture": "#rock"
+        },
+        "down": {
+          "texture": "#rock"
+        }
+      },
+      "rotation": {
+        "origin": [
+          8,
+          0.31,
+          8
+        ],
+        "axis": "y",
+        "angle": 22.5,
+        "rescale": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "parent": "projectflint:mud_pile",
+  "criteria": {
+    "obtained": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Press a Mud Pile into leaves to mix a Daub Pile."
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:oak_leaves"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Fiber in the Mud"
+    }
+  },
+  "requirements": [
+    [
+      "obtained"
+    ]
+  ]
+}

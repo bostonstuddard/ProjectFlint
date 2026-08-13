@@ -1,0 +1,8 @@
+{
+  "type": "projectflint:clay_grinding",
+  "ingredient": "minecraft:cherry_slab",
+  "input_count": 2,
+  "result": {
+    "id": "minecraft:stripped_cherry_log"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "parent": "projectflint:lightly_burnt_twig",
+  "criteria": {
+    "made_crude_hammer": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Assemble the Crude Stone Hammer to break Stone and begin serious rock processing."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:crude_stone_hammer"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Stone on a Handle"
+    },
+    "frame": "goal"
+  },
+  "requirements": [
+    [
+      "made_crude_hammer"
+    ]
+  ]
+}

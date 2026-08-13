@@ -1,0 +1,27 @@
+{
+  "parent": "projectflint:flint_chip",
+  "criteria": {
+    "knapped_flint": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Work 4 Flint Chips with a hammer-like tool to make one Flint."
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:flint"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "True Flint"
+    }
+  },
+  "requirements": [
+    [
+      "knapped_flint"
+    ]
+  ]
+}

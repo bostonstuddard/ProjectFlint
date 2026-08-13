@@ -1,0 +1,8 @@
+{
+  "type": "projectflint:clay_grinding",
+  "ingredient": "minecraft:birch_slab",
+  "input_count": 2,
+  "result": {
+    "id": "minecraft:stripped_birch_log"
+  }
+}

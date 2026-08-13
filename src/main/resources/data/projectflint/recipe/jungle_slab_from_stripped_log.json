@@ -1,0 +1,9 @@
+{
+  "type": "projectflint:clay_grinding",
+  "ingredient": "minecraft:stripped_jungle_log",
+  "input_count": 1,
+  "result": {
+    "id": "minecraft:jungle_slab",
+    "count": 2
+  }
+}

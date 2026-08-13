@@ -1,0 +1,27 @@
+{
+  "parent": "projectflint:first_fire",
+  "criteria": {
+    "split_burnt_twig": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Touch a Twig to the temporary fire to make a Lightly Burnt Twig."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:lightly_burnt_twig"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Split the Char"
+    }
+  },
+  "requirements": [
+    [
+      "split_burnt_twig"
+    ]
+  ]
+}

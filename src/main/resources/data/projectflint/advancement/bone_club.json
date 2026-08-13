@@ -1,0 +1,35 @@
+{
+  "parent": "projectflint:filed_bone",
+  "criteria": {
+    "has_bone_club": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "projectflint:bone_club"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Grind 4 Filed Bones into a durable early combat tool."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:bone_club"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Bone Club"
+    },
+    "frame": "goal"
+  },
+  "requirements": [
+    [
+      "has_bone_club"
+    ]
+  ]
+}

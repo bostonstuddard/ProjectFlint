@@ -1,0 +1,38 @@
+{
+  "required": true,
+  "package": "dev.projectflint.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "BlockStateBaseMixin",
+    "ServerPlayerGameModeMixin",
+    "FoodDataMixin",
+    "SlotMixin",
+    "InventoryMenuMixin",
+    "ChunkGeneratorMixin",
+    "ServerAdvancementManagerMixin",
+    "ServerExplosionMixin",
+    "PrimaryLevelDataMixin",
+    "PlayerAttackMixin",
+    "PlayerJumpMixin",
+    "ServerPlayerSleepMixin",
+    "ServerPlayerMovementMixin",
+    "InventoryMixin",
+    "RawMeatConsumptionMixin",
+    "SquidMixin",
+    "PlayerExhaustionMixin",
+    "DrownedMixin",
+    "ItemTooltipMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "client": [
+    "AbstractContainerScreenMixin",
+    "InventoryScreenMixin",
+    "SlowHandSwingVisualMixin",
+    "WorldCreationUiStateMixin",
+    "CreateWorldScreenMixin",
+    "PauseScreenMixin",
+    "LightTextureMixin"
+  ]
+}

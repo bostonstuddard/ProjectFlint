@@ -1,0 +1,34 @@
+{
+  "parent": "projectflint:primitive_campfire",
+  "criteria": {
+    "cooked_burnt_twig": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "projectflint:burnt_twig"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Char a Twig in the permanent campfire to make a Burnt Twig."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:burnt_twig"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Deep Char"
+    }
+  },
+  "requirements": [
+    [
+      "cooked_burnt_twig"
+    ]
+  ]
+}

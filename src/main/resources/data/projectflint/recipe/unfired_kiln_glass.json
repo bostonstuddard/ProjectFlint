@@ -1,0 +1,9 @@
+{
+  "type": "projectflint:clay_grinding",
+  "ingredient": "projectflint:glass_shard",
+  "input_count": 4,
+  "result": {
+    "id": "projectflint:unfired_kiln_glass",
+    "count": 1
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "parent": "projectflint:advanced_kiln",
+  "criteria": {
+    "done": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Load a fired mold and its listed materials into the Advanced Kiln to cast a part."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:fired_clay_axe_mold"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Pressure and Heat"
+    }
+  },
+  "requirements": [
+    [
+      "done"
+    ]
+  ]
+}

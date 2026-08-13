@@ -1,0 +1,9 @@
+{
+  "type": "projectflint:clay_grinding",
+  "ingredient": "projectflint:wattled_daub_bricks",
+  "input_count": 1,
+  "result": {
+    "id": "projectflint:wattled_daub_floor_tile",
+    "count": 2
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "parent": "projectflint:wooden_grinder",
+  "criteria": {
+    "obtained": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "projectflint:woven_chest_frame"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Use the Wooden Grinder to combine Leather and Woven Wood into a Woven Chest Frame."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:woven_chest_frame"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Woven Chest Frame"
+    }
+  },
+  "requirements": [
+    [
+      "obtained"
+    ]
+  ]
+}

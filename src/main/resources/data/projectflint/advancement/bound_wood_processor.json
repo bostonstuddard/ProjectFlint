@@ -1,0 +1,34 @@
+{
+  "parent": "projectflint:sanding_station",
+  "criteria": {
+    "obtained": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "projectflint:bound_wood_processor"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Combine Flint Axe Pieces with 2 Leather in the Wooden Grinder to make the Lumber Processor controller tool."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:bound_wood_processor"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Bound Wood Processor"
+    }
+  },
+  "requirements": [
+    [
+      "obtained"
+    ]
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "parent": "projectflint:wooden_grinder",
+  "criteria": {
+    "obtained": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "projectflint:sanding_station"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Use 8 Sanded Wood Slabs and 5 Leather in the Wooden Grinder to build a Sanding Station."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:sanding_station"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Sanding Station"
+    },
+    "frame": "goal"
+  },
+  "requirements": [
+    [
+      "obtained"
+    ]
+  ]
+}

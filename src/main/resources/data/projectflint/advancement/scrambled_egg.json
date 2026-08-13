@@ -1,0 +1,34 @@
+{
+  "parent": "projectflint:working_clay_kiln",
+  "criteria": {
+    "cooked_scrambled_egg": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "projectflint:scrambled_egg"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Cook an Egg in a permanent fire or kiln to make 2 Scrambled Eggs."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:scrambled_egg"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Makeshift Breakfast"
+    }
+  },
+  "requirements": [
+    [
+      "cooked_scrambled_egg"
+    ]
+  ]
+}

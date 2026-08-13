@@ -1,0 +1,40 @@
+{
+  "textures": {
+    "particle": "projectflint:block/loose_dirt",
+    "mat": "projectflint:block/loose_dirt"
+  },
+  "elements": [
+    {
+      "from": [
+        2,
+        0,
+        2
+      ],
+      "to": [
+        14,
+        2.74,
+        14
+      ],
+      "faces": {
+        "up": {
+          "texture": "#mat"
+        },
+        "down": {
+          "texture": "#mat"
+        },
+        "north": {
+          "texture": "#mat"
+        },
+        "south": {
+          "texture": "#mat"
+        },
+        "east": {
+          "texture": "#mat"
+        },
+        "west": {
+          "texture": "#mat"
+        }
+      }
+    }
+  ]
+}

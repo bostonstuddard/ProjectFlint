@@ -1,0 +1,27 @@
+{
+  "parent": "projectflint:woven_fan",
+  "criteria": {
+    "assembled_reed_backpack": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Assemble Woven Fans, bindings, and Woven Wool into a Reed Backpack."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:reed_backpack"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Carry the Row"
+    }
+  },
+  "requirements": [
+    [
+      "assembled_reed_backpack"
+    ]
+  ]
+}

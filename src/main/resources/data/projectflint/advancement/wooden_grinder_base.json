@@ -1,0 +1,34 @@
+{
+  "parent": "projectflint:woven_wood",
+  "criteria": {
+    "obtained": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "projectflint:wooden_grinder_base"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Grind Woven Wood into a Wooden Grinder Base."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:wooden_grinder_base"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Wooden Grinder Base"
+    }
+  },
+  "requirements": [
+    [
+      "obtained"
+    ]
+  ]
+}

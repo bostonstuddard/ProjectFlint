@@ -1,0 +1,27 @@
+{
+  "parent": "projectflint:02_wood_era/root",
+  "criteria": {
+    "brushed_sand": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Brush Sand to recover Sand Flakes while exposing Clay."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:sand_flake"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Clay from Sand"
+    }
+  },
+  "requirements": [
+    [
+      "brushed_sand"
+    ]
+  ]
+}

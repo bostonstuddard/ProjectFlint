@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "projectflint:block/loose_dirt",
+    "side": "projectflint:block/loose_dirt",
+    "top": "projectflint:block/loose_dirt"
+  }
+}

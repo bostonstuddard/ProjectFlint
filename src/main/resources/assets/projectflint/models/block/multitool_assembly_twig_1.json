@@ -1,0 +1,40 @@
+{
+  "textures": {
+    "particle": "projectflint:block/placed/burnt_twig",
+    "mat": "projectflint:block/placed/burnt_twig"
+  },
+  "elements": [
+    {
+      "from": [
+        3,
+        1.6,
+        10
+      ],
+      "to": [
+        13,
+        2.2,
+        11
+      ],
+      "faces": {
+        "up": {
+          "texture": "#mat"
+        },
+        "down": {
+          "texture": "#mat"
+        },
+        "north": {
+          "texture": "#mat"
+        },
+        "south": {
+          "texture": "#mat"
+        },
+        "east": {
+          "texture": "#mat"
+        },
+        "west": {
+          "texture": "#mat"
+        }
+      }
+    }
+  ]
+}

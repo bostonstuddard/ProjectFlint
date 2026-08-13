@@ -1,0 +1,27 @@
+{
+  "parent": "projectflint:wattle",
+  "criteria": {
+    "obtained": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Wet a Dirt Pile against water to make a Mud Pile."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:dirt_pile"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Mud in Hand"
+    }
+  },
+  "requirements": [
+    [
+      "obtained"
+    ]
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "parent": "projectflint:woven_wool",
+  "criteria": {
+    "placed_sleeping_bag": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Assemble Woven Wool into a reusable two-block Sleeping Bag."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:sleeping_bag"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Sleeping Bag"
+    }
+  },
+  "requirements": [
+    [
+      "placed_sleeping_bag"
+    ]
+  ]
+}

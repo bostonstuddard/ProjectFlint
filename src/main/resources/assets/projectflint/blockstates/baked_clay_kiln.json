@@ -1,0 +1,52 @@
+{
+  "multipart": [
+    {
+      "when": { "facing": "north" },
+      "apply": { "model": "projectflint:block/baked_clay_kiln_body" }
+    },
+    {
+      "when": { "facing": "east" },
+      "apply": { "model": "projectflint:block/baked_clay_kiln_body", "y": 90 }
+    },
+    {
+      "when": { "facing": "south" },
+      "apply": { "model": "projectflint:block/baked_clay_kiln_body", "y": 180 }
+    },
+    {
+      "when": { "facing": "west" },
+      "apply": { "model": "projectflint:block/baked_clay_kiln_body", "y": 270 }
+    },
+    {
+      "when": {
+        "branches": "1|2|3|4|5|6|7|8",
+        "facing": "north"
+      },
+      "apply": { "model": "projectflint:block/baked_clay_kiln_fuel" }
+    },
+    {
+      "when": {
+        "branches": "1|2|3|4|5|6|7|8",
+        "facing": "east"
+      },
+      "apply": { "model": "projectflint:block/baked_clay_kiln_fuel", "y": 90 }
+    },
+    {
+      "when": {
+        "branches": "1|2|3|4|5|6|7|8",
+        "facing": "south"
+      },
+      "apply": { "model": "projectflint:block/baked_clay_kiln_fuel", "y": 180 }
+    },
+    {
+      "when": {
+        "branches": "1|2|3|4|5|6|7|8",
+        "facing": "west"
+      },
+      "apply": { "model": "projectflint:block/baked_clay_kiln_fuel", "y": 270 }
+    },
+    {
+      "when": { "lit": true },
+      "apply": { "model": "projectflint:block/baked_clay_kiln_fire" }
+    }
+  ]
+}

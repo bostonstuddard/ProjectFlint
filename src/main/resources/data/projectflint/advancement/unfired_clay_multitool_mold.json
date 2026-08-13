@@ -1,0 +1,34 @@
+{
+  "parent": "projectflint:unfired_clay_mold_base",
+  "criteria": {
+    "obtained": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "projectflint:unfired_clay_multitool_mold"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Shape an Unfired Clay Mold Base into a Multitool Mold."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:unfired_clay_multitool_mold"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Multitool Mold"
+    }
+  },
+  "requirements": [
+    [
+      "obtained"
+    ]
+  ]
+}

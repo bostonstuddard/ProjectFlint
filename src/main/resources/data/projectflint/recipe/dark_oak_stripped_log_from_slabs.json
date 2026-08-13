@@ -1,0 +1,8 @@
+{
+  "type": "projectflint:clay_grinding",
+  "ingredient": "minecraft:dark_oak_slab",
+  "input_count": 2,
+  "result": {
+    "id": "minecraft:stripped_dark_oak_log"
+  }
+}

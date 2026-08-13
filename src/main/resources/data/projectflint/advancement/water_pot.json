@@ -1,0 +1,34 @@
+{
+  "parent": "projectflint:sanding_station",
+  "criteria": {
+    "obtained": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "projectflint:water_pot"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Use 4 Leather and a Clay Pot in the Wooden Grinder to make the Lumber Processor reservoir."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:water_pot"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Water Pot"
+    }
+  },
+  "requirements": [
+    [
+      "obtained"
+    ]
+  ]
+}

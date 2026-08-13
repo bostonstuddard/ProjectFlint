@@ -1,0 +1,28 @@
+{
+  "parent": "projectflint:mortar_bricks",
+  "criteria": {
+    "done": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Build the 2\u00d72\u00d72 Advanced Kiln to begin reusable mold casting."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:advanced_kiln_glass"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Eight Bricks, One Furnace"
+    },
+    "frame": "goal"
+  },
+  "requirements": [
+    [
+      "done"
+    ]
+  ]
+}

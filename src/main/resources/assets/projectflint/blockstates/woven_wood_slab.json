@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "projectflint:block/woven_wood_slab"
+    },
+    "type=top": {
+      "model": "projectflint:block/woven_wood_slab_top"
+    },
+    "type=double": {
+      "model": "projectflint:block/woven_wood_slab_double"
+    }
+  }
+}

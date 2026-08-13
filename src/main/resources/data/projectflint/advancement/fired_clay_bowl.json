@@ -1,0 +1,27 @@
+{
+  "parent": "projectflint:unfired_woven_bowl",
+  "criteria": {
+    "fired_woven_bowl": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Fire the lined bowl in a permanent campfire or kiln."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:fired_clay_bowl"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Fire the Bowl"
+    }
+  },
+  "requirements": [
+    [
+      "fired_woven_bowl"
+    ]
+  ]
+}

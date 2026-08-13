@@ -1,0 +1,27 @@
+{
+  "parent": "projectflint:complete_clay_kiln",
+  "criteria": {
+    "lit_complete_kiln": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Ignite the completed kiln to begin reliable high-heat processing."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:flint_firestarter"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Five Minutes of Heat"
+    }
+  },
+  "requirements": [
+    [
+      "lit_complete_kiln"
+    ]
+  ]
+}

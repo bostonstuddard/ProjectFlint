@@ -1,0 +1,27 @@
+{
+  "parent": "projectflint:dirt_pile",
+  "criteria": {
+    "compacted_loose_dirt": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Compact 4 Dirt Piles with a hammer-like tool to make Loose Dirt."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:loose_dirt"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Loose Dirt"
+    }
+  },
+  "requirements": [
+    [
+      "compacted_loose_dirt"
+    ]
+  ]
+}

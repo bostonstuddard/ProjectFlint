@@ -1,0 +1,42 @@
+{
+  "parent": "minecraft:block/block",
+  "ambientocclusion": false,
+  "textures": {
+    "twig": "projectflint:block/placed/twig",
+    "particle": "projectflint:block/placed/twig"
+  },
+  "elements": [
+    {
+      "from": [
+        2.75,
+        0.1,
+        2.95
+      ],
+      "to": [
+        9.25,
+        0.2,
+        9.45
+      ],
+      "faces": {
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#twig"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#twig"
+        }
+      }
+    }
+  ]
+}

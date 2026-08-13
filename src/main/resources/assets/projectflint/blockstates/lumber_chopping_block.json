@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "projectflint:block/lumber_chopping_block" },
+    "facing=east": { "model": "projectflint:block/lumber_chopping_block", "y": 90 },
+    "facing=south": { "model": "projectflint:block/lumber_chopping_block", "y": 180 },
+    "facing=west": { "model": "projectflint:block/lumber_chopping_block", "y": 270 }
+  }
+}

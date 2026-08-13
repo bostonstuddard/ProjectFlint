@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "twigs=1,has_rock=false": {
+      "model": "projectflint:block/hammer_assembly_1_no_rock"
+    },
+    "twigs=1,has_rock=true": {
+      "model": "projectflint:block/hammer_assembly_1_rock"
+    },
+    "twigs=2,has_rock=false": {
+      "model": "projectflint:block/hammer_assembly_2_no_rock"
+    },
+    "twigs=2,has_rock=true": {
+      "model": "projectflint:block/hammer_assembly_2_rock"
+    }
+  }
+}

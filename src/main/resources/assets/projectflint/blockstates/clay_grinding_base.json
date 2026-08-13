@@ -1,0 +1,9 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "projectflint:block/clay_grinding_base"
+      }
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "variants": {
+    "count=1,lit=false": {
+      "model": "projectflint:block/twig_pile_1"
+    },
+    "count=1,lit=true": {
+      "model": "projectflint:block/twig_pile_1"
+    },
+    "count=2,lit=false": {
+      "model": "projectflint:block/twig_pile_2"
+    },
+    "count=2,lit=true": {
+      "model": "projectflint:block/twig_pile_2"
+    },
+    "count=3,lit=false": {
+      "model": "projectflint:block/twig_pile_3"
+    },
+    "count=3,lit=true": {
+      "model": "projectflint:block/twig_pile_3"
+    },
+    "count=4,lit=false": {
+      "model": "projectflint:block/twig_pile_4"
+    },
+    "count=4,lit=true": {
+      "model": "projectflint:block/twig_pile_4"
+    },
+    "count=5,lit=false": {
+      "model": "projectflint:block/twig_pile_5"
+    },
+    "count=5,lit=true": {
+      "model": "projectflint:block/twig_pile_5"
+    },
+    "count=6,lit=false": {
+      "model": "projectflint:block/twig_pile_6"
+    },
+    "count=6,lit=true": {
+      "model": "projectflint:block/twig_pile_6"
+    },
+    "count=7,lit=false": {
+      "model": "projectflint:block/twig_pile_7"
+    },
+    "count=7,lit=true": {
+      "model": "projectflint:block/twig_pile_7"
+    },
+    "count=8,lit=false": {
+      "model": "projectflint:block/twig_pile_8"
+    },
+    "count=8,lit=true": {
+      "model": "projectflint:block/twig_pile_8"
+    },
+    "count=9,lit=false": {
+      "model": "projectflint:block/twig_pile_9"
+    },
+    "count=9,lit=true": {
+      "model": "projectflint:block/twig_pile_9"
+    },
+    "count=10,lit=false": {
+      "model": "projectflint:block/twig_pile_10"
+    },
+    "count=10,lit=true": {
+      "model": "projectflint:block/twig_pile_10"
+    },
+    "count=11,lit=false": {
+      "model": "projectflint:block/twig_pile_11"
+    },
+    "count=11,lit=true": {
+      "model": "projectflint:block/twig_pile_11"
+    },
+    "count=12,lit=false": {
+      "model": "projectflint:block/twig_pile_12"
+    },
+    "count=12,lit=true": {
+      "model": "projectflint:block/twig_pile_12"
+    }
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "parent": "minecraft:block/block",
+  "ambientocclusion": false,
+  "textures": {
+    "twig": "projectflint:block/placed/twig",
+    "particle": "projectflint:block/placed/twig"
+  },
+  "elements": [
+    {
+      "from": [
+        2.75,
+        0.1,
+        2.95
+      ],
+      "to": [
+        9.25,
+        0.2,
+        9.45
+      ],
+      "faces": {
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#twig"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#twig"
+        }
+      }
+    },
+    {
+      "from": [
+        6.55,
+        0.18,
+        2.75
+      ],
+      "to": [
+        13.05,
+        0.28,
+        9.25
+      ],
+      "faces": {
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#twig"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#twig"
+        }
+      },
+      "rotation": {
+        "origin": [
+          8,
+          0.23,
+          8
+        ],
+        "axis": "y",
+        "angle": 45,
+        "rescale": false
+      }
+    },
+    {
+      "from": [
+        2.95,
+        0.26,
+        6.55
+      ],
+      "to": [
+        9.45,
+        0.36,
+        13.05
+      ],
+      "faces": {
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#twig"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#twig"
+        }
+      },
+      "rotation": {
+        "origin": [
+          8,
+          0.31,
+          8
+        ],
+        "axis": "y",
+        "angle": -45,
+        "rescale": false
+      }
+    }
+  ]
+}

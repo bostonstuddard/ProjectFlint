@@ -1,0 +1,34 @@
+{
+  "parent": "projectflint:stone_in_hand",
+  "criteria": {
+    "plant_fiber": {
+      "conditions": {
+        "items": [
+          {
+            "items": "projectflint:plant_fiber"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Scrape Grass into Dirt to begin gathering Plant Fiber."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:plant_fiber"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Disturbed Earth"
+    }
+  },
+  "requirements": [
+    [
+      "plant_fiber"
+    ]
+  ]
+}

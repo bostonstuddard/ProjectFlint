@@ -1,0 +1,9 @@
+{
+  "type": "projectflint:clay_grinding",
+  "ingredient": "projectflint:unfired_clay_mold_base",
+  "input_count": 1,
+  "result": {
+    "id": "projectflint:unfired_clay_pot_mold",
+    "count": 1
+  }
+}

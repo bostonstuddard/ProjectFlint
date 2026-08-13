@@ -1,0 +1,26 @@
+{
+  "replace": false,
+  "values": [
+    "projectflint:plains_bush",
+    "projectflint:sunflower_plains_bush",
+    "projectflint:forest_bush",
+    "projectflint:flower_forest_bush",
+    "projectflint:birch_forest_bush",
+    "projectflint:dark_forest_bush",
+    "projectflint:pale_garden_bush",
+    "projectflint:old_growth_birch_forest_bush",
+    "projectflint:old_growth_pine_taiga_bush",
+    "projectflint:old_growth_spruce_taiga_bush",
+    "projectflint:taiga_bush",
+    "projectflint:windswept_hills_bush",
+    "projectflint:windswept_gravelly_hills_bush",
+    "projectflint:windswept_forest_bush",
+    "projectflint:jungle_bush",
+    "projectflint:sparse_jungle_bush",
+    "projectflint:bamboo_jungle_bush",
+    "projectflint:meadow_bush",
+    "projectflint:cherry_grove_bush",
+    "projectflint:stony_peaks_bush",
+    "projectflint:mushroom_fields_bush"
+  ]
+}

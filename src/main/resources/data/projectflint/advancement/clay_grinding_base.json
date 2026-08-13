@@ -1,0 +1,27 @@
+{
+  "parent": "projectflint:super_heated_clay",
+  "criteria": {
+    "placed_clay_grinding_base": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Build a Clay Grinding Base from 8 Super Heated Clay."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:clay_grinding_base"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Grinding Base"
+    }
+  },
+  "requirements": [
+    [
+      "placed_clay_grinding_base"
+    ]
+  ]
+}

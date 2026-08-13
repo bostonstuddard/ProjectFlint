@@ -1,0 +1,34 @@
+{
+  "parent": "projectflint:unfired_clay_ball",
+  "criteria": {
+    "fired_clay": {
+      "conditions": {
+        "items": [
+          {
+            "items": "projectflint:fired_clay"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Fire an Unfired Clay Ball with Twigs to make Fired Clay."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:fired_clay"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Open-Fired Clay"
+    }
+  },
+  "requirements": [
+    [
+      "fired_clay"
+    ]
+  ]
+}

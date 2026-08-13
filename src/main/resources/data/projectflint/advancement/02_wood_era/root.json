@@ -1,0 +1,35 @@
+{
+  "criteria": {
+    "ready": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "projectflint:clay_grinder"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "background": "minecraft:block/oak_planks",
+    "description": {
+      "text": "Use Clay Grinder industry to unlock true woodworking and the Wooden Grinder."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:wooden_grinder"
+    },
+    "show_toast": false,
+    "title": {
+      "text": "Wood Era"
+    }
+  },
+  "requirements": [
+    [
+      "ready"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

@@ -1,0 +1,27 @@
+{
+  "parent": "projectflint:daub_pile",
+  "criteria": {
+    "obtained": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Wet a Daub Pile against water so it can coat Wattle."
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:water_bucket"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Workable Daub"
+    }
+  },
+  "requirements": [
+    [
+      "obtained"
+    ]
+  ]
+}

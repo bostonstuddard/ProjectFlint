@@ -1,0 +1,27 @@
+{
+  "parent": "projectflint:flint_axe_log",
+  "criteria": {
+    "ground_slabs": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Grind a stripped log into matching wooden slabs."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:flint_axe"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Ground Wooden Slabs"
+    }
+  },
+  "requirements": [
+    [
+      "ground_slabs"
+    ]
+  ]
+}

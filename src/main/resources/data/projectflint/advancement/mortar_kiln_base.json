@@ -1,0 +1,34 @@
+{
+  "parent": "projectflint:mortar_bricks",
+  "criteria": {
+    "obtained": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "projectflint:mortar_kiln_base"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Grind 32 Mortar Bricks into a Mortar Kiln Base."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:mortar_kiln_base"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Mortar Kiln Base"
+    }
+  },
+  "requirements": [
+    [
+      "obtained"
+    ]
+  ]
+}

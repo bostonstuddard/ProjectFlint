@@ -1,0 +1,50 @@
+{
+  "textures": {
+    "particle": "projectflint:block/placed/lightly_burnt_twig",
+    "mat": "projectflint:block/placed/lightly_burnt_twig"
+  },
+  "elements": [
+    {
+      "from": [
+        6.75,
+        1.0,
+        7.4
+      ],
+      "to": [
+        13.25,
+        1.65,
+        8.6
+      ],
+      "rotation": {
+        "origin": [
+          10.0,
+          1.0,
+          8.0
+        ],
+        "axis": "y",
+        "angle": -90.0,
+        "rescale": true
+      },
+      "faces": {
+        "down": {
+          "texture": "#mat"
+        },
+        "up": {
+          "texture": "#mat"
+        },
+        "north": {
+          "texture": "#mat"
+        },
+        "south": {
+          "texture": "#mat"
+        },
+        "west": {
+          "texture": "#mat"
+        },
+        "east": {
+          "texture": "#mat"
+        }
+      }
+    }
+  ]
+}

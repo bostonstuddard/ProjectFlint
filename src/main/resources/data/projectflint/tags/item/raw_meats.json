@@ -1,0 +1,23 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:beef",
+    "minecraft:porkchop",
+    "minecraft:chicken",
+    "minecraft:mutton",
+    "minecraft:rabbit",
+    "minecraft:cod",
+    "minecraft:salmon",
+    "minecraft:tropical_fish",
+    "minecraft:pufferfish",
+    "projectflint:raw_calamari",
+    "projectflint:raw_fox_meat",
+    "projectflint:raw_frog_meat",
+    "projectflint:raw_goat_meat",
+    "projectflint:raw_horse_meat",
+    "projectflint:raw_llama_meat",
+    "projectflint:raw_dolphin_meat",
+    "projectflint:raw_bear_meat",
+    "projectflint:raw_camel_meat"
+  ]
+}

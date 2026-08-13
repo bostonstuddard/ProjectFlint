@@ -1,0 +1,34 @@
+{
+  "parent": "projectflint:sanded_wood_slab",
+  "criteria": {
+    "obtained": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "projectflint:grinded_wood_slab"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Grind Sanded Wood Slabs into a Grinded Wood Slab."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:grinded_wood_slab"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Grinded Wood Slab"
+    }
+  },
+  "requirements": [
+    [
+      "obtained"
+    ]
+  ]
+}

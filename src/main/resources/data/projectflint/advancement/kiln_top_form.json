@@ -1,0 +1,27 @@
+{
+  "parent": "projectflint:baked_clay_kiln",
+  "criteria": {
+    "cut_kiln_top": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Shape and place the upper kiln form above the baked base."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:loose_dirt"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Shape the Kiln Crown"
+    }
+  },
+  "requirements": [
+    [
+      "cut_kiln_top"
+    ]
+  ]
+}

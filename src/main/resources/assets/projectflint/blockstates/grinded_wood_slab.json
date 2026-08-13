@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "projectflint:block/grinded_wood_slab"
+    },
+    "type=top": {
+      "model": "projectflint:block/grinded_wood_slab_top"
+    },
+    "type=double": {
+      "model": "projectflint:block/grinded_wood_slab_double"
+    }
+  }
+}

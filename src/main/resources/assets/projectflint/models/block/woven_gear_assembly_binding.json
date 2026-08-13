@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/block",
+  "ambientocclusion": false,
+  "textures": { "particle": "projectflint:block/placed/plant_tool_binding", "part": "projectflint:block/placed/plant_tool_binding" },
+  "elements": [
+    { "from": [2, 0.22, 2], "to": [14, 0.32, 14], "faces": { "up": { "texture": "#part" } } }
+  ]
+}

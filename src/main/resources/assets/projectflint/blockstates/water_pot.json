@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "projectflint:block/water_pot" },
+    "facing=east": { "model": "projectflint:block/water_pot", "y": 90 },
+    "facing=south": { "model": "projectflint:block/water_pot", "y": 180 },
+    "facing=west": { "model": "projectflint:block/water_pot", "y": 270 }
+  }
+}

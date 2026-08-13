@@ -1,0 +1,27 @@
+{
+  "parent": "projectflint:water_pot",
+  "criteria": {
+    "done": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Pour two full Water Bearing Pot loads into the Water Pot to store one bucket."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:water_pot"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Fill the Reservoir"
+    }
+  },
+  "requirements": [
+    [
+      "done"
+    ]
+  ]
+}

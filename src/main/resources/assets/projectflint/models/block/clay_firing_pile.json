@@ -1,0 +1,40 @@
+{
+  "textures": {
+    "particle": "projectflint:block/crude_clay_block",
+    "mat": "projectflint:block/crude_clay_block"
+  },
+  "elements": [
+    {
+      "from": [
+        4,
+        0,
+        4
+      ],
+      "to": [
+        12,
+        2.8,
+        12
+      ],
+      "faces": {
+        "down": {
+          "texture": "#mat"
+        },
+        "up": {
+          "texture": "#mat"
+        },
+        "north": {
+          "texture": "#mat"
+        },
+        "south": {
+          "texture": "#mat"
+        },
+        "west": {
+          "texture": "#mat"
+        },
+        "east": {
+          "texture": "#mat"
+        }
+      }
+    }
+  ]
+}

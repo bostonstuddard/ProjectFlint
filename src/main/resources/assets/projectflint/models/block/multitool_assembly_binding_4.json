@@ -1,0 +1,40 @@
+{
+  "textures": {
+    "particle": "projectflint:block/placed/plant_tool_binding",
+    "mat": "projectflint:block/placed/plant_tool_binding"
+  },
+  "elements": [
+    {
+      "from": [
+        11,
+        1.0,
+        7
+      ],
+      "to": [
+        15,
+        1.5,
+        10
+      ],
+      "faces": {
+        "up": {
+          "texture": "#mat"
+        },
+        "down": {
+          "texture": "#mat"
+        },
+        "north": {
+          "texture": "#mat"
+        },
+        "south": {
+          "texture": "#mat"
+        },
+        "east": {
+          "texture": "#mat"
+        },
+        "west": {
+          "texture": "#mat"
+        }
+      }
+    }
+  ]
+}

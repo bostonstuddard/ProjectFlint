@@ -1,0 +1,7 @@
+{
+  "parent": "projectflint:block/forage_bush_base",
+  "textures": {
+    "leaves": "minecraft:block/azalea_leaves",
+    "particle": "minecraft:block/azalea_leaves"
+  }
+}

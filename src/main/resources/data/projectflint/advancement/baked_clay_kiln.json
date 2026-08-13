@@ -1,0 +1,27 @@
+{
+  "parent": "projectflint:crude_clay_kiln",
+  "criteria": {
+    "baked_kiln_base": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Load the crude kiln with Branches and ignite it to bake the kiln base."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:crude_clay_kiln"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Bake the Kiln Base"
+    }
+  },
+  "requirements": [
+    [
+      "baked_kiln_base"
+    ]
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "textures": {
+    "particle": "projectflint:block/placed/very_refined_stone",
+    "mat": "projectflint:block/placed/very_refined_stone"
+  },
+  "elements": [
+    {
+      "from": [
+        2,
+        1.5,
+        3
+      ],
+      "to": [
+        8,
+        2.1,
+        9
+      ],
+      "faces": {
+        "up": {
+          "texture": "#mat"
+        },
+        "down": {
+          "texture": "#mat"
+        },
+        "north": {
+          "texture": "#mat"
+        },
+        "south": {
+          "texture": "#mat"
+        },
+        "east": {
+          "texture": "#mat"
+        },
+        "west": {
+          "texture": "#mat"
+        }
+      }
+    }
+  ]
+}

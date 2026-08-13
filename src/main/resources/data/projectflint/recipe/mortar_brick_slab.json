@@ -1,0 +1,9 @@
+{
+  "type": "projectflint:clay_grinding",
+  "ingredient": "projectflint:mortar_bricks",
+  "input_count": 1,
+  "result": {
+    "id": "projectflint:mortar_brick_slab",
+    "count": 2
+  }
+}

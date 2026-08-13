@@ -1,0 +1,27 @@
+{
+  "parent": "projectflint:tied_wattle",
+  "criteria": {
+    "obtained": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Work 4 Tied Wattle with 2 Wet Daub Piles into Unfired Wattle and Daub."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:crude_plant_string"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Wattle and Daub"
+    }
+  },
+  "requirements": [
+    [
+      "obtained"
+    ]
+  ]
+}

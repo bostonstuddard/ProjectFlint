@@ -1,0 +1,91 @@
+{
+  "textures": {
+    "particle": "projectflint:block/woven_wood",
+    "wicker": "projectflint:block/woven_wood"
+  },
+  "elements": [
+    {
+      "from": [
+        4,
+        2,
+        6
+      ],
+      "to": [
+        12,
+        13,
+        11
+      ],
+      "faces": {
+        "north": {
+          "texture": "#wicker"
+        },
+        "south": {
+          "texture": "#wicker"
+        },
+        "east": {
+          "texture": "#wicker"
+        },
+        "west": {
+          "texture": "#wicker"
+        },
+        "up": {
+          "texture": "#wicker"
+        },
+        "down": {
+          "texture": "#wicker"
+        }
+      }
+    },
+    {
+      "from": [
+        4,
+        11,
+        5
+      ],
+      "to": [
+        12,
+        14,
+        11
+      ],
+      "faces": {
+        "north": {
+          "texture": "#wicker"
+        },
+        "south": {
+          "texture": "#wicker"
+        },
+        "east": {
+          "texture": "#wicker"
+        },
+        "west": {
+          "texture": "#wicker"
+        },
+        "up": {
+          "texture": "#wicker"
+        },
+        "down": {
+          "texture": "#wicker"
+        }
+      }
+    }
+  ],
+  "display": {
+    "fixed": {
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    }
+  }
+}

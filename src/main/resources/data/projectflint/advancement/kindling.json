@@ -1,0 +1,27 @@
+{
+  "parent": "projectflint:first_twigs",
+  "criteria": {
+    "placed_twig_pile": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Place Twigs on supported ground until the pile reaches 12 Twigs."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:twig"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Kindling"
+    }
+  },
+  "requirements": [
+    [
+      "placed_twig_pile"
+    ]
+  ]
+}

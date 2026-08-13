@@ -1,0 +1,42 @@
+{
+  "parent": "minecraft:block/block",
+  "ambientocclusion": false,
+  "textures": {
+    "fiber": "projectflint:block/placed/plant_fiber",
+    "particle": "projectflint:block/placed/plant_fiber"
+  },
+  "elements": [
+    {
+      "from": [
+        2.5,
+        0.08,
+        5.2
+      ],
+      "to": [
+        13.0,
+        0.2,
+        9.3
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#fiber"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#fiber"
+        }
+      }
+    }
+  ]
+}

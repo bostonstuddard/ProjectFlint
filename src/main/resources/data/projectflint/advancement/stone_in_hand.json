@@ -1,0 +1,34 @@
+{
+  "parent": "projectflint:00_tool_era/root",
+  "criteria": {
+    "rock": {
+      "conditions": {
+        "items": [
+          {
+            "items": "projectflint:rock"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Pick up a naturally generated Loose Rock to begin working stone."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:rock"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Stone in Hand"
+    }
+  },
+  "requirements": [
+    [
+      "rock"
+    ]
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "parent": "projectflint:sanding_paper",
+  "criteria": {
+    "woven_wool": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Work Wool with Sanding Paper to make stronger woven padding."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:woven_wool"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Woven Wool"
+    }
+  },
+  "requirements": [
+    [
+      "woven_wool"
+    ]
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "type": "projectflint:clay_grinding",
+  "ingredient": "projectflint:crushed_stone",
+  "input_count": 1,
+  "result": {
+    "id": "projectflint:crushed_stone_slab",
+    "count": 2
+  }
+}

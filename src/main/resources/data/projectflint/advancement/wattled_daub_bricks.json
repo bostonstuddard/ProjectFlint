@@ -1,0 +1,27 @@
+{
+  "parent": "projectflint:unfired_wattle_and_daub",
+  "criteria": {
+    "obtained": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Fire Unfired Wattle and Daub to make structural Wattled Daub Bricks."
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:brick"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "A Real Shelter"
+    }
+  },
+  "requirements": [
+    [
+      "obtained"
+    ]
+  ]
+}

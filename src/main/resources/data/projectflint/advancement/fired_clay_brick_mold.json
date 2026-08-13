@@ -1,0 +1,34 @@
+{
+  "parent": "projectflint:unfired_clay_brick_mold",
+  "criteria": {
+    "obtained": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "projectflint:fired_clay_brick_mold"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Fire the Brick Mold in a kiln before using it for casting."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:fired_clay_brick_mold"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Fired Brick Mold"
+    }
+  },
+  "requirements": [
+    [
+      "obtained"
+    ]
+  ]
+}

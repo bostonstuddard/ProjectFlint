@@ -1,0 +1,27 @@
+{
+  "parent": "projectflint:primitive_campfire",
+  "criteria": {
+    "lit_campfire": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Relight a completed Permanent Campfire with 8 Flower Petals and at least 4 Twigs."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:flower_petals"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Relightable Flame"
+    }
+  },
+  "requirements": [
+    [
+      "lit_campfire"
+    ]
+  ]
+}

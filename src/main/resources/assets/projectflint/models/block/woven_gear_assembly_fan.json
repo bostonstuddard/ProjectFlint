@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/block",
+  "ambientocclusion": false,
+  "textures": { "particle": "projectflint:block/placed/woven_fan", "part": "projectflint:block/placed/woven_fan" },
+  "elements": [
+    { "from": [1, 0.1, 1], "to": [15, 0.2, 15], "faces": { "up": { "texture": "#part" } } }
+  ]
+}

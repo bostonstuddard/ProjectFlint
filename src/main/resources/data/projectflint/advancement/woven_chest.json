@@ -1,0 +1,34 @@
+{
+  "parent": "projectflint:woven_chest_frame",
+  "criteria": {
+    "obtained": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "projectflint:woven_chest"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Upgrade a Mortar Chest with the Woven Chest Frame for larger storage."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:woven_chest"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Woven Chest"
+    }
+  },
+  "requirements": [
+    [
+      "obtained"
+    ]
+  ]
+}

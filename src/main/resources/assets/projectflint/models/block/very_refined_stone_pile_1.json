@@ -1,0 +1,22 @@
+{
+  "parent": "minecraft:block/block",
+  "ambientocclusion": false,
+  "textures": {
+    "rock": "projectflint:block/placed/very_refined_stone",
+    "particle": "projectflint:block/placed/very_refined_stone"
+  },
+  "elements": [
+    {
+      "from": [3.0, 0.1, 3.2],
+      "to": [6.0, 1.1, 6.2],
+      "faces": {
+        "up": {"texture": "#rock"},
+        "down": {"texture": "#rock"},
+        "north": {"texture": "#rock"},
+        "south": {"texture": "#rock"},
+        "west": {"texture": "#rock"},
+        "east": {"texture": "#rock"}
+      }
+    }
+  ]
+}

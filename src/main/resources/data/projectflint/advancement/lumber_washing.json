@@ -1,0 +1,27 @@
+{
+  "parent": "projectflint:lumber_processor",
+  "criteria": {
+    "done": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Fill the Water Pot, place a stripped log on the Chopping Block, then cut it with Flint Plant Cutters for 7.5 seconds."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:water_pot"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Wash the Lumber"
+    }
+  },
+  "requirements": [
+    [
+      "done"
+    ]
+  ]
+}

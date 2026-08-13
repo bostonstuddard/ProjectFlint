@@ -1,0 +1,26 @@
+{
+  "parent": "minecraft:block/block",
+  "ambientocclusion": false,
+  "textures": {
+    "flint": "projectflint:block/placed/flint",
+    "particle": "projectflint:block/placed/flint"
+  },
+  "elements": [
+    {
+      "from": [2, 0.36, 5],
+      "to": [8, 0.46, 11],
+      "faces": {
+        "down": { "uv": [0, 0, 16, 16], "texture": "#flint" },
+        "up": { "uv": [0, 0, 16, 16], "texture": "#flint" }
+      }
+    },
+    {
+      "from": [8, 0.48, 5],
+      "to": [14, 0.58, 11],
+      "faces": {
+        "down": { "uv": [0, 0, 16, 16], "texture": "#flint" },
+        "up": { "uv": [0, 0, 16, 16], "texture": "#flint" }
+      }
+    }
+  ]
+}

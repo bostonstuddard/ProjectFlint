@@ -1,0 +1,24 @@
+{
+  "multipart": [
+    {
+      "when": { "facing": "north" },
+      "apply": { "model": "projectflint:block/baked_kiln_top" }
+    },
+    {
+      "when": { "facing": "east" },
+      "apply": { "model": "projectflint:block/baked_kiln_top", "y": 90 }
+    },
+    {
+      "when": { "facing": "south" },
+      "apply": { "model": "projectflint:block/baked_kiln_top", "y": 180 }
+    },
+    {
+      "when": { "facing": "west" },
+      "apply": { "model": "projectflint:block/baked_kiln_top", "y": 270 }
+    },
+    {
+      "when": { "lit": true },
+      "apply": { "model": "projectflint:block/baked_kiln_top_fire" }
+    }
+  ]
+}

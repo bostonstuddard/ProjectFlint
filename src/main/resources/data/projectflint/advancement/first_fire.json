@@ -1,0 +1,27 @@
+{
+  "parent": "projectflint:first_twigs",
+  "criteria": {
+    "lit_twig_pile": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Build a 12-Twig pile and strike it with Twigs and a Refined Rock to start a temporary fire."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:twig"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "First Flame"
+    }
+  },
+  "requirements": [
+    [
+      "lit_twig_pile"
+    ]
+  ]
+}

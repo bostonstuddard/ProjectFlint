@@ -1,0 +1,24 @@
+{
+  "multipart": [
+    { "when": { "color": "white" }, "apply": { "model": "projectflint:block/sleeping_bag_white" } },
+    { "when": { "color": "orange" }, "apply": { "model": "projectflint:block/sleeping_bag_orange" } },
+    { "when": { "color": "magenta" }, "apply": { "model": "projectflint:block/sleeping_bag_magenta" } },
+    { "when": { "color": "light_blue" }, "apply": { "model": "projectflint:block/sleeping_bag_light_blue" } },
+    { "when": { "color": "yellow" }, "apply": { "model": "projectflint:block/sleeping_bag_yellow" } },
+    { "when": { "color": "lime" }, "apply": { "model": "projectflint:block/sleeping_bag_lime" } },
+    { "when": { "color": "pink" }, "apply": { "model": "projectflint:block/sleeping_bag_pink" } },
+    { "when": { "color": "gray" }, "apply": { "model": "projectflint:block/sleeping_bag_gray" } },
+    { "when": { "color": "light_gray" }, "apply": { "model": "projectflint:block/sleeping_bag_light_gray" } },
+    { "when": { "color": "cyan" }, "apply": { "model": "projectflint:block/sleeping_bag_cyan" } },
+    { "when": { "color": "purple" }, "apply": { "model": "projectflint:block/sleeping_bag_purple" } },
+    { "when": { "color": "blue" }, "apply": { "model": "projectflint:block/sleeping_bag_blue" } },
+    { "when": { "color": "brown" }, "apply": { "model": "projectflint:block/sleeping_bag_brown" } },
+    { "when": { "color": "green" }, "apply": { "model": "projectflint:block/sleeping_bag_green" } },
+    { "when": { "color": "red" }, "apply": { "model": "projectflint:block/sleeping_bag_red" } },
+    { "when": { "color": "black" }, "apply": { "model": "projectflint:block/sleeping_bag_black" } },
+    { "when": { "part": "head", "facing": "north" }, "apply": { "model": "projectflint:block/sleeping_bag_pillow" } },
+    { "when": { "part": "head", "facing": "east" }, "apply": { "model": "projectflint:block/sleeping_bag_pillow", "y": 90 } },
+    { "when": { "part": "head", "facing": "south" }, "apply": { "model": "projectflint:block/sleeping_bag_pillow", "y": 180 } },
+    { "when": { "part": "head", "facing": "west" }, "apply": { "model": "projectflint:block/sleeping_bag_pillow", "y": 270 } }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_bottom_right",
+  "textures": {
+    "bottom": "projectflint:block/wattled_daub_door_bottom",
+    "top": "projectflint:block/wattled_daub_door_top"
+  }
+}

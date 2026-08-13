@@ -1,0 +1,27 @@
+{
+  "parent": "projectflint:wooden_grinder",
+  "criteria": {
+    "obtained": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Use the Wooden Grinder to combine Flint and Woven Wood into an Unlit Flint Torch."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:unlit_flint_torch"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Flint Wick"
+    }
+  },
+  "requirements": [
+    [
+      "obtained"
+    ]
+  ]
+}

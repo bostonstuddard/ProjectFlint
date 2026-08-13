@@ -1,0 +1,94 @@
+{
+  "textures": {
+    "fire": "minecraft:block/campfire_fire",
+    "particle": "minecraft:block/campfire_fire"
+  },
+  "elements": [
+    {
+      "from": [
+        8,
+        4,
+        4
+      ],
+      "to": [
+        8,
+        12,
+        10
+      ],
+      "rotation": {
+        "origin": [
+          8,
+          4,
+          8
+        ],
+        "axis": "y",
+        "angle": 0,
+        "rescale": true
+      },
+      "shade": false,
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#fire"
+        },
+        "south": {
+          "uv": [
+            16,
+            0,
+            0,
+            16
+          ],
+          "texture": "#fire"
+        }
+      }
+    },
+    {
+      "from": [
+        8,
+        4,
+        4
+      ],
+      "to": [
+        8,
+        12,
+        10
+      ],
+      "rotation": {
+        "origin": [
+          8,
+          4,
+          8
+        ],
+        "axis": "y",
+        "angle": 90,
+        "rescale": true
+      },
+      "shade": false,
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#fire"
+        },
+        "south": {
+          "uv": [
+            16,
+            0,
+            0,
+            16
+          ],
+          "texture": "#fire"
+        }
+      }
+    }
+  ]
+}

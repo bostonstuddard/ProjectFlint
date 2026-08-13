@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "projectflint:block/woven_wood_top_bottom",
+    "up": "projectflint:block/woven_wood_top_bottom",
+    "north": "projectflint:block/woven_wood",
+    "south": "projectflint:block/woven_wood",
+    "west": "projectflint:block/woven_wood",
+    "east": "projectflint:block/woven_wood",
+    "particle": "projectflint:block/woven_wood"
+  }
+}

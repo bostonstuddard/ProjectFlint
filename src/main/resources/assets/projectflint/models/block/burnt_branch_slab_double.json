@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "projectflint:block/burnt_branch_block_top",
+    "side": "projectflint:block/burnt_branch_block_side"
+  }
+}

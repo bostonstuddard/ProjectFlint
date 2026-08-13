@@ -1,0 +1,9 @@
+{
+  "type": "projectflint:clay_grinding",
+  "ingredient": "projectflint:sugarcane_roll",
+  "input_count": 4,
+  "result": {
+    "id": "projectflint:sanding_paper",
+    "count": 1
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "parent": "projectflint:01_clay_era/root",
+  "criteria": {
+    "dug_dirt_pile": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Dig Dirt or Grass with a Multitool to gather Dirt Piles."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:dirt_pile"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Loose Earth"
+    }
+  },
+  "requirements": [
+    [
+      "dug_dirt_pile"
+    ]
+  ]
+}

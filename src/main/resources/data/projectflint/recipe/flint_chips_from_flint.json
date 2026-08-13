@@ -1,0 +1,9 @@
+{
+  "type": "projectflint:clay_grinding",
+  "ingredient": "minecraft:flint",
+  "input_count": 1,
+  "result": {
+    "id": "projectflint:flint_chip",
+    "count": 4
+  }
+}

@@ -1,0 +1,989 @@
+[
+  {
+    "target": "assets/projectflint/textures/block/advanced_kiln_face_bottom_left.png",
+    "source_archive": "ProjectFlint approved asset master",
+    "source_path": "06_Industrial_Steampunk/blocks/device_kiln.png",
+    "sha256": "0612d35f1fae22382d48e1c07987c30b8fd1acbb634d81f370d922f07ccfc114",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/advanced_kiln_face_bottom_right.png",
+    "source_archive": "ProjectFlint approved asset master",
+    "source_path": "06_Industrial_Steampunk/blocks/device_kiln_2.png",
+    "sha256": "5e359abc986106eaad699457f9d6a26c7cf3e8810a2d80135018601c72a52868",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/advanced_kiln_face_top_left.png",
+    "source_archive": "ProjectFlint approved asset master",
+    "source_path": "06_Industrial_Steampunk/blocks/device_kiln_top.png",
+    "sha256": "b34c30a14af38ee4d9df659e57d2aa79d0f0334a093bb7cb56552d1ed16eaa99",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/advanced_kiln_face_top_right.png",
+    "source_archive": "ProjectFlint approved asset master",
+    "source_path": "06_Industrial_Steampunk/blocks/device_kiln_top_2.png",
+    "sha256": "08d594c6d37100222f3633359066a8c94f8a337fd64e3f7bf938124c933d70bb",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/baked_clay_kiln.png",
+    "source_archive": "textures.zip",
+    "source_path": "textures/block/bricks.png",
+    "sha256": "5d279bcd91b12f1769d4b713b1b146da872a69a12212bb851597a8e55f15975b",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/branch.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/branch.png",
+    "sha256": "c4f2d875433b3f5a5cf096352d92949371718ada43463354e0e8544a2f68388c",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/burnt_branch_ground.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/burnt branch.png",
+    "sha256": "bb333ddafa3c5c5cd95c920ea3c17f5d9af61738b7a7dcdd0f769a82c705acb1",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/burnt_twig_ground.png",
+    "source_archive": "LegendsRPG.zip",
+    "source_path": "\u00a7b\u00a7l      \u2e0e \u00a7bLegendsRPG/assets/minecraft/textures/item/materials/foraging/bundle_of_twigs.png",
+    "sha256": "fac614fa68f751423fbfe842d73393f5297fe2eb0c381ee2a931f70d1d9296d9",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/campfire_stone_block.png",
+    "source_archive": "textures.zip",
+    "source_path": "textures/block/cobblestone.png",
+    "sha256": "caaf1d57e51d7afbce891fadf1419c4390c11515a65df5afa8d0b760e7c7e009",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/campfire_stone_ground.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/campfire stone.png",
+    "sha256": "25bb3437228e69c4efb95247eae06d84de4a629a6db54141eba9370e9f941a55",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/clay_grinder_bottom.png",
+    "source_archive": "textures.zip",
+    "source_path": "textures/block/stonecutter_bottom.png",
+    "sha256": "487afea65649b28c1950e3d7b9db1a2dbf77b2e9d7d42aee04fb3f8325d3b6b9",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/clay_grinder_pivot.png",
+    "source_archive": "textures.zip",
+    "source_path": "textures/block/grindstone_pivot.png",
+    "sha256": "7932219d6060659c47bf5b6fa71f26a7b8ac338812ce8e3bf92a246eabe7fd53",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/clay_grinder_saw.png",
+    "source_archive": "textures.zip",
+    "source_path": "textures/block/stonecutter_saw.png",
+    "sha256": "6418317accff4329e44aa8507cf2172a594baef4c6d301cd2e2df30047240e2d",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/clay_grinder_side.png",
+    "source_archive": "textures.zip",
+    "source_path": "textures/block/stonecutter_side.png",
+    "sha256": "4e5d28d11de546c1c26ba942d4fee09210285ee8846c39fd147634321a0b0d64",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/clay_grinder_top.png",
+    "source_archive": "textures.zip",
+    "source_path": "textures/block/stonecutter_top.png",
+    "sha256": "beb85c4614aa830d36b680d08c83c01e4256da636df54f7df7c1e8bd25d6ca2e",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/clay_grinder_wheel.png",
+    "source_archive": "Direct user upload",
+    "source_path": "minecraft_grindstone_round (1).png",
+    "sha256": "fde3925f76757bb59cf973d7b65535d998f3e9c5a683c44a103e5d30d5a20de9",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/crude_clay_block.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/texture asset master file for use/01_Primitive_Rustic/blocks/brick_adobe.png",
+    "sha256": "664a83cd0d4890b1d03259ba5f91044c7d538033cc17e784ca10e69e15fa4381",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/crude_clay_kiln.png",
+    "source_archive": "textures.zip",
+    "source_path": "textures/block/mud_bricks.png",
+    "sha256": "629928029891120917de2202c8ea57500f2cfc3abf37be9d7dee7177504c0c42",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/crude_reed_ground.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/crude reeds.png",
+    "sha256": "1c7bef3840a47eea04339ff2e2ac044e7ab47b6d444769bf96d228d011c8e104",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/crude_string_ground.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/crude plant string.png",
+    "sha256": "a3317a98be72c4f4df6028cedd6495c0544bbd9f9292d25f31dc7b6df04cc1d3",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/crushed_stone.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/texture asset master file for use/01_Primitive_Rustic/blocks/gravel_packedflint.png",
+    "sha256": "955a81bd341becfd74a9215328657a6ccc8624e4009797483070cc1f53e581c6",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/fired_clay_block.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/fire_clay_block.png",
+    "sha256": "84aad1d478fdd5ba0eb351777021d3860f391bb502b49bea6c9ff52351b52dbb",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/flint_assembly.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/flint chip.png",
+    "sha256": "d7aa04986e4c229601e16e200b2a88450d37127973deefffe262391d5f5c7cf6",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/forage_bush_cold.png",
+    "source_archive": "textures.zip",
+    "source_path": "textures/block/spruce_leaves.png",
+    "sha256": "4f360f9df046d8989e0bf45478e8f3898d4d53213aca41e4807ab7443643c611",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/forage_bush_dry.png",
+    "source_archive": "textures.zip",
+    "source_path": "textures/block/dead_bush.png",
+    "sha256": "0938899181a09a0a8499105611d44062aed4a10ac3c61758bca37c5ee4a2fb44",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/forage_bush_jungle.png",
+    "source_archive": "textures.zip",
+    "source_path": "textures/block/jungle_leaves.png",
+    "sha256": "20c0018ed2a4f81f7b7ae37406e3f9c147f40c1156b908dec8551f4a3538b332",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/forage_bush_placeholder.png",
+    "source_archive": "textures.zip",
+    "source_path": "textures/block/azalea_leaves.png",
+    "sha256": "79875cae746ead45efecf1e0b0d9d0200797c3768ad3085ba07c76ac7b37d9b3",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/forage_bush_swamp.png",
+    "source_archive": "textures.zip",
+    "source_path": "textures/block/mangrove_leaves.png",
+    "sha256": "b58a50788167c9ca2fe2938c76a9a2669e45155bee916cdcda4bbeeae5a68456",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/forage_bush_temperate.png",
+    "source_archive": "textures.zip",
+    "source_path": "textures/block/oak_leaves.png",
+    "sha256": "34f7255dd60fc3ef9f96b7eee5739d89c823bfb3ffc73d714d641f9f7929ca6e",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/kiln_branches.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/branch.png",
+    "sha256": "c4f2d875433b3f5a5cf096352d92949371718ada43463354e0e8544a2f68388c",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/kiln_top_form.png",
+    "source_archive": "textures.zip",
+    "source_path": "textures/block/mud_bricks.png",
+    "sha256": "629928029891120917de2202c8ea57500f2cfc3abf37be9d7dee7177504c0c42",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/lightly_burnt_twig_ground.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/lightly burnt twig.png",
+    "sha256": "b6674fa889adf9f7de533c599707d4f97d9c79583e35d305b7d627b5ba87eff1",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/loose_dirt.png",
+    "source_archive": "textures.zip",
+    "source_path": "textures/block/dirt.png",
+    "sha256": "26fa3759e1f21a955efb1c5fe5be49a2a4081d042bab9453dcd28a782f5c30aa",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/loose_rock_placeholder.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/loose rock.png",
+    "sha256": "a09d2b7569844b4cfdb32d880d0ee2a36f8d786f68b854f83491e81ce505a0db",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/mortar_bricks.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/texture asset master file for use/11_Decorative_Building/blocks/brick_refractory.png",
+    "sha256": "f79d24cfbf75626255f038edb4b3b39130359b0e2d049f148684d566cfb0e3dd",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/mortar_chest.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/texture asset master file for use/12_Containers_Storage/blocks/chest_stone_tiny.png",
+    "sha256": "d74fd4926249920083fbad6e8a4ee9099776e49d282ae74601c513e8ff957df2",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/plant_fiber_ground.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/plant_fiber.png",
+    "sha256": "feceb23d8fbe5e4b82270955c8269421535ae661ac415e389806a705380dec1b",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/plant_tool_binding_ground.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/plant tool binding.png",
+    "sha256": "70b85c3b5cdc533920989bd64cfc7e8f12e81d8f61b85575ff7f8b784ed9695d",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/rock_ground.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/loose rock.png",
+    "sha256": "a09d2b7569844b4cfdb32d880d0ee2a36f8d786f68b854f83491e81ce505a0db",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/twig_pile_twig.png",
+    "source_archive": "LegendsRPG.zip",
+    "source_path": "\u00a7b\u00a7l      \u2e0e \u00a7bLegendsRPG/assets/minecraft/textures/item/materials/foraging/twig.png",
+    "sha256": "5c838d488564a80e60467d1ba5ff4a54d394c7a32a3766d66709f12fa8085eea",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/very_refined_stone_ground.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/very refined stone.png",
+    "sha256": "f95b4acb8d6d33573bab749ac906c1cb0919fa9139c2b5284eae7173c679f3e0",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/advanced_flint_multitool.png",
+    "source_archive": "ProjectFlint active texture reuse",
+    "source_path": "assets/projectflint/textures/item/flint_multitool.png",
+    "sha256": "7148887dcffee52b6f4c399f1a0fbc401cd10d5e2bdf0897b66e0b959422d012",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/advanced_kiln_glass.png",
+    "source_archive": "ProjectFlint approved asset master",
+    "source_path": "11_Decorative_Building/blocks/glass_crystal_1.png",
+    "sha256": "6a0769dced20abcd7ec63d8f8aefa91417347c5211ff1649a8022e4e0d50aa94",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/animal_bones.png",
+    "source_archive": "textures.zip",
+    "source_path": "textures/item/bone.png",
+    "sha256": "8ca45d1304fc9dcc177fbfe65d1fbfbee75c7d77abfa662acb0faee0c38a119e",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/bone_brush.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/texture asset master file for use/bone_brush.png",
+    "sha256": "520f4f5ef47d9437b8ad40ec67307dcc8a5cdf5105d1d2392928e4003207a1bc",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/bone_club.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/texture asset master file for use/bone_wooden_axe.png",
+    "sha256": "39d0fff6c732f79f957df78907dee9d1253e5faa2cd67e88c1be023c6d2fc48a",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/bone_firestarter.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/texture asset master file for use/09_Tools_Weapons_Armor/items/tool_smudgestick.png",
+    "sha256": "645936f1b20863da115e39527932422f3636847b2cb707e5be3c48a89d3379c7",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/branch.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/branch.png",
+    "sha256": "c4f2d875433b3f5a5cf096352d92949371718ada43463354e0e8544a2f68388c",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/burnt_branch.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/burnt branch.png",
+    "sha256": "bb333ddafa3c5c5cd95c920ea3c17f5d9af61738b7a7dcdd0f769a82c705acb1",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/burnt_twig.png",
+    "source_archive": "LegendsRPG.zip",
+    "source_path": "\u00a7b\u00a7l      \u2e0e \u00a7bLegendsRPG/assets/minecraft/textures/item/materials/foraging/bundle_of_twigs.png",
+    "sha256": "fac614fa68f751423fbfe842d73393f5297fe2eb0c381ee2a931f70d1d9296d9",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/campfire_stone.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/campfire stone.png",
+    "sha256": "25bb3437228e69c4efb95247eae06d84de4a629a6db54141eba9370e9f941a55",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/clay_grinder.png",
+    "source_archive": "textures.zip",
+    "source_path": "textures/block/stonecutter_top.png",
+    "sha256": "beb85c4614aa830d36b680d08c83c01e4256da636df54f7df7c1e8bd25d6ca2e",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/clay_grinding_base.png",
+    "source_archive": "textures.zip",
+    "source_path": "textures/block/stonecutter_side.png",
+    "sha256": "4e5d28d11de546c1c26ba942d4fee09210285ee8846c39fd147634321a0b0d64",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/clay_mortar.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/texture asset master file for use/10_Materials_Minerals/items/material_dust_mortar.png",
+    "sha256": "22d61d5a1929255abdbacdd7b138be23335d41226e1954f1fa1c1c0a6234ec51",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/cooked_calamari.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/texture asset master file for use/03_Farming_Food/items/food_mysterymeat_cooked.png",
+    "sha256": "8accfdc7284f75eaae2632ca29c26e3de8cfa9cff65624c59eca22319872433a",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/crude_clay_kiln.png",
+    "source_archive": "textures.zip",
+    "source_path": "textures/item/flower_pot.png",
+    "sha256": "611bd893ea5ae343bd23dab3cdb93965518d81918fda2f5fa78286f8c36d1815",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/crude_harvesting_tool.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/crude stone cutters.png",
+    "sha256": "65e3cbe9d4975383d36183de2fce77531f953d94c4f591d5762af0e538b10f1f",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/crude_multitool.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/crude multitool.png",
+    "sha256": "0822603e4f2502d2783218c8d293ac1b58f0203989ae782d9e27426e94313cd1",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/crude_plant_string.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/crude plant string.png",
+    "sha256": "a3317a98be72c4f4df6028cedd6495c0544bbd9f9292d25f31dc7b6df04cc1d3",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/crude_reed.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/crude reed.png",
+    "sha256": "27d835887db42a59d9718f6fa40061cd851c634169907064bf4c8e4c899d2b53",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/crude_stone_hammer.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/crude stone hammer.png",
+    "sha256": "9277cebdb65913d5af2f4f2b157ed7a4aad7907b53a8cd5a08371a9b676c9e75",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/crudely_woven_bowl.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/crudely woven bowl.png",
+    "sha256": "8b2d091e30520f51df7a044828ccd2812e6c134e595f5a65722feddcc44c822c",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/dirt_pile.png",
+    "source_archive": "textures.zip",
+    "source_path": "textures/item/cocoa_beans.png",
+    "sha256": "2346b66c053543791d2af0760d552993d31c983bf0c9352821347b8d683c1192",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/filed_bone.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/texture asset master file for use/13_Organic_Creature/items/part_rod_bone.png",
+    "sha256": "ac8d23a541476882821e07afd5e1dce01fcdd51834eba0cc0a6fac89ca115c2d",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/fired_clay.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/fired clay.png",
+    "sha256": "08ba5364457221fab58b93b72531e1c4361fb2d71c9d28b0240ab52dcf7c1f13",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/fired_clay_axe_mold.png",
+    "source_archive": "ProjectFlint approved asset master",
+    "source_path": "09_Tools_Weapons_Armor/blocks/cast_axe.png",
+    "sha256": "bdbfcf34766e295c50f50f9a3d896854bc96d4f8146625d0bce8d93faac3e7a3",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/fired_clay_bowl.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/fired clay bowl.png",
+    "sha256": "81a33dbc9bf0d13c9bd1e857955275b00b418a641212b64163c284b8735f75c1",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/fired_clay_bowl_2.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/fired clay bowl.png",
+    "sha256": "81a33dbc9bf0d13c9bd1e857955275b00b418a641212b64163c284b8735f75c1",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/fired_clay_bowl_4.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/fired clay bowl.png",
+    "sha256": "81a33dbc9bf0d13c9bd1e857955275b00b418a641212b64163c284b8735f75c1",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/fired_clay_bowl_6.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/fired clay bowl.png",
+    "sha256": "81a33dbc9bf0d13c9bd1e857955275b00b418a641212b64163c284b8735f75c1",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/fired_clay_brick_mold.png",
+    "source_archive": "ProjectFlint approved asset master",
+    "source_path": "09_Tools_Weapons_Armor/blocks/cast_plate.png",
+    "sha256": "40735ebd47c91e0537e53f335ef7f176c4748ab55f7a0438e6f114c5c064638e",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/fired_clay_cutters_mold.png",
+    "source_archive": "ProjectFlint approved asset master",
+    "source_path": "09_Tools_Weapons_Armor/blocks/cast_hoe.png",
+    "sha256": "f1732b78abe6d091e8113e1f95cfb549b15e911eaf6440b86fad629b150d3fef",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/fired_clay_multitool_mold.png",
+    "source_archive": "ProjectFlint approved asset master",
+    "source_path": "09_Tools_Weapons_Armor/blocks/cast_pickaxe.png",
+    "sha256": "24fcb4595bdff4316293505c3bcb7f14cce067843e365d2faf0288ac240a03f3",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/flint_axe.png",
+    "source_archive": "ProjectFlint approved asset master",
+    "source_path": "additional_textures_unsorted/xbony2/items/sandstone_axe.png",
+    "sha256": "e39747446b89af1192eaadf4d55c0f73636b3c74bb30965fc7ee1cc7965f62ce",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/flint_axe_pieces.png",
+    "source_archive": "ProjectFlint approved asset master",
+    "source_path": "01_Primitive_Rustic/items/material_dust_flint.png",
+    "sha256": "d4fe3cf5a2c5457cf22e57c0572734d4af79885665ca76bd3f39df3f600efc55",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/flint_chip.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/flint chip.png",
+    "sha256": "d7aa04986e4c229601e16e200b2a88450d37127973deefffe262391d5f5c7cf6",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/flint_cutter_piece.png",
+    "source_archive": "ProjectFlint approved asset master",
+    "source_path": "additional_textures_unsorted/futureazoo/items/vanilla_style/spear_flint.png",
+    "sha256": "fcfe238b2b3187d31df2aed2e2d6834f55f36e703e561d4c6ee0cab2e865879d",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/flint_firestarter.png",
+    "source_archive": "ProjectFlint provided texture source",
+    "source_path": "ProjectFlint - Textures/flint firestarter.png",
+    "sha256": "c984f101ea17099616f5fc4cc2153d639054cbbc81b3bc35b71fd92b9d96e1d0",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/flint_multitool.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/flint multitool.png",
+    "sha256": "7148887dcffee52b6f4c399f1a0fbc401cd10d5e2bdf0897b66e0b959422d012",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/flint_plant_cutters.png",
+    "source_archive": "ProjectFlint approved asset master",
+    "source_path": "09_Tools_Weapons_Armor/items/tool_saw_stone.png",
+    "sha256": "2366e3522abeca368d3931efd9e1dd201c19bdc11cce68dd5992d81f70d43a0a",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/flower_petals.png",
+    "source_archive": "Direct user upload: e16f77d8-49a7-4b9e-ae00-5d29c6ce0eff.zip",
+    "source_path": "new update stuff/flower petals.png",
+    "sha256": "c6812a577450d4a79768df4f6cb9d4dd5bb074869d679b15a82915532554ff96",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/glass_shard.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/texture asset master file for use/10_Materials_Minerals/items/material_crystal_flat.png",
+    "sha256": "70c6e5f4eca4c0fcbdd292fa76245573ccc868ec7717dd6cd77a39910157b0db",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/ground_flint.png",
+    "source_archive": "ProjectFlint approved asset master",
+    "source_path": "additional_textures_unsorted/xbony2/items/ironflint.png",
+    "sha256": "a351dca63e628d405823b41ca7e5c30f438d9362281ff81935eea29d3670ae61",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/lightly_burnt_twig.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/lightly burnt twig.png",
+    "sha256": "b6674fa889adf9f7de533c599707d4f97d9c79583e35d305b7d627b5ba87eff1",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/plant_fiber.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/plant_fiber.png",
+    "sha256": "feceb23d8fbe5e4b82270955c8269421535ae661ac415e389806a705380dec1b",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/plant_seeds.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/roasted seeds.png",
+    "sha256": "e7cb830e608282a14f5fc2a06ecb95e19d86f9407ea62d179e80525a8b4dab17",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/plant_tool_binding.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/plant tool binding.png",
+    "sha256": "70b85c3b5cdc533920989bd64cfc7e8f12e81d8f61b85575ff7f8b784ed9695d",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/raw_calamari.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/texture asset master file for use/03_Farming_Food/items/food_mysterymeat.png",
+    "sha256": "a1fd51770c19c66d3346e1c65aa8e9b6d022407a324600e6c4ef02b6ed06ca34",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/raw_leather.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/texture asset master file for use/13_Organic_Creature/items/mobdrop_hide_cow.png",
+    "sha256": "f3b81f3588dde6c8c34720be5a3961d98a2e7363a3a9f37f8c49c5a5231e7005",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/reed_backpack.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/texture asset master file for use/09_Tools_Weapons_Armor/items/armor_chest_wicker.png",
+    "sha256": "32bb16afce57315b4ff9ccdf8f1cf0d0e4d059e4bdd15d499c4711dab533d7af",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/reed_backpack_worn.png",
+    "source_archive": "Direct user upload",
+    "source_path": "small.png",
+    "sha256": "bdd6c96a8ef2923853b553ed84a7fa75b9141d0bf92ec18b51e38abe15802e8b",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/reed_roll.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/reed roll.png",
+    "sha256": "bd5aab916cfabfea15e5007c53f05ebe86be0eedeaec957dcbea0b955d884d92",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/refined_flint_multitool_piece.png",
+    "source_archive": "ProjectFlint approved asset master",
+    "source_path": "additional_textures_unsorted/xbony2/items/ironflint.png",
+    "sha256": "a351dca63e628d405823b41ca7e5c30f438d9362281ff81935eea29d3670ae61",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/refined_rock.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/refined rock.png",
+    "sha256": "4799d76538df5f03232eb1baf09ab3480aa0d67ec9fb491d5db5cb38b2954115",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/rock.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/loose rock.png",
+    "sha256": "a09d2b7569844b4cfdb32d880d0ee2a36f8d786f68b854f83491e81ce505a0db",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/sand_ball.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/texture asset master file for use/10_Materials_Minerals/items/material_rock_sandstone_pebbles.png",
+    "sha256": "8174909fa5d736474b008863329b2829c703b5adcec183418baf907e593a8014",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/sand_flake.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/texture asset master file for use/10_Materials_Minerals/items/material_dust_washed_sand.png",
+    "sha256": "714d81975feea33c18839ffe33ed977e40c0eb4197a7355c34fa9459db3e0c9f",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/sanding_paper.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/sanding paper.png",
+    "sha256": "248e37f32b4025bfb5b23b867857703d68a299bf382f21a0a953dc745202d77d",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/scrambled_egg.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/scrambled egg.png",
+    "sha256": "c8d3939be2e7f45a1925317e3b0f1546657bc6bbf8ee9a7977d9b490275fe2a2",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/sleeping_bag.png",
+    "source_archive": "Direct user upload",
+    "source_path": "straw bedding.png",
+    "sha256": "4515e05b67066e0439daa4c8897624cc900b7815076fb4da654eb68867cc5e6e",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/sugarcane_roll.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/sugarcane roll.png",
+    "sha256": "dfcb8f056f903509bfa5b8d25d5bd193b675d3aea5717191d849c75c8a11465e",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/super_heated_clay.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/super heated clay.png",
+    "sha256": "8ae119e67f57af4688a831153af0355db4882ae45b24033f1a90c0f15d5aea39",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/twig.png",
+    "source_archive": "LegendsRPG.zip",
+    "source_path": "\u00a7b\u00a7l      \u2e0e \u00a7bLegendsRPG/assets/minecraft/textures/item/materials/foraging/twig.png",
+    "sha256": "5c838d488564a80e60467d1ba5ff4a54d394c7a32a3766d66709f12fa8085eea",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/unfired_clay_axe_mold.png",
+    "source_archive": "ProjectFlint approved asset master",
+    "source_path": "06_Industrial_Steampunk/items/part_mould_axe.png",
+    "sha256": "4ce49a1943302387961640aeb1f382a06e440021e26aa3e0f124fc5a7dcef40f",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/unfired_clay_ball.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/unfired clay.png",
+    "sha256": "7602377c4acaaebd557d0029378c2dbc6120e9994c43c77c2842dc222ef340cb",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/unfired_clay_brick_mold.png",
+    "source_archive": "ProjectFlint approved asset master",
+    "source_path": "06_Industrial_Steampunk/items/part_mould_plate.png",
+    "sha256": "b55acb8222188491ba0da9e5751c29582d378e94ddfd9d2ca5dacb0a4801bd19",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/unfired_clay_cutters_mold.png",
+    "source_archive": "ProjectFlint approved asset master",
+    "source_path": "06_Industrial_Steampunk/items/part_mould_sickle.png",
+    "sha256": "5f7ce58de511d7f7408839078c679573b65abc950088cf3d32917f9a8fbbe1c1",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/unfired_clay_mold_base.png",
+    "source_archive": "ProjectFlint approved asset master",
+    "source_path": "06_Industrial_Steampunk/items/part_mould.png",
+    "sha256": "ad49599d76be0a379c4d2a6d7d9d21425afb4ec24d272a85e1b2a834008f19b1",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/unfired_clay_multitool_mold.png",
+    "source_archive": "ProjectFlint approved asset master",
+    "source_path": "06_Industrial_Steampunk/items/part_mould_hammer.png",
+    "sha256": "e9f68ad0996c18928e6114e899165ffff78ea83c8bbfdf50685a5d3f8da1e90b",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/unfired_kiln_glass.png",
+    "source_archive": "ProjectFlint approved asset master",
+    "source_path": "11_Decorative_Building/blocks/glass_crystal_0.png",
+    "sha256": "a8eb4bab1f0cfe93ae33c35b6a243697b0bad732a52ae1674e1862c55a92a308",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/unfired_mortar_brick.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/texture asset master file for use/01_Primitive_Rustic/items/part_brick_adobe_unfired.png",
+    "sha256": "904671c5ed0355d9dbd9cefeefce80e02212b40257868355ec683f76d46f8738",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/unfired_woven_bowl.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/unfired woven bowl.png",
+    "sha256": "7f9ac5c4708ae9088b9a6650fb2d4ad9c5d72648a3f0a6b49a2dde3082028f05",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/very_refined_stone.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/very refined stone.png",
+    "sha256": "f95b4acb8d6d33573bab749ac906c1cb0919fa9139c2b5284eae7173c679f3e0",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/wool.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/wool.png",
+    "sha256": "478b120ec8c8202e43f185d4f43bf0efbc172226770627dd86f88875d49fa035",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/woven_fan.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/texture asset master file for use/01_Primitive_Rustic/items/part_wicker.png",
+    "sha256": "cdcd6e6d40049e034817ff7a78d657b7ab735c4ed90f2b7ac4ff886063be5748",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/woven_wool.png",
+    "source_archive": "Direct user upload",
+    "source_path": "ProjectFlint - Textures/texture asset master file for use/11_Decorative_Building/items/part_thread_white.png",
+    "sha256": "f5870441930ed3845b2c9467dedd864e01779f5a95fa95d2012292dcbf3f3392",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/unfired_clay_pot_mold.png",
+    "source_archive": "ProjectFlint approved asset master",
+    "source_path": "ProjectFlint - Textures/texture asset master file for use/06_Industrial_Steampunk/items/part_plate_small_clay.png",
+    "sha256": "99ef902c5bbad7af7084366c003002c6555f281b11d4c11829d0e23c055cc7b3",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/fired_clay_pot_mold.png",
+    "source_archive": "ProjectFlint approved asset master",
+    "source_path": "ProjectFlint - Textures/texture asset master file for use/06_Industrial_Steampunk/items/part_plate_small_ceramic.png",
+    "sha256": "70719349e8a0f8e85666e08b43d3079c307ebbee3de9a5ad8b5cbe65bb952d18",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/clay_pot.png",
+    "source_archive": "ProjectFlint supplied texture archive",
+    "source_path": "ProjectFlint - Textures/fired clay pot.png",
+    "sha256": "9281498d28a48b5bd34b528aadfdd0801ccaad262cc8176e001d7a0103961d29",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/sanded_wood.png",
+    "source_archive": "ProjectFlint approved asset master",
+    "source_path": "ProjectFlint - Textures/texture asset master file for use/02_Woody_Natural/blocks/plank_plywood.png",
+    "sha256": "51e7ee26424c7f7297018741f62b7febb3267075e1bda8044247e714d84d23a5",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/grinded_wood.png",
+    "source_archive": "ProjectFlint approved asset master",
+    "source_path": "ProjectFlint - Textures/texture asset master file for use/02_Woody_Natural/blocks/bundle_logs_top.png",
+    "sha256": "a7dac6b224f25aade5780a4ecbcc480947865aa3d1bfcacf6ea93dcd0a3ae7d6",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/woven_wood.png",
+    "source_archive": "ProjectFlint approved asset master",
+    "source_path": "ProjectFlint - Textures/texture asset master file for use/12_Containers_Storage/blocks/basket_side.png",
+    "sha256": "e95804af71ee31f5ab0dbd71034ed6980e5be7ed173a8ec70115a232b94b9c53",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/burnt_branch_block_side.png",
+    "source_archive": "ProjectFlint approved asset master",
+    "source_path": "ProjectFlint - Textures/texture asset master file for use/02_Woody_Natural/blocks/bundle_logs.png",
+    "sha256": "848f20c8b76f2af61538a0a295b704c2b00cad6917aa7990fb1c01cd83dcbb93",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/burnt_branch_block_top.png",
+    "source_archive": "ProjectFlint approved asset master",
+    "source_path": "ProjectFlint - Textures/texture asset master file for use/02_Woody_Natural/blocks/bundle_logs_top.png",
+    "sha256": "a7dac6b224f25aade5780a4ecbcc480947865aa3d1bfcacf6ea93dcd0a3ae7d6",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/mortar_kiln.png",
+    "source_archive": "ProjectFlint approved asset master",
+    "source_path": "ProjectFlint - Textures/texture asset master file for use/11_Decorative_Building/blocks/brick_refractory.png",
+    "sha256": "f79d24cfbf75626255f038edb4b3b39130359b0e2d049f148684d566cfb0e3dd",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/mortar_kiln_base.png",
+    "source_archive": "ProjectFlint approved asset master",
+    "source_path": "ProjectFlint - Textures/texture asset master file for use/01_Primitive_Rustic/blocks/brick_adobe.png",
+    "sha256": "664a83cd0d4890b1d03259ba5f91044c7d538033cc17e784ca10e69e15fa4381",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/wooden_grinder.png",
+    "source_archive": "ProjectFlint approved asset master",
+    "source_path": "ProjectFlint - Textures/texture asset master file for use/02_Woody_Natural/blocks/plank_plywood.png",
+    "sha256": "51e7ee26424c7f7297018741f62b7febb3267075e1bda8044247e714d84d23a5",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/woven_chest_side.png",
+    "source_archive": "ProjectFlint approved asset master",
+    "source_path": "ProjectFlint - Textures/texture asset master file for use/12_Containers_Storage/blocks/basket_side.png",
+    "sha256": "e95804af71ee31f5ab0dbd71034ed6980e5be7ed173a8ec70115a232b94b9c53",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/woven_chest_top.png",
+    "source_archive": "ProjectFlint approved asset master",
+    "source_path": "ProjectFlint - Textures/texture asset master file for use/12_Containers_Storage/blocks/basket_top.png",
+    "sha256": "62af57eea7298c44ebdba55fca4fcc0ad2e84e6c8df5a16a92ab6c1bec5a42c4",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/ground_leather.png",
+    "source_archive": "ProjectFlint approved asset master",
+    "source_path": "ProjectFlint - Textures/texture asset master file for use/13_Organic_Creature/items/mobdrop_hide_scraped_clean.png",
+    "sha256": "774c4f16a98546086f4ada31990a6c19cf485e94d70bdf568cc38637640ef2ee",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/leather_backpack.png",
+    "source_archive": "ProjectFlint approved asset master",
+    "source_path": "ProjectFlint - Textures/texture asset master file for use/09_Tools_Weapons_Armor/items/tool_pouch_brown.png",
+    "sha256": "af2eef8027aca02864a65f1a31533092a4990ab9ebbca679767bd77a71b276d4",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/stone_grindsaw.png",
+    "source_archive": "ProjectFlint approved asset master",
+    "source_path": "ProjectFlint - Textures/texture asset master file for use/09_Tools_Weapons_Armor/items/tool_saw_stone.png",
+    "sha256": "2366e3522abeca368d3931efd9e1dd201c19bdc11cce68dd5992d81f70d43a0a",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/woven_chest_frame.png",
+    "source_archive": "ProjectFlint approved asset master",
+    "source_path": "ProjectFlint - Textures/texture asset master file for use/12_Containers_Storage/blocks/chest_wood_tiny.png",
+    "sha256": "2ba127990ac1609812750f8909696cb30337d5f41495a8660669ffe99c8131a8",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/advanced_kiln_front_active.png",
+    "source_archive": "Direct user upload",
+    "source_path": "advanced_kiln_front active.zip/advanced_kiln_front active.png",
+    "sha256": "b196a4b10619e1446e286658059965f418b32fc8c9427d269924116c0df7b1bd",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/advanced_kiln_top_active.png",
+    "source_archive": "Direct user upload",
+    "source_path": "advanced_kiln_front active.zip/advanced kiln top active.png",
+    "sha256": "50248fccb9b7de9a8afbd4d62804bca28dc540a938edc899d31bc2be05213c31",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/mob_effect/drenched.png",
+    "source_archive": "ProjectFlint existing texture reuse",
+    "source_path": "assets/projectflint/textures/mob_effect/soaked.png",
+    "sha256": "e0c085901b4004fa02e41c00fd97ec3f409dc03513b1651185440f24119ae95a",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/wattled_daub_floor_tile.png",
+    "source_archive": "Direct user upload: e16f77d8-49a7-4b9e-ae00-5d29c6ce0eff.zip",
+    "source_path": "new update stuff/wattled daub floor tile.png",
+    "sha256": "ed8f79a4cc10c69f06d0c118073339678fed2cbe5b2059e27fe17a81e36375ee",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/wattled_daub_window.png",
+    "source_archive": "Direct user upload: e16f77d8-49a7-4b9e-ae00-5d29c6ce0eff.zip",
+    "source_path": "new update stuff/wattled daub glass.png",
+    "sha256": "cf3c4f7a011175e548b022e9d4d51bad5e2aee9486131e6df2cc6cca0ceaa616",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/wattled_daub_door_bottom.png",
+    "source_archive": "Direct user upload: e16f77d8-49a7-4b9e-ae00-5d29c6ce0eff.zip",
+    "source_path": "new update stuff/wattled daub door bottom.png",
+    "sha256": "6c2dba1b9b1d7d83b51f47decf60d49327c39393a12af5e7979eca1af253b2c8",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/wattled_daub_door_top.png",
+    "source_archive": "Direct user upload: e16f77d8-49a7-4b9e-ae00-5d29c6ce0eff.zip",
+    "source_path": "new update stuff/watled daub door_top.png",
+    "sha256": "36d41dbc6ffd8ea935565204b30af219793b851a72cf0230b4023d7de651c3f5",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/wattled_daub_door.png",
+    "source_archive": "Direct user upload",
+    "source_path": "watled daub door item texture.png",
+    "sha256": "51533d53dbc5b061c6436f987ab1a0880e1efb94b693c662340ce74e1251b92f",
+    "byte_identical": true
+  }
+]

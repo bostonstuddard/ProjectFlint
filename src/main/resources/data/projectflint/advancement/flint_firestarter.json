@@ -1,0 +1,31 @@
+{
+  "parent": "projectflint:vanilla_flint",
+  "criteria": {
+    "assembled_firestarter": {
+      "trigger": "minecraft:impossible"
+    },
+    "lit_campfire_with_firestarter": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Assemble Flint and Burnt Branches into a reusable Flint Firestarter."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:flint_firestarter"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Spark on Demand"
+    }
+  },
+  "requirements": [
+    [
+      "assembled_firestarter",
+      "lit_campfire_with_firestarter"
+    ]
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "projectflint:block/burnt_branch_block_top",
+    "top": "projectflint:block/burnt_branch_block_top",
+    "side": "projectflint:block/burnt_branch_block_side"
+  }
+}

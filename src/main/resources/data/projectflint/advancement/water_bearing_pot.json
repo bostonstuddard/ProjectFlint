@@ -1,0 +1,34 @@
+{
+  "parent": "projectflint:sanding_station",
+  "criteria": {
+    "obtained": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "projectflint:water_bearing_pot"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Use 16 Woven Wood and a Clay Pot in the Wooden Grinder to make a half-bucket water carrier."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:water_bearing_pot"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Water Bearing Pot"
+    }
+  },
+  "requirements": [
+    [
+      "obtained"
+    ]
+  ]
+}
