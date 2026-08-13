@@ -1,0 +1,27 @@
+{
+  "parent": "projectflint:wattle",
+  "criteria": {
+    "obtained": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Bind Wattle with Crude Plant String to make Tied Wattle."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:crude_plant_string"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Bound Framework"
+    }
+  },
+  "requirements": [
+    [
+      "obtained"
+    ]
+  ]
+}

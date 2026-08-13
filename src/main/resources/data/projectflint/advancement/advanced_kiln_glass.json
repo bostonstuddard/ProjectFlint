@@ -1,0 +1,34 @@
+{
+  "parent": "projectflint:unfired_kiln_glass",
+  "criteria": {
+    "obtained": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "projectflint:advanced_kiln_glass"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Fire the glass blank in a kiln to make Advanced Kiln Glass."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:advanced_kiln_glass"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Advanced Kiln Glass"
+    }
+  },
+  "requirements": [
+    [
+      "obtained"
+    ]
+  ]
+}

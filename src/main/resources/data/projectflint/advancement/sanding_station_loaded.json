@@ -1,0 +1,27 @@
+{
+  "parent": "projectflint:sanding_station",
+  "criteria": {
+    "done": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Right-click the Sanding Station with Sanding Paper; each sheet adds 32 sanding durability."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:sanding_paper"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Load the Abrasive"
+    }
+  },
+  "requirements": [
+    [
+      "done"
+    ]
+  ]
+}

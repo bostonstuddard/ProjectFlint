@@ -1,0 +1,8 @@
+{
+  "multipart": [
+    { "when": { "fans": "1|2|3|4|5|6|7|8" }, "apply": { "model": "projectflint:block/woven_gear_assembly_fan" } },
+    { "when": { "bindings": "1|2" }, "apply": { "model": "projectflint:block/woven_gear_assembly_binding" } },
+    { "when": { "wool": "1|2" }, "apply": { "model": "projectflint:block/woven_gear_assembly_wool" } },
+    { "when": { "filed_bones": "1|2|3|4" }, "apply": { "model": "projectflint:block/woven_gear_assembly_bone" } }
+  ]
+}

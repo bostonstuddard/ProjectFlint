@@ -1,0 +1,34 @@
+{
+  "parent": "projectflint:unfired_clay_pot_mold",
+  "criteria": {
+    "obtained": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "projectflint:fired_clay_pot_mold"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Fire the Pot Mold in a kiln so it can be used for casting."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:fired_clay_pot_mold"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Fired Pot Mold"
+    }
+  },
+  "requirements": [
+    [
+      "obtained"
+    ]
+  ]
+}

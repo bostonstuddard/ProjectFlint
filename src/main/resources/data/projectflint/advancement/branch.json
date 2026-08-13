@@ -1,0 +1,27 @@
+{
+  "parent": "projectflint:crude_multitool",
+  "criteria": {
+    "harvested_branch": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Use a Multitool on leaves to begin harvesting Branches."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:branch"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Branches"
+    }
+  },
+  "requirements": [
+    [
+      "harvested_branch"
+    ]
+  ]
+}

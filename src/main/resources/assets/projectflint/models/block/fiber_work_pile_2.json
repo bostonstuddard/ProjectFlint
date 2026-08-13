@@ -1,0 +1,74 @@
+{
+  "parent": "minecraft:block/block",
+  "ambientocclusion": false,
+  "textures": {
+    "fiber": "projectflint:block/placed/plant_fiber",
+    "particle": "projectflint:block/placed/plant_fiber"
+  },
+  "elements": [
+    {
+      "from": [
+        2.5,
+        0.08,
+        5.2
+      ],
+      "to": [
+        13.0,
+        0.2,
+        9.3
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#fiber"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#fiber"
+        }
+      }
+    },
+    {
+      "from": [
+        4.1,
+        0.22,
+        2.4
+      ],
+      "to": [
+        11.2,
+        0.33999999999999997,
+        13.1
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#fiber"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#fiber"
+        }
+      }
+    }
+  ]
+}

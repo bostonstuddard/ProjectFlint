@@ -1,0 +1,9 @@
+{
+  "type": "projectflint:clay_grinding",
+  "ingredient": "projectflint:super_heated_clay",
+  "input_count": 9,
+  "result": {
+    "id": "projectflint:clay_mortar",
+    "count": 1
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "parent": "projectflint:wooden_grinder_base",
+  "criteria": {
+    "obtained": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "projectflint:wooden_grinder"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Finish the Wooden Grinder to unlock two-input processing and advanced wood industry."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:wooden_grinder"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Wooden Grinder"
+    },
+    "frame": "goal"
+  },
+  "requirements": [
+    [
+      "obtained"
+    ]
+  ]
+}

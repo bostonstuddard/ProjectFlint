@@ -1,0 +1,9 @@
+{
+  "multipart": [
+    { "apply": { "model": "projectflint:block/advanced_tool_assembly" } },
+    { "when": { "type": "0" }, "apply": { "model": "projectflint:block/advanced_tool_assembly_axe_piece" } },
+    { "when": { "type": "1" }, "apply": { "model": "projectflint:block/advanced_tool_assembly_cutter_piece" } },
+    { "when": { "type": "2" }, "apply": { "model": "projectflint:block/advanced_tool_assembly_multitool_piece" } },
+    { "when": { "branches": "1|2" }, "apply": { "model": "projectflint:block/advanced_tool_assembly_branch" } }
+  ]
+}

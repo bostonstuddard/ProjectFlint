@@ -1,0 +1,27 @@
+{
+  "parent": "projectflint:leaf_litter_fiber",
+  "criteria": {
+    "made_crude_string": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Work 2 Plant Fiber with a Refined Rock to make Crude Plant String."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:crude_plant_string"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Twisted by Hand"
+    }
+  },
+  "requirements": [
+    [
+      "made_crude_string"
+    ]
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "parent": "projectflint:fired_clay_pot_mold",
+  "criteria": {
+    "obtained": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "projectflint:clay_pot"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Cast a Clay Pot so gathering Clay improves to 1 Unfired Clay Ball per 2 Clay blocks."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:clay_pot"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Clay Pot"
+    },
+    "frame": "goal"
+  },
+  "requirements": [
+    [
+      "obtained"
+    ]
+  ]
+}

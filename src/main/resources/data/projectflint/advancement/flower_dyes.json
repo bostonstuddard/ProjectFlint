@@ -1,0 +1,27 @@
+{
+  "parent": "projectflint:sanding_paper",
+  "criteria": {
+    "filed_flower_dye": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "File a flower with Sanding Paper to recover its vanilla dye."
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:red_dye"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Pigment by Filing"
+    }
+  },
+  "requirements": [
+    [
+      "filed_flower_dye"
+    ]
+  ]
+}

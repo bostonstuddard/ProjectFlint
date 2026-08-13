@@ -1,0 +1,27 @@
+{
+  "parent": "projectflint:wattled_daub_bricks",
+  "criteria": {
+    "obtained": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Grind a Wattled Daub Brick into two permanent Floor Tiles."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:wattled_daub_floor_tile"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "A Floor Underfoot"
+    }
+  },
+  "requirements": [
+    [
+      "obtained"
+    ]
+  ]
+}

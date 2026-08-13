@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "projectflint:block/crushed_stone_slab"
+    },
+    "type=top": {
+      "model": "projectflint:block/crushed_stone_slab_top"
+    },
+    "type=double": {
+      "model": "projectflint:block/crushed_stone_slab_double"
+    }
+  }
+}

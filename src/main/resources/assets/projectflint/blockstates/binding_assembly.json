@@ -1,0 +1,40 @@
+{
+  "variants": {
+    "reeds=1,strings=0": {
+      "model": "projectflint:block/binding_assembly_1_0"
+    },
+    "reeds=1,strings=1": {
+      "model": "projectflint:block/binding_assembly_1_1"
+    },
+    "reeds=1,strings=2": {
+      "model": "projectflint:block/binding_assembly_1_2"
+    },
+    "reeds=2,strings=0": {
+      "model": "projectflint:block/binding_assembly_2_0"
+    },
+    "reeds=2,strings=1": {
+      "model": "projectflint:block/binding_assembly_2_1"
+    },
+    "reeds=2,strings=2": {
+      "model": "projectflint:block/binding_assembly_2_2"
+    },
+    "reeds=3,strings=0": {
+      "model": "projectflint:block/binding_assembly_3_0"
+    },
+    "reeds=3,strings=1": {
+      "model": "projectflint:block/binding_assembly_3_1"
+    },
+    "reeds=3,strings=2": {
+      "model": "projectflint:block/binding_assembly_3_2"
+    },
+    "reeds=4,strings=0": {
+      "model": "projectflint:block/binding_assembly_4_0"
+    },
+    "reeds=4,strings=1": {
+      "model": "projectflint:block/binding_assembly_4_1"
+    },
+    "reeds=4,strings=2": {
+      "model": "projectflint:block/binding_assembly_4_2"
+    }
+  }
+}

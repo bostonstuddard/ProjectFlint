@@ -1,0 +1,34 @@
+{
+  "parent": "projectflint:wooden_grinder",
+  "criteria": {
+    "obtained": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "projectflint:ground_leather"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Use Sanding Paper and the Wooden Grinder to prepare Raw Leather for washing."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:ground_leather"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Ground Leather"
+    }
+  },
+  "requirements": [
+    [
+      "obtained"
+    ]
+  ]
+}

@@ -1,0 +1,6 @@
+Project Flint source/assets created specifically for this prototype are not assigned an open-source license by this release.
+
+Until the project owner selects a license, treat project-authored material as All Rights Reserved.
+
+Third-party asset candidates listed in docs/ASSET_SOURCES.md are NOT embedded in this release.
+Minecraft assets referenced by resource identifiers remain property of their respective rights holders and are not copied into this repository.

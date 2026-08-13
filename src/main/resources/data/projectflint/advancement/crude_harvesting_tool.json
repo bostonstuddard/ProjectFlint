@@ -1,0 +1,28 @@
+{
+  "parent": "projectflint:plant_tool_binding",
+  "criteria": {
+    "made_crude_harvesting_tool": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Build Crude Stone Cutters to harvest plants directly and at better yields."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:crude_harvesting_tool"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Crude Stone Cutters"
+    },
+    "frame": "goal"
+  },
+  "requirements": [
+    [
+      "made_crude_harvesting_tool"
+    ]
+  ]
+}

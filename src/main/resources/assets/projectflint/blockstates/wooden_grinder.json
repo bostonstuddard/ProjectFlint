@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "projectflint:block/wooden_grinder" },
+    "facing=east":  { "model": "projectflint:block/wooden_grinder", "y": 90 },
+    "facing=south": { "model": "projectflint:block/wooden_grinder", "y": 180 },
+    "facing=west":  { "model": "projectflint:block/wooden_grinder", "y": 270 }
+  }
+}

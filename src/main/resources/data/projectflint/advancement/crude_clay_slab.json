@@ -1,0 +1,34 @@
+{
+  "parent": "projectflint:crude_clay_block",
+  "criteria": {
+    "obtained": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "projectflint:crude_clay_slab"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Grind a Crude Clay Block into 2 Crude Clay Slabs."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:crude_clay_slab"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Crude Clay Slab"
+    }
+  },
+  "requirements": [
+    [
+      "obtained"
+    ]
+  ]
+}

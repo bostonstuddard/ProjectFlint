@@ -1,0 +1,7 @@
+{
+  "parent": "projectflint:block/flint_tool_assembly",
+  "textures": {
+    "branch": "projectflint:block/placed/burnt_branch",
+    "particle": "projectflint:block/placed/burnt_branch"
+  }
+}

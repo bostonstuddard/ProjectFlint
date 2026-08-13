@@ -1,0 +1,27 @@
+{
+  "parent": "projectflint:crudely_woven_bowl",
+  "criteria": {
+    "clay_lined_bowl": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Press the Crudely Woven Bowl into Clay to line it for firing."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:unfired_woven_bowl"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Line It with Clay"
+    }
+  },
+  "requirements": [
+    [
+      "clay_lined_bowl"
+    ]
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "parent": "projectflint:bound_wood_processor",
+  "criteria": {
+    "done": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Build Woven Wood \u2192 Water Pot \u2192 Crushed Stone with air above, then use the Bound Wood Processor on the Woven Wood."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:bound_wood_processor"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Lumber Processor"
+    },
+    "frame": "goal"
+  },
+  "requirements": [
+    [
+      "done"
+    ]
+  ]
+}

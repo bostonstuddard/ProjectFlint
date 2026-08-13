@@ -1,0 +1,34 @@
+{
+  "parent": "projectflint:fired_clay_block_mold",
+  "criteria": {
+    "obtained": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "projectflint:burnt_branch_block"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Cast Burnt Branches in the Advanced Kiln to make a Burnt Branch Block."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:burnt_branch_block"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Compressed Fuel"
+    }
+  },
+  "requirements": [
+    [
+      "obtained"
+    ]
+  ]
+}

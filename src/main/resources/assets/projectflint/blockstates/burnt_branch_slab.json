@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "projectflint:block/burnt_branch_slab"
+    },
+    "type=top": {
+      "model": "projectflint:block/burnt_branch_slab_top"
+    },
+    "type=double": {
+      "model": "projectflint:block/burnt_branch_slab_double"
+    }
+  }
+}

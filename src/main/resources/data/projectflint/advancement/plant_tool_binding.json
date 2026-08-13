@@ -1,0 +1,27 @@
+{
+  "parent": "projectflint:crude_reeds",
+  "criteria": {
+    "made_plant_tool_binding": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Assemble 4 Crude Reeds and 2 Crude Plant String, then hammer them into a Plant Tool Binding."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:plant_tool_binding"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "A Stronger Binding"
+    }
+  },
+  "requirements": [
+    [
+      "made_plant_tool_binding"
+    ]
+  ]
+}

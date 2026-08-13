@@ -1,0 +1,34 @@
+{
+  "parent": "projectflint:02_wood_era/root",
+  "criteria": {
+    "has_sanding_paper": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "projectflint:sanding_paper"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Grind 4 Sugarcane Rolls into reusable Sanding Paper for finer material work."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:sanding_paper"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "A Finer Finish"
+    }
+  },
+  "requirements": [
+    [
+      "has_sanding_paper"
+    ]
+  ]
+}

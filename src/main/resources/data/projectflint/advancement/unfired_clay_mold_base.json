@@ -1,0 +1,34 @@
+{
+  "parent": "projectflint:02_wood_era/root",
+  "criteria": {
+    "obtained": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "projectflint:unfired_clay_mold_base"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Fire a Crude Clay Block into an Unfired Clay Mold Base for advanced casting."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:unfired_clay_mold_base"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Mold Base"
+    }
+  },
+  "requirements": [
+    [
+      "obtained"
+    ]
+  ]
+}

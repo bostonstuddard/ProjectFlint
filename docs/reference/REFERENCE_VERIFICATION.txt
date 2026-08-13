@@ -1,0 +1,5 @@
+leather_backpack_worn.png SHA256: e6682eeb8d8bcce977eb8f6da024c00cb36dc57ef3b793b2ad55e618ad92ab69
+ground_hide source SHA256: e6682eeb8d8bcce977eb8f6da024c00cb36dc57ef3b793b2ad55e618ad92ab69
+MATCH: yes
+Texture reference baseline: v0.26.10-a confirmed-good corrected workpack
+Clay Grinder model reference baseline: v0.26.14-a confirmed-good in-game model

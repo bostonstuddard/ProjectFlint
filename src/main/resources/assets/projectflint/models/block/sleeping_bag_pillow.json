@@ -1,0 +1,21 @@
+{
+  "parent": "minecraft:block/block",
+  "ambientocclusion": false,
+  "textures": {
+    "particle": "minecraft:block/white_wool",
+    "pillow": "minecraft:block/white_wool"
+  },
+  "elements": [
+    {
+      "from": [1, 1.9, 1],
+      "to": [15, 2.5, 5],
+      "faces": {
+        "up": { "texture": "#pillow" },
+        "north": { "texture": "#pillow" },
+        "south": { "texture": "#pillow" },
+        "west": { "texture": "#pillow" },
+        "east": { "texture": "#pillow" }
+      }
+    }
+  ]
+}

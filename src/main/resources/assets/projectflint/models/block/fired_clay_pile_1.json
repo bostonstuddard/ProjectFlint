@@ -1,0 +1,40 @@
+{
+  "textures": {
+    "particle": "projectflint:block/fired_clay_block",
+    "clay": "projectflint:block/fired_clay_block"
+  },
+  "elements": [
+    {
+      "from": [
+        4,
+        0,
+        5
+      ],
+      "to": [
+        12,
+        2,
+        11
+      ],
+      "faces": {
+        "down": {
+          "texture": "#clay"
+        },
+        "up": {
+          "texture": "#clay"
+        },
+        "north": {
+          "texture": "#clay"
+        },
+        "south": {
+          "texture": "#clay"
+        },
+        "west": {
+          "texture": "#clay"
+        },
+        "east": {
+          "texture": "#clay"
+        }
+      }
+    }
+  ]
+}

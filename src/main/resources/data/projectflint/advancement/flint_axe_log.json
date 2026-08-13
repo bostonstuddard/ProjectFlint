@@ -1,0 +1,27 @@
+{
+  "parent": "projectflint:flint_axe",
+  "criteria": {
+    "done": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Use the Flint Axe to slowly hew a log into its stripped form."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:flint_axe"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Slow Hewing"
+    }
+  },
+  "requirements": [
+    [
+      "done"
+    ]
+  ]
+}

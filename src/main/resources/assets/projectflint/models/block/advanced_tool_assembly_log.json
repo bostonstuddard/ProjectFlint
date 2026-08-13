@@ -1,0 +1,4 @@
+{
+  "textures": {"particle":"projectflint:block/placed/burnt_log","log":"projectflint:block/placed/burnt_log"},
+  "elements": [{"from":[2,1,4],"to":[14,3,12],"faces":{"north":{"texture":"#log"},"south":{"texture":"#log"},"east":{"texture":"#log"},"west":{"texture":"#log"},"up":{"texture":"#log"},"down":{"texture":"#log"}}}]
+}

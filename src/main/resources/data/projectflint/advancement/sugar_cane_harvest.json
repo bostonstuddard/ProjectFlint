@@ -1,0 +1,27 @@
+{
+  "parent": "projectflint:01_clay_era/root",
+  "criteria": {
+    "harvested_sugar_cane": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Cut Sugar Cane with plant-cutting tools to harvest entire connected stalks."
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:sugar_cane"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Clean Cane Cut"
+    }
+  },
+  "requirements": [
+    [
+      "harvested_sugar_cane"
+    ]
+  ]
+}

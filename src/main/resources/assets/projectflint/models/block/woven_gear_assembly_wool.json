@@ -1,0 +1,4 @@
+{
+  "textures": {"particle":"projectflint:block/placed/woven_wool","wool":"projectflint:block/placed/woven_wool"},
+  "elements": [{"from":[4,1,4],"to":[12,3,12],"faces":{"north":{"texture":"#wool"},"south":{"texture":"#wool"},"east":{"texture":"#wool"},"west":{"texture":"#wool"},"up":{"texture":"#wool"},"down":{"texture":"#wool"}}}]
+}

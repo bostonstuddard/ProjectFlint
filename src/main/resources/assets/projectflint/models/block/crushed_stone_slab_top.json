@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "projectflint:block/crushed_stone",
+    "top": "projectflint:block/crushed_stone",
+    "side": "projectflint:block/crushed_stone"
+  }
+}

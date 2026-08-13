@@ -1,0 +1,27 @@
+{
+  "parent": "projectflint:water_bearing_pot",
+  "criteria": {
+    "done": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Right-click a water source with the Water Bearing Pot to collect half a bucket."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:water_bearing_pot"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Carry Water"
+    }
+  },
+  "requirements": [
+    [
+      "done"
+    ]
+  ]
+}

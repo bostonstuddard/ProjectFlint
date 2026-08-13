@@ -1,0 +1,8 @@
+{
+  "parent":"minecraft:block/cube_all",
+  "textures":{"all":"projectflint:block/mortar_bricks","particle":"projectflint:block/mortar_bricks"},
+  "elements":[
+    {"from":[0,0,0],"to":[16,16,16],"faces":{"north":{"texture":"#all"},"south":{"texture":"#all"},"east":{"texture":"#all"},"west":{"texture":"#all"},"up":{"texture":"#all"},"down":{"texture":"#all"}}},
+    {"from":[3,3,-0.2],"to":[13,13,0.2],"faces":{"north":{"texture":"minecraft:block/glass"}}}
+  ]
+}

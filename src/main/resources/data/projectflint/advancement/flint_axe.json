@@ -1,0 +1,35 @@
+{
+  "parent": "projectflint:flint_axe_pieces",
+  "criteria": {
+    "obtained": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "projectflint:flint_axe"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Assemble the Flint Axe to finally hew logs and begin true woodworking."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:flint_axe"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Flint Axe"
+    },
+    "frame": "goal"
+  },
+  "requirements": [
+    [
+      "obtained"
+    ]
+  ]
+}

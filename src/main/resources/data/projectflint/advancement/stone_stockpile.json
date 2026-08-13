@@ -1,0 +1,27 @@
+{
+  "parent": "projectflint:very_refined_stone",
+  "criteria": {
+    "placed_stone_stockpile": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Place Very Refined Stone on supported ground to build an 8-stone stockpile."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:very_refined_stone"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Stone Reserve"
+    }
+  },
+  "requirements": [
+    [
+      "placed_stone_stockpile"
+    ]
+  ]
+}

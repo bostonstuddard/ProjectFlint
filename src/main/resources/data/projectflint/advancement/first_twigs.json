@@ -1,0 +1,34 @@
+{
+  "parent": "projectflint:refined_rock",
+  "criteria": {
+    "twig": {
+      "conditions": {
+        "items": [
+          {
+            "items": "projectflint:twig"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Break a forage bush with a Refined Rock to gather your first Twigs."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:twig"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "First Timber"
+    }
+  },
+  "requirements": [
+    [
+      "twig"
+    ]
+  ]
+}

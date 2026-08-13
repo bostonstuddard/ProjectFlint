@@ -1,0 +1,27 @@
+{
+  "parent": "projectflint:mortar_bricks",
+  "criteria": {
+    "formed_mortar_chest": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Use a Woven Fan on Mortar Bricks to create a small Mortar Chest."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:mortar_chest"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Mortar Storage"
+    }
+  },
+  "requirements": [
+    [
+      "formed_mortar_chest"
+    ]
+  ]
+}

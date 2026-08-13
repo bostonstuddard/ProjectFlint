@@ -1,0 +1,34 @@
+{
+  "parent": "projectflint:flint_axe_slabs",
+  "criteria": {
+    "obtained": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "projectflint:sanded_wood_slab"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Use Sanding Paper on a wooden slab to make a Sanded Wood Slab."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:sanded_wood_slab"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Sanded Wood Slab"
+    }
+  },
+  "requirements": [
+    [
+      "obtained"
+    ]
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "count=1": {
+      "model": "projectflint:block/fiber_work_pile_1"
+    },
+    "count=2": {
+      "model": "projectflint:block/fiber_work_pile_2"
+    }
+  }
+}

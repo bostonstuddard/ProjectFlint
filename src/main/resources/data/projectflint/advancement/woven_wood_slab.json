@@ -1,0 +1,34 @@
+{
+  "parent": "projectflint:grinded_wood_slab",
+  "criteria": {
+    "obtained": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "projectflint:woven_wood_slab"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Use a Woven Fan on a Grinded Wood Slab to make Woven Wood Slab."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:woven_wood_slab"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Woven Wood Slab"
+    }
+  },
+  "requirements": [
+    [
+      "obtained"
+    ]
+  ]
+}

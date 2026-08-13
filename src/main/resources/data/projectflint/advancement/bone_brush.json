@@ -1,0 +1,27 @@
+{
+  "parent": "projectflint:woven_fan",
+  "criteria": {
+    "assembled_bone_brush": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Combine Filed Bones and Woven Fans to make a renewable wool-gathering brush."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:bone_brush"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Bone Brush"
+    }
+  },
+  "requirements": [
+    [
+      "assembled_bone_brush"
+    ]
+  ]
+}

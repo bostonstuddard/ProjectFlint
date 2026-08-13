@@ -1,0 +1,9 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "projectflint:block/woven_bowl_assembly"
+      }
+    }
+  ]
+}

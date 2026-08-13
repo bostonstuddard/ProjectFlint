@@ -1,0 +1,35 @@
+{
+  "parent": "projectflint:refined_flint_multitool_piece",
+  "criteria": {
+    "obtained": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "projectflint:advanced_flint_multitool"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Cast the Advanced Flint Multitool for the strongest current all-purpose tool."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:advanced_flint_multitool"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Advanced Flint Multitool"
+    },
+    "frame": "goal"
+  },
+  "requirements": [
+    [
+      "obtained"
+    ]
+  ]
+}

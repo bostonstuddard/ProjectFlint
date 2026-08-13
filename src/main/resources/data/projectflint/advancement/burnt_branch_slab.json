@@ -1,0 +1,34 @@
+{
+  "parent": "projectflint:burnt_branch_block",
+  "criteria": {
+    "obtained": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "projectflint:burnt_branch_slab"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Grind a Burnt Branch Block into slabs for compact fuel handling."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:burnt_branch_slab"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Split Fuel"
+    }
+  },
+  "requirements": [
+    [
+      "obtained"
+    ]
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "textures": {"particle":"projectflint:block/placed/burnt_branch","branch":"projectflint:block/placed/burnt_branch"},
+  "elements": [
+    {
+      "from":[2,1,6],
+      "to":[14,3,10],
+      "rotation":{"origin":[8,2,8],"axis":"y","angle":45},
+      "faces":{
+        "north":{"texture":"#branch"},"south":{"texture":"#branch"},
+        "east":{"texture":"#branch"},"west":{"texture":"#branch"},
+        "up":{"texture":"#branch"},"down":{"texture":"#branch"}
+      }
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "parent": "projectflint:mortar_bricks",
+  "criteria": {
+    "obtained": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "projectflint:mortar_brick_slab"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Grind Mortar Bricks into 2 Mortar Brick Slabs."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:mortar_brick_slab"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Mortar Brick Slab"
+    }
+  },
+  "requirements": [
+    [
+      "obtained"
+    ]
+  ]
+}

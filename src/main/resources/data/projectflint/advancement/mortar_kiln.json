@@ -1,0 +1,34 @@
+{
+  "parent": "projectflint:mortar_kiln_base",
+  "criteria": {
+    "obtained": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "projectflint:mortar_kiln"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Finish the Mortar Kiln Base with Advanced Kiln Glass."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:mortar_kiln"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Mortar Kiln"
+    }
+  },
+  "requirements": [
+    [
+      "obtained"
+    ]
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "type=bottom": { "model": "projectflint:block/loose_dirt_slab" },
+    "type=double": { "model": "projectflint:block/loose_dirt" },
+    "type=top": { "model": "projectflint:block/loose_dirt_slab_top" }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "parent": "projectflint:sugar_cane_harvest",
+  "criteria": {
+    "has_reed_roll": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "projectflint:reed_roll"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Work 4 Crude Reeds together to make a Reed Roll."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:reed_roll"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Rolled Reeds"
+    }
+  },
+  "requirements": [
+    [
+      "has_reed_roll"
+    ]
+  ]
+}

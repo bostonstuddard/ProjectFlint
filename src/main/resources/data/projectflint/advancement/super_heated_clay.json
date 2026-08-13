@@ -1,0 +1,34 @@
+{
+  "parent": "projectflint:working_clay_kiln",
+  "criteria": {
+    "super_heated_clay": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "projectflint:super_heated_clay"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Fire an Unfired Clay Ball in the kiln to make Super Heated Clay."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:super_heated_clay"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Super Heated"
+    }
+  },
+  "requirements": [
+    [
+      "super_heated_clay"
+    ]
+  ]
+}

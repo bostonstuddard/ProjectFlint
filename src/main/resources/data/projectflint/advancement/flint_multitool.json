@@ -1,0 +1,28 @@
+{
+  "parent": "projectflint:flint_firestarter",
+  "criteria": {
+    "assembled_flint_multitool": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Upgrade to the Flint Multitool for much faster digging, branch harvesting, and general work."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:flint_multitool"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "The Flint Tier"
+    },
+    "frame": "goal"
+  },
+  "requirements": [
+    [
+      "assembled_flint_multitool"
+    ]
+  ]
+}

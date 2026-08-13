@@ -1,0 +1,27 @@
+{
+  "parent": "projectflint:fired_clay",
+  "criteria": {
+    "hammered_clay_block": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Compact 4 Fired Clay with a hammer-like tool to make a Crude Clay Block."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:crude_clay_block"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Packed Fired Clay"
+    }
+  },
+  "requirements": [
+    [
+      "hammered_clay_block"
+    ]
+  ]
+}

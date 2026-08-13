@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "projectflint:block/crude_clay_slab"
+    },
+    "type=top": {
+      "model": "projectflint:block/crude_clay_slab_top"
+    },
+    "type=double": {
+      "model": "projectflint:block/crude_clay_slab_double"
+    }
+  }
+}

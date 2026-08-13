@@ -1,0 +1,95 @@
+{
+  "parent": "minecraft:block/block",
+  "ambientocclusion": false,
+  "textures": {
+    "twig": "projectflint:block/placed/lightly_burnt_twig",
+    "rock": "projectflint:block/placed/rock",
+    "particle": "projectflint:block/placed/lightly_burnt_twig"
+  },
+  "elements": [
+    {
+      "from": [
+        2.5,
+        0.2,
+        6.1000000000000005
+      ],
+      "to": [
+        10.5,
+        0.65,
+        7.3
+      ],
+      "rotation": {
+        "origin": [
+          6.5,
+          0.2,
+          6.7
+        ],
+        "axis": "y",
+        "angle": -25,
+        "rescale": true
+      },
+      "faces": {
+        "down": {
+          "texture": "#twig"
+        },
+        "up": {
+          "texture": "#twig"
+        },
+        "north": {
+          "texture": "#twig"
+        },
+        "south": {
+          "texture": "#twig"
+        },
+        "west": {
+          "texture": "#twig"
+        },
+        "east": {
+          "texture": "#twig"
+        }
+      }
+    },
+    {
+      "from": [
+        5.5,
+        0.45,
+        6.700000000000001
+      ],
+      "to": [
+        13.5,
+        0.9,
+        7.9
+      ],
+      "rotation": {
+        "origin": [
+          9.5,
+          0.45,
+          7.300000000000001
+        ],
+        "axis": "y",
+        "angle": 25,
+        "rescale": true
+      },
+      "faces": {
+        "down": {
+          "texture": "#twig"
+        },
+        "up": {
+          "texture": "#twig"
+        },
+        "north": {
+          "texture": "#twig"
+        },
+        "south": {
+          "texture": "#twig"
+        },
+        "west": {
+          "texture": "#twig"
+        },
+        "east": {
+          "texture": "#twig"
+        }
+      }
+    }
+  ]
+}

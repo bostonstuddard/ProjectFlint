@@ -1,0 +1,27 @@
+{
+  "parent": "projectflint:branch",
+  "criteria": {
+    "cooked_branch": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Char a Branch in the permanent campfire to make a Burnt Branch."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:burnt_branch"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Heavier Fuel"
+    }
+  },
+  "requirements": [
+    [
+      "cooked_branch"
+    ]
+  ]
+}

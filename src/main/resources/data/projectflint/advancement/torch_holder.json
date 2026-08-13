@@ -1,0 +1,27 @@
+{
+  "parent": "projectflint:wooden_grinder",
+  "criteria": {
+    "obtained": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Use the Wooden Grinder to shape Super Heated Clay and Mud into a Torch Holder."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:torch_holder"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Torch Holder"
+    }
+  },
+  "requirements": [
+    [
+      "obtained"
+    ]
+  ]
+}

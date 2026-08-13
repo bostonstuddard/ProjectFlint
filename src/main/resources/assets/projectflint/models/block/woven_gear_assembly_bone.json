@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/block",
+  "ambientocclusion": false,
+  "textures": { "particle": "projectflint:block/placed/filed_bone", "part": "projectflint:block/placed/filed_bone" },
+  "elements": [
+    { "from": [3, 0.34, 3], "to": [13, 0.44, 13], "faces": { "up": { "texture": "#part" } } }
+  ]
+}

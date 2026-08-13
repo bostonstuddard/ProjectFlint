@@ -1,0 +1,34 @@
+{
+  "parent": "projectflint:advanced_kiln_process",
+  "criteria": {
+    "obtained": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "projectflint:unfired_clay_pot_mold"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Shape an Unfired Clay Pot Mold in the Clay Grinder."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:unfired_clay_pot_mold"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Pot Mold"
+    }
+  },
+  "requirements": [
+    [
+      "obtained"
+    ]
+  ]
+}

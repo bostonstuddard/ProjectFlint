@@ -1,0 +1,35 @@
+{
+  "parent": "projectflint:flint_cutter_piece",
+  "criteria": {
+    "obtained": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "projectflint:flint_plant_cutters"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Cast Flint Plant Cutters for the best dedicated plant harvesting available."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:flint_plant_cutters"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Flint Plant Cutters"
+    },
+    "frame": "goal"
+  },
+  "requirements": [
+    [
+      "obtained"
+    ]
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "count=1": {
+      "model": "projectflint:block/very_refined_stone_pile_1"
+    },
+    "count=2": {
+      "model": "projectflint:block/very_refined_stone_pile_2"
+    },
+    "count=3": {
+      "model": "projectflint:block/very_refined_stone_pile_3"
+    },
+    "count=4": {
+      "model": "projectflint:block/very_refined_stone_pile_4"
+    },
+    "count=5": {
+      "model": "projectflint:block/very_refined_stone_pile_5"
+    },
+    "count=6": {
+      "model": "projectflint:block/very_refined_stone_pile_6"
+    },
+    "count=7": {
+      "model": "projectflint:block/very_refined_stone_pile_7"
+    },
+    "count=8": {
+      "model": "projectflint:block/very_refined_stone_pile_8"
+    }
+  }
+}

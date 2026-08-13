@@ -1,0 +1,27 @@
+{
+  "parent": "projectflint:very_refined_stone",
+  "criteria": {
+    "knapped_campfire_stone": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Knap two Very Refined Stones together to create Campfire Stone."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:campfire_stone"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Campfire Stone"
+    }
+  },
+  "requirements": [
+    [
+      "knapped_campfire_stone"
+    ]
+  ]
+}

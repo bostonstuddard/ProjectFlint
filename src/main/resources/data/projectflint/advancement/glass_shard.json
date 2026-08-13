@@ -1,0 +1,34 @@
+{
+  "parent": "projectflint:sand_ball",
+  "criteria": {
+    "has_glass_shard": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "projectflint:glass_shard"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Fire a Sand Ball in a kiln to make a Glass Shard."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:glass_shard"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "First Glass"
+    }
+  },
+  "requirements": [
+    [
+      "has_glass_shard"
+    ]
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "parent": "projectflint:kiln_top_form",
+  "criteria": {
+    "baked_kiln_top": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Finish the two-block Clay Kiln so you can begin reliable high-heat processing."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:crude_clay_kiln"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Two-Block Clay Kiln"
+    },
+    "frame": "goal"
+  },
+  "requirements": [
+    [
+      "baked_kiln_top"
+    ]
+  ]
+}

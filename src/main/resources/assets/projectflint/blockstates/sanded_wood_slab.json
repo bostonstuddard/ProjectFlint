@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "projectflint:block/sanded_wood_slab"
+    },
+    "type=top": {
+      "model": "projectflint:block/sanded_wood_slab_top"
+    },
+    "type=double": {
+      "model": "projectflint:block/sanded_wood_slab_double"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "parent": "projectflint:crude_harvesting_tool",
+  "criteria": {
+    "harvested_direct_plant_string": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Use Cutters on Short Grass to gather Crude Plant String directly."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:crude_plant_string"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Direct Fiber Harvest"
+    }
+  },
+  "requirements": [
+    [
+      "harvested_direct_plant_string"
+    ]
+  ]
+}

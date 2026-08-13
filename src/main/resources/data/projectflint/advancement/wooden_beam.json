@@ -1,0 +1,34 @@
+{
+  "parent": "projectflint:lumber_washing",
+  "criteria": {
+    "obtained": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "projectflint:wooden_beam"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Select Beam on the controller and finish the washed workpiece to receive 1 Wooden Beam."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:wooden_beam"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Wooden Beam"
+    }
+  },
+  "requirements": [
+    [
+      "obtained"
+    ]
+  ]
+}

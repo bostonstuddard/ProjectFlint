@@ -1,0 +1,27 @@
+{
+  "parent": "projectflint:crushed_stone",
+  "criteria": {
+    "made_very_refined_stone": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Use a Loose Rock on Crushed Stone to make Very Refined Stone."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:very_refined_stone"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Finer Stone"
+    }
+  },
+  "requirements": [
+    [
+      "made_very_refined_stone"
+    ]
+  ]
+}

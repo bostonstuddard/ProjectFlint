@@ -1,0 +1,27 @@
+{
+  "parent": "projectflint:crude_clay_block",
+  "criteria": {
+    "cut_crude_kiln": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Cut a Crude Clay Block with Cutters or a Multitool to shape the kiln base."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:crude_clay_kiln"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Shape a Crude Kiln"
+    }
+  },
+  "requirements": [
+    [
+      "cut_crude_kiln"
+    ]
+  ]
+}

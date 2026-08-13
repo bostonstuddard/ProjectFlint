@@ -1,0 +1,27 @@
+{
+  "parent": "projectflint:wattled_daub_floor_tile",
+  "criteria": {
+    "obtained": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Use the Wooden Grinder to combine Wattled Daub with Advanced Kiln Glass for a window."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:wattled_daub_window"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Let There Be Light"
+    }
+  },
+  "requirements": [
+    [
+      "obtained"
+    ]
+  ]
+}

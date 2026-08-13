@@ -1,0 +1,64 @@
+{
+  "textures": {
+    "particle": "projectflint:block/raw_leather",
+    "wicker": "projectflint:block/raw_leather",
+    "worn": "projectflint:block/raw_leather"
+  },
+  "elements": [
+    {
+      "from": [3, 2, 5],
+      "to": [13, 14, 11],
+      "faces": {
+        "north": { "texture": "#worn" },
+        "south": { "texture": "#worn" },
+        "east": { "texture": "#wicker" },
+        "west": { "texture": "#wicker" },
+        "up": { "texture": "#wicker" },
+        "down": { "texture": "#wicker" }
+      }
+    },
+    {
+      "from": [4, 11, 4],
+      "to": [12, 15, 12],
+      "faces": {
+        "north": { "texture": "#wicker" },
+        "south": { "texture": "#wicker" },
+        "east": { "texture": "#wicker" },
+        "west": { "texture": "#wicker" },
+        "up": { "texture": "#wicker" },
+        "down": { "texture": "#wicker" }
+      }
+    },
+    {
+      "from": [2, 4, 6],
+      "to": [4, 11, 10],
+      "faces": {
+        "north": { "texture": "#wicker" },
+        "south": { "texture": "#wicker" },
+        "east": { "texture": "#wicker" },
+        "west": { "texture": "#wicker" },
+        "up": { "texture": "#wicker" },
+        "down": { "texture": "#wicker" }
+      }
+    },
+    {
+      "from": [12, 4, 6],
+      "to": [14, 11, 10],
+      "faces": {
+        "north": { "texture": "#wicker" },
+        "south": { "texture": "#wicker" },
+        "east": { "texture": "#wicker" },
+        "west": { "texture": "#wicker" },
+        "up": { "texture": "#wicker" },
+        "down": { "texture": "#wicker" }
+      }
+    }
+  ],
+  "display": {
+    "fixed": {
+      "rotation": [0, 0, 0],
+      "translation": [0, 0, 0],
+      "scale": [1, 1, 1]
+    }
+  }
+}

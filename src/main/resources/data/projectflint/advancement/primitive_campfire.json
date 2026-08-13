@@ -1,0 +1,27 @@
+{
+  "parent": "projectflint:campfire_stone",
+  "criteria": {
+    "assembled_campfire": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Build a frame of 12 Campfire Stones and 12 Lightly Burnt Twigs for a permanent campfire."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:campfire_stone"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "A Fire Worth Keeping"
+    }
+  },
+  "requirements": [
+    [
+      "assembled_campfire"
+    ]
+  ]
+}

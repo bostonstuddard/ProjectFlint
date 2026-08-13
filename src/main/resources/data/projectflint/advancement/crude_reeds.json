@@ -1,0 +1,27 @@
+{
+  "parent": "projectflint:crude_hammer",
+  "criteria": {
+    "harvested_crude_reeds": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Work Sugar Cane with your Crude Stone Hammer to prepare Crude Reeds."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:crude_reed"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Prepared Reeds"
+    }
+  },
+  "requirements": [
+    [
+      "harvested_crude_reeds"
+    ]
+  ]
+}

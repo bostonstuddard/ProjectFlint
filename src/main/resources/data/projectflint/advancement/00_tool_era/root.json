@@ -1,0 +1,28 @@
+{
+  "criteria": {
+    "loaded": {
+      "trigger": "minecraft:tick"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "background": "minecraft:gui/advancements/backgrounds/stone",
+    "description": {
+      "text": "Follow each primitive tool step from your first Loose Rock to the Flint Multitool."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:flint_multitool"
+    },
+    "show_toast": false,
+    "title": {
+      "text": "Tool Era"
+    }
+  },
+  "requirements": [
+    [
+      "loaded"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

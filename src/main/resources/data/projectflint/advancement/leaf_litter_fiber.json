@@ -1,0 +1,27 @@
+{
+  "parent": "projectflint:first_twigs",
+  "criteria": {
+    "harvested_leaf_litter_fiber": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Scrape grass or gather Leaf Litter to obtain Plant Fiber."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:plant_fiber"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Clean Cutting"
+    }
+  },
+  "requirements": [
+    [
+      "harvested_leaf_litter_fiber"
+    ]
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "parent": "projectflint:02_wood_era/root",
+  "criteria": {
+    "obtained": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Work 12 Crude Reeds with 12 Twigs to make Wattle."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:crude_reed"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Woven Framework"
+    }
+  },
+  "requirements": [
+    [
+      "obtained"
+    ]
+  ]
+}

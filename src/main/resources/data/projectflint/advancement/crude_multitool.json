@@ -1,0 +1,28 @@
+{
+  "parent": "projectflint:burnt_twig",
+  "criteria": {
+    "assembled_multitool": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Build the Crude Stone Multitool to combine Hammer and Cutter jobs in one durable tool."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:crude_multitool"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Crude Stone Multitool"
+    },
+    "frame": "goal"
+  },
+  "requirements": [
+    [
+      "assembled_multitool"
+    ]
+  ]
+}

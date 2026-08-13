@@ -1,0 +1,44 @@
+{
+  "textures": {
+    "particle": "projectflint:block/crude_clay_block",
+    "mat": "projectflint:block/crude_clay_block"
+  },
+  "elements": [
+    {
+      "from": [1, 0, 1],
+      "to": [15, 2, 15],
+      "faces": {
+        "down": { "texture": "#mat" },
+        "up": { "texture": "#mat" },
+        "north": { "texture": "#mat" },
+        "south": { "texture": "#mat" },
+        "west": { "texture": "#mat" },
+        "east": { "texture": "#mat" }
+      }
+    },
+    {
+      "from": [3, 2, 3],
+      "to": [13, 5, 13],
+      "faces": {
+        "down": { "texture": "#mat" },
+        "up": { "texture": "#mat" },
+        "north": { "texture": "#mat" },
+        "south": { "texture": "#mat" },
+        "west": { "texture": "#mat" },
+        "east": { "texture": "#mat" }
+      }
+    },
+    {
+      "from": [4, 5, 4],
+      "to": [12, 16, 12],
+      "faces": {
+        "down": { "texture": "#mat" },
+        "up": { "texture": "#mat" },
+        "north": { "texture": "#mat" },
+        "south": { "texture": "#mat" },
+        "west": { "texture": "#mat" },
+        "east": { "texture": "#mat" }
+      }
+    }
+  ]
+}

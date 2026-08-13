@@ -1,0 +1,28 @@
+{
+  "parent": "projectflint:clay_grinding_base",
+  "criteria": {
+    "assembled_clay_grinder": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Complete the Clay Grinder to unlock reliable shaping, recycling, and advanced materials."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:clay_grinder"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Primitive Grinding"
+    },
+    "frame": "goal"
+  },
+  "requirements": [
+    [
+      "assembled_clay_grinder"
+    ]
+  ]
+}

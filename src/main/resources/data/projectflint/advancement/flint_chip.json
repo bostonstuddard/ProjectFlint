@@ -1,0 +1,27 @@
+{
+  "parent": "projectflint:crude_multitool",
+  "criteria": {
+    "harvested_flint_chip": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Brush or process gravel until you obtain Flint Chips."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:flint_chip"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Flint Chips"
+    }
+  },
+  "requirements": [
+    [
+      "harvested_flint_chip"
+    ]
+  ]
+}

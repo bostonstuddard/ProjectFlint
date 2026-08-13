@@ -1,0 +1,42 @@
+{
+  "parent": "minecraft:block/block",
+  "ambientocclusion": false,
+  "textures": {
+    "particle": "projectflint:block/placed/refined_flint_multitool_piece",
+    "piece": "projectflint:block/placed/refined_flint_multitool_piece"
+  },
+  "elements": [
+    {
+      "from": [
+        3,
+        0.18,
+        3
+      ],
+      "to": [
+        13,
+        0.28,
+        13
+      ],
+      "faces": {
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#piece"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#piece"
+        }
+      }
+    }
+  ]
+}

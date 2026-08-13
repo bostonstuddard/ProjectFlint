@@ -1,0 +1,228 @@
+{
+  "variants": {
+    "facing=north,part=front_bottom_right,active=false": {
+      "model": "projectflint:block/advanced_kiln_front_bottom_right",
+      "y": 0
+    },
+    "facing=north,part=front_bottom_right,active=true": {
+      "model": "projectflint:block/advanced_kiln_front_bottom_right_active",
+      "y": 0
+    },
+    "facing=north,part=front_top_left,active=false": {
+      "model": "projectflint:block/advanced_kiln_front_top_left",
+      "y": 0
+    },
+    "facing=north,part=front_top_left,active=true": {
+      "model": "projectflint:block/advanced_kiln_front_top_left_active",
+      "y": 0
+    },
+    "facing=north,part=front_top_right,active=false": {
+      "model": "projectflint:block/advanced_kiln_front_top_right",
+      "y": 0
+    },
+    "facing=north,part=front_top_right,active=true": {
+      "model": "projectflint:block/advanced_kiln_front_top_right_active",
+      "y": 0
+    },
+    "facing=north,part=back_bottom_left,active=false": {
+      "model": "projectflint:block/advanced_kiln_back_bottom_left",
+      "y": 0
+    },
+    "facing=north,part=back_bottom_left,active=true": {
+      "model": "projectflint:block/advanced_kiln_back_bottom_left_active",
+      "y": 0
+    },
+    "facing=north,part=back_bottom_right,active=false": {
+      "model": "projectflint:block/advanced_kiln_back_bottom_right",
+      "y": 0
+    },
+    "facing=north,part=back_bottom_right,active=true": {
+      "model": "projectflint:block/advanced_kiln_back_bottom_right_active",
+      "y": 0
+    },
+    "facing=north,part=back_top_left,active=false": {
+      "model": "projectflint:block/advanced_kiln_back_top_left",
+      "y": 0
+    },
+    "facing=north,part=back_top_left,active=true": {
+      "model": "projectflint:block/advanced_kiln_back_top_left_active",
+      "y": 0
+    },
+    "facing=north,part=back_top_right,active=false": {
+      "model": "projectflint:block/advanced_kiln_back_top_right",
+      "y": 0
+    },
+    "facing=north,part=back_top_right,active=true": {
+      "model": "projectflint:block/advanced_kiln_back_top_right_active",
+      "y": 0
+    },
+    "facing=east,part=front_bottom_right,active=false": {
+      "model": "projectflint:block/advanced_kiln_front_bottom_right",
+      "y": 90
+    },
+    "facing=east,part=front_bottom_right,active=true": {
+      "model": "projectflint:block/advanced_kiln_front_bottom_right_active",
+      "y": 90
+    },
+    "facing=east,part=front_top_left,active=false": {
+      "model": "projectflint:block/advanced_kiln_front_top_left",
+      "y": 90
+    },
+    "facing=east,part=front_top_left,active=true": {
+      "model": "projectflint:block/advanced_kiln_front_top_left_active",
+      "y": 90
+    },
+    "facing=east,part=front_top_right,active=false": {
+      "model": "projectflint:block/advanced_kiln_front_top_right",
+      "y": 90
+    },
+    "facing=east,part=front_top_right,active=true": {
+      "model": "projectflint:block/advanced_kiln_front_top_right_active",
+      "y": 90
+    },
+    "facing=east,part=back_bottom_left,active=false": {
+      "model": "projectflint:block/advanced_kiln_back_bottom_left",
+      "y": 90
+    },
+    "facing=east,part=back_bottom_left,active=true": {
+      "model": "projectflint:block/advanced_kiln_back_bottom_left_active",
+      "y": 90
+    },
+    "facing=east,part=back_bottom_right,active=false": {
+      "model": "projectflint:block/advanced_kiln_back_bottom_right",
+      "y": 90
+    },
+    "facing=east,part=back_bottom_right,active=true": {
+      "model": "projectflint:block/advanced_kiln_back_bottom_right_active",
+      "y": 90
+    },
+    "facing=east,part=back_top_left,active=false": {
+      "model": "projectflint:block/advanced_kiln_back_top_left",
+      "y": 90
+    },
+    "facing=east,part=back_top_left,active=true": {
+      "model": "projectflint:block/advanced_kiln_back_top_left_active",
+      "y": 90
+    },
+    "facing=east,part=back_top_right,active=false": {
+      "model": "projectflint:block/advanced_kiln_back_top_right",
+      "y": 90
+    },
+    "facing=east,part=back_top_right,active=true": {
+      "model": "projectflint:block/advanced_kiln_back_top_right_active",
+      "y": 90
+    },
+    "facing=south,part=front_bottom_right,active=false": {
+      "model": "projectflint:block/advanced_kiln_front_bottom_right",
+      "y": 180
+    },
+    "facing=south,part=front_bottom_right,active=true": {
+      "model": "projectflint:block/advanced_kiln_front_bottom_right_active",
+      "y": 180
+    },
+    "facing=south,part=front_top_left,active=false": {
+      "model": "projectflint:block/advanced_kiln_front_top_left",
+      "y": 180
+    },
+    "facing=south,part=front_top_left,active=true": {
+      "model": "projectflint:block/advanced_kiln_front_top_left_active",
+      "y": 180
+    },
+    "facing=south,part=front_top_right,active=false": {
+      "model": "projectflint:block/advanced_kiln_front_top_right",
+      "y": 180
+    },
+    "facing=south,part=front_top_right,active=true": {
+      "model": "projectflint:block/advanced_kiln_front_top_right_active",
+      "y": 180
+    },
+    "facing=south,part=back_bottom_left,active=false": {
+      "model": "projectflint:block/advanced_kiln_back_bottom_left",
+      "y": 180
+    },
+    "facing=south,part=back_bottom_left,active=true": {
+      "model": "projectflint:block/advanced_kiln_back_bottom_left_active",
+      "y": 180
+    },
+    "facing=south,part=back_bottom_right,active=false": {
+      "model": "projectflint:block/advanced_kiln_back_bottom_right",
+      "y": 180
+    },
+    "facing=south,part=back_bottom_right,active=true": {
+      "model": "projectflint:block/advanced_kiln_back_bottom_right_active",
+      "y": 180
+    },
+    "facing=south,part=back_top_left,active=false": {
+      "model": "projectflint:block/advanced_kiln_back_top_left",
+      "y": 180
+    },
+    "facing=south,part=back_top_left,active=true": {
+      "model": "projectflint:block/advanced_kiln_back_top_left_active",
+      "y": 180
+    },
+    "facing=south,part=back_top_right,active=false": {
+      "model": "projectflint:block/advanced_kiln_back_top_right",
+      "y": 180
+    },
+    "facing=south,part=back_top_right,active=true": {
+      "model": "projectflint:block/advanced_kiln_back_top_right_active",
+      "y": 180
+    },
+    "facing=west,part=front_bottom_right,active=false": {
+      "model": "projectflint:block/advanced_kiln_front_bottom_right",
+      "y": 270
+    },
+    "facing=west,part=front_bottom_right,active=true": {
+      "model": "projectflint:block/advanced_kiln_front_bottom_right_active",
+      "y": 270
+    },
+    "facing=west,part=front_top_left,active=false": {
+      "model": "projectflint:block/advanced_kiln_front_top_left",
+      "y": 270
+    },
+    "facing=west,part=front_top_left,active=true": {
+      "model": "projectflint:block/advanced_kiln_front_top_left_active",
+      "y": 270
+    },
+    "facing=west,part=front_top_right,active=false": {
+      "model": "projectflint:block/advanced_kiln_front_top_right",
+      "y": 270
+    },
+    "facing=west,part=front_top_right,active=true": {
+      "model": "projectflint:block/advanced_kiln_front_top_right_active",
+      "y": 270
+    },
+    "facing=west,part=back_bottom_left,active=false": {
+      "model": "projectflint:block/advanced_kiln_back_bottom_left",
+      "y": 270
+    },
+    "facing=west,part=back_bottom_left,active=true": {
+      "model": "projectflint:block/advanced_kiln_back_bottom_left_active",
+      "y": 270
+    },
+    "facing=west,part=back_bottom_right,active=false": {
+      "model": "projectflint:block/advanced_kiln_back_bottom_right",
+      "y": 270
+    },
+    "facing=west,part=back_bottom_right,active=true": {
+      "model": "projectflint:block/advanced_kiln_back_bottom_right_active",
+      "y": 270
+    },
+    "facing=west,part=back_top_left,active=false": {
+      "model": "projectflint:block/advanced_kiln_back_top_left",
+      "y": 270
+    },
+    "facing=west,part=back_top_left,active=true": {
+      "model": "projectflint:block/advanced_kiln_back_top_left_active",
+      "y": 270
+    },
+    "facing=west,part=back_top_right,active=false": {
+      "model": "projectflint:block/advanced_kiln_back_top_right",
+      "y": 270
+    },
+    "facing=west,part=back_top_right,active=true": {
+      "model": "projectflint:block/advanced_kiln_back_top_right_active",
+      "y": 270
+    }
+  }
+}

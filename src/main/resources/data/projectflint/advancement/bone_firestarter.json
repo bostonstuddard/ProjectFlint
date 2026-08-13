@@ -1,0 +1,27 @@
+{
+  "parent": "projectflint:filed_bone",
+  "criteria": {
+    "assembled_bone_firestarter": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Work a Filed Bone with Flint to make a longer-lasting firestarter."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:bone_firestarter"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Bone Firestarter"
+    }
+  },
+  "requirements": [
+    [
+      "assembled_bone_firestarter"
+    ]
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "projectflint:block/grinded_wood",
+    "top": "projectflint:block/grinded_wood",
+    "side": "projectflint:block/grinded_wood"
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "multipart": [
+    {
+      "when": {
+        "stones": "1|2|3|4"
+      },
+      "apply": {
+        "model": "projectflint:block/multitool_assembly_stone_1"
+      }
+    },
+    {
+      "when": {
+        "stones": "2|3|4"
+      },
+      "apply": {
+        "model": "projectflint:block/multitool_assembly_stone_2"
+      }
+    },
+    {
+      "when": {
+        "stones": "3|4"
+      },
+      "apply": {
+        "model": "projectflint:block/multitool_assembly_stone_3"
+      }
+    },
+    {
+      "when": {
+        "stones": "4"
+      },
+      "apply": {
+        "model": "projectflint:block/multitool_assembly_stone_4"
+      }
+    },
+    {
+      "when": {
+        "bindings": "1|2|3|4"
+      },
+      "apply": {
+        "model": "projectflint:block/multitool_assembly_binding_1"
+      }
+    },
+    {
+      "when": {
+        "bindings": "2|3|4"
+      },
+      "apply": {
+        "model": "projectflint:block/multitool_assembly_binding_2"
+      }
+    },
+    {
+      "when": {
+        "bindings": "3|4"
+      },
+      "apply": {
+        "model": "projectflint:block/multitool_assembly_binding_3"
+      }
+    },
+    {
+      "when": {
+        "bindings": "4"
+      },
+      "apply": {
+        "model": "projectflint:block/multitool_assembly_binding_4"
+      }
+    },
+    {
+      "when": {
+        "burnt_twigs": "1|2"
+      },
+      "apply": {
+        "model": "projectflint:block/multitool_assembly_twig_1"
+      }
+    },
+    {
+      "when": {
+        "burnt_twigs": "2"
+      },
+      "apply": {
+        "model": "projectflint:block/multitool_assembly_twig_2"
+      }
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "textures": {
+    "particle": "projectflint:block/campfire_stone_block",
+    "mat": "projectflint:block/campfire_stone_block"
+  },
+  "elements": [
+    {
+      "from": [
+        11,
+        0,
+        2
+      ],
+      "to": [
+        14,
+        1.5,
+        5
+      ],
+      "faces": {
+        "down": {
+          "texture": "#mat"
+        },
+        "up": {
+          "texture": "#mat"
+        },
+        "north": {
+          "texture": "#mat"
+        },
+        "south": {
+          "texture": "#mat"
+        },
+        "west": {
+          "texture": "#mat"
+        },
+        "east": {
+          "texture": "#mat"
+        }
+      }
+    }
+  ]
+}

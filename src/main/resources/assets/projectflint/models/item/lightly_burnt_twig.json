@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "projectflint:item/lightly_burnt_twig"
+  }
+}

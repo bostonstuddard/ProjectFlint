@@ -1,0 +1,9 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "projectflint:block/clay_firing_pile"
+      }
+    }
+  ]
+}
