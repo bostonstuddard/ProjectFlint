@@ -3,7 +3,7 @@ setlocal EnableExtensions
 cd /d "%~dp0"
 
 REM ============================================================
-REM Project Flint v0.28.37-a builder
+REM Project Flint v0.28.41-a builder
 REM - keeps woven chest/dispenser-style storage aligned
 REM - syncs placed/crafting sprites before each build
 REM - mirrors raw leather block texture for backpack rendering
@@ -30,9 +30,11 @@ REM - Project Flint v0.28.34-a corrects Plant Cutters to Advanced Flint Multitoo
 REM - Project Flint v0.28.35-a rebuilds the Sanding Station GUI around a clean segmented sanding-reserve display
 REM - Project Flint v0.28.36-a keeps Sugarcane Rolls exclusive to Flint Plant Cutters; Advanced Flint Multitools harvest normal cane
 REM - Project Flint v0.28.37-a applies owner-supplied Sanding Station, Water Pot, and Lumber Processor textures
+REM - Project Flint v0.28.39-a restores one detailed advancement tree and softens opening RNG/darkness timing
+REM - Project Flint v0.28.41-a restores Crude Multitool leaf harvesting so the branch/twig progression path cannot dead-end
 REM ============================================================
 
-IF EXIST "APPLY_PROJECTFLINT_0_28_37_A.bat" CALL "APPLY_PROJECTFLINT_0_28_37_A.bat" /quiet
+IF EXIST "APPLY_PROJECTFLINT_0_28_41_A.bat" CALL "APPLY_PROJECTFLINT_0_28_41_A.bat" /quiet
 
 if not exist "src\main\resources\assets\projectflint\textures\block\placed" mkdir "src\main\resources\assets\projectflint\textures\block\placed"
 copy /y "src\main\resources\assets\projectflint\textures\item\branch.png" "src\main\resources\assets\projectflint\textures\block\placed\branch.png" >nul
@@ -59,7 +61,7 @@ for /f "tokens=1,* delims==" %%A in ('findstr /b /c:"mod_version=" "gradle.prope
 for /f "tokens=1,* delims==" %%A in ('findstr /b /c:"archives_base_name=" "gradle.properties"') do set "ARCHIVES_BASE_NAME=%%B"
 for /f "tokens=1,* delims==" %%A in ('findstr /b /c:"minecraft_version=" "gradle.properties"') do set "MINECRAFT_VERSION=%%B"
 
-if not defined MOD_VERSION set "MOD_VERSION=0.28.37-a"
+if not defined MOD_VERSION set "MOD_VERSION=0.28.41-a"
 if not defined ARCHIVES_BASE_NAME set "ARCHIVES_BASE_NAME=projectflint"
 if not defined MINECRAFT_VERSION set "MINECRAFT_VERSION=1.21.11"
 

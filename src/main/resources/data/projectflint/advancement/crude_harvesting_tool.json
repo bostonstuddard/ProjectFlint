@@ -8,7 +8,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Build Crude Stone Cutters to harvest plants directly and at better yields."
+      "text": "Stage 2 Very Refined Stone, 1 Plant Tool Binding, and 1 Lightly Burnt Twig on supported ground. Work the completed assembly with the Crude Stone Hammer to create 48-durability Crude Stone Cutters; completion costs 1 hammer durability."
     },
     "icon": {
       "count": 1,
@@ -16,7 +16,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Crude Stone Cutters"
+      "text": "A Tool for the Green"
     },
     "frame": "goal"
   },

@@ -15,7 +15,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Cast a Clay Pot so gathering Clay improves to 1 Unfired Clay Ball per 2 Clay blocks."
+      "text": "Use the Fired Clay Pot Mold in the Advanced Kiln to create a reusable Clay Pot."
     },
     "icon": {
       "count": 1,

@@ -8,7 +8,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Place Very Refined Stone on supported ground to build an 8-stone stockpile."
+      "text": "Place Very Refined Stone on supported ground to start a physical stockpile. Add up to 8 stones and recover them one at a time."
     },
     "icon": {
       "count": 1,

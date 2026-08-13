@@ -15,7 +15,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Grind 4 Filed Bones into a durable early combat tool."
+      "text": "Grind 4 Filed Bones into a Bone Club with 4.2 attack damage and 1 attack speed."
     },
     "icon": {
       "count": 1,
@@ -23,7 +23,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Bone Club"
+      "text": "A Heavier Bone Tool"
     },
     "frame": "goal"
   },

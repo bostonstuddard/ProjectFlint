@@ -8,7 +8,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Brush or process gravel until you obtain Flint Chips."
+      "text": "Harvest Gravel with a Multitool instead of receiving vanilla Gravel/Flint drops. The Crude Multitool yields 1 Flint Chip; the Flint Multitool yields 2. Work 4 Flint Chips with a hammer-like tool to make 1 vanilla Flint."
     },
     "icon": {
       "count": 1,

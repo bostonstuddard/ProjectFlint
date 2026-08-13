@@ -24,4 +24,4 @@ Never introduce a fourth numeric component. Versions such as `0.28.7.8-a` or `0.
 
 Historical files may retain old version strings as records, but every newly produced build, patch, release note, validator expectation, and cleanup BAT must use this scheme.
 
-Current release example: `0.28.37-a`.
+Current release example: `0.28.41-a`.

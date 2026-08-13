@@ -1,5 +1,5 @@
 {
-  "parent": "projectflint:advanced_kiln_process",
+  "parent": "projectflint:unfired_clay_mold_base",
   "criteria": {
     "obtained": {
       "trigger": "minecraft:inventory_changed",

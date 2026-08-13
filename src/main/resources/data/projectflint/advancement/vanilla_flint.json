@@ -8,7 +8,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Work 4 Flint Chips with a hammer-like tool to make one Flint."
+      "text": "Work exactly 4 Flint Chips with an offhand hammer-like tool for 8 strikes. Success consumes the 4 chips, costs 1 durability, and produces 1 vanilla Flint for Flint-tier technology."
     },
     "icon": {
       "count": 1,

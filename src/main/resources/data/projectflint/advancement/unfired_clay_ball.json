@@ -8,7 +8,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Scoop Clay with the Fired Clay Bowl until it produces an Unfired Clay Ball."
+      "text": "Scoop vanilla Clay blocks with a Fired Clay Bowl. Each Clay block adds 2 fill; at 8 fill, the bowl resets and produces 1 Unfired Clay Ball."
     },
     "icon": {
       "count": 1,

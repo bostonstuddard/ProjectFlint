@@ -15,7 +15,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Cook an Egg in a permanent fire or kiln to make 2 Scrambled Eggs."
+      "text": "Cook 1 Egg in a lit clay kiln or permanent campfire to produce 2 Scrambled Egg."
     },
     "icon": {
       "count": 1,

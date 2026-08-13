@@ -8,7 +8,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Work Sugar Cane with your Crude Stone Hammer to prepare Crude Reeds."
+      "text": "The Crude Stone Hammer still provides the pre-Cutters Sugar Cane bootstrap. Once cutting tools exist, hand-work 1 Sugar Cane with an offhand tool for 8 strikes: Cutters yield 3 Crude Reeds, the Crude Multitool yields 4, and the Flint Multitool yields 6."
     },
     "icon": {
       "count": 1,

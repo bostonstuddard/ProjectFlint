@@ -5,7 +5,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 RESOURCES = ROOT / "src/main/resources"
-EXPECTED_VERSION = "0.28.37-a"
+EXPECTED_VERSION = "0.28.41-a"
 errors: list[str] = []
 
 
@@ -263,12 +263,12 @@ for name, path in (
 
 # Build / cleanup protocol.
 build = read("build.bat")
-if "APPLY_PROJECTFLINT_0_28_37_A.bat" not in build:
-	fail("build.bat does not apply the v0.28.37-a cleanup")
+if "APPLY_PROJECTFLINT_0_28_41_A.bat" not in build:
+	fail("build.bat does not apply the v0.28.41-a cleanup")
 if 'explorer.exe /select,' not in build:
 	fail("build.bat no longer opens Explorer with the successful JAR selected")
-if not (ROOT / "APPLY_PROJECTFLINT_0_28_37_A.bat").exists():
-	fail("missing v0.28.37-a cleanup BAT")
+if not (ROOT / "APPLY_PROJECTFLINT_0_28_41_A.bat").exists():
+	fail("missing v0.28.41-a cleanup BAT")
 
 for root_junk in (
 	"APPLY_0_26_A_TEXTURE_DEDUP_REMOVALS_FIXED.bat",
@@ -376,8 +376,8 @@ if "projectflint:block/crude_plant_torch" not in read("src/main/resources/assets
 	fail("Crude Plant Torch block model must use the owner-supplied Project Flint torch artwork")
 
 build_bat = read("build.bat")
-cleanup_bat = read("APPLY_PROJECTFLINT_0_28_37_A.bat")
-for expected in ("v0.28.37-a", "APPLY_PROJECTFLINT_0_28_37_A.bat"):
+cleanup_bat = read("APPLY_PROJECTFLINT_0_28_41_A.bat")
+for expected in ("v0.28.41-a", "APPLY_PROJECTFLINT_0_28_41_A.bat"):
 	if expected not in build_bat:
 		fail(f"build.bat version/apply wiring missing: {expected}")
 if "APPLY_PROJECTFLINT_0_28_28_A.bat" not in cleanup_bat:
@@ -431,7 +431,7 @@ import re
 if not re.fullmatch(r"\d+\.\d+\.\d+-(?:a|b|r)", EXPECTED_VERSION):
 	fail("current release version violates MAJOR.RELEASE.DEV-a/b/r")
 versioning = read("docs/VERSIONING.md")
-for expected in ("MAJOR.RELEASE.DEV-CHANNEL", "Never introduce a fourth numeric component", "0.28.37-a"):
+for expected in ("MAJOR.RELEASE.DEV-CHANNEL", "Never introduce a fourth numeric component", "0.28.41-a"):
 	if expected not in versioning:
 		fail(f"versioning documentation missing: {expected}")
 
@@ -789,32 +789,32 @@ for rel in (
 
 
 
-# v0.28.23-a era guidance + workstation-only recipe reference hotfix.
+# v0.28.41-a unified detailed advancement guide.
 adv_root = RESOURCES / "data/projectflint/advancement"
-expected_roots = {
-	"00_tool_era/root.json": ("Tool Era", "projectflint:flint_multitool"),
-	"01_clay_era/root.json": ("Clay Era", "projectflint:clay_grinder"),
-	"02_wood_era/root.json": ("Wood Era", "projectflint:wooden_grinder"),
-}
-for rel, (title, icon) in expected_roots.items():
-	path = adv_root / rel
-	if not path.exists():
-		fail(f"missing advancement era root: {rel}")
-		continue
+root_adv = adv_root / "root.json"
+if not root_adv.exists():
+	fail("unified Project Flint advancement root is missing")
+else:
 	try:
-		data = json.loads(path.read_text(encoding="utf-8"))
+		data = json.loads(root_adv.read_text(encoding="utf-8"))
 		display = data.get("display", {})
-		if display.get("title", {}).get("text") != title:
-			fail(f"advancement era root title mismatch: {rel}")
-		if display.get("icon", {}).get("id") != icon:
-			fail(f"advancement era root icon mismatch: {rel}")
+		if display.get("title", {}).get("text") != "ProjectFlint":
+			fail("unified advancement root title must remain ProjectFlint")
+		if display.get("background") != "minecraft:gui/advancements/backgrounds/stone":
+			fail("unified advancement root should use the stone progression background")
 	except Exception as exc:
-		fail(f"could not validate advancement era root {rel}: {exc}")
-if (adv_root / "root.json").exists():
-	fail("legacy single Project Flint advancement root must be removed")
+		fail(f"could not validate unified advancement root: {exc}")
 
-# Every displayed advancement blurb should be a compact single sentence.
-for path in adv_root.rglob("*.json"):
+for retired_root in ("00_tool_era", "01_clay_era", "02_wood_era", "tool_era", "clay_era", "wood_era"):
+	if (adv_root / retired_root).exists():
+		fail(f"retired split advancement tab still exists: {retired_root}")
+
+advancement_files = list(adv_root.rglob("*.json"))
+if len(advancement_files) < 135:
+	fail(f"detailed advancement guide was over-pruned again: only {len(advancement_files)} advancements remain")
+
+# Every Project Flint parent must resolve inside the one progression tree.
+for path in advancement_files:
 	try:
 		data = json.loads(path.read_text(encoding="utf-8"))
 	except Exception:
@@ -824,46 +824,31 @@ for path in adv_root.rglob("*.json"):
 		parent_path = adv_root / (parent.split(":", 1)[1] + ".json")
 		if not parent_path.exists():
 			fail(f"advancement has missing Project Flint parent: {path.relative_to(adv_root)} -> {parent}")
-	desc = data.get("display", {}).get("description", {}).get("text")
-	if isinstance(desc, str) and len(desc) > 170:
-		fail(f"advancement description is too long for mini-guide style: {path.relative_to(adv_root)}")
 
-# v0.28.30-a granular mini-guide restoration and stable tab ordering.
-advancement_files = list(adv_root.rglob("*.json"))
-if len(advancement_files) < 125:
-	fail(f"granular advancement guide was over-pruned again: only {len(advancement_files)} advancements remain")
-ordered_roots = ["00_tool_era/root.json", "01_clay_era/root.json", "02_wood_era/root.json"]
-if list(expected_roots.keys()) != ordered_roots:
-	fail("era root validation order must remain Tool -> Clay -> Wood")
+# Quest-heavy guidance must retain the important individual steps.
 for restored in (
-	"placed_item.json", "disturbed_earth.json", "kindling.json", "campfire_fire.json",
-	"stone_stockpile.json", "flower_petals.json", "loose_dirt.json", "crude_clay_slab.json",
-	"plant_seeds.json", "scrambled_egg.json", "cooked_calamari.json", "black_dye.json",
-	"flower_dyes.json", "mortar_brick_slab.json", "burnt_branch_block.json", "burnt_branch_slab.json",
-	"unfired_clay_axe_mold.json", "fired_clay_axe_mold.json",
-	"unfired_clay_block_mold.json", "fired_clay_block_mold.json",
-	"unfired_clay_brick_mold.json", "fired_clay_brick_mold.json",
-	"unfired_clay_cutters_mold.json", "fired_clay_cutters_mold.json",
-	"unfired_clay_multitool_mold.json", "fired_clay_multitool_mold.json",
+	"stone_in_hand.json", "disturbed_earth.json", "refined_rock.json", "first_twigs.json",
+	"kindling.json", "first_fire.json", "charred_twig.json", "campfire_stone.json",
+	"primitive_campfire.json", "crude_hammer.json", "crude_harvesting_tool.json",
+	"direct_plant_string.json", "leaf_litter_fiber.json", "crude_multitool.json",
+	"flint_multitool.json", "clay_pot.json", "bone_club.json", "bone_brush.json",
+	"flint_plant_cutters.json", "advanced_flint_multitool.json", "clay_grinder.json",
+	"wooden_grinder.json", "sanding_station.json", "water_bearing_pot.json",
+	"water_pot.json", "bound_wood_processor.json", "lumber_processor.json",
+	"lumber_washing.json", "wooden_board.json", "wooden_beam.json",
 ):
 	if not (adv_root / restored).exists():
-		fail(f"granular progression milestone missing: {restored}")
-for major in (
-	"crude_hammer.json", "crude_harvesting_tool.json", "crude_multitool.json", "flint_multitool.json",
-	"complete_clay_kiln.json", "clay_grinder.json", "clay_pot.json", "advanced_kiln.json",
-	"flint_axe.json", "wooden_grinder.json", "bone_club.json", "flint_plant_cutters.json",
-	"advanced_flint_multitool.json",
+		fail(f"detailed progression milestone missing: {restored}")
+
+for rel, token in (
+	("disturbed_earth.json", "58%"),
+	("refined_rock.json", "3 failures"),
+	("first_fire.json", "65%"),
+	("leaf_litter_fiber.json", "Crude Stone Cutters and Crude Multitool give up to 2"),
+	("flint_plant_cutters.json", "Plant Tool Bindings"),
 ):
-	try:
-		data = json.loads((adv_root / major).read_text(encoding="utf-8"))
-		if data.get("display", {}).get("frame") != "goal":
-			fail(f"major progression upgrade should use a goal frame: {major}")
-	except Exception as exc:
-		fail(f"could not validate major advancement goal: {major}: {exc}")
-if json.loads((adv_root / "sanding_paper.json").read_text(encoding="utf-8")).get("parent") != "projectflint:02_wood_era/root":
-	fail("Sanding Paper should begin post-Clay-Grinder Wood Era progression")
-if json.loads((adv_root / "unfired_clay_mold_base.json").read_text(encoding="utf-8")).get("parent") != "projectflint:02_wood_era/root":
-	fail("advanced clay molds should begin in Wood Era after the Clay Grinder")
+	if token not in read(f"src/main/resources/data/projectflint/advancement/{rel}"):
+		fail(f"updated detailed advancement guidance missing from {rel}: {token}")
 
 recipe_guide = read("src/main/java/dev/projectflint/client/screen/ProjectFlintRecipeGuideScreen.java")
 recipe_button = read("src/main/java/dev/projectflint/client/screen/RecipeGuideButton.java")
@@ -945,17 +930,14 @@ if clay_data_entries != clay_guide_entries:
 	extra = clay_guide_entries - clay_data_entries
 	fail(f"Clay Grinder guide mirror is out of sync (missing={len(missing)}, extra={len(extra)})")
 
-for obsolete in ("root.json", "charred_twig.json"):
-	if (adv_root / obsolete).exists():
-		fail(f"duplicate/legacy advancement should be retired: {obsolete}")
-	if obsolete != "root.json" and f"advancement\\{obsolete}" not in cleanup_bat:
-		fail(f"cleanup BAT does not remove retired advancement: {obsolete}")
-for legacy_root in ("tool_era/root.json", "clay_era/root.json", "wood_era/root.json"):
-	if (adv_root / legacy_root).exists():
-		fail(f"legacy unordered era root should be retired: {legacy_root}")
-	if legacy_root.replace("/", "\\") not in cleanup_bat:
-		fail(f"cleanup BAT does not remove legacy era root: {legacy_root}")
-
+# The single root and detailed charred-twig step are intentionally restored in v0.28.41-a.
+if not (adv_root / "root.json").exists():
+	fail("unified advancement root was removed")
+if not (adv_root / "charred_twig.json").exists():
+	fail("detailed Lightly Burnt Twig/charred-twig guidance was not restored")
+for retired_root in ("00_tool_era", "01_clay_era", "02_wood_era", "tool_era", "clay_era", "wood_era"):
+	if (adv_root / retired_root).exists():
+		fail(f"retired split advancement root should be removed: {retired_root}")
 
 # v0.28.26-a horse resources, visibility bypass, guidance restoration, Nether-wood cleanup, and aquifers.
 animal_drops_2826 = read("src/main/java/dev/projectflint/system/PrimitiveAnimalDropSystem.java")
@@ -988,19 +970,13 @@ for expected in (
 	if expected not in shader_2826:
 		fail(f"v0.28.26-a lightmap bypass branch missing: {expected}")
 
-# Era backgrounds and restored mini-guide milestones.
-background_expectations = {
-	"00_tool_era/root.json": "minecraft:gui/advancements/backgrounds/stone",
-	"01_clay_era/root.json": "minecraft:block/clay",
-	"02_wood_era/root.json": "minecraft:block/oak_planks",
-}
-for rel, expected_background in background_expectations.items():
-	try:
-		data = json.loads((adv_root / rel).read_text(encoding="utf-8"))
-		if data.get("display", {}).get("background") != expected_background:
-			fail(f"era background mismatch for {rel}: expected {expected_background}")
-	except Exception as exc:
-		fail(f"could not validate era background {rel}: {exc}")
+# Unified detailed advancement policy supersedes the former three era backgrounds.
+try:
+	root_data = json.loads((adv_root / "root.json").read_text(encoding="utf-8"))
+	if root_data.get("display", {}).get("background") != "minecraft:gui/advancements/backgrounds/stone":
+		fail("unified advancement page background must remain stone")
+except Exception as exc:
+	fail(f"could not validate unified advancement background: {exc}")
 for rel in (
 	"direct_plant_string.json", "filed_bone.json", "bone_club.json", "bone_firestarter.json",
 	"woven_wool.json", "sleeping_bag.json", "bone_brush.json", "unfired_clay_pot_mold.json",
@@ -1009,15 +985,6 @@ for rel in (
 ):
 	if not (adv_root / rel).exists():
 		fail(f"restored progression advancement missing: {rel}")
-for rel, token in (
-	("crude_harvesting_tool.json", "harvest plants directly and at better yields"),
-	("bone_club.json", "durable early combat tool"),
-	("clay_pot.json", "per 2 Clay blocks"),
-	("flint_plant_cutters.json", "best dedicated plant harvesting"),
-	("advanced_flint_multitool.json", "strongest current all-purpose tool"),
-):
-	if token not in read(f"src/main/resources/data/projectflint/advancement/{rel}"):
-		fail(f"important concise advancement guidance missing from {rel}: {token}")
 
 # Nether woods must not be processor recipes in either data or the guide mirror.
 for rel in (
@@ -1144,9 +1111,9 @@ for forbidden in ("STRIPPED_CRIMSON", "STRIPPED_WARPED"):
 for adv in ("sanding_station.json", "sanding_station_loaded.json", "water_bearing_pot.json", "water_bearing_pot_filled.json", "water_pot.json", "water_pot_filled.json", "bound_wood_processor.json", "lumber_processor.json", "lumber_washing.json", "wooden_board.json", "wooden_beam.json"):
 	if not (adv_root / adv).exists():
 		fail(f"Wood -> Water progression advancement missing: {adv}")
-cleanup_2837 = read("APPLY_PROJECTFLINT_0_28_37_A.bat")
+cleanup_2837 = read("APPLY_PROJECTFLINT_0_28_41_A.bat")
 if "APPLY_PROJECTFLINT_0_28_36_A.bat" not in cleanup_2837:
-	fail("v0.28.37-a cleanup must retire the previous v0.28.36-a apply BAT")
+	fail("v0.28.41-a cleanup must retire the previous v0.28.36-a apply BAT")
 
 # v0.28.31-a Lumber Processor staged-log interaction hotfix.
 lumber_system_2831 = read("src/main/java/dev/projectflint/system/LumberProcessorSystem.java")
@@ -1249,7 +1216,7 @@ for forbidden in (
 if 'state.is(Blocks.SUGAR_CANE) && ModItems.isPlantCutterLike(held)' not in cane_breaks or 'new ItemStack(Items.SUGAR_CANE, harvested)' not in cane_breaks:
     fail("Advanced Flint Multitool/general plant cutters must retain normal Sugar Cane harvesting")
 
-# v0.28.37-a owner-supplied Wood -> Water textures.
+# v0.28.41-a owner-supplied Wood -> Water textures.
 for tex in (
     "src/main/resources/assets/projectflint/textures/block/sanding_station_top.png",
     "src/main/resources/assets/projectflint/textures/block/lumber_processor_top.png",
@@ -1260,18 +1227,67 @@ for tex in (
     "src/main/resources/assets/projectflint/textures/block/water_pot_front.png",
 ):
     if not (ROOT / tex).exists():
-        fail(f"v0.28.37-a texture missing: {tex}")
+        fail(f"v0.28.41-a texture missing: {tex}")
 water_pot_block_2837 = read("src/main/java/dev/projectflint/block/WaterPotBlock.java")
 for expected in ("EnumProperty<Direction> FACING", "getStateForPlacement", "builder.add(FACING)"):
     if expected not in water_pot_block_2837:
-        fail(f"v0.28.37-a Water Pot facing support missing: {expected}")
+        fail(f"v0.28.41-a Water Pot facing support missing: {expected}")
 for model_path, expected_texture in (
     ("src/main/resources/assets/projectflint/models/block/sanding_station.json", "sanding_station_top"),
     ("src/main/resources/assets/projectflint/models/block/lumber_chopping_block.json", "lumber_processor_top"),
     ("src/main/resources/assets/projectflint/models/block/water_pot.json", "water_pot_front"),
 ):
     if expected_texture not in read(model_path):
-        fail(f"v0.28.37-a model wiring missing: {model_path} -> {expected_texture}")
+        fail(f"v0.28.41-a model wiring missing: {model_path} -> {expected_texture}")
+
+
+# v0.28.41-a opening pacing and detailed-guide regression checks.
+tuning_2839 = read("src/main/java/dev/projectflint/config/GameplayTuning.java")
+for expected in (
+	"GRASS_STRIP_PROGRESS_PER_TICK = 1.0F / 140.0F",
+	"GRASS_FIBER_CHANCE = 0.58F",
+	"REGULAR_ROCK_FAILURES_BEFORE_GUARANTEE = 3",
+	"TWIG_IGNITION_SUCCESS_CHANCE = 0.65F",
+):
+	if expected not in tuning_2839:
+		fail(f"v0.28.41-a opening tuning missing: {expected}")
+stone_2839 = read("src/main/java/dev/projectflint/system/StoneWorkingSystem.java")
+for expected in ("REGULAR_ROCK_FAILURES", "pitySuccess", "REGULAR_ROCK_FAILURES_BEFORE_GUARANTEE"):
+	if expected not in stone_2839:
+		fail(f"v0.28.41-a Rock-knapping pity logic missing: {expected}")
+env_2839 = read("src/main/java/dev/projectflint/system/PrimitiveEnvironmentEffectSystem.java")
+for expected in ("TERRIFIED_EFFECT_DELAY = 20 * 10", "elapsed >= TERRIFIED_EFFECT_DELAY", "TERRIFIED_DAMAGE_DELAY = 20 * 45"):
+	if expected not in env_2839:
+		fail(f"v0.28.41-a darkness grace missing: {expected}")
+if "smoothstep(0.28, 0.88, raw_sky_factor)" not in shader:
+	fail("v0.28.41-a later true-black night curve is missing")
+if "held.is(ModItems.FLINT_MULTITOOL) ? 4 : 2" not in game_mode_mixin:
+	fail("Crude Stone Cutters and Crude Multitool must both retain the 2 Plant Fiber full Leaf Litter yield")
+
+
+# v0.28.41-a correction: cutter cost is one binding, with legacy extra-binding refund.
+harvesting_assembly_2840 = read("src/main/java/dev/projectflint/block/HarvestingToolAssemblyBlock.java")
+for expected in (
+	"The starter binding is now the only binding required",
+	"state.getValue(BINDINGS) < 1",
+	"state.getValue(BINDINGS) > 1",
+	"new ItemStack(ModItems.PLANT_TOOL_BINDING)",
+):
+	if expected not in harvesting_assembly_2840:
+		fail(f"v0.28.41-a Crude Stone Cutters one-binding cost/refund logic missing: {expected}")
+if "stack.consume(1, player)" in harvesting_assembly_2840[harvesting_assembly_2840.find("if (stack.is(ModItems.PLANT_TOOL_BINDING))"):harvesting_assembly_2840.find("if (stack.is(ModItems.LIGHTLY_BURNT_TWIG))")]:
+	fail("Crude Stone Cutters assembly must not consume a second Plant Tool Binding")
+
+# v0.28.41-a progression-critical Crude Multitool foliage restoration.
+tool_caps_2841 = read("src/main/java/dev/projectflint/system/ToolCapabilities.java")
+leaf_method_start = tool_caps_2841.find("public static boolean canHarvestLeaves")
+leaf_method_end = tool_caps_2841.find("\n\t}", leaf_method_start)
+leaf_method = tool_caps_2841[leaf_method_start:leaf_method_end]
+if "ModItems.CRUDE_MULTITOOL" not in leaf_method:
+	fail("v0.28.41-a Crude Multitool must remain authorized to harvest leaves")
+for expected in ("GameplayTuning.MULTITOOL_LEAF_TWIGS", "held.is(ModItems.FLINT_MULTITOOL) ? 2 : 1"):
+	if expected not in game_mode_mixin:
+		fail(f"v0.28.41-a Crude Multitool leaf yield path missing: {expected}")
 
 if errors:
 	print("Project Flint release validation FAILED:")

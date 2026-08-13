@@ -8,7 +8,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Cut flowers with Crude Cutters or the Crude Multitool to gather Flower Petals."
+      "text": "Direct Cutters or Crude Multitool harvest yields 2 or 3 Flower Petals; tall flowers yield double. Flint Multitool direct harvest returns the whole flower instead, while held-flower hand-working still yields 4 petals, doubled for tall flowers."
     },
     "icon": {
       "count": 1,

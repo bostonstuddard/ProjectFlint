@@ -8,7 +8,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Fire Unfired Wattle and Daub to make structural Wattled Daub Bricks."
+      "text": "Fire Wattle and Daub into structural Wattled Daub Bricks. Four-block columns can support ceiling bricks up to two blocks outward."
     },
     "icon": {
       "count": 1,

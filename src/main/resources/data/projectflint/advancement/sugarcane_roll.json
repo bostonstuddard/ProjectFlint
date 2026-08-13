@@ -1,34 +1,6 @@
 {
   "parent": "projectflint:reed_roll",
-  "criteria": {
-    "has_sugarcane_roll": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "items": "projectflint:sugarcane_roll"
-          }
-        ]
-      }
-    }
-  },
-  "display": {
-    "announce_to_chat": false,
-    "description": {
-      "text": "Wash a Reed Roll in water to make a Sugarcane Roll."
-    },
-    "icon": {
-      "count": 1,
-      "id": "projectflint:sugarcane_roll"
-    },
-    "show_toast": true,
-    "title": {
-      "text": "Washed Fibers"
-    }
-  },
-  "requirements": [
-    [
-      "has_sugarcane_roll"
-    ]
-  ]
+  "criteria": {"has_sugarcane_roll": {"trigger": "minecraft:inventory_changed", "conditions": {"items": [{"items": "projectflint:sugarcane_roll"}]}}},
+  "display": {"announce_to_chat": false, "description": {"text": "Wash a Reed Roll by right-clicking water to make a Sugarcane Roll."}, "icon": {"count": 1, "id": "projectflint:sugarcane_roll"}, "show_toast": true, "title": {"text": "Washed Fibers"}},
+  "requirements": [["has_sugarcane_roll"]]
 }

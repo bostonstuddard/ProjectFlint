@@ -15,7 +15,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Use the Wooden Grinder to combine Leather and Woven Wood into a Woven Chest Frame."
+      "text": "Grind Leather and Woven Wood into a chest frame."
     },
     "icon": {
       "count": 1,

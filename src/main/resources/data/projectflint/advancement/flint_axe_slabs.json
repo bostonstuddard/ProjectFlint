@@ -8,7 +8,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Grind a stripped log into matching wooden slabs."
+      "text": "Run a stripped log through the Clay Grinder to make two matching wooden slabs."
     },
     "icon": {
       "count": 1,

@@ -8,7 +8,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Place Twigs on supported ground until the pile reaches 12 Twigs."
+      "text": "Place a Twig on supported ground to start a physical Twig Pile. Add more Twigs until the pile reaches its 12-Twig capacity."
     },
     "icon": {
       "count": 1,

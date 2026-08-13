@@ -1,5 +1,5 @@
 {
-  "parent": "projectflint:02_wood_era/root",
+  "parent": "projectflint:crude_reeds",
   "criteria": {
     "obtained": {
       "trigger": "minecraft:impossible"
@@ -8,7 +8,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Work 12 Crude Reeds with 12 Twigs to make Wattle."
+      "text": "Work 12 Crude Reeds with 12 Twigs into four pieces of Wattle."
     },
     "icon": {
       "count": 1,

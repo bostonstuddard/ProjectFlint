@@ -15,7 +15,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Scrape Grass into Dirt to begin gathering Plant Fiber."
+      "text": "Hold to scrape a Grass Block into Dirt. Each completed scrape now has a 58% chance to yield 1 Plant Fiber."
     },
     "icon": {
       "count": 1,

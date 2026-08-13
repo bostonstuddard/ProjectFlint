@@ -15,7 +15,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Fire an Unfired Clay Ball in the kiln to make Super Heated Clay."
+      "text": "Fire an Unfired Clay Ball in a working clay kiln to produce Super Heated Clay."
     },
     "icon": {
       "count": 1,

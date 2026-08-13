@@ -1,5 +1,5 @@
 {
-  "parent": "projectflint:mortar_bricks",
+  "parent": "projectflint:advanced_kiln_glass",
   "criteria": {
     "done": {
       "trigger": "minecraft:impossible"
@@ -8,7 +8,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Build the 2\u00d72\u00d72 Advanced Kiln to begin reusable mold casting."
+      "text": "Form a 2x2x2 Mortar Brick structure by clicking its front with Advanced Kiln Glass."
     },
     "icon": {
       "count": 1,

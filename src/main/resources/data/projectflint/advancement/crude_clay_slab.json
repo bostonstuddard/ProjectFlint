@@ -15,7 +15,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Grind a Crude Clay Block into 2 Crude Clay Slabs."
+      "text": "Cut a Crude Clay Block into two slabs in the Clay Grinder."
     },
     "icon": {
       "count": 1,

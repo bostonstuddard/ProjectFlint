@@ -8,7 +8,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Load a fired mold and its listed materials into the Advanced Kiln to cast a part."
+      "text": "Run the Advanced Kiln for 10 seconds with 8 Burnt Branches, a fired mold, 8 Flint, and 4 Fired Clay."
     },
     "icon": {
       "count": 1,

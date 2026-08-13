@@ -1,27 +1,6 @@
 {
-  "parent": "projectflint:sanded_wood_slab",
-  "criteria": {
-    "woven_fan": {
-      "trigger": "minecraft:impossible"
-    }
-  },
-  "display": {
-    "announce_to_chat": false,
-    "description": {
-      "text": "Work a Plant Tool Binding with Sanding Paper to make a Woven Fan."
-    },
-    "icon": {
-      "count": 1,
-      "id": "projectflint:woven_fan"
-    },
-    "show_toast": true,
-    "title": {
-      "text": "Woven Fan"
-    }
-  },
-  "requirements": [
-    [
-      "woven_fan"
-    ]
-  ]
+  "parent": "projectflint:sanding_paper",
+  "criteria": { "woven_fan": { "trigger": "minecraft:impossible" } },
+  "display": { "announce_to_chat": false, "description": { "text": "Work a Plant Tool Binding against reusable Sanding Paper." }, "icon": { "count": 1, "id": "projectflint:woven_fan" }, "show_toast": true, "title": { "text": "Woven Fan" } },
+  "requirements": [["woven_fan"]]
 }

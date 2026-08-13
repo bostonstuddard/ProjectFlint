@@ -1,34 +1,6 @@
 {
-  "parent": "projectflint:02_wood_era/root",
-  "criteria": {
-    "has_clay_mortar": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "items": "projectflint:clay_mortar"
-          }
-        ]
-      }
-    }
-  },
-  "display": {
-    "announce_to_chat": false,
-    "description": {
-      "text": "Grind Super Heated Clay into Clay Mortar."
-    },
-    "icon": {
-      "count": 1,
-      "id": "projectflint:clay_mortar"
-    },
-    "show_toast": true,
-    "title": {
-      "text": "Binding Material"
-    }
-  },
-  "requirements": [
-    [
-      "has_clay_mortar"
-    ]
-  ]
+  "parent": "projectflint:clay_grinder",
+  "criteria": {"has_clay_mortar": {"trigger": "minecraft:inventory_changed", "conditions": {"items": [{"items": "projectflint:clay_mortar"}]}}},
+  "display": {"announce_to_chat": false, "description": {"text": "Grind 9 Super Heated Clay into Clay Mortar."}, "icon": {"count": 1, "id": "projectflint:clay_mortar"}, "show_toast": true, "title": {"text": "Binding Material"}},
+  "requirements": [["has_clay_mortar"]]
 }

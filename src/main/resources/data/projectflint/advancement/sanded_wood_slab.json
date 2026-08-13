@@ -1,5 +1,5 @@
 {
-  "parent": "projectflint:flint_axe_slabs",
+  "parent": "projectflint:sanding_paper",
   "criteria": {
     "obtained": {
       "trigger": "minecraft:inventory_changed",
@@ -15,7 +15,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Use Sanding Paper on a wooden slab to make a Sanded Wood Slab."
+      "text": "Use Sanding Paper on any placed vanilla plank slab."
     },
     "icon": {
       "count": 1,

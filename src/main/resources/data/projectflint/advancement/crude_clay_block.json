@@ -8,7 +8,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Compact 4 Fired Clay with a hammer-like tool to make a Crude Clay Block."
+      "text": "Pile 4 Fired Clay on supported ground and strike the full pile with any hammer-like tool. The pile compacts into one movable Crude Clay Block."
     },
     "icon": {
       "count": 1,

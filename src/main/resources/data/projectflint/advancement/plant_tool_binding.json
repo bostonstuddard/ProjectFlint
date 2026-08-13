@@ -8,7 +8,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Assemble 4 Crude Reeds and 2 Crude Plant String, then hammer them into a Plant Tool Binding."
+      "text": "Stage 4 Crude Reeds and 2 Crude Plant String on supported ground, then work the completed assembly with the Crude Stone Hammer. The operation costs 1 hammer durability."
     },
     "icon": {
       "count": 1,

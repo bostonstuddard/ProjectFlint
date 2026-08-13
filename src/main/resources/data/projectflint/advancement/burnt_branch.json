@@ -8,7 +8,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Char a Branch in the permanent campfire to make a Burnt Branch."
+      "text": "Use a Branch on a lit Primitive Campfire to consume the Branch and produce 1 Burnt Branch."
     },
     "icon": {
       "count": 1,

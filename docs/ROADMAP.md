@@ -193,7 +193,7 @@ The first material-processing slice is now functional:
 - Crude Reeds and Crude Plant String can be physically assembled into **Plant Tool Binding**;
 - Very Refined Stone can be physically stockpiled and recovered; ordinary Loose Rock placement was removed in alpha.15 after playtesting showed it was frustrating rather than useful;
 - Crushed Stone acts as a refinement surface that turns a Rock into **Very Refined Stone**;
-- two Very Refined Stone, two Plant Tool Bindings, and one Lightly Burnt Twig assemble into **Crude Stone Cutters**;
+- two Very Refined Stone, one Plant Tool Binding, and one Lightly Burnt Twig assemble into **Crude Stone Cutters**;
 - the cutters turn Short Grass into **Crude Plant String**, Leaf Litter into **2 Plant Fiber**, and flowers into **Flower Petals** while consuming native item durability;
 - advancements teach each major capability as it is achieved.
 
@@ -1333,3 +1333,14 @@ Future technology should add concise step-by-step advancement guidance as it is 
 ### v0.28.37-a — Wood -> Water workstation visual pass
 - Finalized Sanding Station, Water Pot, and Lumber Processor Chopping Block rendering using owner-supplied textures.
 - Remaining Wood -> Water placeholder assets stay intentionally pending until matching owner art is supplied.
+
+
+## v0.28.39-a — player-guidance and opening-pacing reset
+- Keep Project Flint progression in one detailed advancement tree unless a future UI solution can preserve the same step-by-step readability without scattering the guide across tabs.
+- Treat advancements as a quest-heavy survival manual: counts, tools, intermediate materials, and important upgrade benefits belong there when they help players know exactly what to do next.
+- Keep custom workstation recipe books for recipe browsing; do not use them as a substitute for progression guidance.
+- Re-test the opening with the 58% Plant Fiber chance, 65% Twig Pile ignition chance, faster Grass scraping, and three-failure Rock-knapping pity rule before further scarcity changes.
+
+
+### v0.28.41-a progression-critical correction
+Crude Multitool leaf harvesting is explicitly protected as a progression gate: leaves must yield 4 Twigs + 1 Branch at this tier so Branch-based fire and woodworking progression remains reachable.

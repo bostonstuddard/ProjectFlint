@@ -8,7 +8,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Build the dirt-and-fiber bowl assembly to make a Crudely Woven Bowl."
+      "text": "Sneak-right-click supported ground with a Dirt Pile, then build the physical assembly to 32 Dirt Piles + 12 Burnt Twigs. Completing it produces one Crudely Woven Bowl."
     },
     "icon": {
       "count": 1,

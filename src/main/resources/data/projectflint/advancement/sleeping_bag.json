@@ -1,27 +1,6 @@
 {
   "parent": "projectflint:woven_wool",
-  "criteria": {
-    "placed_sleeping_bag": {
-      "trigger": "minecraft:impossible"
-    }
-  },
-  "display": {
-    "announce_to_chat": false,
-    "description": {
-      "text": "Assemble Woven Wool into a reusable two-block Sleeping Bag."
-    },
-    "icon": {
-      "count": 1,
-      "id": "projectflint:sleeping_bag"
-    },
-    "show_toast": true,
-    "title": {
-      "text": "Sleeping Bag"
-    }
-  },
-  "requirements": [
-    [
-      "placed_sleeping_bag"
-    ]
-  ]
+  "criteria": {"placed_sleeping_bag": {"trigger": "minecraft:impossible"}},
+  "display": {"announce_to_chat": false, "description": {"text": "Place 8 Woven Wool as a supported two-block, dyeable Crude Sleeping Bag that can carry sleep through the night."}, "icon": {"count": 1, "id": "projectflint:sleeping_bag"}, "show_toast": true, "title": {"text": "Rest on the Road"}},
+  "requirements": [["placed_sleeping_bag"]]
 }

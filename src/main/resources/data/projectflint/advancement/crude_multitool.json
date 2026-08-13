@@ -8,7 +8,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Build the Crude Stone Multitool to combine Hammer and Cutter jobs in one durable tool."
+      "text": "Sneak-right-click supported ground with Burnt Twig, Plant Tool Binding, or Very Refined Stone to start the assembly. Build it to 2 Burnt Twigs, 4 Plant Tool Bindings, and 4 Very Refined Stone. The Crude Stone Multitool has 128 durability, 2 total attack damage, cutter attack speed, inherits crude hammer/cutter operations, and performs most of them about 25% faster."
     },
     "icon": {
       "count": 1,
@@ -16,7 +16,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Crude Stone Multitool"
+      "text": "One Tool, Many Jobs"
     },
     "frame": "goal"
   },

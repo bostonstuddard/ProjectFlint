@@ -8,7 +8,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Work Stone with the Crude Stone Hammer to create Crushed Stone and recover Loose Rocks."
+      "text": "Use the Crude Stone Hammer to slowly work a Stone block. It becomes persistent Crushed Stone, yields 4 Loose Rocks, and costs 1 hammer durability."
     },
     "icon": {
       "count": 1,

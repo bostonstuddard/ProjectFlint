@@ -1,12 +1,20 @@
-# Patch Manifest — Project Flint v0.28.38-a
+# Patch Manifest — Project Flint v0.28.41-a
 
 ## Modified / New Files
-- `src/main/resources/assets/projectflint/models/item/water_bearing_pot.json`
-- `src/main/resources/assets/projectflint/models/item/water_bearing_pot_filled.json`
-- `src/main/resources/assets/projectflint/textures/item/water_bearing_pot.png`
-- `src/main/resources/assets/projectflint/textures/item/water_bearing_pot_filled.png`
+- `src/main/java/dev/projectflint/system/ToolCapabilities.java`
+- `gradle.properties`
+- `build.bat`
+- `APPLY_PROJECTFLINT_0_28_41_A.bat`
+- `tools/validate_release.py`
 - `CHANGELOG.md`
 - `PATCH_MANIFEST.md`
+- `docs/VERSIONING.md`
+- `docs/ARCHITECTURE.md`
+- `docs/ROADMAP.md`
+- `docs/releases/0.28.41-a.md`
 
-## Summary
-Adds the missing Water Bearing Pot item art and removes the pending/null placeholder rendering for both the empty and filled variants.
+## Gameplay fix
+Restores Crude Multitool leaf harvesting. The intended output remains **4 Twigs + 1 Branch** for 1 durability, which reopens the progression-critical Branch path.
+
+## Validation
+`tools/validate_release.py` passes for v0.28.41-a and includes a regression check for the Crude Multitool foliage capability. Full Gradle compilation remains blocked by unavailable Fabric Loom `1.14.10` plugin resolution in this environment.

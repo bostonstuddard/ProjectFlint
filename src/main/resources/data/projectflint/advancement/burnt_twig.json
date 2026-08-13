@@ -1,5 +1,5 @@
 {
-  "parent": "projectflint:primitive_campfire",
+  "parent": "projectflint:campfire_fire",
   "criteria": {
     "cooked_burnt_twig": {
       "trigger": "minecraft:inventory_changed",
@@ -15,7 +15,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Char a Twig in the permanent campfire to make a Burnt Twig."
+      "text": "Use a Twig on the lit permanent primitive campfire to produce 1 Burnt Twig. Burnt Twig is intentionally a later fire material and is not produced by the disposable early Twig Pile fire."
     },
     "icon": {
       "count": 1,
