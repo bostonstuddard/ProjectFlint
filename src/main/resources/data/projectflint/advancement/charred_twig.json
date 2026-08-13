@@ -1,0 +1,27 @@
+{
+  "parent": "projectflint:first_fire",
+  "criteria": {
+    "lightly_burnt_twig": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "While the temporary 10-second Twig Pile fire is lit, use a Twig on it to make 1 Lightly Burnt Twig. This is the original early-fire material used for the first Hammer and Cutters."
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectflint:lightly_burnt_twig"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "First Char"
+    }
+  },
+  "requirements": [
+    [
+      "lightly_burnt_twig"
+    ]
+  ]
+}

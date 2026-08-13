@@ -1,27 +1,6 @@
 {
   "parent": "projectflint:sanding_paper",
-  "criteria": {
-    "filed_bone": {
-      "trigger": "minecraft:impossible"
-    }
-  },
-  "display": {
-    "announce_to_chat": false,
-    "description": {
-      "text": "Use Sanding Paper on an Animal Bone or Bone to make a Filed Bone."
-    },
-    "icon": {
-      "count": 1,
-      "id": "projectflint:filed_bone"
-    },
-    "show_toast": true,
-    "title": {
-      "text": "Bone Working"
-    }
-  },
-  "requirements": [
-    [
-      "filed_bone"
-    ]
-  ]
+  "criteria": {"filed_bone": {"trigger": "minecraft:impossible"}},
+  "display": {"announce_to_chat": false, "description": {"text": "File an Animal Bone or vanilla Bone with reusable Sanding Paper."}, "icon": {"count": 1, "id": "projectflint:filed_bone"}, "show_toast": true, "title": {"text": "Bone Working"}},
+  "requirements": [["filed_bone"]]
 }

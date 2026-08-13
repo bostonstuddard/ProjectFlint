@@ -1,34 +1,6 @@
 {
   "parent": "projectflint:primitive_campfire",
-  "criteria": {
-    "has_cooked_calamari": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "items": "projectflint:cooked_calamari"
-          }
-        ]
-      }
-    }
-  },
-  "display": {
-    "announce_to_chat": false,
-    "description": {
-      "text": "Cook Raw Calamari in a permanent fire or kiln before eating it."
-    },
-    "icon": {
-      "count": 1,
-      "id": "projectflint:cooked_calamari"
-    },
-    "show_toast": true,
-    "title": {
-      "text": "Cooked Calamari"
-    }
-  },
-  "requirements": [
-    [
-      "has_cooked_calamari"
-    ]
-  ]
+  "criteria": { "has_cooked_calamari": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{ "items": "projectflint:cooked_calamari" }] } } },
+  "display": { "announce_to_chat": false, "description": { "text": "Cook Raw Calamari over a Campfire or in a Kiln." }, "icon": { "count": 1, "id": "projectflint:cooked_calamari" }, "show_toast": true, "title": { "text": "Cooked Calamari" } },
+  "requirements": [["has_cooked_calamari"]]
 }

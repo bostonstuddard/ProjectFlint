@@ -8,7 +8,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Build a Clay Grinding Base from 8 Super Heated Clay."
+      "text": "Use 8 Super Heated Clay on supported ground to build a movable Clay Grinding Base."
     },
     "icon": {
       "count": 1,

@@ -8,7 +8,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Fire the lined bowl in a permanent campfire or kiln."
+      "text": "Use an Unfired Woven Bowl on a lit permanent campfire. The bowl is fired into a reusable Fired Clay Bowl."
     },
     "icon": {
       "count": 1,

@@ -1,5 +1,5 @@
 {
-  "parent": "projectflint:01_clay_era/root",
+  "parent": "projectflint:crude_multitool",
   "criteria": {
     "dug_dirt_pile": {
       "trigger": "minecraft:impossible"
@@ -8,7 +8,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Dig Dirt or Grass with a Multitool to gather Dirt Piles."
+      "text": "Dig Dirt or Grass with a Multitool. The Crude Multitool yields 1 Dirt Pile; the faster Flint Multitool yields 2. Dirt Piles are physical components used for Loose Dirt and later clay-working."
     },
     "icon": {
       "count": 1,

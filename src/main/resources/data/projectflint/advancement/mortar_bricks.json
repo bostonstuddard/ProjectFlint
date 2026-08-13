@@ -1,34 +1,6 @@
 {
   "parent": "projectflint:unfired_mortar_bricks",
-  "criteria": {
-    "has_mortar_bricks": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "items": "projectflint:mortar_bricks"
-          }
-        ]
-      }
-    }
-  },
-  "display": {
-    "announce_to_chat": false,
-    "description": {
-      "text": "Fire Unfired Mortar Bricks in a kiln to make Mortar Bricks."
-    },
-    "icon": {
-      "count": 1,
-      "id": "projectflint:mortar_bricks"
-    },
-    "show_toast": true,
-    "title": {
-      "text": "Standing Masonry"
-    }
-  },
-  "requirements": [
-    [
-      "has_mortar_bricks"
-    ]
-  ]
+  "criteria": {"has_mortar_bricks": {"trigger": "minecraft:inventory_changed", "conditions": {"items": [{"items": "projectflint:mortar_bricks"}]}}},
+  "display": {"announce_to_chat": false, "description": {"text": "Fire an Unfired Mortar Brick in the completed Kiln to gain a non-gravity building block."}, "icon": {"count": 1, "id": "projectflint:mortar_bricks"}, "show_toast": true, "title": {"text": "Standing Masonry"}},
+  "requirements": [["has_mortar_bricks"]]
 }

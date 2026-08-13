@@ -18,6 +18,7 @@ import java.util.UUID;
 /** Server-authoritative repeated handworking/knapping progress. */
 public final class StoneWorkingSystem {
 	private static final Map<UUID, StoneWorkingProgress> PROGRESS = new HashMap<>();
+	private static final Map<UUID, Integer> REGULAR_ROCK_FAILURES = new HashMap<>();
 
 	private StoneWorkingSystem() {}
 
@@ -55,8 +56,15 @@ public final class StoneWorkingSystem {
 		}
 
 		PROGRESS.remove(player.getUUID());
-		boolean success = process.successChance >= 1.0F || level.getRandom().nextFloat() < process.successChance;
+		UUID playerId = player.getUUID();
+		int regularFailures = process == Process.REGULAR_ROCK ? REGULAR_ROCK_FAILURES.getOrDefault(playerId, 0) : 0;
+		boolean pitySuccess = process == Process.REGULAR_ROCK
+			&& regularFailures >= GameplayTuning.REGULAR_ROCK_FAILURES_BEFORE_GUARANTEE;
+		boolean success = pitySuccess || process.successChance >= 1.0F || level.getRandom().nextFloat() < process.successChance;
 		if (!success) {
+			if (process == Process.REGULAR_ROCK) {
+				REGULAR_ROCK_FAILURES.put(playerId, regularFailures + 1);
+			}
 			if (player instanceof ServerPlayer serverPlayer) {
 				ServerPlayNetworking.send(serverPlayer, new PrimitiveProgressPayload(process.payloadKind, 0, process.strikesRequired, 28));
 			}
@@ -64,6 +72,9 @@ public final class StoneWorkingSystem {
 			return StoneWorkingResult.FAILURE;
 		}
 
+		if (process == Process.REGULAR_ROCK) {
+			REGULAR_ROCK_FAILURES.remove(playerId);
+		}
 		level.playSound(null, player.blockPosition(), SoundEvents.AMETHYST_BLOCK_CHIME, SoundSource.PLAYERS, 0.5F, 0.72F);
 		return StoneWorkingResult.SUCCESS;
 	}

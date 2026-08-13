@@ -1,5 +1,5 @@
 {
-  "parent": "projectflint:lightly_burnt_twig",
+  "parent": "projectflint:charred_twig",
   "criteria": {
     "made_crude_hammer": {
       "trigger": "minecraft:impossible"
@@ -8,7 +8,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Assemble the Crude Stone Hammer to break Stone and begin serious rock processing."
+      "text": "Place 2 Lightly Burnt Twigs and 1 Loose Rock on supported ground, then work the completed assembly with a Refined Rock. The Refined Rock is consumed to create a 24-durability Crude Stone Hammer."
     },
     "icon": {
       "count": 1,

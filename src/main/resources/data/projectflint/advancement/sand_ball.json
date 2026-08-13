@@ -1,27 +1,6 @@
 {
   "parent": "projectflint:sand_flake",
-  "criteria": {
-    "formed_sand_ball": {
-      "trigger": "minecraft:impossible"
-    }
-  },
-  "display": {
-    "announce_to_chat": false,
-    "description": {
-      "text": "Work 4 Sand Flakes together to make a Sand Ball."
-    },
-    "icon": {
-      "count": 1,
-      "id": "projectflint:sand_ball"
-    },
-    "show_toast": true,
-    "title": {
-      "text": "Sand Reformed"
-    }
-  },
-  "requirements": [
-    [
-      "formed_sand_ball"
-    ]
-  ]
+  "criteria": { "formed_sand_ball": { "trigger": "minecraft:impossible" } },
+  "display": { "announce_to_chat": false, "description": { "text": "Work 4 Sand Flakes into a Sand Ball with a multitool." }, "icon": { "count": 1, "id": "projectflint:sand_ball" }, "show_toast": true, "title": { "text": "Sand Reformed" } },
+  "requirements": [["formed_sand_ball"]]
 }

@@ -8,7 +8,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Use the Wooden Grinder to combine Flint and Woven Wood into an Unlit Flint Torch."
+      "text": "Build an Unlit Flint Torch from Flint and Woven Wood."
     },
     "icon": {
       "count": 1,

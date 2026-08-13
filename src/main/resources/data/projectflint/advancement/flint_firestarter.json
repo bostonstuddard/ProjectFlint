@@ -11,7 +11,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Assemble Flint and Burnt Branches into a reusable Flint Firestarter."
+      "text": "Sneak-right-click supported ground with Branches or Flint and assemble exactly 8 Branches + 2 vanilla Flint. The Flint Firestarter has 32 uses and can ignite completed campfires, clay-ball twig fires, and clay kilns."
     },
     "icon": {
       "count": 1,

@@ -174,7 +174,7 @@ Alpha.14 extends physical ground interaction with recoverable stockpiles and a s
 - `RockPileBlock` stores a 1–12 count in block state and returns one Rock at a time only when it can fit in the five-slot primitive inventory.
 - Right-clicking `Crushed Stone` with a Rock transforms the held Rock into `Very Refined Stone`; the exhausted Crushed Stone remains in place.
 - `VeryRefinedStonePileBlock` provides the same reversible physical-storage pattern for 1–8 Very Refined Stone.
-- `HarvestingToolAssemblyBlock` stages two Very Refined Stone, two Plant Tool Bindings, and one Lightly Burnt Twig. A completed assembly is worked with the Crude Stone Hammer.
+- `HarvestingToolAssemblyBlock` stages two Very Refined Stone, one Plant Tool Binding, and one Lightly Burnt Twig. The binding used to begin the assembly is the full binding cost; a second binding is no longer consumed. A completed assembly is worked with the Crude Stone Hammer.
 - The player-facing result is **Crude Stone Cutters**. The internal registry ID remains `projectflint:crude_harvesting_tool` and the Java class remains `CrudeHarvestingToolItem` so the alpha.14 hardening patch does not needlessly churn save/resource identifiers.
 - The hammer and cutters use standard Minecraft item attribute components rather than a custom combat subsystem. The hammer resolves to 2.0 total attack damage / 0.8 attack speed; the cutters resolve to 1.0 total attack damage / 1.2 attack speed.
 - Durability is native item durability: 24 uses for the hammer and 48 for the cutters. `ServerPlayerGameModeMixin` charges cutter durability for Short Grass/flower harvesting and hammer durability for its existing processing operations.
@@ -601,3 +601,16 @@ Sugarcane Roll production is intentionally exclusive to `FLINT_PLANT_CUTTERS`. T
 ## Wood -> Water workstation rendering (v0.28.37-a)
 
 The Sanding Station, Water Pot, and Lumber Processor Chopping Block now use owner-finalized textures rather than pending/null models. The Sanding Station uses the supplied sanding-board texture on its work surface with vanilla oak planks retained for its supporting faces. The Lumber Processor Chopping Block maps its supplied top, side, and bottom sprites directly. The Water Pot has a dedicated front sprite, so `WaterPotBlock` now exposes a horizontal `FACING` state and its blockstate rotates the model accordingly. This rendering property does not alter reservoir capacity, Lumber Processor linking, or saved water contents.
+
+
+## Unified detailed advancement guide (v0.28.39-a)
+
+Project Flint advancements are once again one continuous `projectflint:root` progression tree. The temporary Tool/Clay/Wood tab split is retired. The advancement UI is intentionally closer to a quest book than a conventional achievement list: nearly every meaningful progression action receives its own visible milestone, and descriptions may explain exact counts, tools, timing, success rates, or workstation actions when that information prevents the player from becoming stuck.
+
+The custom workstation recipe guide remains the authority for browsing bulk station recipes, but it does **not** replace advancement instructions for discovering progression. Advancements should tell the player what to do next and why an upgrade matters; the recipe guide answers “what can this machine process?”
+
+Early-game pacing constants are centralized in `GameplayTuning`: Grass scraping is roughly seven seconds, hand-scraped Grass has a 58% Plant Fiber chance, Twig Pile ignition succeeds 65% of the time, and regular Rock knapping has a three-failure pity counter that guarantees the next attempt. `PrimitiveEnvironmentEffectSystem` now waits ten continuous seconds of qualifying darkness before applying Terrified while preserving the separate 45-second damage grace.
+
+
+## v0.28.41-a foliage capability regression guard
+`ToolCapabilities.canHarvestLeaves(...)` must include the Crude Multitool as well as Flint Multitool, Flint Plant Cutters, and Advanced Flint Multitool. The Crude Multitool is the first progression stage that turns leaves into a dependable Branch source; removing it from that capability dead-ends the primitive woodworking chain. Its intended leaf output remains 4 Twigs + 1 Branch.

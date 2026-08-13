@@ -1,27 +1,6 @@
 {
   "parent": "projectflint:clay_mortar",
-  "criteria": {
-    "mixed_unfired_mortar_bricks": {
-      "trigger": "minecraft:impossible"
-    }
-  },
-  "display": {
-    "announce_to_chat": false,
-    "description": {
-      "text": "Mix Clay Mortar at water to form Unfired Mortar Bricks."
-    },
-    "icon": {
-      "count": 1,
-      "id": "projectflint:unfired_mortar_brick"
-    },
-    "show_toast": true,
-    "title": {
-      "text": "Shaped for Firing"
-    }
-  },
-  "requirements": [
-    [
-      "mixed_unfired_mortar_bricks"
-    ]
-  ]
+  "criteria": {"mixed_unfired_mortar_bricks": {"trigger": "minecraft:impossible"}},
+  "display": {"announce_to_chat": false, "description": {"text": "Mix Clay Mortar at water to form 4 Unfired Mortar Bricks."}, "icon": {"count": 1, "id": "projectflint:unfired_mortar_brick"}, "show_toast": true, "title": {"text": "Shaped for Firing"}},
+  "requirements": [["mixed_unfired_mortar_bricks"]]
 }

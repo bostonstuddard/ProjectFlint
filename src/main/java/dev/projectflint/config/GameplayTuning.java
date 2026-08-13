@@ -5,17 +5,18 @@ public final class GameplayTuning {
 	}
 
 	// Restored to the alpha.3 rate after alpha.4 over-corrected it.
-	public static final float GRASS_STRIP_PROGRESS_PER_TICK = 1.0F / 156.0F;
+	public static final float GRASS_STRIP_PROGRESS_PER_TICK = 1.0F / 140.0F;
 	public static final float HAND_CLEAR_FOLIAGE_PROGRESS_PER_TICK = 1.0F / 150.0F;
 	// 1.75x slower than alpha.4's 34-tick bush cut.
 	public static final float BUSH_CUT_PROGRESS_PER_TICK = 1.0F / 60.0F;
 	public static final float CRUDE_HAMMER_REED_PROGRESS_PER_TICK = GRASS_STRIP_PROGRESS_PER_TICK;
 	public static final float CRUDE_HAMMER_STONE_PROGRESS_PER_TICK = 1.0F / 234.0F;
-	public static final float GRASS_FIBER_CHANCE = 0.45F;
+	public static final float GRASS_FIBER_CHANCE = 0.58F;
 
 	public static final int STONE_WORKING_STRIKES_PER_ATTEMPT = 8;
 	public static final int STONE_WORKING_RESET_TICKS = 100;
 	public static final float STONE_WORKING_SUCCESS_CHANCE = 0.68F;
+	public static final int REGULAR_ROCK_FAILURES_BEFORE_GUARANTEE = 3;
 
 	public static final int BUSH_MIN_TWIGS = 3;
 	public static final int BUSH_MAX_TWIGS = 4;
@@ -25,7 +26,7 @@ public final class GameplayTuning {
 	public static final int ROCK_PILE_CAPACITY = 12;
 	public static final int VERY_REFINED_STONE_PILE_CAPACITY = 8;
 	public static final int TWIG_IGNITION_STACK_SIZE = 4;
-	public static final float TWIG_IGNITION_SUCCESS_CHANCE = 0.50F;
+	public static final float TWIG_IGNITION_SUCCESS_CHANCE = 0.65F;
 	public static final int TWIG_FIRE_DURATION_TICKS = 20 * 10;
 
 	public static final int CAMPFIRE_STONE_KNAPPING_STRIKES = STONE_WORKING_STRIKES_PER_ATTEMPT * 2;

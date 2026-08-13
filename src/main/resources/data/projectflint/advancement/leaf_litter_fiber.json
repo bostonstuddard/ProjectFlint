@@ -1,5 +1,5 @@
 {
-  "parent": "projectflint:first_twigs",
+  "parent": "projectflint:crude_harvesting_tool",
   "criteria": {
     "harvested_leaf_litter_fiber": {
       "trigger": "minecraft:impossible"
@@ -8,7 +8,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Scrape grass or gather Leaf Litter to obtain Plant Fiber."
+      "text": "Cut Leaf Litter for Plant Fiber. Output scales with visible layers: Crude Stone Cutters and Crude Multitool give up to 2, Flint Multitool 4, and Flint Plant Cutters/Advanced Flint Multitool 6."
     },
     "icon": {
       "count": 1,

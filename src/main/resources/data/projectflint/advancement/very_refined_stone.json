@@ -8,7 +8,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Use a Loose Rock on Crushed Stone to make Very Refined Stone."
+      "text": "Right-click persistent Crushed Stone with a Loose Rock. The Rock is consumed and becomes 1 Very Refined Stone; the Crushed Stone surface remains."
     },
     "icon": {
       "count": 1,

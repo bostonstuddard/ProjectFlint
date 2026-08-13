@@ -1,5 +1,5 @@
 {
-  "parent": "projectflint:leaf_litter_fiber",
+  "parent": "projectflint:disturbed_earth",
   "criteria": {
     "made_crude_string": {
       "trigger": "minecraft:impossible"
@@ -8,7 +8,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Work 2 Plant Fiber with a Refined Rock to make Crude Plant String."
+      "text": "Place 2 Plant Fiber on supported ground, then work the completed fiber pile with a Refined Rock. The Refined Rock is consumed."
     },
     "icon": {
       "count": 1,

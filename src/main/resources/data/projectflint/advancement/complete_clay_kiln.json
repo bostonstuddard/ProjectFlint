@@ -8,7 +8,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Finish the two-block Clay Kiln so you can begin reliable high-heat processing."
+      "text": "Load the baked kiln base with 8 Branches and ignite it with the Flint Firestarter while the shaped upper form is in place. After 30 seconds the upper block bakes, completing the 2-high kiln."
     },
     "icon": {
       "count": 1,

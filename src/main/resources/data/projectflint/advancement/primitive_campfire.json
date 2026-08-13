@@ -8,7 +8,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Build a frame of 12 Campfire Stones and 12 Lightly Burnt Twigs for a permanent campfire."
+      "text": "Place a Campfire Stone on supported ground, then build the frame to exactly 12 Campfire Stones and 12 Lightly Burnt Twigs. The completed structure stays in the world after its 30-second flame goes out and can be relit."
     },
     "icon": {
       "count": 1,

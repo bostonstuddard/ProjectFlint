@@ -15,7 +15,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Fire the glass blank in a kiln to make Advanced Kiln Glass."
+      "text": "Fire the kiln glass blank in a clay kiln."
     },
     "icon": {
       "count": 1,

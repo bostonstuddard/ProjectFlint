@@ -15,7 +15,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Fire an Unfired Clay Ball with Twigs to make Fired Clay."
+      "text": "Place an Unfired Clay Ball on supported ground, add 4 Twigs, then ignite it with the Flint Firestarter. After 30 seconds it yields 2 Fired Clay."
     },
     "icon": {
       "count": 1,

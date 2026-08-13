@@ -8,7 +8,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Use Cutters on Short Grass to gather Crude Plant String directly."
+      "text": "Cut Short Grass with Cutters or either Multitool. Cutters and the Crude Multitool yield 1 Crude Plant String; the Flint Multitool yields 2. The operation costs 1 tool durability."
     },
     "icon": {
       "count": 1,

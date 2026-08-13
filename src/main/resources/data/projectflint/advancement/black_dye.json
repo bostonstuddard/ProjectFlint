@@ -1,27 +1,6 @@
 {
   "parent": "projectflint:sanding_paper",
-  "criteria": {
-    "filed_ink_sac": {
-      "trigger": "minecraft:impossible"
-    }
-  },
-  "display": {
-    "announce_to_chat": false,
-    "description": {
-      "text": "File an Ink Sac with Sanding Paper to make Black Dye."
-    },
-    "icon": {
-      "count": 1,
-      "id": "minecraft:black_dye"
-    },
-    "show_toast": true,
-    "title": {
-      "text": "Soot-Black Pigment"
-    }
-  },
-  "requirements": [
-    [
-      "filed_ink_sac"
-    ]
-  ]
+  "criteria": { "filed_ink_sac": { "trigger": "minecraft:impossible" } },
+  "display": { "announce_to_chat": false, "description": { "text": "File an Ink Sac against reusable Sanding Paper to make Black Dye." }, "icon": { "count": 1, "id": "minecraft:black_dye" }, "show_toast": true, "title": { "text": "Soot-Black Pigment" } },
+  "requirements": [["filed_ink_sac"]]
 }

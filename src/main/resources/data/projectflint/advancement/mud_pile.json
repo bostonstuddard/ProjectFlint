@@ -1,5 +1,5 @@
 {
-  "parent": "projectflint:wattle",
+  "parent": "projectflint:dirt_pile",
   "criteria": {
     "obtained": {
       "trigger": "minecraft:impossible"
@@ -8,7 +8,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Wet a Dirt Pile against water to make a Mud Pile."
+      "text": "Wet a Dirt Pile directly against water to make a Mud Pile."
     },
     "icon": {
       "count": 1,

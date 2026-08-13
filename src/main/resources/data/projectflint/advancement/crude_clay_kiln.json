@@ -8,7 +8,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Cut a Crude Clay Block with Cutters or a Multitool to shape the kiln base."
+      "text": "Right-click a Crude Clay Block with Cutters or either Multitool to cut it into a Crude Clay Kiln. Before baking, the kiln can still be broken by hand and moved."
     },
     "icon": {
       "count": 1,

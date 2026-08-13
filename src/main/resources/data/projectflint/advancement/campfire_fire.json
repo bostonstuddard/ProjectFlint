@@ -8,7 +8,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Relight a completed Permanent Campfire with 8 Flower Petals and at least 4 Twigs."
+      "text": "With a completed Primitive Campfire, hold exactly 8 Flower Petals in your main hand and at least 4 Twigs in your offhand. Lighting consumes only the 8 Flower Petals, burns for 30 seconds, then returns to an unlit relightable frame."
     },
     "icon": {
       "count": 1,

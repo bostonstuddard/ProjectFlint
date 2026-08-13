@@ -15,7 +15,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Grind Mortar Bricks into 2 Mortar Brick Slabs."
+      "text": "Cut Mortar Bricks into two slabs in the Clay Grinder."
     },
     "icon": {
       "count": 1,

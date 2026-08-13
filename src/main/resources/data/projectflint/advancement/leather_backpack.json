@@ -1,5 +1,5 @@
 {
-  "parent": "projectflint:ground_leather",
+  "parent": "projectflint:wooden_grinder",
   "criteria": {
     "obtained": {
       "trigger": "minecraft:inventory_changed",
@@ -15,7 +15,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Upgrade a Reed Backpack with finished Leather in the Wooden Grinder."
+      "text": "Upgrade a Reed Backpack with Leather."
     },
     "icon": {
       "count": 1,

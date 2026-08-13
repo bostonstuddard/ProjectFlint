@@ -8,7 +8,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Use a Multitool on leaves to begin harvesting Branches."
+      "text": "Break any vanilla leaves-tag block with either Multitool to receive 4 Twigs + 1 Branch. Flint-tier harvesting is substantially faster but keeps the same leaf output."
     },
     "icon": {
       "count": 1,

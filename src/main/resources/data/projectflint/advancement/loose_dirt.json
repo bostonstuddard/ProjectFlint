@@ -8,7 +8,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Compact 4 Dirt Piles with a hammer-like tool to make Loose Dirt."
+      "text": "Place Dirt Piles together on supported ground. At exactly 4 Dirt Piles, strike the pile with any hammer-like tool to compact it into 1 Loose Dirt. Loose Dirt falls under gravity like Sand or Gravel."
     },
     "icon": {
       "count": 1,

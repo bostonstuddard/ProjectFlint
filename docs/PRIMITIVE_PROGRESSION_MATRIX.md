@@ -16,7 +16,7 @@ This document is the developer-facing source of truth for the currently implemen
 | Crude Reed | Hammer bootstrap from Sugar Cane; later hand-worked with cutter-like tools | 4 | Binding input |
 | Plant Tool Binding | 4 Crude Reeds + 2 Crude Plant Strings | 32 | Tool assembly component |
 | Very Refined Stone | Rock-on-Crushed-Stone refinement | 8 | Cutters/campfire/grinder progression |
-| Crude Stone Cutters | 2 Very Refined Stone + 2 Plant Tool Binding + 1 Lightly Burnt Twig | 1 | 48 durability |
+| Crude Stone Cutters | 2 Very Refined Stone + 1 Plant Tool Binding + 1 Lightly Burnt Twig | 1 | 48 durability |
 | Campfire Stone | 16-strike Very Refined Stone work, 100% | 12 | Permanent campfire frame |
 | Burnt Twig | Instant permanent-campfire/kiln processing of Twig | 16 | Later fire material; no cook timer |
 | Branch | Multitool harvesting of leaves; Clay Grinder: 2 Twigs → 1 | 16 | Flint-tier construction/fuel |

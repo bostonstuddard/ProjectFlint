@@ -8,7 +8,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Use the Flint Axe to slowly hew a log into its stripped form."
+      "text": "Spend 10 seconds cutting a log with the Flint Axe and recover its stripped version."
     },
     "icon": {
       "count": 1,

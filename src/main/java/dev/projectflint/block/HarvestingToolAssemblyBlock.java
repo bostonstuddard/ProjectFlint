@@ -29,7 +29,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
  *
  * The assembly begins when a Plant Tool Binding is placed, then accepts:
  *  - 2 Very Refined Stone
- *  - 2 Plant Tool Bindings total
+ *  - 1 Plant Tool Binding total (the binding used to start the assembly)
  *  - 1 Lightly Burnt Twig
  *
  * A completed assembly is worked with the Crude Stone Hammer.
@@ -63,15 +63,8 @@ public final class HarvestingToolAssemblyBlock extends SupportedGroundBlock {
 		}
 
 		if (stack.is(ModItems.PLANT_TOOL_BINDING)) {
-			int bindings = state.getValue(BINDINGS);
-			if (bindings >= 2) {
-				return InteractionResult.SUCCESS;
-			}
-			if (!level.isClientSide()) {
-				stack.consume(1, player);
-				level.setBlockAndUpdate(pos, state.setValue(BINDINGS, bindings + 1));
-				level.playSound(null, pos, SoundEvents.WOOL_PLACE, SoundSource.BLOCKS, 0.45F, 1.12F);
-			}
+			// The starter binding is now the only binding required for Crude Stone Cutters.
+			// Do not consume a second binding when the player clicks the in-progress assembly.
 			return InteractionResult.SUCCESS;
 		}
 
@@ -135,13 +128,17 @@ public final class HarvestingToolAssemblyBlock extends SupportedGroundBlock {
 		ItemStack hammer = player.getItemInHand(hand);
 		if (!ModItems.isHammerLike(hammer)
 			|| state.getValue(STONES) != 2
-			|| state.getValue(BINDINGS) != 2
+			|| state.getValue(BINDINGS) < 1
 			|| !state.getValue(HAS_TWIG)) {
 			return InteractionResult.FAIL;
 		}
 
 		if (!level.isClientSide()) {
 			hammer.hurtAndBreak(1, player, hand);
+			if (state.getValue(BINDINGS) > 1) {
+				// Compatibility for assemblies started before v0.28.40-a: return the no-longer-required extra binding.
+				PrimitiveInteractionSystem.giveOrDrop(player, new ItemStack(ModItems.PLANT_TOOL_BINDING));
+			}
 			level.removeBlock(pos, false);
 			PrimitiveInteractionSystem.giveOrDrop(player, new ItemStack(ModItems.CRUDE_HARVESTING_TOOL));
 			level.playSound(null, pos, SoundEvents.STONE_HIT, SoundSource.BLOCKS, 0.8F, 0.86F);

@@ -15,7 +15,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Break a forage bush with a Refined Rock to gather your first Twigs."
+      "text": "Break a Project Flint forage bush with a Refined Rock for 3\u20134 Twigs, or use Crude Stone Cutters for exactly 4 Twigs at the cost of 1 cutter durability."
     },
     "icon": {
       "count": 1,

@@ -1,5 +1,5 @@
 {
-  "parent": "projectflint:02_wood_era/root",
+  "parent": "projectflint:crude_clay_block",
   "criteria": {
     "obtained": {
       "trigger": "minecraft:inventory_changed",
@@ -15,7 +15,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Fire a Crude Clay Block into an Unfired Clay Mold Base for advanced casting."
+      "text": "Heat a Crude Clay Block into an Unfired Clay Mold Base."
     },
     "icon": {
       "count": 1,

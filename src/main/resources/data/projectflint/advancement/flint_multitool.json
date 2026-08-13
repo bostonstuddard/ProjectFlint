@@ -8,7 +8,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Upgrade to the Flint Multitool for much faster digging, branch harvesting, and general work."
+      "text": "Assemble 2 vanilla Flint + 2 Burnt Branches on supported ground. The 256-durability Flint Multitool deals 3.5 total attack damage, inherits primitive tool jobs, and directly harvests whole flowers and bushes."
     },
     "icon": {
       "count": 1,

@@ -1,5 +1,5 @@
 {
-  "parent": "projectflint:unlit_flint_torch",
+  "parent": "projectflint:torch_holder",
   "criteria": {
     "obtained": {
       "trigger": "minecraft:impossible"
@@ -8,7 +8,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Combine a Torch Holder and Unlit Flint Torch, then mount it safely inside your shelter."
+      "text": "Combine a Torch Holder with an Unlit Flint Torch for a reusable wall fixture."
     },
     "icon": {
       "count": 1,

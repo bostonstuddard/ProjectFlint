@@ -1,5 +1,5 @@
 {
-  "parent": "projectflint:01_clay_era/root",
+  "parent": "projectflint:crude_harvesting_tool",
   "criteria": {
     "harvested_sugar_cane": {
       "trigger": "minecraft:impossible"
@@ -8,7 +8,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Cut Sugar Cane with plant-cutting tools to harvest entire connected stalks."
+      "text": "Break Sugar Cane with Crude Stone Cutters. The targeted cane and every cane block above it are harvested as normal vanilla Sugar Cane; the operation costs 1 cutter durability."
     },
     "icon": {
       "count": 1,

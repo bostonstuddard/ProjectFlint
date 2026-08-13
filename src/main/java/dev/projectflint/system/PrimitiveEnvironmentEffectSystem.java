@@ -17,6 +17,7 @@ public final class PrimitiveEnvironmentEffectSystem {
 	private static final int REFRESH_TICKS = 100;
 	private static final int REFRESH_THRESHOLD = 60;
 	private static final int DRENCHED_AFTER_TICKS = 20 * 90;
+	private static final int TERRIFIED_EFFECT_DELAY = 20 * 10;
 	private static final int TERRIFIED_DAMAGE_DELAY = 20 * 45;
 	private static final int TERRIFIED_DAMAGE_INTERVAL = 40;
 	private static final Map<UUID, Long> DARK_SINCE = new HashMap<>();
@@ -59,10 +60,13 @@ public final class PrimitiveEnvironmentEffectSystem {
 			}
 			boolean terrified = effectiveBrightness < 5;
 			if (terrified) {
-				refresh(player, ModEffects.TERRIFIED);
-
 				long start = DARK_SINCE.computeIfAbsent(player.getUUID(), ignored -> level.getGameTime());
 				long elapsed = level.getGameTime() - start;
+				if (elapsed >= TERRIFIED_EFFECT_DELAY) {
+					refresh(player, ModEffects.TERRIFIED);
+				} else {
+					player.removeEffect(ModEffects.TERRIFIED);
+				}
 				if (elapsed >= TERRIFIED_DAMAGE_DELAY && elapsed % TERRIFIED_DAMAGE_INTERVAL < 5L) {
 					player.hurtServer(level, level.damageSources().wither(), 1.0F);
 				}

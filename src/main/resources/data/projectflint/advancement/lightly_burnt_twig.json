@@ -1,5 +1,5 @@
 {
-  "parent": "projectflint:first_fire",
+  "parent": "projectflint:burnt_twig",
   "criteria": {
     "split_burnt_twig": {
       "trigger": "minecraft:impossible"
@@ -8,7 +8,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Touch a Twig to the temporary fire to make a Lightly Burnt Twig."
+      "text": "After unlocking Burnt Twig at the permanent campfire, hold a Burnt Twig in your main hand and a Crude Stone Hammer in your offhand. Complete an 8-strike handworking cycle to split it into 2 Lightly Burnt Twigs; completion costs 1 hammer durability."
     },
     "icon": {
       "count": 1,

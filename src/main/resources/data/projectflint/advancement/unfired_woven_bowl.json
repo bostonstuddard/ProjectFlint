@@ -8,7 +8,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Press the Crudely Woven Bowl into Clay to line it for firing."
+      "text": "Right-click a vanilla Clay block with the Crudely Woven Bowl. The Clay block is consumed and the bowl becomes an Unfired Woven Bowl."
     },
     "icon": {
       "count": 1,

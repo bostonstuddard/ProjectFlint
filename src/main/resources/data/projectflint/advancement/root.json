@@ -8,15 +8,15 @@
     "announce_to_chat": false,
     "background": "minecraft:gui/advancements/backgrounds/stone",
     "description": {
-      "text": "Follow each primitive tool step from your first Loose Rock to the Flint Multitool."
+      "text": "A detailed step-by-step guide through Project Flint progression, from your first Plant Fiber and stone knapping to clay, wood, machinery, and early water technology."
     },
     "icon": {
       "count": 1,
-      "id": "projectflint:flint_multitool"
+      "id": "projectflint:rock"
     },
     "show_toast": false,
     "title": {
-      "text": "Tool Era"
+      "text": "ProjectFlint"
     }
   },
   "requirements": [

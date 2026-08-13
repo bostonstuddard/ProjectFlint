@@ -1,5 +1,5 @@
 {
-  "parent": "projectflint:00_tool_era/root",
+  "parent": "projectflint:root",
   "criteria": {
     "rock": {
       "conditions": {
@@ -15,7 +15,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Pick up a naturally generated Loose Rock to begin working stone."
+      "text": "Find a naturally generated Loose Rock on exposed ground and collect it into one of your five usable primitive inventory slots."
     },
     "icon": {
       "count": 1,

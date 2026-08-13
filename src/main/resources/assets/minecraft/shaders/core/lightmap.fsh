@@ -75,7 +75,7 @@ void main() {
     // Survival hardcore darkness: daylight remains normal while moonlight/night sky
     // rapidly collapses toward zero. Block light is never distance-clipped, so fires,
     // torches, and lit structures remain useful navigation landmarks.
-    float hardened_sky_factor = smoothstep(0.38, 0.92, raw_sky_factor);
+    float hardened_sky_factor = smoothstep(0.28, 0.88, raw_sky_factor);
     hardened_sky_factor *= hardened_sky_factor;
     float sky_brightness = get_brightness(floor(texCoord.y * 16.0) / 15.0) * hardened_sky_factor;
     float dominant_light = clamp(max(block_brightness, sky_brightness), 0.0, 1.0);

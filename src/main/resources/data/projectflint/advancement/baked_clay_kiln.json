@@ -8,7 +8,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Load the crude kiln with Branches and ignite it to bake the kiln base."
+      "text": "Fit the Crude Clay Kiln with 8 Branches and ignite it with a Flint Firestarter. After 30 seconds it becomes a Baked Clay Kiln that current tools cannot move or break."
     },
     "icon": {
       "count": 1,

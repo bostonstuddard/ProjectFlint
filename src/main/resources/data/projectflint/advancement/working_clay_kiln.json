@@ -8,7 +8,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Ignite the completed kiln to begin reliable high-heat processing."
+      "text": "A completed two-block kiln takes 8 Branches and 1 Flint Firestarter use to ignite. Each firing burns for 5 minutes."
     },
     "icon": {
       "count": 1,

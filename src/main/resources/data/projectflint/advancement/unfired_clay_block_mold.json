@@ -15,7 +15,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Shape an Unfired Clay Mold Base into a Block Mold."
+      "text": "Shape an Unfired Clay Block Mold in a grinder."
     },
     "icon": {
       "count": 1,
@@ -23,7 +23,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Block Mold"
+      "text": "Clay Block Mold"
     }
   },
   "requirements": [

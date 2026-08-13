@@ -84,6 +84,9 @@ public final class ToolCapabilities {
 
 	/** Plant-cutting tools that inherit Flint Multitool foliage harvesting without gaining mining/earth capabilities. */
 	public static boolean canHarvestLeaves(ItemStack stack) {
-		return stack.is(ModItems.FLINT_MULTITOOL) || stack.is(ModItems.FLINT_PLANT_CUTTERS) || stack.is(ModItems.ADVANCED_FLINT_MULTITOOL);
+		return stack.is(ModItems.CRUDE_MULTITOOL)
+			|| stack.is(ModItems.FLINT_MULTITOOL)
+			|| stack.is(ModItems.FLINT_PLANT_CUTTERS)
+			|| stack.is(ModItems.ADVANCED_FLINT_MULTITOOL);
 	}
 }
