@@ -7,6 +7,11 @@ ProjectFlint takes inspiration from Vintage Story, TerraFirmaCraft, Better Than 
 
 **ProjectFlint is for Fabric 1.21.11; no other versions have planned support as of this moment.**
 
+# Beta 0.31.11
+A primitive kitchen, fitted with cabinets, a recipe research station, and chests to store your food!
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/8bab4c47-d9f3-41d2-9c89-2f50c2466a63" />
+
+
 # Beta 0.28.16
 Features bears, multiblock advanced kiln, mortar kiln, woven and mortar chests, and the stone grinder.
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/a03e277f-78a9-436c-afc1-624bd0d26547" />
