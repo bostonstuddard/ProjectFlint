@@ -1,8 +1,10 @@
 package dev.projectflint.menu;
 
 import dev.projectflint.block.entity.AdvancedKilnBlockEntity;
+import dev.projectflint.compat.flintquests.FlintQuestsBridge;
 import dev.projectflint.registry.ModItems;
 import dev.projectflint.registry.ModMenus;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
@@ -34,9 +36,13 @@ public final class AdvancedKilnMenu extends AbstractContainerMenu {
 		addSlot(inputSlot(container, data, AdvancedKilnBlockEntity.BRANCH_SLOT, 14, 33, 8));
 		addSlot(inputSlot(container, data, AdvancedKilnBlockEntity.MOLD_SLOT, 38, 33, 1));
 		addSlot(inputSlot(container, data, AdvancedKilnBlockEntity.FLINT_SLOT, 62, 33, 8));
-		addSlot(inputSlot(container, data, AdvancedKilnBlockEntity.FIRED_CLAY_SLOT, 86, 33, 4));
+		addSlot(inputSlot(container, data, AdvancedKilnBlockEntity.FIRED_CLAY_SLOT, 86, 33, 8));
 		addSlot(new Slot(container, AdvancedKilnBlockEntity.OUTPUT_SLOT, 144, 33) {
 			@Override public boolean mayPlace(ItemStack stack) { return false; }
+			@Override public void onTake(Player player, ItemStack stack) {
+				if (player instanceof ServerPlayer serverPlayer) FlintQuestsBridge.onCraft(serverPlayer, "advanced_kiln", stack);
+				super.onTake(player, stack);
+			}
 		});
 
 		addStandardInventorySlots(inventory, 8, 84);
@@ -52,7 +58,7 @@ public final class AdvancedKilnMenu extends AbstractContainerMenu {
 					case AdvancedKilnBlockEntity.BRANCH_SLOT -> stack.is(ModItems.BURNT_BRANCH) || stack.is(ModItems.BRANCH);
 					case AdvancedKilnBlockEntity.MOLD_SLOT -> AdvancedKilnBlockEntity.isFiredMold(stack);
 					case AdvancedKilnBlockEntity.FLINT_SLOT -> stack.is(Items.FLINT);
-					case AdvancedKilnBlockEntity.FIRED_CLAY_SLOT -> stack.is(ModItems.FIRED_CLAY);
+					case AdvancedKilnBlockEntity.FIRED_CLAY_SLOT -> stack.is(ModItems.FIRED_CLAY) || stack.is(ModItems.UNFIRED_CLAY_BALL);
 					default -> false;
 				};
 			}
@@ -109,7 +115,7 @@ public final class AdvancedKilnMenu extends AbstractContainerMenu {
 		if (stack.is(ModItems.BURNT_BRANCH) || stack.is(ModItems.BRANCH)) return AdvancedKilnBlockEntity.BRANCH_SLOT;
 		if (AdvancedKilnBlockEntity.isFiredMold(stack)) return AdvancedKilnBlockEntity.MOLD_SLOT;
 		if (stack.is(Items.FLINT)) return AdvancedKilnBlockEntity.FLINT_SLOT;
-		if (stack.is(ModItems.FIRED_CLAY)) return AdvancedKilnBlockEntity.FIRED_CLAY_SLOT;
+		if (stack.is(ModItems.FIRED_CLAY) || stack.is(ModItems.UNFIRED_CLAY_BALL)) return AdvancedKilnBlockEntity.FIRED_CLAY_SLOT;
 		return -1;
 	}
 
