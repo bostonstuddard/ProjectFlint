@@ -14,7 +14,7 @@ import net.minecraft.world.level.levelgen.Heightmap;
 
 import java.util.List;
 
-/** Creative-only development dowsing rod for the virtual aquifer field. */
+/** Survival dowsing rod for locating the virtual aquifer field. */
 public final class AquiferFinderItem extends Item {
 	private static final int SEARCH_RADIUS = 96;
 	private static final int MAX_HIGHLIGHTS = 8;
@@ -25,8 +25,8 @@ public final class AquiferFinderItem extends Item {
 
 	@Override
 	public InteractionResult use(Level level, Player player, InteractionHand hand) {
-		if (!player.isCreative()) return InteractionResult.FAIL;
 		if (!(level instanceof ServerLevel serverLevel)) return InteractionResult.SUCCESS;
+		if (!player.isCreative()) player.getItemInHand(hand).hurtAndBreak(1, player, hand);
 
 		List<AquiferSystem.AquiferHit> hits = AquiferSystem.findNearby(serverLevel, player.blockPosition(), SEARCH_RADIUS, MAX_HIGHLIGHTS);
 		if (hits.isEmpty()) {

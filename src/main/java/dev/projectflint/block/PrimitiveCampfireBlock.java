@@ -1,5 +1,6 @@
 package dev.projectflint.block;
 
+import dev.projectflint.compat.flintquests.FlintQuestsBridge;
 import dev.projectflint.block.entity.PrimitiveCampfireBlockEntity;
 import dev.projectflint.config.GameplayTuning;
 import dev.projectflint.item.CrudePlantTorchItem;
@@ -74,6 +75,7 @@ public final class PrimitiveCampfireBlock extends Block implements EntityBlock {
 			if (campfire == null || !campfire.tryInsert(stack)) {
 				return InteractionResult.FAIL;
 			}
+			if (player instanceof ServerPlayer serverPlayer) FlintQuestsBridge.onWorkstationUse(serverPlayer, "primitive_campfire");
 			if (!player.isCreative()) {
 				stack.shrink(1);
 			}

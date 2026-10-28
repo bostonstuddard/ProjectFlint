@@ -35,10 +35,12 @@ public final class AdvancedKilnBlockEntity extends BaseContainerBlockEntity {
 	public static final int SLOT_COUNT = 5;
 	public static final int DEFAULT_PROCESS_TICKS = 20 * 60;
 	public static final int BURNT_BRANCH_BLOCK_PROCESS_TICKS = 20 * 15;
+	public static final int CRUDE_CLAY_BLOCK_PROCESS_TICKS = 20 * 20;
 
 	private NonNullList<ItemStack> items = NonNullList.withSize(SLOT_COUNT, ItemStack.EMPTY);
 	private int progress;
 	private int processTotal = DEFAULT_PROCESS_TICKS;
+	private int activeProcess = 0;
 
 	private final ContainerData data = new ContainerData() {
 		@Override
@@ -93,7 +95,7 @@ public final class AdvancedKilnBlockEntity extends BaseContainerBlockEntity {
 			case BRANCH_SLOT -> stack.is(ModItems.BURNT_BRANCH) || stack.is(ModItems.BRANCH);
 			case MOLD_SLOT -> isFiredMold(stack);
 			case FLINT_SLOT -> stack.is(Items.FLINT);
-			case FIRED_CLAY_SLOT -> stack.is(ModItems.FIRED_CLAY);
+			case FIRED_CLAY_SLOT -> stack.is(ModItems.FIRED_CLAY) || stack.is(ModItems.UNFIRED_CLAY_BALL);
 			default -> false;
 		};
 	}
@@ -114,6 +116,7 @@ public final class AdvancedKilnBlockEntity extends BaseContainerBlockEntity {
 			ProcessDefinition process = currentProcess();
 			if (process != null && canStartProcess(process)) {
 				consumeForProcess(process);
+				activeProcess = process.id();
 				processTotal = process.durationTicks();
 				progress = processTotal;
 				changed = true;
@@ -135,50 +138,42 @@ public final class AdvancedKilnBlockEntity extends BaseContainerBlockEntity {
 	private ProcessDefinition currentProcess() {
 		ItemStack mold = items.get(MOLD_SLOT);
 		if (mold.is(ModItems.FIRED_CLAY_BLOCK_MOLD)) {
-			return new ProcessDefinition(new ItemStack(ModItems.BURNT_BRANCH_BLOCK), 4, 4, 0, BURNT_BRANCH_BLOCK_PROCESS_TICKS, false, false);
+			if (items.get(FIRED_CLAY_SLOT).is(ModItems.UNFIRED_CLAY_BALL)) return new ProcessDefinition(2, new ItemStack(ModItems.CRUDE_CLAY_BLOCK, 3), 8, 0, ModItems.UNFIRED_CLAY_BALL, 8, CRUDE_CLAY_BLOCK_PROCESS_TICKS, true, false);
+			return new ProcessDefinition(1, new ItemStack(ModItems.BURNT_BRANCH_BLOCK), 4, 4, null, 0, BURNT_BRANCH_BLOCK_PROCESS_TICKS, false, false);
 		}
 		ItemStack result = outputFor(mold);
 		if (result.isEmpty()) return null;
-		return new ProcessDefinition(result, 8, 8, 4, DEFAULT_PROCESS_TICKS, true, mold.is(ModItems.FIRED_CLAY_POT_MOLD));
+		return new ProcessDefinition(3, result, 8, 8, ModItems.FIRED_CLAY, 4, DEFAULT_PROCESS_TICKS, true, mold.is(ModItems.FIRED_CLAY_POT_MOLD));
+	}
+
+	private ProcessDefinition activeDefinition() {
+		if (activeProcess == 1) return new ProcessDefinition(1, new ItemStack(ModItems.BURNT_BRANCH_BLOCK), 4, 4, null, 0, BURNT_BRANCH_BLOCK_PROCESS_TICKS, false, false);
+		if (activeProcess == 2) return new ProcessDefinition(2, new ItemStack(ModItems.CRUDE_CLAY_BLOCK, 3), 8, 0, ModItems.UNFIRED_CLAY_BALL, 8, CRUDE_CLAY_BLOCK_PROCESS_TICKS, true, false);
+		ItemStack result = outputFor(items.get(MOLD_SLOT));
+		return result.isEmpty() ? null : new ProcessDefinition(3, result, 8, 8, ModItems.FIRED_CLAY, 4, DEFAULT_PROCESS_TICKS, true, items.get(MOLD_SLOT).is(ModItems.FIRED_CLAY_POT_MOLD));
 	}
 
 	private boolean canStartProcess(ProcessDefinition process) {
-		ItemStack branchInput = items.get(BRANCH_SLOT);
-		if (process.usesBurntBranches()) {
-			if (!branchInput.is(ModItems.BURNT_BRANCH) || branchInput.getCount() < process.branchCount()) return false;
-		} else if (!branchInput.is(ModItems.BRANCH) || branchInput.getCount() < process.branchCount()) {
-			return false;
-		}
+		ItemStack branch = items.get(BRANCH_SLOT);
+		if (process.usesBurntBranches() ? (!branch.is(ModItems.BURNT_BRANCH) || branch.getCount() < process.branchCount()) : (!branch.is(ModItems.BRANCH) || branch.getCount() < process.branchCount())) return false;
 		if (items.get(FLINT_SLOT).getCount() < process.flintCount()) return false;
-		if (items.get(FIRED_CLAY_SLOT).getCount() < process.firedClayCount()) return false;
+		if (process.material() != null && (!items.get(FIRED_CLAY_SLOT).is(process.material()) || items.get(FIRED_CLAY_SLOT).getCount() < process.materialCount())) return false;
 		if (!isFiredMold(items.get(MOLD_SLOT))) return false;
-
 		ItemStack output = items.get(OUTPUT_SLOT);
-		if (output.isEmpty()) return true;
-		return ItemStack.isSameItemSameComponents(output, process.result())
-			&& output.getCount() + process.result().getCount() <= output.getMaxStackSize();
+		return output.isEmpty() || (ItemStack.isSameItemSameComponents(output, process.result()) && output.getCount() + process.result().getCount() <= output.getMaxStackSize());
 	}
 
 	private void consumeForProcess(ProcessDefinition process) {
-		items.get(BRANCH_SLOT).shrink(process.branchCount());
-		items.get(FLINT_SLOT).shrink(process.flintCount());
-		if (process.firedClayCount() > 0) items.get(FIRED_CLAY_SLOT).shrink(process.firedClayCount());
+		items.get(BRANCH_SLOT).shrink(process.branchCount()); items.get(FLINT_SLOT).shrink(process.flintCount());
+		if (process.materialCount() > 0) items.get(FIRED_CLAY_SLOT).shrink(process.materialCount());
 	}
 
 	private void finishProcess(Level level, BlockPos pos) {
-		ProcessDefinition process = currentProcess();
-		if (process == null) return;
+		ProcessDefinition process = activeDefinition(); activeProcess = 0; if (process == null) return;
 		ItemStack output = items.get(OUTPUT_SLOT);
-		if (output.isEmpty()) items.set(OUTPUT_SLOT, process.result().copy());
-		else if (ItemStack.isSameItemSameComponents(output, process.result())) output.grow(process.result().getCount());
-
+		if (output.isEmpty()) items.set(OUTPUT_SLOT, process.result().copy()); else if (ItemStack.isSameItemSameComponents(output, process.result())) output.grow(process.result().getCount());
 		if (process.consumeMold()) items.get(MOLD_SLOT).shrink(1);
-
-		if (level instanceof ServerLevel serverLevel) {
-			for (ServerPlayer player : serverLevel.players()) {
-				if (player.blockPosition().closerThan(pos, 8.0D)) ModAdvancements.awardAll(player, "advanced_kiln_process");
-			}
-		}
+		if (level instanceof ServerLevel serverLevel) for (ServerPlayer player : serverLevel.players()) if (player.blockPosition().closerThan(pos, 8.0D)) ModAdvancements.awardAll(player, "advanced_kiln_process");
 	}
 
 	public static boolean isFiredMold(ItemStack stack) {
@@ -206,6 +201,7 @@ public final class AdvancedKilnBlockEntity extends BaseContainerBlockEntity {
 		ContainerHelper.saveAllItems(output, items);
 		output.putInt("Progress", progress);
 		output.putInt("ProcessTotal", processTotal);
+		output.putInt("ActiveProcess", activeProcess);
 	}
 
 	@Override
@@ -215,8 +211,9 @@ public final class AdvancedKilnBlockEntity extends BaseContainerBlockEntity {
 		ContainerHelper.loadAllItems(input, items);
 		progress = input.getIntOr("Progress", 0);
 		processTotal = input.getIntOr("ProcessTotal", DEFAULT_PROCESS_TICKS);
+		activeProcess = input.getIntOr("ActiveProcess", 0);
 	}
 
-	private record ProcessDefinition(ItemStack result, int branchCount, int flintCount, int firedClayCount,
+	private record ProcessDefinition(int id, ItemStack result, int branchCount, int flintCount, net.minecraft.world.item.Item material, int materialCount,
 		int durationTicks, boolean usesBurntBranches, boolean consumeMold) {}
 }

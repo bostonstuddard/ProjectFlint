@@ -1,5 +1,6 @@
 package dev.projectflint.block;
 
+import dev.projectflint.compat.flintquests.FlintQuestsBridge;
 import dev.projectflint.block.entity.BakedClayKilnBlockEntity;
 import dev.projectflint.config.GameplayTuning;
 import dev.projectflint.registry.ModItems;
@@ -80,6 +81,7 @@ public final class MortarKilnBlock extends Block implements EntityBlock {
 			if (kiln != null && kiln.isBusy()) return InteractionResult.FAIL;
 			if (level.isClientSide()) return InteractionResult.SUCCESS;
 			if (kiln == null || !kiln.tryInsert(stack)) return InteractionResult.FAIL;
+			if (player instanceof net.minecraft.server.level.ServerPlayer serverPlayer) FlintQuestsBridge.onWorkstationUse(serverPlayer, "mortar_kiln");
 			if (!player.isCreative()) stack.shrink(1);
 			level.playSound(null, pos, SoundEvents.CAMPFIRE_CRACKLE, SoundSource.BLOCKS, 0.35F, 1.08F);
 			return InteractionResult.SUCCESS;

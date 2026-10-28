@@ -21,12 +21,14 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.BlockHitResult;
 
-/** Half-bucket clay water carrier. The filled form is an internal state item with the same display name. */
+/** Half-bucket clay water carrier. The filled form uses a distinct “(Filled)” display name. */
 public final class WaterBearingPotItem extends Item {
     private final boolean filled;
 
     public WaterBearingPotItem(Properties properties, boolean filled) {
-        super(properties.stacksTo(1).overrideDescription("item.projectflint.water_bearing_pot"));
+        super(properties.stacksTo(1).overrideDescription(
+            filled ? "item.projectflint.water_bearing_pot_filled" : "item.projectflint.water_bearing_pot"
+        ));
         this.filled = filled;
     }
 

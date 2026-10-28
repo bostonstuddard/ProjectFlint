@@ -39,7 +39,7 @@ public final class WovenWoolItem extends Item {
 			if (!level.getBlockState(headPos).canBeReplaced(placeContext)) return InteractionResult.FAIL;
 			return InteractionResult.SUCCESS;
 		}
-		if (!ModBlocks.SLEEPING_BAG.placePair(level, placePos, facing, net.minecraft.world.item.DyeColor.WHITE, placeContext)) {
+		if (!ModBlocks.SLEEPING_BAG.placePair(level, placePos, facing, net.minecraft.world.item.DyeColor.GREEN, placeContext)) {
 			return InteractionResult.FAIL;
 		}
 		if (context.getPlayer() == null || !context.getPlayer().isCreative()) {

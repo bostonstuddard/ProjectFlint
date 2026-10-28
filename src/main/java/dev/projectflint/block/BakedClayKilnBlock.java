@@ -1,5 +1,6 @@
 package dev.projectflint.block;
 
+import dev.projectflint.compat.flintquests.FlintQuestsBridge;
 import dev.projectflint.block.entity.BakedClayKilnBlockEntity;
 import dev.projectflint.config.GameplayTuning;
 import dev.projectflint.registry.ModBlocks;
@@ -89,6 +90,7 @@ public final class BakedClayKilnBlock extends Block implements EntityBlock {
 				if (kiln == null || !kiln.tryInsert(stack)) {
 					return InteractionResult.FAIL;
 				}
+				if (player instanceof net.minecraft.server.level.ServerPlayer serverPlayer) FlintQuestsBridge.onWorkstationUse(serverPlayer, "baked_kiln");
 				if (!player.isCreative()) {
 					stack.shrink(1);
 				}

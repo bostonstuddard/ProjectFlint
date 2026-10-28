@@ -74,6 +74,12 @@ public final class GameplayTuning {
 	public static final int KILN_MEAT_COOK_TICKS = 20 * 15;
 	public static final int PLANT_FIBER_COOK_TICKS = KILN_MEAT_COOK_TICKS * 5 / 4;
 	public static final float MORTAR_KILN_COOK_SPEED = 1.25F;
+	// Primitive Oven is +45% versus the shared 1.0 kiln baseline (not compounded with Mortar).
+	public static final float PRIMITIVE_STOVE_COOK_SPEED = 1.45F;
+	/** Brick Furnace is 20% faster than the 1.25x Mortar Kiln baseline. */
+	public static final float BRICK_FURNACE_COOK_SPEED = 1.50F;
+	/** Dedicated blast recipes/tuning are intentionally deferred; shares the Brick Furnace baseline for now. */
+	public static final float BRICK_BLAST_FURNACE_COOK_SPEED = BRICK_FURNACE_COOK_SPEED;
 	public static final float CAMPFIRE_COOK_SPEED = 0.90F;
 	public static final int KILN_BRANCH_CAPACITY = 8;
 	public static final int KILN_BAKE_TICKS = 20 * 30;

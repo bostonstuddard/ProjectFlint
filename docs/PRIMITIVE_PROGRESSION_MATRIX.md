@@ -191,7 +191,7 @@ Before a release after alpha.22, verify all of the following:
 19. Health thresholds use strict below-14/below-8 health checks, hunger uses food below 8, jumping is blocked while Hungry, and Dying + Hungry produces Weakness II.
 20. Mortar Bricks are kiln-only, non-gravity, and remain behind the hammer break capability.
 21. Eating any item in `projectflint:raw_meats` applies Poison I/Nausea I for 100 ticks and Hunger III for 60 ticks.
-22. The Clay Grinder consumes exactly 2 Twigs for 1 Branch.
+22. The Clay Grinder consumes exactly 4 Twigs for 1 Branch.
 
 ## Alpha.23 Advanced Kiln and cast-tool flow
 

@@ -27,7 +27,7 @@ public final class ReedBackpackLayer extends RenderLayer<AvatarRenderState, Play
 	@Override
 	public void submit(PoseStack poseStack, SubmitNodeCollector collector, int packedLight, AvatarRenderState state, float yRot, float xRot) {
 		boolean reed = state.chestEquipment.is(ModItems.REED_BACKPACK);
-		boolean leather = state.chestEquipment.is(ModItems.LEATHER_BACKPACK);
+		boolean leather = state.chestEquipment.is(ModItems.LEATHER_BACKPACK) || state.chestEquipment.is(ModItems.LEATHER_BACKPACK_WITH_CHEST);
 		if (!reed && !leather) return;
 		Minecraft client = Minecraft.getInstance();
 		if (client.player == null) return;

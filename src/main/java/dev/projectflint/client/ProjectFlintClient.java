@@ -4,9 +4,20 @@ import dev.projectflint.client.screen.AdvancedKilnScreen;
 import dev.projectflint.client.screen.ClayGrinderScreen;
 import dev.projectflint.client.screen.MortarChestScreen;
 import dev.projectflint.client.screen.ProjectFlintRecipeGuideScreen;
+import dev.projectflint.client.screen.ProjectFlintFieldGuideScreen;
 import dev.projectflint.client.screen.SandingStationScreen;
 import dev.projectflint.client.screen.WoodenGrinderScreen;
 import dev.projectflint.client.screen.WovenChestScreen;
+import dev.projectflint.client.screen.WoodenChestScreen;
+import dev.projectflint.client.screen.BookshelfScreen;
+import dev.projectflint.client.screen.WoodenCabinetScreen;
+import dev.projectflint.client.screen.PrimitiveStoveScreen;
+import dev.projectflint.client.screen.BrickFurnaceScreen;
+import dev.projectflint.client.screen.WellPulleyScreen;
+import dev.projectflint.client.screen.NestScreen;
+import dev.projectflint.client.screen.FireclayForgeScreen;
+import dev.projectflint.registry.ModBlockEntities;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import dev.projectflint.network.PrimitiveProgressPayload;
 import dev.projectflint.network.PlaceInWorldPayload;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
@@ -45,6 +56,10 @@ public final class ProjectFlintClient implements ClientModInitializer {
 		KeyMapping.Category.GAMEPLAY
 	));
 
+	private static final KeyMapping OPEN_FIELD_GUIDE = KeyBindingHelper.registerKeyBinding(new KeyMapping(
+		"key.projectflint.field_guide", InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_G, KeyMapping.Category.GAMEPLAY
+	));
+
 	@Override
 	public void onInitializeClient() {
 		MenuScreens.register(ModMenus.CLAY_GRINDER, ClayGrinderScreen::new);
@@ -53,6 +68,17 @@ public final class ProjectFlintClient implements ClientModInitializer {
 		MenuScreens.register(ModMenus.WOODEN_GRINDER, WoodenGrinderScreen::new);
 		MenuScreens.register(ModMenus.SANDING_STATION, SandingStationScreen::new);
 		MenuScreens.register(ModMenus.WOVEN_CHEST, WovenChestScreen::new);
+		MenuScreens.register(ModMenus.WOODEN_CHEST, WoodenChestScreen::new);
+		MenuScreens.register(ModMenus.WOODEN_DOUBLE_CHEST, WoodenChestScreen::new);
+		MenuScreens.register(ModMenus.BOOKSHELF, BookshelfScreen::new);
+		MenuScreens.register(ModMenus.WOODEN_CABINET, WoodenCabinetScreen::new);
+		MenuScreens.register(ModMenus.PRIMITIVE_STOVE, PrimitiveStoveScreen::new);
+		MenuScreens.register(ModMenus.BRICK_FURNACE, BrickFurnaceScreen::new);
+		MenuScreens.register(ModMenus.BRICK_BLAST_FURNACE, BrickFurnaceScreen::new);
+		MenuScreens.register(ModMenus.WELL_PULLEY, WellPulleyScreen::new);
+		MenuScreens.register(ModMenus.NEST, NestScreen::new);
+		MenuScreens.register(ModMenus.FIRECLAY_FORGE, FireclayForgeScreen::new);
+		BlockEntityRenderers.register(ModBlockEntities.WOODEN_CHEST, WoodenChestRenderer::new);
 		EntityModelLayerRegistry.registerModelLayer(BlackBearModel.BODY_LAYER, () -> BlackBearModel.createBodyLayer(false));
 		EntityModelLayerRegistry.registerModelLayer(BlackBearModel.BODY_LAYER_BABY, () -> BlackBearModel.createBodyLayer(true));
 		EntityModelLayerRegistry.registerModelLayer(BrownBearModel.BODY_LAYER, () -> BrownBearModel.createBodyLayer(false));
@@ -82,6 +108,11 @@ public final class ProjectFlintClient implements ClientModInitializer {
 		BlockRenderLayerMap.putBlock(ModBlocks.WOODEN_GRINDER, ChunkSectionLayer.CUTOUT);
 		BlockRenderLayerMap.putBlock(ModBlocks.WATTLED_DAUB_WINDOW, ChunkSectionLayer.CUTOUT);
 		BlockRenderLayerMap.putBlock(ModBlocks.WATTLED_DAUB_DOOR, ChunkSectionLayer.CUTOUT);
+		BlockRenderLayerMap.putBlock(ModBlocks.SAWMILL, ChunkSectionLayer.CUTOUT);
+		BlockRenderLayerMap.putBlock(ModBlocks.WOODEN_CABINET, ChunkSectionLayer.CUTOUT);
+		BlockRenderLayerMap.putBlock(ModBlocks.FLAX_CROP, ChunkSectionLayer.CUTOUT);
+		BlockRenderLayerMap.putBlock(ModBlocks.STRAWBERRY_BUSH, ChunkSectionLayer.CUTOUT);
+		BlockRenderLayerMap.putBlock(ModBlocks.ROPE, ChunkSectionLayer.CUTOUT);
 		registerBushColors(ModBlocks.FORAGE_BUSHES);
 		registerBushColors(ModBlocks.LEGACY_INACTIVE_BUSHES);
 
@@ -98,6 +129,11 @@ public final class ProjectFlintClient implements ClientModInitializer {
 			while (PLACE_IN_WORLD.consumeClick()) {
 				if (client.player != null && ClientPlayNetworking.canSend(PlaceInWorldPayload.TYPE)) {
 					ClientPlayNetworking.send(PlaceInWorldPayload.INSTANCE);
+				}
+			}
+			while (OPEN_FIELD_GUIDE.consumeClick()) {
+				if (client.player != null && client.screen == null) {
+					client.setScreen(new ProjectFlintFieldGuideScreen(null));
 				}
 			}
 			while (OPEN_RECIPE_GUIDE.consumeClick()) {

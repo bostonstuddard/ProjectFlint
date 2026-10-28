@@ -242,3 +242,13 @@ These are owner-supplied Project Flint assets. Preserve their pixels exactly in 
 
 ## v0.28.37-a owner-provided Wood -> Water workstation art
 Source archive: `new update stuff(3).zip` supplied directly by the Project Flint owner. Used byte-for-byte for the Sanding Station work surface, Lumber Processor Chopping Block top/side/bottom, and Water Pot front/side/top. See `TEXTURE_PROVENANCE.md` for exact hashes.
+
+
+## v0.31.0-b owner-provided Wood/Storage/Bone asset batch
+Source archive: `new update stuff(4).zip`, supplied directly by the Project Flint owner. Active item, beam, Water Pot, Bookshelf, Wooden Chest, Sawmill, Bone equipment, bear spawn-egg, Plant Fiber/Binding, Wooden Board, and Wood Firestarter PNGs are copied byte-for-byte. Exact hashes and destination mappings are in `TEXTURE_PROVENANCE.md`.
+
+`bound wooden processor.png` is intentionally not used: the owner explicitly instructed the Bound Wood Processor to use the existing Lumber Processor top texture instead. `beam.png` / `beamtop.png` are not used because the archive provides individual per-species beam assets. The chest/example and Sawmill/example JSON files are reference material rather than texture sources.
+
+
+## v0.31.45-b derived Hardwood Crafting Table textures
+`hardwood_crafting_table_side.png`, `_top.png`, and `_bottom.png` are 52% brightness derivatives of existing approved `lumber_processor_side.png`, `_top.png`, `_bottom.png`. Source pixels come from the Project Flint owner's earlier texture pack. These are transformations of approved assets, not AI-generated artwork. The Brick Shingles texture is reused as a reference in the baked Clay Kiln body and top models, with no pixel modification.

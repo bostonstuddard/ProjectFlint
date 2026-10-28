@@ -24,4 +24,13 @@ Never introduce a fourth numeric component. Versions such as `0.28.7.8-a` or `0.
 
 Historical files may retain old version strings as records, but every newly produced build, patch, release note, validator expectation, and cleanup BAT must use this scheme.
 
-Current release example: `0.28.41-a`.
+Current release example: `0.31.36-b`.
+
+
+- `0.31.33-b`: expanded researched bread/food economy and workstation placeholders.
+
+- `0.31.35-b`: revised Fireclay Forge stack/structure/fuel and byproduct operation, per-station guide coverage/marquee, and low-height prototype collisions.
+- `0.31.34-b`: revised nest/clay bucket/pulley, workstation model repair, and a Creative-only Fireclay Forge.
+- `0.31.32-b`: introduced wheat/dairy/fat/fireclay and Brick Furnace food-progression changes.
+
+- `0.31.36-b`: Tanned Leather gear and Utility Vest milestone; Charcoal-only Brick Furnace fuel.

@@ -1,8 +1,13 @@
 package dev.projectflint.client.screen;
 
 import dev.projectflint.recipe.ClayGrinderRecipeGuideRegistry;
+import dev.projectflint.recipe.BookshelfRecipeRegistry;
+import dev.projectflint.recipe.BrickFurnaceRecipeRegistry;
+import dev.projectflint.recipe.PersonalCraftingGuideRegistry;
 import dev.projectflint.recipe.WoodenGrinderRecipeRegistry;
 import dev.projectflint.recipe.SandingStationRecipeRegistry;
+import dev.projectflint.recipe.PrimitiveStoveRecipeRegistry;
+import dev.projectflint.item.RecipeParchmentItem;
 import dev.projectflint.registry.ModItems;
 import dev.projectflint.system.PrimitiveProcessingRecipe;
 import dev.projectflint.system.PrimitiveProcessingRegistry;
@@ -18,6 +23,9 @@ import net.minecraft.world.item.crafting.Ingredient;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import net.minecraft.core.registries.BuiltInRegistries;
 
 /** Player-facing recipe reference for Project Flint processing stations. */
 public final class ProjectFlintRecipeGuideScreen extends Screen {
@@ -115,36 +123,51 @@ public final class ProjectFlintRecipeGuideScreen extends Screen {
 		int pages = pageCount(recipes);
 		if (page >= pages) page = pages - 1;
 
-		ItemStack hovered = ItemStack.EMPTY;
+		HoveredInput hovered = null;
 		if (recipes.isEmpty()) {
 			graphics.drawCenteredString(font, Component.literal("No recipes registered."), width / 2, top + 108, 0xFFFFFFFF);
 		} else {
 			int start = page * RECIPES_PER_PAGE;
 			int end = Math.min(recipes.size(), start + RECIPES_PER_PAGE);
 			for (int i = start; i < end; i++) {
-				ItemStack rowHovered = renderRecipe(graphics, recipes.get(i), left + 16, top + ROW_TOP + (i - start) * ROW_HEIGHT, mouseX, mouseY);
-				if (!rowHovered.isEmpty()) hovered = rowHovered;
+				HoveredInput rowHovered = renderRecipe(graphics, recipes.get(i), left + 16, top + ROW_TOP + (i - start) * ROW_HEIGHT, mouseX, mouseY);
+				if (rowHovered != null) hovered = rowHovered;
 			}
 		}
 
 		graphics.drawCenteredString(font, Component.literal("Page " + (page + 1) + "/" + pages), width / 2, top + FOOTER_PAGE_Y, 0xFF3B352C);
 		super.render(graphics, mouseX, mouseY, partialTick);
-		if (!hovered.isEmpty()) {
-			graphics.setTooltipForNextFrame(font, hovered, mouseX, mouseY);
+		if (hovered != null) {
+			if (hovered.accepted.size() <= 1) graphics.setTooltipForNextFrame(font, hovered.stack, mouseX, mouseY);
+			else {
+				List<Component> lines = new ArrayList<>();
+				lines.add(hovered.stack.getHoverName());
+				// Long tags page their tooltip so the whole list remains readable on smaller screens.
+				int pageSize = 10;
+				int acceptedPages = (hovered.accepted.size() + pageSize - 1) / pageSize;
+				int pageIndex = (int)((System.currentTimeMillis() / 3500L) % acceptedPages);
+				lines.add(Component.literal("Accepted inputs" + (acceptedPages > 1 ? " (" + (pageIndex + 1) + "/" + acceptedPages + ")" : "") + ":"));
+				for (int index = pageIndex * pageSize; index < Math.min(hovered.accepted.size(), (pageIndex + 1) * pageSize); index++) {
+					ItemStack accepted = hovered.accepted.get(index);
+					lines.add(Component.literal("  " + accepted.getCount() + " × ").append(accepted.getHoverName()));
+				}
+				graphics.setComponentTooltipForNextFrame(font, lines, mouseX, mouseY);
+			}
 		}
 	}
 
-	private ItemStack renderRecipe(GuiGraphics graphics, GuideRecipe recipe, int x, int y, int mouseX, int mouseY) {
+	private HoveredInput renderRecipe(GuiGraphics graphics, GuideRecipe recipe, int x, int y, int mouseX, int mouseY) {
 		graphics.fill(x, y, x + PANEL_WIDTH - 32, y + 25, 0x66302A23);
-		ItemStack hovered = ItemStack.EMPTY;
+		HoveredInput hovered = null;
+		List<ItemStack> shownInputs = recipe.variants.get((int)((System.currentTimeMillis() / 1800L) % recipe.variants.size()));
 		int itemX = x + 7;
-		for (int i = 0; i < recipe.inputs.size(); i++) {
-			ItemStack stack = recipe.inputs.get(i);
+		for (int i = 0; i < shownInputs.size(); i++) {
+			ItemStack stack = shownInputs.get(i);
 			graphics.renderItem(stack, itemX, y + 5);
 			graphics.renderItemDecorations(font, stack, itemX, y + 5);
-			if (inside(mouseX, mouseY, itemX, y + 5, 16, 16)) hovered = stack;
+			if (inside(mouseX, mouseY, itemX, y + 5, 16, 16)) hovered = new HoveredInput(stack, recipe.accepted.get(i));
 			itemX += 25;
-			if (i + 1 < recipe.inputs.size()) {
+			if (i + 1 < shownInputs.size()) {
 				graphics.drawString(font, "+", itemX - 7, y + 9, 0xFFFFFFFF, false);
 			}
 		}
@@ -154,8 +177,26 @@ public final class ProjectFlintRecipeGuideScreen extends Screen {
 		graphics.drawString(font, "→", arrowX, y + 9, 0xFFFFFFFF, false);
 		graphics.renderItem(recipe.output, outputX, y + 5);
 		graphics.renderItemDecorations(font, recipe.output, outputX, y + 5);
-		if (inside(mouseX, mouseY, outputX, y + 5, 16, 16)) hovered = recipe.output;
-		graphics.drawString(font, recipe.output.getHoverName(), x + 194, y + 9, 0xFFFFFFFF, false);
+		if (inside(mouseX, mouseY, outputX, y + 5, 16, 16)) hovered = new HoveredInput(recipe.output, List.of(recipe.output));
+		// Settings-style marquee: keep long names inside their row, pause at either end,
+		// scroll only when their rendered width exceeds the available text area.
+		int labelX = x + 194;
+		int labelWidth = PANEL_WIDTH - 40 - 194;
+		Component name = recipe.output.getHoverName();
+		int overflow = Math.max(0, font.width(name) - labelWidth);
+		int offset = 0;
+		if (overflow > 0) {
+			long travelMs = overflow * 35L;
+			long phase = System.currentTimeMillis() % (travelMs * 2L + 1600L);
+			if (phase < 600L) offset = 0;
+			else if (phase < 600L + travelMs) offset = (int)((phase - 600L) / 35L);
+			else if (phase < 1000L + travelMs) offset = overflow;
+			else if (phase < 1000L + travelMs * 2L) offset = overflow - (int)((phase - 1000L - travelMs) / 35L);
+		}
+		graphics.enableScissor(labelX, y + 4, labelX + labelWidth, y + 23);
+		graphics.drawString(font, name, labelX - offset, y + 9, 0xFFFFFFFF, false);
+		graphics.disableScissor();
+		if (inside(mouseX, mouseY, labelX, y + 4, labelWidth, 19)) hovered = new HoveredInput(recipe.output, List.of(recipe.output));
 		return hovered;
 	}
 
@@ -164,20 +205,26 @@ public final class ProjectFlintRecipeGuideScreen extends Screen {
 	}
 
 	private List<GuideRecipe> recipes() {
-		return switch (station) {
+		return condense(switch (station) {
 			case BAKED_KILN, MORTAR_KILN -> primitiveRecipes(PrimitiveProcessor.KILN);
 			case CLAY_GRINDER -> clayGrinderRecipes();
 			case WOODEN_GRINDER -> woodenGrinderRecipes();
+			case BOOKSHELF -> bookshelfRecipes();
 			case SANDING_STATION -> sandingStationRecipes();
 			case ADVANCED_KILN -> advancedKilnRecipes();
-		};
+			case PRIMITIVE_OVEN -> primitiveOvenRecipes();
+			case BRICK_FURNACE -> brickFurnaceRecipes();
+			case FIRECLAY_FORGE -> fireclayForgeRecipes();
+			case BASIN -> basinRecipes();
+			case PERSONAL_CRAFTING -> personalCraftingRecipes();
+		});
 	}
 
 	private List<GuideRecipe> primitiveRecipes(PrimitiveProcessor processor) {
 		List<GuideRecipe> result = new ArrayList<>();
 		for (PrimitiveProcessingRecipe recipe : PrimitiveProcessingRegistry.recipesFor(processor)) {
 			ItemStack input = firstStack(recipe.input(), 1);
-			if (!input.isEmpty()) result.add(new GuideRecipe(List.of(input), recipe.output().copy()));
+			if (!input.isEmpty()) result.add(new GuideRecipe(List.of(input), recipe.output().copy(), List.of(allStacks(recipe.input(), 1))));
 		}
 		result.sort(Comparator.comparing(recipe -> recipe.output.getHoverName().getString()));
 		return result;
@@ -199,17 +246,99 @@ public final class ProjectFlintRecipeGuideScreen extends Screen {
 		for (WoodenGrinderRecipeRegistry.Definition recipe : WoodenGrinderRecipeRegistry.recipes()) {
 			ItemStack a = firstStack(recipe.inputA(), recipe.countA());
 			ItemStack b = firstStack(recipe.inputB(), recipe.countB());
+			if (!a.isEmpty() && !b.isEmpty()) result.add(new GuideRecipe(List.of(a, b), recipe.result().copy(),
+				List.of(allStacks(recipe.inputA(), recipe.countA()), allStacks(recipe.inputB(), recipe.countB()))));
+		}
+		result.sort(Comparator.comparing(recipe -> recipe.output.getHoverName().getString()));
+		return result;
+	}
+
+	private static List<GuideRecipe> bookshelfRecipes() {
+		List<GuideRecipe> result = new ArrayList<>();
+		for (BookshelfRecipeRegistry.Definition recipe : BookshelfRecipeRegistry.recipes()) {
+			ItemStack a = bookshelfInput(recipe.inputA(), recipe.countA(), recipe.parchmentRecipeA());
+			ItemStack b = bookshelfInput(recipe.inputB(), recipe.countB(), recipe.parchmentRecipeB());
 			if (!a.isEmpty() && !b.isEmpty()) result.add(new GuideRecipe(List.of(a, b), recipe.result().copy()));
 		}
 		result.sort(Comparator.comparing(recipe -> recipe.output.getHoverName().getString()));
 		return result;
 	}
 
+	private static ItemStack bookshelfInput(net.minecraft.world.item.crafting.Ingredient ingredient, int count, String parchmentRecipe) {
+		if (parchmentRecipe != null) {
+			ItemStack parchment = parchmentRecipe.isEmpty() ? new ItemStack(ModItems.RECIPE_PARCHMENT) : RecipeParchmentItem.boundStack(parchmentRecipe);
+			parchment.setCount(count);
+			return parchment;
+		}
+		return firstStack(ingredient, count);
+	}
+
 	private static List<GuideRecipe> sandingStationRecipes() {
 		List<GuideRecipe> result = new ArrayList<>();
 		for (SandingStationRecipeRegistry.Definition recipe : SandingStationRecipeRegistry.recipes()) {
 			ItemStack input = firstStack(recipe.input(), recipe.count());
-			if (!input.isEmpty()) result.add(new GuideRecipe(List.of(input), recipe.result().copy()));
+			if (!input.isEmpty()) result.add(new GuideRecipe(List.of(input), recipe.result().copy(), List.of(allStacks(recipe.input(), recipe.count()))));
+		}
+		result.sort(Comparator.comparing(recipe -> recipe.output.getHoverName().getString()));
+		return result;
+	}
+
+	private static List<GuideRecipe> basinRecipes() {
+		return List.of(new GuideRecipe(List.of(new ItemStack(Items.STRIPPED_OAK_LOG)), new ItemStack(ModItems.TANNIN, 2)),
+			new GuideRecipe(List.of(new ItemStack(Items.STRIPPED_OAK_WOOD)), new ItemStack(ModItems.TANNIN, 2)),
+			new GuideRecipe(List.of(new ItemStack(Items.STRIPPED_BIRCH_LOG)), new ItemStack(ModItems.TANNIN, 2)),
+			new GuideRecipe(List.of(new ItemStack(Items.STRIPPED_BIRCH_WOOD)), new ItemStack(ModItems.TANNIN, 2)));
+	}
+
+	private static List<GuideRecipe> personalCraftingRecipes() {
+		List<GuideRecipe> result = new ArrayList<>();
+		for (PersonalCraftingGuideRegistry.Definition entry : PersonalCraftingGuideRegistry.recipes())
+			result.add(new GuideRecipe(entry.inputs(), entry.result()));
+		result.sort(Comparator.comparing(recipe -> recipe.output.getHoverName().getString()));
+		return result;
+	}
+
+	private static List<GuideRecipe> brickFurnaceRecipes() {
+		List<GuideRecipe> results = new ArrayList<>();
+		for (PrimitiveProcessingRecipe process : PrimitiveProcessingRegistry.recipesFor(PrimitiveProcessor.KILN)) {
+			ItemStack input = firstStack(process.input(), 1);
+			if (!input.isEmpty()) results.add(new GuideRecipe(List.of(input), process.resultCopy()));
+		}
+		results.add(new GuideRecipe(List.of(new ItemStack(Items.LEATHER)), BrickFurnaceRecipeRegistry.TANNED_LEATHER.resultCopy()));
+		results.add(new GuideRecipe(List.of(new ItemStack(Items.SAND)), BrickFurnaceRecipeRegistry.GLASS.resultCopy()));
+		results.sort(Comparator.comparing(recipe -> recipe.output.getHoverName().getString()));
+		return results;
+	}
+
+	/** Wood fuel yields charcoal as a byproduct; future material recipes belong in the forge registry. */
+	private static List<GuideRecipe> fireclayForgeRecipes() {
+		return List.of(new GuideRecipe(List.of(new ItemStack(Items.OAK_LOG, 4)), new ItemStack(Items.CHARCOAL, 4),
+			List.of(acceptedForgeWood())));
+	}
+
+	private static List<ItemStack> acceptedForgeWood() {
+		return BuiltInRegistries.ITEM.stream()
+			.map(item -> new ItemStack(item, 4))
+			.filter(dev.projectflint.block.entity.FireclayForgeBlockEntity::isCharcoalWood)
+			.toList();
+	}
+
+	private static List<GuideRecipe> primitiveOvenRecipes() {
+		List<GuideRecipe> result = new ArrayList<>();
+		for (PrimitiveStoveRecipeRegistry.Definition recipe : PrimitiveStoveRecipeRegistry.parchmentRecipes()) {
+			List<ItemStack> inputs = new ArrayList<>();
+			List<List<ItemStack>> accepts = new ArrayList<>();
+			ItemStack parchment = RecipeParchmentItem.boundStack(recipe.id());
+			inputs.add(parchment);
+			accepts.add(List.of(parchment));
+			for (PrimitiveStoveRecipeRegistry.Requirement requirement : recipe.requirements()) {
+				ItemStack ingredient = firstStack(requirement.ingredient(), requirement.count());
+				if (!ingredient.isEmpty()) {
+					inputs.add(ingredient);
+					accepts.add(allStacks(requirement.ingredient(), requirement.count()));
+				}
+			}
+			result.add(new GuideRecipe(inputs, recipe.result().copy(), accepts));
 		}
 		result.sort(Comparator.comparing(recipe -> recipe.output.getHoverName().getString()));
 		return result;
@@ -218,6 +347,7 @@ public final class ProjectFlintRecipeGuideScreen extends Screen {
 	private static List<GuideRecipe> advancedKilnRecipes() {
 		List<GuideRecipe> result = new ArrayList<>();
 		result.add(recipe(new ItemStack(ModItems.FIRED_CLAY_BLOCK_MOLD), new ItemStack(ModItems.BRANCH, 4), new ItemStack(Items.FLINT, 4), new ItemStack(ModItems.BURNT_BRANCH_BLOCK)));
+		result.add(recipe(new ItemStack(ModItems.FIRED_CLAY_BLOCK_MOLD), new ItemStack(ModItems.BURNT_BRANCH, 8), new ItemStack(ModItems.UNFIRED_CLAY_BALL, 8), new ItemStack(ModItems.CRUDE_CLAY_BLOCK, 3)));
 		addAdvancedMold(result, ModItems.FIRED_CLAY_AXE_MOLD, ModItems.FLINT_AXE_PIECES, 1);
 		addAdvancedMold(result, ModItems.FIRED_CLAY_BRICK_MOLD, ModItems.MORTAR_BRICKS, 6);
 		addAdvancedMold(result, ModItems.FIRED_CLAY_CUTTERS_MOLD, ModItems.FLINT_CUTTER_PIECE, 1);
@@ -263,15 +393,68 @@ public final class ProjectFlintRecipeGuideScreen extends Screen {
 		return false;
 	}
 
-	private record GuideRecipe(List<ItemStack> inputs, ItemStack output) {}
+	/** Whole alternatives cycle as a unit; unrelated ingredient positions are never mixed. */
+	private static final class GuideRecipe {
+		private final List<ItemStack> inputs;
+		private final ItemStack output;
+		private final List<List<ItemStack>> variants = new ArrayList<>();
+		private final List<List<ItemStack>> accepted = new ArrayList<>();
+		private GuideRecipe(List<ItemStack> inputs, ItemStack output) {
+			this(inputs, output, inputs.stream().map(List::of).toList());
+		}
+		private GuideRecipe(List<ItemStack> inputs, ItemStack output, List<List<ItemStack>> choices) {
+			this.inputs = List.copyOf(inputs);
+			this.output = output;
+			variants.add(this.inputs);
+			for (List<ItemStack> choice : choices) accepted.add(new ArrayList<>(choice));
+		}
+		private void merge(GuideRecipe other) {
+			variants.addAll(other.variants);
+			for (int i = 0; i < accepted.size(); i++) {
+				for (ItemStack option : other.accepted.get(i)) {
+					if (accepted.get(i).stream().noneMatch(old -> ItemStack.isSameItemSameComponents(old, option) && old.getCount() == option.getCount()))
+						accepted.get(i).add(option);
+				}
+			}
+		}
+	}
 
+	private record HoveredInput(ItemStack stack, List<ItemStack> accepted) {}
+
+	private static List<ItemStack> allStacks(Ingredient ingredient, int count) {
+		return ingredient.items().map(holder -> new ItemStack(holder.value(), count)).toList();
+	}
+
+	/** One visible row per equivalent result; hover an input to see every supported option. */
+	private static List<GuideRecipe> condense(List<GuideRecipe> recipes) {
+		Map<String, GuideRecipe> grouped = new LinkedHashMap<>();
+		for (GuideRecipe recipe : recipes) {
+			String key = BuiltInRegistries.ITEM.getKey(recipe.output.getItem()) + ":" + recipe.output.getCount()
+				+ ":" + recipe.output.getComponents().hashCode() + ":" + recipe.inputs.size();
+			GuideRecipe existing = grouped.get(key);
+			if (existing == null) grouped.put(key, recipe);
+			else existing.merge(recipe);
+		}
+		return List.copyOf(grouped.values());
+	}
+
+	/** RELEASE CHECKLIST: Every new workstation needs a Station entry, its gameplay
+	 * recipe source in recipes(), an in-workstation RecipeGuideButton and a check in
+	 * docs/RECIPE_GUIDE_RELEASE_CHECKLIST.md. Keep this guide separate from PF-EMI.
+	 */
 	public enum Station {
 		BAKED_KILN(Component.literal("Baked Kiln")),
 		MORTAR_KILN(Component.literal("Mortar Kiln")),
 		CLAY_GRINDER(Component.literal("Clay Grinder")),
 		WOODEN_GRINDER(Component.literal("Wooden Grinder")),
+		BOOKSHELF(Component.literal("Bookshelf")),
 		SANDING_STATION(Component.literal("Sanding Station")),
-		ADVANCED_KILN(Component.literal("Advanced Kiln"));
+		ADVANCED_KILN(Component.literal("Advanced Kiln")),
+		PRIMITIVE_OVEN(Component.literal("Primitive Oven")),
+		BRICK_FURNACE(Component.literal("Brick Furnace")),
+		FIRECLAY_FORGE(Component.literal("Fireclay Forge")),
+		BASIN(Component.literal("Basin")),
+		PERSONAL_CRAFTING(Component.literal("Personal Crafting"));
 
 		private final Component title;
 		Station(Component title) { this.title = title; }

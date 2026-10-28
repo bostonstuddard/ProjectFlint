@@ -1186,7 +1186,7 @@ Next pressure: playtest the full no-skip chain and then define a reusable kiln-p
 
 - [x] Convert the portable Sleeping Bag into a linked two-block bed-style structure that advances a valid night.
 - [x] Separate Flint whole-plant harvesting from held-flower petal processing and cover vanilla bush variants.
-- [x] Add 2 Twigs → 1 Branch to the independent Clay Grinder recipe set.
+- [x] Add 4 Twigs → 1 Branch to the independent Clay Grinder recipe set.
 - [x] Establish Squid meat/bone loot and a tag-driven consequence shared by all raw meats and fish.
 - [x] Repair filled-bowl and placed Flint-assembly rendering using exact supplied human-made textures.
 - [ ] Next pressure: playtest the repaired rest/food loops before adding further food preservation or cooked seafood progression.
@@ -1344,3 +1344,30 @@ Future technology should add concise step-by-step advancement guidance as it is 
 
 ### v0.28.41-a progression-critical correction
 Crude Multitool leaf harvesting is explicitly protected as a progression gate: leaves must yield 4 Twigs + 1 Branch at this tier so Branch-based fire and woodworking progression remains reachable.
+
+
+## v0.31.0-b staged Wood/Knowledge follow-up
+- Add actual filled-Bookshelf recipes after the four-Book knowledge gate is playtested.
+- Promote Sawmill from Creative-only only when its multiblock/processing progression is designed.
+- Decide when Survival beam placement should unlock; all registered species variants remain Creative-only until then.
+- Give Flax Seeds their eventual farming chain; v0.31.0-b intentionally only establishes the Bone Hoe acquisition hook.
+
+## After v0.31.5-b — recipe research and kitchen pressure
+- Define the Primitive Stove's survival construction cost instead of exposing an arbitrary placeholder recipe.
+- Add the first Bookshelf research interaction that binds a concrete recipe id to a blank Recipe Parchment; bound parchments must remain immutable.
+- Keep the Wooden Cabinet parchment-only so research storage does not replace ordinary chests.
+- Playtest river/beach Limestone disk rarity and radius before expanding Limestone into larger deposits or deeper geology.
+- Use the Primitive Stove's parchment bridge for future prepared/cooked recipes rather than duplicating kiln recipe definitions.
+
+## After v0.31.7-b — researched cooking pressure
+- Playtest the 1.45x Primitive Oven against its four-stripped-log, 30-minute fuel cycle before introducing higher cooking tiers.
+- Add future prepared-food recipes through the shared parchment recipe registry so Oven processing, parchment lore, and the recipe guide remain synchronized.
+- Keep full-Bookshelf research inputs meaningful; when one research material can unlock several recipes, expose explicit selectable results rather than silently choosing one.
+- Expand Flax/textile progression from the new Flax-only String source instead of reintroducing mob String drops.
+- Preserve `player_placed` recovery semantics for Crushed Stone: building convenience must not make naturally produced Crushed Stone a free reusable resource.
+
+
+## v0.31.45-b implemented progression / follow-up
+- Implemented Wood Dust Basin milling, Hardwood, five-minute Charcoal Alloy forging and delayed 3×3 Hardwood Crafting Table with upgraded tools and Hammer.
+- Follow-up UI: explicit crafting result timer and Forge Alloy progress feedback.
+- External Flint Quests milestones: Wood Dust, Hardwood, Alloy, Table and Hammer.

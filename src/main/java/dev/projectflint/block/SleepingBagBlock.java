@@ -44,8 +44,8 @@ public final class SleepingBagBlock extends BedBlock {
 	public static final EnumProperty<DyeColor> COLOR = EnumProperty.create("color", DyeColor.class);
 
 	public SleepingBagBlock(BlockBehaviour.Properties properties) {
-		super(DyeColor.WHITE, properties);
-		registerDefaultState(defaultBlockState().setValue(COLOR, DyeColor.WHITE));
+		super(DyeColor.GREEN, properties);
+		registerDefaultState(defaultBlockState().setValue(COLOR, DyeColor.GREEN));
 	}
 
 	@Override
@@ -53,7 +53,7 @@ public final class SleepingBagBlock extends BedBlock {
 		Direction facing = context.getHorizontalDirection().getOpposite();
 		BlockPos footPos = context.getClickedPos();
 		BlockPos headPos = footPos.relative(facing);
-		DyeColor itemColor = context.getItemInHand().getOrDefault(DataComponents.BASE_COLOR, DyeColor.WHITE);
+		DyeColor itemColor = context.getItemInHand().getOrDefault(DataComponents.BASE_COLOR, DyeColor.GREEN);
 		BlockState state = defaultBlockState().setValue(FACING, facing).setValue(COLOR, itemColor);
 		return canPlacePair(context.getLevel(), footPos, headPos, context) && state.canSurvive(context.getLevel(), footPos)
 			? state
@@ -121,12 +121,17 @@ public final class SleepingBagBlock extends BedBlock {
 	}
 
 	public void removePairWithSalvage(Level level, BlockPos pos, BlockState state, ItemStack tool) {
+		removePairWithSalvage(level, pos, state, tool, false);
+	}
+
+	/** Utility Vest users recover the intact bedroll when dismantling it by hand. */
+	public void removePairWithSalvage(Level level, BlockPos pos, BlockState state, ItemStack tool, boolean recoverIntact) {
 		BlockPos footPos = footPosition(pos, state);
 		BlockPos headPos = footPos.relative(state.getValue(FACING));
 		if (level.getBlockState(headPos).is(this)) level.setBlock(headPos, Blocks.AIR.defaultBlockState(), Block.UPDATE_CLIENTS);
 		if (level.getBlockState(footPos).is(this)) level.setBlock(footPos, Blocks.AIR.defaultBlockState(), Block.UPDATE_CLIENTS);
 		ItemStack drop;
-		if (tool.is(ModItems.ADVANCED_FLINT_MULTITOOL)) {
+		if (recoverIntact || tool.is(ModItems.ADVANCED_FLINT_MULTITOOL)) {
 			drop = new ItemStack(ModItems.SLEEPING_BAG);
 			drop.set(DataComponents.BASE_COLOR, state.getValue(COLOR));
 		} else {

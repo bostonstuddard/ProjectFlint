@@ -1,6 +1,7 @@
 package dev.projectflint;
 
 import dev.projectflint.network.ModNetworking;
+import dev.projectflint.compat.flintquests.FlintQuestsBridge;
 import dev.projectflint.registry.ModBlocks;
 import dev.projectflint.registry.ModEffects;
 import dev.projectflint.registry.ModEntities;
@@ -23,8 +24,9 @@ import dev.projectflint.system.PrimitiveWorldRulesSystem;
 import dev.projectflint.system.PrimitiveWorldSetupSystem;
 import dev.projectflint.system.PrimitiveConditionSystem;
 import dev.projectflint.system.PlacedItemSystem;
-import dev.projectflint.system.PrimitiveItemAdvancementSystem;
+import dev.projectflint.system.ProjectFlintBrushSystem;
 import dev.projectflint.system.WildWolfAggressionSystem;
+import dev.projectflint.system.NightWolfPackSystem;
 import dev.projectflint.world.ModWorldgen;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.resources.Identifier;
@@ -51,6 +53,7 @@ public final class ProjectFlint implements ModInitializer {
 		ModMenus.initialize();
 		ModCreativeTabs.initialize();
 		ModNetworking.initialize();
+		FlintQuestsBridge.initialize();
 		FoodBalanceSystem.initialize();
 		FiniteWaterSystem.initialize();
 		PrimitiveInventorySystem.initialize();
@@ -60,12 +63,13 @@ public final class ProjectFlint implements ModInitializer {
 		PrimitiveWorldSetupSystem.initialize();
 		PrimitiveConditionSystem.initialize();
 		PlacedItemSystem.initialize();
-		PrimitiveItemAdvancementSystem.initialize();
+		ProjectFlintBrushSystem.initialize();
 		AnimalRetaliationSystem.initialize();
 		BearBehaviorSystem.initialize();
 		PrimitiveEnvironmentEffectSystem.initialize();
 		PrimitiveAnimalDropSystem.initialize();
 		WildWolfAggressionSystem.initialize();
+		NightWolfPackSystem.initialize();
 		ModWorldgen.initialize();
 
 		LOGGER.info("Project Flint initialized");

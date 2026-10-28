@@ -1,5 +1,19 @@
 [
   {
+    "target": "assets/projectflint/textures/block/acacia_wooden_beam.png",
+    "source_archive": "Direct user upload: new update stuff(4).zip",
+    "source_path": "new update stuff/acacia_beam.png",
+    "sha256": "f076213dbe12ec6bc08416b15acf9f64f29d529123bc939a5d08f843608d4019",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/acacia_wooden_beam_top.png",
+    "source_archive": "Direct user upload: new update stuff(4).zip",
+    "source_path": "new update stuff/acacia_beam_top.png",
+    "sha256": "3aae6cc3574d06f26184c7284e4bb3ce11c8d23befd47c1fa7ea7e32ca849ad6",
+    "byte_identical": true
+  },
+  {
     "target": "assets/projectflint/textures/block/advanced_kiln_face_bottom_left.png",
     "source_archive": "ProjectFlint approved asset master",
     "source_path": "06_Industrial_Steampunk/blocks/device_kiln.png",
@@ -28,6 +42,20 @@
     "byte_identical": true
   },
   {
+    "target": "assets/projectflint/textures/block/advanced_kiln_front_active.png",
+    "source_archive": "Direct user upload",
+    "source_path": "advanced_kiln_front active.zip/advanced_kiln_front active.png",
+    "sha256": "b196a4b10619e1446e286658059965f418b32fc8c9427d269924116c0df7b1bd",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/advanced_kiln_top_active.png",
+    "source_archive": "Direct user upload",
+    "source_path": "advanced_kiln_front active.zip/advanced kiln top active.png",
+    "sha256": "50248fccb9b7de9a8afbd4d62804bca28dc540a938edc899d31bc2be05213c31",
+    "byte_identical": true
+  },
+  {
     "target": "assets/projectflint/textures/block/baked_clay_kiln.png",
     "source_archive": "textures.zip",
     "source_path": "textures/block/bricks.png",
@@ -35,10 +63,73 @@
     "byte_identical": true
   },
   {
+    "source_archive": "new workstations.zip (user upload)",
+    "source_path": "basin_stitched.png",
+    "sha256": "3a042889ba96e5b08ec28f1c5fdb400ba1bd697438697a15db8caa36d13848b9",
+    "target": "assets/projectflint/textures/block/basin_stitched.png",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/birch_wooden_beam.png",
+    "source_archive": "Direct user upload: new update stuff(4).zip",
+    "source_path": "new update stuff/birch_beam.png",
+    "sha256": "80cc4ef0ecaf08ae1c55789094394af4c08abaa33dd63bb08b98b3364f5e9d37",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/birch_wooden_beam_top.png",
+    "source_archive": "Direct user upload: new update stuff(4).zip",
+    "source_path": "new update stuff/birch_beam_top.png",
+    "sha256": "f38fb1febf940498e518469750abd3ca3adf01eb1da69833af47a97fa5c8866e",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/bookshelf_empty.png",
+    "source_archive": "Direct user upload: new update stuff(4).zip",
+    "source_path": "new update stuff/bookshelf empty.png",
+    "sha256": "22514060ef0e25c7a82fd6efa073c98ce03a8f23300907f511d7a82b28f6fbbd",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/bookshelf_filled.png",
+    "source_archive": "Direct user upload: new update stuff(4).zip",
+    "source_path": "new update stuff/bookshelf.png",
+    "sha256": "deec7cff6434f7ad30a392d9726efbe0b05a7f24d9a4534b311e8ccf5fda87e8",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/bookshelf_side.png",
+    "source_archive": "Direct user upload: new update stuff(4).zip",
+    "source_path": "new update stuff/bookshelf_side.png",
+    "sha256": "14f853bde2cda2940b430783a85fa0fe6963d4e6f7975de3f26e8738f3b1acd2",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/bookshelf_top.png",
+    "source_archive": "Direct user upload: new update stuff(4).zip",
+    "source_path": "new update stuff/bookshelf_top.png",
+    "sha256": "4569a833def3509e0b883aee4ed95a81c3e19231230be000a0e6c9b6d2442fdc",
+    "byte_identical": true
+  },
+  {
     "target": "assets/projectflint/textures/block/branch.png",
     "source_archive": "Direct user upload",
     "source_path": "ProjectFlint - Textures/branch.png",
     "sha256": "c4f2d875433b3f5a5cf096352d92949371718ada43463354e0e8544a2f68388c",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/burnt_branch_block_side.png",
+    "source_archive": "ProjectFlint approved asset master",
+    "source_path": "ProjectFlint - Textures/texture asset master file for use/02_Woody_Natural/blocks/bundle_logs.png",
+    "sha256": "848f20c8b76f2af61538a0a295b704c2b00cad6917aa7990fb1c01cd83dcbb93",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/burnt_branch_block_top.png",
+    "source_archive": "ProjectFlint approved asset master",
+    "source_path": "ProjectFlint - Textures/texture asset master file for use/02_Woody_Natural/blocks/bundle_logs_top.png",
+    "sha256": "a7dac6b224f25aade5780a4ecbcc480947865aa3d1bfcacf6ea93dcd0a3ae7d6",
     "byte_identical": true
   },
   {
@@ -67,6 +158,20 @@
     "source_archive": "Direct user upload",
     "source_path": "ProjectFlint - Textures/campfire stone.png",
     "sha256": "25bb3437228e69c4efb95247eae06d84de4a629a6db54141eba9370e9f941a55",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/cherry_wooden_beam.png",
+    "source_archive": "Direct user upload: new update stuff(4).zip",
+    "source_path": "new update stuff/cherry_beam.png",
+    "sha256": "ee65fcfefd3a904b086c913fc0524fb221e5e10027d2057505223af2839b4fa8",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/cherry_wooden_beam_top.png",
+    "source_archive": "Direct user upload: new update stuff(4).zip",
+    "source_path": "new update stuff/cherry_beam_top.png",
+    "sha256": "c594b403a5b6115ad7169982ef32474ef9d7c9b1150c0996e1dfdc6ca456038c",
     "byte_identical": true
   },
   {
@@ -112,6 +217,20 @@
     "byte_identical": true
   },
   {
+    "target": "assets/projectflint/textures/block/crimson_wooden_beam.png",
+    "source_archive": "Direct user upload: new update stuff(4).zip",
+    "source_path": "new update stuff/crimson_log_beam.png",
+    "sha256": "33752480c78980d97459963c1d73d8cf1972f6aecfe2c0f4f03a322372111f88",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/crimson_wooden_beam_top.png",
+    "source_archive": "Direct user upload: new update stuff(4).zip",
+    "source_path": "new update stuff/crimson_log_top.png",
+    "sha256": "1fbcdaaef387c4a54cc1cb09c9045977d55370a43dda51b3d0462b766fddc7de",
+    "byte_identical": true
+  },
+  {
     "target": "assets/projectflint/textures/block/crude_clay_block.png",
     "source_archive": "Direct user upload",
     "source_path": "ProjectFlint - Textures/texture asset master file for use/01_Primitive_Rustic/blocks/brick_adobe.png",
@@ -145,6 +264,55 @@
     "source_path": "ProjectFlint - Textures/texture asset master file for use/01_Primitive_Rustic/blocks/gravel_packedflint.png",
     "sha256": "955a81bd341becfd74a9215328657a6ccc8624e4009797483070cc1f53e581c6",
     "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/dark_oak_wooden_beam.png",
+    "source_archive": "Direct user upload: new update stuff(4).zip",
+    "source_path": "new update stuff/dark_oak_beam.png",
+    "sha256": "89176849c00c08dfd92bb7f4d704246c8184386cd856477ad9317e9df7040a06",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/dark_oak_wooden_beam_top.png",
+    "source_archive": "Direct user upload: new update stuff(4).zip",
+    "source_path": "new update stuff/dark_oak_beam_top.png",
+    "sha256": "503578343b2438fc04f12c6cb7ab543e6a35482e2bd5b8f5f82286e0c6ab9587",
+    "byte_identical": true
+  },
+  {
+    "source_archive": "new workstations.zip (user upload)",
+    "source_path": "drying_rack_stitched.png",
+    "sha256": "c5c71539c4b96a9c6343144909a2a6bdeb9532689992f96831b098f698ce0a9c",
+    "target": "assets/projectflint/textures/block/drying_rack_stitched.png",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/fireclay_brick_block.png",
+    "source_archive": "Direct user upload: v0.31.32-b",
+    "source_path": "fireclay_brick_block.png",
+    "sha256": "7a69915ed86ca4903dc04742b3a5a07e05879c8ae7b38eae6b9c50695a12d785",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/fireclay_forge_controller_lit.png",
+    "source_archive": "ProjectFlint v0.31.34-b derived art from user-supplied textures",
+    "source_path": "user fireclay brick texture + wood center + orange lit indicator (derived)",
+    "sha256": "06e540aa025f3b6696870dc4615d129c547af1b66ef1b95350255c827636ca84",
+    "byte_identical": false
+  },
+  {
+    "target": "assets/projectflint/textures/block/fireclay_forge_controller_off.png",
+    "source_archive": "ProjectFlint v0.31.34-b derived art from user-supplied textures",
+    "source_path": "user fireclay brick texture + wood center + grey bezel (derived)",
+    "sha256": "bd5690352e87f78cd3fbd6222d5bf26d4c940e16da1e77943d025eb9b63b0d38",
+    "byte_identical": false
+  },
+  {
+    "target": "assets/projectflint/textures/block/fireclay_forge_controller_ready.png",
+    "source_archive": "ProjectFlint v0.31.34-b derived art from user-supplied textures",
+    "source_path": "user fireclay brick texture + wood center + green formed indicator (derived)",
+    "sha256": "096328a6895b51382eb6e545bb5f6aa05c767a001371f9fad820def011d18abb",
+    "byte_identical": false
   },
   {
     "target": "assets/projectflint/textures/block/fired_clay_block.png",
@@ -203,6 +371,27 @@
     "byte_identical": true
   },
   {
+    "target": "assets/projectflint/textures/block/grinded_wood.png",
+    "source_archive": "ProjectFlint approved asset master",
+    "source_path": "ProjectFlint - Textures/texture asset master file for use/02_Woody_Natural/blocks/bundle_logs_top.png",
+    "sha256": "a7dac6b224f25aade5780a4ecbcc480947865aa3d1bfcacf6ea93dcd0a3ae7d6",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/jungle_wooden_beam.png",
+    "source_archive": "Direct user upload: new update stuff(4).zip",
+    "source_path": "new update stuff/jungle_beam.png",
+    "sha256": "743ca803b6d39e78d8e9231348dfe98e0e0d0c25610eaeac1b20c3d5ac1df5d7",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/jungle_wooden_beam_top.png",
+    "source_archive": "Direct user upload: new update stuff(4).zip",
+    "source_path": "new update stuff/jungle_beam_top.png",
+    "sha256": "3ec05a617749ddee907da815311db7e5d61c0d2b3a12daad86fa8c144a52eb50",
+    "byte_identical": true
+  },
+  {
     "target": "assets/projectflint/textures/block/kiln_branches.png",
     "source_archive": "Direct user upload",
     "source_path": "ProjectFlint - Textures/branch.png",
@@ -238,6 +427,27 @@
     "byte_identical": true
   },
   {
+    "target": "assets/projectflint/textures/block/mangrove_wooden_beam.png",
+    "source_archive": "Direct user upload: new update stuff(4).zip",
+    "source_path": "new update stuff/mangrove_beam.png",
+    "sha256": "25b2e6330de03c470e3c7e186385375c9a6dae38ebb94bd9d5912393332899d3",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/mangrove_wooden_beam_top.png",
+    "source_archive": "Direct user upload: new update stuff(4).zip",
+    "source_path": "new update stuff/mangrove_beam_top.png",
+    "sha256": "9968fe212a6b5fecf82c0222a79a35e63d74ac62600e9369cb9db8544d1f7c04",
+    "byte_identical": true
+  },
+  {
+    "source_archive": "new workstations.zip (user upload)",
+    "source_path": "millstone_stitched.png",
+    "sha256": "7a4640767d37b74dcf1b43f608bf8e0e9405b05f82f17799a490e2c58ab27002",
+    "target": "assets/projectflint/textures/block/millstone_stitched.png",
+    "byte_identical": true
+  },
+  {
     "target": "assets/projectflint/textures/block/mortar_bricks.png",
     "source_archive": "Direct user upload",
     "source_path": "ProjectFlint - Textures/texture asset master file for use/11_Decorative_Building/blocks/brick_refractory.png",
@@ -249,6 +459,55 @@
     "source_archive": "Direct user upload",
     "source_path": "ProjectFlint - Textures/texture asset master file for use/12_Containers_Storage/blocks/chest_stone_tiny.png",
     "sha256": "d74fd4926249920083fbad6e8a4ee9099776e49d282ae74601c513e8ff957df2",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/mortar_kiln.png",
+    "source_archive": "ProjectFlint approved asset master",
+    "source_path": "ProjectFlint - Textures/texture asset master file for use/11_Decorative_Building/blocks/brick_refractory.png",
+    "sha256": "f79d24cfbf75626255f038edb4b3b39130359b0e2d049f148684d566cfb0e3dd",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/mortar_kiln_base.png",
+    "source_archive": "ProjectFlint approved asset master",
+    "source_path": "ProjectFlint - Textures/texture asset master file for use/01_Primitive_Rustic/blocks/brick_adobe.png",
+    "sha256": "664a83cd0d4890b1d03259ba5f91044c7d538033cc17e784ca10e69e15fa4381",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/pale_oak_wooden_beam.png",
+    "source_archive": "Direct user upload: new update stuff(4).zip",
+    "source_path": "new update stuff/pale_oak_beam.png",
+    "sha256": "2189822897b7eb6d77b46c0c1b378c2cdb897f89988a419f9c09392b5ba4a969",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/pale_oak_wooden_beam_top.png",
+    "source_archive": "Direct user upload: new update stuff(4).zip",
+    "source_path": "new update stuff/pale_oak_beam_top.png",
+    "sha256": "9793567d8cc066671ed27f1b3247c1d8f726c730a2b3f79494b004dcff50080f",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/placed/flint_axe_pieces.png",
+    "source_archive": "Project Flint existing owner-authored texture reuse",
+    "source_path": "assets/projectflint/textures/item/flint_axe_pieces.png",
+    "sha256": "280f1529e56cc2dbc853b462360d9cbda64ce8eb66b916009dbd11da974d3f3d",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/placed/flint_cutter_piece.png",
+    "source_archive": "Project Flint existing owner-authored texture reuse",
+    "source_path": "assets/projectflint/textures/item/flint_cutter_piece.png",
+    "sha256": "7249dfe912409af00a5b07f08bec158e967579bc43cc3edc39aac49f81fe8e84",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/placed/refined_flint_multitool_piece.png",
+    "source_archive": "Project Flint existing owner-authored texture reuse",
+    "source_path": "assets/projectflint/textures/item/refined_flint_multitool_piece.png",
+    "sha256": "9499171e8b33d568108148e7303c7bc54ba8fc059875fdef59ddf239e0aa8a41",
     "byte_identical": true
   },
   {
@@ -273,6 +532,83 @@
     "byte_identical": true
   },
   {
+    "target": "assets/projectflint/textures/block/sanded_wood.png",
+    "source_archive": "ProjectFlint approved asset master",
+    "source_path": "ProjectFlint - Textures/texture asset master file for use/02_Woody_Natural/blocks/plank_plywood.png",
+    "sha256": "51e7ee26424c7f7297018741f62b7febb3267075e1bda8044247e714d84d23a5",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/sawmill_back.png",
+    "source_archive": "Direct user upload: new update stuff(4).zip",
+    "source_path": "new update stuff/sawmill_back.png",
+    "sha256": "39933bfbd7c37194f2ceceac96bc6d4aa324a06afccec13bd5928bb6e199f64a",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/sawmill_front.png",
+    "source_archive": "Direct user upload: new update stuff(4).zip",
+    "source_path": "new update stuff/sawmill_front.png",
+    "sha256": "cfd8625f3c7cc10eca640173c8bfe05e758c44b929c8d7e5385abbe6e27b033e",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/sawmill_saw.png",
+    "source_archive": "Direct user upload: new update stuff(4).zip",
+    "source_path": "new update stuff/sawmill_saw.png",
+    "sha256": "ff3934c2d49ec64f5f16cd221af54acb89f956cb59272e34c66d81272d92fd8f",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/sawmill_side.png",
+    "source_archive": "Direct user upload: new update stuff(4).zip",
+    "source_path": "new update stuff/sawmill_side.png",
+    "sha256": "ca2a5b2756c4cd8307f6ae4a5b75fb9a423714b3350254a0910fd25839e54bdd",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/spruce_wooden_beam.png",
+    "source_archive": "Direct user upload: new update stuff(4).zip",
+    "source_path": "new update stuff/spruce_beam_side.png",
+    "sha256": "0beb1a5086aba106f340d5f56ec0227370fc6ad63eae1dd4e7bf7098f7ea4ec4",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/spruce_wooden_beam_top.png",
+    "source_archive": "Direct user upload: new update stuff(4).zip",
+    "source_path": "new update stuff/spruce_beam_top.png",
+    "sha256": "5913a08c03912128d5fed53e62c4037c890cf016ca0f5d20b20886efca756571",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/strawberry_bush_stage0.png",
+    "source_archive": "Direct user upload: new update stuff(6).zip",
+    "source_path": "new update stuff/straw_berry_bush_stage0.png",
+    "sha256": "481ff5c8edd2d284c46f5d3b4b253090c19a2dba25b21279ca1de170e39527e2",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/strawberry_bush_stage1.png",
+    "source_archive": "Direct user upload: new update stuff(6).zip",
+    "source_path": "new update stuff/straw_berry_bush_stage1.png",
+    "sha256": "ef315253b0e8497b538219561a06ca64b847300cd61f378eed632b623764876a",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/strawberry_bush_stage2.png",
+    "source_archive": "Direct user upload: new update stuff(6).zip",
+    "source_path": "new update stuff/straw_berry_bush_stage2.png",
+    "sha256": "5f829277abc3be08fee85d386e499e6e2af75c74bb805d758cd3f1b6590679d1",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/strawberry_bush_stage3.png",
+    "source_archive": "Direct user upload: new update stuff(6).zip",
+    "source_path": "new update stuff/straw_berry_bush_stage3.png",
+    "sha256": "e2bb913b5e82ba66f6cb3813a92d50f2d1da6628f1b02d38946d00cd726470b4",
+    "byte_identical": true
+  },
+  {
     "target": "assets/projectflint/textures/block/twig_pile_twig.png",
     "source_archive": "LegendsRPG.zip",
     "source_path": "\u00a7b\u00a7l      \u2e0e \u00a7bLegendsRPG/assets/minecraft/textures/item/materials/foraging/twig.png",
@@ -284,6 +620,167 @@
     "source_archive": "Direct user upload",
     "source_path": "ProjectFlint - Textures/very refined stone.png",
     "sha256": "f95b4acb8d6d33573bab749ac906c1cb0919fa9139c2b5284eae7173c679f3e0",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/warped_wooden_beam.png",
+    "source_archive": "Direct user upload: new update stuff(4).zip",
+    "source_path": "new update stuff/warped_log_beam.png",
+    "sha256": "7ff5155e0a97d34fbe0a211a2a344fdbd86207f0d7dcae99d8a3dcf860f03c01",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/warped_wooden_beam_top.png",
+    "source_archive": "Direct user upload: new update stuff(4).zip",
+    "source_path": "new update stuff/warped_log_beam_top.png",
+    "sha256": "f708aa213bd87390b73e019433c132bcae2ea124e92a8076c4c2275d3c4fd9fe",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/water_pot_bottom.png",
+    "source_archive": "Direct user upload: new update stuff(4).zip",
+    "source_path": "new update stuff/water pot bottom.png",
+    "sha256": "7012e7f2dafacc35f5b57655eade88d733aa93daec24755b89a56b74d0aad0b7",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/water_pot_side.png",
+    "source_archive": "Direct user upload: new update stuff(4).zip",
+    "source_path": "new update stuff/water pot sides texture.png",
+    "sha256": "b13f6213fa079fb737ac50404af800073da666de8bf012cabe76670c4d50fc82",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/water_pot_top.png",
+    "source_archive": "Direct user upload: new update stuff(4).zip",
+    "source_path": "new update stuff/water pot top.png",
+    "sha256": "6ba80d1b094f6bdf4427987d6c9b878e88bee46d9f650606be63e1c801aae9a5",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/wattled_daub_door_bottom.png",
+    "source_archive": "Direct user upload: e16f77d8-49a7-4b9e-ae00-5d29c6ce0eff.zip",
+    "source_path": "new update stuff/wattled daub door bottom.png",
+    "sha256": "6c2dba1b9b1d7d83b51f47decf60d49327c39393a12af5e7979eca1af253b2c8",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/wattled_daub_door_top.png",
+    "source_archive": "Direct user upload: e16f77d8-49a7-4b9e-ae00-5d29c6ce0eff.zip",
+    "source_path": "new update stuff/watled daub door_top.png",
+    "sha256": "36d41dbc6ffd8ea935565204b30af219793b851a72cf0230b4023d7de651c3f5",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/wattled_daub_floor_tile.png",
+    "source_archive": "Direct user upload: e16f77d8-49a7-4b9e-ae00-5d29c6ce0eff.zip",
+    "source_path": "new update stuff/wattled daub floor tile.png",
+    "sha256": "ed8f79a4cc10c69f06d0c118073339678fed2cbe5b2059e27fe17a81e36375ee",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/wattled_daub_window.png",
+    "source_archive": "Direct user upload: e16f77d8-49a7-4b9e-ae00-5d29c6ce0eff.zip",
+    "source_path": "new update stuff/wattled daub glass.png",
+    "sha256": "cf3c4f7a011175e548b022e9d4d51bad5e2aee9486131e6df2cc6cca0ceaa616",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/well_pulley_bottom.png",
+    "source_archive": "ProjectFlint v0.31.34-b derived art from user-supplied textures",
+    "source_path": "user fireclay brick texture + basin_stitched.png timber region + dark shaft hole (derived)",
+    "sha256": "687a56101d17b70e5919b2279fb2c8a89cf8743d0d2aa4d21ff8d39bcb16699d",
+    "byte_identical": false
+  },
+  {
+    "target": "assets/projectflint/textures/block/well_pulley_side.png",
+    "source_archive": "ProjectFlint v0.31.34-b derived art from user-supplied textures",
+    "source_path": "user fireclay brick texture + basin_stitched.png timber region (derived)",
+    "sha256": "31b19733c5f67f05e9aaa5b48f48ec787bc669364304f7117ecee8caae0154fc",
+    "byte_identical": false
+  },
+  {
+    "target": "assets/projectflint/textures/block/well_pulley_top.png",
+    "source_archive": "ProjectFlint v0.31.34-b derived art from user-supplied textures",
+    "source_path": "user fireclay brick texture + basin_stitched.png timber region (derived)",
+    "sha256": "31b19733c5f67f05e9aaa5b48f48ec787bc669364304f7117ecee8caae0154fc",
+    "byte_identical": false
+  },
+  {
+    "target": "assets/projectflint/textures/block/wooden_beam.png",
+    "source_archive": "Direct user upload: new update stuff(4).zip",
+    "source_path": "new update stuff/oak_beam_side.png",
+    "sha256": "fda68ab101c4a7afddd1cf3bf52d8e5375a19f601f36ff560efcef96826874cb",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/wooden_beam_top.png",
+    "source_archive": "Direct user upload: new update stuff(4).zip",
+    "source_path": "new update stuff/oak_beam_top.png",
+    "sha256": "3cdd2b654d8d98459285ed099f1c53789c08ab28a5d2f56e7d7dda1e119fc7f2",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/wooden_grinder.png",
+    "source_archive": "ProjectFlint approved asset master",
+    "source_path": "ProjectFlint - Textures/texture asset master file for use/02_Woody_Natural/blocks/plank_plywood.png",
+    "sha256": "51e7ee26424c7f7297018741f62b7febb3267075e1bda8044247e714d84d23a5",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/woven_chest_side.png",
+    "source_archive": "ProjectFlint approved asset master",
+    "source_path": "ProjectFlint - Textures/texture asset master file for use/12_Containers_Storage/blocks/basket_side.png",
+    "sha256": "e95804af71ee31f5ab0dbd71034ed6980e5be7ed173a8ec70115a232b94b9c53",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/woven_chest_top.png",
+    "source_archive": "ProjectFlint approved asset master",
+    "source_path": "ProjectFlint - Textures/texture asset master file for use/12_Containers_Storage/blocks/basket_top.png",
+    "sha256": "62af57eea7298c44ebdba55fca4fcc0ad2e84e6c8df5a16a92ab6c1bec5a42c4",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/block/woven_wood.png",
+    "source_archive": "ProjectFlint approved asset master",
+    "source_path": "ProjectFlint - Textures/texture asset master file for use/12_Containers_Storage/blocks/basket_side.png",
+    "sha256": "e95804af71ee31f5ab0dbd71034ed6980e5be7ed173a8ec70115a232b94b9c53",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/entity/chest/wooden_chest.png",
+    "source_archive": "Direct user upload: new update stuff(4).zip",
+    "source_path": "new update stuff/wooden chest normal.png",
+    "sha256": "6e31cfa9cc702f1d812de6d0f7cbf2327d122a4256ab81cd5bec3c0d9d03e868",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/entity/chest/wooden_chest_left.png",
+    "source_archive": "Direct user upload: new update stuff(4).zip",
+    "source_path": "new update stuff/wooden chest normal_left.png",
+    "sha256": "8212628167a9e88af37a64758e509dbe20685ef1a7b66772efa503bbf8606e01",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/entity/chest/wooden_chest_right.png",
+    "source_archive": "Direct user upload: new update stuff(4).zip",
+    "source_path": "new update stuff/wooden chest normal_right.png",
+    "sha256": "4e931b7480f6554257fb5f40f045e5f7a55c013f66b0f54ea6f19d1449b6b8cf",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/entity/equipment/humanoid/bone.png",
+    "source_archive": "Direct user upload: new update stuff(4).zip",
+    "source_path": "new update stuff/bone_armor model layer 1.png",
+    "sha256": "a2c6fbf61e3f0b26531e9fb1e3bc357a0d19c18b64a6ae05269c43e0c2252d06",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/entity/equipment/humanoid_leggings/bone.png",
+    "source_archive": "Direct user upload: new update stuff(4).zip",
+    "source_path": "new update stuff/bone_armor model layer 2.png",
+    "sha256": "d5dbc672649f87df9986f5edf91315c35e5dacefc4601fad0df2397173fb8420",
     "byte_identical": true
   },
   {
@@ -308,10 +805,38 @@
     "byte_identical": true
   },
   {
+    "source_archive": "Direct user upload: v0.31.33-b",
+    "source_path": "apple_bread.png",
+    "sha256": "8dee5e91ccf152036bc9283537e161c7162d9df8f30ed120ab71ba071f7ebd93",
+    "target": "assets/projectflint/textures/item/apple_bread.png",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/black_bear_spawn_egg.png",
+    "source_archive": "Direct user upload: new update stuff(4).zip",
+    "source_path": "new update stuff/black bear spawn egg.png",
+    "sha256": "8aff4e5a3955b32a4fa90d02ad6d2c5052000f495e1bd5207e07991300b3cf25",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/bone_boots.png",
+    "source_archive": "Direct user upload: new update stuff(4).zip",
+    "source_path": "new update stuff/bone_boots.png",
+    "sha256": "21ebbcb2f8484dbd2dce11d9d582bee57b8a3494cdc5caba62faf5a978caf6dd",
+    "byte_identical": true
+  },
+  {
     "target": "assets/projectflint/textures/item/bone_brush.png",
     "source_archive": "Direct user upload",
     "source_path": "ProjectFlint - Textures/texture asset master file for use/bone_brush.png",
     "sha256": "520f4f5ef47d9437b8ad40ec67307dcc8a5cdf5105d1d2392928e4003207a1bc",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/bone_chestplate.png",
+    "source_archive": "Direct user upload: new update stuff(4).zip",
+    "source_path": "new update stuff/bone_chest.png",
+    "sha256": "ad9c99922fbc394dda5a46e6eb106b45b7771a0fa170e04dc5ca43fa2959fc61",
     "byte_identical": true
   },
   {
@@ -323,9 +848,30 @@
   },
   {
     "target": "assets/projectflint/textures/item/bone_firestarter.png",
-    "source_archive": "Direct user upload",
-    "source_path": "ProjectFlint - Textures/texture asset master file for use/09_Tools_Weapons_Armor/items/tool_smudgestick.png",
-    "sha256": "645936f1b20863da115e39527932422f3636847b2cb707e5be3c48a89d3379c7",
+    "source_archive": "Direct user upload: new update stuff(4).zip",
+    "source_path": "new update stuff/bone firestarter.png",
+    "sha256": "64495eee54d32124355fa2994640c34927a0e280c45d05726a80b1c48af8b8ca",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/bone_helmet.png",
+    "source_archive": "Direct user upload: new update stuff(4).zip",
+    "source_path": "new update stuff/bone_helm.png",
+    "sha256": "84ecab370405e8b871b62510e9306a23641366c0fbcb06f21c1441686abd707a",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/bone_hoe.png",
+    "source_archive": "Direct user upload: new update stuff(4).zip",
+    "source_path": "new update stuff/bone_hoe.png",
+    "sha256": "dad6e93779a6e8c21f69ffb23e4d6906dc9287d22c7f83514501f3882a28a63e",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/bone_leggings.png",
+    "source_archive": "Direct user upload: new update stuff(4).zip",
+    "source_path": "new update stuff/bone_leggs.png",
+    "sha256": "48da887ad06f1ae2a190fb965925e13d44d3b8c11df3504031a1f8b3cc7ee773",
     "byte_identical": true
   },
   {
@@ -333,6 +879,20 @@
     "source_archive": "Direct user upload",
     "source_path": "ProjectFlint - Textures/branch.png",
     "sha256": "c4f2d875433b3f5a5cf096352d92949371718ada43463354e0e8544a2f68388c",
+    "byte_identical": true
+  },
+  {
+    "source_archive": "Direct user upload: v0.31.33-b",
+    "source_path": "egg_minibread.png",
+    "sha256": "c92f828555e597e18acd8ef84b44cdcb649e6709f847e2cc5b4bb198881734d6",
+    "target": "assets/projectflint/textures/item/breakfast_bread.png",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/brown_bear_spawn_egg.png",
+    "source_archive": "Direct user upload: new update stuff(4).zip",
+    "source_path": "new update stuff/brown bear spawn egg.png",
+    "sha256": "5a8fa0424624dd080a8176d49eb7da5f46d7516b180816381233698e271fbd98",
     "byte_identical": true
   },
   {
@@ -357,6 +917,28 @@
     "byte_identical": true
   },
   {
+    "target": "assets/projectflint/textures/item/cheese.png",
+    "source_archive": "Direct user upload: v0.31.32-b",
+    "source_path": "cheese.png",
+    "sha256": "1044c8774b161c8f73ffda2362d75325e914055491439042e4cc10e154ff7777",
+    "byte_identical": true
+  },
+  {
+    "source_archive": "Direct user upload: v0.31.33-b",
+    "source_path": "cheese_minibread.png",
+    "sha256": "31dbec3adb943be8f05333e96b9d4616bd0cdade35b777ded605e7a3c17bad5e",
+    "target": "assets/projectflint/textures/item/cheese_bread.png",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/clay_bucket.png",
+    "source_archive": "Minecraft 1.21.11 vanilla assets + Project Flint existing texture reuse",
+    "source_path": "minecraft:textures/item/bucket.png + assets/projectflint/textures/item/clay_pot.png",
+    "sha256": "757f5130f989026fc236a2ea563ac8f9a95809f2f7f1d1372052408b3de6fb79",
+    "byte_identical": false,
+    "transformation": "Bucket silhouette shade-remapped to the existing Clay Pot palette."
+  },
+  {
     "target": "assets/projectflint/textures/item/clay_grinder.png",
     "source_archive": "textures.zip",
     "source_path": "textures/block/stonecutter_top.png",
@@ -371,6 +953,13 @@
     "byte_identical": true
   },
   {
+    "target": "assets/projectflint/textures/item/clay_milk_bucket.png",
+    "source_archive": "Derived palette from approved ProjectFlint Clay Water Bucket",
+    "source_path": "clay_water_bucket.png",
+    "sha256": "e9fd36fea4d6a68bd761acc874a95c80b288d051fc6ff6aebc83a662c66957ce",
+    "byte_identical": false
+  },
+  {
     "target": "assets/projectflint/textures/item/clay_mortar.png",
     "source_archive": "Direct user upload",
     "source_path": "ProjectFlint - Textures/texture asset master file for use/10_Materials_Minerals/items/material_dust_mortar.png",
@@ -378,10 +967,32 @@
     "byte_identical": true
   },
   {
+    "target": "assets/projectflint/textures/item/clay_pot.png",
+    "source_archive": "ProjectFlint supplied texture archive",
+    "source_path": "ProjectFlint - Textures/fired clay pot.png",
+    "sha256": "9281498d28a48b5bd34b528aadfdd0801ccaad262cc8176e001d7a0103961d29",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/clay_water_bucket.png",
+    "source_archive": "Minecraft 1.21.11 vanilla assets + Project Flint existing texture reuse",
+    "source_path": "minecraft:textures/item/water_bucket.png + assets/projectflint/textures/item/clay_pot.png",
+    "sha256": "df6027f7dd9209e26403ed4c01b1cb47e2765d7420f637948e052e326925c6b0",
+    "byte_identical": false,
+    "transformation": "Water pixels retained; grayscale bucket body shade-remapped to the existing Clay Pot palette."
+  },
+  {
     "target": "assets/projectflint/textures/item/cooked_calamari.png",
     "source_archive": "Direct user upload",
     "source_path": "ProjectFlint - Textures/texture asset master file for use/03_Farming_Food/items/food_mysterymeat_cooked.png",
     "sha256": "8accfdc7284f75eaae2632ca29c26e3de8cfa9cff65624c59eca22319872433a",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/cooked_turtle_meat.png",
+    "source_archive": "Direct user upload: v0.31.32-b",
+    "source_path": "turtle_cooked.png",
+    "sha256": "2a28b4ae9442dfb9a3d536efede5530cd026939dbd1c71d77fbdeebcca104775",
     "byte_identical": true
   },
   {
@@ -441,10 +1052,38 @@
     "byte_identical": true
   },
   {
+    "source_archive": "Direct user upload: v0.31.33-b",
+    "source_path": "dough_ball.png",
+    "sha256": "b6384dd06e9afe3b4ee4ba5070e9451f7cc15f3e9953efacf79bbaa9ad006db5",
+    "target": "assets/projectflint/textures/item/dough.png",
+    "byte_identical": true
+  },
+  {
+    "source_archive": "Direct user upload: v0.31.33-b",
+    "source_path": "egg_bread.png",
+    "sha256": "40b8c6ed9cdb7a81b4ea60648534f9369d992567b77ff069219c4db4b82a9d90",
+    "target": "assets/projectflint/textures/item/egg_bread.png",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/fat.png",
+    "source_archive": "Direct user upload: v0.31.32-b",
+    "source_path": "fat.png",
+    "sha256": "56e70b57008b7f0c5df95dd1b47333efbdb0925a5672cc46d15f9924d8926bc1",
+    "byte_identical": true
+  },
+  {
     "target": "assets/projectflint/textures/item/filed_bone.png",
     "source_archive": "Direct user upload",
     "source_path": "ProjectFlint - Textures/texture asset master file for use/13_Organic_Creature/items/part_rod_bone.png",
     "sha256": "ac8d23a541476882821e07afd5e1dce01fcdd51834eba0cc0a6fac89ca115c2d",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/fireclay_brick.png",
+    "source_archive": "Direct user upload: v0.31.32-b",
+    "source_path": "fireclay_brick.png",
+    "sha256": "771bd9cba2ebab309f4c93fe4514c134d046a4952e4761f2cdb1493f0d5c6f7d",
     "byte_identical": true
   },
   {
@@ -511,6 +1150,27 @@
     "byte_identical": true
   },
   {
+    "target": "assets/projectflint/textures/item/fired_clay_pot_mold.png",
+    "source_archive": "ProjectFlint approved asset master",
+    "source_path": "ProjectFlint - Textures/texture asset master file for use/06_Industrial_Steampunk/items/part_plate_small_ceramic.png",
+    "sha256": "70719349e8a0f8e85666e08b43d3079c307ebbee3de9a5ad8b5cbe65bb952d18",
+    "byte_identical": true
+  },
+  {
+    "source_archive": "Direct user upload: v0.31.33-b",
+    "source_path": "flat_bread.png",
+    "sha256": "208032ce364b844234e6c2410a3c0608009dd8039007b121aa2fca2cca84bf1d",
+    "target": "assets/projectflint/textures/item/flatbread.png",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/flax_seeds.png",
+    "source_archive": "Direct user upload: new update stuff(4).zip",
+    "source_path": "new update stuff/flax_seeds.png",
+    "sha256": "c3c2acf7919a966233e96c8aa9bbffc4a93bb45ab6358d126079635cc1c08562",
+    "byte_identical": true
+  },
+  {
     "target": "assets/projectflint/textures/item/flint_axe.png",
     "source_archive": "ProjectFlint approved asset master",
     "source_path": "additional_textures_unsorted/xbony2/items/sandstone_axe.png",
@@ -560,10 +1220,24 @@
     "byte_identical": true
   },
   {
+    "target": "assets/projectflint/textures/item/flour.png",
+    "source_archive": "Direct user upload: v0.31.32-b",
+    "source_path": "flour.png",
+    "sha256": "dedfed060d6f60433a06198affe0d78abdf1bbc510c8b3c4f5af91b6a4685bfe",
+    "byte_identical": true
+  },
+  {
     "target": "assets/projectflint/textures/item/flower_petals.png",
     "source_archive": "Direct user upload: e16f77d8-49a7-4b9e-ae00-5d29c6ce0eff.zip",
     "source_path": "new update stuff/flower petals.png",
     "sha256": "c6812a577450d4a79768df4f6cb9d4dd5bb074869d679b15a82915532554ff96",
+    "byte_identical": true
+  },
+  {
+    "source_archive": "Direct user upload: v0.31.33-b",
+    "source_path": "french_bread.png",
+    "sha256": "944ce97c6addc5d08ec07e950d7ad92944941b15c2c5a9ecc588e8d63619fc7d",
+    "target": "assets/projectflint/textures/item/french_bread.png",
     "byte_identical": true
   },
   {
@@ -581,6 +1255,20 @@
     "byte_identical": true
   },
   {
+    "target": "assets/projectflint/textures/item/ground_leather.png",
+    "source_archive": "ProjectFlint approved asset master",
+    "source_path": "ProjectFlint - Textures/texture asset master file for use/13_Organic_Creature/items/mobdrop_hide_scraped_clean.png",
+    "sha256": "774c4f16a98546086f4ada31990a6c19cf485e94d70bdf568cc38637640ef2ee",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/leather_backpack.png",
+    "source_archive": "ProjectFlint approved asset master",
+    "source_path": "ProjectFlint - Textures/texture asset master file for use/09_Tools_Weapons_Armor/items/tool_pouch_brown.png",
+    "sha256": "af2eef8027aca02864a65f1a31533092a4990ab9ebbca679767bd77a71b276d4",
+    "byte_identical": true
+  },
+  {
     "target": "assets/projectflint/textures/item/lightly_burnt_twig.png",
     "source_archive": "Direct user upload",
     "source_path": "ProjectFlint - Textures/lightly burnt twig.png",
@@ -588,10 +1276,17 @@
     "byte_identical": true
   },
   {
+    "source_archive": "Direct user upload: v0.31.33-b",
+    "source_path": "meat_minibread.png",
+    "sha256": "4d3c6f657d87664d254e8caaf762a49540df8a659073b1100f6a4c13daf71159",
+    "target": "assets/projectflint/textures/item/meat_bread.png",
+    "byte_identical": true
+  },
+  {
     "target": "assets/projectflint/textures/item/plant_fiber.png",
-    "source_archive": "Direct user upload",
-    "source_path": "ProjectFlint - Textures/plant_fiber.png",
-    "sha256": "feceb23d8fbe5e4b82270955c8269421535ae661ac415e389806a705380dec1b",
+    "source_archive": "Direct user upload: new update stuff(4).zip",
+    "source_path": "new update stuff/plant fiber.png",
+    "sha256": "cb6c30ddc231dbae28b82226ec03f6314b21a5267a69cd03f5703f54fd52a053",
     "byte_identical": true
   },
   {
@@ -603,9 +1298,16 @@
   },
   {
     "target": "assets/projectflint/textures/item/plant_tool_binding.png",
-    "source_archive": "Direct user upload",
-    "source_path": "ProjectFlint - Textures/plant tool binding.png",
-    "sha256": "70b85c3b5cdc533920989bd64cfc7e8f12e81d8f61b85575ff7f8b784ed9695d",
+    "source_archive": "Direct user upload: new update stuff(4).zip",
+    "source_path": "new update stuff/plant tool binding.png",
+    "sha256": "5e79bab35ee2baefd17b09398487c2c32fb7be12d16c147b1069a5eab2a7d31a",
+    "byte_identical": true
+  },
+  {
+    "source_archive": "Direct user upload: v0.31.33-b",
+    "source_path": "pumpkin_bread.png",
+    "sha256": "f9164ffadce07961ad168b1695883c7c0fda7b03c35d4cb55bed16111f6ae1d4",
+    "target": "assets/projectflint/textures/item/pumpkin_bread.png",
     "byte_identical": true
   },
   {
@@ -620,6 +1322,13 @@
     "source_archive": "Direct user upload",
     "source_path": "ProjectFlint - Textures/texture asset master file for use/13_Organic_Creature/items/mobdrop_hide_cow.png",
     "sha256": "f3b81f3588dde6c8c34720be5a3961d98a2e7363a3a9f37f8c49c5a5231e7005",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/raw_turtle_meat.png",
+    "source_archive": "Direct user upload: v0.31.32-b",
+    "source_path": "turtle.png",
+    "sha256": "918062f0ba0de1ca7f15ea684d946409176f11c51c889bb7a806b5cf71910103",
     "byte_identical": true
   },
   {
@@ -665,6 +1374,13 @@
     "byte_identical": true
   },
   {
+    "source_archive": "Direct user upload: v0.31.33-b",
+    "source_path": "cooked_dough.png",
+    "sha256": "89a55fbe81e6e7994101f4a1cb36592f5e3ec17637930f8e86920e1194b9fd85",
+    "target": "assets/projectflint/textures/item/rustic_bread.png",
+    "byte_identical": true
+  },
+  {
     "target": "assets/projectflint/textures/item/sand_ball.png",
     "source_archive": "Direct user upload",
     "source_path": "ProjectFlint - Textures/texture asset master file for use/10_Materials_Minerals/items/material_rock_sandstone_pebbles.png",
@@ -700,6 +1416,41 @@
     "byte_identical": true
   },
   {
+    "target": "assets/projectflint/textures/item/stone_grindsaw.png",
+    "source_archive": "ProjectFlint approved asset master",
+    "source_path": "ProjectFlint - Textures/texture asset master file for use/09_Tools_Weapons_Armor/items/tool_saw_stone.png",
+    "sha256": "2366e3522abeca368d3931efd9e1dd201c19bdc11cce68dd5992d81f70d43a0a",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/strawberry.png",
+    "source_archive": "Direct user upload: new update stuff(6).zip",
+    "source_path": "new update stuff/straw berry item texture.png",
+    "sha256": "2af63b1970e9a80c20885befa2e6dd370b028996a18cafed5c7f2bec7df668cd",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/strawberry_jam.png",
+    "source_archive": "Direct user upload",
+    "source_path": "strawberry_jelly.png",
+    "sha256": "102143b39d14a6c5a991fd292a3c96249689ada59fc8132f1e4569adc9dab90b",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/strawberry_pie.png",
+    "source_archive": "Direct user upload",
+    "source_path": "strawberry_pie.png",
+    "sha256": "399d585b37606c7ac8cb7b8944b68bdea79635ae8e309fa454ee1c2f17b162ad",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/strawberry_seeds.png",
+    "source_archive": "Direct user upload",
+    "source_path": "strawberry_seeds.png",
+    "sha256": "486881309cc28bfb45667c02cf10ba69dcd00af6f06e82e0aa658eb2791fa28b",
+    "byte_identical": true
+  },
+  {
     "target": "assets/projectflint/textures/item/sugarcane_roll.png",
     "source_archive": "Direct user upload",
     "source_path": "ProjectFlint - Textures/sugarcane roll.png",
@@ -714,10 +1465,52 @@
     "byte_identical": true
   },
   {
+    "target": "assets/projectflint/textures/item/sushi_roll.png",
+    "source_archive": "Direct user upload: v0.31.32-b",
+    "source_path": "sushi_roll.png",
+    "sha256": "57c98c85fe0fd9f70e59efd1cadae081d7c42b38af7dd8aaf2bd7ae440ae7bb1",
+    "byte_identical": true
+  },
+  {
+    "source_archive": "Direct user upload: v0.31.33-b",
+    "source_path": "cooked_sweet_dough.png",
+    "sha256": "5bb66377efec424d9121bf0210baa63c9120acfe5b86884fce9ed86b38b82929",
+    "target": "assets/projectflint/textures/item/sweet_bread.png",
+    "byte_identical": true
+  },
+  {
+    "source_archive": "Direct user upload: v0.31.33-b",
+    "source_path": "sweet_dough_ball.png",
+    "sha256": "434ba583aca678dc43cd3c1fa8460a569dc989e838db3c77a063a16ba5797ebf",
+    "target": "assets/projectflint/textures/item/sweet_dough.png",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/tanned_leather.png",
+    "source_archive": "Minecraft 1.21.11 vanilla Leather recolored",
+    "source_path": "assets/minecraft/textures/item/leather.png",
+    "sha256": "9f69e90187200b15e8bc1d488f0322bd2166491bb04e81786c2da2355ed0de3a",
+    "byte_identical": false
+  },
+  {
     "target": "assets/projectflint/textures/item/twig.png",
     "source_archive": "LegendsRPG.zip",
     "source_path": "\u00a7b\u00a7l      \u2e0e \u00a7bLegendsRPG/assets/minecraft/textures/item/materials/foraging/twig.png",
     "sha256": "5c838d488564a80e60467d1ba5ff4a54d394c7a32a3766d66709f12fa8085eea",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/unfired_brick.png",
+    "source_archive": "Direct user upload",
+    "source_path": "unfired_brick.png",
+    "sha256": "1a96516c5bf3fc43bab1eeb034f3c673ee65d651ec6d8050c2dea3be4dab4b07",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/unfired_brick_mold.png",
+    "source_archive": "Direct user upload",
+    "source_path": "wooden_brick_form.png",
+    "sha256": "71c3bfd41b7d8ec99ae44bc35fc5e2720aa607b34515584d59b84c8319d078bd",
     "byte_identical": true
   },
   {
@@ -742,6 +1535,14 @@
     "byte_identical": true
   },
   {
+    "target": "assets/projectflint/textures/item/unfired_clay_bucket.png",
+    "source_archive": "Minecraft 1.21.11 vanilla assets + Project Flint existing texture reuse",
+    "source_path": "minecraft:textures/item/bucket.png + assets/projectflint/textures/item/unfired_clay_ball.png",
+    "sha256": "595eb57c43b47d73edb2d9c39a0ca1a811898dc42d44db228f439bc8c51748ab",
+    "byte_identical": false,
+    "transformation": "Bucket silhouette shade-remapped to the existing Unfired Clay Ball palette."
+  },
+  {
     "target": "assets/projectflint/textures/item/unfired_clay_cutters_mold.png",
     "source_archive": "ProjectFlint approved asset master",
     "source_path": "06_Industrial_Steampunk/items/part_mould_sickle.png",
@@ -760,6 +1561,20 @@
     "source_archive": "ProjectFlint approved asset master",
     "source_path": "06_Industrial_Steampunk/items/part_mould_hammer.png",
     "sha256": "e9f68ad0996c18928e6114e899165ffff78ea83c8bbfdf50685a5d3f8da1e90b",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/unfired_clay_pot_mold.png",
+    "source_archive": "ProjectFlint approved asset master",
+    "source_path": "ProjectFlint - Textures/texture asset master file for use/06_Industrial_Steampunk/items/part_plate_small_clay.png",
+    "sha256": "99ef902c5bbad7af7084366c003002c6555f281b11d4c11829d0e23c055cc7b3",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/unfired_fireclay_brick.png",
+    "source_archive": "Direct user upload: v0.31.32-b",
+    "source_path": "unfired_fireclay_brick.png",
+    "sha256": "c72573ae01d7bf245fab4bc7fa1616c3b66731471af20e9d513918c4146c3cc9",
     "byte_identical": true
   },
   {
@@ -791,10 +1606,38 @@
     "byte_identical": true
   },
   {
+    "target": "assets/projectflint/textures/item/wattled_daub_door.png",
+    "source_archive": "Direct user upload",
+    "source_path": "watled daub door item texture.png",
+    "sha256": "51533d53dbc5b061c6436f987ab1a0880e1efb94b693c662340ce74e1251b92f",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/wood_firestarter.png",
+    "source_archive": "Direct user upload: new update stuff(4).zip",
+    "source_path": "new update stuff/wood firestarter.png",
+    "sha256": "504830a8b9f46b6297567acf5d0761848de84e26d8205ee6e7bd17f3dbfead24",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/wooden_board.png",
+    "source_archive": "Direct user upload: new update stuff(4).zip",
+    "source_path": "new update stuff/wooden board.png",
+    "sha256": "98ab1e1e34194f9ef1aaaf8ab12a8a547d416749f4cdbe120c27f07016946079",
+    "byte_identical": true
+  },
+  {
     "target": "assets/projectflint/textures/item/wool.png",
     "source_archive": "Direct user upload",
     "source_path": "ProjectFlint - Textures/wool.png",
     "sha256": "478b120ec8c8202e43f185d4f43bf0efbc172226770627dd86f88875d49fa035",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/woven_chest_frame.png",
+    "source_archive": "ProjectFlint approved asset master",
+    "source_path": "ProjectFlint - Textures/texture asset master file for use/12_Containers_Storage/blocks/chest_wood_tiny.png",
+    "sha256": "2ba127990ac1609812750f8909696cb30337d5f41495a8660669ffe99c8131a8",
     "byte_identical": true
   },
   {
@@ -812,139 +1655,6 @@
     "byte_identical": true
   },
   {
-    "target": "assets/projectflint/textures/item/unfired_clay_pot_mold.png",
-    "source_archive": "ProjectFlint approved asset master",
-    "source_path": "ProjectFlint - Textures/texture asset master file for use/06_Industrial_Steampunk/items/part_plate_small_clay.png",
-    "sha256": "99ef902c5bbad7af7084366c003002c6555f281b11d4c11829d0e23c055cc7b3",
-    "byte_identical": true
-  },
-  {
-    "target": "assets/projectflint/textures/item/fired_clay_pot_mold.png",
-    "source_archive": "ProjectFlint approved asset master",
-    "source_path": "ProjectFlint - Textures/texture asset master file for use/06_Industrial_Steampunk/items/part_plate_small_ceramic.png",
-    "sha256": "70719349e8a0f8e85666e08b43d3079c307ebbee3de9a5ad8b5cbe65bb952d18",
-    "byte_identical": true
-  },
-  {
-    "target": "assets/projectflint/textures/item/clay_pot.png",
-    "source_archive": "ProjectFlint supplied texture archive",
-    "source_path": "ProjectFlint - Textures/fired clay pot.png",
-    "sha256": "9281498d28a48b5bd34b528aadfdd0801ccaad262cc8176e001d7a0103961d29",
-    "byte_identical": true
-  },
-  {
-    "target": "assets/projectflint/textures/block/sanded_wood.png",
-    "source_archive": "ProjectFlint approved asset master",
-    "source_path": "ProjectFlint - Textures/texture asset master file for use/02_Woody_Natural/blocks/plank_plywood.png",
-    "sha256": "51e7ee26424c7f7297018741f62b7febb3267075e1bda8044247e714d84d23a5",
-    "byte_identical": true
-  },
-  {
-    "target": "assets/projectflint/textures/block/grinded_wood.png",
-    "source_archive": "ProjectFlint approved asset master",
-    "source_path": "ProjectFlint - Textures/texture asset master file for use/02_Woody_Natural/blocks/bundle_logs_top.png",
-    "sha256": "a7dac6b224f25aade5780a4ecbcc480947865aa3d1bfcacf6ea93dcd0a3ae7d6",
-    "byte_identical": true
-  },
-  {
-    "target": "assets/projectflint/textures/block/woven_wood.png",
-    "source_archive": "ProjectFlint approved asset master",
-    "source_path": "ProjectFlint - Textures/texture asset master file for use/12_Containers_Storage/blocks/basket_side.png",
-    "sha256": "e95804af71ee31f5ab0dbd71034ed6980e5be7ed173a8ec70115a232b94b9c53",
-    "byte_identical": true
-  },
-  {
-    "target": "assets/projectflint/textures/block/burnt_branch_block_side.png",
-    "source_archive": "ProjectFlint approved asset master",
-    "source_path": "ProjectFlint - Textures/texture asset master file for use/02_Woody_Natural/blocks/bundle_logs.png",
-    "sha256": "848f20c8b76f2af61538a0a295b704c2b00cad6917aa7990fb1c01cd83dcbb93",
-    "byte_identical": true
-  },
-  {
-    "target": "assets/projectflint/textures/block/burnt_branch_block_top.png",
-    "source_archive": "ProjectFlint approved asset master",
-    "source_path": "ProjectFlint - Textures/texture asset master file for use/02_Woody_Natural/blocks/bundle_logs_top.png",
-    "sha256": "a7dac6b224f25aade5780a4ecbcc480947865aa3d1bfcacf6ea93dcd0a3ae7d6",
-    "byte_identical": true
-  },
-  {
-    "target": "assets/projectflint/textures/block/mortar_kiln.png",
-    "source_archive": "ProjectFlint approved asset master",
-    "source_path": "ProjectFlint - Textures/texture asset master file for use/11_Decorative_Building/blocks/brick_refractory.png",
-    "sha256": "f79d24cfbf75626255f038edb4b3b39130359b0e2d049f148684d566cfb0e3dd",
-    "byte_identical": true
-  },
-  {
-    "target": "assets/projectflint/textures/block/mortar_kiln_base.png",
-    "source_archive": "ProjectFlint approved asset master",
-    "source_path": "ProjectFlint - Textures/texture asset master file for use/01_Primitive_Rustic/blocks/brick_adobe.png",
-    "sha256": "664a83cd0d4890b1d03259ba5f91044c7d538033cc17e784ca10e69e15fa4381",
-    "byte_identical": true
-  },
-  {
-    "target": "assets/projectflint/textures/block/wooden_grinder.png",
-    "source_archive": "ProjectFlint approved asset master",
-    "source_path": "ProjectFlint - Textures/texture asset master file for use/02_Woody_Natural/blocks/plank_plywood.png",
-    "sha256": "51e7ee26424c7f7297018741f62b7febb3267075e1bda8044247e714d84d23a5",
-    "byte_identical": true
-  },
-  {
-    "target": "assets/projectflint/textures/block/woven_chest_side.png",
-    "source_archive": "ProjectFlint approved asset master",
-    "source_path": "ProjectFlint - Textures/texture asset master file for use/12_Containers_Storage/blocks/basket_side.png",
-    "sha256": "e95804af71ee31f5ab0dbd71034ed6980e5be7ed173a8ec70115a232b94b9c53",
-    "byte_identical": true
-  },
-  {
-    "target": "assets/projectflint/textures/block/woven_chest_top.png",
-    "source_archive": "ProjectFlint approved asset master",
-    "source_path": "ProjectFlint - Textures/texture asset master file for use/12_Containers_Storage/blocks/basket_top.png",
-    "sha256": "62af57eea7298c44ebdba55fca4fcc0ad2e84e6c8df5a16a92ab6c1bec5a42c4",
-    "byte_identical": true
-  },
-  {
-    "target": "assets/projectflint/textures/item/ground_leather.png",
-    "source_archive": "ProjectFlint approved asset master",
-    "source_path": "ProjectFlint - Textures/texture asset master file for use/13_Organic_Creature/items/mobdrop_hide_scraped_clean.png",
-    "sha256": "774c4f16a98546086f4ada31990a6c19cf485e94d70bdf568cc38637640ef2ee",
-    "byte_identical": true
-  },
-  {
-    "target": "assets/projectflint/textures/item/leather_backpack.png",
-    "source_archive": "ProjectFlint approved asset master",
-    "source_path": "ProjectFlint - Textures/texture asset master file for use/09_Tools_Weapons_Armor/items/tool_pouch_brown.png",
-    "sha256": "af2eef8027aca02864a65f1a31533092a4990ab9ebbca679767bd77a71b276d4",
-    "byte_identical": true
-  },
-  {
-    "target": "assets/projectflint/textures/item/stone_grindsaw.png",
-    "source_archive": "ProjectFlint approved asset master",
-    "source_path": "ProjectFlint - Textures/texture asset master file for use/09_Tools_Weapons_Armor/items/tool_saw_stone.png",
-    "sha256": "2366e3522abeca368d3931efd9e1dd201c19bdc11cce68dd5992d81f70d43a0a",
-    "byte_identical": true
-  },
-  {
-    "target": "assets/projectflint/textures/item/woven_chest_frame.png",
-    "source_archive": "ProjectFlint approved asset master",
-    "source_path": "ProjectFlint - Textures/texture asset master file for use/12_Containers_Storage/blocks/chest_wood_tiny.png",
-    "sha256": "2ba127990ac1609812750f8909696cb30337d5f41495a8660669ffe99c8131a8",
-    "byte_identical": true
-  },
-  {
-    "target": "assets/projectflint/textures/block/advanced_kiln_front_active.png",
-    "source_archive": "Direct user upload",
-    "source_path": "advanced_kiln_front active.zip/advanced_kiln_front active.png",
-    "sha256": "b196a4b10619e1446e286658059965f418b32fc8c9427d269924116c0df7b1bd",
-    "byte_identical": true
-  },
-  {
-    "target": "assets/projectflint/textures/block/advanced_kiln_top_active.png",
-    "source_archive": "Direct user upload",
-    "source_path": "advanced_kiln_front active.zip/advanced kiln top active.png",
-    "sha256": "50248fccb9b7de9a8afbd4d62804bca28dc540a938edc899d31bc2be05213c31",
-    "byte_identical": true
-  },
-  {
     "target": "assets/projectflint/textures/mob_effect/drenched.png",
     "source_archive": "ProjectFlint existing texture reuse",
     "source_path": "assets/projectflint/textures/mob_effect/soaked.png",
@@ -952,38 +1662,80 @@
     "byte_identical": true
   },
   {
-    "target": "assets/projectflint/textures/block/wattled_daub_floor_tile.png",
-    "source_archive": "Direct user upload: e16f77d8-49a7-4b9e-ae00-5d29c6ce0eff.zip",
-    "source_path": "new update stuff/wattled daub floor tile.png",
-    "sha256": "ed8f79a4cc10c69f06d0c118073339678fed2cbe5b2059e27fe17a81e36375ee",
+    "target": "assets/projectflint/textures/item/wood_dust.png",
+    "source_archive": "Direct user upload: v0.31.43-b",
+    "source_path": "wood_dust.png",
+    "sha256": "8885cbba531ce4886ad34bcf6c7c17182489dc6d1e10d995a179e6e672d1e978",
     "byte_identical": true
   },
   {
-    "target": "assets/projectflint/textures/block/wattled_daub_window.png",
-    "source_archive": "Direct user upload: e16f77d8-49a7-4b9e-ae00-5d29c6ce0eff.zip",
-    "source_path": "new update stuff/wattled daub glass.png",
-    "sha256": "cf3c4f7a011175e548b022e9d4d51bad5e2aee9486131e6df2cc6cca0ceaa616",
+    "target": "assets/projectflint/textures/item/wooden_sheet.png",
+    "source_archive": "Direct user upload: v0.31.43-b",
+    "source_path": "woodsheet.png",
+    "sha256": "662225b715ef1783a404f7ff6f7e028db95ccfb3f93936681b78f842730533b5",
     "byte_identical": true
   },
   {
-    "target": "assets/projectflint/textures/block/wattled_daub_door_bottom.png",
-    "source_archive": "Direct user upload: e16f77d8-49a7-4b9e-ae00-5d29c6ce0eff.zip",
-    "source_path": "new update stuff/wattled daub door bottom.png",
-    "sha256": "6c2dba1b9b1d7d83b51f47decf60d49327c39393a12af5e7979eca1af253b2c8",
+    "target": "assets/projectflint/textures/item/hardwood.png",
+    "source_archive": "Direct user upload: v0.31.43-b",
+    "source_path": "hardwood.png",
+    "sha256": "fb8703b04295f09dcf365693c08ecc2c2797e33aa9335b29d934ca01004acc5e",
     "byte_identical": true
   },
   {
-    "target": "assets/projectflint/textures/block/wattled_daub_door_top.png",
-    "source_archive": "Direct user upload: e16f77d8-49a7-4b9e-ae00-5d29c6ce0eff.zip",
-    "source_path": "new update stuff/watled daub door_top.png",
-    "sha256": "36d41dbc6ffd8ea935565204b30af219793b851a72cf0230b4023d7de651c3f5",
+    "target": "assets/projectflint/textures/item/hardwood_alloy.png",
+    "source_archive": "Direct user upload: v0.31.43-b",
+    "source_path": "hardwood_alloy.png",
+    "sha256": "72bae6a6aab0594fb1f19d23ff72c6e517c48af2154a986523a37ca1da6e9398",
     "byte_identical": true
   },
   {
-    "target": "assets/projectflint/textures/item/wattled_daub_door.png",
-    "source_archive": "Direct user upload",
-    "source_path": "watled daub door item texture.png",
-    "sha256": "51533d53dbc5b061c6436f987ab1a0880e1efb94b693c662340ce74e1251b92f",
+    "target": "assets/projectflint/textures/item/hardwood_axe.png",
+    "source_archive": "Direct user upload: v0.31.43-b",
+    "source_path": "hardwood_axe.png",
+    "sha256": "06d4a74e0c29e8957b2ab264357f6e1419bd270866e4792ee94ec7e986356ca4",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/hardwood_hammer.png",
+    "source_archive": "Direct user upload: v0.31.43-b",
+    "source_path": "hardwood_hammer.png",
+    "sha256": "007bc4ad1ad0a8bf955e2afad685faa5b32aebd8ab42f351b923c68239cf9363",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/hardwood_hoe.png",
+    "source_archive": "Direct user upload: v0.31.43-b",
+    "source_path": "hardwood_hoe.png",
+    "sha256": "4c6efafd18fe4713c0245d9b3d38fc6595559e36496cf7c1786f9218dba94704",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/hardwood_pickaxe.png",
+    "source_archive": "Direct user upload: v0.31.43-b",
+    "source_path": "hardwood_pickaxe.png",
+    "sha256": "a0068f1fac33fa0d99b822abf10e928e00a64aa16f3adba8f40190203d5cb766",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/hardwood_shovel.png",
+    "source_archive": "Direct user upload: v0.31.43-b",
+    "source_path": "hardwood_shovel.png",
+    "sha256": "3974500218c3adaed55a84bba9db0e249d6a2a363a832a2ed4c853a95a4a12fc",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/hardwood_sword.png",
+    "source_archive": "Direct user upload: v0.31.43-b",
+    "source_path": "hardwood_sword.png",
+    "sha256": "7529aeb1e70c3dcd4eaa0ab96926f647432c224a3e511d65d41f7e0cfc72498d",
+    "byte_identical": true
+  },
+  {
+    "target": "assets/projectflint/textures/item/wooden_sheet.png",
+    "source_archive": "ProjectFlint pre-v0.31.43 authoritative source",
+    "source_path": "src/main/resources/assets/projectflint/textures/item/wooden_sheet.png",
+    "sha256": "c17e79215b44f8a00272c41d27732335532da6db3ae4ab78b326f56d12ff4815",
     "byte_identical": true
   }
 ]

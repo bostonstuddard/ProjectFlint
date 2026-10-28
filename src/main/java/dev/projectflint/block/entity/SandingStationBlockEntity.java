@@ -21,6 +21,11 @@ public final class SandingStationBlockEntity extends BlockEntity {
         return sandingDurability;
     }
 
+    public void setDurability(int durability) {
+        sandingDurability = Math.max(0, Math.min(MAX_DURABILITY, durability));
+        setChanged();
+    }
+
     public boolean addPaper() {
         if (sandingDurability >= MAX_DURABILITY) return false;
         sandingDurability = Math.min(MAX_DURABILITY, sandingDurability + DURABILITY_PER_PAPER);

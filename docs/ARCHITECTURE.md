@@ -132,11 +132,11 @@ Bushes and Loose Rocks remain registered blocks backed by JSON configured/placed
 
 `ChunkGeneratorMixin` intercepts the 1.21.11 `tryGenerateStructure` decision and rejects a centralized set of vanilla Overworld surface/civilization structures. This affects new generation only. Underground structures are intentionally untouched until mining/cave progression is designed.
 
-## Advancements
+## Progression tracking
 
-`ServerAdvancementManagerMixin` removes `minecraft` namespace advancements from the reload input while preserving Project Flint and other mod namespaces. Project Flint milestones remain ordinary data-driven advancements under `data/projectflint/advancement/`.
+Minecraft advancements are intentionally disabled in Project Flint as of v0.31.20-b. `ServerAdvancementManagerMixin` replaces the complete advancement reload map with an empty map, and Project Flint ships no advancement JSONs. The old `ModAdvancements` bridge remains only as a temporary no-op for source compatibility while bespoke progression events move to Flint Quests.
 
-Advancements describe achieved capabilities; they should not become an arbitrary research-unlock substitute unless a future mechanic specifically requires knowledge state.
+Flint Quests is the forward progression/quest layer. Generic obtain/break/use/interact tasks are handled by Flint Quests itself, while Project Flint exposes custom workstation/process events through `FlintQuestsBridge`.
 
 ## Mixins
 
@@ -146,7 +146,7 @@ Mixins are now used where Fabric events do not cleanly express the required vani
 - completed primitive block transformations;
 - inventory slot/crafting UI restrictions;
 - vanilla structure-generation rejection;
-- vanilla advancement filtering.
+- complete Minecraft advancement suppression while Flint Quests replaces progression tracking.
 
 The rule remains: use public Fabric/Minecraft APIs for normal extension points; use a focused mixin when the vanilla behavior itself must change.
 
@@ -369,7 +369,7 @@ The Advanced Kiln is intentionally a small multiblock rather than another single
 
 `AdvancedToolAssemblyBlock` follows the existing physical-ground-assembly decision: the cast piece chooses the assembly type, two Burnt Branches complete it, and empty-hand interaction reverses an unfinished assembly.
 
-`PrimitiveItemAdvancementSystem` is a reconciliation layer, not the primary progression trigger. Existing process-specific advancement awards remain authoritative for actions; every ten server ticks the reconciliation pass only closes item milestones for items the player already owns.
+The former `PrimitiveItemAdvancementSystem` reconciliation pass was removed in v0.31.20-b. Legacy process-specific `ModAdvancements` calls are temporary no-ops; equivalent progression should be authored through Flint Quests generic tasks or explicit Project Flint custom-event hooks.
 
 On the client, `ReedBackpackLayer` renders the equipped backpack item model from `AvatarRenderState.chestEquipment`, so the gameplay item remains a normal equippable item instead of introducing a second armor/equipment asset pipeline.
 ## Alpha.23.2: Stateful kiln casing and vanilla-skinned container UI
@@ -614,3 +614,33 @@ Early-game pacing constants are centralized in `GameplayTuning`: Grass scraping 
 
 ## v0.28.41-a foliage capability regression guard
 `ToolCapabilities.canHarvestLeaves(...)` must include the Crude Multitool as well as Flint Multitool, Flint Plant Cutters, and Advanced Flint Multitool. The Crude Multitool is the first progression stage that turns leaves into a dependable Branch source; removing it from that capability dead-ends the primitive woodworking chain. Its intended leaf output remains 4 Twigs + 1 Branch.
+
+
+## v0.31.0-b storage, knowledge, and movable-water boundary
+`WaterPotItem` is the persistence bridge for movable vessel water: block fill units are serialized into item custom data on Survival break and restored to the placed block entity. The block itself is deliberately non-directional. A full pot also acts as a non-consuming washing surface for Dirt Piles and Reed Rolls.
+
+`WoodenChestBlock` intentionally delegates spatial connection, obstruction checks, lid state, and double-chest combining to vanilla `ChestBlock`, while Project Flint supplies a 9-slot block entity/menu and custom chest rendering materials. Single/double capacity is therefore 9/18 rather than vanilla 27/54.
+
+`BookshelfBlockEntity` owns the physical knowledge state (0-4 inserted Books) separately from its two crafting inputs. At four Books the blockstate switches to `filled=true`; the item preserves the count when the workstation is moved. The only current workstation recipe is Book production; future recipes can gate on the stored-book state rather than requiring a new station format.
+
+Beam and Sawmill blocks use `CreativeOnlyBlockItem` as an explicit staging boundary: registration/assets can stabilize now without silently opening Survival construction or Sawmill progression.
+
+## Limestone, recipe records, and long-duration cooking (v0.31.5-b)
+
+Limestone is the first shoreline masonry chain with explicit physical-state changes. Natural Limestone is a submerged disk feature in river/beach-family biomes. Natural ore drops Cobbled Limestone; Cobbled and Smooth Limestone use falling-block behavior, while fired Limestone and the Brick/Chiseled/Polished finishes are stable. Advanced Flint Multitool harvesting is enforced in the same destroy-progress/server-drop boundary used by other Project Flint progression blocks, avoiding vanilla loot-table bypasses.
+
+`RecipeParchmentItem` is the persistent recipe-record boundary. It stores one stable recipe id in custom item data and refuses reassignment after the first binding. `PrimitiveStoveRecipeRegistry` resolves those ids through a stable definition registry while retaining fallback compatibility with earlier `PrimitiveProcessingRegistry` kiln ids. Bookshelf research can therefore bind parchments without migrating Oven inventories or changing recipe ids.
+
+`WoodenCabinetBlockEntity` is intentionally not generic storage: all 27 slots accept Recipe Parchment only. The stone-top/oak visual is presentation; the gameplay role is a dedicated recipe archive.
+
+`PrimitiveStoveBlockEntity` consumes four stripped logs/wood per 30-minute ignition. Direct no-parchment operation is limited to ordinary food-like kiln recipes; bound parchment operation resolves the stored recipe definition. v0.31.7-b exposes the station to Survival as the player-facing **Primitive Oven** (legacy registry id `primitive_stove`) and sets its processing rate to 1.45x the shared kiln baseline.
+
+## Persistent placement state and recipe-record authority (v0.31.7-b)
+
+Crushed Stone now carries `CrushedStoneBlock.PLAYER_PLACED` as serialized blockstate data. Inventory placement is the only path that sets it true; machine/hammer/world creation inherits the false default. Advanced Flint Multitool recovery checks that state at destroy-progress, interaction-gate, and authoritative server-break layers. This avoids adding a block entity solely for one bit of state and survives falling because falling blocks carry their `BlockState`.
+
+Recipe Parchment remains an immutable recipe-id token. `PrimitiveStoveRecipeRegistry` now owns the first prepared-food recipe definitions, and both `RecipeParchmentItem` lore and the Primitive Oven recipe guide read requirements from those same definitions. The Bookshelf only performs research/binding and can expose multiple selectable definitions for one research material. Do not duplicate ingredient text in language files or parchment-specific hardcoded lore.
+
+The player-facing `Primitive Oven` retains the legacy registry id `projectflint:primitive_stove` for save compatibility. Its rate is 1.45x the shared kiln baseline; this is a direct baseline multiplier, not a multiplier compounded on top of Mortar Kiln speed.
+
+Flax is the String-progression authority. Mature `FlaxCropBlock` drops String directly, while loot-table String is removed globally so mob/chest/block loot cannot bypass the agricultural gate.

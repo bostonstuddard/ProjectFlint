@@ -1,6 +1,6 @@
 # Project Flint Texture Provenance
 
-Every PNG under `assets/projectflint/textures/` must be an exact, unmodified human-made source asset. Project Flint does not resize, recolor, redraw, composite, crop, filter, or otherwise edit these texture pixels.
+User-uploaded standalone textures remain exact and byte-identical. The six explicitly documented v0.31.34-b pulley/forge-controller pixel composites are derived from supplied ProjectFlint assets, not separate unmodified imports. Their source operations and output hashes are recorded below and in `docs/texture_provenance.json`; do not mislabel a derived sprite as a direct upload.
 
 `Direct user upload` means the exact human-made PNG supplied by the project owner in the current texture-fill archive. The Project Flint icon is outside the texture tree and is documented separately in `docs/ASSET_SOURCES.md`.
 
@@ -262,3 +262,159 @@ All seven PNGs below are byte-identical copies from the owner-provided `new upda
 | `assets/projectflint/textures/block/water_pot_top.png` | `new update stuff/water pot top.png` | `e4b1109982519ec208d5ca0e93c212bdcdf3886799bdeab6d1181a7e1af47750` |
 | `assets/projectflint/textures/block/water_pot_side.png` | `new update stuff/water pot side.png` | `e4b1109982519ec208d5ca0e93c212bdcdf3886799bdeab6d1181a7e1af47750` |
 | `assets/projectflint/textures/block/water_pot_front.png` | `new update stuff/water pot front.png` | `ba00483cf781b8ec077f9292c6d86ae7f88784f03e06b7ed9846f7ef181d00af` |
+
+
+## v0.31.0-b — direct owner asset batch
+All rows below are byte-identical copies from `new update stuff(4).zip`; no texture pixels were edited.
+
+| Project Flint target | Owner-provided source | SHA-256 |
+|---|---|---|
+| `assets/projectflint/textures/item/wooden_board.png` | `new update stuff(4).zip/new update stuff/wooden board.png` | `98ab1e1e34194f9ef1aaaf8ab12a8a547d416749f4cdbe120c27f07016946079` |
+| `assets/projectflint/textures/item/plant_fiber.png` | `new update stuff(4).zip/new update stuff/plant fiber.png` | `cb6c30ddc231dbae28b82226ec03f6314b21a5267a69cd03f5703f54fd52a053` |
+| `assets/projectflint/textures/item/plant_tool_binding.png` | `new update stuff(4).zip/new update stuff/plant tool binding.png` | `5e79bab35ee2baefd17b09398487c2c32fb7be12d16c147b1069a5eab2a7d31a` |
+| `assets/projectflint/textures/item/black_bear_spawn_egg.png` | `new update stuff(4).zip/new update stuff/black bear spawn egg.png` | `8aff4e5a3955b32a4fa90d02ad6d2c5052000f495e1bd5207e07991300b3cf25` |
+| `assets/projectflint/textures/item/brown_bear_spawn_egg.png` | `new update stuff(4).zip/new update stuff/brown bear spawn egg.png` | `5a8fa0424624dd080a8176d49eb7da5f46d7516b180816381233698e271fbd98` |
+| `assets/projectflint/textures/item/bone_firestarter.png` | `new update stuff(4).zip/new update stuff/bone firestarter.png` | `64495eee54d32124355fa2994640c34927a0e280c45d05726a80b1c48af8b8ca` |
+| `assets/projectflint/textures/item/wood_firestarter.png` | `new update stuff(4).zip/new update stuff/wood firestarter.png` | `504830a8b9f46b6297567acf5d0761848de84e26d8205ee6e7bd17f3dbfead24` |
+| `assets/projectflint/textures/item/bone_hoe.png` | `new update stuff(4).zip/new update stuff/bone_hoe.png` | `dad6e93779a6e8c21f69ffb23e4d6906dc9287d22c7f83514501f3882a28a63e` |
+| `assets/projectflint/textures/item/flax_seeds.png` | `new update stuff(4).zip/new update stuff/flax_seeds.png` | `c3c2acf7919a966233e96c8aa9bbffc4a93bb45ab6358d126079635cc1c08562` |
+| `assets/projectflint/textures/item/bone_boots.png` | `new update stuff(4).zip/new update stuff/bone_boots.png` | `21ebbcb2f8484dbd2dce11d9d582bee57b8a3494cdc5caba62faf5a978caf6dd` |
+| `assets/projectflint/textures/item/bone_chestplate.png` | `new update stuff(4).zip/new update stuff/bone_chest.png` | `ad9c99922fbc394dda5a46e6eb106b45b7771a0fa170e04dc5ca43fa2959fc61` |
+| `assets/projectflint/textures/item/bone_helmet.png` | `new update stuff(4).zip/new update stuff/bone_helm.png` | `84ecab370405e8b871b62510e9306a23641366c0fbcb06f21c1441686abd707a` |
+| `assets/projectflint/textures/item/bone_leggings.png` | `new update stuff(4).zip/new update stuff/bone_leggs.png` | `48da887ad06f1ae2a190fb965925e13d44d3b8c11df3504031a1f8b3cc7ee773` |
+| `assets/projectflint/textures/entity/equipment/humanoid/bone.png` | `new update stuff(4).zip/new update stuff/bone_armor model layer 1.png` | `a2c6fbf61e3f0b26531e9fb1e3bc357a0d19c18b64a6ae05269c43e0c2252d06` |
+| `assets/projectflint/textures/entity/equipment/humanoid_leggings/bone.png` | `new update stuff(4).zip/new update stuff/bone_armor model layer 2.png` | `d5dbc672649f87df9986f5edf91315c35e5dacefc4601fad0df2397173fb8420` |
+| `assets/projectflint/textures/block/water_pot_top.png` | `new update stuff(4).zip/new update stuff/water pot top.png` | `6ba80d1b094f6bdf4427987d6c9b878e88bee46d9f650606be63e1c801aae9a5` |
+| `assets/projectflint/textures/block/water_pot_side.png` | `new update stuff(4).zip/new update stuff/water pot sides texture.png` | `b13f6213fa079fb737ac50404af800073da666de8bf012cabe76670c4d50fc82` |
+| `assets/projectflint/textures/block/water_pot_bottom.png` | `new update stuff(4).zip/new update stuff/water pot bottom.png` | `7012e7f2dafacc35f5b57655eade88d733aa93daec24755b89a56b74d0aad0b7` |
+| `assets/projectflint/textures/block/bookshelf_empty.png` | `new update stuff(4).zip/new update stuff/bookshelf empty.png` | `22514060ef0e25c7a82fd6efa073c98ce03a8f23300907f511d7a82b28f6fbbd` |
+| `assets/projectflint/textures/block/bookshelf_filled.png` | `new update stuff(4).zip/new update stuff/bookshelf.png` | `deec7cff6434f7ad30a392d9726efbe0b05a7f24d9a4534b311e8ccf5fda87e8` |
+| `assets/projectflint/textures/block/bookshelf_side.png` | `new update stuff(4).zip/new update stuff/bookshelf_side.png` | `14f853bde2cda2940b430783a85fa0fe6963d4e6f7975de3f26e8738f3b1acd2` |
+| `assets/projectflint/textures/block/bookshelf_top.png` | `new update stuff(4).zip/new update stuff/bookshelf_top.png` | `4569a833def3509e0b883aee4ed95a81c3e19231230be000a0e6c9b6d2442fdc` |
+| `assets/projectflint/textures/entity/chest/wooden_chest.png` | `new update stuff(4).zip/new update stuff/wooden chest normal.png` | `6e31cfa9cc702f1d812de6d0f7cbf2327d122a4256ab81cd5bec3c0d9d03e868` |
+| `assets/projectflint/textures/entity/chest/wooden_chest_left.png` | `new update stuff(4).zip/new update stuff/wooden chest normal_left.png` | `8212628167a9e88af37a64758e509dbe20685ef1a7b66772efa503bbf8606e01` |
+| `assets/projectflint/textures/entity/chest/wooden_chest_right.png` | `new update stuff(4).zip/new update stuff/wooden chest normal_right.png` | `4e931b7480f6554257fb5f40f045e5f7a55c013f66b0f54ea6f19d1449b6b8cf` |
+| `assets/projectflint/textures/block/sawmill_front.png` | `new update stuff(4).zip/new update stuff/sawmill_front.png` | `cfd8625f3c7cc10eca640173c8bfe05e758c44b929c8d7e5385abbe6e27b033e` |
+| `assets/projectflint/textures/block/sawmill_back.png` | `new update stuff(4).zip/new update stuff/sawmill_back.png` | `39933bfbd7c37194f2ceceac96bc6d4aa324a06afccec13bd5928bb6e199f64a` |
+| `assets/projectflint/textures/block/sawmill_side.png` | `new update stuff(4).zip/new update stuff/sawmill_side.png` | `ca2a5b2756c4cd8307f6ae4a5b75fb9a423714b3350254a0910fd25839e54bdd` |
+| `assets/projectflint/textures/block/sawmill_saw.png` | `new update stuff(4).zip/new update stuff/sawmill_saw.png` | `ff3934c2d49ec64f5f16cd221af54acb89f956cb59272e34c66d81272d92fd8f` |
+| `assets/projectflint/textures/block/wooden_beam.png` | `new update stuff(4).zip/new update stuff/oak_beam_side.png` | `fda68ab101c4a7afddd1cf3bf52d8e5375a19f601f36ff560efcef96826874cb` |
+| `assets/projectflint/textures/block/wooden_beam_top.png` | `new update stuff(4).zip/new update stuff/oak_beam_top.png` | `3cdd2b654d8d98459285ed099f1c53789c08ab28a5d2f56e7d7dda1e119fc7f2` |
+| `assets/projectflint/textures/block/acacia_wooden_beam.png` | `new update stuff(4).zip/new update stuff/acacia_beam.png` | `f076213dbe12ec6bc08416b15acf9f64f29d529123bc939a5d08f843608d4019` |
+| `assets/projectflint/textures/block/acacia_wooden_beam_top.png` | `new update stuff(4).zip/new update stuff/acacia_beam_top.png` | `3aae6cc3574d06f26184c7284e4bb3ce11c8d23befd47c1fa7ea7e32ca849ad6` |
+| `assets/projectflint/textures/block/birch_wooden_beam.png` | `new update stuff(4).zip/new update stuff/birch_beam.png` | `80cc4ef0ecaf08ae1c55789094394af4c08abaa33dd63bb08b98b3364f5e9d37` |
+| `assets/projectflint/textures/block/birch_wooden_beam_top.png` | `new update stuff(4).zip/new update stuff/birch_beam_top.png` | `f38fb1febf940498e518469750abd3ca3adf01eb1da69833af47a97fa5c8866e` |
+| `assets/projectflint/textures/block/cherry_wooden_beam.png` | `new update stuff(4).zip/new update stuff/cherry_beam.png` | `ee65fcfefd3a904b086c913fc0524fb221e5e10027d2057505223af2839b4fa8` |
+| `assets/projectflint/textures/block/cherry_wooden_beam_top.png` | `new update stuff(4).zip/new update stuff/cherry_beam_top.png` | `c594b403a5b6115ad7169982ef32474ef9d7c9b1150c0996e1dfdc6ca456038c` |
+| `assets/projectflint/textures/block/crimson_wooden_beam.png` | `new update stuff(4).zip/new update stuff/crimson_log_beam.png` | `33752480c78980d97459963c1d73d8cf1972f6aecfe2c0f4f03a322372111f88` |
+| `assets/projectflint/textures/block/crimson_wooden_beam_top.png` | `new update stuff(4).zip/new update stuff/crimson_log_top.png` | `1fbcdaaef387c4a54cc1cb09c9045977d55370a43dda51b3d0462b766fddc7de` |
+| `assets/projectflint/textures/block/dark_oak_wooden_beam.png` | `new update stuff(4).zip/new update stuff/dark_oak_beam.png` | `89176849c00c08dfd92bb7f4d704246c8184386cd856477ad9317e9df7040a06` |
+| `assets/projectflint/textures/block/dark_oak_wooden_beam_top.png` | `new update stuff(4).zip/new update stuff/dark_oak_beam_top.png` | `503578343b2438fc04f12c6cb7ab543e6a35482e2bd5b8f5f82286e0c6ab9587` |
+| `assets/projectflint/textures/block/jungle_wooden_beam.png` | `new update stuff(4).zip/new update stuff/jungle_beam.png` | `743ca803b6d39e78d8e9231348dfe98e0e0d0c25610eaeac1b20c3d5ac1df5d7` |
+| `assets/projectflint/textures/block/jungle_wooden_beam_top.png` | `new update stuff(4).zip/new update stuff/jungle_beam_top.png` | `3ec05a617749ddee907da815311db7e5d61c0d2b3a12daad86fa8c144a52eb50` |
+| `assets/projectflint/textures/block/mangrove_wooden_beam.png` | `new update stuff(4).zip/new update stuff/mangrove_beam.png` | `25b2e6330de03c470e3c7e186385375c9a6dae38ebb94bd9d5912393332899d3` |
+| `assets/projectflint/textures/block/mangrove_wooden_beam_top.png` | `new update stuff(4).zip/new update stuff/mangrove_beam_top.png` | `9968fe212a6b5fecf82c0222a79a35e63d74ac62600e9369cb9db8544d1f7c04` |
+| `assets/projectflint/textures/block/pale_oak_wooden_beam.png` | `new update stuff(4).zip/new update stuff/pale_oak_beam.png` | `2189822897b7eb6d77b46c0c1b378c2cdb897f89988a419f9c09392b5ba4a969` |
+| `assets/projectflint/textures/block/pale_oak_wooden_beam_top.png` | `new update stuff(4).zip/new update stuff/pale_oak_beam_top.png` | `9793567d8cc066671ed27f1b3247c1d8f726c730a2b3f79494b004dcff50080f` |
+| `assets/projectflint/textures/block/spruce_wooden_beam.png` | `new update stuff(4).zip/new update stuff/spruce_beam_side.png` | `0beb1a5086aba106f340d5f56ec0227370fc6ad63eae1dd4e7bf7098f7ea4ec4` |
+| `assets/projectflint/textures/block/spruce_wooden_beam_top.png` | `new update stuff(4).zip/new update stuff/spruce_beam_top.png` | `5913a08c03912128d5fed53e62c4037c890cf016ca0f5d20b20886efca756571` |
+| `assets/projectflint/textures/block/warped_wooden_beam.png` | `new update stuff(4).zip/new update stuff/warped_log_beam.png` | `7ff5155e0a97d34fbe0a211a2a344fdbd86207f0d7dcae99d8a3dcf860f03c01` |
+| `assets/projectflint/textures/block/warped_wooden_beam_top.png` | `new update stuff(4).zip/new update stuff/warped_log_beam_top.png` | `f708aa213bd87390b73e019433c132bcae2ea124e92a8076c4c2275d3c4fd9fe` |
+
+The active `bound_wood_processor` item model intentionally references the previously owner-supplied `lumber_processor_top` texture rather than `bound wooden processor.png`, per the explicit v0.31.0-b design instruction. The three advanced Flint tool assembly ground sprites are byte-for-byte copies of their already-active owner-authored item PNGs (`flint_axe_pieces`, `flint_cutter_piece`, `refined_flint_multitool_piece`) so placed parts render the actual item art without new pixels.
+
+## v0.31.29-b — Clay Bucket derivatives
+
+The Clay Bucket sprites are deterministic pixel-art derivatives of Mojang's vanilla bucket silhouettes and existing Project Flint clay colors. No generative image system was used.
+
+| Project Flint target | Source(s) | SHA-256 | Transformation |
+|---|---|---|---|
+| `assets/projectflint/textures/item/unfired_clay_bucket.png` | vanilla `minecraft:textures/item/bucket.png` + existing `assets/projectflint/textures/item/unfired_clay_ball.png` | `595eb57c43b47d73edb2d9c39a0ca1a811898dc42d44db228f439bc8c51748ab` | Vanilla bucket pixels remapped by shade to the existing Unfired Clay Ball palette. |
+| `assets/projectflint/textures/item/clay_bucket.png` | vanilla `minecraft:textures/item/bucket.png` + existing `assets/projectflint/textures/item/clay_pot.png` | `757f5130f989026fc236a2ea563ac8f9a95809f2f7f1d1372052408b3de6fb79` | Vanilla bucket pixels remapped by shade to the existing Clay Pot palette. |
+| `assets/projectflint/textures/item/clay_water_bucket.png` | vanilla `minecraft:textures/item/water_bucket.png` + existing `assets/projectflint/textures/item/clay_pot.png` | `df6027f7dd9209e26403ed4c01b1cb47e2765d7420f637948e052e326925c6b0` | Vanilla water pixels retained; grayscale bucket body remapped to the existing Clay Pot palette. |
+
+## v0.31.30-b — Strawberries
+
+The Strawberry item and all four Strawberry Plant growth-stage textures are direct owner-supplied assets from `new update stuff(6).zip`; they are imported byte-for-byte with no generated or replacement artwork.
+
+| Project Flint target | Source | SHA-256 |
+|---|---|---|
+| `assets/projectflint/textures/item/strawberry.png` | `new update stuff(6).zip/new update stuff/straw berry item texture.png` | `2af63b1970e9a80c20885befa2e6dd370b028996a18cafed5c7f2bec7df668cd` |
+| `assets/projectflint/textures/block/strawberry_bush_stage0.png` | `new update stuff(6).zip/new update stuff/straw_berry_bush_stage0.png` | `481ff5c8edd2d284c46f5d3b4b253090c19a2dba25b21279ca1de170e39527e2` |
+| `assets/projectflint/textures/block/strawberry_bush_stage1.png` | `new update stuff(6).zip/new update stuff/straw_berry_bush_stage1.png` | `ef315253b0e8497b538219561a06ca64b847300cd61f378eed632b623764876a` |
+| `assets/projectflint/textures/block/strawberry_bush_stage2.png` | `new update stuff(6).zip/new update stuff/straw_berry_bush_stage2.png` | `5f829277abc3be08fee85d386e499e6e2af75c74bb805d758cd3f1b6590679d1` |
+| `assets/projectflint/textures/block/strawberry_bush_stage3.png` | `new update stuff(6).zip/new update stuff/straw_berry_bush_stage3.png` | `e2bb913b5e82ba66f6cb3813a92d50f2d1da6628f1b02d38946d00cd726470b4` |
+
+
+## v0.31.31-b — Owner-supplied food and brick item textures
+
+| Target | Source | SHA-256 |
+|---|---|---|
+| `assets/projectflint/textures/item/unfired_brick_mold.png` | `wooden_brick_form.png` | `71c3bfd41b7d8ec99ae44bc35fc5e2720aa607b34515584d59b84c8319d078bd` |
+| `assets/projectflint/textures/item/unfired_brick.png` | `unfired_brick.png` | `1a96516c5bf3fc43bab1eeb034f3c673ee65d651ec6d8050c2dea3be4dab4b07` |
+| `assets/projectflint/textures/item/strawberry_seeds.png` | `strawberry_seeds.png` | `486881309cc28bfb45667c02cf10ba69dcd00af6f06e82e0aa658eb2791fa28b` |
+| `assets/projectflint/textures/item/strawberry_jam.png` | `strawberry_jelly.png` | `102143b39d14a6c5a991fd292a3c96249689ada59fc8132f1e4569adc9dab90b` |
+| `assets/projectflint/textures/item/strawberry_pie.png` | `strawberry_pie.png` | `399d585b37606c7ac8cb7b8944b68bdea79635ae8e309fa454ee1c2f17b162ad` |
+
+## v0.31.32-b asset intake
+
+The owner-supplied textures `flour.png`, `fat.png`, `turtle.png`, `turtle_cooked.png`, `sushi_roll.png`, `fireclay_brick.png`, `unfired_fireclay_brick.png`, `fireclay_brick_block.png`, and `cheese.png` are copied unmodified. Turtle textures are also duplicated verbatim under matching gameplay item IDs. `clay_milk_bucket.png` is a palette edit of the existing owner-approved Clay Water Bucket, changing the water pixels only. `tanned_leather.png` is a palette-darkened derivative of Minecraft’s vanilla `leather.png` silhouette (Minecraft 1.21.11 bundled resource); no new AI-generated sprites. SHA-256 values:
+
+- `item/flour.png`: `dedfed060d6f60433a06198affe0d78abdf1bbc510c8b3c4f5af91b6a4685bfe`
+- `item/fat.png`: `56e70b57008b7f0c5df95dd1b47333efbdb0925a5672cc46d15f9924d8926bc1`
+- `item/sushi_roll.png`: `57c98c85fe0fd9f70e59efd1cadae081d7c42b38af7dd8aaf2bd7ae440ae7bb1`
+- `item/fireclay_brick.png`: `771bd9cba2ebab309f4c93fe4514c134d046a4952e4761f2cdb1493f0d5c6f7d`
+- `item/unfired_fireclay_brick.png`: `c72573ae01d7bf245fab4bc7fa1616c3b66731471af20e9d513918c4146c3cc9`
+- `block/fireclay_brick_block.png`: `7a69915ed86ca4903dc04742b3a5a07e05879c8ae7b38eae6b9c50695a12d785`
+- `item/cheese.png`: `1044c8774b161c8f73ffda2362d75325e914055491439042e4cc10e154ff7777`
+- `item/raw_turtle_meat.png`: `918062f0ba0de1ca7f15ea684d946409176f11c51c889bb7a806b5cf71910103`
+- `item/cooked_turtle_meat.png`: `2a28b4ae9442dfb9a3d536efede5530cd026939dbd1c71d77fbdeebcca104775`
+- `item/clay_milk_bucket.png`: `e9fd36fea4d6a68bd761acc874a95c80b288d051fc6ff6aebc83a662c66957ce`
+- `item/tanned_leather.png`: `9f69e90187200b15e8bc1d488f0322bd2166491bb04e81786c2da2355ed0de3a`
+
+
+### v0.31.33-b user-supplied textures
+- Twelve standalone Dough/bread item PNGs were imported unmodified (names and SHA-256 values in `docs/texture_provenance.json`).
+- `new workstations.zip`: unaltered stitched Basin, Drying Rack, and Millstone PNGs; model paths adapted from `primutils` to `projectflint`. Chopping Block was not imported as a new workstation.
+
+## v0.31.34-b derived ProjectFlint sprites
+
+These are newly composited project-specific art from user-supplied texture sources, not imported user PNGs. All reused user-provided workstation stitched PNGs remain unaltered.
+
+| Target | Source/composition | Final SHA-256 |
+|---|---|---|
+| `assets/projectflint/textures/block/fireclay_forge_controller_lit.png` | user fireclay brick texture + wood center + orange lit indicator (derived) | `06e540aa025f3b6696870dc4615d129c547af1b66ef1b95350255c827636ca84` |
+| `assets/projectflint/textures/block/fireclay_forge_controller_off.png` | user fireclay brick texture + wood center + grey bezel (derived) | `bd5690352e87f78cd3fbd6222d5bf26d4c940e16da1e77943d025eb9b63b0d38` |
+| `assets/projectflint/textures/block/fireclay_forge_controller_ready.png` | user fireclay brick texture + wood center + green formed indicator (derived) | `096328a6895b51382eb6e545bb5f6aa05c767a001371f9fad820def011d18abb` |
+| `assets/projectflint/textures/block/well_pulley_bottom.png` | user fireclay brick texture + basin_stitched.png timber region + dark shaft hole (derived) | `687a56101d17b70e5919b2279fb2c8a89cf8743d0d2aa4d21ff8d39bcb16699d` |
+| `assets/projectflint/textures/block/well_pulley_side.png` | user fireclay brick texture + basin_stitched.png timber region (derived) | `31b19733c5f67f05e9aaa5b48f48ec787bc669364304f7117ecee8caae0154fc` |
+| `assets/projectflint/textures/block/well_pulley_top.png` | user fireclay brick texture + basin_stitched.png timber region (derived) | `31b19733c5f67f05e9aaa5b48f48ec787bc669364304f7117ecee8caae0154fc` |
+
+
+## v0.31.43-b — Hardwood staging and Tanned Leather visual pass
+
+The following material/tool sprites are direct user uploads. The supplied `woodsheet.png` replaces the existing Wooden Sheet artwork; the other entries are staged as Creative-only items.
+
+| Target | Source | SHA-256 |
+|---|---|---|
+| `assets/projectflint/textures/item/wood_dust.png` | `wood_dust.png` | `8885cbba531ce4886ad34bcf6c7c17182489dc6d1e10d995a179e6e672d1e978` |
+| `assets/projectflint/textures/item/wooden_sheet.png` | `woodsheet.png` | `662225b715ef1783a404f7ff6f7e028db95ccfb3f93936681b78f842730533b5` |
+| `assets/projectflint/textures/item/hardwood.png` | `hardwood.png` | `fb8703b04295f09dcf365693c08ecc2c2797e33aa9335b29d934ca01004acc5e` |
+| `assets/projectflint/textures/item/hardwood_alloy.png` | `hardwood_alloy.png` | `72bae6a6aab0594fb1f19d23ff72c6e517c48af2154a986523a37ca1da6e9398` |
+| `assets/projectflint/textures/item/hardwood_axe.png` | `hardwood_axe.png` | `06d4a74e0c29e8957b2ab264357f6e1419bd270866e4792ee94ec7e986356ca4` |
+| `assets/projectflint/textures/item/hardwood_hammer.png` | `hardwood_hammer.png` | `007bc4ad1ad0a8bf955e2afad685faa5b32aebd8ab42f351b923c68239cf9363` |
+| `assets/projectflint/textures/item/hardwood_hoe.png` | `hardwood_hoe.png` | `4c6efafd18fe4713c0245d9b3d38fc6595559e36496cf7c1786f9218dba94704` |
+| `assets/projectflint/textures/item/hardwood_pickaxe.png` | `hardwood_pickaxe.png` | `a0068f1fac33fa0d99b822abf10e928e00a64aa16f3adba8f40190203d5cb766` |
+| `assets/projectflint/textures/item/hardwood_shovel.png` | `hardwood_shovel.png` | `3974500218c3adaed55a84bba9db0e249d6a2a363a832a2ed4c853a95a4a12fc` |
+| `assets/projectflint/textures/item/hardwood_sword.png` | `hardwood_sword.png` | `7529aeb1e70c3dcd4eaa0ab96926f647432c224a3e511d65d41f7e0cfc72498d` |
+
+Tanned Leather armor and Utility Vest item/equipment textures are deterministic palette edits of the already-shipped Project Flint textures. The vest badge was enlarged/brightened with direct pixel edits; no generative image system was used.
+
+
+## v0.31.44-b — Wooden Sheet restoration
+
+The v0.31.43-b Wooden Sheet replacement was reverted at the user's request. The current Wooden Sheet sprite is the exact pre-v0.31.43 Project Flint asset restored from the authoritative source tree.
+
+| Target | Source | SHA-256 |
+|---|---|---|
+| `assets/projectflint/textures/item/wooden_sheet.png` | Pre-v0.31.43 Project Flint source asset | `c17e79215b44f8a00272c41d27732335532da6db3ae4ab78b326f56d12ff4815` |
