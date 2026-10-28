@@ -1,5 +1,7 @@
 package dev.projectflint.system;
 
+import dev.projectflint.block.CrushedStoneBlock;
+
 import dev.projectflint.block.BindingAssemblyBlock;
 import dev.projectflint.block.ClayFiringPileBlock;
 import dev.projectflint.block.CrudeClayKilnBlock;
@@ -14,6 +16,7 @@ import dev.projectflint.block.entity.MortarChestBlockEntity;
 import dev.projectflint.block.entity.WovenChestBlockEntity;
 import dev.projectflint.config.GameplayTuning;
 import dev.projectflint.registry.ModBlocks;
+import dev.projectflint.block.entity.WaterPotBlockEntity;
 import dev.projectflint.registry.ModItems;
 import dev.projectflint.registry.ModTags;
 import net.fabricmc.fabric.api.event.player.AttackBlockCallback;
@@ -55,6 +58,9 @@ public final class PrimitiveInteractionSystem {
 		UseBlockCallback.EVENT.register(PrimitiveInteractionSystem::onUseBlock);
 		UseItemCallback.EVENT.register(PrimitiveInteractionSystem::onUseItem);
 		PlayerBlockBreakEvents.BEFORE.register(PrimitiveInteractionSystem::beforeBlockBreak);
+		PlayerBlockBreakEvents.AFTER.register((level, player, pos, state, entity) -> {
+			if (level instanceof net.minecraft.server.level.ServerLevel server) PlayerPlacedBlockLedger.clear(server, pos);
+		});
 	}
 
 	private static InteractionResult onAttackBlock(Player player, Level level, InteractionHand hand, BlockPos pos, Direction direction) {
@@ -62,8 +68,30 @@ public final class PrimitiveInteractionSystem {
 
 		BlockState state = level.getBlockState(pos);
 		ItemStack held = player.getItemInHand(hand);
+		if (TannedUtilityVestSystem.canHandClear(player, state)) return InteractionResult.PASS;
+		if (held.is(ModItems.HARDWOOD_HAMMER) && state.is(BlockTags.MINEABLE_WITH_PICKAXE) && !state.is(BlockTags.NEEDS_IRON_TOOL) && !state.is(BlockTags.NEEDS_DIAMOND_TOOL)) return InteractionResult.PASS;
 		if (state.is(ModBlocks.SLEEPING_BAG)) return InteractionResult.PASS;
-		if (state.is(ModBlocks.SANDING_STATION)) return InteractionResult.PASS;
+		if (state.is(ModBlocks.BASIN) || state.is(ModBlocks.FAT_BURNING_TORCH)) return InteractionResult.PASS;
+		if (state.is(ModBlocks.HARDWOOD_CRAFTING_TABLE)) return (held.is(ModItems.FLINT_AXE) || held.is(Items.WOODEN_AXE) || held.is(ModItems.HARDWOOD_AXE)) ? InteractionResult.PASS : InteractionResult.FAIL;
+		if ((held.is(Items.WOODEN_PICKAXE) || held.is(ModItems.HARDWOOD_PICKAXE)) && WoodenToolTargets.pickaxe(state)) return InteractionResult.PASS;
+		if ((held.is(Items.WOODEN_PICKAXE) || held.is(ModItems.HARDWOOD_PICKAXE)) && WoodenToolTargets.brickMasonry(state)) return InteractionResult.PASS;
+		if ((held.is(Items.WOODEN_PICKAXE) || held.is(ModItems.HARDWOOD_PICKAXE))
+			&& (state.is(BlockTags.NEEDS_STONE_TOOL) || state.is(BlockTags.NEEDS_IRON_TOOL) || state.is(BlockTags.NEEDS_DIAMOND_TOOL))) return InteractionResult.FAIL;
+		if ((held.is(Items.WOODEN_SHOVEL) || held.is(ModItems.HARDWOOD_SHOVEL)) && WoodenToolTargets.shovel(state)) return InteractionResult.PASS;
+		if ((held.is(Items.WOODEN_AXE) || held.is(ModItems.HARDWOOD_AXE)) && state.is(BlockTags.LOGS)) return InteractionResult.PASS;
+		if (state.is(ModTags.GRASS_SCRAPE_TARGETS) && !held.isEmpty() && !ModItems.isMultitool(held)) return InteractionResult.FAIL;
+		if (player.getItemBySlot(net.minecraft.world.entity.EquipmentSlot.CHEST).is(ModItems.TANNED_UTILITY_VEST)
+			&& PlayerPlacedBlockLedger.potential(level, pos, state)) {
+			if (level.isClientSide()) return InteractionResult.PASS;
+			if (level instanceof net.minecraft.server.level.ServerLevel server && PlayerPlacedBlockLedger.recoverable(player, server, pos, state)) return InteractionResult.PASS;
+		}
+		if (ModBlocks.isWoodenBeam(state)) return (ToolCapabilities.isWellWoodTool(held) || TannedUtilityVestSystem.canDismantleWellFrame(player, state)) ? InteractionResult.PASS : InteractionResult.FAIL;
+		if (state.is(ModBlocks.ROPE)) return InteractionResult.PASS;
+		if (state.is(ModBlocks.WELL_PULLEY)) return (ToolCapabilities.isWellWoodTool(held) || TannedUtilityVestSystem.canDismantleWellFrame(player, state)) ? InteractionResult.PASS : InteractionResult.FAIL;
+		if (state.is(Blocks.BRICKS) || state.is(ModBlocks.BRICK_SHINGLES)) {
+			return ToolCapabilities.canMineBrick(held) ? InteractionResult.PASS : InteractionResult.FAIL;
+		}
+		if (state.is(ModBlocks.SANDING_STATION)) return held.is(ModItems.FLINT_AXE) ? InteractionResult.PASS : InteractionResult.FAIL;
 		if (state.is(ModBlocks.LUMBER_WORKPIECE)) return InteractionResult.PASS;
 		if (LumberProcessorSystem.isSupportedStrippedLog(state) && level.getBlockState(pos.below()).is(ModBlocks.LUMBER_CHOPPING_BLOCK)) {
 			BlockPos controller = pos.below();
@@ -92,12 +120,20 @@ public final class PrimitiveInteractionSystem {
 			}
 			return LumberProcessorSystem.canChop(level, controller) ? InteractionResult.PASS : InteractionResult.FAIL;
 		}
-		if (state.is(ModBlocks.LUMBER_CHOPPING_BLOCK)
-			|| (state.is(ModBlocks.WATER_POT) && LumberProcessorSystem.isProcessorPart(level, pos))
-			|| (state.is(ModBlocks.CRUSHED_STONE) && LumberProcessorSystem.isProcessorPart(level, pos))) {
-			return ToolCapabilities.has(held, ToolCapabilities.Capability.ADVANCED_FLINT_TIER) ? InteractionResult.PASS : InteractionResult.FAIL;
+		if (LumberProcessorSystem.isProcessorPart(level, pos)) {
+			return held.is(ModItems.FLINT_AXE) ? InteractionResult.PASS : InteractionResult.FAIL;
 		}
 		if (state.is(ModBlocks.WATER_POT)) return InteractionResult.PASS;
+		if (state.is(ModBlocks.BOOKSHELF)) return held.is(ModItems.FLINT_AXE) ? InteractionResult.PASS : InteractionResult.FAIL;
+		if (state.is(ModBlocks.WOODEN_CHEST)) return held.is(ModItems.FLINT_AXE) ? InteractionResult.PASS : InteractionResult.FAIL;
+		if (state.is(ModBlocks.CRUSHED_STONE)) return CrushedStoneBlock.isPlayerPlaced(state) && held.is(ModItems.ADVANCED_FLINT_MULTITOOL) ? InteractionResult.PASS : InteractionResult.FAIL;
+		if (state.is(ModBlocks.FLAX_CROP)) return InteractionResult.PASS;
+		if (state.is(ModBlocks.FIRECLAY_BRICK_BLOCK) || state.is(ModBlocks.FIRECLAY_BRICK_SLAB) || state.is(ModBlocks.FIRECLAY_BRICK_STAIRS) || state.is(ModBlocks.FIRECLAY_FORGE_CONTROLLER)) return ToolCapabilities.canMineBrick(held) ? InteractionResult.PASS : InteractionResult.FAIL;
+		if (state.is(ModBlocks.LOOSE_MUD_BRICKS) || state.is(ModBlocks.LOOSE_MUD_BRICK_SLAB)) return ToolCapabilities.has(held, ToolCapabilities.Capability.FLINT_TIER) ? InteractionResult.PASS : InteractionResult.FAIL;
+		if (state.is(ModBlocks.WOODEN_CABINET)) return held.is(ModItems.FLINT_AXE) ? InteractionResult.PASS : InteractionResult.FAIL;
+		if (state.is(ModBlocks.BRICK_FURNACE) || state.is(ModBlocks.BRICK_BLAST_FURNACE)) return ToolCapabilities.canMineBrick(held) ? InteractionResult.PASS : InteractionResult.FAIL;
+		if (state.is(ModBlocks.PRIMITIVE_STOVE)) return held.is(ModItems.ADVANCED_FLINT_MULTITOOL) ? InteractionResult.PASS : InteractionResult.FAIL;
+		if (isLimestoneFamily(state)) return held.is(ModItems.ADVANCED_FLINT_MULTITOOL) ? InteractionResult.PASS : InteractionResult.FAIL;
 		if (state.is(ModBlocks.WATTLED_DAUB_BRICKS) || state.is(ModBlocks.WATTLED_DAUB_WINDOW)
 			|| state.is(ModBlocks.WATTLED_DAUB_FLOOR_TILE) || state.is(ModBlocks.WATTLED_DAUB_DOOR)
 			|| state.is(ModBlocks.FLINT_TORCH)) return InteractionResult.PASS;
@@ -106,8 +142,11 @@ public final class PrimitiveInteractionSystem {
 			&& ToolCapabilities.has(held, ToolCapabilities.Capability.FLINT_TIER)) return InteractionResult.PASS;
 		if (state.is(ModBlocks.MORTAR_CHEST)) return ModItems.isFlintTier(held) ? InteractionResult.PASS : InteractionResult.FAIL;
 		if (state.is(ModBlocks.WOVEN_CHEST)) return held.is(ModItems.FLINT_AXE) ? InteractionResult.PASS : InteractionResult.FAIL;
-		if (state.is(ModBlocks.MORTAR_KILN) || state.is(ModBlocks.WOODEN_GRINDER)) {
+		if (state.is(ModBlocks.MORTAR_KILN)) {
 			return ToolCapabilities.has(held, ToolCapabilities.Capability.ADVANCED_FLINT_TIER) ? InteractionResult.PASS : InteractionResult.FAIL;
+		}
+		if (state.is(ModBlocks.WOODEN_GRINDER)) {
+			return held.is(ModItems.FLINT_AXE) ? InteractionResult.PASS : InteractionResult.FAIL;
 		}
 		if (state.is(ModBlocks.MORTAR_KILN_BASE) || state.is(ModBlocks.WOODEN_GRINDER_BASE)) {
 			return ToolCapabilities.has(held, ToolCapabilities.Capability.FLINT_TIER) ? InteractionResult.PASS : InteractionResult.FAIL;
@@ -144,7 +183,7 @@ public final class PrimitiveInteractionSystem {
 		if (state.is(ModBlocks.HARVESTING_TOOL_ASSEMBLY)) {
 			if (ModItems.isHammerLike(held)
 				&& state.getValue(HarvestingToolAssemblyBlock.STONES) == 2
-				&& state.getValue(HarvestingToolAssemblyBlock.BINDINGS) == 2
+				&& state.getValue(HarvestingToolAssemblyBlock.BINDINGS) >= 1
 				&& state.getValue(HarvestingToolAssemblyBlock.HAS_TWIG)) {
 				return ModBlocks.HARVESTING_TOOL_ASSEMBLY.hitWithHammer(state, level, pos, player, hand);
 			}
@@ -196,6 +235,7 @@ public final class PrimitiveInteractionSystem {
 		if (state.is(ModBlocks.TWIG_PILE) && !state.getValue(TwigPileBlock.LIT)) return ModBlocks.TWIG_PILE.takeOneTwig(state, level, pos, player);
 
 		if (state.is(Blocks.SWEET_BERRY_BUSH)) return ModItems.canHarvestSweetBerrySeeds(held) ? InteractionResult.PASS : InteractionResult.FAIL;
+		if (state.is(ModBlocks.STRAWBERRY_BUSH)) return ModItems.canHarvestSweetBerrySeeds(held) ? InteractionResult.PASS : InteractionResult.FAIL;
 		if ((held.is(ModItems.FLINT_AXE) || ModItems.canHarvestGourdFlesh(held)) && (state.is(Blocks.PUMPKIN) || state.is(Blocks.MELON))) return InteractionResult.PASS;
 		if (held.is(ModItems.FLINT_AXE) && (state.is(BlockTags.LOGS) || isVanillaPlankSlab(state) || isProcessedWood(state))) return InteractionResult.PASS;
 		if (held.is(ModItems.FLINT_PLANT_CUTTERS) && (state.is(Blocks.SUGAR_CANE) || state.is(Blocks.SHORT_GRASS))) return InteractionResult.PASS;
@@ -209,11 +249,10 @@ public final class PrimitiveInteractionSystem {
 			}
 		}
 		if (state.is(ModBlocks.LOOSE_DIRT_SLAB) && ModItems.isMultitool(held)) return InteractionResult.PASS;
-		if (state.is(ModTags.GRASS_SCRAPE_TARGETS)) return InteractionResult.PASS;
+		if (state.is(ModTags.GRASS_SCRAPE_TARGETS) && held.isEmpty()) return InteractionResult.PASS;
 		if (state.is(ModTags.SLOW_HAND_CLEAR_TARGETS) && held.isEmpty()) return InteractionResult.PASS;
 		if (ToolCapabilities.canDirectHarvestPlant(held, state)) return InteractionResult.PASS;
-		if (state.is(ModTags.FORAGE_BUSHES)
-			&& (held.is(ModItems.REFINED_ROCK) || ModItems.isPlantCutterLike(held))) return InteractionResult.PASS;
+		if (state.is(ModTags.FORAGE_BUSHES)) return (held.is(ModItems.REFINED_ROCK) || ModItems.isPlantCutterLike(held)) ? InteractionResult.PASS : InteractionResult.FAIL;
 		if (state.is(Blocks.LEAF_LITTER) && ModItems.isPlantCutterLike(held)) return InteractionResult.PASS;
 		if (held.is(ModItems.CRUDE_STONE_HAMMER) && (state.is(Blocks.STONE) || state.is(Blocks.SUGAR_CANE))) return InteractionResult.PASS;
 		if (ModItems.isPlantCutterLike(held)
@@ -234,18 +273,24 @@ public final class PrimitiveInteractionSystem {
 		BlockPos clickedPos = hit.getBlockPos();
 		BlockState clicked = level.getBlockState(clickedPos);
 
+		if (clicked.is(ModBlocks.WATER_POT) && level.getBlockEntity(clickedPos) instanceof WaterPotBlockEntity pot && pot.isFull()) {
+			ItemStack washed = held.is(ModItems.DIRT_PILE) ? new ItemStack(ModItems.MUD_PILE) : held.is(ModItems.REED_ROLL) ? new ItemStack(ModItems.SUGARCANE_ROLL) : ItemStack.EMPTY;
+			if (!washed.isEmpty()) {
+				if (!level.isClientSide()) { if (!player.isCreative()) held.shrink(1); giveOrDrop(player, washed); level.playSound(null, clickedPos, SoundEvents.GENERIC_SPLASH, SoundSource.BLOCKS, 0.7F, 1.15F); }
+				return InteractionResult.SUCCESS;
+			}
+		}
+
+
 		if (held.getItem() instanceof BlockItem) {
 			BlockPlaceContext placement = new BlockPlaceContext(player, hand, held, hit);
 			BlockPos target = placement.getClickedPos();
 			BlockState below = level.getBlockState(target.below());
 
-			// Project Flint placeables are never allowed to replace water. Dirt/Daub
-			// piles retain their intentional water-processing interaction instead.
-			if (isProjectFlintBlockItem(held) && level.getFluidState(target).is(FluidTags.WATER)) {
-				if (held.is(ModItems.DIRT_PILE) || held.is(ModItems.DAUB_PILE)) {
-					return processDaubWaterInteraction(player, level, held, target);
-				}
-				return InteractionResult.FAIL;
+			// Ordinary blocks may replace water again. Dirt/Daub piles keep their intentional washing route.
+			if (isProjectFlintBlockItem(held) && level.getFluidState(target).is(FluidTags.WATER)
+				&& (held.is(ModItems.DIRT_PILE) || held.is(ModItems.DAUB_PILE))) {
+				return processDaubWaterInteraction(player, level, held, target);
 			}
 
 			boolean heldWall = held.is(ModItems.WATTLED_DAUB_BRICKS) || held.is(ModItems.WATTLED_DAUB_WINDOW);
@@ -384,6 +429,20 @@ public final class PrimitiveInteractionSystem {
 				Block.popResource(level, clickedPos, new ItemStack(Items.SWEET_BERRIES, berries));
 				held.hurtAndBreak(1, player, hand);
 				level.playSound(null, clickedPos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 0.8F, 0.95F);
+			}
+			return InteractionResult.SUCCESS;
+		}
+
+		if (clicked.is(ModBlocks.STRAWBERRY_BUSH)) {
+			if (!ModItems.isPlantCutterLike(held)) return InteractionResult.FAIL;
+			int age = clicked.getValue(SweetBerryBushBlock.AGE);
+			if (age <= 1) return InteractionResult.FAIL;
+			if (!level.isClientSide()) {
+				int strawberries = 1 + level.getRandom().nextInt(2);
+				level.setBlockAndUpdate(clickedPos, clicked.setValue(SweetBerryBushBlock.AGE, 1));
+				Block.popResource(level, clickedPos, new ItemStack(ModItems.STRAWBERRY, strawberries));
+				held.hurtAndBreak(1, player, hand);
+				level.playSound(null, clickedPos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 0.8F, 1.05F);
 			}
 			return InteractionResult.SUCCESS;
 		}
@@ -751,7 +810,38 @@ public final class PrimitiveInteractionSystem {
 		if (player.isSpectator()) return false;
 
 		ItemStack held = player.getMainHandItem();
+		if (TannedUtilityVestSystem.canHandClear(player, state)) return true;
+		if (held.is(ModItems.HARDWOOD_HAMMER) && state.is(BlockTags.MINEABLE_WITH_PICKAXE) && !state.is(BlockTags.NEEDS_IRON_TOOL) && !state.is(BlockTags.NEEDS_DIAMOND_TOOL)) return true;
 		if (state.is(ModBlocks.SLEEPING_BAG)) return true;
+		if (state.is(ModBlocks.BASIN) || state.is(ModBlocks.FAT_BURNING_TORCH)) return true;
+		if (state.is(ModBlocks.HARDWOOD_CRAFTING_TABLE)) return held.is(ModItems.FLINT_AXE) || held.is(Items.WOODEN_AXE) || held.is(ModItems.HARDWOOD_AXE);
+		if ((held.is(Items.WOODEN_PICKAXE) || held.is(ModItems.HARDWOOD_PICKAXE)) && WoodenToolTargets.pickaxe(state)) return true;
+		if ((held.is(Items.WOODEN_PICKAXE) || held.is(ModItems.HARDWOOD_PICKAXE)) && WoodenToolTargets.brickMasonry(state)) return true;
+		if ((held.is(Items.WOODEN_PICKAXE) || held.is(ModItems.HARDWOOD_PICKAXE))
+			&& (state.is(BlockTags.NEEDS_STONE_TOOL) || state.is(BlockTags.NEEDS_IRON_TOOL) || state.is(BlockTags.NEEDS_DIAMOND_TOOL))) return false;
+		if ((held.is(Items.WOODEN_SHOVEL) || held.is(ModItems.HARDWOOD_SHOVEL)) && WoodenToolTargets.shovel(state)) return true;
+		if ((held.is(Items.WOODEN_AXE) || held.is(ModItems.HARDWOOD_AXE)) && state.is(BlockTags.LOGS)) return true;
+		if (state.is(ModTags.GRASS_SCRAPE_TARGETS) && !held.isEmpty() && !ModItems.isMultitool(held)) return false;
+		if (level instanceof net.minecraft.server.level.ServerLevel server && PlayerPlacedBlockLedger.recoverable(player, server, pos, state)) return true;
+		if (ModBlocks.isWoodenBeam(state)) return ToolCapabilities.isWellWoodTool(held) || TannedUtilityVestSystem.canDismantleWellFrame(player, state);
+		if (state.is(ModBlocks.ROPE)) return true;
+		if (state.is(ModBlocks.WELL_PULLEY)) return ToolCapabilities.isWellWoodTool(held) || TannedUtilityVestSystem.canDismantleWellFrame(player, state);
+		if (state.is(Blocks.BRICKS) || state.is(ModBlocks.BRICK_SHINGLES)) return ToolCapabilities.canMineBrick(held);
+		if (state.is(ModBlocks.LUMBER_WORKPIECE)) return true;
+		if (state.is(ModBlocks.SANDING_STATION)) return held.is(ModItems.FLINT_AXE);
+		if (LumberProcessorSystem.isSupportedStrippedLog(state) && level.getBlockState(pos.below()).is(ModBlocks.LUMBER_CHOPPING_BLOCK)) return held.is(ModItems.FLINT_PLANT_CUTTERS);
+		if (LumberProcessorSystem.isProcessorPart(level, pos)) return held.is(ModItems.FLINT_AXE);
+		if (state.is(ModBlocks.WATER_POT)) return true;
+		if (state.is(ModBlocks.BOOKSHELF)) return held.is(ModItems.FLINT_AXE);
+		if (state.is(ModBlocks.WOODEN_CHEST)) return held.is(ModItems.FLINT_AXE);
+		if (state.is(ModBlocks.CRUSHED_STONE)) return CrushedStoneBlock.isPlayerPlaced(state) && held.is(ModItems.ADVANCED_FLINT_MULTITOOL);
+		if (state.is(ModBlocks.FLAX_CROP)) return true;
+		if (state.is(ModBlocks.FIRECLAY_BRICK_BLOCK) || state.is(ModBlocks.FIRECLAY_BRICK_SLAB) || state.is(ModBlocks.FIRECLAY_BRICK_STAIRS) || state.is(ModBlocks.FIRECLAY_FORGE_CONTROLLER)) return ToolCapabilities.canMineBrick(held);
+		if (state.is(ModBlocks.LOOSE_MUD_BRICKS) || state.is(ModBlocks.LOOSE_MUD_BRICK_SLAB)) return ToolCapabilities.has(held, ToolCapabilities.Capability.FLINT_TIER);
+		if (state.is(ModBlocks.WOODEN_CABINET)) return held.is(ModItems.FLINT_AXE);
+		if (state.is(ModBlocks.BRICK_FURNACE) || state.is(ModBlocks.BRICK_BLAST_FURNACE)) return ToolCapabilities.canMineBrick(held);
+		if (state.is(ModBlocks.PRIMITIVE_STOVE)) return held.is(ModItems.ADVANCED_FLINT_MULTITOOL);
+		if (isLimestoneFamily(state)) return held.is(ModItems.ADVANCED_FLINT_MULTITOOL);
 		if (state.is(ModBlocks.WATTLED_DAUB_BRICKS)
 			|| state.is(ModBlocks.WATTLED_DAUB_WINDOW)
 			|| state.is(ModBlocks.WATTLED_DAUB_FLOOR_TILE)
@@ -765,7 +855,8 @@ public final class PrimitiveInteractionSystem {
 			&& ToolCapabilities.has(held, ToolCapabilities.Capability.FLINT_TIER)) return true;
 		if (state.is(ModBlocks.MORTAR_CHEST)) return ModItems.isFlintTier(held);
 		if (state.is(ModBlocks.WOVEN_CHEST)) return held.is(ModItems.FLINT_AXE);
-		if (state.is(ModBlocks.MORTAR_KILN) || state.is(ModBlocks.WOODEN_GRINDER)) return ToolCapabilities.has(held, ToolCapabilities.Capability.ADVANCED_FLINT_TIER);
+		if (state.is(ModBlocks.MORTAR_KILN)) return ToolCapabilities.has(held, ToolCapabilities.Capability.ADVANCED_FLINT_TIER);
+		if (state.is(ModBlocks.WOODEN_GRINDER)) return held.is(ModItems.FLINT_AXE);
 		if (state.is(ModBlocks.MORTAR_KILN_BASE) || state.is(ModBlocks.WOODEN_GRINDER_BASE)) return ToolCapabilities.has(held, ToolCapabilities.Capability.FLINT_TIER);
 		if (state.is(ModBlocks.BURNT_BRANCH_BLOCK) || state.is(ModBlocks.BURNT_BRANCH_SLAB)) {
 			return ToolCapabilities.has(held, ToolCapabilities.Capability.FLINT_TIER) || held.is(ModItems.FLINT_AXE);
@@ -774,6 +865,7 @@ public final class PrimitiveInteractionSystem {
 			return ToolCapabilities.has(held, ToolCapabilities.Capability.WORKSTATION_DISMANTLE);
 		}
 		if (state.is(Blocks.SWEET_BERRY_BUSH)) return ModItems.canHarvestSweetBerrySeeds(held);
+		if (state.is(ModBlocks.STRAWBERRY_BUSH)) return ModItems.canHarvestSweetBerrySeeds(held);
 		if (state.is(ModBlocks.CRUDE_CLAY_BLOCK) || state.is(ModBlocks.CRUDE_CLAY_KILN)) return true;
 		if ((state.is(ModBlocks.BAKED_CLAY_KILN) || state.is(ModBlocks.BAKED_KILN_TOP) || state.is(ModBlocks.CLAY_GRINDING_BASE) || state.is(ModBlocks.CLAY_GRINDER))
 			&& ToolCapabilities.has(held, ToolCapabilities.Capability.WORKSTATION_DISMANTLE)) return true;
@@ -781,10 +873,10 @@ public final class PrimitiveInteractionSystem {
 			if (level.getBlockState(pos.below()).is(ModBlocks.BAKED_CLAY_KILN) && ModItems.isCutterLike(held)) return true;
 			if (ModItems.isMultitool(held)) return true;
 		}
-		if (state.is(ModTags.GRASS_SCRAPE_TARGETS)) return true;
+		if (state.is(ModTags.GRASS_SCRAPE_TARGETS) && held.isEmpty()) return true;
 		if (state.is(ModTags.SLOW_HAND_CLEAR_TARGETS) && held.isEmpty()) return true;
 		if (ToolCapabilities.canDirectHarvestPlant(held, state)) return true;
-		if (state.is(ModTags.FORAGE_BUSHES) && (held.is(ModItems.REFINED_ROCK) || ModItems.isPlantCutterLike(held))) return true;
+		if (state.is(ModTags.FORAGE_BUSHES)) return held.is(ModItems.REFINED_ROCK) || ModItems.isPlantCutterLike(held);
 		if (state.is(Blocks.LEAF_LITTER) && ModItems.isPlantCutterLike(held)) return true;
 		if (held.is(ModItems.CRUDE_STONE_HAMMER) && (state.is(Blocks.STONE) || state.is(Blocks.SUGAR_CANE))) return true;
 		if (ModItems.isPlantCutterLike(held)
@@ -792,6 +884,17 @@ public final class PrimitiveInteractionSystem {
 		if (state.is(BlockTags.LEAVES) && ToolCapabilities.canHarvestLeaves(held)) return true;
 		return ModItems.isMultitool(held)
 			&& (state.is(Blocks.STONE) || state.is(Blocks.DIRT) || state.is(Blocks.GRASS_BLOCK) || state.is(ModBlocks.LOOSE_SOIL) || state.is(Blocks.GRAVEL) || state.is(ModBlocks.LOOSE_DIRT));
+	}
+
+	private static boolean isLimestoneFamily(BlockState state) {
+		return state.is(ModBlocks.LIMESTONE)
+			|| state.is(ModBlocks.COBBLED_LIMESTONE)
+			|| state.is(ModBlocks.SMOOTH_LIMESTONE)
+			|| state.is(ModBlocks.LIMESTONE_BRICKS)
+			|| state.is(ModBlocks.CHISELED_LIMESTONE)
+			|| state.is(ModBlocks.POLISHED_LIMESTONE)
+			|| state.is(ModBlocks.CHECKERED_TILE)
+			|| state.is(ModBlocks.GLAZED_CHECKERED_TILE);
 	}
 
 	private static boolean wouldPlantVanillaSweetBerryBush(Level level, BlockHitResult hit, BlockState clicked) {

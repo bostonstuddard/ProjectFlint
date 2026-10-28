@@ -1,8 +1,8 @@
 package dev.projectflint.system;
 
+import dev.projectflint.compat.flintquests.FlintQuestsBridge;
 import dev.projectflint.block.LumberChoppingBlock;
 import dev.projectflint.block.LumberWorkpieceBlock;
-import dev.projectflint.block.WaterPotBlock;
 import dev.projectflint.block.entity.LumberChoppingBlockEntity;
 import dev.projectflint.block.entity.WaterPotBlockEntity;
 import dev.projectflint.registry.ModBlocks;
@@ -53,7 +53,10 @@ public final class LumberProcessorSystem {
             form(level, left, found);
             Player player = context.getPlayer();
             if (player != null && !player.isCreative()) context.getItemInHand().shrink(1);
-            if (player instanceof ServerPlayer serverPlayer) ModAdvancements.awardAll(serverPlayer, "lumber_processor");
+            if (player instanceof ServerPlayer serverPlayer) {
+                ModAdvancements.awardAll(serverPlayer, "lumber_processor");
+                FlintQuestsBridge.trigger(serverPlayer, "projectflint:workstation/lumber_processor_formed");
+            }
             level.playSound(null, left, SoundEvents.WOOD_PLACE, SoundSource.BLOCKS, 0.8F, 0.8F);
         }
         return InteractionResult.SUCCESS;
@@ -63,7 +66,7 @@ public final class LumberProcessorSystem {
         BlockPlaceContext placement = new BlockPlaceContext(context);
         Level level = context.getLevel();
         BlockPos left = placement.getClickedPos();
-        Direction direction = context.getHorizontalDirection();
+        Direction direction = context.getHorizontalDirection().getClockWise();
         if (!direction.getAxis().isHorizontal()) direction = Direction.NORTH;
         if (!canForm(level, left, direction, true)) {
             if (context.getPlayer() != null && !level.isClientSide()) {
@@ -73,7 +76,7 @@ public final class LumberProcessorSystem {
         }
         if (!level.isClientSide()) {
             level.setBlockAndUpdate(left, ModBlocks.LUMBER_CHOPPING_BLOCK.defaultBlockState().setValue(LumberChoppingBlock.FACING, direction));
-            level.setBlockAndUpdate(left.relative(direction), ModBlocks.WATER_POT.defaultBlockState().setValue(WaterPotBlock.FACING, direction.getOpposite()));
+            level.setBlockAndUpdate(left.relative(direction), ModBlocks.WATER_POT.defaultBlockState());
             level.setBlockAndUpdate(left.relative(direction, 2), ModBlocks.CRUSHED_STONE.defaultBlockState());
             link(level, left, direction);
             if (context.getPlayer() != null && !context.getPlayer().isCreative()) context.getItemInHand().shrink(1);
@@ -182,7 +185,7 @@ public final class LumberProcessorSystem {
         return state.is(ModBlocks.LUMBER_WORKPIECE) && state.getValue(LumberWorkpieceBlock.FACING) == direction;
     }
 
-    public static boolean harvestWorkpiece(ServerLevel level, BlockPos pos) {
+    public static boolean harvestWorkpiece(ServerLevel level, BlockPos pos, ServerPlayer player) {
         BlockState state = level.getBlockState(pos);
         if (!state.is(ModBlocks.LUMBER_WORKPIECE)) return false;
         Direction direction = state.getValue(LumberWorkpieceBlock.FACING);
@@ -194,6 +197,7 @@ public final class LumberProcessorSystem {
             ? new ItemStack(ModItems.WOODEN_BOARD, 2)
             : new ItemStack(ModItems.WOODEN_BEAM);
         Block.popResource(level, pos, result);
+        FlintQuestsBridge.onCraft(player, "lumber_processor", result);
         level.playSound(null, pos, SoundEvents.WOOD_BREAK, SoundSource.BLOCKS, 0.75F, 0.9F);
         return true;
     }

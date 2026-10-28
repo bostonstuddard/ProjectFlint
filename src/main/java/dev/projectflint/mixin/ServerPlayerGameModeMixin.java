@@ -1,15 +1,25 @@
 package dev.projectflint.mixin;
 
 import dev.projectflint.block.AdvancedKilnMultiblock;
+import dev.projectflint.block.CrushedStoneBlock;
 import dev.projectflint.block.ClayGrindingBaseBlock;
 import dev.projectflint.block.CrudeClayKilnBlock;
 import dev.projectflint.block.MortarKilnBlock;
 import dev.projectflint.block.entity.BakedClayKilnBlockEntity;
 import dev.projectflint.block.entity.WovenChestBlockEntity;
+import dev.projectflint.block.entity.BookshelfBlockEntity;
+import dev.projectflint.block.entity.SandingStationBlockEntity;
 import dev.projectflint.config.GameplayTuning;
 import dev.projectflint.registry.ModBlocks;
 import dev.projectflint.registry.ModItems;
+import dev.projectflint.item.WaterPotItem;
+import dev.projectflint.item.BookshelfItem;
+import dev.projectflint.item.SandingStationItem;
+import dev.projectflint.block.entity.WaterPotBlockEntity;
 import dev.projectflint.registry.ModTags;
+import dev.projectflint.system.TannedUtilityVestSystem;
+import dev.projectflint.system.PlayerPlacedBlockLedger;
+import dev.projectflint.system.WoodenToolTargets;
 import dev.projectflint.system.ModAdvancements;
 import dev.projectflint.system.ToolCapabilities;
 import dev.projectflint.system.LumberProcessorSystem;
@@ -51,9 +61,195 @@ public abstract class ServerPlayerGameModeMixin {
 
 		BlockState state = level.getBlockState(pos);
 		ItemStack held = player.getMainHandItem();
+		// Authoritative mining permission: never let vanilla complete a harvest forbidden
+		// by the primitive mining system (regardless of hand item / spoofed completion).
+		if (state.getDestroyProgress(player, level, pos) <= 0.0F) {
+			cir.setReturnValue(false);
+			return;
+		}
+
+		// Utility Vest vegetation follows vanilla hand-loot (including Wheat Seeds from grass),
+		// regardless of the item held. Hand-clearing is separate from tool harvesting.
+		if (!state.is(ModBlocks.SLEEPING_BAG) && TannedUtilityVestSystem.canHandClear(player, state)) {
+			java.util.List<ItemStack> drops = state.is(ModTags.FORAGE_BUSHES)
+				? java.util.List.of(new ItemStack(Items.STICK))
+				: Block.getDrops(state, level, pos, level.getBlockEntity(pos), player, ItemStack.EMPTY);
+			level.removeBlock(pos, false);
+			for (ItemStack drop : drops) projectflint$dropAtBlock(pos, drop);
+			if ((state.is(Blocks.SHORT_GRASS) || state.is(Blocks.TALL_GRASS)) && level.random.nextFloat() < 0.02F)
+				projectflint$dropAtBlock(pos, new ItemStack(ModItems.FLAX_SEEDS));
+			cir.setReturnValue(false);
+			return;
+		}
+		// A Utility Vest never upgrades the Wooden Pickaxe's mining tier. Higher-tier
+		// pickaxe blocks (iron ore and above) stay intact instead of being broken early
+		// by the Vest's player-placed recovery path or vanilla fallback.
+		if ((held.is(Items.WOODEN_PICKAXE) || held.is(ModItems.HARDWOOD_PICKAXE))
+			&& (state.is(BlockTags.NEEDS_STONE_TOOL) || state.is(BlockTags.NEEDS_IRON_TOOL) || state.is(BlockTags.NEEDS_DIAMOND_TOOL))) {
+			cir.setReturnValue(false);
+			return;
+		}
+		// Frame parts are recovered by their dedicated handlers below, never generic Vest loot.
+		if (PlayerPlacedBlockLedger.recoverable(player, level, pos, state)) {
+			java.util.List<ItemStack> drops = Block.getDrops(state, level, pos, level.getBlockEntity(pos), player, ItemStack.EMPTY);
+			level.removeBlock(pos, false);
+			if (drops.isEmpty()) {
+				int count = state.hasProperty(SlabBlock.TYPE) && state.getValue(SlabBlock.TYPE) == SlabType.DOUBLE ? 2 : 1;
+				drops = java.util.List.of(new ItemStack(state.getBlock().asItem(), count));
+			}
+			for (ItemStack drop : drops) if (!drop.isEmpty()) projectflint$dropAtBlock(pos, drop);
+			PlayerPlacedBlockLedger.clear(level, pos);
+			cir.setReturnValue(false);
+			return;
+		}
+		if (state.is(ModBlocks.FIRECLAY_BRICK_BLOCK) || state.is(ModBlocks.FIRECLAY_BRICK_SLAB)
+			|| state.is(ModBlocks.FIRECLAY_BRICK_STAIRS) || state.is(ModBlocks.FIRECLAY_FORGE_CONTROLLER)) {
+			if (ToolCapabilities.canMineBrick(held)) {
+				if (state.is(ModBlocks.FIRECLAY_FORGE_CONTROLLER) && level.getBlockEntity(pos) instanceof dev.projectflint.block.entity.FireclayForgeBlockEntity forge)
+					Containers.dropContents(level, pos, forge);
+				int count = state.is(ModBlocks.FIRECLAY_BRICK_SLAB) && state.getValue(SlabBlock.TYPE) == SlabType.DOUBLE ? 2 : 1;
+				level.removeBlock(pos, false);
+				projectflint$dropAtBlock(pos, new ItemStack(state.getBlock().asItem(), count));
+				held.hurtAndBreak(1, player, InteractionHand.MAIN_HAND);
+			}
+			cir.setReturnValue(false);
+			return;
+		}
+		if (state.is(ModBlocks.HARDWOOD_CRAFTING_TABLE)) {
+			level.removeBlock(pos, false);
+			projectflint$dropAtBlock(pos, new ItemStack(ModItems.HARDWOOD_CRAFTING_TABLE));
+			if (held.isDamageableItem()) held.hurtAndBreak(1, player, InteractionHand.MAIN_HAND);
+			cir.setReturnValue(false);
+			return;
+		}
+		if (state.is(ModBlocks.BASIN) || state.is(ModBlocks.FAT_BURNING_TORCH)) {
+			if (state.is(ModBlocks.BASIN) && level.getBlockEntity(pos) instanceof dev.projectflint.block.entity.BasinBlockEntity basin) basin.dropContents(level);
+			level.removeBlock(pos, false);
+			projectflint$dropAtBlock(pos, new ItemStack(state.getBlock().asItem()));
+			level.playSound(null, pos, SoundEvents.WOOD_BREAK, SoundSource.BLOCKS, 0.5F, 0.95F);
+			cir.setReturnValue(false);
+			return;
+		}
+		if (held.is(ModItems.HARDWOOD_HAMMER) && state.is(BlockTags.MINEABLE_WITH_PICKAXE) && !state.is(BlockTags.NEEDS_IRON_TOOL) && !state.is(BlockTags.NEEDS_DIAMOND_TOOL)) {
+			// Mine all stone-tier and lower ores with genuine vanilla loot conditions.
+			var drops = Block.getDrops(state, level, pos, level.getBlockEntity(pos), player, held);
+			level.removeBlock(pos, false);
+			for (ItemStack drop : drops) projectflint$dropAtBlock(pos, drop);
+			held.hurtAndBreak(1, player, InteractionHand.MAIN_HAND);
+			cir.setReturnValue(false);
+			return;
+		}
+		if ((held.is(Items.WOODEN_PICKAXE) || held.is(ModItems.HARDWOOD_PICKAXE)) && WoodenToolTargets.brickMasonry(state)) {
+			int count = state.hasProperty(SlabBlock.TYPE) && state.getValue(SlabBlock.TYPE) == SlabType.DOUBLE ? 2 : 1;
+			level.removeBlock(pos, false);
+			projectflint$dropAtBlock(pos, new ItemStack(state.getBlock().asItem(), count));
+			held.hurtAndBreak(1, player, InteractionHand.MAIN_HAND);
+			level.playSound(null, pos, SoundEvents.STONE_BREAK, SoundSource.BLOCKS, 0.72F, 0.86F);
+			cir.setReturnValue(false);
+			return;
+		}
+		if ((held.is(Items.WOODEN_PICKAXE) || held.is(ModItems.HARDWOOD_PICKAXE)) && WoodenToolTargets.pickaxe(state)) {
+			boolean stone = state.is(Blocks.STONE);
+			level.removeBlock(pos, false);
+			projectflint$dropAtBlock(pos, state.is(Blocks.COAL_ORE) ? new ItemStack(Items.COAL) : stone ? new ItemStack(Items.COBBLESTONE) : new ItemStack(ModItems.VERY_REFINED_STONE));
+			if (stone) projectflint$loosenAdjacentStone(pos);
+			held.hurtAndBreak(1, player, InteractionHand.MAIN_HAND);
+			level.playSound(null, pos, SoundEvents.STONE_BREAK, SoundSource.BLOCKS, 0.65F, 0.75F);
+			cir.setReturnValue(false);
+			return;
+		}
+		if ((held.is(Items.WOODEN_AXE) || held.is(ModItems.HARDWOOD_AXE)) && state.is(BlockTags.LOGS)) {
+			level.removeBlock(pos, false);
+			projectflint$dropAtBlock(pos, new ItemStack(state.getBlock().asItem()));
+			held.hurtAndBreak(1, player, InteractionHand.MAIN_HAND);
+			level.playSound(null, pos, SoundEvents.WOOD_BREAK, SoundSource.BLOCKS, 0.7F, 0.9F);
+			cir.setReturnValue(false);
+			return;
+		}
+		if ((held.is(Items.WOODEN_SHOVEL) || held.is(ModItems.HARDWOOD_SHOVEL)) && WoodenToolTargets.shovel(state)) {
+			level.removeBlock(pos, false);
+			ItemStack drop = state.is(Blocks.GRASS_BLOCK) || state.is(Blocks.DIRT_PATH) ? new ItemStack(Items.DIRT)
+				: state.is(Blocks.CLAY) ? new ItemStack(Items.CLAY_BALL, 4)
+				: state.is(ModBlocks.LOOSE_SOIL) || state.is(ModBlocks.LOOSE_DIRT) ? new ItemStack(Items.DIRT)
+				: new ItemStack(state.getBlock().asItem());
+			projectflint$dropAtBlock(pos, drop);
+			held.hurtAndBreak(1, player, InteractionHand.MAIN_HAND);
+			level.playSound(null, pos, SoundEvents.GRAVEL_BREAK, SoundSource.BLOCKS, 0.65F, 0.85F);
+			cir.setReturnValue(false);
+			return;
+		}
+
+		if (ModBlocks.isWoodenBeam(state)) {
+			if (ToolCapabilities.isWellWoodTool(held) || TannedUtilityVestSystem.canDismantleWellFrame(player, state)) {
+				ItemStack beamDrop = new ItemStack(state.getBlock().asItem());
+				level.removeBlock(pos, false);
+				PlayerPlacedBlockLedger.clear(level, pos);
+				projectflint$dropAtBlock(pos, beamDrop);
+				projectflint$dropAtBlock(pos, new ItemStack(ModItems.WOODEN_SCREW));
+				if (ToolCapabilities.isWellWoodTool(held) && held.isDamageableItem()) held.hurtAndBreak(1, player, InteractionHand.MAIN_HAND);
+				level.playSound(null, pos, SoundEvents.WOOD_BREAK, SoundSource.BLOCKS, 0.78F, 0.88F);
+			}
+			cir.setReturnValue(false);
+			return;
+		}
+
+		// Explicitly dismantle a live Pulley: vanilla no-loot-table destruction is not reliable
+		// for an operating container. Drop every stored Rope/output exactly once, then stop its ticker.
+		if (state.is(ModBlocks.WELL_PULLEY)) {
+			if (ToolCapabilities.isWellWoodTool(held) || TannedUtilityVestSystem.canDismantleWellFrame(player, state)) {
+				if (level.getBlockEntity(pos) instanceof dev.projectflint.block.entity.WellPulleyBlockEntity pulley)
+					Containers.dropContents(level, pos, pulley);
+				level.removeBlock(pos, false);
+				PlayerPlacedBlockLedger.clear(level, pos);
+				projectflint$dropAtBlock(pos, new ItemStack(ModItems.WELL_PULLEY));
+				if (ToolCapabilities.isWellWoodTool(held) && held.isDamageableItem()) held.hurtAndBreak(1, player, InteractionHand.MAIN_HAND);
+				level.playSound(null, pos, SoundEvents.WOOD_BREAK, SoundSource.BLOCKS, 0.78F, 0.88F);
+			}
+			cir.setReturnValue(false);
+			return;
+		}
+
+		if (state.is(ModBlocks.CRUSHED_STONE)) {
+			if (CrushedStoneBlock.isPlayerPlaced(state) && held.is(ModItems.ADVANCED_FLINT_MULTITOOL)) {
+				level.removeBlock(pos, false);
+				projectflint$dropAtBlock(pos, new ItemStack(ModItems.CRUSHED_STONE_BLOCK_ITEM));
+				held.hurtAndBreak(1, player, InteractionHand.MAIN_HAND);
+				level.playSound(null, pos, SoundEvents.STONE_BREAK, SoundSource.BLOCKS, 0.78F, 0.88F);
+			}
+			cir.setReturnValue(false);
+			return;
+		}
+
+		if (state.is(ModBlocks.LOOSE_MUD_BRICKS) && ToolCapabilities.has(held, ToolCapabilities.Capability.FLINT_TIER)) {
+			level.removeBlock(pos, false);
+			projectflint$dropAtBlock(pos, new ItemStack(ModItems.LOOSE_MUD_BRICKS));
+			held.hurtAndBreak(1, player, InteractionHand.MAIN_HAND);
+			level.playSound(null, pos, SoundEvents.MUD_BREAK, SoundSource.BLOCKS, 0.75F, 0.9F);
+			cir.setReturnValue(false); return;
+		}
+		if (state.is(ModBlocks.LOOSE_MUD_BRICK_SLAB) && ToolCapabilities.has(held, ToolCapabilities.Capability.FLINT_TIER)) {
+			int slabs = state.getValue(SlabBlock.TYPE) == SlabType.DOUBLE ? 2 : 1;
+			level.removeBlock(pos, false);
+			projectflint$dropAtBlock(pos, new ItemStack(ModItems.LOOSE_MUD_BRICK_SLAB, slabs));
+			held.hurtAndBreak(1, player, InteractionHand.MAIN_HAND);
+			level.playSound(null, pos, SoundEvents.MUD_BREAK, SoundSource.BLOCKS, 0.75F, 0.9F);
+			cir.setReturnValue(false); return;
+		}
+
+		if (projectflint$isLimestoneFamily(state)) {
+			if (held.is(ModItems.ADVANCED_FLINT_MULTITOOL)) {
+				ItemStack drop = new ItemStack(projectflint$limestoneDrop(state));
+				level.removeBlock(pos, false);
+				projectflint$dropAtBlock(pos, drop);
+				held.hurtAndBreak(1, player, InteractionHand.MAIN_HAND);
+				level.playSound(null, pos, SoundEvents.STONE_BREAK, SoundSource.BLOCKS, 0.78F, 0.88F);
+			}
+			cir.setReturnValue(false);
+			return;
+		}
 
 		if (state.is(ModBlocks.LUMBER_WORKPIECE)) {
-			LumberProcessorSystem.harvestWorkpiece(level, pos);
+			LumberProcessorSystem.harvestWorkpiece(level, pos, player);
 			cir.setReturnValue(false);
 			return;
 		}
@@ -67,10 +263,46 @@ public abstract class ServerPlayerGameModeMixin {
 			return;
 		}
 
+		if (state.is(ModBlocks.WATER_POT) && !LumberProcessorSystem.isProcessorPart(level, pos)) {
+			int units = level.getBlockEntity(pos) instanceof WaterPotBlockEntity pot ? pot.waterUnits() : 0;
+			level.removeBlock(pos, false);
+			projectflint$dropAtBlock(pos, WaterPotItem.withWater(new ItemStack(ModItems.WATER_POT), units));
+			level.playSound(null, pos, SoundEvents.DECORATED_POT_BREAK, SoundSource.BLOCKS, 0.65F, 1.08F);
+			cir.setReturnValue(false); return;
+		}
+
 		if (LumberProcessorSystem.isProcessorPart(level, pos)) {
-			if (ToolCapabilities.has(held, ToolCapabilities.Capability.ADVANCED_FLINT_TIER)) {
+			if (held.is(ModItems.FLINT_AXE)) {
 				LumberProcessorSystem.recover(level, pos, player);
 				held.hurtAndBreak(1, player, InteractionHand.MAIN_HAND);
+			}
+			cir.setReturnValue(false);
+			return;
+		}
+
+		if (state.is(ModBlocks.SANDING_STATION)) {
+			if (held.is(ModItems.FLINT_AXE)) {
+				int reserve = level.getBlockEntity(pos) instanceof SandingStationBlockEntity station ? station.durability() : 0;
+				level.removeBlock(pos, false);
+				projectflint$dropAtBlock(pos, SandingStationItem.withDurability(new ItemStack(ModItems.SANDING_STATION), reserve));
+				held.hurtAndBreak(1, player, InteractionHand.MAIN_HAND);
+				level.playSound(null, pos, SoundEvents.WOOD_BREAK, SoundSource.BLOCKS, 0.78F, 0.84F);
+			}
+			cir.setReturnValue(false);
+			return;
+		}
+
+		if (state.is(ModBlocks.BOOKSHELF)) {
+			if (held.is(ModItems.FLINT_AXE)) {
+				int storedBooks = 0;
+				if (level.getBlockEntity(pos) instanceof BookshelfBlockEntity shelf) {
+					storedBooks = shelf.getBooksStored();
+					Containers.dropContents(level, pos, shelf);
+				}
+				level.removeBlock(pos, false);
+				projectflint$dropAtBlock(pos, BookshelfItem.withBooks(ModItems.BOOKSHELF, storedBooks));
+				held.hurtAndBreak(1, player, InteractionHand.MAIN_HAND);
+				level.playSound(null, pos, SoundEvents.WOOD_BREAK, SoundSource.BLOCKS, 0.78F, 0.84F);
 			}
 			cir.setReturnValue(false);
 			return;
@@ -124,16 +356,6 @@ public abstract class ServerPlayerGameModeMixin {
 			return;
 		}
 
-		if (held.is(ModItems.FLINT_PLANT_CUTTERS) && state.is(Blocks.SUGAR_CANE)) {
-			if (projectflint$removeSugarCaneColumn(pos) > 0) {
-				projectflint$dropAtBlock(pos, new ItemStack(ModItems.REED_ROLL));
-				held.hurtAndBreak(1, player, InteractionHand.MAIN_HAND);
-				ModAdvancements.awardAll(player, "flint_plant_cutters");
-			}
-			level.playSound(null, pos, SoundEvents.GRASS_BREAK, SoundSource.BLOCKS, 0.72F, 1.1F);
-			cir.setReturnValue(false);
-			return;
-		}
 
 		// Dedicated Plant Cutter upgrade: Short Grass yields a ready-made Plant Tool Binding
 		// instead of falling back to the Advanced Multitool's Crude Plant String output.
@@ -158,8 +380,19 @@ public abstract class ServerPlayerGameModeMixin {
 			return;
 		}
 
+		if (state.is(ModBlocks.STRAWBERRY_BUSH)) {
+			if (ModItems.canHarvestSweetBerrySeeds(held)) {
+				level.removeBlock(pos, false);
+				projectflint$dropAtBlock(pos, new ItemStack(ModItems.STRAWBERRY_SEEDS));
+				held.hurtAndBreak(1, player, InteractionHand.MAIN_HAND);
+				level.playSound(null, pos, SoundEvents.SWEET_BERRY_BUSH_BREAK, SoundSource.BLOCKS, 0.75F, 1.02F);
+			}
+			cir.setReturnValue(false);
+			return;
+		}
+
 		if (state.is(ModBlocks.SLEEPING_BAG)) {
-			ModBlocks.SLEEPING_BAG.removePairWithSalvage(level, pos, state, held);
+			ModBlocks.SLEEPING_BAG.removePairWithSalvage(level, pos, state, held, TannedUtilityVestSystem.canHandClear(player, state));
 			level.playSound(null, pos, SoundEvents.WOOL_BREAK, SoundSource.BLOCKS, 0.7F, 0.9F);
 			cir.setReturnValue(false);
 			return;
@@ -188,7 +421,7 @@ public abstract class ServerPlayerGameModeMixin {
 			return;
 		}
 
-		if (state.is(ModBlocks.WOODEN_GRINDER) && ToolCapabilities.has(held, ToolCapabilities.Capability.ADVANCED_FLINT_TIER)) {
+		if (state.is(ModBlocks.WOODEN_GRINDER) && held.is(ModItems.FLINT_AXE)) {
 			level.removeBlock(pos, false);
 			projectflint$dropAtBlock(pos, new ItemStack(ModItems.WOODEN_GRINDER));
 			held.hurtAndBreak(1, player, InteractionHand.MAIN_HAND);
@@ -486,7 +719,22 @@ public abstract class ServerPlayerGameModeMixin {
 			return;
 		}
 
-		if (state.is(BlockTags.LEAVES) && ToolCapabilities.canHarvestLeaves(held)) {
+		if (state.is(BlockTags.LEAVES) && held.is(ModItems.FLINT_PLANT_CUTTERS)) {
+			level.removeBlock(pos, false);
+			ItemStack sapling = projectflint$saplingForLeaves(state);
+			if (!sapling.isEmpty() && level.getRandom().nextFloat() < 0.25F) projectflint$dropAtBlock(pos, sapling);
+			if (level.getRandom().nextFloat() < 0.10F) projectflint$dropAtBlock(pos, new ItemStack(Items.STICK));
+			if ((state.is(Blocks.OAK_LEAVES) || state.is(Blocks.DARK_OAK_LEAVES)) && level.getRandom().nextFloat() < 0.005F) {
+				projectflint$dropAtBlock(pos, new ItemStack(Items.APPLE));
+			}
+			held.hurtAndBreak(1, player, InteractionHand.MAIN_HAND);
+			ModAdvancements.awardAll(player, "flint_plant_cutters");
+			level.playSound(null, pos, SoundEvents.GRASS_BREAK, SoundSource.BLOCKS, 0.78F, 0.82F);
+			cir.setReturnValue(false);
+			return;
+		}
+
+		if (state.is(BlockTags.LEAVES) && ToolCapabilities.canHarvestLeaves(held) && !held.is(ModItems.FLINT_PLANT_CUTTERS)) {
 			level.removeBlock(pos, false);
 			if (ToolCapabilities.isAdvancedPlantTier(held)) {
 				projectflint$dropAtBlock(pos, new ItemStack(ModItems.BRANCH, 3));
@@ -535,7 +783,7 @@ public abstract class ServerPlayerGameModeMixin {
 			return;
 		}
 
-		if (state.is(ModTags.GRASS_SCRAPE_TARGETS)) {
+		if (state.is(ModTags.GRASS_SCRAPE_TARGETS) && held.isEmpty()) {
 			level.setBlockAndUpdate(pos, Blocks.DIRT.defaultBlockState());
 			if (level.getRandom().nextFloat() < GameplayTuning.GRASS_FIBER_CHANCE) {
 				projectflint$dropAtBlock(pos, new ItemStack(ModItems.PLANT_FIBER));
@@ -552,7 +800,12 @@ public abstract class ServerPlayerGameModeMixin {
 			return;
 		}
 
-		if (state.is(ModTags.FORAGE_BUSHES) && (held.is(ModItems.REFINED_ROCK) || ModItems.isPlantCutterLike(held))) {
+		if (state.is(ModTags.FORAGE_BUSHES)) {
+			if (!held.is(ModItems.REFINED_ROCK) && !ModItems.isPlantCutterLike(held)) {
+				// No unarmored empty-hand or arbitrary-item fallback: protect the first twig gate.
+				cir.setReturnValue(false);
+				return;
+			}
 			int twigCount;
 			if (ToolCapabilities.isAdvancedPlantTier(held)) {
 				twigCount = 8;
@@ -575,12 +828,50 @@ public abstract class ServerPlayerGameModeMixin {
 	}
 
 
+	private static ItemStack projectflint$saplingForLeaves(BlockState state) {
+		if (state.is(Blocks.OAK_LEAVES)) return new ItemStack(Items.OAK_SAPLING);
+		if (state.is(Blocks.SPRUCE_LEAVES)) return new ItemStack(Items.SPRUCE_SAPLING);
+		if (state.is(Blocks.BIRCH_LEAVES)) return new ItemStack(Items.BIRCH_SAPLING);
+		if (state.is(Blocks.JUNGLE_LEAVES)) return new ItemStack(Items.JUNGLE_SAPLING);
+		if (state.is(Blocks.ACACIA_LEAVES)) return new ItemStack(Items.ACACIA_SAPLING);
+		if (state.is(Blocks.DARK_OAK_LEAVES)) return new ItemStack(Items.DARK_OAK_SAPLING);
+		if (state.is(Blocks.MANGROVE_LEAVES)) return new ItemStack(Items.MANGROVE_PROPAGULE);
+		if (state.is(Blocks.CHERRY_LEAVES)) return new ItemStack(Items.CHERRY_SAPLING);
+		if (state.is(Blocks.PALE_OAK_LEAVES)) return new ItemStack(Items.PALE_OAK_SAPLING);
+		if (state.is(Blocks.AZALEA_LEAVES)) return new ItemStack(Items.AZALEA);
+		if (state.is(Blocks.FLOWERING_AZALEA_LEAVES)) return new ItemStack(Items.FLOWERING_AZALEA);
+		return ItemStack.EMPTY;
+	}
+
+
 	private static boolean projectflint$isVanillaPlankSlab(BlockState state) {
 		return state.is(Blocks.OAK_SLAB) || state.is(Blocks.SPRUCE_SLAB) || state.is(Blocks.BIRCH_SLAB)
 			|| state.is(Blocks.JUNGLE_SLAB) || state.is(Blocks.ACACIA_SLAB) || state.is(Blocks.DARK_OAK_SLAB)
 			|| state.is(Blocks.MANGROVE_SLAB) || state.is(Blocks.CHERRY_SLAB) || state.is(Blocks.PALE_OAK_SLAB)
 			|| state.is(Blocks.BAMBOO_SLAB) || state.is(Blocks.BAMBOO_MOSAIC_SLAB)
 			|| state.is(Blocks.CRIMSON_SLAB) || state.is(Blocks.WARPED_SLAB);
+	}
+
+	private static boolean projectflint$isLimestoneFamily(BlockState state) {
+		return state.is(ModBlocks.LIMESTONE)
+			|| state.is(ModBlocks.COBBLED_LIMESTONE)
+			|| state.is(ModBlocks.SMOOTH_LIMESTONE)
+			|| state.is(ModBlocks.LIMESTONE_BRICKS)
+			|| state.is(ModBlocks.CHISELED_LIMESTONE)
+			|| state.is(ModBlocks.POLISHED_LIMESTONE)
+			|| state.is(ModBlocks.CHECKERED_TILE)
+			|| state.is(ModBlocks.GLAZED_CHECKERED_TILE);
+	}
+
+	private static net.minecraft.world.item.Item projectflint$limestoneDrop(BlockState state) {
+		if (state.is(ModBlocks.LIMESTONE)) return ModItems.COBBLED_LIMESTONE;
+		if (state.is(ModBlocks.COBBLED_LIMESTONE)) return ModItems.COBBLED_LIMESTONE;
+		if (state.is(ModBlocks.SMOOTH_LIMESTONE)) return ModItems.SMOOTH_LIMESTONE;
+		if (state.is(ModBlocks.LIMESTONE_BRICKS)) return ModItems.LIMESTONE_BRICKS;
+		if (state.is(ModBlocks.CHISELED_LIMESTONE)) return ModItems.CHISELED_LIMESTONE;
+		if (state.is(ModBlocks.POLISHED_LIMESTONE)) return ModItems.POLISHED_LIMESTONE;
+		if (state.is(ModBlocks.CHECKERED_TILE)) return ModItems.CHECKERED_TILE;
+		return ModItems.GLAZED_CHECKERED_TILE;
 	}
 
 	private static boolean projectflint$isProcessedWood(BlockState state) {
@@ -610,6 +901,22 @@ public abstract class ServerPlayerGameModeMixin {
 			|| state.is(Blocks.STRIPPED_JUNGLE_LOG) || state.is(Blocks.STRIPPED_ACACIA_LOG) || state.is(Blocks.STRIPPED_DARK_OAK_LOG)
 			|| state.is(Blocks.STRIPPED_MANGROVE_LOG) || state.is(Blocks.STRIPPED_CHERRY_LOG) || state.is(Blocks.STRIPPED_PALE_OAK_LOG)
 			|| state.is(Blocks.STRIPPED_CRIMSON_STEM) || state.is(Blocks.STRIPPED_WARPED_STEM) || state.is(Blocks.STRIPPED_BAMBOO_BLOCK);
+	}
+
+	/** Loosen neighboring stone without replacing unrelated ores or existing constructions. */
+	private void projectflint$loosenAdjacentStone(BlockPos origin) {
+		for (Direction direction : Direction.values()) {
+			BlockPos adjacent = origin.relative(direction);
+			if (!level.getBlockState(adjacent).is(Blocks.STONE) || level.getRandom().nextFloat() >= 0.15F) continue;
+			// Surface fractures turn into collectible loose stone; buried ones crack into crushed stone.
+			BlockPos below = adjacent.below();
+			if (level.getBlockState(adjacent.above()).isAir()
+				&& level.getBlockState(below).isFaceSturdy(level, below, Direction.UP)) {
+				level.setBlockAndUpdate(adjacent, ModBlocks.LOOSE_ROCK.defaultBlockState());
+			} else {
+				level.setBlockAndUpdate(adjacent, ModBlocks.CRUSHED_STONE.defaultBlockState());
+			}
+		}
 	}
 
 	private void projectflint$loosenAdjacentDirt(BlockPos origin) {

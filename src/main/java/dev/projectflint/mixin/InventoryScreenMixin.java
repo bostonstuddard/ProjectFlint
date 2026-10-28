@@ -1,5 +1,6 @@
 package dev.projectflint.mixin;
 
+import dev.projectflint.system.PrimitiveInventorySystem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.navigation.ScreenPosition;
@@ -15,7 +16,7 @@ public abstract class InventoryScreenMixin {
 	@Inject(method = "init", at = @At("TAIL"))
 	private void projectflint$closeRecipeBook(CallbackInfo ci) {
 		Minecraft client = Minecraft.getInstance();
-		if (client.player == null || client.player.isCreative()) {
+		if (client.player == null || PrimitiveInventorySystem.canUsePersonalCrafting(client.player)) {
 			return;
 		}
 		InventoryScreen screen = (InventoryScreen) (Object) this;
@@ -25,7 +26,7 @@ public abstract class InventoryScreenMixin {
 	@Inject(method = "getRecipeBookButtonPosition", at = @At("HEAD"), cancellable = true)
 	private void projectflint$hideRecipeButton(CallbackInfoReturnable<ScreenPosition> cir) {
 		Minecraft client = Minecraft.getInstance();
-		if (client.player != null && !client.player.isCreative()) {
+		if (client.player != null && !PrimitiveInventorySystem.canUsePersonalCrafting(client.player)) {
 			cir.setReturnValue(new ScreenPosition(-1000, -1000));
 		}
 	}
@@ -33,7 +34,7 @@ public abstract class InventoryScreenMixin {
 	@Inject(method = "onRecipeBookButtonClick", at = @At("HEAD"), cancellable = true)
 	private void projectflint$disableRecipeBook(CallbackInfo ci) {
 		Minecraft client = Minecraft.getInstance();
-		if (client.player != null && !client.player.isCreative()) {
+		if (client.player != null && !PrimitiveInventorySystem.canUsePersonalCrafting(client.player)) {
 			ci.cancel();
 		}
 	}
@@ -41,7 +42,7 @@ public abstract class InventoryScreenMixin {
 	@Inject(method = "renderLabels", at = @At("HEAD"), cancellable = true)
 	private void projectflint$hidePersonalCraftingLabels(GuiGraphics graphics, int mouseX, int mouseY, CallbackInfo ci) {
 		Minecraft client = Minecraft.getInstance();
-		if (client.player != null && !client.player.isCreative()) {
+		if (client.player != null && !PrimitiveInventorySystem.canUsePersonalCrafting(client.player)) {
 			ci.cancel();
 		}
 	}
@@ -49,7 +50,7 @@ public abstract class InventoryScreenMixin {
 	@Inject(method = "renderBg", at = @At("TAIL"))
 	private void projectflint$renderPrimitiveInventoryBackground(GuiGraphics graphics, float delta, int mouseX, int mouseY, CallbackInfo ci) {
 		Minecraft client = Minecraft.getInstance();
-		if (client.player == null || client.player.isCreative()) {
+		if (client.player == null || PrimitiveInventorySystem.canUsePersonalCrafting(client.player)) {
 			return;
 		}
 

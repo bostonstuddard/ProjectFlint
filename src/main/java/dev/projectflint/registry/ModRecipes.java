@@ -2,6 +2,8 @@ package dev.projectflint.registry;
 
 import dev.projectflint.ProjectFlint;
 import dev.projectflint.recipe.ClayGrinderRecipe;
+import dev.projectflint.recipe.DurableCraftingRecipe;
+import dev.projectflint.recipe.LeatherRepairRecipe;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.crafting.RecipeSerializer;
@@ -24,6 +26,11 @@ public final class ModRecipes {
 		ProjectFlint.id("clay_grinding"),
 		new ClayGrinderRecipe.Serializer()
 	);
+
+	public static final RecipeSerializer<DurableCraftingRecipe> DURABLE_CRAFTING_SERIALIZER = Registry.register(
+		BuiltInRegistries.RECIPE_SERIALIZER, ProjectFlint.id("durable_crafting"), new DurableCraftingRecipe.Serializer());
+	public static final RecipeSerializer<LeatherRepairRecipe> LEATHER_REPAIR_SERIALIZER = Registry.register(
+		BuiltInRegistries.RECIPE_SERIALIZER, ProjectFlint.id("leather_repair"), new LeatherRepairRecipe.Serializer());
 
 	private ModRecipes() {}
 

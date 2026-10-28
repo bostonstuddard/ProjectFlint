@@ -47,19 +47,22 @@ void main() {
     float raw_sky_factor = clamp(lightmapInfo.SkyFactor, 0.0, 1.0);
     float raw_sky_brightness = get_brightness(floor(texCoord.y * 16.0) / 15.0) * raw_sky_factor;
 
-    // Night Vision uses Minecraft's normal lightmap path. LightTextureMixin routes
-    // Creative mode through NightVisionFactor=1, so Creative also bypasses Project
-    // Flint true darkness completely instead of merely receiving a dim brightness floor.
-    if (lightmapInfo.NightVisionFactor > 0.0) {
+    // Actual Night Vision and Creative both bypass Project Flint's hardened-darkness
+    // branch, but Creative uses a negative sentinel so it keeps normal vanilla lighting
+    // instead of receiving Night Vision/fullbright normalization.
+    bool creative_bypass = lightmapInfo.NightVisionFactor < 0.0;
+    if (creative_bypass || lightmapInfo.NightVisionFactor > 0.0) {
         vec3 color = vanillaColor(block_brightness, raw_sky_brightness);
         if (lightmapInfo.AmbientLightFactor == 0.0) {
             vec3 darkened_color = color * vec3(0.7, 0.6, 0.6);
             color = mix(color, darkened_color, lightmapInfo.DarkenWorldFactor);
         }
-        float max_component = max(color.r, max(color.g, color.b));
-        if (max_component > 0.0 && max_component < 1.0) {
-            vec3 bright_color = color / max_component;
-            color = mix(color, bright_color, lightmapInfo.NightVisionFactor);
+        if (!creative_bypass) {
+            float max_component = max(color.r, max(color.g, color.b));
+            if (max_component > 0.0 && max_component < 1.0) {
+                vec3 bright_color = color / max_component;
+                color = mix(color, bright_color, lightmapInfo.NightVisionFactor);
+            }
         }
         if (lightmapInfo.AmbientLightFactor == 0.0) {
             color = color - vec3(lightmapInfo.DarknessScale);

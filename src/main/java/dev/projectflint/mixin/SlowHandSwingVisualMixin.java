@@ -18,6 +18,8 @@ public abstract class SlowHandSwingVisualMixin {
 			return;
 		}
 
+		if (player.isCreative() || player.isSpectator()) return;
+
 		Minecraft client = Minecraft.getInstance();
 		if (client.level == null || !client.options.keyAttack.isDown() || !player.getMainHandItem().isEmpty()) {
 			return;

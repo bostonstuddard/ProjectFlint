@@ -1,11 +1,15 @@
 package dev.projectflint.mixin;
 
 import dev.projectflint.config.GameplayTuning;
+import dev.projectflint.block.CrushedStoneBlock;
 import dev.projectflint.registry.ModBlocks;
 import dev.projectflint.registry.ModItems;
 import dev.projectflint.registry.ModTags;
 import dev.projectflint.system.ToolCapabilities;
 import dev.projectflint.system.LumberProcessorSystem;
+import dev.projectflint.system.TannedUtilityVestSystem;
+import dev.projectflint.system.PlayerPlacedBlockLedger;
+import dev.projectflint.system.WoodenToolTargets;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.tags.BlockTags;
@@ -30,6 +34,133 @@ public abstract class BlockStateBaseMixin {
 		float vanillaProgress = cir.getReturnValue();
 		BlockState state = (BlockState) (Object) this;
 		ItemStack held = player.getMainHandItem();
+		// Leaves should never pop instantly from unrelated held tools or a retired belt.
+		// The Vest grants hand-harvesting permission, not an instantaneous leaf harvest.
+		if (state.is(BlockTags.LEAVES)) {
+			if (ToolCapabilities.canHarvestLeaves(held)) {
+				cir.setReturnValue(ToolCapabilities.leafProgressPerTick(held));
+			} else if (TannedUtilityVestSystem.canHandClear(player, state)) {
+				cir.setReturnValue(1.0F / 40.0F);
+			} else {
+				cir.setReturnValue(0.0F);
+			}
+			return;
+		}
+		if (TannedUtilityVestSystem.canHandClear(player, state)) {
+			cir.setReturnValue(1.0F);
+			return;
+		}
+		if (state.is(ModBlocks.HARDWOOD_CRAFTING_TABLE)) { cir.setReturnValue(held.is(ModItems.HARDWOOD_AXE) || held.is(net.minecraft.world.item.Items.WOODEN_AXE) || held.is(ModItems.FLINT_AXE) ? Math.max(vanillaProgress, 0.03F) : 0.0F); return; }
+		if (state.is(ModBlocks.BASIN) || state.is(ModBlocks.FAT_BURNING_TORCH)) {
+			cir.setReturnValue(Math.max(vanillaProgress, state.is(ModBlocks.FAT_BURNING_TORCH) ? 1.0F : 0.06F));
+			return;
+		}
+		if (held.is(ModItems.HARDWOOD_HAMMER) && state.is(BlockTags.MINEABLE_WITH_PICKAXE)
+			&& !state.is(BlockTags.NEEDS_IRON_TOOL) && !state.is(BlockTags.NEEDS_DIAMOND_TOOL)) {
+			// The Hammer is for rock-working and stone-tier ores, NOT a faster strip-mining pickaxe.
+			// Never take max(vanillaProgress, customProgress): that reopens the fast-mining bypass.
+			cir.setReturnValue(1.0F / 420.0F); // 21s for natural rock and pickaxe-mineable ores.
+			return;
+		}
+		// Tool Belt is disabled; wooden tool timings do not depend on equipped leggings.
+		// Transitional wooden tools remain slower than vanilla but can harvest basic materials.
+		if ((held.is(net.minecraft.world.item.Items.WOODEN_PICKAXE) || held.is(ModItems.HARDWOOD_PICKAXE))
+			&& WoodenToolTargets.pickaxe(state)) {
+			// Hardwood is an actual mining upgrade, while stone continues to resist strip-mining.
+			cir.setReturnValue(held.is(ModItems.HARDWOOD_PICKAXE) ? 1.0F / 180.0F : 1.0F / 270.0F);
+			return;
+		}
+		if ((held.is(net.minecraft.world.item.Items.WOODEN_PICKAXE) || held.is(ModItems.HARDWOOD_PICKAXE)) && WoodenToolTargets.brickMasonry(state)) {
+			cir.setReturnValue(held.is(ModItems.HARDWOOD_PICKAXE) ? 1.0F / 90.0F : 1.0F / 120.0F);
+			return;
+		}
+		// The transitional Wooden Pickaxe must not bypass Minecraft's higher mining tiers.
+		// This check runs before the Utility Vest's player-placed preview so ores such as
+		// iron remain completely unbreakable with the Wooden Pickaxe.
+		if ((held.is(net.minecraft.world.item.Items.WOODEN_PICKAXE) || held.is(ModItems.HARDWOOD_PICKAXE))
+			&& (state.is(BlockTags.NEEDS_STONE_TOOL) || state.is(BlockTags.NEEDS_IRON_TOOL) || state.is(BlockTags.NEEDS_DIAMOND_TOOL))) {
+			cir.setReturnValue(0.0F);
+			return;
+		}
+		if ((held.is(net.minecraft.world.item.Items.WOODEN_AXE) || held.is(ModItems.HARDWOOD_AXE)) && state.is(BlockTags.LOGS)) {
+			cir.setReturnValue(Math.max(vanillaProgress * 0.65F, 1.0F / 105.0F));
+			return;
+		}
+		if ((held.is(net.minecraft.world.item.Items.WOODEN_SHOVEL) || held.is(ModItems.HARDWOOD_SHOVEL)) && WoodenToolTargets.shovel(state)) {
+			cir.setReturnValue(Math.max(vanillaProgress * 0.55F, 1.0F / 100.0F));
+			return;
+		}
+		// Grass scraping is a bare-hand action; tools must use an allowed harvesting path.
+		if (state.is(ModTags.GRASS_SCRAPE_TARGETS) && !held.isEmpty() && !ModItems.isMultitool(held)) {
+			cir.setReturnValue(0.0F);
+			return;
+		}
+		// A candidate for Vest recovery is not proof that natural stone was player-placed.
+		// Apply the wooden-tool mining timing before the optimistic client-side Vest preview.
+		if (player.getItemBySlot(net.minecraft.world.entity.EquipmentSlot.CHEST).is(ModItems.TANNED_UTILITY_VEST)
+			&& PlayerPlacedBlockLedger.potential(level, pos, state)) {
+			cir.setReturnValue(Math.max(vanillaProgress, 0.15F));
+			return;
+		}
+		if (ModBlocks.isWoodenBeam(state)) {
+			cir.setReturnValue((ToolCapabilities.isWellWoodTool(held) || TannedUtilityVestSystem.canDismantleWellFrame(player, state)) ? Math.max(vanillaProgress, 0.025F) : 0.0F);
+			return;
+		}
+		if (state.is(ModBlocks.ROPE)) {
+			cir.setReturnValue(Math.max(vanillaProgress, 0.08F));
+			return;
+		}
+		if (state.is(ModBlocks.WELL_PULLEY)) {
+			cir.setReturnValue((ToolCapabilities.isWellWoodTool(held) || TannedUtilityVestSystem.canDismantleWellFrame(player, state)) ? Math.max(vanillaProgress, 0.025F) : 0.0F);
+			return;
+		}
+		if (state.is(Blocks.BRICKS) || state.is(ModBlocks.BRICK_SHINGLES)) {
+			boolean canBreak = ToolCapabilities.canMineBrick(held);
+			cir.setReturnValue(canBreak ? Math.max(vanillaProgress, 0.025F) : 0.0F);
+			return;
+		}
+		if (state.is(ModBlocks.CRUSHED_STONE)) {
+			boolean canBreak = CrushedStoneBlock.isPlayerPlaced(state) && held.is(ModItems.ADVANCED_FLINT_MULTITOOL);
+			cir.setReturnValue(canBreak ? Math.max(vanillaProgress, 0.025F) : 0.0F);
+			return;
+		}
+		if (state.is(ModBlocks.FLAX_CROP)) {
+			cir.setReturnValue(Math.max(vanillaProgress, 1.0F));
+			return;
+		}
+		if (state.is(ModBlocks.LOOSE_MUD_BRICKS) || state.is(ModBlocks.LOOSE_MUD_BRICK_SLAB)) {
+			boolean canBreak = ToolCapabilities.has(held, ToolCapabilities.Capability.FLINT_TIER);
+			cir.setReturnValue(canBreak ? Math.max(vanillaProgress, 0.025F) : 0.0F);
+			return;
+		}
+		if (projectflint$isLimestoneFamily(state)) {
+			boolean canBreak = held.is(ModItems.ADVANCED_FLINT_MULTITOOL);
+			cir.setReturnValue(canBreak ? Math.max(vanillaProgress, 0.025F) : 0.0F);
+			return;
+		}
+		if (state.is(ModBlocks.BOOKSHELF)) {
+			boolean canBreak = held.is(ModItems.FLINT_AXE);
+			cir.setReturnValue(canBreak ? Math.max(vanillaProgress, 0.025F) : 0.0F);
+			return;
+		}
+		if (state.is(ModBlocks.WOODEN_CHEST)) {
+			cir.setReturnValue(held.is(ModItems.FLINT_AXE) ? Math.max(vanillaProgress, 0.025F) : 0.0F);
+			return;
+		}
+		if (state.is(ModBlocks.WOODEN_CABINET)) {
+			cir.setReturnValue(held.is(ModItems.FLINT_AXE) ? Math.max(vanillaProgress, 0.025F) : 0.0F);
+			return;
+		}
+		if (state.is(ModBlocks.FIRECLAY_BRICK_BLOCK) || state.is(ModBlocks.FIRECLAY_BRICK_SLAB) || state.is(ModBlocks.FIRECLAY_BRICK_STAIRS)
+			|| state.is(ModBlocks.BRICK_FURNACE) || state.is(ModBlocks.BRICK_BLAST_FURNACE) || state.is(ModBlocks.FIRECLAY_FORGE_CONTROLLER)) {
+			boolean canBreak = ToolCapabilities.canMineBrick(held);
+			cir.setReturnValue(canBreak ? Math.max(vanillaProgress, 0.025F) : 0.0F);
+			return;
+		}
+		if (state.is(ModBlocks.PRIMITIVE_STOVE)) {
+			cir.setReturnValue(held.is(ModItems.ADVANCED_FLINT_MULTITOOL) ? Math.max(vanillaProgress, 0.025F) : 0.0F);
+			return;
+		}
 		if (state.is(ModBlocks.SLEEPING_BAG)) {
 			cir.setReturnValue(vanillaProgress);
 			return;
@@ -47,21 +178,19 @@ public abstract class BlockStateBaseMixin {
 			return;
 		}
 		if (state.is(ModBlocks.SANDING_STATION)) {
-			cir.setReturnValue(Math.max(vanillaProgress, 0.025F));
+			cir.setReturnValue(held.is(ModItems.FLINT_AXE) ? Math.max(vanillaProgress, 0.025F) : 0.0F);
 			return;
 		}
 		if (state.is(ModBlocks.LUMBER_WORKPIECE)) {
 			cir.setReturnValue(1.0F / 150.0F);
 			return;
 		}
-		if (state.is(ModBlocks.LUMBER_CHOPPING_BLOCK)
-			|| (state.is(ModBlocks.WATER_POT) && LumberProcessorSystem.isProcessorPart(level, pos))
-			|| (state.is(ModBlocks.CRUSHED_STONE) && LumberProcessorSystem.isProcessorPart(level, pos))) {
-			cir.setReturnValue(ToolCapabilities.has(held, ToolCapabilities.Capability.ADVANCED_FLINT_TIER) ? Math.max(vanillaProgress, 0.025F) : 0.0F);
+		if (LumberProcessorSystem.isProcessorPart(level, pos)) {
+			cir.setReturnValue(held.is(ModItems.FLINT_AXE) ? Math.max(vanillaProgress, 0.025F) : 0.0F);
 			return;
 		}
 		if (state.is(ModBlocks.WATER_POT)) {
-			cir.setReturnValue(Math.max(vanillaProgress, 0.025F));
+			cir.setReturnValue(Math.max(vanillaProgress, 0.10F));
 			return;
 		}
 		if (LumberProcessorSystem.isSupportedStrippedLog(state) && level.getBlockState(pos.below()).is(ModBlocks.LUMBER_CHOPPING_BLOCK)) {
@@ -91,8 +220,12 @@ public abstract class BlockStateBaseMixin {
 			cir.setReturnValue(held.is(ModItems.FLINT_AXE) ? Math.max(vanillaProgress, 0.025F) : 0.0F);
 			return;
 		}
-		if (state.is(ModBlocks.MORTAR_KILN) || state.is(ModBlocks.WOODEN_GRINDER)) {
+		if (state.is(ModBlocks.MORTAR_KILN)) {
 			cir.setReturnValue(ToolCapabilities.has(held, ToolCapabilities.Capability.ADVANCED_FLINT_TIER) ? Math.max(vanillaProgress, 0.025F) : 0.0F);
+			return;
+		}
+		if (state.is(ModBlocks.WOODEN_GRINDER)) {
+			cir.setReturnValue(held.is(ModItems.FLINT_AXE) ? Math.max(vanillaProgress, 0.025F) : 0.0F);
 			return;
 		}
 		if (state.is(ModBlocks.MORTAR_KILN_BASE) || state.is(ModBlocks.WOODEN_GRINDER_BASE)) {
@@ -130,6 +263,10 @@ public abstract class BlockStateBaseMixin {
 			cir.setReturnValue(ModItems.canHarvestSweetBerrySeeds(held) ? 1.0F / 130.0F : 0.0F);
 			return;
 		}
+		if (state.is(ModBlocks.STRAWBERRY_BUSH)) {
+			cir.setReturnValue(ModItems.canHarvestSweetBerrySeeds(held) ? 1.0F / 130.0F : 0.0F);
+			return;
+		}
 		if (state.is(ModBlocks.CRUDE_CLAY_BLOCK) || state.is(ModBlocks.CRUDE_CLAY_KILN)) {
 			cir.setReturnValue(vanillaProgress);
 			return;
@@ -154,7 +291,7 @@ public abstract class BlockStateBaseMixin {
 			cir.setReturnValue(vanillaProgress * ToolCapabilities.earthProgressMultiplier(held));
 			return;
 		}
-		if (state.is(ModTags.GRASS_SCRAPE_TARGETS)) {
+		if (state.is(ModTags.GRASS_SCRAPE_TARGETS) && held.isEmpty()) {
 			cir.setReturnValue(GameplayTuning.GRASS_STRIP_PROGRESS_PER_TICK);
 			return;
 		}
@@ -166,9 +303,11 @@ public abstract class BlockStateBaseMixin {
 			cir.setReturnValue(1.0F);
 			return;
 		}
-		if (state.is(ModTags.FORAGE_BUSHES) && (held.is(ModItems.REFINED_ROCK) || ModItems.isPlantCutterLike(held))) {
+		if (state.is(ModTags.FORAGE_BUSHES)) {
 			float base = GameplayTuning.BUSH_CUT_PROGRESS_PER_TICK;
-			cir.setReturnValue(held.is(ModItems.REFINED_ROCK) ? base : projectflint$cutterProgress(held, base));
+			if (held.is(ModItems.REFINED_ROCK)) cir.setReturnValue(base);
+			else if (ModItems.isPlantCutterLike(held)) cir.setReturnValue(projectflint$cutterProgress(held, base));
+			else cir.setReturnValue(0.0F); // Bare hands/irrelevant items cannot harvest a progression bush.
 			return;
 		}
 		if (state.is(Blocks.LEAF_LITTER) && ModItems.isPlantCutterLike(held)) {
@@ -193,10 +332,6 @@ public abstract class BlockStateBaseMixin {
 			cir.setReturnValue(Math.min(1.0F, vanillaProgress * ToolCapabilities.cutterSpeedMultiplier(held)));
 			return;
 		}
-		if (state.is(BlockTags.LEAVES) && ToolCapabilities.canHarvestLeaves(held)) {
-			cir.setReturnValue(Math.min(1.0F, vanillaProgress * ToolCapabilities.foliageCutterSpeedMultiplier(held)));
-			return;
-		}
 		// Dirt and Loose Soil intentionally share this exact progress path.
 		if (ModItems.isMultitool(held) && (state.is(Blocks.DIRT) || state.is(Blocks.GRASS_BLOCK) || state.is(ModBlocks.LOOSE_SOIL) || state.is(Blocks.GRAVEL))) {
 			cir.setReturnValue(vanillaProgress * ToolCapabilities.earthProgressMultiplier(held));
@@ -204,6 +339,17 @@ public abstract class BlockStateBaseMixin {
 		}
 
 		cir.setReturnValue(0.0F);
+	}
+
+	private static boolean projectflint$isLimestoneFamily(BlockState state) {
+		return state.is(ModBlocks.LIMESTONE)
+			|| state.is(ModBlocks.COBBLED_LIMESTONE)
+			|| state.is(ModBlocks.SMOOTH_LIMESTONE)
+			|| state.is(ModBlocks.LIMESTONE_BRICKS)
+			|| state.is(ModBlocks.CHISELED_LIMESTONE)
+			|| state.is(ModBlocks.POLISHED_LIMESTONE)
+			|| state.is(ModBlocks.CHECKERED_TILE)
+			|| state.is(ModBlocks.GLAZED_CHECKERED_TILE);
 	}
 
 	private static float projectflint$cutterProgress(ItemStack stack, float base) {

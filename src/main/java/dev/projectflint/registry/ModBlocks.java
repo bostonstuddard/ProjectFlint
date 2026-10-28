@@ -12,8 +12,11 @@ import dev.projectflint.block.ClayFiringPileBlock;
 import dev.projectflint.block.ClayGrinderBlock;
 import dev.projectflint.block.ClayGrindingBaseBlock;
 import dev.projectflint.block.CrudeClayKilnBlock;
+import dev.projectflint.block.CrushedStoneBlock;
+import dev.projectflint.block.FlaxCropBlock;
 import dev.projectflint.block.CrudePlantTorchBlock;
 import dev.projectflint.block.FlintTorchBlock;
+import dev.projectflint.block.FatBurningTorchBlock;
 import dev.projectflint.block.FiredClayPileBlock;
 import dev.projectflint.block.FallingSlabBlock;
 import dev.projectflint.block.FlintToolAssemblyBlock;
@@ -32,6 +35,7 @@ import dev.projectflint.block.WovenChestBlock;
 import dev.projectflint.block.PrimitiveCampfireBlock;
 import dev.projectflint.block.RockPileBlock;
 import dev.projectflint.block.SleepingBagBlock;
+import dev.projectflint.block.StrawberryBushBlock;
 import dev.projectflint.block.TwigPileBlock;
 import dev.projectflint.block.VeryRefinedStonePileBlock;
 import dev.projectflint.block.WovenGearAssemblyBlock;
@@ -43,6 +47,19 @@ import dev.projectflint.block.LumberWorkpieceBlock;
 import dev.projectflint.block.LumberChoppingBlock;
 import dev.projectflint.block.WaterPotBlock;
 import dev.projectflint.block.SandingStationBlock;
+import dev.projectflint.block.WoodenChestBlock;
+import dev.projectflint.block.BookshelfBlock;
+import dev.projectflint.block.WoodenCabinetBlock;
+import dev.projectflint.block.PrimitiveStoveBlock;
+import dev.projectflint.block.BrickFurnaceBlock;
+import dev.projectflint.block.BrickBlastFurnaceBlock;
+import dev.projectflint.block.RopeBlock;
+import dev.projectflint.block.NestBlock;
+import dev.projectflint.block.WellPulleyBlock;
+import dev.projectflint.block.PrototypeStationBlock;
+import dev.projectflint.block.BasinBlock;
+import dev.projectflint.block.HardwoodCraftingTableBlock;
+import dev.projectflint.block.FireclayForgeControllerBlock;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -54,6 +71,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.ColoredFallingBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.SlabBlock;
+import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 
 import java.util.List;
@@ -63,6 +81,8 @@ public final class ModBlocks {
 	public static final TwigPileBlock TWIG_PILE = registerTwigPile("twig_pile");
 	public static final CrudePlantTorchBlock CRUDE_PLANT_TORCH = registerCrudePlantTorch("crude_plant_torch");
 	public static final FlintTorchBlock FLINT_TORCH = registerFlintTorch("flint_torch");
+	public static final FatBurningTorchBlock FAT_BURNING_TORCH = registerFatTorch("fat_burning_torch");
+	public static final Block HARDWOOD_CRAFTING_TABLE = registerHardwoodTable("hardwood_crafting_table");
 	public static final FiberWorkPileBlock FIBER_WORK_PILE = registerFiberWorkPile("fiber_work_pile");
 	public static final HammerAssemblyBlock HAMMER_ASSEMBLY = registerHammerAssembly("hammer_assembly");
 	public static final BindingAssemblyBlock BINDING_ASSEMBLY = registerBindingAssembly("binding_assembly");
@@ -86,7 +106,7 @@ public final class ModBlocks {
 	public static final BakedClayKilnBlock BAKED_CLAY_KILN = registerBakedClayKiln("baked_clay_kiln");
 	public static final KilnTopFormBlock KILN_TOP_FORM = registerKilnTopForm("kiln_top_form");
 	public static final BakedKilnTopBlock BAKED_KILN_TOP = registerBakedKilnTop("baked_kiln_top");
-	public static final Block CRUSHED_STONE = registerCrushedStone("crushed_stone");
+	public static final CrushedStoneBlock CRUSHED_STONE = registerCrushedStone("crushed_stone");
 	public static final SlabBlock CRUSHED_STONE_SLAB = registerCrushedStoneSlab("crushed_stone_slab");
 	public static final SleepingBagBlock SLEEPING_BAG = registerSleepingBag("sleeping_bag");
 	public static final MortarBricksBlock MORTAR_BRICKS = registerMortarBricks("mortar_bricks");
@@ -116,6 +136,48 @@ public final class ModBlocks {
 	public static final WattledDaubWindowBlock WATTLED_DAUB_WINDOW = registerWattledDaubWindow("wattled_daub_window");
 	public static final WattledDaubFloorTileBlock WATTLED_DAUB_FLOOR_TILE = registerWattledDaubFloorTile("wattled_daub_floor_tile");
 	public static final WattledDaubDoorBlock WATTLED_DAUB_DOOR = registerWattledDaubDoor("wattled_daub_door");
+	public static final Block WOODEN_BEAM = registerBeam("wooden_beam");
+	public static final Block ACACIA_WOODEN_BEAM = registerBeam("acacia_wooden_beam");
+	public static final Block BIRCH_WOODEN_BEAM = registerBeam("birch_wooden_beam");
+	public static final Block CHERRY_WOODEN_BEAM = registerBeam("cherry_wooden_beam");
+	public static final Block CRIMSON_WOODEN_BEAM = registerBeam("crimson_wooden_beam");
+	public static final Block DARK_OAK_WOODEN_BEAM = registerBeam("dark_oak_wooden_beam");
+	public static final Block JUNGLE_WOODEN_BEAM = registerBeam("jungle_wooden_beam");
+	public static final Block MANGROVE_WOODEN_BEAM = registerBeam("mangrove_wooden_beam");
+	public static final Block PALE_OAK_WOODEN_BEAM = registerBeam("pale_oak_wooden_beam");
+	public static final Block SPRUCE_WOODEN_BEAM = registerBeam("spruce_wooden_beam");
+	public static final Block WARPED_WOODEN_BEAM = registerBeam("warped_wooden_beam");
+	public static final Block SAWMILL = registerSawmill("sawmill");
+	public static final WoodenChestBlock WOODEN_CHEST = registerWoodenChest("wooden_chest");
+	public static final BookshelfBlock BOOKSHELF = registerBookshelf("bookshelf");
+	public static final Block LIMESTONE = registerLimestoneBlock("limestone");
+	public static final Block COBBLED_LIMESTONE = registerLimestoneFallingBlock("cobbled_limestone", 0xB9B08FFF);
+	public static final Block SMOOTH_LIMESTONE = registerLimestoneFallingBlock("smooth_limestone", 0xD4C9A8FF);
+	public static final Block LIMESTONE_BRICKS = registerLimestoneBlock("limestone_bricks");
+	public static final Block CHISELED_LIMESTONE = registerLimestoneBlock("chiseled_limestone");
+	public static final Block POLISHED_LIMESTONE = registerLimestoneBlock("polished_limestone");
+	public static final Block CHECKERED_TILE = registerLimestoneFallingBlock("checkered_tile", 0xA8A39BFF);
+	public static final Block GLAZED_CHECKERED_TILE = registerLimestoneFallingBlock("glazed_checkered_tile", 0xB5B0A7FF);
+	public static final WoodenCabinetBlock WOODEN_CABINET = registerWoodenCabinet("wooden_cabinet");
+	public static final PrimitiveStoveBlock PRIMITIVE_STOVE = registerPrimitiveStove("primitive_stove");
+	public static final BrickFurnaceBlock BRICK_FURNACE = registerBrickFurnace("brick_furnace");
+	public static final BrickBlastFurnaceBlock BRICK_BLAST_FURNACE = registerBrickBlastFurnace("brick_blast_furnace");
+	public static final Block LOOSE_MUD_BRICKS = registerLooseMudBricks("loose_mud_bricks");
+	public static final SlabBlock LOOSE_MUD_BRICK_SLAB = registerLooseMudBrickSlab("loose_mud_brick_slab");
+	public static final Block BASIN = registerPrototypeStation("basin");
+	public static final Block DRYING_RACK = registerPrototypeStation("drying_rack");
+	public static final Block MILLSTONE = registerPrototypeStation("millstone");
+	public static final Block FIRECLAY_BRICK_BLOCK = registerFireclayBlock("fireclay_brick_block");
+	public static final FireclayForgeControllerBlock FIRECLAY_FORGE_CONTROLLER = registerForge("fireclay_forge_controller");
+	public static final SlabBlock FIRECLAY_BRICK_SLAB = registerFireclaySlab("fireclay_brick_slab");
+	public static final StairBlock FIRECLAY_BRICK_STAIRS = registerFireclayStairs("fireclay_brick_stairs");
+	public static final FlaxCropBlock FLAX_CROP = registerFlaxCrop("flax_crop");
+	public static final StrawberryBushBlock STRAWBERRY_BUSH = registerStrawberryBush("strawberry_bush");
+	public static final RopeBlock ROPE = registerRope("rope");
+	public static final NestBlock NEST = registerNest("nest");
+	public static final SlabBlock BRICK_SHINGLES = registerBrickShingles("brick_shingles");
+	public static final WellPulleyBlock WELL_PULLEY = registerWellPulley("well_pulley");
+
 
 	/**
 	 * Active alpha.8 forage ecology. Hot/arid, shore, snowy, and swamp biomes are
@@ -200,6 +262,15 @@ public final class ModBlocks {
 			BlockBehaviour.Properties.of().setId(key).noCollision().noOcclusion().noLootTable()
 				.strength(0.15F).sound(SoundType.STONE)
 				.lightLevel(state -> state.getValue(FlintTorchBlock.LIT) ? 12 : 0)
+		));
+	}
+
+	private static FatBurningTorchBlock registerFatTorch(String name) {
+		ResourceKey<Block> key = ResourceKey.create(Registries.BLOCK, ProjectFlint.id(name));
+		return Registry.register(BuiltInRegistries.BLOCK, key, new FatBurningTorchBlock(
+			BlockBehaviour.Properties.of().setId(key).noCollision().noOcclusion()
+				.strength(0.15F).sound(SoundType.WOOD)
+				.lightLevel(state -> state.getValue(FatBurningTorchBlock.LIT) ? 12 : 0)
 		));
 	}
 
@@ -323,9 +394,9 @@ public final class ModBlocks {
 		return Registry.register(BuiltInRegistries.BLOCK, key, new BakedKilnTopBlock(BlockBehaviour.Properties.of().setId(key).noLootTable().strength(-1.0F, 3600000.0F).sound(SoundType.DECORATED_POT)));
 	}
 
-	private static Block registerCrushedStone(String name) {
+	private static CrushedStoneBlock registerCrushedStone(String name) {
 		ResourceKey<Block> key = ResourceKey.create(Registries.BLOCK, ProjectFlint.id(name));
-		return Registry.register(BuiltInRegistries.BLOCK, key, new ColoredFallingBlock(
+		return Registry.register(BuiltInRegistries.BLOCK, key, new CrushedStoneBlock(
 			new ColorRGBA(0x777777FF),
 			BlockBehaviour.Properties.of().setId(key).noLootTable().strength(1.5F).sound(SoundType.STONE)
 		));
@@ -479,6 +550,85 @@ public final class ModBlocks {
 		));
 	}
 
+
+	private static WoodenChestBlock registerWoodenChest(String name) { ResourceKey<Block> key=ResourceKey.create(Registries.BLOCK,ProjectFlint.id(name)); return Registry.register(BuiltInRegistries.BLOCK,key,new WoodenChestBlock(BlockBehaviour.Properties.of().setId(key).noOcclusion().strength(1.5F).sound(SoundType.WOOD))); }
+	private static BookshelfBlock registerBookshelf(String name) { ResourceKey<Block> key=ResourceKey.create(Registries.BLOCK,ProjectFlint.id(name)); return Registry.register(BuiltInRegistries.BLOCK,key,new BookshelfBlock(BlockBehaviour.Properties.of().setId(key).noLootTable().strength(1.3F).sound(SoundType.WOOD))); }
+
+	private static Block registerLimestoneBlock(String name) {
+		ResourceKey<Block> key = ResourceKey.create(Registries.BLOCK, ProjectFlint.id(name));
+		return Registry.register(BuiltInRegistries.BLOCK, key, new Block(BlockBehaviour.Properties.of().setId(key).noLootTable().strength(1.7F).sound(SoundType.STONE)));
+	}
+
+	private static Block registerLimestoneFallingBlock(String name, int dustColor) {
+		ResourceKey<Block> key = ResourceKey.create(Registries.BLOCK, ProjectFlint.id(name));
+		return Registry.register(BuiltInRegistries.BLOCK, key, new ColoredFallingBlock(new ColorRGBA(dustColor), BlockBehaviour.Properties.of().setId(key).noLootTable().strength(1.35F).sound(SoundType.STONE)));
+	}
+
+	private static WoodenCabinetBlock registerWoodenCabinet(String name) {
+		ResourceKey<Block> key = ResourceKey.create(Registries.BLOCK, ProjectFlint.id(name));
+		return Registry.register(BuiltInRegistries.BLOCK, key, new WoodenCabinetBlock(BlockBehaviour.Properties.of().setId(key).noLootTable().noOcclusion().strength(1.4F).sound(SoundType.WOOD)));
+	}
+
+	private static PrimitiveStoveBlock registerPrimitiveStove(String name) {
+		ResourceKey<Block> key = ResourceKey.create(Registries.BLOCK, ProjectFlint.id(name));
+		return Registry.register(BuiltInRegistries.BLOCK, key, new PrimitiveStoveBlock(BlockBehaviour.Properties.of().setId(key).noLootTable().strength(1.8F).sound(SoundType.STONE).lightLevel(state -> state.getValue(PrimitiveStoveBlock.LIT) ? 13 : 0)));
+	}
+
+	private static BrickFurnaceBlock registerBrickFurnace(String name) {
+		ResourceKey<Block> key = ResourceKey.create(Registries.BLOCK, ProjectFlint.id(name));
+		return Registry.register(BuiltInRegistries.BLOCK, key, new BrickFurnaceBlock(
+			BlockBehaviour.Properties.of().setId(key).noLootTable().strength(2.0F).sound(SoundType.STONE)
+				.lightLevel(state -> state.getValue(BrickFurnaceBlock.LIT) ? 13 : 0)
+		));
+	}
+
+	private static BrickBlastFurnaceBlock registerBrickBlastFurnace(String name) {
+		ResourceKey<Block> key = ResourceKey.create(Registries.BLOCK, ProjectFlint.id(name));
+		return Registry.register(BuiltInRegistries.BLOCK, key, new BrickBlastFurnaceBlock(
+			BlockBehaviour.Properties.of().setId(key).noLootTable().strength(2.2F).sound(SoundType.STONE)
+				.lightLevel(state -> state.getValue(BrickBlastFurnaceBlock.LIT) ? 13 : 0)
+		));
+	}
+
+	private static Block registerLooseMudBricks(String name) {
+		ResourceKey<Block> key = ResourceKey.create(Registries.BLOCK, ProjectFlint.id(name));
+		return Registry.register(BuiltInRegistries.BLOCK, key, new ColoredFallingBlock(
+			new ColorRGBA(0x8D6A4FFF),
+			BlockBehaviour.Properties.of().setId(key).noLootTable().strength(1.1F).sound(SoundType.MUD_BRICKS)
+		));
+	}
+
+	private static SlabBlock registerLooseMudBrickSlab(String name) {
+		ResourceKey<Block> key = ResourceKey.create(Registries.BLOCK, ProjectFlint.id(name));
+		return Registry.register(BuiltInRegistries.BLOCK, key, new FallingSlabBlock(
+			BlockBehaviour.Properties.of().setId(key).noLootTable().strength(1.0F).sound(SoundType.MUD_BRICKS)
+		));
+	}
+
+	private static FlaxCropBlock registerFlaxCrop(String name) {
+		ResourceKey<Block> key = ResourceKey.create(Registries.BLOCK, ProjectFlint.id(name));
+		return Registry.register(BuiltInRegistries.BLOCK, key, new FlaxCropBlock(
+			BlockBehaviour.Properties.of().setId(key).noCollision().noOcclusion().noLootTable().randomTicks().instabreak().sound(SoundType.CROP)
+		));
+	}
+
+	private static RopeBlock registerRope(String name) {
+		ResourceKey<Block> key = ResourceKey.create(Registries.BLOCK, ProjectFlint.id(name));
+		return Registry.register(BuiltInRegistries.BLOCK, key, new RopeBlock(
+			BlockBehaviour.Properties.of().setId(key).noCollision().noOcclusion().strength(0.25F).sound(SoundType.WOOL)
+		));
+	}
+
+	private static Block registerBeam(String name) {
+		ResourceKey<Block> key = ResourceKey.create(Registries.BLOCK, ProjectFlint.id(name));
+		return Registry.register(BuiltInRegistries.BLOCK, key, new Block(BlockBehaviour.Properties.of().setId(key).noLootTable().strength(1.5F).sound(SoundType.WOOD)));
+	}
+
+	private static Block registerSawmill(String name) {
+		ResourceKey<Block> key = ResourceKey.create(Registries.BLOCK, ProjectFlint.id(name));
+		return Registry.register(BuiltInRegistries.BLOCK, key, new Block(BlockBehaviour.Properties.of().setId(key).noOcclusion().strength(1.5F).sound(SoundType.WOOD)));
+	}
+
 	private static Block registerLooseRock(String name) {
 		ResourceKey<Block> key = ResourceKey.create(Registries.BLOCK, ProjectFlint.id(name));
 		return Registry.register(BuiltInRegistries.BLOCK, key, new LooseRockBlock(BlockBehaviour.Properties.of().setId(key).noCollision().noOcclusion().strength(0.4F).sound(SoundType.STONE)));
@@ -492,6 +642,83 @@ public final class ModBlocks {
 	private static Block registerBush(String name) {
 		ResourceKey<Block> key = ResourceKey.create(Registries.BLOCK, ProjectFlint.id(name));
 		return Registry.register(BuiltInRegistries.BLOCK, key, new Block(BlockBehaviour.Properties.of().setId(key).noCollision().noOcclusion().strength(0.2F).sound(SoundType.GRASS)));
+	}
+
+	private static FireclayForgeControllerBlock registerForge(String name) {
+		ResourceKey<Block> key = ResourceKey.create(Registries.BLOCK, ProjectFlint.id(name));
+		return Registry.register(BuiltInRegistries.BLOCK, key, new FireclayForgeControllerBlock(
+			BlockBehaviour.Properties.of().setId(key).strength(2.0F).sound(SoundType.DECORATED_POT)
+				.lightLevel(state -> state.getValue(FireclayForgeControllerBlock.LIT) ? 11 : 0)
+		));
+	}
+
+	private static Block registerHardwoodTable(String name) {
+        ResourceKey<Block> key = ResourceKey.create(Registries.BLOCK, ProjectFlint.id(name));
+        return Registry.register(BuiltInRegistries.BLOCK, key, new HardwoodCraftingTableBlock(
+            BlockBehaviour.Properties.of().setId(key).strength(2.0F).sound(SoundType.WOOD)));
+    }
+
+	private static Block registerPrototypeStation(String name) {
+		ResourceKey<Block> key = ResourceKey.create(Registries.BLOCK, ProjectFlint.id(name));
+		return Registry.register(BuiltInRegistries.BLOCK, key, name.equals("basin") ? new BasinBlock(BlockBehaviour.Properties.of().setId(key).noOcclusion().strength(1.5F).sound(SoundType.WOOD)) : new PrototypeStationBlock(BlockBehaviour.Properties.of().setId(key).noOcclusion().strength(1.5F).sound(SoundType.WOOD)));
+	}
+
+	private static Block registerFireclayBlock(String name) {
+		ResourceKey<Block> key = ResourceKey.create(Registries.BLOCK, ProjectFlint.id(name));
+		return Registry.register(BuiltInRegistries.BLOCK, key, new Block(BlockBehaviour.Properties.of().setId(key).strength(1.8F).sound(SoundType.DECORATED_POT)));
+	}
+
+	private static SlabBlock registerFireclaySlab(String name) {
+		ResourceKey<Block> key = ResourceKey.create(Registries.BLOCK, ProjectFlint.id(name));
+		return Registry.register(BuiltInRegistries.BLOCK, key, new SlabBlock(BlockBehaviour.Properties.of().setId(key).strength(1.8F).sound(SoundType.DECORATED_POT)));
+	}
+
+	private static StairBlock registerFireclayStairs(String name) {
+		ResourceKey<Block> key = ResourceKey.create(Registries.BLOCK, ProjectFlint.id(name));
+		return Registry.register(BuiltInRegistries.BLOCK, key, new StairBlock(FIRECLAY_BRICK_BLOCK.defaultBlockState(), BlockBehaviour.Properties.of().setId(key).strength(1.8F).sound(SoundType.DECORATED_POT)));
+	}
+
+	private static StrawberryBushBlock registerStrawberryBush(String name) {
+		ResourceKey<Block> key = ResourceKey.create(Registries.BLOCK, ProjectFlint.id(name));
+		return Registry.register(BuiltInRegistries.BLOCK, key, new StrawberryBushBlock(
+			BlockBehaviour.Properties.of().setId(key).noCollision().noOcclusion().noLootTable()
+				.randomTicks().strength(0.2F).sound(SoundType.SWEET_BERRY_BUSH)
+		));
+	}
+
+	private static SlabBlock registerBrickShingles(String name) {
+		ResourceKey<Block> key = ResourceKey.create(Registries.BLOCK, ProjectFlint.id(name));
+		return Registry.register(BuiltInRegistries.BLOCK, key, new SlabBlock(
+			BlockBehaviour.Properties.of().setId(key).strength(1.1F).sound(SoundType.DECORATED_POT)
+		));
+	}
+
+	private static WellPulleyBlock registerWellPulley(String name) {
+		ResourceKey<Block> key = ResourceKey.create(Registries.BLOCK, ProjectFlint.id(name));
+		return Registry.register(BuiltInRegistries.BLOCK, key, new WellPulleyBlock(
+			BlockBehaviour.Properties.of().setId(key).noLootTable().strength(1.5F).sound(SoundType.WOOD)
+		));
+	}
+
+	public static boolean isWoodenBeam(net.minecraft.world.level.block.state.BlockState state) {
+		return state.is(WOODEN_BEAM)
+			|| state.is(ACACIA_WOODEN_BEAM)
+			|| state.is(BIRCH_WOODEN_BEAM)
+			|| state.is(CHERRY_WOODEN_BEAM)
+			|| state.is(CRIMSON_WOODEN_BEAM)
+			|| state.is(DARK_OAK_WOODEN_BEAM)
+			|| state.is(JUNGLE_WOODEN_BEAM)
+			|| state.is(MANGROVE_WOODEN_BEAM)
+			|| state.is(PALE_OAK_WOODEN_BEAM)
+			|| state.is(SPRUCE_WOODEN_BEAM)
+			|| state.is(WARPED_WOODEN_BEAM);
+	}
+
+	private static NestBlock registerNest(String name) {
+		ResourceKey<Block> key = ResourceKey.create(Registries.BLOCK, ProjectFlint.id(name));
+		return Registry.register(BuiltInRegistries.BLOCK, key, new NestBlock(
+			BlockBehaviour.Properties.of().setId(key).noOcclusion().strength(0.15F).sound(SoundType.GRASS)
+		));
 	}
 
 	public static void initialize() {}

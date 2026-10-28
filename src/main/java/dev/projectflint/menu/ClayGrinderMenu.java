@@ -1,5 +1,6 @@
 package dev.projectflint.menu;
 
+import dev.projectflint.compat.flintquests.FlintQuestsBridge;
 import dev.projectflint.recipe.ClayGrinderRecipe;
 import dev.projectflint.registry.ModBlocks;
 import dev.projectflint.registry.ModMenus;
@@ -82,6 +83,7 @@ public final class ClayGrinderMenu extends AbstractContainerMenu {
 				if (player instanceof ServerPlayer serverPlayer && stack.is(ItemTags.WOODEN_SLABS)) {
 					ModAdvancements.awardAll(serverPlayer, "flint_axe_slabs");
 				}
+				if (player instanceof ServerPlayer serverPlayer) FlintQuestsBridge.onCraft(serverPlayer, "clay_grinder", stack);
 				setupRecipes();
 				super.onTake(player, stack);
 			}

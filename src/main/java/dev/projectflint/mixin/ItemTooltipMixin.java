@@ -29,7 +29,7 @@ public abstract class ItemTooltipMixin {
 		CallbackInfo ci
 	) {
 		FoodProperties food = stack.get(DataComponents.FOOD);
-		if (food != null) {
+		if (food != null && !(stack.getItem() instanceof net.minecraft.world.item.MobBucketItem)) {
 			textConsumer.accept(Component.literal(
 				"Hunger: " + formatHalf(food.nutrition() / 2.0F)
 			).withStyle(ChatFormatting.GRAY));
@@ -38,9 +38,36 @@ public abstract class ItemTooltipMixin {
 			).withStyle(ChatFormatting.GRAY));
 		}
 
+		if (stack.is(ModItems.FAT_BURNING_TORCH))
+			textConsumer.accept(Component.literal("Starts with 1 Fat charge. Refill with Fat to relight.").withStyle(ChatFormatting.GRAY));
+		if (stack.is(ModItems.HARDWOOD_HAMMER)) {
+			textConsumer.accept(Component.literal("Can injure and kill fish.").withStyle(ChatFormatting.GOLD));
+			textConsumer.accept(Component.literal("Mines stone-tier ores; slow on natural stone (21s).").withStyle(ChatFormatting.GRAY));
+		}
+		if (stack.is(ModItems.HARDWOOD_PICKAXE))
+			textConsumer.accept(Component.literal("Stone: 9s (wooden pickaxe: 13.5s).").withStyle(ChatFormatting.GRAY));
+		if (stack.is(ModItems.HARDWOOD_AXE))
+			textConsumer.accept(Component.literal("Right-click logs to strip them.").withStyle(ChatFormatting.GRAY));
+		if (stack.is(ModItems.HARDWOOD_CRAFTING_TABLE))
+			textConsumer.accept(Component.literal("3x3 crafting; every craft takes 3 seconds.").withStyle(ChatFormatting.GRAY));
+		if (stack.is(ModItems.REED_BACKPACK)) {
+			textConsumer.accept(Component.literal("Unlocks 9 inventory slots.").withStyle(ChatFormatting.GRAY));
+		}
 		if (stack.is(ModItems.LEATHER_BACKPACK)) {
+			textConsumer.accept(Component.literal("Unlocks 13 inventory slots.").withStyle(ChatFormatting.GRAY));
 			textConsumer.accept(Component.literal("Hunger Drain: 1.05x while worn").withStyle(ChatFormatting.GRAY));
 		}
+		if (stack.is(ModItems.LEATHER_BACKPACK_WITH_CHEST)) {
+			textConsumer.accept(Component.literal("Unlocks 18 inventory slots.").withStyle(ChatFormatting.GRAY));
+			textConsumer.accept(Component.literal("Hunger Drain: 1.10x while worn").withStyle(ChatFormatting.GRAY));
+		}
+		if (stack.is(ModItems.TANNED_UTILITY_VEST)) {
+			textConsumer.accept(Component.literal("Unlocks 22 inventory slots.").withStyle(ChatFormatting.GRAY));
+			textConsumer.accept(Component.literal("Clear vegetation by hand.").withStyle(ChatFormatting.GRAY));
+			textConsumer.accept(Component.literal("Unlocks personal crafting and recipe book.").withStyle(ChatFormatting.GRAY));
+			textConsumer.accept(Component.literal("Hunger Drain: 1.10x while worn").withStyle(ChatFormatting.GRAY));
+		}
+
 	}
 
 	private static String formatHalf(float value) {

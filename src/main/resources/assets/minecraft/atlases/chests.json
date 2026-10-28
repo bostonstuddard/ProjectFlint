@@ -1,0 +1,21 @@
+{
+  "sources": [
+    {
+      "type": "minecraft:directory",
+      "prefix": "entity/chest/",
+      "source": "entity/chest"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "projectflint:entity/chest/wooden_chest"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "projectflint:entity/chest/wooden_chest_left"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "projectflint:entity/chest/wooden_chest_right"
+    }
+  ]
+}

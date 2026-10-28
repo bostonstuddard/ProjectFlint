@@ -90,6 +90,18 @@ public final class AquiferSystem {
 		return Optional.ofNullable(nearest);
 	}
 
+	/** A completed Well must be centered on the exact virtual aquifer center column. */
+	public static Optional<AquiferHit> findCenteredBelow(ServerLevel level, BlockPos wellCenter) {
+		int cellX = Math.floorDiv(wellCenter.getX(), CELL_SIZE);
+		int cellZ = Math.floorDiv(wellCenter.getZ(), CELL_SIZE);
+		Optional<AquiferHit> candidate = aquiferForCell(level, cellX, cellZ);
+		if (candidate.isEmpty()) return Optional.empty();
+		AquiferHit hit = candidate.get();
+		if (hit.center().getX() != wellCenter.getX() || hit.center().getZ() != wellCenter.getZ()) return Optional.empty();
+		if (wellCenter.getY() <= hit.center().getY()) return Optional.empty();
+		return candidate;
+	}
+
 	/** Returns the five virtual X/Z columns represented by an aquifer. */
 	public static List<BlockPos> footprint(AquiferHit hit) {
 		BlockPos c = hit.center();
@@ -168,10 +180,10 @@ public final class AquiferSystem {
 	}
 
 	public enum Yield {
-		SCARCE(0.25F, "Scarce"),
-		NORMAL(0.60F, "Normal"),
-		GOOD(0.85F, "Good"),
-		ABUNDANT(1.20F, "Abundant");
+		SCARCE(0.13F, "Scarce"),
+		NORMAL(0.68F, "Normal"),
+		GOOD(0.94F, "Good"),
+		ABUNDANT(1.30F, "Abundant");
 
 		private final float rateMultiplier;
 		private final String label;

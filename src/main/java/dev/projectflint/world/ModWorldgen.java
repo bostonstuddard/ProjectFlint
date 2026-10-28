@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
@@ -26,11 +27,32 @@ public final class ModWorldgen {
 
 		// Aquifers are virtual and seed-derived; no groundwater blocks/features are scheduled here.
 
+		// Limestone forms in submerged riverbeds and shallow beach/shore floors, similar to clay disks.
+		BiomeModifications.addFeature(
+			BiomeSelectors.includeByKey(Biomes.RIVER, Biomes.FROZEN_RIVER, Biomes.BEACH, Biomes.SNOWY_BEACH, Biomes.STONY_SHORE),
+			GenerationStep.Decoration.UNDERGROUND_ORES,
+			placed("limestone_disk")
+		);
+
 		// Active bush definitions intentionally exclude beaches/shores in alpha.2.
 		BiomeModifications.addFeature(
 			BiomeSelectors.foundInOverworld(),
 			GenerationStep.Decoration.VEGETAL_DECORATION,
 			placed("loose_rock")
+		);
+
+		// Strawberries use vanilla Sweet Berry Bush-style random patches, but favor
+		// temperate woodland/meadow biomes rather than taiga.
+		BiomeModifications.addFeature(
+			BiomeSelectors.includeByKey(
+				Biomes.BIRCH_FOREST,
+				Biomes.OLD_GROWTH_BIRCH_FOREST,
+				Biomes.FLOWER_FOREST,
+				Biomes.FOREST,
+				Biomes.MEADOW
+			),
+			GenerationStep.Decoration.VEGETAL_DECORATION,
+			placed("strawberry_patch")
 		);
 
 

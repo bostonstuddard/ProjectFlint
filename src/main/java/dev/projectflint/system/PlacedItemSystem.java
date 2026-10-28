@@ -2,6 +2,9 @@ package dev.projectflint.system;
 
 import com.mojang.math.Transformation;
 import dev.projectflint.network.PlaceInWorldPayload;
+import dev.projectflint.block.entity.CrudePlantTorchBlockEntity;
+import dev.projectflint.registry.ModBlocks;
+import dev.projectflint.registry.ModItems;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.event.player.AttackEntityCallback;
 import net.fabricmc.fabric.api.event.player.UseEntityCallback;
@@ -41,14 +44,18 @@ public final class PlacedItemSystem {
 			if (!level.isClientSide() && player instanceof ServerPlayer serverPlayer) reclaim(serverPlayer, entity);
 			return InteractionResult.SUCCESS;
 		});
-		AttackEntityCallback.EVENT.register((player, level, hand, entity, hit) -> isPlacedItem(entity) ? InteractionResult.FAIL : InteractionResult.PASS);
-		ServerTickEvents.END_WORLD_TICK.register(PlacedItemSystem::checkSupports);
+		AttackEntityCallback.EVENT.register((player, level, hand, entity, hit) -> {
+			if (!isPlacedItem(entity) || player.isSpectator()) return InteractionResult.PASS;
+			if (!level.isClientSide() && player instanceof ServerPlayer serverPlayer) reclaim(serverPlayer, entity);
+			return InteractionResult.SUCCESS;
+		});
+		ServerTickEvents.END_WORLD_TICK.register(PlacedItemSystem::tickWorld);
 	}
 
 	public static void placeSelected(ServerPlayer player, PlaceInWorldPayload payload) {
 		if (player.isSpectator()) return;
 		ItemStack selected = player.getMainHandItem();
-		if (selected.isEmpty()) return;
+		if (selected.isEmpty() || selected.is(ModItems.CRUDE_PLANT_TORCH)) return;
 
 		if (!(player.pick(player.blockInteractionRange(), 0.0F, false) instanceof BlockHitResult hit)) return;
 		if (hit.getDirection() != Direction.UP) return;
@@ -64,7 +71,7 @@ public final class PlacedItemSystem {
 		holder.setPos(placePos.getX() + 0.5D, placePos.getY() + 0.005D, placePos.getZ() + 0.5D);
 		holder.setWidth(0.82F);
 		holder.setHeight(0.16F);
-		holder.setResponse(false);
+		holder.setResponse(true);
 		holder.setNoGravity(true);
 		holder.addTag(HOLDER_TAG);
 
@@ -105,10 +112,14 @@ public final class PlacedItemSystem {
 		discardPlacedItem(holder);
 	}
 
-	private static void checkSupports(ServerLevel level) {
+	private static void tickWorld(ServerLevel level) {
 		if (level.getGameTime() % 10L != 0L) return;
 		List<Entity> unsupported = new ArrayList<>();
 		for (Entity entity : level.getAllEntities()) {
+			if (entity instanceof ItemEntity itemEntity && itemEntity.getItem().is(ModItems.CRUDE_PLANT_TORCH)) {
+				settleDroppedTorch(level, itemEntity);
+				continue;
+			}
 			if (!isPlacedItem(entity)) continue;
 			BlockPos pos = entity.blockPosition();
 			BlockPos below = pos.below();
@@ -117,6 +128,40 @@ public final class PlacedItemSystem {
 			}
 		}
 		unsupported.forEach(entity -> dropAndDiscard(level, entity));
+	}
+
+	private static void settleDroppedTorch(ServerLevel level, ItemEntity itemEntity) {
+		if (!itemEntity.isAlive()) return;
+		BlockPos pos = itemEntity.blockPosition();
+		if (!level.getFluidState(pos).isEmpty()) {
+			burnOutDroppedTorch(level, itemEntity, pos);
+			return;
+		}
+		if (!itemEntity.onGround()) return;
+
+		BlockPos below = pos.below();
+		if (!level.getBlockState(pos).canBeReplaced()
+			|| !level.getBlockState(below).isFaceSturdy(level, below, Direction.UP)) {
+			burnOutDroppedTorch(level, itemEntity, pos);
+			return;
+		}
+
+		ItemStack torchStack = itemEntity.getItem().copyWithCount(1);
+		if (!level.setBlockAndUpdate(pos, ModBlocks.CRUDE_PLANT_TORCH.defaultBlockState())) {
+			burnOutDroppedTorch(level, itemEntity, pos);
+			return;
+		}
+		if (level.getBlockEntity(pos) instanceof CrudePlantTorchBlockEntity torch) {
+			torch.initializeFromStack(torchStack);
+		}
+		itemEntity.discard();
+		level.playSound(null, pos, SoundEvents.ITEM_FRAME_ADD_ITEM, SoundSource.PLAYERS, 0.45F, 1.15F);
+	}
+
+	private static void burnOutDroppedTorch(ServerLevel level, ItemEntity itemEntity, BlockPos pos) {
+		itemEntity.discard();
+		level.sendParticles(net.minecraft.core.particles.ParticleTypes.SMOKE, pos.getX() + 0.5D, pos.getY() + 0.35D, pos.getZ() + 0.5D, 4, 0.12D, 0.08D, 0.12D, 0.01D);
+		level.playSound(null, pos, SoundEvents.FIRE_EXTINGUISH, SoundSource.PLAYERS, 0.55F, 1.15F);
 	}
 
 	private static void dropAndDiscard(ServerLevel level, Entity holder) {

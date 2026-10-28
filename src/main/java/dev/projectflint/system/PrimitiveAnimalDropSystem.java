@@ -5,6 +5,10 @@ import dev.projectflint.entity.BrownBear;
 import dev.projectflint.registry.ModItems;
 import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.animal.camel.Camel;
@@ -20,6 +24,7 @@ import net.minecraft.world.entity.animal.pig.Pig;
 import net.minecraft.world.entity.animal.polarbear.PolarBear;
 import net.minecraft.world.entity.animal.sheep.Sheep;
 import net.minecraft.world.entity.animal.squid.Squid;
+import net.minecraft.world.entity.animal.turtle.Turtle;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -30,6 +35,11 @@ public final class PrimitiveAnimalDropSystem {
 
 	public static void initialize() {
 		LootTableEvents.MODIFY_DROPS.register((entry, context, drops) -> {
+			// Keep non-flax String sources disabled, but let a placed String/Tripwire
+			// return its String when broken. Previously this blanket filter ate the item.
+			ResourceKey<LootTable> tripwireLoot = ResourceKey.create(Registries.LOOT_TABLE, Identifier.withDefaultNamespace("blocks/tripwire"));
+			if (!entry.is(tripwireLoot)) drops.removeIf(stack -> stack.is(Items.STRING));
+
 			Entity entity = context.getOptionalParameter(LootContextParams.THIS_ENTITY);
 			if (entity == null) return;
 
@@ -73,7 +83,9 @@ public final class PrimitiveAnimalDropSystem {
 	}
 
 	private static void addNewMeatDrop(Entity entity, java.util.List<ItemStack> drops) {
-		if (entity instanceof Fox) {
+		if (entity instanceof Turtle) {
+			addMeat(entity, drops, ModItems.RAW_TURTLE_MEAT, ModItems.COOKED_TURTLE_MEAT, 1, 1);
+		} else if (entity instanceof Fox) {
 			addMeat(entity, drops, ModItems.RAW_FOX_MEAT, ModItems.COOKED_FOX_MEAT, 1, 1);
 		} else if (entity instanceof Frog) {
 			addMeat(entity, drops, ModItems.RAW_FROG_MEAT, ModItems.COOKED_FROG_MEAT, 1, 1);

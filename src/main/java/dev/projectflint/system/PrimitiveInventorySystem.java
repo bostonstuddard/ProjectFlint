@@ -10,24 +10,29 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 
+import java.lang.ref.WeakReference;
 import java.util.Collections;
-import java.util.Set;
+import java.util.Map;
 import java.util.WeakHashMap;
 
 /**
  * Primitive carrying capacity for the opening game.
  *
  * Inventory indices 0-4 (hotbar slots 1-5) are usable by default. Wearing a
- * Reed Backpack in the chest slot expands that allowance to the full hotbar.
+ * Reed Backpack expands that allowance to the full hotbar. Leather progression
+ * then opens part of the first inventory row, and the chest-backed upgrade opens
+ * that entire row.
  * Locked-slot enforcement is server-side; the overlay only explains the rule.
  */
 public final class PrimitiveInventorySystem {
 	public static final int BASE_ALLOWED_HOTBAR_SLOTS = 5;
 	public static final int BACKPACK_ALLOWED_HOTBAR_SLOTS = 9;
 	public static final int LEATHER_BACKPACK_ALLOWED_SLOTS = 13;
+	public static final int LEATHER_BACKPACK_WITH_CHEST_ALLOWED_SLOTS = 18;
+	public static final int TANNED_UTILITY_VEST_ALLOWED_SLOTS = 22;
 	private static final int LAST_MAIN_SLOT = 35;
 
-	private static final Set<Slot> PERSONAL_CRAFTING_SLOTS = Collections.newSetFromMap(new WeakHashMap<>());
+	private static final Map<Slot, WeakReference<Player>> PERSONAL_CRAFTING_SLOTS = Collections.synchronizedMap(new WeakHashMap<>());
 
 	private PrimitiveInventorySystem() {
 	}
@@ -38,6 +43,21 @@ public final class PrimitiveInventorySystem {
 
 	private static void tickServer(MinecraftServer server) {
 		for (ServerPlayer player : server.getPlayerList().getPlayers()) {
+			// Keep vanilla Wooden Axe attack damage at 4.5, including freshly crafted axes.
+			Inventory axeInventory = player.getInventory();
+			for (int index = 0; index < axeInventory.getContainerSize(); index++)
+				WoodenAxeBalanceSystem.normalize(axeInventory.getItem(index));
+			WoodenAxeBalanceSystem.normalize(player.getOffhandItem());
+			// Existing users and newly joined players can discover ProjectFlint's own personal recipes.
+			// Grant just our crafting recipes; never reveal/restore disabled vanilla crafting.
+			if (canUsePersonalCrafting(player) && player.tickCount % 100 == 1) {
+				player.awardRecipes(server.getRecipeManager().getRecipes().stream()
+					.filter(holder -> holder.id().identifier().getNamespace().equals("projectflint")
+						&& holder.value() instanceof net.minecraft.world.item.crafting.CraftingRecipe
+						&& !player.getRecipeBook().contains(holder.id()))
+					.toList());
+			}
+
 			if (player.isCreative() || player.isSpectator()) {
 				continue;
 			}
@@ -148,6 +168,8 @@ public final class PrimitiveInventorySystem {
 
 	public static int allowedHotbarSlots(Player player) {
 		ItemStack chest = player.getItemBySlot(EquipmentSlot.CHEST);
+		if (chest.is(dev.projectflint.registry.ModItems.TANNED_UTILITY_VEST)) return TANNED_UTILITY_VEST_ALLOWED_SLOTS;
+		if (chest.is(dev.projectflint.registry.ModItems.LEATHER_BACKPACK_WITH_CHEST)) return LEATHER_BACKPACK_WITH_CHEST_ALLOWED_SLOTS;
 		if (chest.is(dev.projectflint.registry.ModItems.LEATHER_BACKPACK)) return LEATHER_BACKPACK_ALLOWED_SLOTS;
 		if (chest.is(dev.projectflint.registry.ModItems.REED_BACKPACK)) return BACKPACK_ALLOWED_HOTBAR_SLOTS;
 		return BASE_ALLOWED_HOTBAR_SLOTS;
@@ -157,12 +179,22 @@ public final class PrimitiveInventorySystem {
 		return inventoryIndex >= allowedHotbarSlots(player) && inventoryIndex <= LAST_MAIN_SLOT;
 	}
 
-	public static void markPersonalCraftingSlot(Slot slot) {
-		PERSONAL_CRAFTING_SLOTS.add(slot);
+	public static boolean canUsePersonalCrafting(Player player) {
+		return player.isCreative() || player.getItemBySlot(EquipmentSlot.CHEST).is(dev.projectflint.registry.ModItems.TANNED_UTILITY_VEST);
+	}
+
+	public static void markPersonalCraftingSlot(Slot slot, Player owner) {
+		PERSONAL_CRAFTING_SLOTS.put(slot, new WeakReference<>(owner));
 	}
 
 	public static boolean isPersonalCraftingSlot(Slot slot) {
-		return PERSONAL_CRAFTING_SLOTS.contains(slot);
+		return PERSONAL_CRAFTING_SLOTS.containsKey(slot);
+	}
+
+	public static boolean isPersonalCraftingLocked(Slot slot) {
+		WeakReference<Player> reference = PERSONAL_CRAFTING_SLOTS.get(slot);
+		Player owner = reference == null ? null : reference.get();
+		return owner != null && !canUsePersonalCrafting(owner);
 	}
 
 	public static boolean isLockedPlayerInventorySlot(Slot slot) {

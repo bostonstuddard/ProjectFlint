@@ -1,7 +1,6 @@
 package dev.projectflint.system;
 
 import dev.projectflint.config.GameplayTuning;
-import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerEntityEvents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -10,7 +9,6 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.animal.fish.AbstractFish;
 import net.minecraft.world.entity.animal.wolf.Wolf;
 import net.minecraft.world.entity.monster.zombie.Drowned;
 import net.minecraft.world.entity.monster.Monster;
@@ -24,7 +22,8 @@ public final class PrimitiveWorldRulesSystem {
 	}
 
 	public static void initialize() {
-		ServerLivingEntityEvents.ALLOW_DAMAGE.register((entity, source, amount) -> !(entity instanceof AbstractFish));
+		// Fish must obey the same damage rules as other animals, including Creative-mode attacks.
+		// The former ALLOW_DAMAGE listener unintentionally made every fish immortal.
 		ServerEntityEvents.ENTITY_LOAD.register(PrimitiveWorldRulesSystem::onEntityLoad);
 	}
 
@@ -38,6 +37,17 @@ public final class PrimitiveWorldRulesSystem {
 			|| entity.getType() == EntityType.PILLAGER) {
 			entity.discard();
 			return;
+		}
+
+		// Zombie Horses are animals, not Monsters; discarding their surface rider
+		// alone previously left the undead mount wandering above ground at night.
+		if (entity.getType() == EntityType.ZOMBIE_HORSE) {
+			BlockPos horsePos = entity.blockPosition();
+			int height = level.getHeight(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, horsePos.getX(), horsePos.getZ());
+			if (level.canSeeSky(horsePos) || horsePos.getY() >= height - 3) {
+				entity.discard();
+				return;
+			}
 		}
 
 		if (entity instanceof Drowned drowned) {

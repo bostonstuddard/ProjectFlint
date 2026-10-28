@@ -21,7 +21,11 @@
     "SquidMixin",
     "PlayerExhaustionMixin",
     "DrownedMixin",
-    "ItemTooltipMixin"
+    "ItemTooltipMixin",
+    "BrushItemMixin",
+    "ChickenMixin",
+    "RecipeManagerMixin",
+    "BlockItemPlacedLedgerMixin"
   ],
   "injectors": {
     "defaultRequire": 1
@@ -33,6 +37,10 @@
     "WorldCreationUiStateMixin",
     "CreateWorldScreenMixin",
     "PauseScreenMixin",
-    "LightTextureMixin"
+    "LightTextureMixin",
+    "SheetsMixin",
+    "LogoRendererMixin",
+    "RealmsAvailabilityMixin",
+    "TitleScreenMixin"
   ]
 }

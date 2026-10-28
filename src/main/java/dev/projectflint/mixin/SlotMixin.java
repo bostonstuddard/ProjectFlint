@@ -14,7 +14,7 @@ public abstract class SlotMixin {
 	@Inject(method = "mayPlace", at = @At("HEAD"), cancellable = true)
 	private void projectflint$lockPrimitiveSlots(ItemStack stack, CallbackInfoReturnable<Boolean> cir) {
 		Slot slot = (Slot) (Object) this;
-		if (PrimitiveInventorySystem.isPersonalCraftingSlot(slot) || PrimitiveInventorySystem.isLockedPlayerInventorySlot(slot)) {
+		if (PrimitiveInventorySystem.isPersonalCraftingLocked(slot) || PrimitiveInventorySystem.isLockedPlayerInventorySlot(slot)) {
 			cir.setReturnValue(false);
 		}
 	}
@@ -25,21 +25,21 @@ public abstract class SlotMixin {
 			return;
 		}
 		Slot slot = (Slot) (Object) this;
-		if (PrimitiveInventorySystem.isPersonalCraftingSlot(slot) || PrimitiveInventorySystem.isLockedPlayerInventorySlot(slot)) {
+		if (PrimitiveInventorySystem.isPersonalCraftingLocked(slot) || PrimitiveInventorySystem.isLockedPlayerInventorySlot(slot)) {
 			cir.setReturnValue(false);
 		}
 	}
 
 	@Inject(method = "isActive", at = @At("HEAD"), cancellable = true)
 	private void projectflint$hidePersonalCraftingSlot(CallbackInfoReturnable<Boolean> cir) {
-		if (PrimitiveInventorySystem.isPersonalCraftingSlot((Slot) (Object) this)) {
+		if (PrimitiveInventorySystem.isPersonalCraftingLocked((Slot) (Object) this)) {
 			cir.setReturnValue(false);
 		}
 	}
 
 	@Inject(method = "isHighlightable", at = @At("HEAD"), cancellable = true)
 	private void projectflint$hidePersonalCraftingHighlight(CallbackInfoReturnable<Boolean> cir) {
-		if (PrimitiveInventorySystem.isPersonalCraftingSlot((Slot) (Object) this)) {
+		if (PrimitiveInventorySystem.isPersonalCraftingLocked((Slot) (Object) this)) {
 			cir.setReturnValue(false);
 		}
 	}

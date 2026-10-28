@@ -1,6 +1,8 @@
 package dev.projectflint.menu;
 
 import dev.projectflint.block.entity.SandingStationBlockEntity;
+import dev.projectflint.compat.flintquests.FlintQuestsBridge;
+import net.minecraft.server.level.ServerPlayer;
 import dev.projectflint.recipe.SandingStationRecipeRegistry;
 import dev.projectflint.registry.ModBlocks;
 import dev.projectflint.registry.ModMenus;
@@ -64,6 +66,7 @@ public final class SandingStationMenu extends AbstractContainerMenu {
                 } finally {
                     suppressRefresh = false;
                 }
+                if (player instanceof ServerPlayer serverPlayer) FlintQuestsBridge.onCraft(serverPlayer, "sanding_station", stack);
                 setupResult();
                 super.onTake(player, stack);
             }

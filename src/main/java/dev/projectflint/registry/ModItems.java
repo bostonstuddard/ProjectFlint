@@ -16,10 +16,21 @@ import dev.projectflint.item.FlintAxeItem;
 import dev.projectflint.item.RockItem;
 import dev.projectflint.item.SuperHeatedClayItem;
 import dev.projectflint.item.SweetBerrySeedsItem;
+import dev.projectflint.item.StrawberrySeedsItem;
 import dev.projectflint.item.WovenWoolItem;
 import dev.projectflint.item.LumberProcessorItem;
 import dev.projectflint.item.BoundWoodProcessorItem;
 import dev.projectflint.item.WaterBearingPotItem;
+import dev.projectflint.item.WaterPotItem;
+import dev.projectflint.item.WoodenCupItem;
+import dev.projectflint.item.SandingStationItem;
+import dev.projectflint.item.CreativeOnlyBlockItem;
+import dev.projectflint.item.ClayBucketItem;
+import dev.projectflint.item.ClayWaterBucketItem;
+import dev.projectflint.item.ScrewedBeamBlockItem;
+import dev.projectflint.item.BoneHoeItem;
+import dev.projectflint.item.BookshelfItem;
+import dev.projectflint.item.RecipeParchmentItem;
 import dev.projectflint.system.ToolCapabilities;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderSet;
@@ -39,12 +50,18 @@ import net.minecraft.world.item.DoubleHighBlockItem;
 import net.minecraft.world.item.BedItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ToolMaterial;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
+import net.minecraft.world.item.component.Consumables;
 import net.minecraft.world.item.component.Tool;
 import net.minecraft.world.item.component.Weapon;
 import net.minecraft.world.item.equipment.EquipmentAsset;
 import net.minecraft.world.item.equipment.EquipmentAssets;
+import net.minecraft.world.item.equipment.ArmorMaterial;
+import net.minecraft.world.item.equipment.ArmorMaterials;
+import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraft.world.item.equipment.Equippable;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -61,6 +78,20 @@ public final class ModItems {
 	private static final ResourceKey<EquipmentAsset> LEATHER_BACKPACK_EQUIPMENT_ASSET = ResourceKey.create(
 		EquipmentAssets.ROOT_ID, ProjectFlint.id("leather_backpack")
 	);
+	private static final ResourceKey<EquipmentAsset> TANNED_ARMOR_ASSET = ResourceKey.create(EquipmentAssets.ROOT_ID, ProjectFlint.id("tanned_leather"));
+	private static final ResourceKey<EquipmentAsset> TANNED_UTILITY_ASSET = ResourceKey.create(EquipmentAssets.ROOT_ID, ProjectFlint.id("tanned_utility_vest"));
+	private static final ArmorMaterial TANNED_ARMOR_MATERIAL = new ArmorMaterial(
+		ArmorMaterials.LEATHER.durability(), ArmorMaterials.LEATHER.defense(), ArmorMaterials.LEATHER.enchantmentValue(),
+		ArmorMaterials.LEATHER.equipSound(), ArmorMaterials.LEATHER.toughness(), ArmorMaterials.LEATHER.knockbackResistance(),
+		ArmorMaterials.LEATHER.repairIngredient(), TANNED_ARMOR_ASSET
+	);
+	private static final ResourceKey<EquipmentAsset> BONE_ARMOR_ASSET = ResourceKey.create(EquipmentAssets.ROOT_ID, ProjectFlint.id("bone"));
+	private static final ArmorMaterial BONE_ARMOR_MATERIAL = new ArmorMaterial(
+		ArmorMaterials.LEATHER.durability(), ArmorMaterials.LEATHER.defense(), ArmorMaterials.LEATHER.enchantmentValue(),
+		ArmorMaterials.LEATHER.equipSound(), ArmorMaterials.LEATHER.toughness(), ArmorMaterials.LEATHER.knockbackResistance(),
+		ArmorMaterials.LEATHER.repairIngredient(), BONE_ARMOR_ASSET
+	);
+
 	public static final Item ROCK = register("rock", properties -> new RockItem(properties.stacksTo(8)));
 	public static final Item REFINED_ROCK = register("refined_rock", properties -> new Item(properties.stacksTo(8)));
 	public static final Item VERY_REFINED_STONE = register("very_refined_stone", properties -> new BlockItem(ModBlocks.VERY_REFINED_STONE_PILE, properties.stacksTo(8)));
@@ -70,7 +101,7 @@ public final class ModItems {
 	public static final Item TORCH_HOLDER = register("torch_holder", properties -> new Item(properties.stacksTo(1)));
 	public static final Item UNLIT_FLINT_TORCH = register("unlit_flint_torch", properties -> new Item(properties.stacksTo(1)));
 	public static final Item FLINT_TORCH_HOLDER = registerBlockItem("flint_torch_holder", ModBlocks.FLINT_TORCH, 1);
-	public static final Item AQUIFER_FINDER = register("aquifer_finder", AquiferFinderItem::new);
+	public static final Item AQUIFER_FINDER = register("aquifer_finder", properties -> new AquiferFinderItem(properties.durability(16).stacksTo(1)));
 	public static final Item PLANT_FIBER = register("plant_fiber", properties -> new BlockItem(ModBlocks.FIBER_WORK_PILE, properties.stacksTo(16)));
 
 	public static final Item CRUDE_PLANT_STRING = register("crude_plant_string", properties -> new Item(properties.stacksTo(8)));
@@ -118,7 +149,7 @@ public final class ModItems {
 	public static final Item UNFIRED_CLAY_BALL = register("unfired_clay_ball", properties -> new BlockItem(ModBlocks.CLAY_FIRING_PILE, properties.stacksTo(24)));
 	public static final Item SUPER_HEATED_CLAY = register("super_heated_clay", properties -> new SuperHeatedClayItem(properties.stacksTo(24)));
 	public static final Item FIRED_CLAY = register("fired_clay", properties -> new BlockItem(ModBlocks.FIRED_CLAY_PILE, properties.stacksTo(24)));
-	public static final Item CRUDE_CLAY_BLOCK = register("crude_clay_block", properties -> new BlockItem(ModBlocks.CRUDE_CLAY_BLOCK, properties.stacksTo(1)));
+	public static final Item CRUDE_CLAY_BLOCK = register("crude_clay_block", properties -> new BlockItem(ModBlocks.CRUDE_CLAY_BLOCK, properties.stacksTo(3)));
 	public static final Item CRUDE_CLAY_KILN = register("crude_clay_kiln", properties -> new BlockItem(ModBlocks.CRUDE_CLAY_KILN, properties.stacksTo(1)));
 	public static final Item BAKED_CLAY_KILN = register("baked_clay_kiln", properties -> new BlockItem(
 		ModBlocks.BAKED_CLAY_KILN,
@@ -133,6 +164,8 @@ public final class ModItems {
 	public static final Item SCRAMBLED_EGG = register("scrambled_egg", properties -> new Item(properties.stacksTo(16).food(new FoodProperties.Builder().nutrition(2).saturationModifier(0.625F).build())));
 	public static final Item RAW_CALAMARI = register("raw_calamari", properties -> new Item(properties.stacksTo(16).food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.10F).build())));
 	public static final Item COOKED_CALAMARI = register("cooked_calamari", properties -> new Item(properties.stacksTo(16).food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.6F).build())));
+	public static final Item RAW_TURTLE_MEAT = register("raw_turtle_meat", properties -> new Item(properties.stacksTo(16).food(projectflint$food(0.5F, 0.1F))));
+	public static final Item COOKED_TURTLE_MEAT = register("cooked_turtle_meat", properties -> new Item(properties.stacksTo(16).food(projectflint$food(1.5F, 0.8F))));
 	public static final Item RAW_FOX_MEAT = register("raw_fox_meat", properties -> new Item(properties.stacksTo(16).food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.15F).build())));
 	public static final Item COOKED_FOX_MEAT = register("cooked_fox_meat", properties -> new Item(properties.stacksTo(16).food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.55F).build())));
 	public static final Item RAW_FROG_MEAT = register("raw_frog_meat", properties -> new Item(properties.stacksTo(16).food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.05F).build())));
@@ -153,9 +186,38 @@ public final class ModItems {
 	public static final Item COOKED_CAMEL_MEAT = register("cooked_camel_meat", properties -> new Item(properties.stacksTo(16).food(new FoodProperties.Builder().nutrition(7).saturationModifier(0.75F).build())));
 	public static final Item PLANT_SEEDS = register("plant_seeds", properties -> new Item(properties.stacksTo(24).food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.75F).build())));
 	public static final Item SWEET_BERRY_SEEDS = register("sweet_berry_seeds", properties -> new SweetBerrySeedsItem(properties.stacksTo(16)));
+	public static final Item STRAWBERRY_SEEDS = register("strawberry_seeds", properties -> new StrawberrySeedsItem(properties.stacksTo(16)));
+	public static final Item STRAWBERRY = register("strawberry", properties -> new Item(properties.stacksTo(16).food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.05F).build())));
 	public static final Item PUMPKIN_SLICE = register("pumpkin_slice", properties -> new Item(properties.stacksTo(16).food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.25F).build())));
-	public static final Item SWEET_BERRY_JAM = register("sweet_berry_jam", properties -> new Item(properties.stacksTo(16)));
-	public static final Item SWEET_BERRY_PIE = register("sweet_berry_pie", properties -> new Item(properties.stacksTo(16)));
+	public static final Item SWEET_BERRY_JAM = register("sweet_berry_jam", properties -> new Item(properties.stacksTo(16).food(projectflint$food(2.5F, 3.8F))));
+	public static final Item SWEET_BERRY_PIE = register("sweet_berry_pie", properties -> new Item(properties.stacksTo(16).food(projectflint$food(4.3F, 5.0F))));
+	public static final Item FLOUR = register("flour", properties -> new Item(properties.stacksTo(32)));
+	public static final Item DOUGH = register("dough", properties -> new Item(properties.stacksTo(32)));
+	public static final Item SWEET_DOUGH = register("sweet_dough", properties -> new Item(properties.stacksTo(32)));
+	public static final Item RUSTIC_BREAD = register("rustic_bread", properties -> new Item(properties.stacksTo(16).food(projectflint$food(2.0F, 1.4F))));
+	public static final Item SWEET_BREAD = register("sweet_bread", properties -> new Item(properties.stacksTo(16).food(projectflint$food(2.8F, 2.5F))));
+	public static final Item MEAT_BREAD = register("meat_bread", properties -> new Item(properties.stacksTo(16).food(projectflint$food(4.0F, 5.2F))));
+	public static final Item PUMPKIN_BREAD = register("pumpkin_bread", properties -> new Item(properties.stacksTo(16).food(projectflint$food(3.3F, 4.1F))));
+	public static final Item APPLE_BREAD = register("apple_bread", properties -> new Item(properties.stacksTo(16).food(projectflint$food(3.2F, 4.0F))));
+	public static final Item CHEESE_BREAD = register("cheese_bread", properties -> new Item(properties.stacksTo(16).food(projectflint$food(4.1F, 5.3F))));
+	public static final Item EGG_BREAD = register("egg_bread", properties -> new Item(properties.stacksTo(16).food(projectflint$food(3.5F, 4.3F))));
+	public static final Item BREAKFAST_BREAD = register("breakfast_bread", properties -> new Item(properties.stacksTo(16).food(projectflint$food(4.2F, 5.2F))));
+	public static final Item FLATBREAD = register("flatbread", properties -> new Item(properties.stacksTo(16).food(projectflint$food(2.5F, 2.0F))));
+	public static final Item FRENCH_BREAD = register("french_bread", properties -> new Item(properties.stacksTo(16).food(projectflint$food(3.5F, 3.8F))));
+	public static final Item FAT = register("fat", properties -> new Item(properties.stacksTo(32)));
+	public static final Item SUSHI_ROLL = register("sushi_roll", properties -> new Item(properties.stacksTo(16).food(projectflint$food(2.0F, 2.0F))));
+	public static final Item CHEESE = register("cheese", properties -> new Item(properties.stacksTo(16).food(projectflint$food(2.0F, 2.5F))));
+	public static final Item STRAWBERRY_JAM = register("strawberry_jam", properties -> new Item(properties.stacksTo(16).food(projectflint$food(2.5F, 3.8F))));
+	public static final Item STRAWBERRY_PIE = register("strawberry_pie", properties -> new Item(properties.stacksTo(16).food(projectflint$food(4.3F, 5.0F))));
+	public static final Item MELON_PIE = register("melon_pie", properties -> new Item(properties.stacksTo(16).food(projectflint$food(3.0F, 3.2F))));
+	public static final Item MUTTON_PIE = register("mutton_pie", properties -> new Item(properties.stacksTo(16).food(projectflint$food(4.2F, 4.65F))));
+	public static final Item BUTTER = register("butter", properties -> new Item(properties.stacksTo(16).food(projectflint$food(0.2F, 0.0F))));
+	public static final Item PUMPKIN_CAKE = register("pumpkin_cake", properties -> new Item(properties.stacksTo(1)));
+	public static final Item PUMPKIN_CAKE_SLICE = register("pumpkin_cake_slice", properties -> new Item(properties.stacksTo(8).food(projectflint$food(5.0F, 6.2F))));
+	public static final Item APPLES_N_PIE = register("apples_n_pie", properties -> new Item(properties.stacksTo(16).food(projectflint$food(4.3F, 5.8F))));
+	public static final Item BEEF_STEW = register("beef_stew", properties -> new Item(properties.stacksTo(16).food(projectflint$food(4.5F, 5.2F))));
+	public static final Item BACON_AND_EGGS = register("bacon_and_eggs", properties -> new Item(properties.stacksTo(16).food(projectflint$food(3.5F, 4.6F))));
+	public static final Item BONE_BROTH = register("bone_broth", properties -> new Item(properties.stacksTo(16).food(projectflint$food(1.0F, 0.8F))));
 	public static final Item REED_ROLL = register("reed_roll", properties -> new Item(properties.stacksTo(12)));
 	public static final Item SUGARCANE_ROLL = register("sugarcane_roll", properties -> new Item(properties.stacksTo(12)));
 	public static final Item SANDING_PAPER = register("sanding_paper", properties -> new Item(properties.stacksTo(12)));
@@ -185,18 +247,111 @@ public final class ModItems {
 	public static final Item WOODEN_GRINDER_BASE = registerBlockItem("wooden_grinder_base", ModBlocks.WOODEN_GRINDER_BASE, 1);
 	public static final Item STONE_GRINDSAW = register("stone_grindsaw", properties -> new Item(properties.stacksTo(1)));
 	public static final Item WOODEN_GRINDER = registerBlockItem("wooden_grinder", ModBlocks.WOODEN_GRINDER, 1);
-	public static final Item SANDING_STATION = registerBlockItem("sanding_station", ModBlocks.SANDING_STATION, 1);
+	public static final Item SANDING_STATION = register("sanding_station", properties -> new SandingStationItem(ModBlocks.SANDING_STATION, properties));
 	public static final Item WATER_BEARING_POT = register("water_bearing_pot", properties -> new WaterBearingPotItem(properties, false));
 	public static final Item WATER_BEARING_POT_FILLED = register("water_bearing_pot_filled", properties -> new WaterBearingPotItem(properties, true));
-	public static final Item WATER_POT = registerBlockItem("water_pot", ModBlocks.WATER_POT, 1);
+	public static final Item WATER_POT = register("water_pot", properties -> new WaterPotItem(ModBlocks.WATER_POT, properties.stacksTo(1)));
 	public static final Item BOUND_WOOD_PROCESSOR = register("bound_wood_processor", BoundWoodProcessorItem::new);
 	public static final Item LUMBER_PROCESSOR = register("lumber_processor", LumberProcessorItem::new);
 	public static final Item WOODEN_BOARD = register("wooden_board", properties -> new Item(properties.stacksTo(16)));
-	public static final Item WOODEN_BEAM = register("wooden_beam", properties -> new Item(properties.stacksTo(8)));
+	public static final Item FLINT_FILE_HEAD = register("flint_file_head", properties -> new Item(properties.stacksTo(1)));
+	public static final Item FLINT_FILE = register("flint_file", properties -> new Item(properties.durability(128).stacksTo(1)));
+	public static final Item WOODEN_SHEET = register("wooden_sheet", properties -> new Item(properties.stacksTo(64)));
+	private static final ToolMaterial HARDWOOD_MATERIAL = new ToolMaterial(
+		ToolMaterial.WOOD.incorrectBlocksForDrops(), 92, 3.5F, 0.5F, 13, ToolMaterial.WOOD.repairItems());
+	private static final ToolMaterial HARDWOOD_HAMMER_MATERIAL = new ToolMaterial(
+		ToolMaterial.STONE.incorrectBlocksForDrops(), 196, 2.0F, 1.0F, 12, ToolMaterial.STONE.repairItems());
+	public static final Item WOOD_DUST = register("wood_dust", properties -> new Item(properties.stacksTo(64)));
+	public static final Item HARDWOOD = register("hardwood", properties -> new Item(properties.stacksTo(64)));
+	public static final Item HARDWOOD_ALLOY = register("hardwood_alloy", properties -> new Item(properties.stacksTo(64)));
+	public static final Item HARDWOOD_CRAFTING_TABLE = registerBlockItem("hardwood_crafting_table", ModBlocks.HARDWOOD_CRAFTING_TABLE, 1);
+	public static final Item HARDWOOD_AXE = register("hardwood_axe", properties -> new net.minecraft.world.item.AxeItem(HARDWOOD_MATERIAL, 6.0F, -3.0F, properties.stacksTo(1)));
+	public static final Item HARDWOOD_HAMMER = register("hardwood_hammer", properties -> new Item(properties.pickaxe(HARDWOOD_HAMMER_MATERIAL, 2.0F, -3.2F).stacksTo(1)));
+	public static final Item HARDWOOD_HOE = register("hardwood_hoe", properties -> new Item(properties.hoe(HARDWOOD_MATERIAL, 0.0F, -2.9F).stacksTo(1)));
+	public static final Item HARDWOOD_PICKAXE = register("hardwood_pickaxe", properties -> new Item(properties.pickaxe(HARDWOOD_MATERIAL, 1.0F, -2.8F).stacksTo(1)));
+	public static final Item HARDWOOD_SHOVEL = register("hardwood_shovel", properties -> new Item(properties.shovel(HARDWOOD_MATERIAL, 1.5F, -3.0F).stacksTo(1)));
+	public static final Item HARDWOOD_SWORD = register("hardwood_sword", properties -> new Item(properties.sword(HARDWOOD_MATERIAL, 3.0F, -2.4F).stacksTo(1)));
+	public static final Item WOODEN_SCREW = register("wooden_screw", properties -> new Item(properties.stacksTo(32)));
+	public static final Item WOODEN_DOOR_HINGE = register("wooden_door_hinge", properties -> new Item(properties.stacksTo(8)));
+	public static final Item WOODEN_BEAM = register("wooden_beam", properties -> new ScrewedBeamBlockItem(ModBlocks.WOODEN_BEAM, properties.stacksTo(8)));
+	public static final Item ACACIA_WOODEN_BEAM = register("acacia_wooden_beam", properties -> new ScrewedBeamBlockItem(ModBlocks.ACACIA_WOODEN_BEAM, properties.stacksTo(8)));
+	public static final Item BIRCH_WOODEN_BEAM = register("birch_wooden_beam", properties -> new ScrewedBeamBlockItem(ModBlocks.BIRCH_WOODEN_BEAM, properties.stacksTo(8)));
+	public static final Item CHERRY_WOODEN_BEAM = register("cherry_wooden_beam", properties -> new ScrewedBeamBlockItem(ModBlocks.CHERRY_WOODEN_BEAM, properties.stacksTo(8)));
+	public static final Item CRIMSON_WOODEN_BEAM = register("crimson_wooden_beam", properties -> new ScrewedBeamBlockItem(ModBlocks.CRIMSON_WOODEN_BEAM, properties.stacksTo(8)));
+	public static final Item DARK_OAK_WOODEN_BEAM = register("dark_oak_wooden_beam", properties -> new ScrewedBeamBlockItem(ModBlocks.DARK_OAK_WOODEN_BEAM, properties.stacksTo(8)));
+	public static final Item JUNGLE_WOODEN_BEAM = register("jungle_wooden_beam", properties -> new ScrewedBeamBlockItem(ModBlocks.JUNGLE_WOODEN_BEAM, properties.stacksTo(8)));
+	public static final Item MANGROVE_WOODEN_BEAM = register("mangrove_wooden_beam", properties -> new ScrewedBeamBlockItem(ModBlocks.MANGROVE_WOODEN_BEAM, properties.stacksTo(8)));
+	public static final Item PALE_OAK_WOODEN_BEAM = register("pale_oak_wooden_beam", properties -> new ScrewedBeamBlockItem(ModBlocks.PALE_OAK_WOODEN_BEAM, properties.stacksTo(8)));
+	public static final Item SPRUCE_WOODEN_BEAM = register("spruce_wooden_beam", properties -> new ScrewedBeamBlockItem(ModBlocks.SPRUCE_WOODEN_BEAM, properties.stacksTo(8)));
+	public static final Item WARPED_WOODEN_BEAM = register("warped_wooden_beam", properties -> new ScrewedBeamBlockItem(ModBlocks.WARPED_WOODEN_BEAM, properties.stacksTo(8)));
+	public static final Item SAWMILL = register("sawmill", properties -> new CreativeOnlyBlockItem(ModBlocks.SAWMILL, properties.stacksTo(1)));
+	public static final Item WOODEN_CHEST_FRAME = register("wooden_chest_frame", properties -> new Item(properties.stacksTo(1)));
+	public static final Item WOODEN_CHEST = registerBlockItem("wooden_chest", ModBlocks.WOODEN_CHEST, 2);
+	public static final Item BOOKSHELF = register("bookshelf", properties -> new BookshelfItem(ModBlocks.BOOKSHELF, properties.stacksTo(1)));
+	public static final Item RECIPE_PARCHMENT = register("recipe_parchment", RecipeParchmentItem::new);
+	public static final Item COBWEB = register("cobweb", properties -> new Item(properties.stacksTo(64)));
+	public static final Item ROPE_STAGE_1 = register("rope_stage_1", properties -> new Item(properties.stacksTo(16)));
+	public static final Item ROPE_STAGE_2 = register("rope_stage_2", properties -> new Item(properties.stacksTo(16)));
+	public static final Item ROPE_STAGE_3 = register("rope_stage_3", properties -> new Item(properties.stacksTo(16)));
+	public static final Item ROPE = registerBlockItem("rope", ModBlocks.ROPE, 16);
+	public static final Item NEST = registerBlockItem("nest", ModBlocks.NEST, 1);
+	public static final Item BRICK_SHINGLES = registerBlockItem("brick_shingles", ModBlocks.BRICK_SHINGLES, 16);
+	public static final Item WELL_PULLEY = registerBlockItem("well_pulley", ModBlocks.WELL_PULLEY, 1);
+	public static final Item LOOSE_MUD_BRICKS = registerBlockItem("loose_mud_bricks", ModBlocks.LOOSE_MUD_BRICKS, 64);
+	public static final Item LOOSE_MUD_BRICK_SLAB = registerBlockItem("loose_mud_brick_slab", ModBlocks.LOOSE_MUD_BRICK_SLAB, 64);
+	public static final Item BONE_KNIFE = register("bone_knife", properties -> new Item(properties.durability(64).stacksTo(1)));
+	public static final Item UNFIRED_BRICK_MOLD = register("unfired_brick_mold", properties -> new Item(properties.stacksTo(1)));
+	public static final Item UNFIRED_FIRECLAY_BRICK = register("unfired_fireclay_brick", properties -> new Item(properties.stacksTo(64)));
+	public static final Item FIRECLAY_BRICK = register("fireclay_brick", properties -> new Item(properties.stacksTo(64)));
+	public static final Item FIRECLAY_BRICK_BLOCK = registerBlockItem("fireclay_brick_block", ModBlocks.FIRECLAY_BRICK_BLOCK, 64);
+	public static final Item FIRECLAY_FORGE_CONTROLLER = registerBlockItem("fireclay_forge_controller", ModBlocks.FIRECLAY_FORGE_CONTROLLER, 1);
+	public static final Item FIRECLAY_BRICK_SLAB = registerBlockItem("fireclay_brick_slab", ModBlocks.FIRECLAY_BRICK_SLAB, 64);
+	public static final Item FIRECLAY_BRICK_STAIRS = registerBlockItem("fireclay_brick_stairs", ModBlocks.FIRECLAY_BRICK_STAIRS, 64);
+	public static final Item UNFIRED_BRICK = register("unfired_brick", properties -> new Item(properties.stacksTo(64)));
+	public static final Item TANNED_LEATHER = register("tanned_leather", properties -> new Item(properties.stacksTo(16)));
+	public static final Item TANNED_LEATHER_HELMET = register("tanned_leather_helmet", properties -> tannedArmor(properties, ArmorType.HELMET, Items.LEATHER_HELMET));
+	public static final Item TANNED_LEATHER_CHESTPLATE = register("tanned_leather_chestplate", properties -> tannedArmor(properties, ArmorType.CHESTPLATE, Items.LEATHER_CHESTPLATE));
+	public static final Item TANNED_LEATHER_LEGGINGS = register("tanned_leather_leggings", properties -> tannedArmor(properties, ArmorType.LEGGINGS, Items.LEATHER_LEGGINGS));
+	public static final Item TANNED_LEATHER_BOOTS = register("tanned_leather_boots", properties -> tannedArmor(properties, ArmorType.BOOTS, Items.LEATHER_BOOTS));
+	public static final Item TANNED_UTILITY_VEST = register("tanned_utility_vest", ModItems::tannedUtilityVest);
+	public static final Item LEATHER_SHEET = register("leather_sheet", properties -> new Item(properties.stacksTo(32)));
+	public static final Item LEATHER_STRAP = register("leather_strap", properties -> new Item(properties.stacksTo(32)));
+	public static final Item REPAIR_KIT = register("repair_kit", properties -> new Item(properties.stacksTo(16)));
+	public static final Item TANNIN = register("tannin", properties -> new Item(properties.stacksTo(32)));
+	public static final Item FAT_BURNING_TORCH = registerBlockItem("fat_burning_torch", ModBlocks.FAT_BURNING_TORCH, 8);
+	public static final Item TOOL_BELT = register("tool_belt", ModItems::toolBelt);
+
+	public static final Item WOODEN_CUP = register("wooden_cup", properties -> new WoodenCupItem(properties.stacksTo(16)));
+	public static final Item WOODEN_CUP_RAW_MILK = register("wooden_cup_raw_milk", properties -> new Item(
+		properties.stacksTo(16).food(projectflint$food(1.0F, 0.8F), Consumables.DEFAULT_DRINK).usingConvertsTo(WOODEN_CUP)
+	));
+	public static final Item LIMESTONE = registerBlockItem("limestone", ModBlocks.LIMESTONE, 64);
+	public static final Item COBBLED_LIMESTONE = registerBlockItem("cobbled_limestone", ModBlocks.COBBLED_LIMESTONE, 64);
+	public static final Item SMOOTH_LIMESTONE = registerBlockItem("smooth_limestone", ModBlocks.SMOOTH_LIMESTONE, 64);
+	public static final Item LIMESTONE_BRICKS = registerBlockItem("limestone_bricks", ModBlocks.LIMESTONE_BRICKS, 64);
+	public static final Item CHISELED_LIMESTONE = registerBlockItem("chiseled_limestone", ModBlocks.CHISELED_LIMESTONE, 64);
+	public static final Item POLISHED_LIMESTONE = registerBlockItem("polished_limestone", ModBlocks.POLISHED_LIMESTONE, 64);
+	public static final Item CHECKERED_TILE = registerBlockItem("checkered_tile", ModBlocks.CHECKERED_TILE, 64);
+	public static final Item GLAZED_CHECKERED_TILE = registerBlockItem("glazed_checkered_tile", ModBlocks.GLAZED_CHECKERED_TILE, 64);
+	public static final Item WOODEN_CABINET = registerBlockItem("wooden_cabinet", ModBlocks.WOODEN_CABINET, 1);
+	public static final Item PRIMITIVE_STOVE = registerBlockItem("primitive_stove", ModBlocks.PRIMITIVE_STOVE, 1);
+	public static final Item BASIN = registerBlockItem("basin", ModBlocks.BASIN, 1);
+	public static final Item DRYING_RACK = registerBlockItem("drying_rack", ModBlocks.DRYING_RACK, 1);
+	public static final Item MILLSTONE = registerBlockItem("millstone", ModBlocks.MILLSTONE, 1);
+	public static final Item BRICK_FURNACE = registerBlockItem("brick_furnace", ModBlocks.BRICK_FURNACE, 1);
+	public static final Item BRICK_BLAST_FURNACE = registerBlockItem("brick_blast_furnace", ModBlocks.BRICK_BLAST_FURNACE, 1);
 	public static final Item WOVEN_FAN = register("woven_fan", properties -> new Item(properties.stacksTo(8)));
 	public static final Item REED_BACKPACK = register("reed_backpack", ModItems::reedBackpack);
 	public static final Item LEATHER_BACKPACK = register("leather_backpack", ModItems::leatherBackpack);
+	public static final Item LEATHER_BACKPACK_WITH_CHEST = register("leather_backpack_with_chest", ModItems::leatherBackpackWithChest);
 	public static final Item BONE_BRUSH = register("bone_brush", properties -> new BoneBrushItem(properties.durability(160).stacksTo(1)));
+	public static final Item WOOD_FIRESTARTER = register("wood_firestarter", properties -> new FlintFirestarterItem(properties.durability(GameplayTuning.BONE_FIRESTARTER_DURABILITY * 3 / 2).stacksTo(1)));
+	public static final Item BONE_HOE = register("bone_hoe", properties -> new BoneHoeItem(properties.durability(24).stacksTo(1)));
+	public static final Item FLAX_SEEDS = register("flax_seeds", properties -> new BlockItem(ModBlocks.FLAX_CROP, properties.stacksTo(64).overrideDescription("item.projectflint.flax_seeds")));
+	public static final Item BONE_HELMET = register("bone_helmet", properties -> new Item(properties.humanoidArmor(BONE_ARMOR_MATERIAL, ArmorType.HELMET).durability(128).stacksTo(1)));
+	public static final Item BONE_CHESTPLATE = register("bone_chestplate", properties -> new Item(projectflint$boneArmor(properties, ArmorType.CHESTPLATE, 1.5D).durability(128).stacksTo(1)));
+	public static final Item BONE_LEGGINGS = register("bone_leggings", properties -> new Item(projectflint$boneArmor(properties, ArmorType.LEGGINGS, 1.5D).durability(128).stacksTo(1)));
+	public static final Item BONE_BOOTS = register("bone_boots", properties -> new Item(properties.humanoidArmor(BONE_ARMOR_MATERIAL, ArmorType.BOOTS).durability(128).stacksTo(1)));
 	public static final Item MORTAR_CHEST = registerBlockItem("mortar_chest", ModBlocks.MORTAR_CHEST, 2);
 	public static final Item WOVEN_CHEST_FRAME = register("woven_chest_frame", properties -> new Item(properties.stacksTo(1)));
 	public static final Item WOVEN_CHEST = registerBlockItem("woven_chest", ModBlocks.WOVEN_CHEST, 2);
@@ -222,6 +377,10 @@ public final class ModItems {
 	public static final Item FIRED_CLAY_BLOCK_MOLD = register("fired_clay_block_mold", properties -> new Item(properties.stacksTo(1)));
 	public static final Item CLAY_POT = register("clay_pot", properties -> new Item(properties.stacksTo(1)));
 	public static final Item CLAY_POT_2 = register("clay_pot_2", properties -> new Item(properties.stacksTo(1)));
+	public static final Item UNFIRED_CLAY_BUCKET = register("unfired_clay_bucket", properties -> new Item(properties.stacksTo(1)));
+	public static final Item CLAY_BUCKET = register("clay_bucket", properties -> new ClayBucketItem(properties.stacksTo(1)));
+	public static final Item CLAY_MILK_BUCKET = register("clay_milk_bucket", properties -> new Item(properties.stacksTo(1)));
+	public static final Item CLAY_WATER_BUCKET = register("clay_water_bucket", properties -> new ClayWaterBucketItem(properties.stacksTo(1).craftRemainder(CLAY_BUCKET)));
 	public static final Item FLINT_AXE_PIECES = register("flint_axe_pieces", properties -> new Item(properties.stacksTo(1)));
 	public static final Item FLINT_CUTTER_PIECE = register("flint_cutter_piece", properties -> new Item(properties.stacksTo(1)));
 	public static final Item REFINED_FLINT_MULTITOOL_PIECE = register("refined_flint_multitool_piece", properties -> new Item(properties.stacksTo(1)));
@@ -244,6 +403,18 @@ public final class ModItems {
 	private static final Map<String, Item> BUSH_ITEMS = registerBushItems();
 	@SuppressWarnings("unused")
 	private static final Map<String, Item> LEGACY_BUSH_ITEMS = registerLegacyBushItems();
+
+	private static Item.Properties projectflint$boneArmor(Item.Properties properties, ArmorType type, double armor) {
+		return properties
+			.humanoidArmor(BONE_ARMOR_MATERIAL, type)
+			.attributes(ItemAttributeModifiers.builder()
+				.add(Attributes.ARMOR, new AttributeModifier(
+					ProjectFlint.id("bone_armor." + type.getName()),
+					armor,
+					AttributeModifier.Operation.ADD_VALUE
+				), EquipmentSlotGroup.bySlot(type.getSlot()))
+				.build());
+	}
 
 	private ModItems() {
 	}
@@ -300,6 +471,13 @@ public final class ModItems {
 		);
 	}
 
+	/** Converts Project Flint hunger-bar units into vanilla half-shank nutrition. Non-half values use the nearest representable hunger step. */
+	private static FoodProperties projectflint$food(float hunger, float saturation) {
+		int nutrition = hunger > 0.0F ? Math.max(1, Math.round(hunger * 2.0F)) : 0;
+		float saturationModifier = nutrition <= 0 ? 0.0F : saturation / nutrition;
+		return new FoodProperties.Builder().nutrition(nutrition).saturationModifier(saturationModifier).build();
+	}
+
 	private static Item.Properties primitiveWeapon(Item.Properties properties, double attackDamageModifier, double attackSpeedModifier) {
 		ItemAttributeModifiers attributes = ItemAttributeModifiers.builder()
 			.add(
@@ -317,6 +495,29 @@ public final class ModItems {
 		return properties
 			.attributes(attributes)
 			.component(DataComponents.WEAPON, new Weapon(1));
+	}
+
+	private static Item tannedArmor(Item.Properties properties, ArmorType type, Item leatherPiece) {
+		// ArmorMaterial stores integer defense values; override the attribute for exactly +0.5 armor.
+		double armor = ArmorMaterials.LEATHER.defense().get(type) + 0.5D;
+		ItemAttributeModifiers attributes = ItemAttributeModifiers.builder()
+			.add(Attributes.ARMOR, new AttributeModifier(ProjectFlint.id("tanned_" + type.getName() + "_armor"), armor, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.bySlot(type.getSlot())).build();
+		return new Item(properties.humanoidArmor(TANNED_ARMOR_MATERIAL, type)
+			.durability(leatherPiece.getDefaultInstance().getMaxDamage() + 96)
+			.attributes(attributes).repairable(TANNED_LEATHER).stacksTo(1));
+	}
+
+	private static Item tannedUtilityVest(Item.Properties properties) {
+		ItemAttributeModifiers attributes = ItemAttributeModifiers.builder()
+			.add(Attributes.ARMOR, new AttributeModifier(ProjectFlint.id("tanned_utility_vest_armor"), 4.5D, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.CHEST).build();
+		return new Item(properties.stacksTo(1)
+			.component(DataComponents.EQUIPPABLE, Equippable.builder(EquipmentSlot.CHEST).setAsset(TANNED_UTILITY_ASSET).build())
+			.attributes(attributes)); // No durability component: same permanent durability as chest backpack.
+	}
+
+	private static Item toolBelt(Item.Properties properties) {
+		// Retired progression item. Existing stacks keep their ID, but grant no wearable bonuses.
+		return new Item(properties.stacksTo(1));
 	}
 
 	private static Item reedBackpack(Item.Properties properties) {
@@ -348,6 +549,22 @@ public final class ModItems {
 		// that render-state stack, so Leather must have an asset id too. The matching
 		// equipment JSON intentionally has no vanilla layers; it exists only to make
 		// the stack renderable to the custom backpack layer.
+		Equippable equippable = Equippable.builder(EquipmentSlot.CHEST)
+			.setAsset(LEATHER_BACKPACK_EQUIPMENT_ASSET)
+			.build();
+		return new Item(properties.stacksTo(1)
+			.component(DataComponents.EQUIPPABLE, equippable)
+			.attributes(attributes));
+	}
+
+	private static Item leatherBackpackWithChest(Item.Properties properties) {
+		ItemAttributeModifiers attributes = ItemAttributeModifiers.builder()
+			.add(
+				Attributes.ARMOR,
+				new AttributeModifier(ProjectFlint.id("leather_backpack_with_chest_armor"), 4.0D, AttributeModifier.Operation.ADD_VALUE),
+				EquipmentSlotGroup.CHEST
+			)
+			.build();
 		Equippable equippable = Equippable.builder(EquipmentSlot.CHEST)
 			.setAsset(LEATHER_BACKPACK_EQUIPMENT_ASSET)
 			.build();

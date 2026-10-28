@@ -1,11 +1,15 @@
 package dev.projectflint.menu;
 
+import dev.projectflint.compat.flintquests.FlintQuestsBridge;
 import dev.projectflint.recipe.ClayGrinderRecipe;
 import dev.projectflint.recipe.WoodenGrinderRecipeRegistry;
 import dev.projectflint.registry.ModBlocks;
 import dev.projectflint.registry.ModItems;
 import dev.projectflint.registry.ModMenus;
 import dev.projectflint.registry.ModRecipes;
+import dev.projectflint.system.ModAdvancements;
+import dev.projectflint.system.ProjectFlintBrushSystem;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
@@ -42,6 +46,7 @@ public final class WoodenGrinderMenu extends AbstractContainerMenu {
 	private final SimpleContainer previews = new SimpleContainer(RECIPE_PREVIEW_COUNT);
 	private final DataSlot selectedRecipe = DataSlot.standalone();
 	private final List<RecipeHolder<ClayGrinderRecipe>> recipes = new ArrayList<>();
+	private final List<DualRecipe> dualRecipes = new ArrayList<>();
 	private final Container inputs = new SimpleContainer(2) {
 		@Override public void setChanged() {
 			super.setChanged();
@@ -66,7 +71,10 @@ public final class WoodenGrinderMenu extends AbstractContainerMenu {
 		addSlot(new Slot(result, 0, 116, 35) {
 			@Override public boolean mayPlace(ItemStack stack) { return false; }
 			@Override public void onTake(Player player, ItemStack stack) {
-				consumeActiveRecipe();
+				boolean specialBrush = ProjectFlintBrushSystem.isProjectFlintBrush(stack);
+				consumeActiveRecipe(player);
+				if (specialBrush && player instanceof ServerPlayer serverPlayer) ModAdvancements.awardAll(serverPlayer, "fine_brush");
+				if (player instanceof ServerPlayer serverPlayer) FlintQuestsBridge.onCraft(serverPlayer, "wooden_grinder", stack);
 				super.onTake(player, stack);
 			}
 		});
@@ -97,7 +105,8 @@ public final class WoodenGrinderMenu extends AbstractContainerMenu {
 			int recipeIndex = slotId - RECIPE_PREVIEW_START;
 			if (clickType == ClickType.PICKUP && !previews.getItem(recipeIndex).isEmpty()) {
 				selectedRecipe.set(recipeIndex);
-				if (!recipes.isEmpty()) setupSingleResult();
+				if (!dualRecipes.isEmpty()) setupDualResult();
+				else if (!recipes.isEmpty()) setupSingleResult();
 			}
 			return;
 		}
@@ -106,8 +115,10 @@ public final class WoodenGrinderMenu extends AbstractContainerMenu {
 
 	private void setupRecipes() {
 		var preferredRecipeId = activeSingleRecipe == null ? null : activeSingleRecipe.id();
+		ItemStack preferredDualResult = activeDualRecipe == null ? ItemStack.EMPTY : activeDualRecipe.result().copy();
 
 		recipes.clear();
+		dualRecipes.clear();
 		previews.clearContent();
 		activeSingleRecipe = null;
 		activeSingleInputSlot = -1;
@@ -117,14 +128,26 @@ public final class WoodenGrinderMenu extends AbstractContainerMenu {
 		ItemStack a = inputs.getItem(0);
 		ItemStack b = inputs.getItem(1);
 		if (!a.isEmpty() && !b.isEmpty()) {
-			activeDualRecipe = findDualRecipe(a, b);
-			if (activeDualRecipe != null) {
-				ItemStack output = activeDualRecipe.result().copy();
-				result.setItem(0, output.copy());
-				previews.setItem(0, output);
-				selectedRecipe.set(0);
+			dualRecipes.addAll(findDualRecipes(a, b));
+			for (int i = 0; i < Math.min(dualRecipes.size(), RECIPE_PREVIEW_COUNT); i++) {
+				previews.setItem(i, dualRecipes.get(i).result().copy());
 			}
-			broadcastChanges();
+			if (!dualRecipes.isEmpty()) {
+				int nextSelection = 0;
+				if (!preferredDualResult.isEmpty()) {
+					for (int i = 0; i < dualRecipes.size(); i++) {
+						if (ItemStack.isSameItemSameComponents(dualRecipes.get(i).result(), preferredDualResult)) {
+							nextSelection = i;
+							break;
+						}
+					}
+				}
+				selectedRecipe.set(nextSelection);
+				setupDualResult();
+			} else {
+				selectedRecipe.set(-1);
+				broadcastChanges();
+			}
 			return;
 		}
 
@@ -162,6 +185,19 @@ public final class WoodenGrinderMenu extends AbstractContainerMenu {
 		});
 	}
 
+	private void setupDualResult() {
+		int selected = selectedRecipe.get();
+		if (selected < 0 || selected >= dualRecipes.size()) {
+			activeDualRecipe = null;
+			result.setItem(0, ItemStack.EMPTY);
+			broadcastChanges();
+			return;
+		}
+		activeDualRecipe = dualRecipes.get(selected);
+		result.setItem(0, activeDualRecipe.result().copy());
+		broadcastChanges();
+	}
+
 	private void setupSingleResult() {
 		int selected = selectedRecipe.get();
 		if (selected < 0 || selected >= recipes.size() || activeSingleInputSlot < 0) {
@@ -178,7 +214,7 @@ public final class WoodenGrinderMenu extends AbstractContainerMenu {
 		});
 	}
 
-	private void consumeActiveRecipe() {
+	private void consumeActiveRecipe(Player player) {
 		DualRecipe dual = activeDualRecipe;
 		RecipeHolder<ClayGrinderRecipe> single = activeSingleRecipe;
 		int singleSlot = activeSingleInputSlot;
@@ -186,13 +222,20 @@ public final class WoodenGrinderMenu extends AbstractContainerMenu {
 		suppressInputRefresh = true;
 		try {
 			if (dual != null) {
-				// Capture both counts before mutating either slot. SimpleContainer#removeItem
-				// calls setChanged(), so allowing a mid-craft refresh here used to clear or
-				// replace activeDualRecipe before the second ingredient was consumed.
-				int countA = dual.countA();
-				int countB = dual.countB();
-				inputs.removeItem(INPUT_A_SLOT, countA);
-				inputs.removeItem(INPUT_B_SLOT, countB);
+				int returnedClayBuckets = 0;
+				if (dual.consumeA() && isFilledClayBucket(inputs.getItem(INPUT_A_SLOT))) returnedClayBuckets++;
+				if (dual.consumeB() && isFilledClayBucket(inputs.getItem(INPUT_B_SLOT))) returnedClayBuckets++;
+				// Capture all slot actions before mutating either input. SimpleContainer changes
+				// trigger recipe refreshes, which are suppressed until both actions finish.
+				projectflint$applyDualInputUse(INPUT_A_SLOT, dual.countA(), dual.consumeA(), dual.damageA());
+				projectflint$applyDualInputUse(INPUT_B_SLOT, dual.countB(), dual.consumeB(), dual.damageB());
+				// Return the vessel once per successful recipe, after both consumed inputs are committed.
+				if (!player.level().isClientSide()) {
+					for (int i = 0; i < returnedClayBuckets; i++) {
+						ItemStack empty = new ItemStack(ModItems.CLAY_BUCKET);
+						if (!player.getInventory().add(empty)) player.drop(empty, false);
+					}
+				}
 			} else if (single != null && singleSlot >= 0) {
 				result.setRecipeUsed(single);
 				inputs.removeItem(singleSlot, single.value().inputCount());
@@ -204,10 +247,31 @@ public final class WoodenGrinderMenu extends AbstractContainerMenu {
 		setupRecipes();
 	}
 
-	private static DualRecipe findDualRecipe(ItemStack slot0, ItemStack slot1) {
-		return WoodenGrinderRecipeRegistry.find(slot0, slot1)
-			.map(match -> new DualRecipe(match.countA(), match.countB(), match.result()))
-			.orElse(null);
+	private static List<DualRecipe> findDualRecipes(ItemStack slot0, ItemStack slot1) {
+		List<DualRecipe> matches = new ArrayList<>();
+		for (WoodenGrinderRecipeRegistry.Match match : WoodenGrinderRecipeRegistry.findAll(slot0, slot1)) {
+			matches.add(new DualRecipe(match.countA(), match.countB(), match.result(), match.consumeA(), match.consumeB(), match.damageA(), match.damageB()));
+			if (matches.size() >= RECIPE_PREVIEW_COUNT) break;
+		}
+		return matches;
+	}
+
+	private static boolean isFilledClayBucket(ItemStack stack) {
+		return stack.is(ModItems.CLAY_WATER_BUCKET) || stack.is(ModItems.CLAY_MILK_BUCKET);
+	}
+
+	private void projectflint$applyDualInputUse(int slot, int count, boolean consume, int damage) {
+		if (consume) inputs.removeItem(slot, count);
+		if (damage <= 0) return;
+		ItemStack tool = inputs.getItem(slot);
+		if (tool.isEmpty() || !tool.isDamageableItem()) return;
+		int nextDamage = tool.getDamageValue() + damage;
+		if (nextDamage >= tool.getMaxDamage()) {
+			inputs.setItem(slot, ItemStack.EMPTY);
+		} else {
+			tool.setDamageValue(nextDamage);
+			inputs.setItem(slot, tool);
+		}
 	}
 
 
@@ -235,5 +299,8 @@ public final class WoodenGrinderMenu extends AbstractContainerMenu {
 		access.execute((level, pos) -> clearContainer(player, inputs));
 	}
 
-	private record DualRecipe(int countA, int countB, ItemStack result) {}
+	private record DualRecipe(
+		int countA, int countB, ItemStack result,
+		boolean consumeA, boolean consumeB, int damageA, int damageB
+	) {}
 }
