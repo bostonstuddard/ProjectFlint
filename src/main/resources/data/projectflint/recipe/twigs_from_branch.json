@@ -1,0 +1,9 @@
+{
+  "type": "projectflint:clay_grinding",
+  "ingredient": "projectflint:branch",
+  "result": {
+    "id": "projectflint:twig",
+    "count": 2
+  },
+  "input_count": 1
+}

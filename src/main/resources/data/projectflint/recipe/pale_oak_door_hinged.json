@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "projectflint:wooden_door_hinge",
+    "minecraft:pale_oak_planks",
+    "minecraft:pale_oak_planks",
+    "minecraft:pale_oak_planks"
+  ],
+  "result": {
+    "id": "minecraft:pale_oak_door",
+    "count": 1
+  }
+}

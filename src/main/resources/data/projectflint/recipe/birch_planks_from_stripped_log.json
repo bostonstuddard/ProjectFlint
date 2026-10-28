@@ -1,0 +1,12 @@
+{
+  "type": "projectflint:durable_crafting",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:stripped_birch_log"
+  ],
+  "tool": "minecraft:wooden_axe",
+  "result": {
+    "id": "minecraft:birch_planks",
+    "count": 2
+  }
+}

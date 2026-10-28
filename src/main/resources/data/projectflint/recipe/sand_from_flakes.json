@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "projectflint:sand_flake",
+    "projectflint:sand_flake",
+    "projectflint:sand_flake",
+    "projectflint:sand_flake"
+  ],
+  "result": {
+    "id": "minecraft:sand",
+    "count": 1
+  }
+}

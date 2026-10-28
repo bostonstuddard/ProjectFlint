@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:dirt"
+  ],
+  "result": {
+    "id": "projectflint:loose_soil",
+    "count": 1
+  }
+}

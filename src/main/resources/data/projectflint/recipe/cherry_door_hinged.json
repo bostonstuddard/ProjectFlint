@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "projectflint:wooden_door_hinge",
+    "minecraft:cherry_planks",
+    "minecraft:cherry_planks",
+    "minecraft:cherry_planks"
+  ],
+  "result": {
+    "id": "minecraft:cherry_door",
+    "count": 1
+  }
+}

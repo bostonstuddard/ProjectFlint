@@ -1,0 +1,12 @@
+{
+  "type": "projectflint:durable_crafting",
+  "category": "misc",
+  "ingredients": [
+    "projectflint:tanned_leather"
+  ],
+  "tool": "projectflint:bone_knife",
+  "result": {
+    "id": "projectflint:leather_sheet",
+    "count": 1
+  }
+}

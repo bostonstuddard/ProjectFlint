@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "AAA",
+    "AAA",
+    "LFR"
+  ],
+  "key": {
+    "A": "projectflint:hardwood_alloy",
+    "L": "minecraft:leather",
+    "F": "minecraft:stick",
+    "R": "projectflint:rope"
+  },
+  "result": {
+    "id": "projectflint:hardwood_hammer",
+    "count": 1
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "category": "food",
+  "ingredient": "projectflint:raw_turtle_meat",
+  "result": {
+    "id": "projectflint:cooked_turtle_meat"
+  },
+  "experience": 0.0,
+  "cookingtime": 200
+}

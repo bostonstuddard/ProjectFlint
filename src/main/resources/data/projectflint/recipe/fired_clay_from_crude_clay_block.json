@@ -1,0 +1,9 @@
+{
+  "type": "projectflint:clay_grinding",
+  "ingredient": "projectflint:crude_clay_block",
+  "result": {
+    "id": "projectflint:fired_clay",
+    "count": 4
+  },
+  "input_count": 1
+}

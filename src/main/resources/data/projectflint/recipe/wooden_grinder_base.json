@@ -1,7 +1,7 @@
 {
   "type": "projectflint:clay_grinding",
   "ingredient": "projectflint:woven_wood",
-  "input_count": 16,
+  "input_count": 12,
   "result": {
     "id": "projectflint:wooden_grinder_base",
     "count": 1

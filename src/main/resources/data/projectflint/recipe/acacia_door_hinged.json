@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "projectflint:wooden_door_hinge",
+    "minecraft:acacia_planks",
+    "minecraft:acacia_planks",
+    "minecraft:acacia_planks"
+  ],
+  "result": {
+    "id": "minecraft:acacia_door",
+    "count": 1
+  }
+}

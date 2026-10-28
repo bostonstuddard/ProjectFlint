@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "ingredient": "projectflint:unfired_brick",
+  "result": {
+    "id": "minecraft:brick"
+  },
+  "experience": 0.0,
+  "cookingtime": 200
+}

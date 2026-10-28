@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "projectflint:hardwood_alloy",
+    "projectflint:hardwood_alloy",
+    "minecraft:cobblestone",
+    "projectflint:lumber_processor"
+  ],
+  "result": {
+    "id": "projectflint:hardwood_crafting_table",
+    "count": 1
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "projectflint:durable_crafting",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:stripped_jungle_log"
+  ],
+  "tool": "minecraft:wooden_axe",
+  "result": {
+    "id": "minecraft:jungle_planks",
+    "count": 2
+  }
+}

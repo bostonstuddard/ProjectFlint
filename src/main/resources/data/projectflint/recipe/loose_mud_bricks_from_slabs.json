@@ -1,0 +1,6 @@
+{
+  "type": "projectflint:clay_grinding",
+  "ingredient": "projectflint:loose_mud_brick_slab",
+  "input_count": 2,
+  "result": {"id": "projectflint:loose_mud_bricks", "count": 1}
+}

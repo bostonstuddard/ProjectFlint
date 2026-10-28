@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "projectflint:unfired_brick"
+  ],
+  "result": {
+    "id": "projectflint:unfired_clay_ball",
+    "count": 2
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    "projectflint:tanned_leather_chestplate",
+    "projectflint:leather_backpack_with_chest"
+  ],
+  "result": {
+    "id": "projectflint:tanned_utility_vest",
+    "count": 1
+  }
+}

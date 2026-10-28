@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "projectflint:clay_water_bucket",
+    "projectflint:wood_dust",
+    "projectflint:wood_dust",
+    "projectflint:tannin"
+  ],
+  "result": {
+    "id": "projectflint:hardwood",
+    "count": 1
+  }
+}

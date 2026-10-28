@@ -1,0 +1,9 @@
+{
+  "type": "projectflint:clay_grinding",
+  "ingredient": "projectflint:fireclay_brick_block",
+  "input_count": 1,
+  "result": {
+    "id": "projectflint:fireclay_brick_stairs",
+    "count": 1
+  }
+}

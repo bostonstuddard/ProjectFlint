@@ -1,0 +1,9 @@
+{
+  "type": "projectflint:clay_grinding",
+  "ingredient": "projectflint:filed_bone",
+  "input_count": 7,
+  "result": {
+    "id": "projectflint:bone_leggings",
+    "count": 1
+  }
+}

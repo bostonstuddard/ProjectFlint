@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    "minecraft:cherry_planks",
+    "minecraft:stick",
+    "projectflint:leather_strap"
+  ],
+  "result": {
+    "id": "minecraft:wooden_shovel",
+    "count": 1
+  }
+}

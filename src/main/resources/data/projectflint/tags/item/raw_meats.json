@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+    "projectflint:wooden_cup_raw_milk",
     "minecraft:beef",
     "minecraft:porkchop",
     "minecraft:chicken",
@@ -18,6 +19,7 @@
     "projectflint:raw_llama_meat",
     "projectflint:raw_dolphin_meat",
     "projectflint:raw_bear_meat",
-    "projectflint:raw_camel_meat"
+    "projectflint:raw_camel_meat",
+    "projectflint:raw_turtle_meat"
   ]
 }

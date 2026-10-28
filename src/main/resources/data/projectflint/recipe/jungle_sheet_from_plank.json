@@ -1,0 +1,12 @@
+{
+  "type": "projectflint:durable_crafting",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:jungle_planks"
+  ],
+  "tool": "projectflint:bone_knife",
+  "result": {
+    "id": "projectflint:wooden_sheet",
+    "count": 3
+  }
+}

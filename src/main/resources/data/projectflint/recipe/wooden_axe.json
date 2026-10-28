@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    "projectflint:tannin",
+    "projectflint:leather_sheet",
+    "minecraft:stick",
+    "projectflint:wooden_sheet"
+  ],
+  "result": {
+    "id": "minecraft:wooden_axe",
+    "count": 1
+  }
+}

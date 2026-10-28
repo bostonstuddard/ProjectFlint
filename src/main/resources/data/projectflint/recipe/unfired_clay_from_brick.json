@@ -1,0 +1,9 @@
+{
+  "type": "projectflint:clay_grinding",
+  "ingredient": "projectflint:unfired_brick",
+  "input_count": 1,
+  "result": {
+    "id": "projectflint:unfired_clay_ball",
+    "count": 2
+  }
+}

@@ -21,6 +21,25 @@
     "projectflint:meadow_bush",
     "projectflint:cherry_grove_bush",
     "projectflint:stony_peaks_bush",
-    "projectflint:mushroom_fields_bush"
+    "projectflint:mushroom_fields_bush",
+    "projectflint:beach_bush",
+    "projectflint:snowy_beach_bush",
+    "projectflint:stony_shore_bush",
+    "projectflint:desert_bush",
+    "projectflint:savanna_bush",
+    "projectflint:savanna_plateau_bush",
+    "projectflint:windswept_savanna_bush",
+    "projectflint:badlands_bush",
+    "projectflint:eroded_badlands_bush",
+    "projectflint:wooded_badlands_bush",
+    "projectflint:snowy_plains_bush",
+    "projectflint:ice_spikes_bush",
+    "projectflint:swamp_bush",
+    "projectflint:mangrove_swamp_bush",
+    "projectflint:snowy_taiga_bush",
+    "projectflint:grove_bush",
+    "projectflint:snowy_slopes_bush",
+    "projectflint:frozen_peaks_bush",
+    "projectflint:jagged_peaks_bush"
   ]
 }

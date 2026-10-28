@@ -1,0 +1,12 @@
+{
+  "type": "projectflint:durable_crafting",
+  "category": "misc",
+  "ingredients": [
+    "projectflint:loose_soil"
+  ],
+  "tool": "minecraft:wooden_shovel",
+  "result": {
+    "id": "projectflint:dirt_pile",
+    "count": 4
+  }
+}

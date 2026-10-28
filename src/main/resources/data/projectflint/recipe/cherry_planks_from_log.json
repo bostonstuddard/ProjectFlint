@@ -1,0 +1,12 @@
+{
+  "type": "projectflint:durable_crafting",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:cherry_log"
+  ],
+  "tool": "minecraft:wooden_axe",
+  "result": {
+    "id": "minecraft:cherry_planks",
+    "count": 2
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "LS",
+    "CC"
+  ],
+  "key": {
+    "L": "projectflint:leather_sheet",
+    "S": "projectflint:wooden_sheet",
+    "C": "minecraft:cobblestone"
+  },
+  "result": {
+    "id": "projectflint:basin",
+    "count": 1
+  }
+}

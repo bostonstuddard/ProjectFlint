@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "category": "misc",
+  "ingredient": "projectflint:unfired_clay_bucket",
+  "result": {
+    "id": "projectflint:clay_bucket"
+  },
+  "experience": 0.0,
+  "cookingtime": 600
+}

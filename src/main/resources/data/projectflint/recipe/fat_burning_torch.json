@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    "minecraft:stick",
+    "projectflint:fat",
+    "minecraft:string",
+    "minecraft:charcoal"
+  ],
+  "result": {
+    "id": "projectflint:fat_burning_torch",
+    "count": 1
+  }
+}

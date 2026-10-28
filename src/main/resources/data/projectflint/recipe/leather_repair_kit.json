@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "projectflint:leather_strap",
+    "minecraft:string"
+  ],
+  "result": {
+    "id": "projectflint:repair_kit",
+    "count": 1
+  }
+}
