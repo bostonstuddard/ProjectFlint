@@ -1,0 +1,6 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "projectflint:item/fireclay_forge_controller"
+  }
+}

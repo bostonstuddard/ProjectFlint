@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "projectflint:block/fireclay_brick_slab"
+    },
+    "type=top": {
+      "model": "projectflint:block/fireclay_brick_slab_top"
+    },
+    "type=double": {
+      "model": "projectflint:block/fireclay_brick_slab_double"
+    }
+  }
+}

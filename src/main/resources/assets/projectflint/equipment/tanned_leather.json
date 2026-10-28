@@ -1,0 +1,26 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "dyeable": {
+          "color_when_undyed": 7358254
+        },
+        "texture": "projectflint:tanned_leather"
+      },
+      {
+        "texture": "projectflint:tanned_leather_overlay"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "dyeable": {
+          "color_when_undyed": 7358254
+        },
+        "texture": "projectflint:tanned_leather"
+      },
+      {
+        "texture": "projectflint:tanned_leather_overlay"
+      }
+    ]
+  }
+}

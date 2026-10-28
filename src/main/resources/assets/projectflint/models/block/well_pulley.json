@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "up": "projectflint:block/well_pulley_top",
+    "down": "projectflint:block/well_pulley_bottom",
+    "north": "projectflint:block/well_pulley_side",
+    "south": "projectflint:block/well_pulley_side",
+    "east": "projectflint:block/well_pulley_side",
+    "west": "projectflint:block/well_pulley_side",
+    "particle": "projectflint:block/well_pulley_side"
+  }
+}

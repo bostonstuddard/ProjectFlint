@@ -1,0 +1,10 @@
+{
+  "model": {
+    "type": "minecraft:special",
+    "base": "projectflint:item/wooden_chest",
+    "model": {
+      "type": "minecraft:chest",
+      "texture": "projectflint:wooden_chest"
+    }
+  }
+}

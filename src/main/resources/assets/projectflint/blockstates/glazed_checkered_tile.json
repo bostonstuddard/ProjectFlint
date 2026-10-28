@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "projectflint:block/glazed_checkered_tile"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "projectflint:block/fireclay_brick_block"
+    }
+  }
+}

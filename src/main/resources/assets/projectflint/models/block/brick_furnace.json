@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "projectflint:block/brick_furnace_side",
+    "down": "projectflint:block/brick_furnace_side",
+    "up": "projectflint:block/brick_furnace_top",
+    "north": "projectflint:block/brick_furnace_front",
+    "south": "projectflint:block/brick_furnace_side",
+    "east": "projectflint:block/brick_furnace_side",
+    "west": "projectflint:block/brick_furnace_side"
+  }
+}

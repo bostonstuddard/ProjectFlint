@@ -1,3 +1,6 @@
 {
-  "model": { "type": "minecraft:model", "model": "projectflint:item/wooden_beam" }
+  "model": {
+    "type": "minecraft:model",
+    "model": "projectflint:item/wooden_beam"
+  }
 }

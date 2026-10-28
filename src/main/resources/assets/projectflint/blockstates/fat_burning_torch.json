@@ -1,0 +1,42 @@
+{
+  "variants": {
+    "facing=up,lit=true": {
+      "model": "projectflint:block/fat_burning_torch"
+    },
+    "facing=north,lit=true": {
+      "model": "projectflint:block/fat_burning_torch_wall",
+      "y": 0
+    },
+    "facing=east,lit=true": {
+      "model": "projectflint:block/fat_burning_torch_wall",
+      "y": 90
+    },
+    "facing=south,lit=true": {
+      "model": "projectflint:block/fat_burning_torch_wall",
+      "y": 180
+    },
+    "facing=west,lit=true": {
+      "model": "projectflint:block/fat_burning_torch_wall",
+      "y": 270
+    },
+    "facing=up,lit=false": {
+      "model": "projectflint:block/fat_burning_torch_unlit"
+    },
+    "facing=north,lit=false": {
+      "model": "projectflint:block/fat_burning_torch_unlit_wall",
+      "y": 0
+    },
+    "facing=east,lit=false": {
+      "model": "projectflint:block/fat_burning_torch_unlit_wall",
+      "y": 90
+    },
+    "facing=south,lit=false": {
+      "model": "projectflint:block/fat_burning_torch_unlit_wall",
+      "y": 180
+    },
+    "facing=west,lit=false": {
+      "model": "projectflint:block/fat_burning_torch_unlit_wall",
+      "y": 270
+    }
+  }
+}

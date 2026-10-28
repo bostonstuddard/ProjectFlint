@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "projectflint:block/brick_shingles"
+    },
+    "type=top": {
+      "model": "projectflint:block/brick_shingles_top"
+    },
+    "type=double": {
+      "model": "projectflint:block/brick_shingles_double"
+    }
+  }
+}

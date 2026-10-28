@@ -1,7 +1,7 @@
 {
   "textures": {
-    "particle": "projectflint:block/crude_clay_block",
-    "mat": "projectflint:block/crude_clay_block"
+    "particle": "projectflint:block/brick_shingles",
+    "mat": "projectflint:block/brick_shingles"
   },
   "elements": [
     {

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/template_torch",
+  "textures": {
+    "torch": "projectflint:block/fat_burning_torch"
+  }
+}

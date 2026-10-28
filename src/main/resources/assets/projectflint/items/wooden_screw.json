@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "projectflint:item/screw",
+    "tints": [
+      {
+        "type": "minecraft:constant",
+        "value": -10865377
+      }
+    ]
+  }
+}

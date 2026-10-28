@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "projectflint:block/brick_shingles",
+    "top": "projectflint:block/brick_shingles",
+    "side": "projectflint:block/brick_shingles"
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "variants": {
+    "facing=north,contents=empty": {
+      "model": "projectflint:block/basin",
+      "y": 0
+    },
+    "facing=north,contents=oak_log": {
+      "model": "projectflint:block/basin_oak_log",
+      "y": 0
+    },
+    "facing=north,contents=oak_wood": {
+      "model": "projectflint:block/basin_oak_wood",
+      "y": 0
+    },
+    "facing=north,contents=birch_log": {
+      "model": "projectflint:block/basin_birch_log",
+      "y": 0
+    },
+    "facing=north,contents=birch_wood": {
+      "model": "projectflint:block/basin_birch_wood",
+      "y": 0
+    },
+    "facing=east,contents=empty": {
+      "model": "projectflint:block/basin",
+      "y": 90
+    },
+    "facing=east,contents=oak_log": {
+      "model": "projectflint:block/basin_oak_log",
+      "y": 90
+    },
+    "facing=east,contents=oak_wood": {
+      "model": "projectflint:block/basin_oak_wood",
+      "y": 90
+    },
+    "facing=east,contents=birch_log": {
+      "model": "projectflint:block/basin_birch_log",
+      "y": 90
+    },
+    "facing=east,contents=birch_wood": {
+      "model": "projectflint:block/basin_birch_wood",
+      "y": 90
+    },
+    "facing=south,contents=empty": {
+      "model": "projectflint:block/basin",
+      "y": 180
+    },
+    "facing=south,contents=oak_log": {
+      "model": "projectflint:block/basin_oak_log",
+      "y": 180
+    },
+    "facing=south,contents=oak_wood": {
+      "model": "projectflint:block/basin_oak_wood",
+      "y": 180
+    },
+    "facing=south,contents=birch_log": {
+      "model": "projectflint:block/basin_birch_log",
+      "y": 180
+    },
+    "facing=south,contents=birch_wood": {
+      "model": "projectflint:block/basin_birch_wood",
+      "y": 180
+    },
+    "facing=west,contents=empty": {
+      "model": "projectflint:block/basin",
+      "y": 270
+    },
+    "facing=west,contents=oak_log": {
+      "model": "projectflint:block/basin_oak_log",
+      "y": 270
+    },
+    "facing=west,contents=oak_wood": {
+      "model": "projectflint:block/basin_oak_wood",
+      "y": 270
+    },
+    "facing=west,contents=birch_log": {
+      "model": "projectflint:block/basin_birch_log",
+      "y": 270
+    },
+    "facing=west,contents=birch_wood": {
+      "model": "projectflint:block/basin_birch_wood",
+      "y": 270
+    },
+    "facing=north,contents=planks": {
+      "model": "projectflint:block/basin_oak_wood",
+      "y": 0
+    },
+    "facing=east,contents=planks": {
+      "model": "projectflint:block/basin_oak_wood",
+      "y": 90
+    },
+    "facing=south,contents=planks": {
+      "model": "projectflint:block/basin_oak_wood",
+      "y": 180
+    },
+    "facing=west,contents=planks": {
+      "model": "projectflint:block/basin_oak_wood",
+      "y": 270
+    }
+  }
+}

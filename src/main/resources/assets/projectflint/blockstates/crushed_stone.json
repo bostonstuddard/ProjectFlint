@@ -1,7 +1,6 @@
 {
   "variants": {
-    "": {
-      "model": "projectflint:block/crushed_stone"
-    }
+    "player_placed=false": {"model": "projectflint:block/crushed_stone"},
+    "player_placed=true": {"model": "projectflint:block/crushed_stone"}
   }
 }

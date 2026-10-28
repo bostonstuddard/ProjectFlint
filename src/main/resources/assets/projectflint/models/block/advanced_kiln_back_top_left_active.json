@@ -2,7 +2,7 @@
   "parent": "minecraft:block/block",
   "textures": {
     "particle": "projectflint:block/advanced_kiln_front",
-    "up": "projectflint:block/advanced_kiln_top_active",
+    "up": "projectflint:block/advanced_kiln_top",
     "down": "projectflint:block/advanced_kiln_bottom",
     "north": "projectflint:block/advanced_kiln_front",
     "south": "projectflint:block/advanced_kiln_back",

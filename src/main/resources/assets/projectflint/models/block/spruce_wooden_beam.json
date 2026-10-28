@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "projectflint:block/spruce_wooden_beam_top",
+    "side": "projectflint:block/spruce_wooden_beam"
+  }
+}

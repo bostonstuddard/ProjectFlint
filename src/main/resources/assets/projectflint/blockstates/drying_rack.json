@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "projectflint:block/drying_rack",
+      "y": 0
+    },
+    "facing=east": {
+      "model": "projectflint:block/drying_rack",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "projectflint:block/drying_rack",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "projectflint:block/drying_rack",
+      "y": 270
+    }
+  }
+}

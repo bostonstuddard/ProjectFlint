@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "north": "projectflint:block/fireclay_forge_controller_off",
+    "south": "projectflint:block/fireclay_brick_block",
+    "east": "projectflint:block/fireclay_brick_block",
+    "west": "projectflint:block/fireclay_brick_block",
+    "up": "projectflint:block/fireclay_brick_block",
+    "down": "projectflint:block/fireclay_brick_block",
+    "particle": "projectflint:block/fireclay_brick_block"
+  }
+}

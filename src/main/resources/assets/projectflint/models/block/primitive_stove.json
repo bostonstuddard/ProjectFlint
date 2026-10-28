@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "projectflint:block/primitive_stove_side",
+    "down": "projectflint:block/primitive_stove_side",
+    "up": "projectflint:block/primitive_stove_top",
+    "north": "projectflint:block/primitive_stove_front",
+    "south": "projectflint:block/primitive_stove_side",
+    "east": "projectflint:block/primitive_stove_side",
+    "west": "projectflint:block/primitive_stove_side"
+  }
+}

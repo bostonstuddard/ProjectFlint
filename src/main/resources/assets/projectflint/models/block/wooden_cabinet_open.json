@@ -1,0 +1,12 @@
+{
+  "parent": "projectflint:block/wooden_cabinet_base",
+  "textures": {
+    "bottom_countermaterial": "projectflint:block/cabinet/bottom/oak_pantry",
+    "front_countermaterial": "projectflint:block/cabinet/open/oak_pantry",
+    "front_countertop": "projectflint:block/counter/front/stone_counter",
+    "side_countermaterial": "projectflint:block/cabinet/side/oak_pantry",
+    "side_countertop": "projectflint:block/counter/side/stone_counter",
+    "top_countermaterial": "projectflint:block/cabinet/top/oak_pantry",
+    "top_countertop": "projectflint:block/counter/top/stone_counter"
+  }
+}

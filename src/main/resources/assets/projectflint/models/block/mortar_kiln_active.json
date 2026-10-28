@@ -1,13 +1,13 @@
 {
   "parent": "minecraft:block/block",
   "textures": {
-    "particle": "projectflint:block/advanced_kiln_front",
-    "up": "projectflint:block/advanced_kiln_top_active",
-    "down": "projectflint:block/advanced_kiln_bottom",
-    "north": "projectflint:block/advanced_kiln_front_active",
-    "south": "projectflint:block/advanced_kiln_back",
-    "east": "projectflint:block/advanced_kiln_right",
-    "west": "projectflint:block/advanced_kiln_left"
+    "particle": "projectflint:block/mortar_kiln_front_legacy",
+    "up": "projectflint:block/mortar_kiln_top_active_legacy",
+    "down": "projectflint:block/mortar_kiln_bottom_legacy",
+    "north": "projectflint:block/mortar_kiln_front_active_legacy",
+    "south": "projectflint:block/mortar_kiln_back_legacy",
+    "east": "projectflint:block/mortar_kiln_right_legacy",
+    "west": "projectflint:block/mortar_kiln_left_legacy"
   },
   "elements": [
     {

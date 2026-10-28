@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "projectflint:block/mangrove_wooden_beam_top",
+    "side": "projectflint:block/mangrove_wooden_beam"
+  }
+}

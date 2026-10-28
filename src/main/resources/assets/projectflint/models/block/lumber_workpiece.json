@@ -1,20 +1,8 @@
 {
+  "parent": "minecraft:block/cube_bottom_top",
   "textures": {
-    "all": "projectflint:block/pending_texture",
-    "particle": "projectflint:block/pending_texture"
-  },
-  "elements": [
-    {
-      "from": [0, 0, 0],
-      "to": [16, 8, 16],
-      "faces": {
-        "down":  { "texture": "#all", "cullface": "down" },
-        "up":    { "texture": "#all" },
-        "north": { "texture": "#all" },
-        "south": { "texture": "#all" },
-        "west":  { "texture": "#all" },
-        "east":  { "texture": "#all" }
-      }
-    }
-  ]
+    "bottom": "projectflint:block/wooden_beam_top",
+    "side": "projectflint:block/wooden_beam",
+    "top": "projectflint:block/wooden_beam_top"
+  }
 }

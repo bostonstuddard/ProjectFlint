@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "projectflint:block/hardwood_crafting_table_bottom",
+    "side": "projectflint:block/hardwood_crafting_table_side",
+    "top": "projectflint:block/hardwood_crafting_table_top"
+  }
+}
