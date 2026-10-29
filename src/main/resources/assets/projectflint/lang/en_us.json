@@ -434,7 +434,7 @@
   "item.projectflint.tannin": "Tannin",
   "item.projectflint.fat_burning_torch": "Fat-Burning Torch",
   "block.projectflint.fat_burning_torch": "Fat-Burning Torch",
-  "gui.projectflint.forge.materials": "Materials",
+  "gui.projectflint.forge.materials": "Input: Hardwood for Hardwood Alloy (requires one full 5-minute Charcoal burn)",
   "gui.projectflint.forge.fuel": "Fuel",
   "gui.projectflint.forge.fuel_wood": "4 logs or wood: 1 minute, 4 Charcoal",
   "gui.projectflint.forge.fuel_charcoal": "1 Charcoal: 5 minutes",

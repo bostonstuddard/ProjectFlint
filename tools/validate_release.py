@@ -6,7 +6,7 @@ import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
 RESOURCES = ROOT / "src/main/resources"
-EXPECTED_VERSION = "0.31.48-b"
+EXPECTED_VERSION = "0.31.50-b"
 errors: list[str] = []
 
 
@@ -264,11 +264,11 @@ for name, path in (
 
 # Build / cleanup protocol.
 build = read("build.bat")
-if "APPLY_PROJECTFLINT_0_31_48_B.bat" not in build:
+if "APPLY_PROJECTFLINT_0_31_50_B.bat" not in build:
 	fail("build.bat does not apply the current release cleanup")
 if 'explorer.exe /select,' not in build:
 	fail("build.bat no longer opens Explorer with the successful JAR selected")
-if not (ROOT / "APPLY_PROJECTFLINT_0_31_48_B.bat").exists():
+if not (ROOT / "APPLY_PROJECTFLINT_0_31_50_B.bat").exists():
 	fail("missing current release cleanup BAT")
 
 for root_junk in (
@@ -412,8 +412,8 @@ for name in ("limestone", "cobbled_limestone", "smooth_limestone", "limestone_br
         fail(f"missing v0.31.6-b item translation: {name}")
 
 build_bat = read("build.bat")
-cleanup_bat = read("APPLY_PROJECTFLINT_0_31_48_B.bat")
-for expected in ("0.31.48-b", "APPLY_PROJECTFLINT_0_31_48_B.bat"):
+cleanup_bat = read("APPLY_PROJECTFLINT_0_31_50_B.bat")
+for expected in ("0.31.50-b", "APPLY_PROJECTFLINT_0_31_50_B.bat"):
 	if expected not in build_bat:
 		fail(f"build.bat version/apply wiring missing: {expected}")
 if "APPLY_PROJECTFLINT_0_28_28_A.bat" not in cleanup_bat:
@@ -3767,8 +3767,8 @@ if 'case INPUT_SLOT -> stack.is(ModItems.HARDWOOD)' not in read('src/main/java/d
     fail('v45 forge cannot receive Hardwood')
 if 'alloyTicks >= CHARCOAL_BURN_TICKS' not in read('src/main/java/dev/projectflint/block/entity/FireclayForgeBlockEntity.java'):
     fail('v45 alloy must require entire charcoal burn')
-if '60L' not in read('src/main/java/dev/projectflint/menu/HardwoodCraftingMenu.java'):
-    fail('v45 hardwood crafting table must enforce three seconds')
+if 'CRAFT_TICKS = 60' not in read('src/main/java/dev/projectflint/menu/HardwoodCraftingMenu.java'):
+    fail('Hardwood crafting table must enforce three seconds')
 if 'HARDWOOD_HAMMER_MATERIAL' not in items43:
     fail('v45 heavyweight Hammer was not activated')
 if 'ItemTags.PLANKS' not in read('src/main/java/dev/projectflint/block/entity/BasinBlockEntity.java'):
@@ -3792,8 +3792,9 @@ if 'new net.minecraft.world.item.AxeItem(HARDWOOD_MATERIAL' not in item47:
     fail('v47 Hardwood Axe must implement vanilla AxeItem stripping')
 if 'properties.pickaxe(HARDWOOD_HAMMER_MATERIAL, 2.0F, -3.2F)' not in item47:
     fail('v47 Hardwood Hammer melee attack was not rebalanced')
-if 'Can injure and kill fish.' not in tips47:
-    fail('v47 Hammer tooltip missing its fish-killing capability')
+# v49 intentionally removes unsolicited Hardwood/Fat Torch lore tooltips.
+if 'Can injure and kill fish.' in tips47:
+    fail('v49 did not remove the unrequested Hardwood Hammer tooltip')
 if 'GLFW.GLFW_KEY_G' not in client47 or 'GLFW.GLFW_KEY_K' not in client47:
     fail('v47 Field Guide and old Recipe Guide hotkeys must both be registered')
 for needle in ('ProjectFlintFieldGuideContent.chapters()', 'renderAtlas', 'matchingItems', 'mouseScrolled', 'ProjectFlintRecipeGuideScreen.openGlobal(this)'):
@@ -3815,8 +3816,54 @@ if 'APPLY_PROJECTFLINT_0_31_47_B.bat' not in read('APPLY_PROJECTFLINT_0_31_48_B.
     fail('v48 cleanup script does not retire previous release BAT')
 if '0.31.48-b' not in read('docs/releases/0.31.48-b.md'):
     fail('v48 release notes missing')
+# v49 integration: authoritative recipes, no free-fat placement, and a purely player-facing manual.
+torch49 = read('src/main/java/dev/projectflint/block/entity/FatBurningTorchBlockEntity.java')
+torch_recipe49 = json.loads(read('src/main/resources/data/projectflint/recipe/fat_burning_torch.json'))
+if 'private int fatCharges;' not in torch49 or 'input.getIntOr("FatCharges", 0)' not in torch49:
+    fail('v49 newly placed Fat Torches still spawn free Fat')
+if 'projectflint:fat' in torch_recipe49['ingredients']:
+    fail('v49 crafted empty Fat Torch still consumes an unusable Fat at craft time')
+if 'Starts with 1 Fat charge' in tips47 or 'Stone: 9s' in tips47 or 'Can injure and kill fish.' in tips47:
+    fail('v49 unsolicited item lore remains')
+craft49 = json.loads(read('src/main/resources/data/projectflint/recipe/hardwood_crafting_table.json'))
+if 'projectflint:bound_wood_processor' not in craft49['ingredients'] or 'projectflint:lumber_processor' in craft49['ingredients']:
+    fail('v49 crafting table recipe must use the Bound Wood Processor')
+axe49 = json.loads(read('src/main/resources/data/projectflint/tags/item/plank_cutting_axes.json'))
+if set(axe49['values']) != {'minecraft:wooden_axe', 'projectflint:hardwood_axe'}:
+    fail('v49 alternate Wood/Hardwood axes tag is invalid')
+log_recipes49 = list((RESOURCES/'data/projectflint/recipe').glob('*_planks_from_*log.json'))
+if len(log_recipes49) != 18 or any(json.loads(p.read_text())['tool'] != '#projectflint:plank_cutting_axes' for p in log_recipes49):
+    fail('v49 all 18 Log/Stripped Log to Planks durable crafts must accept either axe')
+recipe_guide49 = read('src/main/java/dev/projectflint/client/screen/ProjectFlintRecipeGuideScreen.java')
+if 'new ItemStack(ModItems.WOOD_DUST)' not in recipe_guide49 or 'new ItemStack(ModItems.HARDWOOD_ALLOY)' not in recipe_guide49:
+    fail('v49 Wood Dust and Hardwood Alloy are missing from K-key station recipes')
+if 'One Hardwood' not in content47 and '1 Hardwood' not in content47:
+    fail('v49 manual is missing the hardwood forge instructions')
+for banned in ('implementation', 'dev ', 'overpowered', 'original', 'prior', 'previous', 'v0.', 'old recipe', 'registry identifiers', 'does not yet'):
+    if banned in content47.lower(): fail('v49 manual contains non-player release/developer commentary: '+banned)
+if 'String id = BuiltInRegistries.ITEM.getKey(item).getPath()' in manual47:
+    fail('v49 Item Atlas still displays raw registry IDs')
+if 'APPLY_PROJECTFLINT_0_31_48_B.bat' not in read('APPLY_PROJECTFLINT_0_31_50_B.bat'):
+    fail('v49 cleanup must retire v48 apply script')
+# v0.31.50-b: timed Hardwood crafting must be real, server-authoritative and visible.
+menu50 = read('src/main/java/dev/projectflint/menu/HardwoodCraftingMenu.java')
+mod_menus50 = read('src/main/java/dev/projectflint/registry/ModMenus.java')
+client50 = read('src/main/java/dev/projectflint/client/ProjectFlintClient.java')
+screen50 = read('src/main/java/dev/projectflint/client/screen/HardwoodCraftingScreen.java')
+for token in ('CRAFT_TICKS = 60', 'getRecipeFor(RecipeType.CRAFTING', 'readyAtTick', 'refreshRecipe(true)', 'DataSlot.standalone()', 'resultSlots.setItem(0, ItemStack.EMPTY)', 'ticks == CRAFT_TICKS', 'isCraftReady()', 'quickMoveStack', 'clicked(int slotId'):
+    if token not in menu50: fail('v50 hardened craft menu missing '+token)
+if 'super.slotsChanged(container)' in menu50:
+    fail('v50 vanilla menu can still send premature crafting output')
+if 'HARDWOOD_CRAFTING' not in mod_menus50 or 'HARDWOOD_CRAFTING, HardwoodCraftingScreen::new' not in client50:
+    fail('v50 dedicated worktable menu/screen not registered')
+if 'getProgressTicks()' not in screen50 or 'graphics.fill(' not in screen50 or 'AbstractContainerScreen<HardwoodCraftingMenu>' not in screen50:
+    fail('v50 output countdown/GUI is absent')
+if 'APPLY_PROJECTFLINT_0_31_49_B.bat' not in read('APPLY_PROJECTFLINT_0_31_50_B.bat'):
+    fail('v50 cleanup script does not retire previous version')
+if '0.31.50-b' not in read('docs/releases/0.31.50-b.md'):
+    fail('v50 release notes missing')
 if errors:
-    print('Project Flint v0.31.48-b validation FAILED:')
+    print('Project Flint v0.31.50-b validation FAILED:')
     for message in errors: print(' -', message)
     sys.exit(1)
-print('Project Flint v0.31.48-b Field Guide crash hotfix checks passed.')
+print('Project Flint v0.31.50-b fixes and preservation checks passed.')

@@ -1,3 +1,19 @@
+## v0.31.50-b — Hardwood Crafting Table timed-crafting repair
+- Replaced the Hardwood Table's server-only result-slot pickup cooldown with a dedicated synchronized 3×3 crafting menu and GUI.
+- Recipe outputs are now **unavailable for three full seconds (60 server ticks)** after a valid set of ingredients is placed. The output becomes visible and collectable only after that timer expires.
+- Added a visible progress bar/countdown in the Hardwood Crafting Table interface. Both crafting time and output are driven by the server, not by a cosmetic client timer.
+- Changing the crafting grid cancels and restarts the timer. Successful crafting starts a new three-second cycle for the next output, including stacked ingredients, shift-click, and recipes that return containers.
+- Blocked premature pickup, hotbar swap and shift-click collection and removed the client-side instant-output/ghost-result mismatch.
+- Retained vanilla recipe matching, normal 3×3 tool recipes, ingredient consumption, crafting remainders, table portability, and surrounding Project Flint progression.
+
+## v0.31.49-b — Hardwood and Field Guide corrections
+- Fat-Burning Torches now begin without Fat charges; re-placing them cannot replenish fuel. Players add Fat after placement before lighting. Torch crafting no longer consumes Fat prematurely.
+- Removed the unsolicited mechanic lore tooltips from the Fat-Burning Torch and Hardwood tools/table; retained unrelated clothing/storage and food tooltips.
+- Hardwood Crafting Tables now require a **Bound Wood Processor**, not an assembled/recovered Lumber Processor.
+- All 18 supported Log/Stripped Log → 2 Planks durable recipes accept either Wooden Axe or Hardwood Axe; both retain the tool and apply durability loss.
+- The K-key Basin recipes now include **Planks → Wood Dust**, and the Fireclay Forge recipes include **Hardwood + Charcoal → Hardwood Alloy** (one full five-minute burn).
+- Replaced Field Guide release/development chatter with current, actionable, player-facing explanations and removed technical registry IDs from the Item Atlas.
+
 ## v0.31.48-b — Field Guide screen crash hotfix
 - Prevented the Field Guide from invoking Minecraft 1.21.11's blur renderer more than once per frame. Opening the handbook previously crashed with `IllegalStateException: Can only blur once per frame` at `ProjectFlintFieldGuideScreen.java:154`.
 - Replaced the extra `renderBackground(...)` call with a lightweight translucent screen dimmer; the leather/parchment panel and search, chapter navigation, items, tooltips and recipe-link behavior are unchanged.

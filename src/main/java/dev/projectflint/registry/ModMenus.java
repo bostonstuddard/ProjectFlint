@@ -15,6 +15,7 @@ import dev.projectflint.menu.BrickFurnaceMenu;
 import dev.projectflint.menu.WellPulleyMenu;
 import dev.projectflint.menu.NestMenu;
 import dev.projectflint.menu.FireclayForgeMenu;
+import dev.projectflint.menu.HardwoodCraftingMenu;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.flag.FeatureFlags;
@@ -62,6 +63,12 @@ public final class ModMenus {
 	public static final MenuType<WellPulleyMenu> WELL_PULLEY = Registry.register(BuiltInRegistries.MENU, ProjectFlint.id("well_pulley"), new MenuType<>(WellPulleyMenu::new, FeatureFlags.DEFAULT_FLAGS));
 	public static final MenuType<NestMenu> NEST = Registry.register(BuiltInRegistries.MENU, ProjectFlint.id("nest"), new MenuType<>(NestMenu::new, FeatureFlags.DEFAULT_FLAGS));
 	public static final MenuType<FireclayForgeMenu> FIRECLAY_FORGE = Registry.register(BuiltInRegistries.MENU, ProjectFlint.id("fireclay_forge"), new MenuType<>(FireclayForgeMenu::new, FeatureFlags.DEFAULT_FLAGS));
+
+	public static final MenuType<HardwoodCraftingMenu> HARDWOOD_CRAFTING = Registry.register(
+		BuiltInRegistries.MENU,
+		ProjectFlint.id("hardwood_crafting"),
+		new MenuType<>(HardwoodCraftingMenu::new, FeatureFlags.DEFAULT_FLAGS)
+	);
 
 	public static final MenuType<WovenChestMenu> WOVEN_CHEST = Registry.register(
 		BuiltInRegistries.MENU,

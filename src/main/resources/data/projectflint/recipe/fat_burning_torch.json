@@ -3,7 +3,6 @@
   "category": "equipment",
   "ingredients": [
     "minecraft:stick",
-    "projectflint:fat",
     "minecraft:string",
     "minecraft:charcoal"
   ],

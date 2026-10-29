@@ -38,18 +38,6 @@ public abstract class ItemTooltipMixin {
 			).withStyle(ChatFormatting.GRAY));
 		}
 
-		if (stack.is(ModItems.FAT_BURNING_TORCH))
-			textConsumer.accept(Component.literal("Starts with 1 Fat charge. Refill with Fat to relight.").withStyle(ChatFormatting.GRAY));
-		if (stack.is(ModItems.HARDWOOD_HAMMER)) {
-			textConsumer.accept(Component.literal("Can injure and kill fish.").withStyle(ChatFormatting.GOLD));
-			textConsumer.accept(Component.literal("Mines stone-tier ores; slow on natural stone (21s).").withStyle(ChatFormatting.GRAY));
-		}
-		if (stack.is(ModItems.HARDWOOD_PICKAXE))
-			textConsumer.accept(Component.literal("Stone: 9s (wooden pickaxe: 13.5s).").withStyle(ChatFormatting.GRAY));
-		if (stack.is(ModItems.HARDWOOD_AXE))
-			textConsumer.accept(Component.literal("Right-click logs to strip them.").withStyle(ChatFormatting.GRAY));
-		if (stack.is(ModItems.HARDWOOD_CRAFTING_TABLE))
-			textConsumer.accept(Component.literal("3x3 crafting; every craft takes 3 seconds.").withStyle(ChatFormatting.GRAY));
 		if (stack.is(ModItems.REED_BACKPACK)) {
 			textConsumer.accept(Component.literal("Unlocks 9 inventory slots.").withStyle(ChatFormatting.GRAY));
 		}

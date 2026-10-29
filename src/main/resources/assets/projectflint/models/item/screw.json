@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "projectflint:item/screw",
+    "layer1": "projectflint:item/screw_secondary"
+  }
+}

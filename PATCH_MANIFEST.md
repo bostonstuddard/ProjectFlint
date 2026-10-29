@@ -1,11 +1,16 @@
-# Project Flint v0.31.48-b — incremental source hotfix
+# Project Flint v0.31.50-b — Patch manifest
 
-**Base:** Fully patched **v0.31.47-b** source on Minecraft 1.21.11, Fabric, Java 21.
+Base: v0.31.49-b complete Fabric Minecraft 1.21.11 source (Java 21). Extract directly to the root of the existing ProjectFlint source, overwrite matching files and run `build.bat`. No nested directory.
 
-**Apply:** Extract this patch ZIP **directly into the source root**, overwriting matching files. Do **not** extract a nested ProjectFlint folder. Run `build.bat` to produce `projectflint-0.31.48-b.jar`. The builder invokes `APPLY_PROJECTFLINT_0_31_48_B.bat`, preserving previous cleanup lineage and retiring the v0.31.47-b cleanup script.
+### Gameplay / UI
+- `src/main/java/dev/projectflint/menu/HardwoodCraftingMenu.java` — server-validated 60-tick recipe production, state synchronization and crafting abuse prevention.
+- `src/main/java/dev/projectflint/client/screen/HardwoodCraftingScreen.java` — custom 3×3 screen with visible processing bar.
+- `src/main/java/dev/projectflint/registry/ModMenus.java` — dedicated menu registration.
+- `src/main/java/dev/projectflint/client/ProjectFlintClient.java` — screen registration.
 
-**Fix:** `ProjectFlintFieldGuideScreen.render()` no longer makes a second screen background-blur request that triggers `IllegalStateException: Can only blur once per frame` when G opens the manual. It draws a semi-transparent dimmer instead.
+### Release and validation
+- `gradle.properties`, `build.bat`, `APPLY_PROJECTFLINT_0_31_50_B.bat`
+- `CHANGELOG.md`, `README.md`, `docs/releases/0.31.50-b.md`, `PATCH_MANIFEST.md`
+- `tools/validate_release.py` — updated three-second behavior checks.
 
-**Contents:** One Field Guide Java fix, version metadata, builder wiring, next-version apply/cleanup BAT, README, CHANGELOG, release notes and validator regression guard. No JAR or nested directories; no change to gameplay, quests, EMI, or the existing recipe-browser hotkey.
-
-**Runtime validation:** Cause grounded in the user's exact 1.21.11 Fabric crash stack. Automated Java compile and static validation are not an in-game runtime test.
+Previous patch releases are not included or re-applied. Existing custom artwork and game recipes are untouched.

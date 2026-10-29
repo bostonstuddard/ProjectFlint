@@ -58,7 +58,7 @@ public final class ProjectFlintFieldGuideScreen extends Screen {
         if (needle.isBlank()) return allItems;
         return allItems.stream().filter(item -> {
             String name = new ItemStack(item).getHoverName().getString().toLowerCase(Locale.ROOT);
-            return name.contains(needle) || BuiltInRegistries.ITEM.getKey(item).getPath().contains(needle);
+            return name.contains(needle);
         }).toList();
     }
 
@@ -226,7 +226,7 @@ public final class ProjectFlintFieldGuideScreen extends Screen {
 
     private void renderAtlas(GuiGraphics g, int mx, int my, int x, int y, int width, int bottom) {
         List<Item> items = matchingItems();
-        if (items.isEmpty()) { g.drawString(font, "No registered items match.", x, y, INK); return; }
+        if (items.isEmpty()) { g.drawString(font, "No items match.", x, y, INK); return; }
         int rows = atlasRows();
         int start = page * rows;
         for (int i = start; i < Math.min(items.size(), start + rows); i++) {
@@ -236,9 +236,7 @@ public final class ProjectFlintFieldGuideScreen extends Screen {
             ItemStack stack = new ItemStack(item);
             g.renderItem(stack, x + 1, ry);
             String name = font.plainSubstrByWidth(stack.getHoverName().getString(), width - 27);
-            String id = BuiltInRegistries.ITEM.getKey(item).getPath();
-            g.drawString(font, name, x + 23, ry, INK, false);
-            g.drawString(font, font.plainSubstrByWidth(id, width - 27), x + 23, ry + 10, 0xFF876A4E, false);
+            g.drawString(font, name, x + 23, ry + 5, INK, false);
             if (mx >= x && mx < x + 20 && my >= ry && my < ry + 18)
                 g.setTooltipForNextFrame(font, stack, mx, my);
         }

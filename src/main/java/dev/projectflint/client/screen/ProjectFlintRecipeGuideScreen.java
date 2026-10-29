@@ -284,10 +284,15 @@ public final class ProjectFlintRecipeGuideScreen extends Screen {
 	}
 
 	private static List<GuideRecipe> basinRecipes() {
-		return List.of(new GuideRecipe(List.of(new ItemStack(Items.STRIPPED_OAK_LOG)), new ItemStack(ModItems.TANNIN, 2)),
-			new GuideRecipe(List.of(new ItemStack(Items.STRIPPED_OAK_WOOD)), new ItemStack(ModItems.TANNIN, 2)),
-			new GuideRecipe(List.of(new ItemStack(Items.STRIPPED_BIRCH_LOG)), new ItemStack(ModItems.TANNIN, 2)),
-			new GuideRecipe(List.of(new ItemStack(Items.STRIPPED_BIRCH_WOOD)), new ItemStack(ModItems.TANNIN, 2)));
+		List<GuideRecipe> result = new ArrayList<>();
+		result.add(new GuideRecipe(List.of(new ItemStack(Items.OAK_PLANKS)), new ItemStack(ModItems.WOOD_DUST),
+			List.of(BuiltInRegistries.ITEM.stream().map(ItemStack::new)
+				.filter(stack -> stack.is(net.minecraft.tags.ItemTags.PLANKS)).toList())));
+		result.add(new GuideRecipe(List.of(new ItemStack(Items.STRIPPED_OAK_LOG)), new ItemStack(ModItems.TANNIN, 2)));
+		result.add(new GuideRecipe(List.of(new ItemStack(Items.STRIPPED_OAK_WOOD)), new ItemStack(ModItems.TANNIN, 2)));
+		result.add(new GuideRecipe(List.of(new ItemStack(Items.STRIPPED_BIRCH_LOG)), new ItemStack(ModItems.TANNIN, 2)));
+		result.add(new GuideRecipe(List.of(new ItemStack(Items.STRIPPED_BIRCH_WOOD)), new ItemStack(ModItems.TANNIN, 2)));
+		return result;
 	}
 
 	private static List<GuideRecipe> personalCraftingRecipes() {
@@ -310,10 +315,13 @@ public final class ProjectFlintRecipeGuideScreen extends Screen {
 		return results;
 	}
 
-	/** Wood fuel yields charcoal as a byproduct; future material recipes belong in the forge registry. */
+	/** The same Charcoal/Hardwood inputs and five-minute burn as FireclayForgeBlockEntity. */
 	private static List<GuideRecipe> fireclayForgeRecipes() {
-		return List.of(new GuideRecipe(List.of(new ItemStack(Items.OAK_LOG, 4)), new ItemStack(Items.CHARCOAL, 4),
-			List.of(acceptedForgeWood())));
+		return List.of(
+			new GuideRecipe(List.of(new ItemStack(ModItems.HARDWOOD), new ItemStack(Items.CHARCOAL)),
+				new ItemStack(ModItems.HARDWOOD_ALLOY)),
+			new GuideRecipe(List.of(new ItemStack(Items.OAK_LOG, 4)), new ItemStack(Items.CHARCOAL, 4),
+				List.of(acceptedForgeWood())));
 	}
 
 	private static List<ItemStack> acceptedForgeWood() {

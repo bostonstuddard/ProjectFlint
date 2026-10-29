@@ -13,7 +13,7 @@ import net.minecraft.world.level.storage.ValueOutput;
 public final class FatBurningTorchBlockEntity extends BlockEntity {
 	public static final int BURN_TIME = 30 * 60 * 20;
 	private int burnRemaining;
-	private int fatCharges = 1; // The fat used to craft the torch supplies its first charge.
+	private int fatCharges; // Every charge is added manually with Fat; placement is always empty.
 
 	public FatBurningTorchBlockEntity(BlockPos pos, BlockState state) { super(ModBlockEntities.FAT_BURNING_TORCH, pos, state); }
 	public boolean addFat() {
@@ -40,7 +40,7 @@ public final class FatBurningTorchBlockEntity extends BlockEntity {
 	@Override protected void loadAdditional(ValueInput input) {
 		super.loadAdditional(input);
 		burnRemaining = Math.max(0, input.getIntOr("BurnRemaining", 0));
-		fatCharges = Math.max(0, input.getIntOr("FatCharges", input.getIntOr("CharcoalCharges", 1) > 0 ? 1 : 0));
+		fatCharges = Math.max(0, input.getIntOr("FatCharges", 0));
 	}
 	@Override protected void saveAdditional(ValueOutput output) {
 		super.saveAdditional(output);

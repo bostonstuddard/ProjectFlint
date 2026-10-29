@@ -16,6 +16,7 @@ import dev.projectflint.client.screen.BrickFurnaceScreen;
 import dev.projectflint.client.screen.WellPulleyScreen;
 import dev.projectflint.client.screen.NestScreen;
 import dev.projectflint.client.screen.FireclayForgeScreen;
+import dev.projectflint.client.screen.HardwoodCraftingScreen;
 import dev.projectflint.registry.ModBlockEntities;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import dev.projectflint.network.PrimitiveProgressPayload;
@@ -78,6 +79,7 @@ public final class ProjectFlintClient implements ClientModInitializer {
 		MenuScreens.register(ModMenus.WELL_PULLEY, WellPulleyScreen::new);
 		MenuScreens.register(ModMenus.NEST, NestScreen::new);
 		MenuScreens.register(ModMenus.FIRECLAY_FORGE, FireclayForgeScreen::new);
+		MenuScreens.register(ModMenus.HARDWOOD_CRAFTING, HardwoodCraftingScreen::new);
 		BlockEntityRenderers.register(ModBlockEntities.WOODEN_CHEST, WoodenChestRenderer::new);
 		EntityModelLayerRegistry.registerModelLayer(BlackBearModel.BODY_LAYER, () -> BlackBearModel.createBodyLayer(false));
 		EntityModelLayerRegistry.registerModelLayer(BlackBearModel.BODY_LAYER_BABY, () -> BlackBearModel.createBodyLayer(true));

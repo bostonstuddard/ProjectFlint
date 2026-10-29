@@ -5,7 +5,7 @@
     "projectflint:hardwood_alloy",
     "projectflint:hardwood_alloy",
     "minecraft:cobblestone",
-    "projectflint:lumber_processor"
+    "projectflint:bound_wood_processor"
   ],
   "result": {
     "id": "projectflint:hardwood_crafting_table",

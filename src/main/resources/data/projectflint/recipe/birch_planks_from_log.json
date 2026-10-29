@@ -4,7 +4,7 @@
   "ingredients": [
     "minecraft:birch_log"
   ],
-  "tool": "minecraft:wooden_axe",
+  "tool": "#projectflint:plank_cutting_axes",
   "result": {
     "id": "minecraft:birch_planks",
     "count": 2
