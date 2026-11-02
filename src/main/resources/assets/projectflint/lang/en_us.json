@@ -457,5 +457,6 @@
   "block.projectflint.hardwood_crafting_table": "Hardwood Crafting Table",
   "container.projectflint.hardwood_crafting_table": "Hardwood Crafting Table",
   "tooltip.projectflint.hardwood_crafting_table": "Each craft takes 3 seconds.",
-  "key.projectflint.field_guide": "Open Flint Field Guide"
+  "key.projectflint.field_guide": "Open Flint Field Guide",
+  "item.projectflint.hardwood_sticks": "Hardwood Sticks"
 }

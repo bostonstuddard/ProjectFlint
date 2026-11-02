@@ -1,0 +1,17 @@
+{
+  "type": "projectflint:hardwood_shaped",
+  "category": "misc",
+  "pattern": [
+    "SSS",
+    "SWS",
+    "SSS"
+  ],
+  "key": {
+    "S": "minecraft:sugar_cane",
+    "W": "projectflint:clay_water_bucket"
+  },
+  "result": {
+    "id": "minecraft:paper",
+    "count": 8
+  }
+}

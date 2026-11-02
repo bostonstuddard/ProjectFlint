@@ -1,0 +1,12 @@
+{
+  "type": "projectflint:hardwood_durable",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:dark_oak_log"
+  ],
+  "tool": "projectflint:flint_plant_cutters",
+  "result": {
+    "id": "projectflint:dark_oak_wooden_beam",
+    "count": 1
+  }
+}

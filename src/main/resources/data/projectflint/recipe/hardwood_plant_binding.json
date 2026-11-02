@@ -1,0 +1,15 @@
+{
+  "type": "projectflint:hardwood_shaped",
+  "category": "misc",
+  "pattern": [
+    "S",
+    "S"
+  ],
+  "key": {
+    "S": "minecraft:string"
+  },
+  "result": {
+    "id": "projectflint:plant_tool_binding",
+    "count": 5
+  }
+}

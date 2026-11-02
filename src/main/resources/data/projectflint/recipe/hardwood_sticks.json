@@ -1,0 +1,12 @@
+{
+  "type": "projectflint:hardwood_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "projectflint:hardwood",
+    "projectflint:hardwood"
+  ],
+  "result": {
+    "id": "projectflint:hardwood_sticks",
+    "count": 2
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "type": "projectflint:hardwood_shaped",
+  "category": "misc",
+  "pattern": [
+    "MMM",
+    "M M",
+    "M M"
+  ],
+  "key": {
+    "M": "projectflint:filed_bone"
+  },
+  "result": {
+    "id": "projectflint:bone_leggings",
+    "count": 1
+  }
+}

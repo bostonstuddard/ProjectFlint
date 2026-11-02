@@ -1,0 +1,13 @@
+{
+  "type": "projectflint:hardwood_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:stick",
+    "minecraft:stick",
+    "minecraft:flint"
+  ],
+  "result": {
+    "id": "projectflint:wood_firestarter",
+    "count": 1
+  }
+}

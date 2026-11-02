@@ -1,0 +1,15 @@
+{
+  "type": "projectflint:hardwood_shaped",
+  "category": "misc",
+  "pattern": [
+    "MMM",
+    "M M"
+  ],
+  "key": {
+    "M": "projectflint:tanned_leather"
+  },
+  "result": {
+    "id": "projectflint:tanned_leather_helmet",
+    "count": 1
+  }
+}

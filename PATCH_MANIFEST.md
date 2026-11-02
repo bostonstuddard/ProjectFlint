@@ -1,16 +1,15 @@
-# Project Flint v0.31.50-b — Patch manifest
+# Project Flint v0.31.52-b — Patch manifest
 
-Base: v0.31.49-b complete Fabric Minecraft 1.21.11 source (Java 21). Extract directly to the root of the existing ProjectFlint source, overwrite matching files and run `build.bat`. No nested directory.
+**Apply to:** Project Flint v0.31.51-b source, Minecraft 1.21.11 Fabric / Mojang mappings.
+**Patch type:** compilation hotfix. Extract at project root with no nested folder.
 
-### Gameplay / UI
-- `src/main/java/dev/projectflint/menu/HardwoodCraftingMenu.java` — server-validated 60-tick recipe production, state synchronization and crafting abuse prevention.
-- `src/main/java/dev/projectflint/client/screen/HardwoodCraftingScreen.java` — custom 3×3 screen with visible processing bar.
-- `src/main/java/dev/projectflint/registry/ModMenus.java` — dedicated menu registration.
-- `src/main/java/dev/projectflint/client/ProjectFlintClient.java` — screen registration.
+## Changes
+- `src/main/java/dev/projectflint/recipe/HardwoodCraftingRecipe.java`: move `RecipeDisplay` import to `net.minecraft.world.item.crafting.display.RecipeDisplay`.
+- `gradle.properties`, `build.bat`, `APPLY_PROJECTFLINT_0_31_52_B.bat`: version bump and cleanup/apply helper.
+- `CHANGELOG.md`, `README.md`, `docs/releases/0.31.52-b.md`: release documentation.
+- `tools/validate_release.py`: version update and a regression check for the import.
 
-### Release and validation
-- `gradle.properties`, `build.bat`, `APPLY_PROJECTFLINT_0_31_50_B.bat`
-- `CHANGELOG.md`, `README.md`, `docs/releases/0.31.50-b.md`, `PATCH_MANIFEST.md`
-- `tools/validate_release.py` — updated three-second behavior checks.
+## Validation
+The corrected class path and `Recipe.display()` return type were confirmed using `javap` against the *Minecraft 1.21.11 mapped JAR included in the user's source archive*. Patch contents and archive integrity were checked. A full Project Flint Gradle build and Minecraft runtime test were not performed.
 
-Previous patch releases are not included or re-applied. Existing custom artwork and game recipes are untouched.
+No older Project Flint content is re-applied or changed beyond the listed files.

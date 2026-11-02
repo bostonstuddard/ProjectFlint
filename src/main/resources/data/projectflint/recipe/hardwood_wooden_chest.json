@@ -1,0 +1,18 @@
+{
+  "type": "projectflint:hardwood_shaped",
+  "category": "misc",
+  "pattern": [
+    "WSW",
+    "SLS",
+    "WSW"
+  ],
+  "key": {
+    "W": "projectflint:wooden_screw",
+    "S": "projectflint:wooden_sheet",
+    "L": "projectflint:leather_strap"
+  },
+  "result": {
+    "id": "projectflint:wooden_chest",
+    "count": 2
+  }
+}

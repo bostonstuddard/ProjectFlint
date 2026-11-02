@@ -1,6 +1,6 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "category": "equipment",
+  "type": "projectflint:hardwood_shaped",
+  "category": "misc",
   "pattern": [
     "P",
     "P"
@@ -10,6 +10,6 @@
   },
   "result": {
     "id": "minecraft:stick",
-    "count": 2
+    "count": 3
   }
 }

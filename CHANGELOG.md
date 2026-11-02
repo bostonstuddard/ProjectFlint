@@ -1,3 +1,17 @@
+## v0.31.52-b — Hardwood crafting compilation hotfix
+- Corrected the `RecipeDisplay` import in `HardwoodCraftingRecipe.java` for Minecraft 1.21.11 Mojang mappings (`net.minecraft.world.item.crafting.display`).
+- No gameplay, crafting timer, ingredient, recipe registration, mining, or tool-balance changes.
+- Updated version, build helper, cleanup script, release notes, and release validator.
+
+## v0.31.51-b — Hardwood recipes, mining tiers, and durability
+- Fixed generalized ore bypass: non-approved held items now take 45 seconds to mine an ore and yield nothing. Stone/Coal mining with Wooden Pickaxe, Hardwood Pickaxe and Hardwood Hammer takes 13.5 seconds; Hammer yields double Coal and is required for ordinary Iron/Copper Ore within the Hardwood tier.
+- Increased Hardwood tool durability to 320 and Hammer durability to 560. Added Leather Straps to all Hardwood tool recipes except Shovel, including Hammer.
+- Hardwood Table now makes three regular Sticks from two planks and two Hardwood Sticks from two Hardwood; added Hardwood Sticks item to the registry.
+- Added 120+ dedicated Hardwood Table recipes and dye variants spanning tools, armor, masonry, books, paper, doors, cabinets, beams, chests, furnace, nest and staged Rope. Recipe type segregated from vanilla crafting.
+- Removed outdated vanilla crafting paths for wooden tools/hinged doors and legacy kiln-ingredient furnace recipes from active recipe lists; preserved existing survival processing.
+- Durable tools in Hardwood recipes are returned with one damage; empty Clay Bucket is returned by water recipes; Brick Mold is reusable.
+- Updated README, build.bat, cleanup BAT, patch manifest, validation and player-facing release notes.
+
 ## v0.31.50-b — Hardwood Crafting Table timed-crafting repair
 - Replaced the Hardwood Table's server-only result-slot pickup cooldown with a dedicated synchronized 3×3 crafting menu and GUI.
 - Recipe outputs are now **unavailable for three full seconds (60 server ticks)** after a valid set of ingredients is placed. The output becomes visible and collectable only after that timer expires.

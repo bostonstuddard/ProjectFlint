@@ -1,0 +1,15 @@
+{
+  "type": "projectflint:hardwood_durable",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:clay_ball",
+    "minecraft:clay_ball",
+    "minecraft:clay_ball",
+    "minecraft:clay_ball"
+  ],
+  "tool": "projectflint:unfired_brick_mold",
+  "result": {
+    "id": "projectflint:unfired_brick",
+    "count": 6
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "projectflint:hardwood_durable",
+  "category": "misc",
+  "ingredients": [
+    "projectflint:rope_stage_3"
+  ],
+  "tool": "projectflint:flint_file",
+  "result": {
+    "id": "projectflint:rope",
+    "count": 1
+  }
+}

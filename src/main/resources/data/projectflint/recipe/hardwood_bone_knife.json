@@ -1,0 +1,12 @@
+{
+  "type": "projectflint:hardwood_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:stick",
+    "projectflint:filed_bone"
+  ],
+  "result": {
+    "id": "projectflint:bone_knife",
+    "count": 1
+  }
+}

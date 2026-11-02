@@ -1,0 +1,15 @@
+{
+  "type": "projectflint:hardwood_shaped",
+  "category": "misc",
+  "pattern": [
+    "P",
+    "P"
+  ],
+  "key": {
+    "P": "minecraft:pale_oak_planks"
+  },
+  "result": {
+    "id": "minecraft:pale_oak_slab",
+    "count": 6
+  }
+}

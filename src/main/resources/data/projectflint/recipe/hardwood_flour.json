@@ -1,0 +1,17 @@
+{
+  "type": "projectflint:hardwood_shaped",
+  "category": "misc",
+  "pattern": [
+    "WWW",
+    "WBW",
+    "WWW"
+  ],
+  "key": {
+    "W": "minecraft:wheat",
+    "B": "projectflint:clay_water_bucket"
+  },
+  "result": {
+    "id": "projectflint:flour",
+    "count": 12
+  }
+}

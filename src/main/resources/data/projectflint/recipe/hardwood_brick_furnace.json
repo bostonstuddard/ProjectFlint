@@ -1,0 +1,18 @@
+{
+  "type": "projectflint:hardwood_shaped",
+  "category": "misc",
+  "pattern": [
+    "FBF",
+    "BCB",
+    "FBF"
+  ],
+  "key": {
+    "F": "projectflint:fireclay_brick_block",
+    "B": "minecraft:bricks",
+    "C": "minecraft:charcoal"
+  },
+  "result": {
+    "id": "projectflint:brick_furnace",
+    "count": 1
+  }
+}

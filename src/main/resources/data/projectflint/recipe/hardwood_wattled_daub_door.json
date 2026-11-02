@@ -1,0 +1,17 @@
+{
+  "type": "projectflint:hardwood_shaped",
+  "category": "misc",
+  "pattern": [
+    "PPS",
+    "PPS",
+    "PPS"
+  ],
+  "key": {
+    "P": "projectflint:wattled_daub_bricks",
+    "S": "projectflint:wooden_screw"
+  },
+  "result": {
+    "id": "projectflint:wattled_daub_door",
+    "count": 1
+  }
+}

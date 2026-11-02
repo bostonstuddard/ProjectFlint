@@ -1,0 +1,13 @@
+{
+  "type": "projectflint:hardwood_durable",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:stick",
+    "minecraft:flint"
+  ],
+  "tool": "projectflint:flint_file",
+  "result": {
+    "id": "projectflint:flint_file",
+    "count": 1
+  }
+}

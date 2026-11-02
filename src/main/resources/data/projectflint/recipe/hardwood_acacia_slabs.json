@@ -1,0 +1,15 @@
+{
+  "type": "projectflint:hardwood_shaped",
+  "category": "misc",
+  "pattern": [
+    "P",
+    "P"
+  ],
+  "key": {
+    "P": "minecraft:acacia_planks"
+  },
+  "result": {
+    "id": "minecraft:acacia_slab",
+    "count": 6
+  }
+}

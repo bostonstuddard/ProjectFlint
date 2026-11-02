@@ -1,0 +1,14 @@
+{
+  "type": "projectflint:hardwood_shaped",
+  "category": "misc",
+  "pattern": [
+    "BBB"
+  ],
+  "key": {
+    "B": "minecraft:bricks"
+  },
+  "result": {
+    "id": "minecraft:brick_slab",
+    "count": 6
+  }
+}

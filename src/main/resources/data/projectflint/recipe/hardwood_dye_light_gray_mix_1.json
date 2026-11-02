@@ -1,0 +1,13 @@
+{
+  "type": "projectflint:hardwood_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:black_dye",
+    "minecraft:white_dye",
+    "minecraft:white_dye"
+  ],
+  "result": {
+    "id": "minecraft:light_gray_dye",
+    "count": 9
+  }
+}

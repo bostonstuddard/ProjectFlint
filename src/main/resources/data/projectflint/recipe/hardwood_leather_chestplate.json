@@ -1,0 +1,16 @@
+{
+  "type": "projectflint:hardwood_shaped",
+  "category": "misc",
+  "pattern": [
+    "M M",
+    "MMM",
+    "MMM"
+  ],
+  "key": {
+    "M": "minecraft:leather"
+  },
+  "result": {
+    "id": "minecraft:leather_chestplate",
+    "count": 1
+  }
+}

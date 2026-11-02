@@ -1,0 +1,17 @@
+{
+  "type": "projectflint:hardwood_shaped",
+  "category": "misc",
+  "pattern": [
+    "SSS",
+    "SBS",
+    "SSS"
+  ],
+  "key": {
+    "S": "minecraft:string",
+    "B": "projectflint:plant_tool_binding"
+  },
+  "result": {
+    "id": "projectflint:rope_stage_1",
+    "count": 1
+  }
+}

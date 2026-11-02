@@ -20,6 +20,7 @@ import dev.projectflint.registry.ModTags;
 import dev.projectflint.system.TannedUtilityVestSystem;
 import dev.projectflint.system.PlayerPlacedBlockLedger;
 import dev.projectflint.system.WoodenToolTargets;
+import dev.projectflint.system.OreMiningRules;
 import dev.projectflint.system.ModAdvancements;
 import dev.projectflint.system.ToolCapabilities;
 import dev.projectflint.system.LumberProcessorSystem;
@@ -67,6 +68,34 @@ public abstract class ServerPlayerGameModeMixin {
 			cir.setReturnValue(false);
 			return;
 		}
+
+		// Resolve all natural ores/stone before the vest, hammer or vanilla destruction paths.
+        // Breaking an unauthorized ore is allowed at hand-speed, but NEVER yields any loot.
+        if (OreMiningRules.isStone(state) || OreMiningRules.isOre(state)) {
+            if (!OreMiningRules.canGetDrops(state, held)) {
+                level.removeBlock(pos, false);
+                cir.setReturnValue(false);
+                return;
+            }
+            if (OreMiningRules.isWoodenTier(held)) {
+                var drops = Block.getDrops(state, level, pos, level.getBlockEntity(pos), player, held);
+                level.removeBlock(pos, false);
+                // The bare wooden pickaxe and hardwood pickaxe have vanilla wood-tier loot;
+                // the hardwood hammer uses stone-tier drops for iron/copper.
+                if (state.is(Blocks.STONE)) {
+                    projectflint$dropAtBlock(pos, new ItemStack(Items.COBBLESTONE));
+                    projectflint$loosenAdjacentStone(pos);
+                } else if (OreMiningRules.isCoal(state)) {
+                    projectflint$dropAtBlock(pos, new ItemStack(Items.COAL, held.is(ModItems.HARDWOOD_HAMMER) ? 2 : 1));
+                } else {
+                    for (ItemStack drop : drops) projectflint$dropAtBlock(pos, drop);
+                }
+                held.hurtAndBreak(1, player, InteractionHand.MAIN_HAND);
+                cir.setReturnValue(false);
+                return;
+            }
+            // Legitimate vanilla pickaxes keep their own mining speed and vanilla loot checks.
+        }
 
 		// Utility Vest vegetation follows vanilla hand-loot (including Wheat Seeds from grass),
 		// regardless of the item held. Hand-clearing is separate from tool harvesting.

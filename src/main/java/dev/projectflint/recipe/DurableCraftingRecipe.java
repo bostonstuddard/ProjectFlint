@@ -4,6 +4,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import dev.projectflint.registry.ModRecipes;
+import dev.projectflint.registry.ModItems;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.world.level.Level;
@@ -65,11 +66,10 @@ public final class DurableCraftingRecipe implements CraftingRecipe {
 		NonNullList<ItemStack> remains = CraftingRecipe.defaultCraftingReminder(input);
 		for (int index = 0; index < input.size(); index++) {
 			ItemStack stack = input.getItem(index);
-			if (!stack.isEmpty() && tool.test(stack) && stack.isDamageableItem()) {
+			if (!stack.isEmpty() && (tool.test(stack) || stack.is(ModItems.FLINT_FILE) || stack.is(ModItems.BONE_KNIFE))) {
 				ItemStack worn = stack.copyWithCount(1);
-				worn.setDamageValue(worn.getDamageValue() + 1);
-				remains.set(index, worn.getDamageValue() >= worn.getMaxDamage() ? ItemStack.EMPTY : worn);
-				break;
+				if (worn.isDamageableItem()) worn.setDamageValue(worn.getDamageValue() + 1);
+				remains.set(index, worn.isDamageableItem() && worn.getDamageValue() >= worn.getMaxDamage() ? ItemStack.EMPTY : worn);
 			}
 		}
 		return remains;

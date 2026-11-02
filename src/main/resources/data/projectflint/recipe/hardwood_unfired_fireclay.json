@@ -1,0 +1,17 @@
+{
+  "type": "projectflint:hardwood_shaped",
+  "category": "misc",
+  "pattern": [
+    "UUU",
+    "USU",
+    "UUU"
+  ],
+  "key": {
+    "U": "projectflint:unfired_brick",
+    "S": "minecraft:sand"
+  },
+  "result": {
+    "id": "projectflint:unfired_fireclay_brick",
+    "count": 10
+  }
+}

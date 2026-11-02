@@ -1,0 +1,12 @@
+{
+  "type": "projectflint:hardwood_durable",
+  "category": "misc",
+  "ingredients": [
+    "projectflint:wooden_board"
+  ],
+  "tool": "projectflint:flint_file",
+  "result": {
+    "id": "projectflint:wooden_screw",
+    "count": 4
+  }
+}

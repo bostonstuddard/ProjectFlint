@@ -1,0 +1,12 @@
+{
+  "type": "projectflint:hardwood_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:book",
+    "minecraft:black_dye"
+  ],
+  "result": {
+    "id": "minecraft:writable_book",
+    "count": 1
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "type": "projectflint:hardwood_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:beetroot"
+  ],
+  "result": {
+    "id": "minecraft:red_dye",
+    "count": 3
+  }
+}

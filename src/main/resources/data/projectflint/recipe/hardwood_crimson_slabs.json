@@ -1,0 +1,15 @@
+{
+  "type": "projectflint:hardwood_shaped",
+  "category": "misc",
+  "pattern": [
+    "P",
+    "P"
+  ],
+  "key": {
+    "P": "minecraft:crimson_planks"
+  },
+  "result": {
+    "id": "minecraft:crimson_slab",
+    "count": 6
+  }
+}

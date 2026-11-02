@@ -6,8 +6,19 @@ import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
 RESOURCES = ROOT / "src/main/resources"
-EXPECTED_VERSION = "0.31.50-b"
+EXPECTED_VERSION = "0.31.52-b"
 errors: list[str] = []
+
+# Verify 1.21.11 Mojang mappings: recipe displays live in crafting.display.
+hardwood_recipe_file = ROOT / "src/main/java/dev/projectflint/recipe/HardwoodCraftingRecipe.java"
+if hardwood_recipe_file.is_file():
+    hardwood_recipe_text = hardwood_recipe_file.read_text(encoding="utf-8")
+    if "import net.minecraft.world.item.crafting.display.RecipeDisplay;" not in hardwood_recipe_text:
+        errors.append("HardwoodCraftingRecipe must import RecipeDisplay from crafting.display")
+    if "import net.minecraft.world.item.crafting.RecipeDisplay;" in hardwood_recipe_text:
+        errors.append("obsolete 1.21.11 RecipeDisplay import remains")
+else:
+    errors.append("missing HardwoodCraftingRecipe.java")
 
 
 def fail(message: str) -> None:
@@ -264,11 +275,11 @@ for name, path in (
 
 # Build / cleanup protocol.
 build = read("build.bat")
-if "APPLY_PROJECTFLINT_0_31_50_B.bat" not in build:
+if "APPLY_PROJECTFLINT_0_31_52_B.bat" not in build:
 	fail("build.bat does not apply the current release cleanup")
 if 'explorer.exe /select,' not in build:
 	fail("build.bat no longer opens Explorer with the successful JAR selected")
-if not (ROOT / "APPLY_PROJECTFLINT_0_31_50_B.bat").exists():
+if not (ROOT / "APPLY_PROJECTFLINT_0_31_52_B.bat").exists():
 	fail("missing current release cleanup BAT")
 
 for root_junk in (
@@ -412,8 +423,8 @@ for name in ("limestone", "cobbled_limestone", "smooth_limestone", "limestone_br
         fail(f"missing v0.31.6-b item translation: {name}")
 
 build_bat = read("build.bat")
-cleanup_bat = read("APPLY_PROJECTFLINT_0_31_50_B.bat")
-for expected in ("0.31.50-b", "APPLY_PROJECTFLINT_0_31_50_B.bat"):
+cleanup_bat = read("APPLY_PROJECTFLINT_0_31_52_B.bat")
+for expected in ("0.31.51-b", "APPLY_PROJECTFLINT_0_31_52_B.bat"):
 	if expected not in build_bat:
 		fail(f"build.bat version/apply wiring missing: {expected}")
 if "APPLY_PROJECTFLINT_0_28_28_A.bat" not in cleanup_bat:
@@ -3786,8 +3797,8 @@ item47 = read("src/main/java/dev/projectflint/registry/ModItems.java")
 tips47 = read("src/main/java/dev/projectflint/mixin/ItemTooltipMixin.java")
 if 'cir.setReturnValue(1.0F / 420.0F)' not in mining47 or 'Math.max(1.0F / 95.0F, vanillaProgress)' in mining47:
     fail('v47 Hammer bypass still outruns pickaxes')
-if 'held.is(ModItems.HARDWOOD_PICKAXE) ? 1.0F / 180.0F : 1.0F / 270.0F' not in mining47:
-    fail('v47 Hardwood pickaxe missing meaningfully faster mining')
+if 'OreMiningRules.progress(state, held, vanillaProgress)' not in mining47:
+    fail('v51 ore mining progress is not gated')
 if 'new net.minecraft.world.item.AxeItem(HARDWOOD_MATERIAL' not in item47:
     fail('v47 Hardwood Axe must implement vanilla AxeItem stripping')
 if 'properties.pickaxe(HARDWOOD_HAMMER_MATERIAL, 2.0F, -3.2F)' not in item47:
@@ -3850,7 +3861,7 @@ menu50 = read('src/main/java/dev/projectflint/menu/HardwoodCraftingMenu.java')
 mod_menus50 = read('src/main/java/dev/projectflint/registry/ModMenus.java')
 client50 = read('src/main/java/dev/projectflint/client/ProjectFlintClient.java')
 screen50 = read('src/main/java/dev/projectflint/client/screen/HardwoodCraftingScreen.java')
-for token in ('CRAFT_TICKS = 60', 'getRecipeFor(RecipeType.CRAFTING', 'readyAtTick', 'refreshRecipe(true)', 'DataSlot.standalone()', 'resultSlots.setItem(0, ItemStack.EMPTY)', 'ticks == CRAFT_TICKS', 'isCraftReady()', 'quickMoveStack', 'clicked(int slotId'):
+for token in ('CRAFT_TICKS = 60', 'getRecipeFor(ModRecipes.HARDWOOD_CRAFTING', 'readyAtTick', 'refreshRecipe(true)', 'DataSlot.standalone()', 'resultSlots.setItem(0, ItemStack.EMPTY)', 'ticks == CRAFT_TICKS', 'isCraftReady()', 'quickMoveStack', 'clicked(int slotId'):
     if token not in menu50: fail('v50 hardened craft menu missing '+token)
 if 'super.slotsChanged(container)' in menu50:
     fail('v50 vanilla menu can still send premature crafting output')
@@ -3863,7 +3874,7 @@ if 'APPLY_PROJECTFLINT_0_31_49_B.bat' not in read('APPLY_PROJECTFLINT_0_31_50_B.
 if '0.31.50-b' not in read('docs/releases/0.31.50-b.md'):
     fail('v50 release notes missing')
 if errors:
-    print('Project Flint v0.31.50-b validation FAILED:')
+    print('Project Flint v0.31.52-b validation FAILED:')
     for message in errors: print(' -', message)
     sys.exit(1)
-print('Project Flint v0.31.50-b fixes and preservation checks passed.')
+print('Project Flint v0.31.52-b preservation checks passed.')

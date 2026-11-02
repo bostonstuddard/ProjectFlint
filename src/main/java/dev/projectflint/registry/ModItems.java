@@ -258,11 +258,12 @@ public final class ModItems {
 	public static final Item FLINT_FILE = register("flint_file", properties -> new Item(properties.durability(128).stacksTo(1)));
 	public static final Item WOODEN_SHEET = register("wooden_sheet", properties -> new Item(properties.stacksTo(64)));
 	private static final ToolMaterial HARDWOOD_MATERIAL = new ToolMaterial(
-		ToolMaterial.WOOD.incorrectBlocksForDrops(), 92, 3.5F, 0.5F, 13, ToolMaterial.WOOD.repairItems());
+		ToolMaterial.WOOD.incorrectBlocksForDrops(), 320, 3.5F, 0.5F, 13, ToolMaterial.WOOD.repairItems());
 	private static final ToolMaterial HARDWOOD_HAMMER_MATERIAL = new ToolMaterial(
-		ToolMaterial.STONE.incorrectBlocksForDrops(), 196, 2.0F, 1.0F, 12, ToolMaterial.STONE.repairItems());
+		ToolMaterial.STONE.incorrectBlocksForDrops(), 560, 2.0F, 1.0F, 12, ToolMaterial.STONE.repairItems());
 	public static final Item WOOD_DUST = register("wood_dust", properties -> new Item(properties.stacksTo(64)));
 	public static final Item HARDWOOD = register("hardwood", properties -> new Item(properties.stacksTo(64)));
+	public static final Item HARDWOOD_STICKS = register("hardwood_sticks", properties -> new Item(properties.stacksTo(64)));
 	public static final Item HARDWOOD_ALLOY = register("hardwood_alloy", properties -> new Item(properties.stacksTo(64)));
 	public static final Item HARDWOOD_CRAFTING_TABLE = registerBlockItem("hardwood_crafting_table", ModBlocks.HARDWOOD_CRAFTING_TABLE, 1);
 	public static final Item HARDWOOD_AXE = register("hardwood_axe", properties -> new net.minecraft.world.item.AxeItem(HARDWOOD_MATERIAL, 6.0F, -3.0F, properties.stacksTo(1)));

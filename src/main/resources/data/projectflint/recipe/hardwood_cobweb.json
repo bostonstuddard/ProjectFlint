@@ -1,0 +1,16 @@
+{
+  "type": "projectflint:hardwood_shaped",
+  "category": "misc",
+  "pattern": [
+    "SSS",
+    "SSS",
+    "SSS"
+  ],
+  "key": {
+    "S": "minecraft:string"
+  },
+  "result": {
+    "id": "projectflint:cobweb",
+    "count": 1
+  }
+}

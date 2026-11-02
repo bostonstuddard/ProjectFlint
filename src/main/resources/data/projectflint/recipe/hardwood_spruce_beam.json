@@ -1,0 +1,12 @@
+{
+  "type": "projectflint:hardwood_durable",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:spruce_log"
+  ],
+  "tool": "projectflint:flint_plant_cutters",
+  "result": {
+    "id": "projectflint:spruce_wooden_beam",
+    "count": 1
+  }
+}

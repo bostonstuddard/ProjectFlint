@@ -1,0 +1,11 @@
+{
+  "type": "projectflint:hardwood_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:ink_sac"
+  ],
+  "result": {
+    "id": "minecraft:black_dye",
+    "count": 3
+  }
+}

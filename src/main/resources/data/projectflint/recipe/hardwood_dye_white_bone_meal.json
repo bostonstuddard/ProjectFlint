@@ -1,0 +1,11 @@
+{
+  "type": "projectflint:hardwood_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:bone_meal"
+  ],
+  "result": {
+    "id": "minecraft:white_dye",
+    "count": 3
+  }
+}

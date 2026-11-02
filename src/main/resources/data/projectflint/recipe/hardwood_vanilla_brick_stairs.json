@@ -1,0 +1,16 @@
+{
+  "type": "projectflint:hardwood_shaped",
+  "category": "misc",
+  "pattern": [
+    "B  ",
+    "BB ",
+    "BBB"
+  ],
+  "key": {
+    "B": "minecraft:bricks"
+  },
+  "result": {
+    "id": "minecraft:brick_stairs",
+    "count": 6
+  }
+}

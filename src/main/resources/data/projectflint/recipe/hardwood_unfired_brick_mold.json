@@ -1,0 +1,16 @@
+{
+  "type": "projectflint:hardwood_shaped",
+  "category": "misc",
+  "pattern": [
+    "WWW",
+    "W W",
+    "WWW"
+  ],
+  "key": {
+    "W": "projectflint:wooden_sheet"
+  },
+  "result": {
+    "id": "projectflint:unfired_brick_mold",
+    "count": 1
+  }
+}

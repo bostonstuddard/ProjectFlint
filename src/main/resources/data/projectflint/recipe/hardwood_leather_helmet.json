@@ -1,0 +1,15 @@
+{
+  "type": "projectflint:hardwood_shaped",
+  "category": "misc",
+  "pattern": [
+    "MMM",
+    "M M"
+  ],
+  "key": {
+    "M": "minecraft:leather"
+  },
+  "result": {
+    "id": "minecraft:leather_helmet",
+    "count": 1
+  }
+}

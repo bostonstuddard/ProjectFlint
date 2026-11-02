@@ -1,0 +1,11 @@
+{
+  "type": "projectflint:hardwood_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:orange_tulip"
+  ],
+  "result": {
+    "id": "minecraft:orange_dye",
+    "count": 3
+  }
+}

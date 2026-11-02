@@ -1,0 +1,17 @@
+{
+  "type": "projectflint:hardwood_shaped",
+  "category": "misc",
+  "pattern": [
+    "   ",
+    " S ",
+    "WWW"
+  ],
+  "key": {
+    "S": "minecraft:string",
+    "W": "minecraft:wheat"
+  },
+  "result": {
+    "id": "projectflint:nest",
+    "count": 1
+  }
+}

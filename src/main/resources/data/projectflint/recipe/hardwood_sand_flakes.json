@@ -1,0 +1,11 @@
+{
+  "type": "projectflint:hardwood_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:sand"
+  ],
+  "result": {
+    "id": "projectflint:sand_flake",
+    "count": 4
+  }
+}

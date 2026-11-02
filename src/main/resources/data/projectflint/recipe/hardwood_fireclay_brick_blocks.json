@@ -1,0 +1,15 @@
+{
+  "type": "projectflint:hardwood_shaped",
+  "category": "misc",
+  "pattern": [
+    "FF",
+    "FF"
+  ],
+  "key": {
+    "F": "projectflint:fireclay_brick"
+  },
+  "result": {
+    "id": "projectflint:fireclay_brick_block",
+    "count": 2
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "projectflint:hardwood_durable",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:writable_book"
+  ],
+  "tool": "projectflint:bone_knife",
+  "result": {
+    "id": "projectflint:recipe_parchment",
+    "count": 2
+  }
+}

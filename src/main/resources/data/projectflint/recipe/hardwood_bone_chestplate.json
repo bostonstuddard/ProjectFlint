@@ -1,0 +1,16 @@
+{
+  "type": "projectflint:hardwood_shaped",
+  "category": "misc",
+  "pattern": [
+    "M M",
+    "MMM",
+    "MMM"
+  ],
+  "key": {
+    "M": "projectflint:filed_bone"
+  },
+  "result": {
+    "id": "projectflint:bone_chestplate",
+    "count": 1
+  }
+}

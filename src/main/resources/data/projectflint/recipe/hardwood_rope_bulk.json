@@ -1,0 +1,18 @@
+{
+  "type": "projectflint:hardwood_shaped",
+  "category": "misc",
+  "pattern": [
+    "BRB",
+    "RCR",
+    "BRB"
+  ],
+  "key": {
+    "R": "projectflint:rope",
+    "B": "projectflint:plant_tool_binding",
+    "C": "projectflint:cobweb"
+  },
+  "result": {
+    "id": "projectflint:rope",
+    "count": 5
+  }
+}

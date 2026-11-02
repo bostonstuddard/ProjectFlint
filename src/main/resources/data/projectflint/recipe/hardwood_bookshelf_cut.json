@@ -1,0 +1,14 @@
+{
+  "type": "projectflint:hardwood_durable",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:book",
+    "minecraft:oak_planks",
+    "projectflint:flint_file"
+  ],
+  "tool": "projectflint:bone_knife",
+  "result": {
+    "id": "projectflint:bookshelf",
+    "count": 1
+  }
+}

@@ -1,6 +1,7 @@
 package dev.projectflint.menu;
 
 import dev.projectflint.registry.ModBlocks;
+import dev.projectflint.registry.ModRecipes;
 import dev.projectflint.registry.ModMenus;
 import java.util.ArrayList;
 import java.util.List;
@@ -115,8 +116,9 @@ public final class HardwoodCraftingMenu extends CraftingMenu {
         resultSlots.setItem(0, ItemStack.EMPTY);
         resultSlots.setRecipeUsed(null);
 
-        var recipe = serverLevel.getServer().getRecipeManager()
-            .getRecipeFor(RecipeType.CRAFTING, craftSlots.asCraftInput(), serverLevel);
+        var manager = serverLevel.getServer().getRecipeManager();
+        var recipe = manager.getRecipeFor(ModRecipes.HARDWOOD_CRAFTING, craftSlots.asCraftInput(), serverLevel)
+            .or(() -> manager.getRecipeFor(RecipeType.CRAFTING, craftSlots.asCraftInput(), serverLevel));
         if (recipe.isPresent()) {
             RecipeHolder<CraftingRecipe> holder = recipe.get();
             if (resultSlots.setRecipeUsed(serverPlayer, holder)) {

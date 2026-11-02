@@ -1,0 +1,15 @@
+{
+  "type": "projectflint:hardwood_shaped",
+  "category": "misc",
+  "pattern": [
+    "P",
+    "P"
+  ],
+  "key": {
+    "P": "minecraft:bamboo_planks"
+  },
+  "result": {
+    "id": "minecraft:bamboo_slab",
+    "count": 6
+  }
+}

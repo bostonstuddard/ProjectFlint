@@ -1,0 +1,12 @@
+{
+  "type": "projectflint:hardwood_durable",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:bone"
+  ],
+  "tool": "projectflint:bone_knife",
+  "result": {
+    "id": "projectflint:filed_bone",
+    "count": 2
+  }
+}

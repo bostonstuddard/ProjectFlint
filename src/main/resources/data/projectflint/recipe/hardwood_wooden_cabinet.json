@@ -1,0 +1,19 @@
+{
+  "type": "projectflint:hardwood_shaped",
+  "category": "misc",
+  "pattern": [
+    "CCC",
+    "SLS",
+    "WSW"
+  ],
+  "key": {
+    "C": "minecraft:cobblestone",
+    "L": "minecraft:oak_log",
+    "S": "projectflint:wooden_sheet",
+    "W": "projectflint:wooden_screw"
+  },
+  "result": {
+    "id": "projectflint:wooden_cabinet",
+    "count": 1
+  }
+}

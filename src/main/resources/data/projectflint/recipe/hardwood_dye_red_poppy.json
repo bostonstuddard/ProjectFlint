@@ -1,0 +1,11 @@
+{
+  "type": "projectflint:hardwood_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:poppy"
+  ],
+  "result": {
+    "id": "minecraft:red_dye",
+    "count": 3
+  }
+}

@@ -1,14 +1,15 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "category": "equipment",
+  "type": "projectflint:hardwood_shaped",
+  "category": "misc",
   "pattern": [
     "HHH",
     " S ",
-    " S "
+    "LS "
   ],
   "key": {
     "H": "projectflint:hardwood",
-    "S": "minecraft:stick"
+    "S": "minecraft:stick",
+    "L": "projectflint:leather_strap"
   },
   "result": {
     "id": "projectflint:hardwood_pickaxe",

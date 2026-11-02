@@ -1,0 +1,11 @@
+{
+  "type": "projectflint:hardwood_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:pink_tulip"
+  ],
+  "result": {
+    "id": "minecraft:pink_dye",
+    "count": 3
+  }
+}

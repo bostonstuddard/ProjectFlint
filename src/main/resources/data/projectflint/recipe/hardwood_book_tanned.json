@@ -1,0 +1,13 @@
+{
+  "type": "projectflint:hardwood_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "projectflint:tanned_leather",
+    "minecraft:paper",
+    "minecraft:paper"
+  ],
+  "result": {
+    "id": "minecraft:book",
+    "count": 3
+  }
+}

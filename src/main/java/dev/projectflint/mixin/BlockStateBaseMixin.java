@@ -10,6 +10,7 @@ import dev.projectflint.system.LumberProcessorSystem;
 import dev.projectflint.system.TannedUtilityVestSystem;
 import dev.projectflint.system.PlayerPlacedBlockLedger;
 import dev.projectflint.system.WoodenToolTargets;
+import dev.projectflint.system.OreMiningRules;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.tags.BlockTags;
@@ -34,6 +35,12 @@ public abstract class BlockStateBaseMixin {
 		float vanillaProgress = cir.getReturnValue();
 		BlockState state = (BlockState) (Object) this;
 		ItemStack held = player.getMainHandItem();
+        // Before vest/hammer/vanilla fallbacks: every ore must pass one authoritative speed gate.
+        if (OreMiningRules.isStone(state) || OreMiningRules.isOre(state)) {
+            cir.setReturnValue(OreMiningRules.progress(state, held, vanillaProgress));
+            return;
+        }
+
 		// Leaves should never pop instantly from unrelated held tools or a retired belt.
 		// The Vest grants hand-harvesting permission, not an instantaneous leaf harvest.
 		if (state.is(BlockTags.LEAVES)) {

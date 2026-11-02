@@ -1,0 +1,15 @@
+{
+  "type": "projectflint:hardwood_shaped",
+  "category": "misc",
+  "pattern": [
+    "P",
+    "P"
+  ],
+  "key": {
+    "P": "minecraft:jungle_planks"
+  },
+  "result": {
+    "id": "minecraft:jungle_slab",
+    "count": 6
+  }
+}

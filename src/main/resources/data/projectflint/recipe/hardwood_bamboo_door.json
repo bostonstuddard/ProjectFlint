@@ -1,0 +1,17 @@
+{
+  "type": "projectflint:hardwood_shaped",
+  "category": "misc",
+  "pattern": [
+    "PPS",
+    "PPS",
+    "PPS"
+  ],
+  "key": {
+    "P": "minecraft:bamboo_planks",
+    "S": "projectflint:wooden_screw"
+  },
+  "result": {
+    "id": "minecraft:bamboo_door",
+    "count": 1
+  }
+}

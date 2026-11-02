@@ -1,0 +1,15 @@
+{
+  "type": "projectflint:hardwood_shaped",
+  "category": "misc",
+  "pattern": [
+    "M M",
+    "M M"
+  ],
+  "key": {
+    "M": "minecraft:leather"
+  },
+  "result": {
+    "id": "minecraft:leather_boots",
+    "count": 1
+  }
+}

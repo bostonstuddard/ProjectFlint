@@ -1,0 +1,17 @@
+{
+  "type": "projectflint:hardwood_shaped",
+  "category": "misc",
+  "pattern": [
+    "HHH",
+    "HRH",
+    "HHH"
+  ],
+  "key": {
+    "H": "projectflint:hardwood",
+    "R": "projectflint:rope"
+  },
+  "result": {
+    "id": "projectflint:well_pulley",
+    "count": 1
+  }
+}

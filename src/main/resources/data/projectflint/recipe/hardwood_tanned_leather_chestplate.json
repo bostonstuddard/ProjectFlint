@@ -1,0 +1,16 @@
+{
+  "type": "projectflint:hardwood_shaped",
+  "category": "misc",
+  "pattern": [
+    "M M",
+    "MMM",
+    "MMM"
+  ],
+  "key": {
+    "M": "projectflint:tanned_leather"
+  },
+  "result": {
+    "id": "projectflint:tanned_leather_chestplate",
+    "count": 1
+  }
+}

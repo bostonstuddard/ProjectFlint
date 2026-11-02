@@ -1,0 +1,14 @@
+{
+  "type": "projectflint:hardwood_shaped",
+  "category": "misc",
+  "pattern": [
+    "BBB"
+  ],
+  "key": {
+    "B": "projectflint:fireclay_brick_block"
+  },
+  "result": {
+    "id": "projectflint:fireclay_brick_slab",
+    "count": 6
+  }
+}
