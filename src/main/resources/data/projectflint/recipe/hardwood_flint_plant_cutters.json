@@ -2,9 +2,9 @@
   "type": "projectflint:hardwood_shaped",
   "category": "misc",
   "pattern": [
-    "S F",
     "SF ",
-    "S F"
+    "S F",
+    "SF "
   ],
   "key": {
     "S": "minecraft:stick",

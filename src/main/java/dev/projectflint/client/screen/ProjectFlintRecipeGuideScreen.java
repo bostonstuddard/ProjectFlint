@@ -300,10 +300,10 @@ public final class ProjectFlintRecipeGuideScreen extends Screen {
         // Each chance is an independent roll; 1 hunger point is charged on *every* stomp.
         result.add(new GuideRecipe(List.of(new ItemStack(Items.RAW_IRON)), new ItemStack(ModItems.IRON_DUST)).withNote("100% 1st; 75% 2nd Iron Dust; 50% Slag; 3% Gold Dust."));
         result.add(new GuideRecipe(List.of(new ItemStack(Items.RAW_IRON)), new ItemStack(ModItems.GOLD_DUST)).withNote("3% chance; independent of Iron Dust and Slag."));
-        result.add(new GuideRecipe(List.of(new ItemStack(Items.RAW_COPPER)), new ItemStack(ModItems.COPPER_DUST)).withNote("100% first; 83% second; 24% third; 10% Nickel; 2% Silver; 5% Slag."));
+        result.add(new GuideRecipe(List.of(new ItemStack(Items.RAW_COPPER)), new ItemStack(ModItems.COPPER_DUST)).withNote("100% first; 83% second; 24% third; 10% Nickel; 2% Silver; 12.5% Slag."));
         result.add(new GuideRecipe(List.of(new ItemStack(Items.RAW_COPPER)), new ItemStack(ModItems.NICKEL_DUST)).withNote("10% chance."));
         result.add(new GuideRecipe(List.of(new ItemStack(Items.RAW_COPPER)), new ItemStack(ModItems.SILVER_DUST)).withNote("2% chance."));
-        result.add(new GuideRecipe(List.of(new ItemStack(Items.RAW_COPPER)), new ItemStack(ModItems.SLAG)).withNote("5% chance."));
+        result.add(new GuideRecipe(List.of(new ItemStack(Items.RAW_COPPER)), new ItemStack(ModItems.SLAG)).withNote("12.5% chance."));
         result.add(new GuideRecipe(List.of(new ItemStack(Items.ANDESITE)), new ItemStack(ModItems.FERTILIZER)).withNote("1 or 2 Fertilizer (50/50), plus 33% Stone Dust."));
         result.add(new GuideRecipe(List.of(new ItemStack(Items.GRANITE)), new ItemStack(ModItems.FERTILIZER)).withNote("1 or 2 Fertilizer (50/50), plus 33% Stone Dust."));
         result.add(new GuideRecipe(List.of(new ItemStack(Items.ANDESITE)), new ItemStack(ModItems.STONE_DUST)).withNote("33% chance, independent of Fertilizer."));
@@ -312,24 +312,27 @@ public final class ProjectFlintRecipeGuideScreen extends Screen {
         result.add(new GuideRecipe(List.of(new ItemStack(Items.COBBLESTONE)), new ItemStack(ModItems.STONE_DUST)).withNote("66% 1st, 44% 2nd, 13.33% 3rd; all independent."));
         result.add(new GuideRecipe(List.of(new ItemStack(Items.DIORITE)), new ItemStack(ModItems.STONE_DUST)).withNote("1 or 2 Stone Dust, 50/50."));
         result.add(new GuideRecipe(List.of(new ItemStack(ModItems.STONE_DUST)), new ItemStack(ModItems.SLAG)).withNote("50% chance."));
-        result.add(new GuideRecipe(List.of(new ItemStack(Items.GRAVEL)), new ItemStack(Items.FLINT)).withNote("100% Flint; 20% Quartz Dust; 1% Iron Dust."));
+        result.add(new GuideRecipe(List.of(new ItemStack(Items.GRAVEL)), new ItemStack(Items.FLINT)).withNote("100% Flint; 20% Quartz Dust; 1% Iron Dust; 4% Rare Earth Dust."));
         result.add(new GuideRecipe(List.of(new ItemStack(Items.GRAVEL)), new ItemStack(ModItems.QUARTZ_DUST)).withNote("20% chance."));
         result.add(new GuideRecipe(List.of(new ItemStack(Items.GRAVEL)), new ItemStack(ModItems.IRON_DUST)).withNote("1% chance."));
-        result.add(new GuideRecipe(List.of(new ItemStack(Items.SAND)), new ItemStack(ModItems.POTASSIUM_DUST)).withNote("100% Potassium; 15% Tin; 5% Mica; 1% Gold."));
+        result.add(new GuideRecipe(List.of(new ItemStack(Items.SAND)), new ItemStack(ModItems.POTASSIUM_DUST)).withNote("100% Potassium; 15% Tin; 5% Mica; 1% Gold; 4% Rare Earth Dust."));
         result.add(new GuideRecipe(List.of(new ItemStack(Items.SAND)), new ItemStack(ModItems.TIN_DUST)).withNote("15% chance."));
         result.add(new GuideRecipe(List.of(new ItemStack(Items.SAND)), new ItemStack(ModItems.MICA_DUST)).withNote("5% chance."));
         result.add(new GuideRecipe(List.of(new ItemStack(Items.SAND)), new ItemStack(ModItems.GOLD_DUST)).withNote("1% chance."));
-        result.add(new GuideRecipe(List.of(new ItemStack(Items.CLAY)), new ItemStack(ModItems.MICA_DUST)).withNote("5% Mica; 3.33% Rare Earth; 0.33% Silver; 2% Gold."));
-        result.add(new GuideRecipe(List.of(new ItemStack(Items.CLAY)), new ItemStack(ModItems.RARE_EARTH_DUST)).withNote("3.33% chance."));
+        result.add(new GuideRecipe(List.of(new ItemStack(Items.GRAVEL)), new ItemStack(ModItems.RARE_EARTH_DUST)).withNote("4% chance, independent of all other drops."));
+        result.add(new GuideRecipe(List.of(new ItemStack(Items.SAND)), new ItemStack(ModItems.RARE_EARTH_DUST)).withNote("4% chance, independent of all other drops."));
+        result.add(new GuideRecipe(List.of(new ItemStack(Items.CLAY)), new ItemStack(ModItems.MICA_DUST)).withNote("5% Mica; 4% Rare Earth; 0.33% Silver; 2% Gold. All rolled separately."));
+        result.add(new GuideRecipe(List.of(new ItemStack(Items.CLAY)), new ItemStack(ModItems.RARE_EARTH_DUST)).withNote("4% chance."));
         result.add(new GuideRecipe(List.of(new ItemStack(Items.CLAY)), new ItemStack(ModItems.SILVER_DUST)).withNote("0.33% chance."));
         result.add(new GuideRecipe(List.of(new ItemStack(Items.CLAY)), new ItemStack(ModItems.GOLD_DUST)).withNote("2% chance."));
         result.add(new GuideRecipe(List.of(new ItemStack(ModItems.RARE_EARTH_DUST)), new ItemStack(ModItems.LITHIUM_DUST)).withNote("22.3% Lithium; 15% Iron; 4.8% Aluminum; 0.85% Gallium."));
         result.add(new GuideRecipe(List.of(new ItemStack(ModItems.RARE_EARTH_DUST)), new ItemStack(ModItems.IRON_DUST)).withNote("15% chance."));
         result.add(new GuideRecipe(List.of(new ItemStack(ModItems.RARE_EARTH_DUST)), new ItemStack(ModItems.ALUMINUM_DUST)).withNote("4.8% chance."));
         result.add(new GuideRecipe(List.of(new ItemStack(ModItems.RARE_EARTH_DUST)), new ItemStack(ModItems.GALLIUM_DUST)).withNote("0.85% chance."));
-        result.add(new GuideRecipe(List.of(new ItemStack(ModItems.SLAG)), new ItemStack(ModItems.IRON_DUST)).withNote("33% Iron, 33% Copper, 33% Silicon; independent."));
+        result.add(new GuideRecipe(List.of(new ItemStack(ModItems.SLAG)), new ItemStack(ModItems.IRON_DUST)).withNote("33% Iron, 33% Copper, 33% Silicon, 1.8% Rare Earth; independent."));
         result.add(new GuideRecipe(List.of(new ItemStack(ModItems.SLAG)), new ItemStack(ModItems.COPPER_DUST)).withNote("33% chance."));
         result.add(new GuideRecipe(List.of(new ItemStack(ModItems.SLAG)), new ItemStack(ModItems.SILICON_DUST)).withNote("33% chance."));
+        result.add(new GuideRecipe(List.of(new ItemStack(ModItems.SLAG)), new ItemStack(ModItems.RARE_EARTH_DUST)).withNote("1.8% chance, independent of all other drops."));
         for (GuideRecipe recipe : result)
             recipe.withStomps(dev.projectflint.block.entity.BasinBlockEntity.requiredStompsFor(recipe.inputs.get(0)));
         return result;
@@ -474,7 +477,7 @@ public final class ProjectFlintRecipeGuideScreen extends Screen {
 		}
         private GuideRecipe withNote(String explanation) { this.note = explanation; return this; }
         private GuideRecipe withStomps(int count) {
-            this.note = count + (count == 1 ? " stomp" : " stomps") + " per input. " + (this.note == null ? "" : this.note);
+            this.note = count + (count == 1 ? " stomp" : " stomps") + " per input, 1 hunger per stomp. Basin holds 4 items. " + (this.note == null ? "" : this.note);
             return this;
         }
 		private void merge(GuideRecipe other) {

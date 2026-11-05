@@ -1,3 +1,26 @@
+## v0.31.61-b — Mapped glass class and workstation-specific recipe
+MC 1.21.11 Mojang mappings expose vanilla glass implementation `net.minecraft.world.level.block.TransparentBlock` (not `GlassBlock`). Instantiate `TransparentBlock` with `BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).setId(key)` to retain ordinary glass behavior. `ProjectFlintClient` translucent render layer and existing vest permission/drops are unchanged.
+
+Keep PMI Sheet processing in `projectflint:hardwood_durable` only (`hardwood_pmi_sheets.json`), with Bone Knife remainder/wear preserved by the Hardwood recipe result slot. `personal_pmi_sheets.json` must be **absent**, including in users' pre-existing source folders. `APPLY_PROJECTFLINT_0_31_61_B.bat` removes the stale file before the build; do not reintroduce its entry into `PersonalCraftingGuideRegistry` or the G-key guide. The earlier dual-workstation wording below is superseded.
+
+## v0.31.60-b — Glass and output pipeline (supersedes ADR 0017 light-blocking choice)
+
+`ModBlocks.PURE_MICA_INSULATED_GLASS` now registers `GlassBlock` with `BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS)`, not `TintedGlassBlock`: the translucent block passes ordinary light. Client layer stays `TRANSLUCENT`. No loot, vest authorization or mining gates were broadened. The sheet is registered with normal `Item`, **not** a `BlockItem`: `ModItems.PMI_SHEET`, texture `textures/item/pmi_sheet.png`, item definition and generated item model. Personal and Hardwood recipes use the existing durable crafting serializer to wear the Bone Knife and preserve a separate 2-output sheet recipe in both grids. `PersonalCraftingGuideRegistry` and `HardwoodCraftingGuideRegistry` must be updated in parallel.
+
+`build.bat` always adds `--no-daemon`, verifies the expected versioned JAR and nested-PF-EMI exclusion before copying the release binary to `dist/`. Keep build success/failure exit paths explicit, never copy sources/dev JARs, and avoid killing unrelated Java processes. Set `org.gradle.daemon=false` so local Gradle invocations also don't leave persistent daemons.
+
+## v0.31.59-b — Storage and guide boundaries
+
+`BasinBlockEntity` implements vanilla `Container` with four distinct one-item slots; NBT serialization via `ContainerHelper` is authoritative, with legacy single-stack migration. No Jade dependency in gameplay classpath. `BasinItemRenderer` submits the four model render states independently, not as a fake static texture. Server handles stomp progression, one hunger point per stomp, sound/particles, and FIFO processing; game clients only display synced state. No hopper insertion because manual Basin staging is a player action. The Field Guide's text content is authored in progression order; the UI wraps full chapter content into scroll-free dynamic pages based on actual GUI size. Optional Mod Menu entrypoint is client-only, compiled with `modCompileOnly`.
+
+## v0.31.58-b — Updated block and recipe boundaries
+
+Historical v0.31.58-b note (superseded in v0.31.60-b): the initial registered block used `TintedGlassBlock`; the current class is `GlassBlock` as specified above. Its block item, drops and translucency persist.
+
+`FireclayForgeBlockEntity.serverTick` terminates a completed burn without invoking `ignite()`. `ignite()` is a manual pathway; Charcoal requires matching input and space for processed output. `FatBurningTorchBlockEntity.ignite()` guards Y < 0; the BE owns the 60,000 tick fuel duration and saves it with NBT.
+
+`BasinMaterialProcessingSystem` must roll each optional drop independently; do not introduce `else if` inside its per-input drop list. Cup recipes on the personal 2×2 and Hardwood 3×3 must remain separate so the two output rates cannot cross. `ModItems.CLAY_MILK_BUCKET` has an empty-bucket crafting remainder. `PotassiumRichFertilizerItem` delegates to vanilla Bone Meal except for saplings/tree fungi.
+
 ## v0.31.57-b — Material flow rules
 
 Basin material chance logic remains centralized in `BasinMaterialProcessingSystem`, hunger/stomp persistence in `BasinBlockEntity`, and render transforms in the Basin item model. The 160 Hardwood Table recipe definitions use the custom type while the bootstrap Table recipe is standard 2x2. K guide is generated from active recipes in `HardwoodCraftingGuideRegistry`; MBSSIG processing shares the Fireclay Forge input with Hardwood Alloy via explicit recipe kinds, preventing cross-input progress exploits. See ADR 0016.

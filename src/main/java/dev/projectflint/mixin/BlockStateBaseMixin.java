@@ -6,6 +6,7 @@ import dev.projectflint.registry.ModBlocks;
 import dev.projectflint.registry.ModItems;
 import dev.projectflint.registry.ModTags;
 import dev.projectflint.system.ToolCapabilities;
+import net.minecraft.world.entity.EquipmentSlot;
 import dev.projectflint.system.LumberProcessorSystem;
 import dev.projectflint.system.TannedUtilityVestSystem;
 import dev.projectflint.system.WoodenToolTargets;
@@ -42,6 +43,11 @@ public abstract class BlockStateBaseMixin {
             return;
         }
 
+        if (state.is(ModBlocks.PURE_MICA_INSULATED_GLASS)) {
+            cir.setReturnValue(player.getItemBySlot(EquipmentSlot.CHEST).is(ModItems.TANNED_UTILITY_VEST)
+                ? 1.0F / 25.0F : 0.0F);
+            return;
+        }
         if (PlayerPlacedBlockLedger.isHandRecoverableDecoration(state)) {
             cir.setReturnValue(1.0F / 5.0F);
             return;

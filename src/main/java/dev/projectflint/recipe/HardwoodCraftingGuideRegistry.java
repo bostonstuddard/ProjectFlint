@@ -119,9 +119,10 @@ public final class HardwoodCraftingGuideRegistry {
         add(all, "hardwood_flint_axe", "projectflint:flint_axe", 1, "Grid FF/FS/S; S=stick, F=flint", "minecraft:flint#3", "minecraft:stick#2");
         add(all, "hardwood_flint_file", "projectflint:flint_file", 1, "Grid FFF/FFF/S; F=flint, S=stick", "minecraft:flint#6", "minecraft:stick#1");
         add(all, "hardwood_flint_file_refine", "projectflint:flint_file", 1, "Tool used with durability; returned with wear", "minecraft:stick#1", "minecraft:flint#1", "projectflint:flint_file#1");
-        add(all, "hardwood_flint_plant_cutters", "projectflint:flint_plant_cutters", 1, "Grid S F/SF/S F; S=stick, F=flint", "minecraft:stick#3", "minecraft:flint#3");
+        add(all, "hardwood_flint_plant_cutters", "projectflint:flint_plant_cutters", 1, "Grid SF/S F/SF; S=stick (left), F=flint (curved right)", "minecraft:stick#3", "minecraft:flint#3");
         add(all, "hardwood_flint_torch_holder", "projectflint:flint_torch_holder", 1, "", "projectflint:unlit_flint_torch#1", "projectflint:torch_holder#1");
         add(all, "hardwood_flour", "projectflint:flour", 12, "Grid WWW/WBW/WWW; W=wheat, B=clay water bucket", "minecraft:wheat#8", "projectflint:clay_water_bucket#1");
+        add(all, "hardwood_pmi_sheets", "projectflint:pmi_sheet", 2, "Bone Knife loses 1 durability", "projectflint:pure_mica_insulated_glass#1", "projectflint:bone_knife#1");
         add(all, "hardwood_glass_dust", "projectflint:glass_dust", 2, "Tool used with durability; returned with wear", "minecraft:glass#1", "projectflint:flint_file#1", "projectflint:bone_knife#1");
         add(all, "hardwood_granite_slabs", "minecraft:granite_slab", 6, "Grid SSS; S=granite", "minecraft:granite#3");
         add(all, "hardwood_granite_stairs", "minecraft:granite_stairs", 4, "Grid S/SS/SSS; S=granite", "minecraft:granite#6");
@@ -187,6 +188,10 @@ public final class HardwoodCraftingGuideRegistry {
         add(all, "hardwood_wooden_chest", "projectflint:wooden_chest", 2, "Grid WSW/SLS/WSW; W=wooden screw, S=wooden sheet, L=leather strap", "projectflint:wooden_screw#4", "projectflint:wooden_sheet#4", "projectflint:leather_strap#1");
         add(all, "hardwood_wooden_screws", "projectflint:wooden_screw", 4, "Tool used with durability; returned with wear", "projectflint:wooden_board#1", "projectflint:flint_file#1");
         add(all, "hardwood_woven_fans", "projectflint:woven_fan", 6, "Tool used with durability; returned with wear", "minecraft:paper#1", "projectflint:flint_file#1", "projectflint:bone_knife#1");
+        add(all, "hardwood_wooden_cups", "projectflint:wooden_cup", 4, "Bone Knife loses 1 durability", "projectflint:wooden_sheet#1", "projectflint:bone_knife#1");
+        add(all, "hardwood_wooden_cups_raw_milk", "projectflint:wooden_cup_raw_milk", 6, "The Clay Milk Bucket returns empty", "projectflint:wooden_cup#2", "projectflint:clay_milk_bucket#1");
+        add(all, "hardwood_flax_seeds_to_wheat", "minecraft:wheat_seeds", 6, "Grid FFF/FWF/FFF; F=flax seeds; W=clay water bucket (returns empty)", "projectflint:flax_seeds#8", "projectflint:clay_water_bucket#1");
+        add(all, "hardwood_potassium_rich_fertilizer", "projectflint:potassium_rich_fertilizer", 12, "Grid FFF/FPF/FFF; F=fertilizer; P=potassium dust", "projectflint:fertilizer#8", "projectflint:potassium_dust#1");
         return List.copyOf(all);
     }
 }

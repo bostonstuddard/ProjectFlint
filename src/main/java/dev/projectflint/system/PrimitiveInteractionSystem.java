@@ -78,7 +78,10 @@ public final class PrimitiveInteractionSystem {
 		if (TannedUtilityVestSystem.canHandClear(player, state)) return InteractionResult.PASS;
 		if (held.is(ModItems.HARDWOOD_HAMMER) && state.is(BlockTags.MINEABLE_WITH_PICKAXE) && !state.is(BlockTags.NEEDS_IRON_TOOL) && !state.is(BlockTags.NEEDS_DIAMOND_TOOL)) return InteractionResult.PASS;
 		if (state.is(ModBlocks.SLEEPING_BAG)) return InteractionResult.PASS;
-		if (state.is(ModBlocks.BASIN) || state.is(ModBlocks.FAT_BURNING_TORCH)) return InteractionResult.PASS;
+		if (state.is(ModBlocks.PURE_MICA_INSULATED_GLASS))
+            return player.getItemBySlot(net.minecraft.world.entity.EquipmentSlot.CHEST).is(ModItems.TANNED_UTILITY_VEST)
+                ? InteractionResult.PASS : InteractionResult.FAIL;
+        if (state.is(ModBlocks.BASIN) || state.is(ModBlocks.FAT_BURNING_TORCH)) return InteractionResult.PASS;
 		if (state.is(ModBlocks.HARDWOOD_CRAFTING_TABLE)) return (held.is(ModItems.FLINT_AXE) || held.is(Items.WOODEN_AXE) || held.is(ModItems.HARDWOOD_AXE)) ? InteractionResult.PASS : InteractionResult.FAIL;
 		if ((held.is(Items.WOODEN_PICKAXE) || held.is(ModItems.HARDWOOD_PICKAXE)) && WoodenToolTargets.pickaxe(state)) return InteractionResult.PASS;
 		if ((held.is(Items.WOODEN_PICKAXE) || held.is(ModItems.HARDWOOD_PICKAXE)) && WoodenToolTargets.brickMasonry(state)) return InteractionResult.PASS;
@@ -819,7 +822,9 @@ public final class PrimitiveInteractionSystem {
 		if (TannedUtilityVestSystem.canHandClear(player, state)) return true;
 		if (held.is(ModItems.HARDWOOD_HAMMER) && state.is(BlockTags.MINEABLE_WITH_PICKAXE) && !state.is(BlockTags.NEEDS_IRON_TOOL) && !state.is(BlockTags.NEEDS_DIAMOND_TOOL)) return true;
 		if (state.is(ModBlocks.SLEEPING_BAG)) return true;
-		if (state.is(ModBlocks.BASIN) || state.is(ModBlocks.FAT_BURNING_TORCH)) return true;
+		if (state.is(ModBlocks.PURE_MICA_INSULATED_GLASS))
+            return player.getItemBySlot(net.minecraft.world.entity.EquipmentSlot.CHEST).is(ModItems.TANNED_UTILITY_VEST);
+        if (state.is(ModBlocks.BASIN) || state.is(ModBlocks.FAT_BURNING_TORCH)) return true;
 		if (state.is(ModBlocks.HARDWOOD_CRAFTING_TABLE)) return held.is(ModItems.FLINT_AXE) || held.is(Items.WOODEN_AXE) || held.is(ModItems.HARDWOOD_AXE);
 		if ((held.is(Items.WOODEN_PICKAXE) || held.is(ModItems.HARDWOOD_PICKAXE)) && WoodenToolTargets.pickaxe(state)) return true;
 		if ((held.is(Items.WOODEN_PICKAXE) || held.is(ModItems.HARDWOOD_PICKAXE)) && WoodenToolTargets.brickMasonry(state)) return true;

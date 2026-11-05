@@ -1,10 +1,40 @@
+## Current contract — v0.31.61-b
+- Pure Mica Insulated Glass is `TransparentBlock` with copied `Blocks.GLASS` properties, translucent model and approved blue-gray texture. It transmits skylight and block light like normal Glass; intact recovery still needs the Tanned Utility Vest.
+- PMI Sheet is a non-placeable item. The **Hardwood Table alone** accepts 1 Pure Mica Insulated Glass + 1 Bone Knife and produces 2 PMI Sheets. Knife durability decreases by one; standard personal 2×2 crafting has no recipe.
+- Delete old `data/projectflint/recipe/personal_pmi_sheets.json` when applying patches from v0.31.60-b. `build.bat` invokes the versioned cleanup before compiling. Gradle remains no-daemon; only successful release JARs go to `dist/`.
+- Earlier v0.31.60-b wording below that permits personal crafting is historical and superseded.
+
+## v0.31.60-b — Current Mica Glass and distribution contract
+
+Pure Mica Insulated Glass is a `GlassBlock` clone of vanilla Glass behavior, not Tinted Glass: visible blue-gray but transparent, passes sunlight/block light normally, stays placeable and remains vest-gated for recovery without Silk Touch. Its Forge source remains MBSSIG Dust processed for five minutes with Charcoal. One intact Pure Mica Insulated Glass plus a Bone Knife produces two non-placeable PMI Sheets in either personal 2×2 crafting or the Hardwood Table; the Bone Knife receives one durability of wear. G and K guides must describe these outputs and permissions accurately. 
+
+Build: `build.bat` uses a nonpersistent Gradle process (`--no-daemon`; `org.gradle.daemon=false`). On success it validates and copies the versioned release JAR into `dist/`, purges older Project Flint JARs from `dist/`, and selects the new JAR in Explorer. The build source, tests and sources JARs remain elsewhere. No JAR should be published on build failure.
+
+## v0.31.59-b — Basin inventory, book and Mod Menu (current)
+
+The Basin holds **four separately stored, single-item inputs**, renders all four actual item models, exposes its storage through Minecraft's `Container` interface, and processes the oldest material first. The active input tracks 0–2 completed stomps, depending on its 2–3 stomp requirement; it costs **one food point per successful stomp**, not once per item. Empty-hand recovery takes the newest input. New saves use `ContainerHelper` inventory encoding; previous single-stack Basin data is migrated, preserving excess as overflow to feed into free slots. Crushing triggers intermediate/finished sounds and particles; server owns all inventory and results. Jade inspection relies on its common Container support, still requiring in-game confirmation.
+
+Pure Mica Insulated Glass is hand-recoverable **only when wearing the Tanned Utility Vest**, without Silk Touch; this exception is deliberately distinct from structural mining. The G-key Field Guide has 34 progression-ordered chapters and automatically fills each book page. K-key Basin recipe notes identify capacity and food cost. Mod Menu has an optional harmless config screen and verified GitHub Issues contact; Discord invite URL still needs official confirmation before direct-linking.
+
+## v0.31.58-b — Current rules and additions
+
+- Fireclay Forge: manual lighting required for every cycle; `serverTick` never auto-reignites. Charcoal cannot start unless it has Hardwood or MBSSIG Dust to process and the finished output has room. Wood fuel may still be manually used to make Charcoal. Each material needs 6000 ticks uninterrupted.
+- Fat-Burning Torch: 60,000 ticks (**50 min**) per Fat charge, with charges supplied manually after placement. Ignition is forbidden if torch position Y < 0; at Y = 0 ignition remains permitted. Rain still extinguishes exposed flames.
+- Superseded in v0.31.60-b: the tinted-light-blocking behavior below is no longer current. Pure Mica Insulated Glass now transmits sunlight like Glass. Mining/loot still returns the block itself with the Vest.
+- Basin: each independent byproduct keeps its own random draw. Raw Copper Slag 12.5%; Clay/Gravel/Sand Rare Earth 4%; Slag Rare Earth 1.8%. Maximum three stomps, one food point each. Multiple different byproducts can spawn on the same final stomp.
+- Personal crafting yields three Wooden Cups or five Raw Milk cups; the Hardwood Table yields four or six. Both milk recipes return the empty Clay Bucket. Bone Knife costs one durability and is not consumed.
+- 8 Flax Seeds with one Clay Water Bucket in the Hardwood Table yields six Wheat Seeds; bucket returns empty. 8 Fertilizer surrounding Potassium Dust yields 12 Potassium-Rich Fertilizer, which behaves like Bone Meal except on saplings and tree fungi.
+- Flint Plant Cutters use sticks on the left (`S` at x0 all three rows) and flint on top/bottom center plus middle right (`SF ` / `S F` / `SF `).
+
+**Implementation boundaries:** Maintain server-side Forge controls, recipe remainders, Recipe Guide/Field Guide parity and no AI textures. `docs/BASIN_MATERIAL_YIELDS.md` supersedes old percentages elsewhere in historical release entries.
+
 ## v0.31.57-b — Current Basin & Glass Progression
 
 Basin requires **2–3 landings**, **one hunger point per valid landing**. Clay Blocks, Rare Earth Dust and Cobblestone are accepted. See `docs/BASIN_MATERIAL_YIELDS.md` for all independent rolls. Hardwood Crafting Table must first be made in personal 2x2 with 2 Hardwood Alloy + 1 Cobblestone + 1 Bound Wood Processor. Hardwood-only recipes include the new dust/glass line; MBSSIG Dust becomes Pure Mica Insulated Glass in the Forge after **6000 ticks** of uninterrupted Charcoal fuel.
 
 # Project Flint — Current implementation reference
 
-**Authoritative as of v0.31.56-b (Minecraft 1.21.11, Fabric, Mojang mappings).** This file summarizes current behavior, not the historical development path. More complete early-game pathways remain in `PRIMITIVE_PROGRESSION_MATRIX.md` and the corresponding gameplay source.
+**Authoritative through v0.31.58-b (Minecraft 1.21.11, Fabric, Mojang mappings).** This file summarizes current behavior, not the historical development path. More complete early-game pathways remain in `PRIMITIVE_PROGRESSION_MATRIX.md` and the corresponding gameplay source.
 
 ## World editing and mining
 
@@ -41,7 +71,7 @@ Basin requires **2–3 landings**, **one hunger point per valid landing**. Clay 
 - Full provenance / texture policy: `ASSET_SOURCES.md` and `TEXTURE_PROVENANCE.md`.
 - Hardwood Sticks require two Hardwood; every Hardwood Tool, including Hammer, uses them; an Axle uses eight around Rope, and is a placeable axis-oriented shaft.
 - Deep environment: Y below 0 applies stacking Speluncaphobia (one stack per 60s up to IV, increasing hunger above 6 food points and slowing healing); Y below -40 additionally applies Claustrophobia (-7% movement, -1 attack damage). Direct daytime sun exposure or block light >=13 clears both; they have no direct lethal damage.
-- Basin stone/ore/gravel/sand/slag processing consumes 1 hunger point and rolls every possible byproduct independently. A guaranteed output is explicit where applicable; Slag can produce nothing.
+- Basin stone/ore/gravel/sand/slag processing consumes 1 hunger point per valid stomp and rolls every possible byproduct independently. A guaranteed output is explicit where applicable; Slag can produce nothing.
 - Brick Furnace processes Cobblestone to Stone; recipes for Cobblestone/Granite/Diorite/Andesite slabs and stairs use the Hardwood Table. Early Hinged Doors remain craftable.
 
 ## Checklist for future revisions
@@ -54,6 +84,6 @@ Basin requires **2–3 landings**, **one hunger point per valid landing**. Clay 
 
 ## v0.31.56-b: Basin and Hardwood crafting invariants
 
-The Basin owns a stack of processable inputs, an integer stomp counter for the top input, and the server-side processing action. Its block-entity renderer displays the *exact input item* at the basin floor, including plank varieties, raw ore and mineral blocks; the old static inset wood geometry must never be restored. Insertion/removal and processing sync BE state to the client. Processed inputs yield the same independent stochastic byproducts as v0.31.55-b. The input costs exactly 1 hunger point on completion; see `BASIN_MATERIAL_YIELDS.md` for stomp tiers and yields. Stomp progress resets on removal or completion and persists across chunk reload.
+The Basin owns a stack of processable inputs, an integer stomp counter for the top input, and the server-side processing action. Its block-entity renderer displays the *exact input item* at the basin floor, including plank varieties, raw ore and mineral blocks; the old static inset wood geometry must never be restored. Insertion/removal and processing sync BE state to the client. Processed inputs yield the same independent stochastic byproducts as v0.31.55-b. The input costs exactly 1 hunger point per landed stomp; see `BASIN_MATERIAL_YIELDS.md` for stomp tiers and yields. Stomp progress resets on removal or completion and persists across chunk reload.
 
 The Hardwood Crafting Table uses a separate `projectflint:hardwood_crafting` recipe type with a 60-server-tick output gate. Its result slot must obtain remainders from the **actual matched Hardwood CraftingRecipe**, not from a `RecipeType.CRAFTING` lookup: the latter silently consumes Bone Knife, Flint File, and other reusable ingredients. Reinsert tools at +1 damage into their originating slot when possible; break at maximum damage. Apply these rules for normal clicks and shift-clicks, with the timer rearmed for each craft.

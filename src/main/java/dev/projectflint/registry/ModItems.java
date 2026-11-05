@@ -272,13 +272,15 @@ public final class ModItems {
 	public static final Item BSIG_DUST = register("bsig_dust", properties -> new Item(properties.stacksTo(64)));
 	public static final Item BSSIG_DUST = register("bssig_dust", properties -> new Item(properties.stacksTo(64)));
 	public static final Item MBSSIG_DUST = register("mbssig_dust", properties -> new Item(properties.stacksTo(64)));
-	public static final Item PURE_MICA_INSULATED_GLASS = register("pure_mica_insulated_glass", properties -> new Item(properties.stacksTo(64)));
+	public static final Item PURE_MICA_INSULATED_GLASS = registerBlockItem("pure_mica_insulated_glass", ModBlocks.PURE_MICA_INSULATED_GLASS, 64);
+    public static final Item PMI_SHEET = register("pmi_sheet", properties -> new Item(properties.stacksTo(64)));
     public static final Item IRON_DUST = register("iron_dust", properties -> new Item(properties.stacksTo(64)));
     public static final Item COPPER_DUST = register("copper_dust", properties -> new Item(properties.stacksTo(64)));
     public static final Item NICKEL_DUST = register("nickel_dust", properties -> new Item(properties.stacksTo(64)));
     public static final Item SILVER_DUST = register("silver_dust", properties -> new Item(properties.stacksTo(64)));
     public static final Item STONE_DUST = register("stone_dust", properties -> new Item(properties.stacksTo(64)));
     public static final Item FERTILIZER = register("fertilizer", properties -> new Item(properties.stacksTo(64)));
+    public static final Item POTASSIUM_RICH_FERTILIZER = register("potassium_rich_fertilizer", properties -> new dev.projectflint.item.PotassiumRichFertilizerItem(properties.stacksTo(64)));
     public static final Item QUARTZ_DUST = register("quartz_dust", properties -> new Item(properties.stacksTo(64)));
     public static final Item POTASSIUM_DUST = register("potassium_dust", properties -> new Item(properties.stacksTo(64)));
     public static final Item MICA_DUST = register("mica_dust", properties -> new Item(properties.stacksTo(64)));
@@ -404,7 +406,7 @@ public final class ModItems {
 	public static final Item CLAY_POT_2 = register("clay_pot_2", properties -> new Item(properties.stacksTo(1)));
 	public static final Item UNFIRED_CLAY_BUCKET = register("unfired_clay_bucket", properties -> new Item(properties.stacksTo(1)));
 	public static final Item CLAY_BUCKET = register("clay_bucket", properties -> new ClayBucketItem(properties.stacksTo(1)));
-	public static final Item CLAY_MILK_BUCKET = register("clay_milk_bucket", properties -> new Item(properties.stacksTo(1)));
+	public static final Item CLAY_MILK_BUCKET = register("clay_milk_bucket", properties -> new Item(properties.stacksTo(1).craftRemainder(CLAY_BUCKET)));
 	public static final Item CLAY_WATER_BUCKET = register("clay_water_bucket", properties -> new ClayWaterBucketItem(properties.stacksTo(1).craftRemainder(CLAY_BUCKET)));
 	public static final Item FLINT_AXE_PIECES = register("flint_axe_pieces", properties -> new Item(properties.stacksTo(1)));
 	public static final Item FLINT_CUTTER_PIECE = register("flint_cutter_piece", properties -> new Item(properties.stacksTo(1)));

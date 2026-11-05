@@ -1,3 +1,14 @@
+## v0.31.60-b — Approved asset derivatives
+
+- `textures/block/pure_mica_insulated_glass.png`: existing v0.31.58-b tinted-glass sprite was made brighter and substantially more transparent while retaining the same 16×16 pixel pattern and cool blue-gray palette; no external assets or AI images introduced.
+- `textures/item/pmi_sheet.png`: small, non-placeable sheet sprite painted by transforming the shipped Pure Mica Insulated Glass pixel colors into a thin pane silhouette; derived from existing Project Flint artwork. The JSON item model is a generated flat sprite (no blockstate).
+
+## v0.31.58-b provenance
+
+- Pure Mica Insulated Glass: vanilla Tinted Glass texture, pixelwise blue-gray recolor, retains original transparency. Item uses the block model.
+- Potassium-Rich Fertilizer: vanilla Bone Meal item texture, pixelwise green-yellow recolor.
+- No AI-generated textures; user-approved and Minecraft source textures remain authoritative.
+
 # Project Flint Texture Provenance
 
 User-uploaded standalone textures remain exact and byte-identical. The six explicitly documented v0.31.34-b pulley/forge-controller pixel composites are derived from supplied ProjectFlint assets, not separate unmodified imports. Their source operations and output hashes are recorded below and in `docs/texture_provenance.json`; do not mislabel a derived sprite as a direct upload.

@@ -1,3 +1,20 @@
+## v0.31.61-b — Current glass progression
+Make Pure Mica Insulated Glass in the Fireclay Forge using the existing MBSSIG/Charcoal processing chain. To cut PMI Sheets, unlock the **Hardwood Crafting Table**: 1 glass block + Bone Knife → 2 PMI Sheets. Personal crafting cannot perform this recipe. The Bone Knife loses one durability. Pure Mica Insulated Glass acts like light-passing Glass and can be recovered intact with the Tanned Utility Vest.
+
+## v0.31.60-b — Insulated glass finishing
+
+At the Fireclay Forge, one MBSSIG Dust with Charcoal heated for five minutes yields Pure Mica Insulated Glass. It now behaves as normal transparent, light-passing Glass (not dark or light-blocking) and requires the Tanned Utility Vest for intact recovery without Silk Touch. From 1 Glass + Bone Knife, craft 2 non-placeable PMI Sheets in either the 2×2 personal grid or the Hardwood Crafting Table. Each craft wears the Knife once. No change to MBSSIG acquisition, heat cycles or Basin processing.
+
+## v0.31.59-b — Player-visible changes
+
+During the Wood Age, a Basin can stage up to **four different input items** at once. Their visible models lie inside the Basin; the **oldest** material crushes first. A successful stomp costs one hunger point. Use two or three landings per material (see K-key Recipes); the input changes only when the current piece is finished. Empty-hand use retrieves an unprocessed piece; the block returns its contents when broken. Wearing the Tanned Utility Vest allows intact Pure Mica Insulated Glass recovery after it is placed. The G-key Field Guide now orders these mechanics with the stages needed to reach them.
+
+## v0.31.58-b — Progression additions
+
+Basin: Rare Earth can be obtained from Clay, Sand or Gravel at **4%** per item; Slag processing also yields it at **1.8%**. Raw Copper's Slag chance rises to **12.5%**. These are independent byproduct odds and do not replace guaranteed drops.
+
+Historical v0.31.58-b note (superseded): Pure Mica Insulated Glass was originally tinted and light-blocking. From v0.31.60-b it passes light like normal Glass. Charcoal must be manually lit with a valid forge input, preventing automated fuel loss. Fat Torches last 50 minutes, and cannot be lit below Y=0. Cups are unlocked via 1 Wooden Sheet + Bone Knife; 2 cups and a Clay Milk Bucket yield five milk cups in personal crafting or six at the Hardwood Table. Use 8 Flax Seeds + water to obtain Wheat Seeds, or make Potassium-Rich Fertilizer from 8 Fertilizer + 1 Potassium Dust at the Hardwood Table.
+
 ## v0.31.57-b — New gates
 
 Personal 2×2: 2 Hardwood Alloy + Cobblestone + Bound Wood Processor → first Hardwood Crafting Table. At Hardwood Table: Rare Earth processing + Glass Dust + Silicon Dust + Aluminum Dust → Borosilicate → BSIG → BSSIG → MBSSIG Dust. At Fireclay Forge: MBSSIG Dust + 1 Charcoal, five minutes uninterrupted → Pure Mica Insulated Glass. Basin: Clay Block → chance for Rare Earth Dust (3.33%); Rare Earth Dust may give Aluminum Dust (4.8%) and Gallium Dust (0.85%). Guaranteed 3 Aluminum Dust alternative uses eight Rare Earth Dust surrounding a filled Clay Water Bucket.

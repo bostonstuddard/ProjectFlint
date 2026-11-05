@@ -1,3 +1,39 @@
+## v0.31.61-b — Glass compile fix and Hardwood-only PMI Sheets
+- Fixed the Pure Mica Insulated Glass compile error on Minecraft 1.21.11: the Mojang-mapped vanilla glass implementation is `TransparentBlock`, not the nonexistent `GlassBlock`. Preserve ordinary glass light transmission, the approved blue-gray texture, and Tanned Utility Vest recovery.
+- PMI Sheets now craft **only** at the Hardwood Crafting Table: 1 Pure Mica Insulated Glass + 1 Bone Knife → 2 PMI Sheets, consuming one Bone Knife durability. Removed the personal 2×2 recipe and its guide entry. The cleanup script deletes the old recipe JSON from previously patched installations.
+- Updated build/release numbers, application script, current player-facing guides, regression checks, and documentation. No other mechanics changed.
+
+## v0.31.60-b — Normal Glass, PMI Sheets and distribution improvements
+
+- Pure Mica Insulated Glass now uses vanilla `GlassBlock` mechanics and its existing blue-gray texture has been made lighter and more transparent. Sunlight passes through it like regular Glass; existing vest-only intact collection remains.
+- Added non-placeable PMI Sheet items (stacks of 64). 1 Pure Mica Insulated Glass with a Bone Knife yields 2 Sheets in both personal and Hardwood crafting. The Bone Knife wears by one durability rather than being consumed.
+- Updated the Field Guide, personal and Hardwood recipe references, creative inventory, item texture/model and translations.
+- `build.bat`: force nonpersistent Gradle via `--no-daemon` and `org.gradle.daemon=false`, copy only the release JAR into `dist`, retain only the latest Project Flint release JAR there, and open Explorer on the finished output. Builds that fail do not publish JARs.
+- Updated technical guides and ADR 0019. No Basin, mining, forge or other unrelated gameplay rules changed.
+
+## v0.31.59-b — Basin inventory, Mod Menu, guide, glass recovery
+
+- Basin is a four-item FIFO workstation: accepts up to four separate materials, displays them all on the basin floor, shows contents through the standard Minecraft Container interface for overlay integrations (Jade behavior requires in-game confirmation), retains current-item stomps across saves, and gives crushing-stage sounds/particles. Empty-hand retrieval removes the newest input; processing consumes the oldest input. The one-hunger-point-per-stomp and 2–3 stomp tiers are unchanged.
+- Pure Mica Insulated Glass can be recovered intact without Silk Touch while wearing the Tanned Utility Vest. It cannot be mined bare-handed without the vest; this is **only** a glass exception, not a stone/structural mining exception.
+- G-key Field Guide is rewritten into 34 concise, progression-ordered chapters, with dynamic pagination and clipped chapter scrolling. No release history or implementation notes appear in the in-game book. K-key recipe Basin notes mention four-item capacity and hunger cost.
+- Mod Menu: imkas first author; ProjectFlint Contributors second; official GitHub Issues URL; optional configuration page offering Field Guide / Recipes links and a placeholder message. Project Modrinth listing is the website link until the exact Discord invite URL can be verified; its official listing offers a Join Discord server link.
+- No new textures or imported assets. Existing Basin item renderer now shows each real item model.
+
+## v0.31.58-b — Forge, Mica Glass, Fat Torches, Basin and Crafting
+
+### Gameplay
+- Fireclay Forge does not automatically consume more Charcoal after a cycle. Manually reignite each batch; do not waste Charcoal without a valid cooking input/output.
+- Fat-Burning Torch burns for 50 minutes per Fat charge; no new ignition below Y=0.
+- Pure Mica Insulated Glass is now a placeable, translucent, blue-gray tinted-glass block that blocks skylight like vanilla Tinted Glass and drops itself.
+- Basin chance adjustments, keeping all rolls independent: Clay / Sand / Gravel 4% Rare Earth Dust; Slag 1.8% Rare Earth Dust; Raw Copper 12.5% Slag.
+- Flint Plant Cutters 3×3 flint curve corrected (sticks in left column, flint on top/bottom middle and center right).
+- Personal crafting: 1 Wooden Sheet + Bone Knife → 3 Wooden Cups; 2 Wooden Cups + Clay Milk Bucket → 5 Raw Milk cups.
+- Hardwood Crafting Table: same cup recipes output 4 and 6 respectively; 8 Flax Seeds + filled Clay Water Bucket → 6 Wheat Seeds; 8 Fertilizer + 1 Potassium Dust → 12 Potassium-Rich Fertilizer.
+- Potassium-Rich Fertilizer uses Bone Meal behavior on crops and eligible plants, but cannot instantly grow saplings or tree fungi. Clay Milk Bucket returns an empty Clay Bucket after crafting.
+- G/K guide data, progression documentation, asset records and release validator updated.
+
+**Verification:** Source/resource validation and isolated Java compilation of the new fertilizer item passed. Full Gradle build and actual client/server playtest remain pending.
+
 ## v0.31.57-b — Per-Stomp Basin Costs, Material Yields & Insulated Glass
 
 - Basin charges one hunger point **per stomp**; every material takes 2 or 3 stomps. Fixed Basin hand/inventory/dropped item-model transforms.

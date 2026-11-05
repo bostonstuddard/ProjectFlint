@@ -1,6 +1,3 @@
 {
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "projectflint:item/advanced_kiln_glass"
-  }
+  "parent": "projectflint:block/pure_mica_insulated_glass"
 }

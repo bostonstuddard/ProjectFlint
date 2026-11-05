@@ -170,12 +170,14 @@ public final class ModCreativeTabs {
 			output.accept(ModItems.BSSIG_DUST);
 			output.accept(ModItems.MBSSIG_DUST);
 			output.accept(ModItems.PURE_MICA_INSULATED_GLASS);
+            output.accept(ModItems.PMI_SHEET);
             output.accept(ModItems.IRON_DUST);
             output.accept(ModItems.COPPER_DUST);
             output.accept(ModItems.NICKEL_DUST);
             output.accept(ModItems.SILVER_DUST);
             output.accept(ModItems.STONE_DUST);
             output.accept(ModItems.FERTILIZER);
+            output.accept(ModItems.POTASSIUM_RICH_FERTILIZER);
             output.accept(ModItems.QUARTZ_DUST);
             output.accept(ModItems.POTASSIUM_DUST);
             output.accept(ModItems.MICA_DUST);

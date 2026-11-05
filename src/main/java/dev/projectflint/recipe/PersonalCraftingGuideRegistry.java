@@ -120,6 +120,8 @@ public final class PersonalCraftingGuideRegistry {
 		add(recipes, "hardwood_crafting_table", "projectflint:hardwood_crafting_table", 1, "projectflint:hardwood_alloy#2", "minecraft:cobblestone", "projectflint:bound_wood_processor");
 		// Special repair recipe: any damaged leather/tanned leather armor with one Repair Kit.
 		add(recipes, "repair_leather_armor", "minecraft:leather_chestplate", 1, "projectflint:repair_kit", "minecraft:leather_chestplate");
+        add(recipes, "personal_wooden_cups", "projectflint:wooden_cup", 3, "projectflint:wooden_sheet", "projectflint:bone_knife");
+        add(recipes, "personal_wooden_cups_raw_milk", "projectflint:wooden_cup_raw_milk", 5, "projectflint:wooden_cup#2", "projectflint:clay_milk_bucket");
 		return Collections.unmodifiableList(recipes);
 	}
 }

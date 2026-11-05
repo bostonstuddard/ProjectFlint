@@ -1,3 +1,11 @@
+## v0.31.60-b — Glass and sheet visuals
+
+The light-passing Pure Mica Insulated Glass reuses the project's existing 16×16 blue-gray glass artwork with a lighter alpha treatment; PMI Sheets derive colors from the same artwork. These are approved-source derivatives, not additional external assets.
+
+## v0.31.58-b — Material-art provenance
+
+The newly colored Tinted Glass and Fertilizer reuse shipped vanilla pixels through deterministic recoloring rather than a temporary AI sprite. Replacements may be made from approved human-authored packs later without changing registry names.
+
 ## v0.31.57-b dust visuals
 
 Tin, Rare Earth, Lithium, Aluminum, Gallium, Glass, Borosilicate, BSIG, BSSIG and MBSSIG dust art is a direct recolor of Project Flint's existing `textures/item/wood_dust.png` pixel data, retaining alpha and texture silhouette. No AI-generated or externally sourced textures were added. Pure Mica Insulated Glass temporarily reuses the existing Project Flint Advanced Kiln Glass sprite; replace with a human-produced glass sprite when available.

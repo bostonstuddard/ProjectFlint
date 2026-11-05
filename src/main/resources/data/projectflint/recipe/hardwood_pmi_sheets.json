@@ -1,0 +1,12 @@
+{
+  "type": "projectflint:hardwood_durable",
+  "category": "misc",
+  "ingredients": [
+    "projectflint:pure_mica_insulated_glass"
+  ],
+  "tool": "projectflint:bone_knife",
+  "result": {
+    "id": "projectflint:pmi_sheet",
+    "count": 2
+  }
+}

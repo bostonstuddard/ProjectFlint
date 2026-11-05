@@ -1,3 +1,30 @@
+## v0.31.61-b — Preflight compatibility and recipe removal
+Before shipping, verify glass class names against the actual **Mojang-mapped Minecraft 1.21.11 JAR** and run `:compileJava` in the user's Gradle environment. Verify that v0.31.60-b personal PMI Sheet recipe JSON is deleted by `APPLY_PROJECTFLINT_0_31_61_B.bat`; a patch-only ZIP overwrite cannot remove old files by itself. Check the live 2×2 personal grid rejects PMI Sheets, the Hardwood Table accepts them with 60-tick delay and tool wear, and glass lighting/vesting stays unchanged. Successful builds only copy runtime JAR to `dist/`. Older v0.31.60-b dual crafting instructions are superseded.
+
+## v0.31.60-b — Finished JAR delivery and light behavior
+
+On successful Windows build, `build.bat` publishes one finished runtime JAR under `dist/` using the exact `archives_base_name` and `mod_version` from Gradle properties. Check that no `*-sources.jar` / `*-dev.jar` / obsolete Project Flint JAR is left in `dist`, and that `--no-daemon` prevents long-lived build JVMs. Do not kill unrelated Java processes to implement this. Failing builds must report failure and not publish an artifact. 
+
+Mica glass is now **vanilla Glass-style light-passing**, not Tinted Glass-style light-blocking. The Vest still governs intact pickup, while Bone Knife durability-based personal/Hardwood recipes create the nonplaceable PMI Sheet item.
+
+## v0.31.59-b — Additional regression gates
+
+- Confirm four Basin slots are truly one item apiece, distinct types display and serialize, oldest input crushes first and newest returns first. Ensure prior single-stack saves are not silently discarded.
+- Test Jade or WAILA inventory HUD integration in-game; vanilla `Container` exposure alone is a source-level contract, not proof of a particular overlay's UI behavior.
+- Test crushing particles/sounds at 1, 2, and 3 stomps and the 1-food-point cost each time; verify no duplicate outputs or free stomps.
+- Test vest-gated Mica Glass breaking without Silk Touch, regular mining gates, creative behavior, and light blocking.
+- Check Field Guide for exclusively player-facing text, stage order, no clipped sidebar, correct page counts at multiple GUI scales, no double blur, and no regressions in the K-key recipe guide.
+- Test Mod Menu optional integration both present/absent, URL accuracy, and config-page navigation. Never invent a Discord invite.
+
+## v0.31.58-b — Additional regression gates
+
+- Verify both normal result clicking and shift-clicking with Bone Knife / milk buckets; the cup result should receive the correct personal/table yield with tool wear and empty container return.
+- Verify multiple material bonuses may occur together; include seeded deterministic tests for every independent Basin chance.
+- Verify Forge remains off after a burn regardless of remaining fuel; manually restarting must require an input and a suitable firestarter for Charcoal.
+- Verify all Fat Torch wall orientations still match the Flint Torch and test ignite at Y = 0 versus Y = -1.
+- Superseded by v0.31.60-b: verify Pure Mica Insulated Glass is placeable, returns intact with the Vest, and **passes** light like vanilla Glass.
+- Keep G/K guide data and technical release notes updated with player-facing facts only in the guides.
+
 ## v0.31.57-b — Release and regression obligations
 
 Use patch-only root-relative ZIP, incremented release versions and cleanup/apply BAT, updated CHANGLELOG/README/release notes/manifest, ADRs for mechanics, current systems/yields, and both G and K guide data. Check Java compile against Minecraft 1.21.11, screen regression, recipe probabilities, container returns, asset provenance and shift-click timer. No reapplication of obsolete playtests or replacement of approved textures with generated art.

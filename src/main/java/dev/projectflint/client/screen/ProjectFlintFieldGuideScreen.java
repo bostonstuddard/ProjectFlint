@@ -6,6 +6,7 @@ import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.input.MouseButtonEvent;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -33,7 +34,6 @@ public final class ProjectFlintFieldGuideScreen extends Screen {
     private int selected;
     private int page;
     private int chapterOffset;
-    private int bodyScroll;
 
     public ProjectFlintFieldGuideScreen(Screen parent) {
         super(Component.literal("Project Flint Field Guide"));
@@ -73,10 +73,24 @@ public final class ProjectFlintFieldGuideScreen extends Screen {
         return shown.isEmpty() ? null : shown.get(Math.max(0, Math.min(selected, shown.size() - 1)));
     }
 
+    private int bodyWidth() { return left() + panelWidth() - (spine() + 17) - 19; }
+    private int bodyLinesPerPage() { return Math.max(3, (panelHeight() - 114) / 12); }
+    private List<FormattedCharSequence> wrappedLines(ProjectFlintFieldGuideContent.Chapter chapter) {
+        List<FormattedCharSequence> lines = new ArrayList<>();
+        if (chapter == null) return lines;
+        for (String passage : chapter.pages()) {
+            if (!lines.isEmpty()) lines.add(FormattedCharSequence.EMPTY);
+            for (String paragraph : passage.split("\n", -1)) {
+                if (paragraph.isEmpty()) lines.add(FormattedCharSequence.EMPTY);
+                else lines.addAll(font.split(Component.literal(paragraph), bodyWidth()));
+            }
+        }
+        return lines;
+    }
     private int pageCount(ProjectFlintFieldGuideContent.Chapter chapter) {
         if (chapter == null) return 1;
         if (chapter.title().equals("Item Atlas")) return Math.max(1, (matchingItems().size() + atlasRows() - 1) / atlasRows());
-        return Math.max(1, chapter.pages().size());
+        return Math.max(1, (wrappedLines(chapter).size() + bodyLinesPerPage() - 1) / bodyLinesPerPage());
     }
 
     @Override
@@ -85,7 +99,7 @@ public final class ProjectFlintFieldGuideScreen extends Screen {
         search = addRenderableWidget(new EditBox(font, x + 11, y + 40, border - x - 22, 19, Component.literal("Find chapters")));
         search.setMaxLength(80);
         search.setHint(Component.literal("Find a topic..."));
-        search.setResponder(value -> { selected = 0; page = 0; chapterOffset = 0; bodyScroll = 0; updateButtons(); });
+        search.setResponder(value -> { selected = 0; page = 0; chapterOffset = 0; updateButtons(); });
 
         previousPage = addRenderableWidget(Button.builder(Component.literal("< Prev"), b -> changePage(-1))
             .bounds(border + 15, y + h - 31, 63, 20).build());
@@ -102,14 +116,12 @@ public final class ProjectFlintFieldGuideScreen extends Screen {
         List<ProjectFlintFieldGuideContent.Chapter> shown = visibleChapters();
         int max = pageCount(activeChapter(shown));
         page = Math.max(0, Math.min(max - 1, page + direction));
-        bodyScroll = 0;
         updateButtons();
     }
 
     private void selectChapter(int index) {
         selected = index;
         page = 0;
-        bodyScroll = 0;
         updateButtons();
     }
 
@@ -143,7 +155,7 @@ public final class ProjectFlintFieldGuideScreen extends Screen {
             return true;
         }
         if (mx > spine() && mx < x + panelWidth() && my > y + 57 && my < y + panelHeight() - 38) {
-            bodyScroll = Math.max(0, bodyScroll - (int) Math.signum(vertical) * 3);
+            changePage(vertical < 0 ? 1 : -1);
             return true;
         }
         return super.mouseScrolled(mx, my, horizontal, vertical);
@@ -174,6 +186,7 @@ public final class ProjectFlintFieldGuideScreen extends Screen {
         } else {
             int count = visibleRows();
             if (chapterOffset >= shown.size()) chapterOffset = Math.max(0, shown.size() - count);
+            g.enableScissor(x + 9, y + 72, border - 4, y + h - 52);
             for (int i = chapterOffset; i < Math.min(shown.size(), chapterOffset + count); i++) {
                 ProjectFlintFieldGuideContent.Chapter entry = shown.get(i);
                 int ry = y + 74 + (i - chapterOffset) * ROW_HEIGHT;
@@ -182,6 +195,7 @@ public final class ProjectFlintFieldGuideScreen extends Screen {
                 String label = font.plainSubstrByWidth(entry.title(), Math.max(30, border - x - 41));
                 g.drawString(font, label, x + 31, ry + 3, i == selected ? 0xFF21150F : 0xFFF3DEB8, false);
             }
+            g.disableScissor();
             if (shown.size() > count)
                 g.drawCenteredString(font, (chapterOffset + 1) + "-" + Math.min(shown.size(), chapterOffset + count) + " / " + shown.size(),
                     x + (border - x) / 2, y + h - 44, 0xFFE1C18B);
@@ -198,8 +212,7 @@ public final class ProjectFlintFieldGuideScreen extends Screen {
             if (chapter.title().equals("Item Atlas")) {
                 renderAtlas(g, mx, my, bodyX, bodyY, bodyWidth, bodyBottom);
             } else {
-                String prose = chapter.pages().get(page);
-                renderProse(g, prose, bodyX, bodyY, bodyWidth, bodyBottom);
+                renderProse(g, wrappedLines(chapter), page, bodyX, bodyY, bodyBottom);
             }
             g.disableScissor();
             g.drawCenteredString(font, "" + (page + 1) + " / " + maxPages, (border + x + w) / 2, y + h - 38, 0xFF754E29);
@@ -207,21 +220,12 @@ public final class ProjectFlintFieldGuideScreen extends Screen {
         super.render(g, mx, my, partialTick);
     }
 
-    private void renderProse(GuiGraphics g, String prose, int x, int y, int width, int bottom) {
-        int line = 0;
-        int firstVisible = Math.max(0, bodyScroll);
-        for (String paragraph : prose.split("\\n\\n", -1)) {
-            for (var row : font.split(Component.literal(paragraph), width)) {
-                if (line >= firstVisible) {
-                    int cy = y + (line - firstVisible) * 12;
-                    if (cy < bottom) g.drawString(font, row, x, cy, INK, false);
-                }
-                line++;
-            }
-            line++;
+    private void renderProse(GuiGraphics g, List<FormattedCharSequence> lines, int pageIndex, int x, int y, int bottom) {
+        int start = pageIndex * bodyLinesPerPage();
+        for (int i = start; i < Math.min(lines.size(), start + bodyLinesPerPage()); i++) {
+            int cy = y + (i - start) * 12;
+            if (cy + font.lineHeight <= bottom) g.drawString(font, lines.get(i), x, cy, INK, false);
         }
-        int maxLines = Math.max(1, (bottom - y) / 12);
-        bodyScroll = Math.max(0, Math.min(bodyScroll, Math.max(0, line - maxLines)));
     }
 
     private void renderAtlas(GuiGraphics g, int mx, int my, int x, int y, int width, int bottom) {

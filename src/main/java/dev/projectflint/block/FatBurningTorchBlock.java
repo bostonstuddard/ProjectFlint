@@ -42,7 +42,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
-/** Freestanding 30-minute fat torch; an overhead block protects it from rain. */
+/** Freestanding 50-minute fat torch; an overhead block protects it from rain. */
 public final class FatBurningTorchBlock extends Block implements EntityBlock {
 	public static final BooleanProperty LIT = BooleanProperty.create("lit");
 	/** UP is standing; horizontal values point away from the supporting wall. */

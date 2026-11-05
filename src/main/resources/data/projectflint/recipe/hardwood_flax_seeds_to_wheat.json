@@ -1,0 +1,17 @@
+{
+  "type": "projectflint:hardwood_shaped",
+  "category": "misc",
+  "pattern": [
+    "FFF",
+    "FWF",
+    "FFF"
+  ],
+  "key": {
+    "F": "projectflint:flax_seeds",
+    "W": "projectflint:clay_water_bucket"
+  },
+  "result": {
+    "id": "minecraft:wheat_seeds",
+    "count": 6
+  }
+}

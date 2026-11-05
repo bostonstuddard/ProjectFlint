@@ -1,0 +1,17 @@
+{
+  "type": "projectflint:hardwood_shaped",
+  "category": "misc",
+  "pattern": [
+    "FFF",
+    "FPF",
+    "FFF"
+  ],
+  "key": {
+    "F": "projectflint:fertilizer",
+    "P": "projectflint:potassium_dust"
+  },
+  "result": {
+    "id": "projectflint:potassium_rich_fertilizer",
+    "count": 12
+  }
+}

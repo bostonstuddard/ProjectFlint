@@ -93,6 +93,7 @@ public final class ProjectFlintClient implements ClientModInitializer {
 		BlockRenderLayerMap.putBlock(ModBlocks.TWIG_PILE, ChunkSectionLayer.CUTOUT);
 		BlockRenderLayerMap.putBlock(ModBlocks.CRUDE_PLANT_TORCH, ChunkSectionLayer.CUTOUT);
 		BlockRenderLayerMap.putBlock(ModBlocks.FLINT_TORCH, ChunkSectionLayer.CUTOUT);
+        BlockRenderLayerMap.putBlock(ModBlocks.PURE_MICA_INSULATED_GLASS, ChunkSectionLayer.TRANSLUCENT);
 		BlockRenderLayerMap.putBlock(ModBlocks.FIBER_WORK_PILE, ChunkSectionLayer.CUTOUT);
 		BlockRenderLayerMap.putBlock(ModBlocks.HAMMER_ASSEMBLY, ChunkSectionLayer.CUTOUT);
 		BlockRenderLayerMap.putBlock(ModBlocks.BINDING_ASSEMBLY, ChunkSectionLayer.CUTOUT);

@@ -41,7 +41,7 @@ public final class BasinMaterialProcessingSystem {
             addChance(drops, new ItemStack(ModItems.COPPER_DUST), .24F, random);
             addChance(drops, new ItemStack(ModItems.NICKEL_DUST), .10F, random);
             addChance(drops, new ItemStack(ModItems.SILVER_DUST), .02F, random);
-            addChance(drops, new ItemStack(ModItems.SLAG), .05F, random);
+            addChance(drops, new ItemStack(ModItems.SLAG), .125F, random);
         } else if (input.is(Items.ANDESITE) || input.is(Items.GRANITE)) {
             drops.add(new ItemStack(ModItems.FERTILIZER, random.nextBoolean() ? 2 : 1));
             addChance(drops, new ItemStack(ModItems.STONE_DUST), .33F, random);
@@ -57,14 +57,16 @@ public final class BasinMaterialProcessingSystem {
             drops.add(new ItemStack(Items.FLINT));
             addChance(drops, new ItemStack(ModItems.QUARTZ_DUST), .20F, random);
             addChance(drops, new ItemStack(ModItems.IRON_DUST), .01F, random);
+            addChance(drops, new ItemStack(ModItems.RARE_EARTH_DUST), .04F, random);
         } else if (input.is(Items.SAND)) {
             drops.add(new ItemStack(ModItems.POTASSIUM_DUST));
             addChance(drops, new ItemStack(ModItems.MICA_DUST), .05F, random);
             addChance(drops, new ItemStack(ModItems.GOLD_DUST), .01F, random);
             addChance(drops, new ItemStack(ModItems.TIN_DUST), .15F, random);
+            addChance(drops, new ItemStack(ModItems.RARE_EARTH_DUST), .04F, random);
         } else if (input.is(Items.CLAY)) {
             addChance(drops, new ItemStack(ModItems.MICA_DUST), .05F, random);
-            addChance(drops, new ItemStack(ModItems.RARE_EARTH_DUST), .0333F, random);
+            addChance(drops, new ItemStack(ModItems.RARE_EARTH_DUST), .04F, random);
             addChance(drops, new ItemStack(ModItems.SILVER_DUST), .0033F, random);
             addChance(drops, new ItemStack(ModItems.GOLD_DUST), .02F, random);
         } else if (input.is(ModItems.RARE_EARTH_DUST)) {
@@ -76,6 +78,7 @@ public final class BasinMaterialProcessingSystem {
             addChance(drops, new ItemStack(ModItems.IRON_DUST), .33F, random);
             addChance(drops, new ItemStack(ModItems.COPPER_DUST), .33F, random);
             addChance(drops, new ItemStack(ModItems.SILICON_DUST), .33F, random);
+            addChance(drops, new ItemStack(ModItems.RARE_EARTH_DUST), .018F, random);
         }
         return drops;
     }

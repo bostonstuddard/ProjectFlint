@@ -105,6 +105,19 @@ public abstract class ServerPlayerGameModeMixin {
             // Legitimate vanilla pickaxes keep their own mining speed and vanilla loot checks.
         }
 
+        // Only the Tanned Utility Vest (or later eligible gear) permits recovery.
+        // Always return the glass intact without Silk Touch; never break it bare-handed.
+        if (state.is(ModBlocks.PURE_MICA_INSULATED_GLASS)) {
+            if (!player.getItemBySlot(net.minecraft.world.entity.EquipmentSlot.CHEST).is(ModItems.TANNED_UTILITY_VEST)) {
+                cir.setReturnValue(false);
+                return;
+            }
+            level.removeBlock(pos, false);
+            projectflint$dropAtBlock(pos, new ItemStack(ModItems.PURE_MICA_INSULATED_GLASS));
+            cir.setReturnValue(false);
+            return;
+        }
+
 		// Small decor and Chicken Nests are hand-recoverable; structural blocks are not.
         // This is an explicit whitelist, never a generic vest/hardness exemption.
         if (PlayerPlacedBlockLedger.isHandRecoverableDecoration(state)) {

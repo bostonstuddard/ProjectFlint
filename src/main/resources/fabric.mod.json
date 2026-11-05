@@ -3,11 +3,16 @@
   "id": "projectflint",
   "version": "${version}",
   "name": "Project Flint",
-  "description": "A capability-first primitive survival overhaul. Working title.",
+  "description": "A primitive survival overhaul built around tools, workstations and progression.",
   "authors": [
-    "Project Flint contributors"
+    "imkas",
+    "ProjectFlint Contributors"
   ],
-  "contact": {},
+  "contact": {
+    "homepage": "https://modrinth.com/mod/projectflint",
+    "issues": "https://github.com/bostonstuddard/ProjectFlint/issues",
+    "sources": "https://github.com/bostonstuddard/ProjectFlint"
+  },
   "license": "All-Rights-Reserved",
   "environment": "*",
   "entrypoints": {
@@ -16,6 +21,9 @@
     ],
     "client": [
       "dev.projectflint.client.ProjectFlintClient"
+    ],
+    "modmenu": [
+      "dev.projectflint.client.ProjectFlintModMenu"
     ]
   },
   "depends": {
@@ -30,6 +38,7 @@
   ],
   "icon": "assets/projectflint/icon.png",
   "suggests": {
-    "flintquests": "*"
+    "flintquests": "*",
+    "modmenu": "*"
   }
 }

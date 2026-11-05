@@ -24,7 +24,9 @@ public final class BasinItemRenderer implements BlockEntityRenderer<BasinBlockEn
     }
 
     public static final class State extends BlockEntityRenderState {
-        final ItemStackRenderState item = new ItemStackRenderState();
+        final ItemStackRenderState[] items = {new ItemStackRenderState(), new ItemStackRenderState(),
+            new ItemStackRenderState(), new ItemStackRenderState()};
+        int count;
     }
 
     @Override public State createRenderState() { return new State(); }
@@ -33,19 +35,30 @@ public final class BasinItemRenderer implements BlockEntityRenderer<BasinBlockEn
     public void extractRenderState(BasinBlockEntity basin, State state, float partialTick,
                                    Vec3 camera, ModelFeatureRenderer.CrumblingOverlay overlay) {
         BlockEntityRenderer.super.extractRenderState(basin, state, partialTick, camera, overlay);
-        itemModelResolver.updateForTopItem(state.item, basin.stored().copyWithCount(1),
-            ItemDisplayContext.FIXED, basin.getLevel(), null, basin.getBlockPos().hashCode());
+        java.util.List<net.minecraft.world.item.ItemStack> items = basin.visibleContents();
+        state.count = items.size();
+        for (int i = 0; i < state.items.length; i++) {
+            net.minecraft.world.item.ItemStack item = i < items.size() ? items.get(i) : net.minecraft.world.item.ItemStack.EMPTY;
+            itemModelResolver.updateForTopItem(state.items[i], item,
+                ItemDisplayContext.FIXED, basin.getLevel(), null, basin.getBlockPos().hashCode() + i);
+        }
     }
 
     @Override
     public void submit(State state, PoseStack poseStack, SubmitNodeCollector collector, CameraRenderState camera) {
-        if (state.item.isEmpty()) return;
-        poseStack.pushPose();
-        poseStack.translate(0.5F, 0.27F, 0.5F);
-        // A flat, tangible object at the bottom of the basin. Never float/rotate like a dropped item.
-        poseStack.mulPose(Axis.XP.rotationDegrees(90.0F));
-        poseStack.scale(0.48F, 0.48F, 0.48F);
-        state.item.submit(poseStack, collector, state.lightCoords, OverlayTexture.NO_OVERLAY, 0);
-        poseStack.popPose();
+        if (state.count == 0) return;
+        for (int i = 0; i < state.count; i++) {
+            if (state.items[i].isEmpty()) continue;
+            poseStack.pushPose();
+            // Four separate objects fit into the Basin at once. No bobbing or overlap.
+            float x = (i % 2 == 0) ? 0.32F : 0.68F;
+            float z = (i / 2 == 0) ? 0.32F : 0.68F;
+            poseStack.translate(x, 0.18F, z);
+            poseStack.mulPose(Axis.YP.rotationDegrees(i * 37.0F));
+            poseStack.mulPose(Axis.XP.rotationDegrees(90.0F));
+            poseStack.scale(0.29F, 0.29F, 0.29F);
+            state.items[i].submit(poseStack, collector, state.lightCoords, OverlayTexture.NO_OVERLAY, 0);
+            poseStack.popPose();
+        }
     }
 }

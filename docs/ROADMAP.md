@@ -1,3 +1,27 @@
+## v0.31.61-b — Required runtime checks
+- Compile v0.31.61-b with Mojang-mapped MC 1.21.11; confirm `TransparentBlock` resolves and no compile errors remain.
+- Apply on top of installed v0.31.60-b and confirm the stale personal recipe JSON is removed before build; personal 2×2 crafting cannot make PMI Sheets.
+- Confirm Hardwood Table recipe makes two PMI Sheets with one Bone Knife durability damage, respects its three-second timer, and works when shift-clicking.
+- Check glass appearance, light propagation, vest recovery, clean Gradle process exit, and `dist/projectflint-0.31.61-b.jar` release output.
+
+## v0.31.60-b — Playtest focus
+
+- Confirm Pure Mica Insulated Glass passes skylight in-world, uses a lightly tinted/transparent blue-gray render, recovers intact with the Vest and cannot be harvested bare-handed without it.
+- Confirm PMI Sheets appear in creative inventory, are non-placeable, craft as 2 in both personal 2×2 and Hardwood 3×3, and cost exactly 1 Bone Knife durability even with shift-click.
+- Confirm `build.bat` exits without a lingering Gradle daemon on Windows for both success and failure, and that successful builds publish exactly `dist/projectflint-0.31.60-b.jar` without sources/dev JARs or old Project Flint versions. No output is published on failure.
+
+## v0.31.59-b — Follow-up validation
+
+- Check all four mixed Basin items in survival and Jade, including unload/reload, block break, output, hunger, item retrieval, and backwards save migration.
+- Verify Pure Mica Insulated Glass requires the vest and drops itself without Silk Touch; ensure no broader vest bypass.
+- Check 34 Field Guide chapters at GUI scales 2–4, paging/search, sidebar clipping and transitions to K-key Recipes.
+- Obtain verified official Project Flint Discord invite and replace the temporary Modrinth-page website link.
+- Validate optional Mod Menu dependency when Mod Menu is absent and present, and verify config screen navigation.
+
+## v0.31.58-b — Verification and next steps
+
+Priority playtest: charred Forge auto-reignition (must not happen), torch 50-minute burn and underground ignition restriction, tinted glass light-blocking and transparency, 2x2/3x3 cup yields with Bone Knife durability and Clay Milk Bucket returns, Flax conversion, Fertilizer growth rules, Flint Plant Cutters shape, and Basin independent random drops. Later content may consume the new insulated glass; do not add unsupported recipes to the current release.
+
 ## v0.31.57-b — Follow-up
 
 Validate Pure Mica Insulated Glass visually and as a new progression material; eventually add power/axle machinery and recipes consuming it. Add PF-EMI display of dedicated hardwood recipes via PF-EMI rather than ProjectFlint. Confirm all new recipes in multiplayer and permanent/held Basin item model readability.

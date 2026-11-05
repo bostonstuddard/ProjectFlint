@@ -11,7 +11,8 @@ base {
 }
 
 repositories {
-	mavenCentral()
+    mavenCentral()
+    maven { name = "Terraformers"; url = "https://maven.terraformersmc.com/" }
 }
 
 dependencies {
@@ -19,6 +20,8 @@ dependencies {
 	mappings loom.officialMojangMappings()
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+    // Optional integration: the gameplay mod runs normally without Mod Menu.
+    modCompileOnly "com.terraformersmc:modmenu:${project.modmenu_version}"
 }
 
 processResources {

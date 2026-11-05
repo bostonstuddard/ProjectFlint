@@ -1,0 +1,13 @@
+{
+  "type": "projectflint:hardwood_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "projectflint:wooden_cup",
+    "projectflint:wooden_cup",
+    "projectflint:clay_milk_bucket"
+  ],
+  "result": {
+    "id": "projectflint:wooden_cup_raw_milk",
+    "count": 6
+  }
+}

@@ -3,8 +3,10 @@ setlocal EnableExtensions
 cd /d "%~dp0"
 
 REM ============================================================
-REM Project Flint v0.31.57-b builder
-REM v0.31.57-b: Hunger per Basin stomp, new ore dust yields, glass chain, corrected hardwood recipes.
+REM Project Flint v0.31.61-b builder
+REM v0.31.61-b: Mojang-mapped transparent glass and Hardwood-only PMI Sheets.
+REM v0.31.60-b: Light-passing Mica Glass, PMI Sheets, daemon-free Gradle and dist JAR.
+REM v0.31.58-b: Manual Forge fuel, 50-minute Fat Torches, Basin odds, cups, fertilizer.
 REM v0.31.52-b: Fix Minecraft 1.21.11 RecipeDisplay import in Hardwood crafting recipe.
 REM - keeps woven chest/dispenser-style storage aligned
 REM - syncs placed/crafting sprites before each build
@@ -78,7 +80,7 @@ REM - v0.31.49-b repairs Hardwood recipes, Fat Torch fuel, and player guide accu
 REM - v0.31.50-b replaces the Hardwood Table ghost-result menu with server timed crafting
 REM ============================================================
 
-IF EXIST "APPLY_PROJECTFLINT_0_31_56_B.bat" CALL "APPLY_PROJECTFLINT_0_31_56_B.bat" /quiet
+IF EXIST "APPLY_PROJECTFLINT_0_31_61_B.bat" CALL "APPLY_PROJECTFLINT_0_31_61_B.bat" /quiet
 
 if not exist "src\main\resources\assets\projectflint\textures\block\placed" mkdir "src\main\resources\assets\projectflint\textures\block\placed"
 copy /y "src\main\resources\assets\projectflint\textures\item\branch.png" "src\main\resources\assets\projectflint\textures\block\placed\branch.png" >nul
@@ -105,7 +107,7 @@ for /f "tokens=1,* delims==" %%A in ('findstr /b /c:"mod_version=" "gradle.prope
 for /f "tokens=1,* delims==" %%A in ('findstr /b /c:"archives_base_name=" "gradle.properties"') do set "ARCHIVES_BASE_NAME=%%B"
 for /f "tokens=1,* delims==" %%A in ('findstr /b /c:"minecraft_version=" "gradle.properties"') do set "MINECRAFT_VERSION=%%B"
 
-if not defined MOD_VERSION set "MOD_VERSION=0.31.57-b"
+if not defined MOD_VERSION set "MOD_VERSION=0.31.61-b"
 if not defined ARCHIVES_BASE_NAME set "ARCHIVES_BASE_NAME=projectflint"
 if not defined MINECRAFT_VERSION set "MINECRAFT_VERSION=1.21.11"
 
@@ -159,7 +161,7 @@ echo.
 if exist "gradlew.bat" (
     echo [INFO] Gradle wrapper found.
     echo [INFO] Building Project Flint v%MOD_VERSION%...
-    call gradlew.bat clean build --stacktrace
+    call gradlew.bat clean build --no-daemon --stacktrace
     goto :check_build
 )
 
@@ -212,50 +214,58 @@ if errorlevel 1 (
 
 :run_bootstrap
 echo [INFO] Building Project Flint v%MOD_VERSION% with Gradle %GRADLE_VERSION%...
-call "%GRADLE_HOME%\bin\gradle.bat" clean build --stacktrace
+call "%GRADLE_HOME%\bin\gradle.bat" clean build --no-daemon --stacktrace
 
 :check_build
-if errorlevel 1 (
-    echo.
-    echo ============================================================
-    echo                        BUILD FAILED
-    echo ============================================================
-    pause
-    exit /b 1
+if errorlevel 1 goto :build_failed
+
+if not exist "build\libs\%EXPECTED_JAR%" (
+    echo [ERROR] Expected output JAR build\libs\%EXPECTED_JAR% was not generated.
+    goto :build_failed
 )
 
-if exist "build\libs\%EXPECTED_JAR%" (
-    jar tf "build\libs\%EXPECTED_JAR%" | findstr /i /c:"PF-EMI-1.21.11.jar" >nul
-    if not errorlevel 1 (
-        echo.
-        echo ============================================================
-        echo                        BUILD FAILED
-        echo ============================================================
-        echo [ERROR] The produced Project Flint jar still contains nested PF-EMI.
-        echo [ERROR] PF-EMI must be installed as a separate jar in the mods folder.
-        pause
-        exit /b 1
-    )
+jar tf "build\libs\%EXPECTED_JAR%" | findstr /i /c:"PF-EMI-1.21.11.jar" >nul
+if not errorlevel 1 (
+    echo [ERROR] Produced Project Flint JAR includes nested PF-EMI; PF-EMI must remain separate.
+    goto :build_failed
+)
+
+REM Publish only the finished mod JAR, not sources/dev/snapshot JARs.
+if not exist "dist" mkdir "dist"
+if not exist "dist" (
+    echo [ERROR] Could not create the dist folder.
+    goto :build_failed
+)
+copy /Y "build\libs\%EXPECTED_JAR%" "dist\%EXPECTED_JAR%" >nul
+if errorlevel 1 (
+    echo [ERROR] Failed to copy the finished JAR to dist.
+    goto :build_failed
+)
+
+REM Keep only the most recently built Project Flint release in dist.
+REM Unrelated JARs with different prefixes are intentionally left alone.
+for %%J in ("dist\%ARCHIVES_BASE_NAME%-*.jar") do (
+    if /I not "%%~nxJ"=="%EXPECTED_JAR%" del /q "%%~fJ" >nul 2>nul
 )
 
 echo.
 echo ============================================================
 echo                     BUILD SUCCESSFUL
 echo ============================================================
-if exist "build\libs\%EXPECTED_JAR%" (
-    echo [OK] Main mod JAR:
-    echo   %CD%\build\libs\%EXPECTED_JAR%
-) else (
-    echo [WARNING] Expected JAR was not found.
-    dir /b "build\libs\*.jar" 2>nul
-)
+echo [OK] Finished mod JAR:
+echo   %CD%\dist\%EXPECTED_JAR%
+echo [INFO] Gradle ran with --no-daemon, so its build Java process exits at completion.
 echo.
-if exist "build\libs\%EXPECTED_JAR%" (
-    echo [INFO] Opening the built JAR location...
-    start "" explorer.exe /select,"%CD%\build\libs\%EXPECTED_JAR%"
-) else (
-    echo [INFO] Opening build\libs...
-    start "" explorer.exe "%CD%\build\libs"
-)
+start "" explorer.exe /select,"%CD%\dist\%EXPECTED_JAR%"
 ENDLOCAL
 EXIT /B 0
+
+:build_failed
+echo.
+echo ============================================================
+echo                        BUILD FAILED
+echo ============================================================
+echo [INFO] No new distribution JAR was published.
+pause
+ENDLOCAL
+EXIT /B 1

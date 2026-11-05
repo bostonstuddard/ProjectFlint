@@ -1,3 +1,11 @@
+## v0.31.60-b additional asset derivations
+
+Only the already-shipped Pure Mica Insulated Glass 16×16 texture was modified to reduce opacity and lighten the color so the GlassBlock is visually transparent. `textures/item/pmi_sheet.png` is a pixelwise sheet/pane derivative of that existing source. No AI images or unapproved downloads were added. The generated item model is flat and remains non-placeable.
+
+## v0.31.58-b — Asset provenance
+
+`assets/projectflint/textures/block/pure_mica_insulated_glass.png` is a **programmatic recolor of Mojang vanilla Minecraft 1.21.11** `assets/minecraft/textures/block/tinted_glass.png` to cool blue-gray. `assets/projectflint/textures/item/potassium_rich_fertilizer.png` is a recolor of vanilla `bone_meal.png` to green/yellow. No image generator or other unapproved sources were used. The rest of the pack remains unchanged.
+
 # Asset Sources and License Ledger
 
 ## Policy

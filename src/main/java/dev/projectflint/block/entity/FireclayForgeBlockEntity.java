@@ -153,6 +153,8 @@ public final class FireclayForgeBlockEntity extends BaseContainerBlockEntity {
 		boolean nextWood = isCharcoalWood(fuel);
 		if (nextWood && fuel.getCount() < WOOD_FUEL_COST) return false;
 		if (nextWood && !canOutputCharcoal()) return false;
+        // Never waste charcoal on an empty/blocked recipe. The next charge must be started manually.
+        if (!nextWood && (processingKind() == 0 || !canOutputProcessed(processingKind()))) return false;
 		ItemStack starter = items.get(IGNITER_SLOT);
 		int nextDamage = starter.getDamageValue() + 1;
 		if (nextDamage >= starter.getMaxDamage()) items.set(IGNITER_SLOT, ItemStack.EMPTY);
@@ -217,7 +219,7 @@ public final class FireclayForgeBlockEntity extends BaseContainerBlockEntity {
 			woodByproductTicks = 0;
 			refreshBlockState();
 			setChanged();
-			ignite(); // A new fuel item and one further firestarter use are required.
+			// Fuel is never ignited automatically. The player must manually relight the forge.
 		} else if (burnTicks % 20 == 0) setChanged();
 	}
 

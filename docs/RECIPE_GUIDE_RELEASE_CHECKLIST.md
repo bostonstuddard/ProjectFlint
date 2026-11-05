@@ -1,3 +1,27 @@
+## v0.31.61-b — PMI Sheet station exclusivity
+- Assert `data/projectflint/recipe/hardwood_pmi_sheets.json` exists with `projectflint:hardwood_durable`, 1 glass block + Bone Knife → 2 non-placeable sheets and one point of tool wear.
+- Assert `data/projectflint/recipe/personal_pmi_sheets.json` is **absent** after the apply script runs and has no `PersonalCraftingGuideRegistry` entry. Keep the K-key Hardwood Table display and G-key player's description synchronized.
+- Regression test: placing ingredients in the 2×2 personal grid gives no PMI Sheets; Hardwood Table takes three seconds and returns the knife with one damage per craft, including shift-click.
+- Glass block must register `TransparentBlock`, not nonexistent `GlassBlock` or light-blocking `TintedGlassBlock`.
+
+## v0.31.60-b — PMI Sheet recipe checks
+
+- Add both `personal_pmi_sheets.json` and `hardwood_pmi_sheets.json` as actual durable recipes: one Pure Mica Insulated Glass + one Bone Knife → two non-placeable PMI Sheets. Both retain the Knife at +1 damage, including shift-click paths.
+- Check the G Field Guide describes transparent Glass, vest recovery and the Sheet recipe; K crafting references show personal and Hardwood variants. Do not create a vanilla unrestricted crafting recipe by mistake.
+- Confirm the final item texture is distinct from the placed block texture, appears in creative search, and is not registered as a BlockItem.
+
+## v0.31.59-b — Basin / guide parity
+
+The Basin K-key guide must reflect **four staged items**, **one hunger point per stomp**, and exact material-specific stomp thresholds. The G-key book describes basic gameplay and follows real progression, with no dev notes, source identifiers or historical changes. Chapter text must paginate by measured wrapped line height to avoid a mostly blank page after a short paragraph.
+
+## v0.31.58-b — Crafting and Basin guide synchronization
+
+- Personal: 1 Wooden Sheet + Bone Knife → 3 Wooden Cups; 2 Wooden Cups + Clay Milk Bucket → 5 Raw Milk cups.
+- Hardwood: same combinations → 4 Wooden Cups, 6 Raw Milk cups; 8 Flax Seeds / Clay Water Bucket → 6 Wheat Seeds; 8 Fertilizer around Potassium Dust → 12 Potassium-Rich Fertilizer.
+- Cutter pattern: sticks `S` in left column, flint `F` at upper-center, center-right and lower-center (`SF ` / `S F` / `SF `).
+- Basin: Rare Earth from Clay/Sand/Gravel 4% each; Slag 1.8%; Raw Copper Slag 12.5%. Every chance independent. Validate K list includes each alternate drop, and G describes that all can succeed together.
+- Forge: five-minute uninterrupted batch does **not** cause auto-relight. Fat Torch lasts 50 minutes and fails to ignite at Y < 0.
+
 ## v0.31.57-b — Required guide sync
 
 Each new hardwood recipe must be added to `data/projectflint/recipe` and regenerated in `HardwoodCraftingGuideRegistry.java`, then checked in K under `Hardwood Table`. Every Basin yield belongs in `BASIN_MATERIAL_YIELDS.md` and the Basin section of `ProjectFlintRecipeGuideScreen`, plus a current-player G handbook chapter. Forge inputs/outputs must also be visible in the K guide. Bootstrap Table recipe is deliberately not Hardwood-only.

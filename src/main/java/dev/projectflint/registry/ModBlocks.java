@@ -69,6 +69,8 @@ import net.minecraft.util.ColorRGBA;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.TransparentBlock;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.ColoredFallingBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.SlabBlock;
@@ -167,6 +169,7 @@ public final class ModBlocks {
 	public static final Block LOOSE_MUD_BRICKS = registerLooseMudBricks("loose_mud_bricks");
 	public static final SlabBlock LOOSE_MUD_BRICK_SLAB = registerLooseMudBrickSlab("loose_mud_brick_slab");
 	public static final Block BASIN = registerPrototypeStation("basin");
+    public static final Block PURE_MICA_INSULATED_GLASS = registerPureMicaGlass("pure_mica_insulated_glass");
 	public static final Block DRYING_RACK = registerPrototypeStation("drying_rack");
 	public static final Block MILLSTONE = registerPrototypeStation("millstone");
 	public static final Block FIRECLAY_BRICK_BLOCK = registerFireclayBlock("fireclay_brick_block");
@@ -664,6 +667,12 @@ public final class ModBlocks {
         ResourceKey<Block> key = ResourceKey.create(Registries.BLOCK, ProjectFlint.id(name));
         return Registry.register(BuiltInRegistries.BLOCK, key, new HardwoodCraftingTableBlock(
             BlockBehaviour.Properties.of().setId(key).strength(2.0F).sound(SoundType.WOOD)));
+    }
+
+    private static Block registerPureMicaGlass(String name) {
+        ResourceKey<Block> key = ResourceKey.create(Registries.BLOCK, ProjectFlint.id(name));
+        return Registry.register(BuiltInRegistries.BLOCK, key, new TransparentBlock(
+            BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).setId(key)));
     }
 
 	private static Block registerPrototypeStation(String name) {

@@ -11,7 +11,7 @@ import net.minecraft.world.level.storage.ValueOutput;
 
 /** Burning time is saved in block-entity NBT and never serialized as a menu short. */
 public final class FatBurningTorchBlockEntity extends BlockEntity {
-	public static final int BURN_TIME = 30 * 60 * 20;
+	public static final int BURN_TIME = 50 * 60 * 20;
 	private int burnRemaining;
 	private int fatCharges; // Every charge is added manually with Fat; placement is always empty.
 
@@ -23,7 +23,7 @@ public final class FatBurningTorchBlockEntity extends BlockEntity {
 		return true;
 	}
 	public boolean ignite() {
-		if (burnRemaining > 0 || fatCharges <= 0) return false;
+		if (getBlockPos().getY() < 0 || burnRemaining > 0 || fatCharges <= 0) return false;
 		fatCharges--;
 		burnRemaining = BURN_TIME;
 		setChanged();

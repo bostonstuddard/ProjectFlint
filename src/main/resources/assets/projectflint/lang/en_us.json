@@ -484,5 +484,8 @@
   "key.projectflint.field_guide": "Open Flint Field Guide",
   "key.projectflint.place_in_world": "Place in World",
   "key.projectflint.recipe_guide": "Open Recipe Guide",
-  "tooltip.projectflint.hardwood_crafting_table": "Each craft takes 3 seconds."
+  "tooltip.projectflint.hardwood_crafting_table": "Each craft takes 3 seconds.",
+  "item.projectflint.potassium_rich_fertilizer": "Potassium-Rich Fertilizer",
+  "block.projectflint.pure_mica_insulated_glass": "Pure Mica Insulated Glass",
+  "item.projectflint.pmi_sheet": "PMI Sheet"
 }
