@@ -1,20 +1,45 @@
 package dev.projectflint.system;
 
 import dev.projectflint.registry.ModItems;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 
-/** Single source of truth for the early mining tiers (client progress + server drops). */
+/** Shared early mining tiers for visual break progress, attack permission, and server drops. */
 public final class OreMiningRules {
     private OreMiningRules() {}
+
+    /** 13.5 seconds at 20 TPS; avoid vanilla's much faster inappropriate-tool progress. */
     public static final float WOODEN_PROGRESS = 1.0F / 270.0F;
-    public static final float UNQUALIFIED_PROGRESS = 1.0F / 900.0F;
+    /** The Hardwood Hammer is slightly quicker on rock: 12 seconds instead of 13.5. */
+    public static final float HAMMER_STONE_PROGRESS = 1.0F / 240.0F;
+    /** Inaccessible ores are slowly removable without loot, never instantly cracked. */
+    public static final float UNQUALIFIED_ORE_PROGRESS = 1.0F / 900.0F;
 
     public static boolean isStone(BlockState state) { return state.is(Blocks.STONE); }
     public static boolean isCoal(BlockState state) {
-        return state.is(Blocks.COAL_ORE) || state.is(Blocks.DEEPSLATE_COAL_ORE);
+        return state.is(Blocks.COAL_ORE);
+    }
+    /** Deepslate and all its ore varieties are reserved for later progression. */
+    public static boolean isForbiddenDeepslate(BlockState state) {
+        return state.is(Blocks.DEEPSLATE) || state.is(Blocks.COBBLED_DEEPSLATE)
+            || state.is(Blocks.POLISHED_DEEPSLATE) || state.is(Blocks.DEEPSLATE_BRICKS)
+            || state.is(Blocks.DEEPSLATE_TILES) || state.is(Blocks.CHISELED_DEEPSLATE)
+            || state.is(Blocks.CRACKED_DEEPSLATE_BRICKS) || state.is(Blocks.CRACKED_DEEPSLATE_TILES)
+            || state.is(Blocks.DEEPSLATE_COAL_ORE) || state.is(Blocks.DEEPSLATE_COPPER_ORE)
+            || state.is(Blocks.DEEPSLATE_IRON_ORE) || state.is(Blocks.DEEPSLATE_GOLD_ORE)
+            || state.is(Blocks.DEEPSLATE_REDSTONE_ORE) || state.is(Blocks.DEEPSLATE_LAPIS_ORE)
+            || state.is(Blocks.DEEPSLATE_DIAMOND_ORE) || state.is(Blocks.DEEPSLATE_EMERALD_ORE)
+            || state.is(Blocks.COBBLED_DEEPSLATE_SLAB) || state.is(Blocks.COBBLED_DEEPSLATE_STAIRS)
+            || state.is(Blocks.COBBLED_DEEPSLATE_WALL) || state.is(Blocks.POLISHED_DEEPSLATE_SLAB)
+            || state.is(Blocks.POLISHED_DEEPSLATE_STAIRS) || state.is(Blocks.POLISHED_DEEPSLATE_WALL)
+            || state.is(Blocks.DEEPSLATE_BRICK_SLAB) || state.is(Blocks.DEEPSLATE_BRICK_STAIRS)
+            || state.is(Blocks.DEEPSLATE_BRICK_WALL) || state.is(Blocks.DEEPSLATE_TILE_SLAB)
+            || state.is(Blocks.DEEPSLATE_TILE_STAIRS) || state.is(Blocks.DEEPSLATE_TILE_WALL)
+            || state.is(Blocks.INFESTED_DEEPSLATE);
     }
     public static boolean isCopperOrIronStoneOre(BlockState state) {
         return state.is(Blocks.COPPER_ORE) || state.is(Blocks.IRON_ORE);
@@ -30,6 +55,19 @@ public final class OreMiningRules {
             || state.is(Blocks.NETHER_GOLD_ORE) || state.is(Blocks.NETHER_QUARTZ_ORE)
             || state.is(Blocks.ANCIENT_DEBRIS);
     }
+    /**
+     * Apply rock rules to every VANILLA pickaxe-minable block, not just Stone.
+     * Includes Cobblestone, Andesite, Diorite, Granite, Tuff, Deepslate, stonework,
+     * and vanilla masonry. Custom Flint stations retain their specialized paths.
+     */
+    public static boolean isStoneFamily(BlockState state) {
+        return !isOre(state)
+            && !state.is(Blocks.BRICKS) // Retain the explicit vanilla-Bricks salvage/capability path.
+            && state.is(BlockTags.MINEABLE_WITH_PICKAXE)
+            && "minecraft".equals(BuiltInRegistries.BLOCK.getKey(state.getBlock()).getNamespace());
+    }
+    public static boolean isRestricted(BlockState state) { return isForbiddenDeepslate(state) || isOre(state) || isStoneFamily(state); }
+
     public static boolean isVanillaPickaxe(ItemStack stack) {
         return stack.is(Items.WOODEN_PICKAXE) || stack.is(Items.STONE_PICKAXE)
             || stack.is(Items.IRON_PICKAXE) || stack.is(Items.GOLDEN_PICKAXE)
@@ -39,21 +77,46 @@ public final class OreMiningRules {
         return stack.is(Items.WOODEN_PICKAXE) || stack.is(ModItems.HARDWOOD_PICKAXE)
             || stack.is(ModItems.HARDWOOD_HAMMER);
     }
-    public static boolean canGetDrops(BlockState state, ItemStack stack) {
-        if (isStone(state) || isCoal(state)) return isWoodenTier(stack) || isVanillaPickaxe(stack);
-        if (isCopperOrIronStoneOre(state)) {
-            return stack.is(ModItems.HARDWOOD_HAMMER)
-                || stack.is(Items.STONE_PICKAXE) || stack.is(Items.IRON_PICKAXE)
-                || stack.is(Items.DIAMOND_PICKAXE) || stack.is(Items.NETHERITE_PICKAXE);
-        }
-        // Everything later belongs to genuine vanilla tool tiers, not Flint/Hardwood implements.
-        return isVanillaPickaxe(stack) && !stack.is(Items.WOODEN_PICKAXE);
+    /** Unlike an armor slot, a held tool is the only thing that grants mining permission. */
+    private static boolean isValidVanillaPickaxe(BlockState state, ItemStack held) {
+        if (!isVanillaPickaxe(held)) return false;
+        if (state.is(BlockTags.NEEDS_DIAMOND_TOOL))
+            return held.is(Items.DIAMOND_PICKAXE) || held.is(Items.NETHERITE_PICKAXE);
+        if (state.is(BlockTags.NEEDS_IRON_TOOL))
+            return held.is(Items.IRON_PICKAXE) || held.is(Items.DIAMOND_PICKAXE) || held.is(Items.NETHERITE_PICKAXE);
+        if (state.is(BlockTags.NEEDS_STONE_TOOL))
+            return held.is(Items.STONE_PICKAXE) || held.is(Items.IRON_PICKAXE)
+                || held.is(Items.DIAMOND_PICKAXE) || held.is(Items.NETHERITE_PICKAXE);
+        return true;
+    }
+    private static boolean isEarlyRockTool(BlockState state, ItemStack held) {
+        if (state.is(BlockTags.NEEDS_STONE_TOOL) || state.is(BlockTags.NEEDS_IRON_TOOL)
+            || state.is(BlockTags.NEEDS_DIAMOND_TOOL)) return false;
+        return isWoodenTier(held);
+    }
+    public static boolean canGetDrops(BlockState state, ItemStack held) {
+        if (isForbiddenDeepslate(state)) return false;
+        if (isStoneFamily(state)) return isEarlyRockTool(state, held) || isValidVanillaPickaxe(state, held);
+        if (isCoal(state)) return isWoodenTier(held) || isValidVanillaPickaxe(state, held);
+        if (isCopperOrIronStoneOre(state))
+            return held.is(ModItems.HARDWOOD_HAMMER) || isValidVanillaPickaxe(state, held);
+        // Later ores still require their actual vanilla tier; Hardwood doesn't shortcut it.
+        return isValidVanillaPickaxe(state, held);
     }
     public static float progress(BlockState state, ItemStack held, float vanilla) {
-        if (isStone(state) || isCoal(state) || isCopperOrIronStoneOre(state)) {
-            if (isWoodenTier(held) && (isStone(state) || isCoal(state) || held.is(ModItems.HARDWOOD_HAMMER)))
-                return WOODEN_PROGRESS;
+        if (isForbiddenDeepslate(state)) return 0.0F;
+        if (isStoneFamily(state)) {
+            if (isEarlyRockTool(state, held))
+                return held.is(ModItems.HARDWOOD_HAMMER) ? HAMMER_STONE_PROGRESS : WOODEN_PROGRESS;
+            if (isValidVanillaPickaxe(state, held)) return vanilla;
+            // A hand, vest, food or unrelated item cannot start cracking rock.
+            return 0.0F;
         }
-        return isVanillaPickaxe(held) ? vanilla : UNQUALIFIED_PROGRESS;
+        if (isCoal(state)) {
+            if (isWoodenTier(held)) return held.is(ModItems.HARDWOOD_HAMMER) ? HAMMER_STONE_PROGRESS : WOODEN_PROGRESS;
+            return isValidVanillaPickaxe(state, held) ? vanilla : UNQUALIFIED_ORE_PROGRESS;
+        }
+        if (isCopperOrIronStoneOre(state) && held.is(ModItems.HARDWOOD_HAMMER)) return WOODEN_PROGRESS;
+        return isValidVanillaPickaxe(state, held) ? vanilla : UNQUALIFIED_ORE_PROGRESS;
     }
 }

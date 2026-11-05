@@ -252,3 +252,9 @@ Source archive: `new update stuff(4).zip`, supplied directly by the Project Flin
 
 ## v0.31.45-b derived Hardwood Crafting Table textures
 `hardwood_crafting_table_side.png`, `_top.png`, and `_bottom.png` are 52% brightness derivatives of existing approved `lumber_processor_side.png`, `_top.png`, `_bottom.png`. Source pixels come from the Project Flint owner's earlier texture pack. These are transformations of approved assets, not AI-generated artwork. The Brick Shingles texture is reused as a reference in the baked Clay Kiln body and top models, with no pixel modification.
+
+## v0.31.55-b — material dust palette and Axle
+
+- New `textures/item/{iron,copper,nickel,silver,stone,quartz,potassium,mica,gold,silicon}_dust.png`, `fertilizer.png`, `slag.png` recolor the existing **user-approved Project Flint Wood Dust sprite** by RGB tinting while preserving per-pixel alpha. No new generative image source.
+- `hardwood_sticks.png`: recolor of Mojang's original vanilla Minecraft 1.21.11 Stick artwork extracted from the mapped Minecraft resource archive, not AI generated.
+- Axle `models/block/axle.json` uses existing Project Flint Wooden Beam top/side art; model geometry is authored source JSON, with no new photo or generated sprite.

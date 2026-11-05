@@ -39,7 +39,7 @@ public final class ProjectFlintFieldGuideContent {
             "Collect Campfire Stones and Burnt Twigs to build a permanent campfire. Permanent campfires can be relit for repeated processing.");
         add(result, "STONEWORK", "Primitive Tools", ModItems.CRUDE_STONE_HAMMER,
             "Use a Crude Stone Hammer for early stoneworking. The Knife, Cutters, Crude Multitool and Flint tools unlock more demanding tasks.",
-            "Each tool has its own harvest abilities. A pickaxe mines some stone and ore; a cutter handles plants; hammers serve in assemblies and certain mining tasks.");
+            "Ordinary stone, cobblestone, granite, andesite and diorite need a Wooden Pickaxe, Hardwood Pickaxe or Hardwood Hammer. Bare hands and unrelated items cannot mine rock, even with a Utility Vest.");
         add(result, "CLAYWORK", "Collecting Clay", ModItems.UNFIRED_CLAY_BALL,
             "Clay starts with simple gathering and forming. Clay bowls, unfired items, the firing pile and kilns gradually unlock fired ceramics.",
             "A clay vessel must be fired before it serves as a durable container. Follow the Clay Grinder and kiln sections of the Recipes guide for their supported inputs.");
@@ -51,13 +51,13 @@ public final class ProjectFlintFieldGuideContent {
             "Prepare Fireclay materials as you expand into high-temperature processing. The Recipes guide lists the kiln and grinder inputs for each product.");
         add(result, "SURVIVAL", "Darkness and Shelter", ModItems.FLINT_FIRESTARTER,
             "Nights are extremely dark. Light, a roof and a safe sleeping place are important for surviving extended exploration. Spend too long in darkness and you may become Terrified.",
-            "Sleeping Bags allow you to rest through the night. Permanent campfires and torches offer more dependable light than the primitive Twig Pile.");
+            "Below Y=0, Speluncaphobia grows in strength and raises hunger use while slowing recovery. Below Y=-40, Claustrophobia also slows movement and attack damage. Direct sunlight or strong artificial light (level 13+) clears both. Sleeping Bags allow you to rest through the night. Permanent campfires and torches offer more dependable light than the primitive Twig Pile.");
         add(result, "SURVIVAL", "Food and Wildlife", Items.COOKED_BEEF,
             "Hunting can be dangerous because even normally passive animals can retaliate. Fish are vulnerable to the Hardwood Hammer and other eligible sources of damage.",
             "Animal Bones, Fat, wool and leather feed crafting and survival. Store fish in appropriate buckets; fish buckets are for transport, not eating.");
         add(result, "SURVIVAL", "Storage and Clothing", ModItems.REED_BACKPACK,
             "Backpacks, chests and the Tanned Utility Vest expand storage options. The vest also enables clearing some vegetation without a cutting tool.",
-            "Mortar and Woven Chests help maintain workshop supplies. Leather and textile processing lead to better clothing and storage.");
+            "The Tanned Utility Vest helps you clear plants, leaves and bushes by hand. It does not mine stone or dismantle machines. Small torches and Chicken Nests can be picked up by hand. Mortar and Woven Chests help maintain workshop supplies.");
         add(result, "FIRE", "Fat-Burning Torch", ModItems.FAT_BURNING_TORCH,
             "Craft a Fat-Burning Torch with a Stick, String and Charcoal. Place it on the ground or against a suitable wall. A newly placed torch is unlit and contains no Fat.",
             "Use Fat on the placed torch to load a charge, then use a Firestarter to ignite it. Each ignition consumes one stored Fat charge. Refuel with additional Fat when needed. Rain can extinguish exposed torches.");
@@ -69,7 +69,19 @@ public final class ProjectFlintFieldGuideContent {
             "Place a suitable Stripped Log on the Chopping Block. Fill the Water Pot using the Water Bearing Pot, select Boards or Beams, and use Flint Plant Cutters to start processing.");
         add(result, "WOODWORK", "Basin and Wood Dust", ModItems.WOOD_DUST,
             "Insert ordinary wooden Planks into the Basin and land on the Basin to process them. Each Plank yields 1 Wood Dust and consumes 1 hunger point.",
-            "The Basin also processes suitable stripped logs or wood blocks into Tannin. Both Wood Dust and Tannin are used for Hardwood.");
+            "The Basin also processes stripped oak/birch logs into Tannin and raw Iron, raw Copper, stones, Gravel, Sand and Slag into dusts and byproducts. Each possible extra byproduct is rolled independently.");
+        add(result, "MATERIALS", "Ore Washing", ModItems.IRON_DUST,
+            "At the Basin, 1 Raw Iron produces 1 Iron Dust, with a 75% chance for a second Iron Dust and 50% for Slag. Raw Copper produces 1 Copper Dust, then has independent 83% and 24% chances for two more, plus 10% Nickel Dust and 2% Silver Dust.",
+            "Andesite and Granite produce either 1 or 2 Fertilizer (equal chance). Stone and Diorite produce either 1 or 2 Stone Dust. Each wash costs 1 hunger point. Any bonus rolls may succeed together.");
+        add(result, "MATERIALS", "Dust and Slag", ModItems.SLAG,
+            "Stone Dust has a 50% chance to yield Slag. Gravel always yields Flint and has a 20% chance for Quartz Dust and 1% for Iron Dust. Sand always yields Potassium Dust and has 5% for Mica Dust and 1% for Gold Dust.",
+            "Slag gives independent 33% chances each for Iron Dust, Copper Dust and Silicon Dust, so a single batch may yield several kinds at once, or nothing. Use the Basin Recipe Guide for every supported input.");
+        add(result, "MATERIALS", "Brick Furnace and Stone", Items.COBBLESTONE,
+            "The Brick Furnace can smelt Cobblestone into Stone using Charcoal. Ordinary Stone, Cobblestone, Andesite, Granite and Diorite can be made into slabs or stairs at the Hardwood Crafting Table.",
+            "Deepslate and all Deepslate Ore varieties cannot be mined with the tools available in the current progression. Keep other ores for a future mining tier.");
+        add(result, "WOODWORK", "Axles and Building", ModItems.AXLE,
+            "Craft an Axle with 1 Rope surrounded by 8 Hardwood Sticks. Place it on a suitable surface; its shaft aligns with the placement axis. Axles will connect to later mechanical devices.",
+            "Hardwood Sticks use 2 Hardwood for 2 Sticks. Hardwood tools use Hardwood Sticks instead of ordinary Sticks. The older Wooden Door Hinges are still useful for making early doors.");
         add(result, "WOODWORK", "Leather and Rope", ModItems.WOVEN_WOOL,
             "Leather, Leather Straps, plant fibers, wool and Rope are used in clothing, tools and workstations. Prepare hides with the available drying and processing methods.",
             "The Sanding Station processes leather and other materials. See its Recipes page for the correct amounts and outputs.");
@@ -81,13 +93,13 @@ public final class ProjectFlintFieldGuideContent {
             "After crafting, the Clay Bucket is returned empty. Put 1 Hardwood into the Fireclay Forge and burn 1 Charcoal for five minutes to make 1 Hardwood Alloy.");
         add(result, "HARDWOOD", "Crafting Table", ModItems.HARDWOOD_CRAFTING_TABLE,
             "Combine 2 Hardwood Alloy, 1 Cobblestone and 1 Bound Wood Processor to craft the Hardwood Crafting Table.",
-            "The Hardwood Crafting Table provides a 3x3 crafting grid. Taking a crafting result requires three seconds. Pick the table up with a suitable axe if you need to move it.");
+            "The Hardwood Crafting Table makes Hardwood Sticks (2 Hardwood for 2 Sticks) and Axles (8 Hardwood Sticks around Rope), and provides a 3x3 crafting grid. Taking a crafting result requires three seconds. Pick the table up with a suitable axe if you need to move it.");
         add(result, "HARDWOOD", "Pickaxe and Axe", ModItems.HARDWOOD_PICKAXE,
-            "Hardwood tools use Hardwood with Sticks in the familiar wooden-tool patterns. The Hardwood Pickaxe breaks eligible Stone more quickly than a Wooden Pickaxe.",
+            "The Wooden Pickaxe and Hardwood Pickaxe both mine ordinary Stone in about 13.5 seconds. Hardwood tools use Hardwood Sticks, with Leather Straps in their recipes except the Shovel.",
             "A Hardwood Axe strips Logs by right-clicking. Either a Wooden Axe or Hardwood Axe may be used to make two Planks from a suitable Log in the crafting grid. The Axe loses durability but is not consumed.");
         add(result, "HARDWOOD", "Hardwood Hammer", ModItems.HARDWOOD_HAMMER,
-            "Craft a Hardwood Hammer with 6 Hardwood Alloy filling the top two rows of the Hardwood Crafting Table. Put Leather, 1 Stick and Rope in the bottom row, from left to right.",
-            "The Hardwood Hammer can mine certain stone-tier ores and damage fish. It is deliberately slower than a Pickaxe at breaking ordinary Stone.");
+            "Craft a Hardwood Hammer using 6 Hardwood Alloy in the top two rows of the Hardwood Crafting Table, then a Leather Strap, Hardwood Stick and Rope from left to right along the bottom row.",
+            "The Hardwood Hammer mines Stone and related rock in about 12 seconds. It mines Coal Ore for 2 Coal, and ordinary Iron Ore or Copper Ore for 1 Raw Ore. It can also hurt fish. Deepslate ores and Deepslate itself cannot be mined at this stage.");
         add(result, "REFERENCE", "Finding Recipes", Items.CRAFTING_TABLE,
             "Use the Recipes button or press K to browse processing recipes. Each machine has its own listing, including the Basin and Fireclay Forge.",
             "Workstation recipes may require timed processing, fuel, water, tools or other conditions. Refer to the relevant chapter for the steps to operate a workstation.");

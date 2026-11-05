@@ -22,4 +22,9 @@ public final class BrickFurnaceRecipeRegistry {
 		"glass", Ingredient.of(Items.SAND), new ItemStack(Items.GLASS),
 		GameplayTuning.KILN_MEAT_COOK_TICKS * 2, Set.of(PrimitiveProcessor.KILN)
 	);
+    public static final PrimitiveProcessingRecipe STONE = new PrimitiveProcessingRecipe(
+        "stone_from_cobblestone", Ingredient.of(Items.COBBLESTONE), new ItemStack(Items.STONE),
+        GameplayTuning.KILN_MEAT_COOK_TICKS, Set.of(PrimitiveProcessor.KILN)
+    );
 }
+

@@ -1,5 +1,13 @@
 # Release Documentation Process
 
+## v0.31.55-b additional release checks
+
+- For probabilistic outputs document independent/mutually-exclusive rolls, total yield bounds, guaranteed versus optional results, and where hunger/tool/water cost applies.
+- For new effects check every exact height and light boundary and server-authoritative removal; status icon and localization must be present.
+- For decor salvage explicitly list safe blocks and preserved contents; any new whitelist entry requires ADR review.
+- For a new placeable craft include model, item definition, loot table, blockstates for all orientations, item group, G/K guide references, and regression checks.
+
+
 Version identifiers must follow [`VERSIONING.md`](VERSIONING.md). New releases may never add a fourth numeric component.
 
 Every release, including internal alphas, must add `docs/releases/<version>.md`.
@@ -38,3 +46,8 @@ Any release that introduces a physical ground assembly or primitive stockpile mu
 - correct count/state reduction;
 - no silent deletion of materials;
 - no accidental conversion into vanilla block drops.
+
+
+## Current-state and guide parity (ADR 0011)
+
+Every release must review `docs/CURRENT_SYSTEMS.md`, `docs/ARCHITECTURE.md`, `docs/ROADMAP.md`, `docs/PRIMITIVE_PROGRESSION_MATRIX.md`, G-key Field Guide chapters and K-key Recipe Guide records. Only modify an in-game guide when the release changes relevant player behavior. Disagreements with previous accepted mechanics require a superseding ADR, not silent historical edits. For mining changes, source and server permission paths must share a predicate, and client/server test coverage must include natural and placed stone, the Utility Vest, and unrelated tools.

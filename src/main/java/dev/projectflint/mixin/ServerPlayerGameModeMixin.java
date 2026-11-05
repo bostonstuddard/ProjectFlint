@@ -71,14 +71,18 @@ public abstract class ServerPlayerGameModeMixin {
 
 		// Resolve all natural ores/stone before the vest, hammer or vanilla destruction paths.
         // Breaking an unauthorized ore is allowed at hand-speed, but NEVER yields any loot.
-        if (OreMiningRules.isStone(state) || OreMiningRules.isOre(state)) {
+        if (OreMiningRules.isRestricted(state)) {
             if (!OreMiningRules.canGetDrops(state, held)) {
                 level.removeBlock(pos, false);
                 cir.setReturnValue(false);
                 return;
             }
             if (OreMiningRules.isWoodenTier(held)) {
-                var drops = Block.getDrops(state, level, pos, level.getBlockEntity(pos), player, held);
+                // Use vanilla tool-equivalent loot evaluation for Hardcore custom tools.
+                // Pickaxe-stone loot conditions don't recognize a custom Hammer item.
+                ItemStack lootTool = held.is(ModItems.HARDWOOD_HAMMER)
+                    ? new ItemStack(Items.STONE_PICKAXE) : new ItemStack(Items.WOODEN_PICKAXE);
+                var drops = Block.getDrops(state, level, pos, level.getBlockEntity(pos), player, lootTool);
                 level.removeBlock(pos, false);
                 // The bare wooden pickaxe and hardwood pickaxe have vanilla wood-tier loot;
                 // the hardwood hammer uses stone-tier drops for iron/copper.
@@ -87,6 +91,10 @@ public abstract class ServerPlayerGameModeMixin {
                     projectflint$loosenAdjacentStone(pos);
                 } else if (OreMiningRules.isCoal(state)) {
                     projectflint$dropAtBlock(pos, new ItemStack(Items.COAL, held.is(ModItems.HARDWOOD_HAMMER) ? 2 : 1));
+                } else if (state.is(Blocks.IRON_ORE) && held.is(ModItems.HARDWOOD_HAMMER)) {
+                    projectflint$dropAtBlock(pos, new ItemStack(Items.RAW_IRON));
+                } else if (state.is(Blocks.COPPER_ORE) && held.is(ModItems.HARDWOOD_HAMMER)) {
+                    projectflint$dropAtBlock(pos, new ItemStack(Items.RAW_COPPER));
                 } else {
                     for (ItemStack drop : drops) projectflint$dropAtBlock(pos, drop);
                 }
@@ -95,6 +103,22 @@ public abstract class ServerPlayerGameModeMixin {
                 return;
             }
             // Legitimate vanilla pickaxes keep their own mining speed and vanilla loot checks.
+        }
+
+		// Small decor and Chicken Nests are hand-recoverable; structural blocks are not.
+        // This is an explicit whitelist, never a generic vest/hardness exemption.
+        if (PlayerPlacedBlockLedger.isHandRecoverableDecoration(state)) {
+            if (state.is(ModBlocks.NEST) && level.getBlockEntity(pos) instanceof dev.projectflint.block.entity.NestBlockEntity nest)
+                Containers.dropContents(level, pos, nest);
+            level.removeBlock(pos, false);
+            ItemStack recovered = state.is(Blocks.WALL_TORCH) ? new ItemStack(Items.TORCH)
+                : state.is(Blocks.SOUL_WALL_TORCH) ? new ItemStack(Items.SOUL_TORCH)
+                : state.is(Blocks.REDSTONE_WALL_TORCH) ? new ItemStack(Items.REDSTONE_TORCH)
+                : new ItemStack(state.getBlock().asItem());
+            if (!recovered.isEmpty()) projectflint$dropAtBlock(pos, recovered);
+            PlayerPlacedBlockLedger.clear(level, pos);
+            cir.setReturnValue(false);
+            return;
         }
 
 		// Utility Vest vegetation follows vanilla hand-loot (including Wheat Seeds from grass),
@@ -119,18 +143,6 @@ public abstract class ServerPlayerGameModeMixin {
 			return;
 		}
 		// Frame parts are recovered by their dedicated handlers below, never generic Vest loot.
-		if (PlayerPlacedBlockLedger.recoverable(player, level, pos, state)) {
-			java.util.List<ItemStack> drops = Block.getDrops(state, level, pos, level.getBlockEntity(pos), player, ItemStack.EMPTY);
-			level.removeBlock(pos, false);
-			if (drops.isEmpty()) {
-				int count = state.hasProperty(SlabBlock.TYPE) && state.getValue(SlabBlock.TYPE) == SlabType.DOUBLE ? 2 : 1;
-				drops = java.util.List.of(new ItemStack(state.getBlock().asItem(), count));
-			}
-			for (ItemStack drop : drops) if (!drop.isEmpty()) projectflint$dropAtBlock(pos, drop);
-			PlayerPlacedBlockLedger.clear(level, pos);
-			cir.setReturnValue(false);
-			return;
-		}
 		if (state.is(ModBlocks.FIRECLAY_BRICK_BLOCK) || state.is(ModBlocks.FIRECLAY_BRICK_SLAB)
 			|| state.is(ModBlocks.FIRECLAY_BRICK_STAIRS) || state.is(ModBlocks.FIRECLAY_FORGE_CONTROLLER)) {
 			if (ToolCapabilities.canMineBrick(held)) {

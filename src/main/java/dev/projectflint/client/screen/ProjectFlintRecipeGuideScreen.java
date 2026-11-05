@@ -138,7 +138,10 @@ public final class ProjectFlintRecipeGuideScreen extends Screen {
 		graphics.drawCenteredString(font, Component.literal("Page " + (page + 1) + "/" + pages), width / 2, top + FOOTER_PAGE_Y, 0xFF3B352C);
 		super.render(graphics, mouseX, mouseY, partialTick);
 		if (hovered != null) {
-			if (hovered.accepted.size() <= 1) graphics.setTooltipForNextFrame(font, hovered.stack, mouseX, mouseY);
+            if (hovered.note != null) {
+                graphics.setComponentTooltipForNextFrame(font, List.of(hovered.stack.getHoverName(),
+                    Component.literal(hovered.note)), mouseX, mouseY);
+            } else if (hovered.accepted.size() <= 1) graphics.setTooltipForNextFrame(font, hovered.stack, mouseX, mouseY);
 			else {
 				List<Component> lines = new ArrayList<>();
 				lines.add(hovered.stack.getHoverName());
@@ -165,7 +168,7 @@ public final class ProjectFlintRecipeGuideScreen extends Screen {
 			ItemStack stack = shownInputs.get(i);
 			graphics.renderItem(stack, itemX, y + 5);
 			graphics.renderItemDecorations(font, stack, itemX, y + 5);
-			if (inside(mouseX, mouseY, itemX, y + 5, 16, 16)) hovered = new HoveredInput(stack, recipe.accepted.get(i));
+			if (inside(mouseX, mouseY, itemX, y + 5, 16, 16)) hovered = new HoveredInput(stack, recipe.accepted.get(i), null);
 			itemX += 25;
 			if (i + 1 < shownInputs.size()) {
 				graphics.drawString(font, "+", itemX - 7, y + 9, 0xFFFFFFFF, false);
@@ -177,7 +180,7 @@ public final class ProjectFlintRecipeGuideScreen extends Screen {
 		graphics.drawString(font, "→", arrowX, y + 9, 0xFFFFFFFF, false);
 		graphics.renderItem(recipe.output, outputX, y + 5);
 		graphics.renderItemDecorations(font, recipe.output, outputX, y + 5);
-		if (inside(mouseX, mouseY, outputX, y + 5, 16, 16)) hovered = new HoveredInput(recipe.output, List.of(recipe.output));
+		if (inside(mouseX, mouseY, outputX, y + 5, 16, 16)) hovered = new HoveredInput(recipe.output, List.of(recipe.output), recipe.note);
 		// Settings-style marquee: keep long names inside their row, pause at either end,
 		// scroll only when their rendered width exceeds the available text area.
 		int labelX = x + 194;
@@ -196,7 +199,7 @@ public final class ProjectFlintRecipeGuideScreen extends Screen {
 		graphics.enableScissor(labelX, y + 4, labelX + labelWidth, y + 23);
 		graphics.drawString(font, name, labelX - offset, y + 9, 0xFFFFFFFF, false);
 		graphics.disableScissor();
-		if (inside(mouseX, mouseY, labelX, y + 4, labelWidth, 19)) hovered = new HoveredInput(recipe.output, List.of(recipe.output));
+		if (inside(mouseX, mouseY, labelX, y + 4, labelWidth, 19)) hovered = new HoveredInput(recipe.output, List.of(recipe.output), recipe.note);
 		return hovered;
 	}
 
@@ -292,6 +295,29 @@ public final class ProjectFlintRecipeGuideScreen extends Screen {
 		result.add(new GuideRecipe(List.of(new ItemStack(Items.STRIPPED_OAK_WOOD)), new ItemStack(ModItems.TANNIN, 2)));
 		result.add(new GuideRecipe(List.of(new ItemStack(Items.STRIPPED_BIRCH_LOG)), new ItemStack(ModItems.TANNIN, 2)));
 		result.add(new GuideRecipe(List.of(new ItemStack(Items.STRIPPED_BIRCH_WOOD)), new ItemStack(ModItems.TANNIN, 2)));
+        // Probabilistic byproducts: outputs below show the first guaranteed or principal yield;
+        // exact independent rates are documented in the Field Guide.
+        result.add(new GuideRecipe(List.of(new ItemStack(Items.RAW_IRON)), new ItemStack(ModItems.IRON_DUST)).withNote("100% Iron Dust; 75% bonus Iron Dust; 50% Slag."));
+        result.add(new GuideRecipe(List.of(new ItemStack(Items.RAW_COPPER)), new ItemStack(ModItems.COPPER_DUST)).withNote("100% Copper Dust; 83% bonus; 24% third; 10% Nickel; 2% Silver."));
+        result.add(new GuideRecipe(List.of(new ItemStack(Items.ANDESITE)), new ItemStack(ModItems.FERTILIZER)).withNote("1 or 2 Fertilizer, equally likely."));
+        result.add(new GuideRecipe(List.of(new ItemStack(Items.GRANITE)), new ItemStack(ModItems.FERTILIZER)).withNote("1 or 2 Fertilizer, equally likely."));
+        result.add(new GuideRecipe(List.of(new ItemStack(Items.STONE)), new ItemStack(ModItems.STONE_DUST)).withNote("1 or 2 Stone Dust, equally likely."));
+        result.add(new GuideRecipe(List.of(new ItemStack(Items.DIORITE)), new ItemStack(ModItems.STONE_DUST)).withNote("1 or 2 Stone Dust, equally likely."));
+        result.add(new GuideRecipe(List.of(new ItemStack(ModItems.STONE_DUST)), new ItemStack(ModItems.SLAG)).withNote("50% Slag; no drop otherwise."));
+        result.add(new GuideRecipe(List.of(new ItemStack(Items.GRAVEL)), new ItemStack(Items.FLINT)).withNote("100% Flint; 20% Quartz Dust; 1% Iron Dust."));
+        result.add(new GuideRecipe(List.of(new ItemStack(Items.SAND)), new ItemStack(ModItems.POTASSIUM_DUST)).withNote("100% Potassium Dust; 5% Mica Dust; 1% Gold Dust."));
+        result.add(new GuideRecipe(List.of(new ItemStack(ModItems.SLAG)), new ItemStack(ModItems.IRON_DUST)).withNote("33% each Iron, Copper and Silicon Dust (independent)."));
+        // Show each stochastic byproduct as an actual searchable guide row, rather than
+        // burying the new materials inside a note on the primary output.
+        result.add(new GuideRecipe(List.of(new ItemStack(Items.RAW_IRON)), new ItemStack(ModItems.SLAG)).withNote("50% chance, independent of bonus Iron Dust."));
+        result.add(new GuideRecipe(List.of(new ItemStack(Items.RAW_COPPER)), new ItemStack(ModItems.NICKEL_DUST)).withNote("10% chance, independent of other Copper outputs."));
+        result.add(new GuideRecipe(List.of(new ItemStack(Items.RAW_COPPER)), new ItemStack(ModItems.SILVER_DUST)).withNote("2% chance, independent of other Copper outputs."));
+        result.add(new GuideRecipe(List.of(new ItemStack(Items.GRAVEL)), new ItemStack(ModItems.QUARTZ_DUST)).withNote("20% chance, plus guaranteed Flint."));
+        result.add(new GuideRecipe(List.of(new ItemStack(Items.GRAVEL)), new ItemStack(ModItems.IRON_DUST)).withNote("1% chance, plus guaranteed Flint."));
+        result.add(new GuideRecipe(List.of(new ItemStack(Items.SAND)), new ItemStack(ModItems.MICA_DUST)).withNote("5% chance, plus guaranteed Potassium Dust."));
+        result.add(new GuideRecipe(List.of(new ItemStack(Items.SAND)), new ItemStack(ModItems.GOLD_DUST)).withNote("1% chance, plus guaranteed Potassium Dust."));
+        result.add(new GuideRecipe(List.of(new ItemStack(ModItems.SLAG)), new ItemStack(ModItems.COPPER_DUST)).withNote("33% chance; independent of Iron and Silicon Dust."));
+        result.add(new GuideRecipe(List.of(new ItemStack(ModItems.SLAG)), new ItemStack(ModItems.SILICON_DUST)).withNote("33% chance; independent of Iron and Copper Dust."));
 		return result;
 	}
 
@@ -311,6 +337,7 @@ public final class ProjectFlintRecipeGuideScreen extends Screen {
 		}
 		results.add(new GuideRecipe(List.of(new ItemStack(Items.LEATHER)), BrickFurnaceRecipeRegistry.TANNED_LEATHER.resultCopy()));
 		results.add(new GuideRecipe(List.of(new ItemStack(Items.SAND)), BrickFurnaceRecipeRegistry.GLASS.resultCopy()));
+        results.add(new GuideRecipe(List.of(new ItemStack(Items.COBBLESTONE)), BrickFurnaceRecipeRegistry.STONE.resultCopy()));
 		results.sort(Comparator.comparing(recipe -> recipe.output.getHoverName().getString()));
 		return results;
 	}
@@ -405,6 +432,7 @@ public final class ProjectFlintRecipeGuideScreen extends Screen {
 	private static final class GuideRecipe {
 		private final List<ItemStack> inputs;
 		private final ItemStack output;
+        private String note;
 		private final List<List<ItemStack>> variants = new ArrayList<>();
 		private final List<List<ItemStack>> accepted = new ArrayList<>();
 		private GuideRecipe(List<ItemStack> inputs, ItemStack output) {
@@ -416,6 +444,7 @@ public final class ProjectFlintRecipeGuideScreen extends Screen {
 			variants.add(this.inputs);
 			for (List<ItemStack> choice : choices) accepted.add(new ArrayList<>(choice));
 		}
+        private GuideRecipe withNote(String explanation) { this.note = explanation; return this; }
 		private void merge(GuideRecipe other) {
 			variants.addAll(other.variants);
 			for (int i = 0; i < accepted.size(); i++) {
@@ -427,7 +456,7 @@ public final class ProjectFlintRecipeGuideScreen extends Screen {
 		}
 	}
 
-	private record HoveredInput(ItemStack stack, List<ItemStack> accepted) {}
+	private record HoveredInput(ItemStack stack, List<ItemStack> accepted, String note) {}
 
 	private static List<ItemStack> allStacks(Ingredient ingredient, int count) {
 		return ingredient.items().map(holder -> new ItemStack(holder.value(), count)).toList();
@@ -438,7 +467,8 @@ public final class ProjectFlintRecipeGuideScreen extends Screen {
 		Map<String, GuideRecipe> grouped = new LinkedHashMap<>();
 		for (GuideRecipe recipe : recipes) {
 			String key = BuiltInRegistries.ITEM.getKey(recipe.output.getItem()) + ":" + recipe.output.getCount()
-				+ ":" + recipe.output.getComponents().hashCode() + ":" + recipe.inputs.size();
+				+ ":" + recipe.output.getComponents().hashCode() + ":" + recipe.inputs.size()
+                + (recipe.note != null ? ":" + recipe.inputs.get(0).getItem() : "");
 			GuideRecipe existing = grouped.get(key);
 			if (existing == null) grouped.put(key, recipe);
 			else existing.merge(recipe);

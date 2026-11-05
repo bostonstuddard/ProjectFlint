@@ -38,6 +38,10 @@ public abstract class ItemTooltipMixin {
 			).withStyle(ChatFormatting.GRAY));
 		}
 
+		if (stack.is(ModItems.HARDWOOD_HAMMER)) {
+            textConsumer.accept(Component.literal("Mines Iron Ore and Copper Ore (not Deepslate variants).").withStyle(ChatFormatting.GRAY));
+        }
+
 		if (stack.is(ModItems.REED_BACKPACK)) {
 			textConsumer.accept(Component.literal("Unlocks 9 inventory slots.").withStyle(ChatFormatting.GRAY));
 		}

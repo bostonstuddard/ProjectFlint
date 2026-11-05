@@ -1,0 +1,16 @@
+{
+  "type": "projectflint:hardwood_shaped",
+  "category": "misc",
+  "pattern": [
+    "S  ",
+    "SS ",
+    "SSS"
+  ],
+  "key": {
+    "S": "minecraft:andesite"
+  },
+  "result": {
+    "id": "minecraft:andesite_stairs",
+    "count": 4
+  }
+}

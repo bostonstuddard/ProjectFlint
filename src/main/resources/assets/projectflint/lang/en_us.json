@@ -458,5 +458,20 @@
   "container.projectflint.hardwood_crafting_table": "Hardwood Crafting Table",
   "tooltip.projectflint.hardwood_crafting_table": "Each craft takes 3 seconds.",
   "key.projectflint.field_guide": "Open Flint Field Guide",
-  "item.projectflint.hardwood_sticks": "Hardwood Sticks"
+  "item.projectflint.hardwood_sticks": "Hardwood Sticks",
+  "item.projectflint.iron_dust": "Iron Dust",
+  "item.projectflint.copper_dust": "Copper Dust",
+  "item.projectflint.nickel_dust": "Nickel Dust",
+  "item.projectflint.silver_dust": "Silver Dust",
+  "item.projectflint.stone_dust": "Stone Dust",
+  "item.projectflint.fertilizer": "Fertilizer",
+  "item.projectflint.quartz_dust": "Quartz Dust",
+  "item.projectflint.potassium_dust": "Potassium Dust",
+  "item.projectflint.mica_dust": "Mica Dust",
+  "item.projectflint.gold_dust": "Gold Dust",
+  "item.projectflint.silicon_dust": "Silicon Dust",
+  "item.projectflint.slag": "Slag",
+  "item.projectflint.axle": "Axle",
+  "effect.projectflint.claustrophobia": "Claustrophobia",
+  "effect.projectflint.speluncaphobia": "Speluncaphobia"
 }

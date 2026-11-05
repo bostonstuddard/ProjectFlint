@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.minecraft.core.Holder;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 
@@ -22,6 +23,9 @@ public final class PrimitiveEnvironmentEffectSystem {
 	private static final int TERRIFIED_DAMAGE_INTERVAL = 40;
 	private static final Map<UUID, Long> DARK_SINCE = new HashMap<>();
 	private static final Map<UUID, Long> WET_SINCE = new HashMap<>();
+    private static final Map<UUID, Long> UNDERGROUND_SINCE = new HashMap<>();
+    private static final int SPELUNCA_STACK_TICKS = 20 * 60;
+    private static final int MAX_SPELUNCA_AMPLIFIER = 3;
 
 	private PrimitiveEnvironmentEffectSystem() {}
 
@@ -36,8 +40,36 @@ public final class PrimitiveEnvironmentEffectSystem {
 			if (!player.isAlive() || player.isCreative() || player.isSpectator()) {
 				DARK_SINCE.remove(player.getUUID());
 				WET_SINCE.remove(player.getUUID());
+                UNDERGROUND_SINCE.remove(player.getUUID());
+                player.removeEffect(ModEffects.CLAUSTROPHOBIA);
+                player.removeEffect(ModEffects.SPELUNCAPHOBIA);
 				continue;
 			}
+
+            // Sunlit vertical shafts and strong artificial light (block level 13+) are safe.
+            // Sky access alone during nighttime is not direct sunlight.
+            boolean inSunlight = level.isBrightOutside() && level.canSeeSky(player.blockPosition().above())
+                && !level.isRainingAt(player.blockPosition().above());
+            boolean brightEnough = level.getBrightness(LightLayer.BLOCK, player.blockPosition().above()) >= 13;
+            if (inSunlight || brightEnough) {
+                UNDERGROUND_SINCE.remove(player.getUUID());
+                player.removeEffect(ModEffects.CLAUSTROPHOBIA);
+                player.removeEffect(ModEffects.SPELUNCAPHOBIA);
+            } else {
+                if (player.getBlockY() < -40) refresh(player, ModEffects.CLAUSTROPHOBIA);
+                else player.removeEffect(ModEffects.CLAUSTROPHOBIA);
+                if (player.getBlockY() < 0) {
+                    long from = UNDERGROUND_SINCE.computeIfAbsent(player.getUUID(), id -> level.getGameTime());
+                    int stacks = Math.min(MAX_SPELUNCA_AMPLIFIER, (int)((level.getGameTime() - from) / SPELUNCA_STACK_TICKS));
+                    refresh(player, ModEffects.SPELUNCAPHOBIA, stacks);
+                    // Added exhaustion is small, scales with depth exposure, and never deals fatal damage.
+                    if (level.getGameTime() % 20L == 0L && player.getFoodData().getFoodLevel() > 6)
+                        player.causeFoodExhaustion(0.06F * (stacks + 1));
+                } else {
+                    UNDERGROUND_SINCE.remove(player.getUUID());
+                    player.removeEffect(ModEffects.SPELUNCAPHOBIA);
+                }
+            }
 
 			boolean soaked = player.isInWater() || level.isRainingAt(player.blockPosition());
 			if (soaked) {
@@ -85,9 +117,11 @@ public final class PrimitiveEnvironmentEffectSystem {
 	}
 
 	private static void refresh(ServerPlayer player, Holder<MobEffect> effect) {
-		MobEffectInstance active = player.getEffect(effect);
-		if (active == null || active.getDuration() < REFRESH_THRESHOLD) {
-			player.addEffect(new MobEffectInstance(effect, REFRESH_TICKS, 0, false, false, true));
-		}
-	}
+        refresh(player, effect, 0);
+    }
+    private static void refresh(ServerPlayer player, Holder<MobEffect> effect, int amplifier) {
+        MobEffectInstance active = player.getEffect(effect);
+        if (active == null || active.getDuration() < REFRESH_THRESHOLD || active.getAmplifier() != amplifier)
+            player.addEffect(new MobEffectInstance(effect, REFRESH_TICKS, amplifier, false, false, true));
+    }
 }

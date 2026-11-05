@@ -61,6 +61,18 @@ public final class ModEffects {
 			)
 	);
 
+	public static final Holder<MobEffect> CLAUSTROPHOBIA = Registry.registerForHolder(
+        BuiltInRegistries.MOB_EFFECT, ProjectFlint.id("claustrophobia"),
+        new MobEffect(MobEffectCategory.HARMFUL, 0x92847A) {}
+            .addAttributeModifier(Attributes.MOVEMENT_SPEED, ProjectFlint.id("effect.claustrophobia_speed"),
+                -0.07D, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL)
+            .addAttributeModifier(Attributes.ATTACK_DAMAGE, ProjectFlint.id("effect.claustrophobia_damage"),
+                -1.0D, AttributeModifier.Operation.ADD_VALUE));
+
+    public static final Holder<MobEffect> SPELUNCAPHOBIA = Registry.registerForHolder(
+        BuiltInRegistries.MOB_EFFECT, ProjectFlint.id("speluncaphobia"),
+        new MobEffect(MobEffectCategory.HARMFUL, 0x53495C) {});
+
 	private ModEffects() {}
 
 	public static void initialize() {}

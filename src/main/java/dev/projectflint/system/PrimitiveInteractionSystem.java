@@ -68,6 +68,13 @@ public final class PrimitiveInteractionSystem {
 
 		BlockState state = level.getBlockState(pos);
 		ItemStack held = player.getItemInHand(hand);
+		if (OreMiningRules.isRestricted(state)) {
+			// Stone blocks must never start a fast client-side attack with an invalid tool.
+			// Other ores retain deliberately slow, lootless removal.
+			return !OreMiningRules.isStoneFamily(state) || OreMiningRules.canGetDrops(state, held)
+				? InteractionResult.PASS : InteractionResult.FAIL;
+		}
+		if (PlayerPlacedBlockLedger.isHandRecoverableDecoration(state)) return InteractionResult.PASS;
 		if (TannedUtilityVestSystem.canHandClear(player, state)) return InteractionResult.PASS;
 		if (held.is(ModItems.HARDWOOD_HAMMER) && state.is(BlockTags.MINEABLE_WITH_PICKAXE) && !state.is(BlockTags.NEEDS_IRON_TOOL) && !state.is(BlockTags.NEEDS_DIAMOND_TOOL)) return InteractionResult.PASS;
 		if (state.is(ModBlocks.SLEEPING_BAG)) return InteractionResult.PASS;
@@ -80,11 +87,6 @@ public final class PrimitiveInteractionSystem {
 		if ((held.is(Items.WOODEN_SHOVEL) || held.is(ModItems.HARDWOOD_SHOVEL)) && WoodenToolTargets.shovel(state)) return InteractionResult.PASS;
 		if ((held.is(Items.WOODEN_AXE) || held.is(ModItems.HARDWOOD_AXE)) && state.is(BlockTags.LOGS)) return InteractionResult.PASS;
 		if (state.is(ModTags.GRASS_SCRAPE_TARGETS) && !held.isEmpty() && !ModItems.isMultitool(held)) return InteractionResult.FAIL;
-		if (player.getItemBySlot(net.minecraft.world.entity.EquipmentSlot.CHEST).is(ModItems.TANNED_UTILITY_VEST)
-			&& PlayerPlacedBlockLedger.potential(level, pos, state)) {
-			if (level.isClientSide()) return InteractionResult.PASS;
-			if (level instanceof net.minecraft.server.level.ServerLevel server && PlayerPlacedBlockLedger.recoverable(player, server, pos, state)) return InteractionResult.PASS;
-		}
 		if (ModBlocks.isWoodenBeam(state)) return (ToolCapabilities.isWellWoodTool(held) || TannedUtilityVestSystem.canDismantleWellFrame(player, state)) ? InteractionResult.PASS : InteractionResult.FAIL;
 		if (state.is(ModBlocks.ROPE)) return InteractionResult.PASS;
 		if (state.is(ModBlocks.WELL_PULLEY)) return (ToolCapabilities.isWellWoodTool(held) || TannedUtilityVestSystem.canDismantleWellFrame(player, state)) ? InteractionResult.PASS : InteractionResult.FAIL;
@@ -810,6 +812,10 @@ public final class PrimitiveInteractionSystem {
 		if (player.isSpectator()) return false;
 
 		ItemStack held = player.getMainHandItem();
+		if (OreMiningRules.isRestricted(state)) {
+			return !OreMiningRules.isStoneFamily(state) || OreMiningRules.canGetDrops(state, held);
+		}
+		if (PlayerPlacedBlockLedger.isHandRecoverableDecoration(state)) return true;
 		if (TannedUtilityVestSystem.canHandClear(player, state)) return true;
 		if (held.is(ModItems.HARDWOOD_HAMMER) && state.is(BlockTags.MINEABLE_WITH_PICKAXE) && !state.is(BlockTags.NEEDS_IRON_TOOL) && !state.is(BlockTags.NEEDS_DIAMOND_TOOL)) return true;
 		if (state.is(ModBlocks.SLEEPING_BAG)) return true;
@@ -822,7 +828,6 @@ public final class PrimitiveInteractionSystem {
 		if ((held.is(Items.WOODEN_SHOVEL) || held.is(ModItems.HARDWOOD_SHOVEL)) && WoodenToolTargets.shovel(state)) return true;
 		if ((held.is(Items.WOODEN_AXE) || held.is(ModItems.HARDWOOD_AXE)) && state.is(BlockTags.LOGS)) return true;
 		if (state.is(ModTags.GRASS_SCRAPE_TARGETS) && !held.isEmpty() && !ModItems.isMultitool(held)) return false;
-		if (level instanceof net.minecraft.server.level.ServerLevel server && PlayerPlacedBlockLedger.recoverable(player, server, pos, state)) return true;
 		if (ModBlocks.isWoodenBeam(state)) return ToolCapabilities.isWellWoodTool(held) || TannedUtilityVestSystem.canDismantleWellFrame(player, state);
 		if (state.is(ModBlocks.ROPE)) return true;
 		if (state.is(ModBlocks.WELL_PULLEY)) return ToolCapabilities.isWellWoodTool(held) || TannedUtilityVestSystem.canDismantleWellFrame(player, state);

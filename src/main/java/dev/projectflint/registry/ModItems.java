@@ -262,8 +262,21 @@ public final class ModItems {
 	private static final ToolMaterial HARDWOOD_HAMMER_MATERIAL = new ToolMaterial(
 		ToolMaterial.STONE.incorrectBlocksForDrops(), 560, 2.0F, 1.0F, 12, ToolMaterial.STONE.repairItems());
 	public static final Item WOOD_DUST = register("wood_dust", properties -> new Item(properties.stacksTo(64)));
+    public static final Item IRON_DUST = register("iron_dust", properties -> new Item(properties.stacksTo(64)));
+    public static final Item COPPER_DUST = register("copper_dust", properties -> new Item(properties.stacksTo(64)));
+    public static final Item NICKEL_DUST = register("nickel_dust", properties -> new Item(properties.stacksTo(64)));
+    public static final Item SILVER_DUST = register("silver_dust", properties -> new Item(properties.stacksTo(64)));
+    public static final Item STONE_DUST = register("stone_dust", properties -> new Item(properties.stacksTo(64)));
+    public static final Item FERTILIZER = register("fertilizer", properties -> new Item(properties.stacksTo(64)));
+    public static final Item QUARTZ_DUST = register("quartz_dust", properties -> new Item(properties.stacksTo(64)));
+    public static final Item POTASSIUM_DUST = register("potassium_dust", properties -> new Item(properties.stacksTo(64)));
+    public static final Item MICA_DUST = register("mica_dust", properties -> new Item(properties.stacksTo(64)));
+    public static final Item GOLD_DUST = register("gold_dust", properties -> new Item(properties.stacksTo(64)));
+    public static final Item SILICON_DUST = register("silicon_dust", properties -> new Item(properties.stacksTo(64)));
+    public static final Item SLAG = register("slag", properties -> new Item(properties.stacksTo(64)));
 	public static final Item HARDWOOD = register("hardwood", properties -> new Item(properties.stacksTo(64)));
 	public static final Item HARDWOOD_STICKS = register("hardwood_sticks", properties -> new Item(properties.stacksTo(64)));
+    public static final Item AXLE = registerBlockItem("axle", ModBlocks.AXLE, 16);
 	public static final Item HARDWOOD_ALLOY = register("hardwood_alloy", properties -> new Item(properties.stacksTo(64)));
 	public static final Item HARDWOOD_CRAFTING_TABLE = registerBlockItem("hardwood_crafting_table", ModBlocks.HARDWOOD_CRAFTING_TABLE, 1);
 	public static final Item HARDWOOD_AXE = register("hardwood_axe", properties -> new net.minecraft.world.item.AxeItem(HARDWOOD_MATERIAL, 6.0F, -3.0F, properties.stacksTo(1)));

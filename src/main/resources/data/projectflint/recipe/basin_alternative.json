@@ -1,0 +1,17 @@
+{
+  "type": "projectflint:hardwood_shaped",
+  "category": "misc",
+  "pattern": [
+    "S S",
+    "SSS",
+    "CCC"
+  ],
+  "key": {
+    "S": "projectflint:wooden_sheet",
+    "C": "minecraft:cobblestone"
+  },
+  "result": {
+    "id": "projectflint:basin",
+    "count": 1
+  }
+}

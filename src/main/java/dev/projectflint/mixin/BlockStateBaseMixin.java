@@ -8,9 +8,9 @@ import dev.projectflint.registry.ModTags;
 import dev.projectflint.system.ToolCapabilities;
 import dev.projectflint.system.LumberProcessorSystem;
 import dev.projectflint.system.TannedUtilityVestSystem;
-import dev.projectflint.system.PlayerPlacedBlockLedger;
 import dev.projectflint.system.WoodenToolTargets;
 import dev.projectflint.system.OreMiningRules;
+import dev.projectflint.system.PlayerPlacedBlockLedger;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.tags.BlockTags;
@@ -35,12 +35,17 @@ public abstract class BlockStateBaseMixin {
 		float vanillaProgress = cir.getReturnValue();
 		BlockState state = (BlockState) (Object) this;
 		ItemStack held = player.getMainHandItem();
-        // Before vest/hammer/vanilla fallbacks: every ore must pass one authoritative speed gate.
-        if (OreMiningRules.isStone(state) || OreMiningRules.isOre(state)) {
+        // First: the same authoritative stone/ore gate used by both server hooks.
+        // Prevent the client from drawing a fast fake break and later restoring the block.
+        if (OreMiningRules.isRestricted(state)) {
             cir.setReturnValue(OreMiningRules.progress(state, held, vanillaProgress));
             return;
         }
 
+        if (PlayerPlacedBlockLedger.isHandRecoverableDecoration(state)) {
+            cir.setReturnValue(1.0F / 5.0F);
+            return;
+        }
 		// Leaves should never pop instantly from unrelated held tools or a retired belt.
 		// The Vest grants hand-harvesting permission, not an instantaneous leaf harvest.
 		if (state.is(BlockTags.LEAVES)) {
@@ -100,13 +105,6 @@ public abstract class BlockStateBaseMixin {
 		// Grass scraping is a bare-hand action; tools must use an allowed harvesting path.
 		if (state.is(ModTags.GRASS_SCRAPE_TARGETS) && !held.isEmpty() && !ModItems.isMultitool(held)) {
 			cir.setReturnValue(0.0F);
-			return;
-		}
-		// A candidate for Vest recovery is not proof that natural stone was player-placed.
-		// Apply the wooden-tool mining timing before the optimistic client-side Vest preview.
-		if (player.getItemBySlot(net.minecraft.world.entity.EquipmentSlot.CHEST).is(ModItems.TANNED_UTILITY_VEST)
-			&& PlayerPlacedBlockLedger.potential(level, pos, state)) {
-			cir.setReturnValue(Math.max(vanillaProgress, 0.15F));
 			return;
 		}
 		if (ModBlocks.isWoodenBeam(state)) {

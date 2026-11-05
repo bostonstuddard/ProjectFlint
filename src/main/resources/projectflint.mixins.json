@@ -24,8 +24,7 @@
     "ItemTooltipMixin",
     "BrushItemMixin",
     "ChickenMixin",
-    "RecipeManagerMixin",
-    "BlockItemPlacedLedgerMixin"
+    "RecipeManagerMixin"
   ],
   "injectors": {
     "defaultRequire": 1

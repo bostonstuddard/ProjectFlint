@@ -12,16 +12,16 @@ import net.minecraft.world.level.block.state.BlockState;
 /** Explicit hand-clearing privilege; intentionally excludes structural blocks, wood and ores. */
 public final class TannedUtilityVestSystem {
 	private TannedUtilityVestSystem() {}
-	/** Well frame parts have their own recovery path (including Beam screws and Pulley inventory). */
+	/** The vest does not replace a tool, including for Well dismantling. */
 	public static boolean canDismantleWellFrame(Player player, BlockState state) {
-		return player.getItemBySlot(EquipmentSlot.CHEST).is(ModItems.TANNED_UTILITY_VEST)
-			&& (ModBlocks.isWoodenBeam(state) || state.is(ModBlocks.WELL_PULLEY));
+		return false;
 	}
 
 	public static boolean canHandClear(Player player, BlockState state) {
 		return player.getItemBySlot(EquipmentSlot.CHEST).is(ModItems.TANNED_UTILITY_VEST)
+			&& !state.is(BlockTags.MINEABLE_WITH_PICKAXE)
+			&& !OreMiningRules.isRestricted(state)
 			&& (state.is(ModTags.SLOW_HAND_CLEAR_TARGETS)
-				|| state.is(ModTags.BREAKABLE_BY_HAND)
 				|| state.is(ModTags.FORAGE_BUSHES)
 				|| state.is(Blocks.SWEET_BERRY_BUSH) || state.is(ModBlocks.STRAWBERRY_BUSH)
 				|| state.is(BlockTags.SAPLINGS)
@@ -34,7 +34,6 @@ public final class TannedUtilityVestSystem {
 				|| state.is(Blocks.WILDFLOWERS) || state.is(Blocks.LILY_PAD)
 				|| state.is(Blocks.SUGAR_CANE) || state.is(Blocks.VINE)
 				|| state.is(Blocks.GLOW_LICHEN) || state.is(Blocks.DEAD_BUSH)
-				|| state.is(Blocks.SEAGRASS) || state.is(Blocks.TALL_SEAGRASS)
-				|| state.is(ModBlocks.SLEEPING_BAG));
+				|| state.is(Blocks.SEAGRASS) || state.is(Blocks.TALL_SEAGRASS));
 	}
 }

@@ -1,0 +1,16 @@
+{
+  "type": "projectflint:hardwood_shaped",
+  "category": "misc",
+  "pattern": [
+    "S  ",
+    "SS ",
+    "SSS"
+  ],
+  "key": {
+    "S": "minecraft:granite"
+  },
+  "result": {
+    "id": "minecraft:granite_stairs",
+    "count": 4
+  }
+}

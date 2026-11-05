@@ -27,7 +27,8 @@ public final class BasinBlockEntity extends BlockEntity {
 	public static boolean supports(ItemStack stack) {
 		return stack.is(Items.STRIPPED_OAK_LOG) || stack.is(Items.STRIPPED_OAK_WOOD)
 			|| stack.is(Items.STRIPPED_BIRCH_LOG) || stack.is(Items.STRIPPED_BIRCH_WOOD)
-			|| stack.is(net.minecraft.tags.ItemTags.PLANKS);
+			|| stack.is(net.minecraft.tags.ItemTags.PLANKS)
+            || dev.projectflint.system.BasinMaterialProcessingSystem.supports(stack);
 	}
 
 	public ItemStack stored() { return input.copy(); }
@@ -56,10 +57,18 @@ public final class BasinBlockEntity extends BlockEntity {
 		if (!player.isCreative() && player.getFoodData().getFoodLevel() < 1) return false;
 		if (!player.isCreative()) player.getFoodData().setFoodLevel(player.getFoodData().getFoodLevel() - 1);
 		boolean inputWasPlank = input.is(net.minecraft.tags.ItemTags.PLANKS);
+        boolean isWood = inputWasPlank || input.is(Items.STRIPPED_OAK_LOG) || input.is(Items.STRIPPED_OAK_WOOD)
+            || input.is(Items.STRIPPED_BIRCH_LOG) || input.is(Items.STRIPPED_BIRCH_WOOD);
+        ItemStack processed = input.copyWithCount(1);
 		input.shrink(1);
 		if (input.isEmpty()) input = ItemStack.EMPTY;
 		refreshVisual();
-		Block.popResource(level, worldPosition.above(), inputWasPlank ? new ItemStack(ModItems.WOOD_DUST) : new ItemStack(ModItems.TANNIN, 2));
+		if (isWood) {
+            Block.popResource(level, worldPosition.above(), inputWasPlank ? new ItemStack(ModItems.WOOD_DUST) : new ItemStack(ModItems.TANNIN, 2));
+        } else {
+            for (ItemStack drop : dev.projectflint.system.BasinMaterialProcessingSystem.process(processed, level.getRandom()))
+                Block.popResource(level, worldPosition.above(), drop);
+        }
 		level.playSound(null, worldPosition, SoundEvents.WOOD_BREAK, SoundSource.BLOCKS, 0.5F, 0.75F);
 		return true;
 	}
@@ -79,7 +88,7 @@ public final class BasinBlockEntity extends BlockEntity {
 			: input.is(Items.STRIPPED_OAK_LOG) ? BasinBlock.Contents.OAK_LOG
 			: input.is(Items.STRIPPED_OAK_WOOD) ? BasinBlock.Contents.OAK_WOOD
 			: input.is(Items.STRIPPED_BIRCH_LOG) ? BasinBlock.Contents.BIRCH_LOG
-			: input.is(Items.STRIPPED_BIRCH_WOOD) ? BasinBlock.Contents.BIRCH_WOOD : BasinBlock.Contents.PLANKS;
+			: input.is(Items.STRIPPED_BIRCH_WOOD) ? BasinBlock.Contents.BIRCH_WOOD : input.is(net.minecraft.tags.ItemTags.PLANKS) ? BasinBlock.Contents.PLANKS : BasinBlock.Contents.MATERIALS;
 		if (state.getValue(BasinBlock.CONTENTS) != contents)
 			level.setBlock(worldPosition, state.setValue(BasinBlock.CONTENTS, contents), 3);
 	}

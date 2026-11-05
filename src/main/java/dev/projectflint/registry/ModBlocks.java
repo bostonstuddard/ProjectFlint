@@ -59,6 +59,7 @@ import dev.projectflint.block.WellPulleyBlock;
 import dev.projectflint.block.PrototypeStationBlock;
 import dev.projectflint.block.BasinBlock;
 import dev.projectflint.block.HardwoodCraftingTableBlock;
+import dev.projectflint.block.AxleBlock;
 import dev.projectflint.block.FireclayForgeControllerBlock;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -83,6 +84,7 @@ public final class ModBlocks {
 	public static final FlintTorchBlock FLINT_TORCH = registerFlintTorch("flint_torch");
 	public static final FatBurningTorchBlock FAT_BURNING_TORCH = registerFatTorch("fat_burning_torch");
 	public static final Block HARDWOOD_CRAFTING_TABLE = registerHardwoodTable("hardwood_crafting_table");
+    public static final AxleBlock AXLE = registerAxle("axle");
 	public static final FiberWorkPileBlock FIBER_WORK_PILE = registerFiberWorkPile("fiber_work_pile");
 	public static final HammerAssemblyBlock HAMMER_ASSEMBLY = registerHammerAssembly("hammer_assembly");
 	public static final BindingAssemblyBlock BINDING_ASSEMBLY = registerBindingAssembly("binding_assembly");
@@ -651,6 +653,12 @@ public final class ModBlocks {
 				.lightLevel(state -> state.getValue(FireclayForgeControllerBlock.LIT) ? 11 : 0)
 		));
 	}
+
+    private static AxleBlock registerAxle(String name) {
+        ResourceKey<Block> key = ResourceKey.create(Registries.BLOCK, ProjectFlint.id(name));
+        return Registry.register(BuiltInRegistries.BLOCK, key, new AxleBlock(
+            BlockBehaviour.Properties.of().setId(key).strength(1.0F).sound(SoundType.WOOD).noOcclusion()));
+    }
 
 	private static Block registerHardwoodTable(String name) {
         ResourceKey<Block> key = ResourceKey.create(Registries.BLOCK, ProjectFlint.id(name));

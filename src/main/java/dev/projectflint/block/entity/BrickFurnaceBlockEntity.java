@@ -103,7 +103,7 @@ public final class BrickFurnaceBlockEntity extends BaseContainerBlockEntity {
 	public boolean canPlaceItem(int slot, ItemStack stack) {
 		if (slot >= OUTPUT_START) return false;
 		if (slot == FUEL_SLOT) return stack.is(Items.CHARCOAL);
-		return slot == INPUT_SLOT && (PrimitiveProcessingRegistry.isProcessable(PrimitiveProcessor.KILN, stack) || (!isBlastFurnace() && (stack.is(Items.LEATHER) || stack.is(Items.SAND))));
+		return slot == INPUT_SLOT && (PrimitiveProcessingRegistry.isProcessable(PrimitiveProcessor.KILN, stack) || (!isBlastFurnace() && (stack.is(Items.LEATHER) || stack.is(Items.SAND) || stack.is(Items.COBBLESTONE))));
 	}
 
 	public boolean ignite() {
@@ -164,6 +164,7 @@ public final class BrickFurnaceBlockEntity extends BaseContainerBlockEntity {
 	private Optional<PrimitiveProcessingRecipe> findRecipe(ItemStack input) {
 		if (!isBlastFurnace() && input.is(Items.LEATHER)) return Optional.of(BrickFurnaceRecipeRegistry.TANNED_LEATHER);
 		if (!isBlastFurnace() && input.is(Items.SAND)) return Optional.of(BrickFurnaceRecipeRegistry.GLASS);
+        if (!isBlastFurnace() && input.is(Items.COBBLESTONE)) return Optional.of(BrickFurnaceRecipeRegistry.STONE);
 		return PrimitiveProcessingRegistry.find(PrimitiveProcessor.KILN, input);
 	}
 

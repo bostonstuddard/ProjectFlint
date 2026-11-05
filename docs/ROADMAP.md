@@ -1,5 +1,14 @@
 # Project Flint — Development Roadmap
 
+## Current focus after v0.31.55-b
+
+- Axle infrastructure is placeable but mechanical transmission/wind- or water-power connections are not yet implemented. Specify a power interface before adding rotational logic.
+- Depth risks now exist below Y=0/Y=-40. Plan gear and potion countermeasures separately and do not accidentally exempt all armor.
+- Expand future metallurgy using independent Basin dust/byproduct chances; Deepslate remains explicitly locked.
+- Test salvage whitelist on filled Chicken Nests and torch wall states, and prove it never reopens Vest mining shortcuts.
+- Keep `CURRENT_SYSTEMS.md`, `BASIN_MATERIAL_YIELDS.md`, ADRs and G/K guides synchronized with any tuning.
+
+
 > **Roadmap philosophy:** Project Flint is developed by technological capability, not by version number.
 >
 > Releases may occur at any point for bug fixes, balancing, visual cleanup, refactors, or playtest corrections. A stage is considered complete only when its **player-facing progression loop is coherent and difficult to bypass**, not when a particular version number is reached.
@@ -1371,3 +1380,14 @@ Crude Multitool leaf harvesting is explicitly protected as a progression gate: l
 - Implemented Wood Dust Basin milling, Hardwood, five-minute Charcoal Alloy forging and delayed 3×3 Hardwood Crafting Table with upgraded tools and Hammer.
 - Follow-up UI: explicit crafting result timer and Forge Alloy progress feedback.
 - External Flint Quests milestones: Wood Dust, Hardwood, Alloy, Table and Hammer.
+
+
+## v0.31.54-b — tool-gated stone mining and documentation parity
+
+- [x] Remove the generic Vest player-placement/hardness-based break preview and salvage permissions. Vest applies only to vegetation; Well machinery requires tools.
+- [x] Share rock/ore eligibility between mining progress, attack permission, BEFORE-break, and server completion, including placed cobblestone, granite, diorite, and andesite.
+- [x] Hardwood Hammer stone mining adjusted to 240 ticks; Wood/Hardwood Pickaxe remains 270 ticks.
+- [x] Refresh in-game Field Guide and decision/current-state docs, and audit K-key Recipe Guide (no recipes changed).
+- [ ] Live client/server verify no fast cracks, ghost restoration, or unauthorized drops for all rock families; check with and without a vest, including multiplayer.
+- [ ] Verify allowed hand-harvest paths for flowers, leaves, grass, forage bushes, and Well salvage with a supported tool.
+- [ ] Run complete Gradle `build.bat` and repeat regressions after all future mining changes.

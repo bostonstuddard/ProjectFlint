@@ -1,3 +1,22 @@
+## v0.31.55-b — Depth risks, material Basin, Axles and progression corrections
+- Recover small Torches, Chicken Nests and Axles by hand without a Vest; structural blocks remain tool-gated and Nest eggs eject properly.
+- Deepslate and Deepslate Ores are inaccessible to any current survival tool. Hardwood Hammer tooltip clarifies Iron/Copper Ore; ordinary Iron/Copper Stone Ore drops exactly 1 Raw Ore with Hammer, Coal drops 2.
+- Added Claustrophobia below Y=-40 (minor slowness/damage reduction) and stacking Speluncaphobia below Y=0 (more hunger, slower healing). Daytime direct sky exposure or block light >=13 removes both.
+- Added orientable placeable Axle (8 Hardwood Sticks + Rope). Hardwood Sticks restored to Creative tab, have a dedicated stick sprite and are required by all Hardwood tools.
+- Basin material washing supports Raw Iron/Copper, Stone/Diorite/Andesite/Granite, Stone Dust, Gravel, Sand and Slag with independent output chances and 1 hunger point per batch.
+- Brick Furnace gains Cobblestone -> Stone; Hardwood Table gets an alternate Basin, Cobblestone/Andesite/Granite/Diorite slabs and stairs; restored earlier hinged-door crafting. Hardwood slab/stick patterns no longer conflict.
+- Updated Field Guide, K-key machine recipe reference, current-system documentation, material probability matrix, architecture decisions and release notes.
+
+## v0.31.54-b — Stone mining consistency, vest scope, and documentation
+- Fixed the Tanned Utility Vest allowing fast client-side stone/cobblestone/andesite/diorite/granite break animations followed by server cancellation. The Vest now grants vegetation hand-clearing only; it cannot replace tools or dismantle Well structures.
+- Unified vanilla stone-family and ore permissions across break progress, attack, BEFORE-break, and server loot handling. Bare hands, unrelated items and armor cannot mine ordinary rock. Wooden/Hardwood Pickaxes take 13.5s; Hardwood Hammer is slightly faster on rock at 12s. Coal and higher-tier ore rules remain gated.
+- Corrected player-facing Field Guide mining and Hardwood recipes, reviewed K-key Recipe Guide (no new recipes), and added current-systems and ADR documents to prevent future behavior drift.
+
+## v0.31.53-b — Fat-Burning Torch wall orientation hotfix
+- Corrected all four Fat-Burning Torch wall orientations (lit and unlit) to match Minecraft's vanilla `template_torch_wall` geometry and Project Flint's Flint Torch.
+- Fixed wall-mounted flame/smoke emission positions and selection hitboxes to track the correctly facing model.
+- Preserved placement rules, Fat refueling and ignition, support checks, timer, recipes, and gameplay balance.
+
 ## v0.31.52-b — Hardwood crafting compilation hotfix
 - Corrected the `RecipeDisplay` import in `HardwoodCraftingRecipe.java` for Minecraft 1.21.11 Mojang mappings (`net.minecraft.world.item.crafting.display`).
 - No gameplay, crafting timer, ingredient, recipe registration, mining, or tool-balance changes.

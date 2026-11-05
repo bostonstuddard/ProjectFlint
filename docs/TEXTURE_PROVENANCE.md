@@ -418,3 +418,9 @@ The v0.31.43-b Wooden Sheet replacement was reverted at the user's request. The 
 | Target | Source | SHA-256 |
 |---|---|---|
 | `assets/projectflint/textures/item/wooden_sheet.png` | Pre-v0.31.43 Project Flint source asset | `c17e79215b44f8a00272c41d27732335532da6db3ae4ab78b326f56d12ff4815` |
+
+## v0.31.55-b — material dust palette and Axle
+
+- New `textures/item/{iron,copper,nickel,silver,stone,quartz,potassium,mica,gold,silicon}_dust.png`, `fertilizer.png`, `slag.png` recolor the existing **user-approved Project Flint Wood Dust sprite** by RGB tinting while preserving per-pixel alpha. No new generative image source.
+- `hardwood_sticks.png`: recolor of Mojang's original vanilla Minecraft 1.21.11 Stick artwork extracted from the mapped Minecraft resource archive, not AI generated.
+- Axle `models/block/axle.json` uses existing Project Flint Wooden Beam top/side art; model geometry is authored source JSON, with no new photo or generated sprite.

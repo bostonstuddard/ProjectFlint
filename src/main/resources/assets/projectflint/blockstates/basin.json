@@ -95,6 +95,22 @@
     "facing=west,contents=planks": {
       "model": "projectflint:block/basin_oak_wood",
       "y": 270
+    },
+    "facing=north,contents=materials": {
+      "model": "projectflint:block/basin",
+      "y": 0
+    },
+    "facing=east,contents=materials": {
+      "model": "projectflint:block/basin",
+      "y": 90
+    },
+    "facing=south,contents=materials": {
+      "model": "projectflint:block/basin",
+      "y": 180
+    },
+    "facing=west,contents=materials": {
+      "model": "projectflint:block/basin",
+      "y": 270
     }
   }
 }

@@ -9,7 +9,7 @@
   "key": {
     "A": "projectflint:hardwood_alloy",
     "L": "projectflint:leather_strap",
-    "S": "minecraft:stick",
+    "S": "projectflint:hardwood_sticks",
     "R": "projectflint:rope"
   },
   "result": {

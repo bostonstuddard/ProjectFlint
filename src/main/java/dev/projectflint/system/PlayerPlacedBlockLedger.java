@@ -2,13 +2,13 @@ package dev.projectflint.system;
 
 import com.mojang.serialization.Codec;
 import dev.projectflint.registry.ModBlocks;
-import dev.projectflint.registry.ModItems;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.datafix.DataFixTypes;
-import net.minecraft.world.entity.EquipmentSlot;
+
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
@@ -56,19 +56,20 @@ public final class PlayerPlacedBlockLedger extends SavedData {
 	}
 
 	public static boolean recoverable(Player player, ServerLevel level, BlockPos pos, BlockState state) {
-		if (!player.getItemBySlot(EquipmentSlot.CHEST).is(ModItems.TANNED_UTILITY_VEST) || !potential(level, pos, state)) return false;
+		if (!potential(level, pos, state)) return false;
 		PlayerPlacedBlockLedger ledger = of(level);
 		String registered = ledger.placed.get(pos.asLong());
 		return BuiltInRegistries.BLOCK.getKey(state.getBlock()).toString().equals(registered);
 	}
 
-	/** Structural machines and inventories are never bypassed by the Utility Vest. */
-	public static boolean potential(net.minecraft.world.level.BlockGetter level, BlockPos pos, BlockState state) {
-		float hardness = state.getDestroySpeed(level, pos);
-		return hardness >= 0.0F && hardness <= 4.0F && !state.hasBlockEntity()
-			&& !ModBlocks.isWoodenBeam(state) // Always use the Beam + Wooden Screw salvage path.
-			&& !state.is(ModBlocks.FIRECLAY_BRICK_BLOCK) && !state.is(ModBlocks.FIRECLAY_BRICK_SLAB)
-			&& !state.is(ModBlocks.FIRECLAY_BRICK_STAIRS) && !state.is(Blocks.BRICKS)
-			&& !state.is(ModBlocks.BRICK_SHINGLES) && !state.is(ModBlocks.CRUSHED_STONE);
-	}
+	/** Explicitly limited to small, safely recoverable decorations. No structural salvage shortcut. */
+    public static boolean isHandRecoverableDecoration(BlockState state) {
+        return state.is(ModBlocks.AXLE) || state.is(ModBlocks.FAT_BURNING_TORCH) || state.is(ModBlocks.FLINT_TORCH)
+            || state.is(ModBlocks.NEST) || state.is(Blocks.TORCH) || state.is(Blocks.WALL_TORCH)
+            || state.is(Blocks.SOUL_TORCH) || state.is(Blocks.SOUL_WALL_TORCH)
+            || state.is(Blocks.REDSTONE_TORCH) || state.is(Blocks.REDSTONE_WALL_TORCH);
+    }
+    public static boolean potential(net.minecraft.world.level.BlockGetter level, BlockPos pos, BlockState state) {
+        return isHandRecoverableDecoration(state);
+    }
 }

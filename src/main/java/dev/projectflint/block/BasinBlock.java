@@ -36,7 +36,7 @@ public final class BasinBlock extends HorizontalDirectionalBlock implements Enti
 	private static final VoxelShape SHAPE = Block.box(2, 0, 2, 14, 8, 14);
 
 	public enum Contents implements StringRepresentable {
-		EMPTY("empty"), OAK_LOG("oak_log"), OAK_WOOD("oak_wood"), BIRCH_LOG("birch_log"), BIRCH_WOOD("birch_wood"), PLANKS("planks");
+		EMPTY("empty"), OAK_LOG("oak_log"), OAK_WOOD("oak_wood"), BIRCH_LOG("birch_log"), BIRCH_WOOD("birch_wood"), PLANKS("planks"), MATERIALS("materials");
 		private final String name;
 		Contents(String name) { this.name = name; }
 		@Override public String getSerializedName() { return name; }

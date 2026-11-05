@@ -2,8 +2,7 @@
   "type": "projectflint:hardwood_shaped",
   "category": "misc",
   "pattern": [
-    "P",
-    "P"
+    "PP"
   ],
   "key": {
     "P": "minecraft:oak_planks"

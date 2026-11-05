@@ -1,0 +1,14 @@
+{
+  "type": "projectflint:hardwood_shaped",
+  "category": "misc",
+  "pattern": [
+    "SSS"
+  ],
+  "key": {
+    "S": "minecraft:diorite"
+  },
+  "result": {
+    "id": "minecraft:diorite_slab",
+    "count": 6
+  }
+}

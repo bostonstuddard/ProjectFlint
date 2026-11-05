@@ -1,6 +1,23 @@
-# Project Flint Primitive Progression Matrix — 0.26-a
+# Project Flint Primitive Progression Matrix — current snapshot through v0.31.54-b
+
+## v0.31.55-b — latest Wood/Stone progress gates
+
+- Hardwood Sticks: two Hardwood -> two Hardwood Sticks at Hardwood Table. All Hardwood tools require Hardwood Sticks; Axle: eight Hardwood Sticks around Rope, then place along X/Y/Z axis.
+- Alternative Basin: five Wood Sheets and three Cobblestone (top middle empty); original recipe remains.
+- Early Hinged Door recipes restored. Hardwood Slabs require two planks horizontally; Sticks use two vertically. Stone/Cobblestone/Andesite/Granite/Diorite slabs/stairs require appropriate Hardwood Table recipes.
+- Brick Furnace smelts Cobblestone to Stone. Hardwood Hammer gives one Raw Iron/Raw Copper and two Coal, cannot mine Deepslate or Deepslate Ore. Mining tier and vest are not interchangeable.
+- Processing Rock, Raw Ore, Gravel, Sand and Slag in the Basin uses independently rolled material yields; see `BASIN_MATERIAL_YIELDS.md`.
+- Below Y=0 Speluncaphobia increases hunger and slows natural healing; below Y=-40 Claustrophobia weakens movement and attack. Sunlight or block light 13+ removes them.
+
 
 This document is the developer-facing source of truth for the currently implemented primitive opening. It records acquisition routes, tool inheritance, processing boundaries, workstation behavior, and regression expectations. If code and this matrix disagree, the disagreement should be treated as a bug or an intentional change that must update this document in the same release.
+
+## Stone mining and Utility Vest constraints (v0.31.54-b)
+
+- The Vest clears *vegetation only*. It never allows breaking stone, generic player-placed blocks, structural machines, or Well frames without a tool.
+- Stone/Cobblestone/Andesite/Diorite/Granite and other vanilla pickaxe-rock targets: Wooden or Hardwood Pickaxe (13.5s), Hardwood Hammer (12s), or a correctly tiered vanilla Pickaxe. Unqualified hands/tools show no breaking progress.
+- Coal Ore uses the same early tools and speed; Hammer produces 2 Coal. Ordinary Iron/Copper Ore require Hardwood Hammer (13.5s) or vanilla Stone+ Pickaxe. Other ores need their vanilla appropriate pickaxe tier for drops.
+- Technical authority: `system/OreMiningRules.java` and `docs/CURRENT_SYSTEMS.md`. Earlier entries below are historical unless superseded by this current snapshot.
 
 ## Material progression
 

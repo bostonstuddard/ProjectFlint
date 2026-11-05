@@ -25,6 +25,10 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.ScheduledTickAccess;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.WallTorchBlock;
+import net.minecraft.world.level.block.Mirror;
+import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
@@ -45,7 +49,7 @@ public final class FatBurningTorchBlock extends Block implements EntityBlock {
 	public static final EnumProperty<Direction> FACING = EnumProperty.create("facing", Direction.class, facing -> facing != Direction.DOWN);
 	public static final MapCodec<FatBurningTorchBlock> CODEC = simpleCodec(FatBurningTorchBlock::new);
 	private static final VoxelShape SHAPE = Block.box(6, 0, 6, 10, 11, 10);
-	private static final VoxelShape WALL_SHAPE = Block.box(5, 3, 5, 11, 13, 11);
+	
 
 	public FatBurningTorchBlock(BlockBehaviour.Properties properties) {
 		super(properties);
@@ -54,7 +58,20 @@ public final class FatBurningTorchBlock extends Block implements EntityBlock {
 
 	@Override protected MapCodec<? extends Block> codec() { return CODEC; }
 	@Override protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) { builder.add(LIT, FACING); }
-	@Override protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) { return state.getValue(FACING) == Direction.UP ? SHAPE : WALL_SHAPE; }
+	@Override protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        Direction mount = state.getValue(FACING);
+        if (mount == Direction.UP) return SHAPE;
+        // Match the vanilla wall-torch selection outline in all four directions.
+        return WallTorchBlock.getShape(Blocks.WALL_TORCH.defaultBlockState().setValue(WallTorchBlock.FACING, mount));
+    }
+
+    @Override protected BlockState rotate(BlockState state, Rotation rotation) {
+        return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
+    }
+
+    @Override protected BlockState mirror(BlockState state, Mirror mirror) {
+        return rotate(state, mirror.getRotation(state.getValue(FACING)));
+    }
 
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
@@ -120,10 +137,15 @@ public final class FatBurningTorchBlock extends Block implements EntityBlock {
 	}
 
 	@Override public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
-		if (!state.getValue(LIT)) return;
-		if (random.nextInt(3) == 0) level.addParticle(ParticleTypes.SMOKE, pos.getX() + 0.5D, pos.getY() + (state.getValue(FACING) == Direction.UP ? 0.83D : 0.73D), pos.getZ() + 0.5D, 0, 0.015D, 0);
-		if (random.nextInt(2) == 0) level.addParticle(ParticleTypes.FLAME, pos.getX() + 0.5D, pos.getY() + (state.getValue(FACING) == Direction.UP ? 0.75D : 0.65D), pos.getZ() + 0.5D, 0, 0, 0);
-	}
+        if (!state.getValue(LIT)) return;
+        Direction facing = state.getValue(FACING);
+        // Wall-mounted flames must follow the rotated torch tip, not remain in the block center.
+        double x = pos.getX() + 0.5D - (facing == Direction.UP ? 0.0D : 0.27D * facing.getStepX());
+        double y = pos.getY() + (facing == Direction.UP ? 0.75D : 0.92D);
+        double z = pos.getZ() + 0.5D - (facing == Direction.UP ? 0.0D : 0.27D * facing.getStepZ());
+        if (random.nextInt(3) == 0) level.addParticle(ParticleTypes.SMOKE, x, y + (facing == Direction.UP ? 0.08D : 0.0D), z, 0, 0.015D, 0);
+        if (random.nextInt(2) == 0) level.addParticle(ParticleTypes.FLAME, x, y, z, 0, 0, 0);
+    }
 
 	@Override public @Nullable BlockEntity newBlockEntity(BlockPos pos, BlockState state) { return new FatBurningTorchBlockEntity(pos, state); }
 	@Override public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {

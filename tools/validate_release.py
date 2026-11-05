@@ -6,7 +6,7 @@ import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
 RESOURCES = ROOT / "src/main/resources"
-EXPECTED_VERSION = "0.31.52-b"
+EXPECTED_VERSION = "0.31.55-b"
 errors: list[str] = []
 
 # Verify 1.21.11 Mojang mappings: recipe displays live in crafting.display.
@@ -275,11 +275,11 @@ for name, path in (
 
 # Build / cleanup protocol.
 build = read("build.bat")
-if "APPLY_PROJECTFLINT_0_31_52_B.bat" not in build:
+if "APPLY_PROJECTFLINT_0_31_55_B.bat" not in build:
 	fail("build.bat does not apply the current release cleanup")
 if 'explorer.exe /select,' not in build:
 	fail("build.bat no longer opens Explorer with the successful JAR selected")
-if not (ROOT / "APPLY_PROJECTFLINT_0_31_52_B.bat").exists():
+if not (ROOT / "APPLY_PROJECTFLINT_0_31_55_B.bat").exists():
 	fail("missing current release cleanup BAT")
 
 for root_junk in (
@@ -423,8 +423,8 @@ for name in ("limestone", "cobbled_limestone", "smooth_limestone", "limestone_br
         fail(f"missing v0.31.6-b item translation: {name}")
 
 build_bat = read("build.bat")
-cleanup_bat = read("APPLY_PROJECTFLINT_0_31_52_B.bat")
-for expected in ("0.31.51-b", "APPLY_PROJECTFLINT_0_31_52_B.bat"):
+cleanup_bat = read("APPLY_PROJECTFLINT_0_31_55_B.bat")
+for expected in ("0.31.55-b", "APPLY_PROJECTFLINT_0_31_55_B.bat"):
 	if expected not in build_bat:
 		fail(f"build.bat version/apply wiring missing: {expected}")
 if "APPLY_PROJECTFLINT_0_28_28_A.bat" not in cleanup_bat:
@@ -3514,7 +3514,7 @@ try:
 except (ValueError,AttributeError):fail('v36 invalid vest crafting JSON')
 for needle in ('TANNED_UTILITY_VEST_ALLOWED_SLOTS = 22','canUsePersonalCrafting(player)','awardRecipes(', 'WeakReference<Player>', 'isPersonalCraftingLocked'):
  if needle not in inv36:fail('v36 inventory/recipe-book milestone missing: '+needle)
-for needle in ('BlockTags.LEAVES','Blocks.SUGAR_CANE','Blocks.LILY_PAD','ModBlocks.SLEEPING_BAG'):
+for needle in ('BlockTags.LEAVES','Blocks.SUGAR_CANE','Blocks.LILY_PAD'):
  if needle not in vest36:fail('v36 vegetation privilege missing: '+needle)
 if 'recoverIntact || tool.is(ModItems.ADVANCED_FLINT_MULTITOOL)' not in read('src/main/java/dev/projectflint/block/SleepingBagBlock.java'):fail('v36 intact bedroll recovery missing')
 if 'TannedUtilityVestSystem.canHandClear(player, state)' not in read('src/main/java/dev/projectflint/mixin/BlockStateBaseMixin.java'):fail('v36 vest hand speed missing')
@@ -3617,13 +3617,13 @@ basebasin=json.loads(read('src/main/resources/assets/projectflint/models/block/b
 if basebasin.get('textures',{}).get('wood')!='minecraft:block/oak_planks' or basebasin.get('textures',{}).get('stone')!='minecraft:block/cobblestone':fail('v39 Basin must use Oak Planks + Cobblestone')
 if len(json.loads(read('src/main/resources/assets/projectflint/blockstates/basin.json') or '{}').get('variants',{}))!=24:fail('v39 Basin must display all four wood contents for each facing, plus empty')
 if 'new BasinBlock(' not in read('src/main/java/dev/projectflint/registry/ModBlocks.java') or 'BasinBlockEntity::new' not in read('src/main/java/dev/projectflint/registry/ModBlockEntities.java'):fail('v39 Basin entity/block registration incomplete')
-if 'BlockItemPlacedLedgerMixin' not in active_mixins:fail('v39 player placements must be recorded persistently')
+if 'BlockItemPlacedLedgerMixin' in active_mixins:fail('v54 placement recording must be disabled: Vest no longer grants generic salvage')
 ledger39=read('src/main/java/dev/projectflint/system/PlayerPlacedBlockLedger.java')
 if 'SavedDataType' not in ledger39 or 'ledger.setDirty()' not in ledger39 or 'recoverable(' not in ledger39:fail('v39 placement ledger is not persistent')
 for sourcefile in ('src/main/java/dev/projectflint/mixin/BlockStateBaseMixin.java','src/main/java/dev/projectflint/mixin/ServerPlayerGameModeMixin.java','src/main/java/dev/projectflint/system/PrimitiveInteractionSystem.java'):
  if 'WoodenToolTargets' not in read(sourcefile):fail('v39 wooden tool mining permissions not unified: '+sourcefile)
 server39=read('src/main/java/dev/projectflint/mixin/ServerPlayerGameModeMixin.java')
-for needed in ('Block.getDrops(state, level, pos, level.getBlockEntity(pos), player, ItemStack.EMPTY)', 'level.random.nextFloat() < 0.02F', 'PlayerPlacedBlockLedger.recoverable', 'ModBlocks.FIRECLAY_FORGE_CONTROLLER'):
+for needed in ('Block.getDrops(state, level, pos, level.getBlockEntity(pos), player, ItemStack.EMPTY)', 'level.random.nextFloat() < 0.02F', 'ModBlocks.FIRECLAY_FORGE_CONTROLLER'):
  if needed not in server39:fail('v39 vest vegetation/recovery or masonry incomplete: '+needed)
 axe39=read('src/main/java/dev/projectflint/system/WoodenAxeBalanceSystem.java')
 if '3.5D' not in axe39 or '-3.2D' not in axe39 or 'WoodenAxeBalanceSystem.normalize' not in read('src/main/java/dev/projectflint/system/PrimitiveInventorySystem.java'):fail('v39 wooden axe damage modifier not applied')
@@ -3640,10 +3640,10 @@ for piece in ('Blocks.BRICKS','BRICK_SHINGLES','FIRECLAY_BRICK_BLOCK','FIRECLAY_
  if piece not in wood40: fail('v40 wooden pickaxe masonry target missing: '+piece)
 for name,source in [('progress',progress40),('permissions',attack40),('server drops',server40)]:
  if 'WoodenToolTargets.brickMasonry(state)' not in source: fail('v40 brick harvesting not wired into '+name)
-if progress40.index('WoodenToolTargets.pickaxe(state)')>progress40.index('PlayerPlacedBlockLedger.potential(level, pos, state)'):
- fail('v40 wooden Stone slow timing must precede Vest potential preview')
-if '1.0F / 270.0F' not in progress40 or '1.0F / 120.0F' not in progress40:
- fail('v40 stone/masonry explicit slow mining progress missing')
+if 'PlayerPlacedBlockLedger.potential(level, pos, state)' in progress40:
+ fail('v54 old hardness-based Vest break preview still active')
+if 'OreMiningRules.progress(state, held, vanillaProgress)' not in progress40 or '1.0F / 120.0F' not in progress40:
+ fail('v54 rock speed must be centralized and masonry still supported')
 if 'if (state.is(ModTags.FORAGE_BUSHES))' not in progress40 or 'if (state.is(ModTags.FORAGE_BUSHES))' not in server40:
  fail('v40 forage bush fallback missing')
 for name,source in [('attack',attack40),('server',server40)]:
@@ -3672,7 +3672,7 @@ for needle in ('public void refreshStructure(ServerLevel level)', 'if (cachedAqu
 if 'Rope boosts' in well_ui42:fail('v42 obsolete Rope boosts caption still shown')
 for needle in ('y + 45', 'y + 46', 'y + 51'):
  if needle not in well_ui42:fail('v42 progress meter not moved: '+needle)
-if 'canDismantleWellFrame' not in vest42 or 'ModBlocks.isWoodenBeam(state)' not in vest42 or 'ModBlocks.WELL_PULLEY' not in vest42:fail('v42 Vest well-frame permissions missing')
+if 'canDismantleWellFrame' not in vest42 or 'return false;' not in vest42:fail('v54 Vest must not dismantle Well')
 if '!ModBlocks.isWoodenBeam(state)' not in ledger42:fail('v42 beams would lose Wooden Screw via generic Vest loot')
 for source,label in ((permissions42,'break permissions'),(progress42,'progress display'),(drops42,'server loot')):
  if 'TannedUtilityVestSystem.canDismantleWellFrame(player, state)' not in source:fail('v42 vest frame rule missing from '+label)
@@ -3874,7 +3874,52 @@ if 'APPLY_PROJECTFLINT_0_31_49_B.bat' not in read('APPLY_PROJECTFLINT_0_31_50_B.
 if '0.31.50-b' not in read('docs/releases/0.31.50-b.md'):
     fail('v50 release notes missing')
 if errors:
-    print('Project Flint v0.31.52-b validation FAILED:')
+    print('Project Flint v0.31.55-b validation FAILED:')
     for message in errors: print(' -', message)
     sys.exit(1)
-print('Project Flint v0.31.52-b preservation checks passed.')
+
+# v0.31.53-b: match native vanilla wall torch rotation in both lit states.
+from json import loads as _load_json
+_st = _load_json(read('src/main/resources/assets/projectflint/blockstates/fat_burning_torch.json'))
+_expected_wall_rotations = {'east': 0, 'south': 90, 'west': 180, 'north': 270}
+for _lit in ('true','false'):
+    for _face,_rot in _expected_wall_rotations.items():
+        _item = _st['variants'].get(f'facing={_face},lit={_lit}', {})
+        if _item.get('y',0) != _rot or not _item.get('model','').endswith('_wall'):
+            fail(f'v53 Fat Torch {_face} lit={_lit} wall rotation is incorrect')
+for _lit in ('true','false'):
+    if _st['variants'].get(f'facing=up,lit={_lit}',{}).get('y',0) != 0:
+        fail('v53 standing Fat Torch rotated unexpectedly')
+_torch_src = read('src/main/java/dev/projectflint/block/FatBurningTorchBlock.java')
+for _marker in ('WallTorchBlock.getShape(', 'facing.getStepX()', 'facing.getStepZ()', 'rotate(BlockState', 'mirror(BlockState', 'torch.addFat()', 'torch.ignite()'):
+    if _marker not in _torch_src:fail(f'v53 Fat Torch source missing {_marker}')
+if 'APPLY_PROJECTFLINT_0_31_53_B.bat' not in cleanup_bat:fail('v54 cleanup does not retire prior apply helper')
+
+# v0.31.54-b — rock is NEVER hand mined by Vest or generic player-placement logic.
+rock54=read('src/main/java/dev/projectflint/system/OreMiningRules.java')
+progress54=read('src/main/java/dev/projectflint/mixin/BlockStateBaseMixin.java')
+interaction54=read('src/main/java/dev/projectflint/system/PrimitiveInteractionSystem.java')
+server54=read('src/main/java/dev/projectflint/mixin/ServerPlayerGameModeMixin.java')
+vest54=read('src/main/java/dev/projectflint/system/TannedUtilityVestSystem.java')
+guide54=read('src/main/java/dev/projectflint/client/screen/ProjectFlintFieldGuideContent.java')
+for marker in ('isStoneFamily(', 'BlockTags.MINEABLE_WITH_PICKAXE', 'isRestricted(', 'HAMMER_STONE_PROGRESS = 1.0F / 240.0F', 'WOODEN_PROGRESS = 1.0F / 270.0F', 'return 0.0F;', 'canGetDrops('):
+ if marker not in rock54:fail('v54 rock rules incomplete: '+marker)
+for label,source in (('progress', progress54),('interaction',interaction54),('server',server54)):
+ if 'OreMiningRules.isRestricted(state)' not in source:fail('v54 rock mining gate missing from '+label)
+for forbidden in ('PlayerPlacedBlockLedger.potential(level, pos, state)','PlayerPlacedBlockLedger.recoverable(player, level, pos, state)'):
+ for label,source in (('progress',progress54),('interaction',interaction54),('server',server54)):
+  if forbidden in source:fail('v54 permissive vest ledger bypass present in '+label)
+if 'BlockItemPlacedLedgerMixin' in active_mixins:fail('v54 obsolete generic vest placement-recording mixin still active')
+if 'canDismantleWellFrame(Player player, BlockState state) {\n\t\treturn false;' not in vest54:fail('v54 vest can still dismantle Well structures')
+for marker in ('!state.is(BlockTags.MINEABLE_WITH_PICKAXE)','!OreMiningRules.isRestricted(state)'):
+ if marker not in vest54:fail('v54 vest has no hard stone exclusion '+marker)
+for fragment in ('12 seconds','13.5 seconds','Leather Strap','does not mine stone'):
+ if fragment not in guide54:fail('v54 player field guide outdated: '+fragment)
+for doc in ('docs/CURRENT_SYSTEMS.md','docs/decisions/0010-vest-vegetation-only-and-tool-gated-rock-mining.md','docs/decisions/0011-player-guide-and-decision-documentation-parity.md'):
+ if not (ROOT/doc).exists():fail('v54 missing current-state/decision documentation: '+doc)
+if errors:
+ print('Project Flint v0.31.55-b validation FAILED:')
+ for message in errors:print(' -',message)
+ sys.exit(1)
+
+print('Project Flint v0.31.55-b preservation checks passed.')

@@ -1,5 +1,14 @@
 # Architecture
 
+## v0.31.55-b — explicit decor salvage, material processing and depth effects
+
+- The primitive breaking pipeline now checks `PlayerPlacedBlockLedger.isHandRecoverableDecoration` for a fixed whitelist (Torches, Nest, Axle), separate from `OreMiningRules` and from Vest permissions. Both progress and server destruction honor the same whitelist. No generic hand-salvage by hardness or player-placement flags.
+- `OreMiningRules.isForbiddenDeepslate` blocks all Deepslate ore and building variants for current progression and is enforced at every break entry point. Hammer/raw ore drops are authoritative in `ServerPlayerGameModeMixin`.
+- `BasinMaterialProcessingSystem` owns stochastic material outputs; `BasinBlockEntity` owns inventory and hunger consumption. Keep the K-key guide and `BASIN_MATERIAL_YIELDS.md` aligned. New client UI must not roll drop probabilities itself.
+- `PrimitiveEnvironmentEffectSystem` applies level and light-based effects on server ticks; `FoodDataMixin` modifies natural healing only; the HUD is not an authority.
+- The Axle is a three-axis block without powered mechanical integration yet. No phantom rotational system should be inferred from the item.
+
+
 ## Package boundaries
 
 ```text
@@ -19,7 +28,7 @@ The entrypoint should remain boring. Feature logic belongs in a system or domain
 
 ## Primitive interaction pipeline
 
-The opening world uses capability-first destruction rather than vanilla tool tiers:
+The opening world uses capability-first destruction rather than vanilla tool tiers (with current exceptions and overrides detailed in ADR 0010):
 
 1. client/server attack handling identifies whether a primitive operation is valid;
 2. block destroy progress is overridden for valid primitive operations or forced to zero when the action is impossible;
@@ -644,3 +653,10 @@ Recipe Parchment remains an immutable recipe-id token. `PrimitiveStoveRecipeRegi
 The player-facing `Primitive Oven` retains the legacy registry id `projectflint:primitive_stove` for save compatibility. Its rate is 1.45x the shared kiln baseline; this is a direct baseline multiplier, not a multiplier compounded on top of Mortar Kiln speed.
 
 Flax is the String-progression authority. Mature `FlaxCropBlock` drops String directly, while loot-table String is removed globally so mob/chest/block loot cannot bypass the agricultural gate.
+
+## Current mining and vest authority (v0.31.54-b)
+
+Read `docs/CURRENT_SYSTEMS.md` and ADR 0010 before extending mining. `OreMiningRules` controls natural and placed vanilla pickaxe-rock targets, vanilla ores, harvest permissions, and slow progression. `BlockStateBaseMixin` owns predicted speed; `PrimitiveInteractionSystem` guards attack and BEFORE-break; `ServerPlayerGameModeMixin` authorizes loot. The three layers must never disagree.
+
+A vest only modifies vegetation hand-clearing. It does **not** allow mining blocks based on hardness or recovery of general player-placed stone. The old `PlayerPlacedBlockLedger` storage class is retained for existing worlds, but placement collection is disabled. Custom machine/brick recovery retains explicit tool handlers. New recipes belong in the Recipe Guide; new player harvesting rules belong in the Field Guide. ADR 0011 requires both documentation surfaces to be reviewed every release.
+

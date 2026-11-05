@@ -20,7 +20,11 @@ public abstract class FoodDataMixin {
 	)
 	private void projectflint$modifyNaturalHealingWhileWet(net.minecraft.server.level.ServerPlayer player, float amount) {
 		if (player.hasEffect(ModEffects.DRENCHED)) return;
-		player.heal(player.hasEffect(ModEffects.SOAKED) ? amount * 0.5F : amount);
+		float multiplier = player.hasEffect(ModEffects.SOAKED) ? 0.5F : 1.0F;
+        if (player.hasEffect(ModEffects.SPELUNCAPHOBIA)) {
+            multiplier *= 0.8F / (1.0F + player.getEffect(ModEffects.SPELUNCAPHOBIA).getAmplifier() * 0.2F);
+        }
+        player.heal(amount * multiplier);
 	}
 
 }

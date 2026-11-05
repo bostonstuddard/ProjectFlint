@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=y": {
+      "model": "projectflint:block/axle"
+    },
+    "axis=x": {
+      "model": "projectflint:block/axle",
+      "x": 90,
+      "y": 90
+    },
+    "axis=z": {
+      "model": "projectflint:block/axle",
+      "x": 90
+    }
+  }
+}
