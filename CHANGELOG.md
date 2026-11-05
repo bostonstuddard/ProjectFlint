@@ -1,3 +1,10 @@
+## v0.31.56-b — Physical Basin inputs and durable crafting safeguards
+- Basin now renders its **actual stored item** on the basin floor, using synchronized block-entity inventory data instead of a fixed wood-only geometry. Input remains visible across relog, chunk reload and item type changes.
+- Basin processing now requires material-specific landings: Planks 2; stripped Oak/Birch 3; Raw Iron 5; Raw Copper 4; Andesite/Granite/Stone/Diorite 4; Slag 3; Gravel/Stone Dust 2; Sand 2. A single hunger point is spent only on completion, and existing independent yield rolls stay unchanged. Removing one input cancels that item's stomp progress. Progress persists while stored.
+- Fixed Hardwood Crafting Table **eating Bone Knives, Flint Files and reusable items** by replacing the vanilla result-slot's crafting-only remainder lookup with the matched Hardwood recipe's remainder list. A valid tool loses one durability per craft and breaks at zero; non-tool ingredients still get consumed normally. Shift-click output follows the same one-craft-per-60-ticks rule.
+- G/K player guides and technical docs now describe physical Basin inputs, exact stomp counts, hunger timing and reusable tool wear. Added architectural decision 0015 and regression checklist.
+- Target Minecraft 1.21.11 Fabric; unchanged all other mining/ore/Basin probabilities and Hardwood crafting recipes.
+
 ## v0.31.55-b — Depth risks, material Basin, Axles and progression corrections
 - Recover small Torches, Chicken Nests and Axles by hand without a Vest; structural blocks remain tool-gated and Nest eggs eject properly.
 - Deepslate and Deepslate Ores are inaccessible to any current survival tool. Hardwood Hammer tooltip clarifies Iron/Copper Ore; ordinary Iron/Copper Stone Ore drops exactly 1 Raw Ore with Hammer, Coal drops 2.

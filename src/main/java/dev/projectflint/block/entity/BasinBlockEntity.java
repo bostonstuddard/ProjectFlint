@@ -4,6 +4,12 @@ import dev.projectflint.block.BasinBlock;
 import dev.projectflint.registry.ModBlockEntities;
 import dev.projectflint.registry.ModItems;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.player.Player;
@@ -16,9 +22,10 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 
-/** One real inventory stack; blockstate mirrors its wood type to render it inside the basin. */
+/** One saved input stack and stomp counter, synchronized to the true-item client renderer. */
 public final class BasinBlockEntity extends BlockEntity {
 	private ItemStack input = ItemStack.EMPTY;
+	private int stomps;
 
 	public BasinBlockEntity(BlockPos pos, BlockState state) {
 		super(ModBlockEntities.BASIN, pos, state);
@@ -32,11 +39,19 @@ public final class BasinBlockEntity extends BlockEntity {
 	}
 
 	public ItemStack stored() { return input.copy(); }
+    public int completedStomps() { return stomps; }
+    public int requiredStomps() { return input.isEmpty() ? 0 : requiredStompsFor(input); }
+    public static int requiredStompsFor(ItemStack stack) {
+        if (stack.is(Items.STRIPPED_OAK_LOG) || stack.is(Items.STRIPPED_OAK_WOOD)
+            || stack.is(Items.STRIPPED_BIRCH_LOG) || stack.is(Items.STRIPPED_BIRCH_WOOD)) return 3;
+        if (stack.is(net.minecraft.tags.ItemTags.PLANKS)) return 2;
+        return dev.projectflint.system.BasinMaterialProcessingSystem.requiredStomps(stack);
+    }
 
 	public boolean insert(ItemStack offered, Player player) {
 		if (!supports(offered) || (input.isEmpty() ? false : !ItemStack.isSameItemSameComponents(input, offered))
 			|| input.getCount() >= 64) return false;
-		if (input.isEmpty()) input = offered.copyWithCount(1);
+		if (input.isEmpty()) { input = offered.copyWithCount(1); stomps = 0; }
 		else input.grow(1);
 		if (!player.isCreative()) offered.shrink(1);
 		refreshVisual();
@@ -46,36 +61,53 @@ public final class BasinBlockEntity extends BlockEntity {
 	public ItemStack takeOne() {
 		if (input.isEmpty()) return ItemStack.EMPTY;
 		ItemStack removed = input.split(1);
+        stomps = 0;
 		if (input.isEmpty()) input = ItemStack.EMPTY;
 		refreshVisual();
 		return removed;
 	}
 
-	/** A jump landing on the basin consumes one wood and half a hunger icon. */
-	public boolean jumpProcess(Level level, Player player) {
-		if (input.isEmpty() || !supports(input)) return false;
-		if (!player.isCreative() && player.getFoodData().getFoodLevel() < 1) return false;
-		if (!player.isCreative()) player.getFoodData().setFoodLevel(player.getFoodData().getFoodLevel() - 1);
-		boolean inputWasPlank = input.is(net.minecraft.tags.ItemTags.PLANKS);
-        boolean isWood = inputWasPlank || input.is(Items.STRIPPED_OAK_LOG) || input.is(Items.STRIPPED_OAK_WOOD)
-            || input.is(Items.STRIPPED_BIRCH_LOG) || input.is(Items.STRIPPED_BIRCH_WOOD);
+    /** Progress belongs to the current item. Each valid landing contributes one stomp.
+     * Hunger is charged ONCE, only when that item completes processing.
+     */
+    public boolean jumpProcess(Level level, Player player) {
+        if (input.isEmpty() || !supports(input)) return false;
+        int required = requiredStomps();
+        if (required <= 0) return false;
+        if (stomps + 1 < required) {
+            stomps++;
+            refreshVisual();
+            level.playSound(null, worldPosition, SoundEvents.WOOD_HIT, SoundSource.BLOCKS, 0.55F, 0.8F);
+            player.displayClientMessage(Component.literal("Basin: " + stomps + "/" + required + " stomps"), true);
+            return true;
+        }
+        if (!player.isCreative() && player.getFoodData().getFoodLevel() < 1) {
+            player.displayClientMessage(Component.literal("You need food to finish stomping."), true);
+            return false;
+        }
+        if (!player.isCreative()) player.getFoodData().setFoodLevel(player.getFoodData().getFoodLevel() - 1);
         ItemStack processed = input.copyWithCount(1);
-		input.shrink(1);
-		if (input.isEmpty()) input = ItemStack.EMPTY;
-		refreshVisual();
-		if (isWood) {
+        boolean inputWasPlank = processed.is(net.minecraft.tags.ItemTags.PLANKS);
+        boolean isWood = inputWasPlank || processed.is(Items.STRIPPED_OAK_LOG) || processed.is(Items.STRIPPED_OAK_WOOD)
+            || processed.is(Items.STRIPPED_BIRCH_LOG) || processed.is(Items.STRIPPED_BIRCH_WOOD);
+        input.shrink(1);
+        if (input.isEmpty()) input = ItemStack.EMPTY;
+        stomps = 0;
+        refreshVisual();
+        if (isWood) {
             Block.popResource(level, worldPosition.above(), inputWasPlank ? new ItemStack(ModItems.WOOD_DUST) : new ItemStack(ModItems.TANNIN, 2));
         } else {
             for (ItemStack drop : dev.projectflint.system.BasinMaterialProcessingSystem.process(processed, level.getRandom()))
                 Block.popResource(level, worldPosition.above(), drop);
         }
-		level.playSound(null, worldPosition, SoundEvents.WOOD_BREAK, SoundSource.BLOCKS, 0.5F, 0.75F);
-		return true;
-	}
+        level.playSound(null, worldPosition, SoundEvents.WOOD_BREAK, SoundSource.BLOCKS, 0.7F, 0.75F);
+        return true;
+    }
 
 	public void dropContents(Level level) {
 		if (!input.isEmpty()) Block.popResource(level, worldPosition, input.copy());
 		input = ItemStack.EMPTY;
+        stomps = 0;
 		setChanged();
 	}
 
@@ -90,17 +122,27 @@ public final class BasinBlockEntity extends BlockEntity {
 			: input.is(Items.STRIPPED_BIRCH_LOG) ? BasinBlock.Contents.BIRCH_LOG
 			: input.is(Items.STRIPPED_BIRCH_WOOD) ? BasinBlock.Contents.BIRCH_WOOD : input.is(net.minecraft.tags.ItemTags.PLANKS) ? BasinBlock.Contents.PLANKS : BasinBlock.Contents.MATERIALS;
 		if (state.getValue(BasinBlock.CONTENTS) != contents)
-			level.setBlock(worldPosition, state.setValue(BasinBlock.CONTENTS, contents), 3);
+            level.setBlock(worldPosition, state.setValue(BasinBlock.CONTENTS, contents), Block.UPDATE_ALL);
+        if (!level.isClientSide())
+            level.sendBlockUpdated(worldPosition, state, level.getBlockState(worldPosition), Block.UPDATE_CLIENTS);
 	}
 
 	@Override protected void saveAdditional(ValueOutput output) {
 		super.saveAdditional(output);
 		if (!input.isEmpty()) output.store("BasinInput", ItemStack.CODEC, input);
+        output.putInt("Stomps", stomps);
 	}
 
 	@Override protected void loadAdditional(ValueInput inputData) {
 		super.loadAdditional(inputData);
 		input = inputData.read("BasinInput", ItemStack.CODEC).orElse(ItemStack.EMPTY);
 		if (!supports(input)) input = ItemStack.EMPTY;
+        stomps = input.isEmpty() ? 0 : Math.clamp(inputData.getIntOr("Stomps", 0), 0, Math.max(0, requiredStomps() - 1));
 	}
+    @Override public Packet<ClientGamePacketListener> getUpdatePacket() {
+        return ClientboundBlockEntityDataPacket.create(this);
+    }
+    @Override public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
+        return saveWithoutMetadata(registries);
+    }
 }

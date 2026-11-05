@@ -51,3 +51,9 @@ Any release that introduces a physical ground assembly or primitive stockpile mu
 ## Current-state and guide parity (ADR 0011)
 
 Every release must review `docs/CURRENT_SYSTEMS.md`, `docs/ARCHITECTURE.md`, `docs/ROADMAP.md`, `docs/PRIMITIVE_PROGRESSION_MATRIX.md`, G-key Field Guide chapters and K-key Recipe Guide records. Only modify an in-game guide when the release changes relevant player behavior. Disagreements with previous accepted mechanics require a superseding ADR, not silent historical edits. For mining changes, source and server permission paths must share a predicate, and client/server test coverage must include natural and placed stone, the Utility Vest, and unrelated tools.
+
+## v0.31.56-b additions — Workstation item state and custom recipe type
+
+- For physical workstations check block-entity save/load, network update packet/tag, rendered item correctness for all accepted input types, and no stale static model geometry.
+- For timed crafts using custom recipe types check vanilla result slots' **hard-coded recipe lookups**. Use matched custom recipe for all remainders; test durable tools, emptied containers, filled grids, full inventory, shift-click, and cooldown reset.
+- For repeated actions require documented thresholds, cooldown, persistence, per-action cost timing, refund/removal behavior, server ownership, and a guide update.

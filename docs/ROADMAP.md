@@ -1,6 +1,6 @@
 # Project Flint — Development Roadmap
 
-## Current focus after v0.31.55-b
+## Current focus after v0.31.56-b
 
 - Axle infrastructure is placeable but mechanical transmission/wind- or water-power connections are not yet implemented. Specify a power interface before adding rotational logic.
 - Depth risks now exist below Y=0/Y=-40. Plan gear and potion countermeasures separately and do not accidentally exempt all armor.
@@ -1391,3 +1391,9 @@ Crude Multitool leaf harvesting is explicitly protected as a progression gate: l
 - [ ] Live client/server verify no fast cracks, ghost restoration, or unauthorized drops for all rock families; check with and without a vest, including multiplayer.
 - [ ] Verify allowed hand-harvest paths for flowers, leaves, grass, forage bushes, and Well salvage with a supported tool.
 - [ ] Run complete Gradle `build.bat` and repeat regressions after all future mining changes.
+
+## Verification pressure after v0.31.56-b
+
+- Playtest Basin rendering for all 11 eligible input types, including planks and both stripped wood species, across chunk unload/reload and multiplayer join.
+- Check exact per-item stomp thresholds, removal resets, stack processing, low-hunger interruption, and byproduct odds unchanged.
+- Craft with Bone Knife and Flint File at 1/2 durability and on their final use; test full inventory, shift-click, and bookshelf recipes that require both tool types at once.

@@ -68,14 +68,14 @@ public final class ProjectFlintFieldGuideContent {
             "Build a three-block Lumber Processor from a Chopping Block, Water Pot and Crushed Stone, all supported from underneath. Leave the space above each station clear.",
             "Place a suitable Stripped Log on the Chopping Block. Fill the Water Pot using the Water Bearing Pot, select Boards or Beams, and use Flint Plant Cutters to start processing.");
         add(result, "WOODWORK", "Basin and Wood Dust", ModItems.WOOD_DUST,
-            "Insert ordinary wooden Planks into the Basin and land on the Basin to process them. Each Plank yields 1 Wood Dust and consumes 1 hunger point.",
-            "The Basin also processes stripped oak/birch logs into Tannin and raw Iron, raw Copper, stones, Gravel, Sand and Slag into dusts and byproducts. Each possible extra byproduct is rolled independently.");
+            "Place Planks into the Basin to see them resting inside it. Jump and land on the Basin twice to crush each Plank into 1 Wood Dust. Stripped Oak/Birch Logs take 3 stomps for 2 Tannin.",
+            "Other materials also appear inside the Basin while being worked. Every completed input costs 1 hunger point, regardless of stomp count. Remove unfinished items by hand to recover them; removing one resets progress.");
         add(result, "MATERIALS", "Ore Washing", ModItems.IRON_DUST,
             "At the Basin, 1 Raw Iron produces 1 Iron Dust, with a 75% chance for a second Iron Dust and 50% for Slag. Raw Copper produces 1 Copper Dust, then has independent 83% and 24% chances for two more, plus 10% Nickel Dust and 2% Silver Dust.",
-            "Andesite and Granite produce either 1 or 2 Fertilizer (equal chance). Stone and Diorite produce either 1 or 2 Stone Dust. Each wash costs 1 hunger point. Any bonus rolls may succeed together.");
+            "Iron takes 5 stomps, Copper takes 4, and Andesite, Granite, Stone and Diorite take 4. Each completed item costs 1 hunger point. Andesite and Granite yield 1 or 2 Fertilizer; Stone and Diorite yield 1 or 2 Stone Dust.");
         add(result, "MATERIALS", "Dust and Slag", ModItems.SLAG,
             "Stone Dust has a 50% chance to yield Slag. Gravel always yields Flint and has a 20% chance for Quartz Dust and 1% for Iron Dust. Sand always yields Potassium Dust and has 5% for Mica Dust and 1% for Gold Dust.",
-            "Slag gives independent 33% chances each for Iron Dust, Copper Dust and Silicon Dust, so a single batch may yield several kinds at once, or nothing. Use the Basin Recipe Guide for every supported input.");
+            "Gravel and Stone Dust take 2 stomps, Slag takes 3, and Sand takes 1. Slag gives separate 33% chances each for Iron, Copper and Silicon Dust, so a single batch can yield several at once or nothing. K shows each recipe and its stomp count.");
         add(result, "MATERIALS", "Brick Furnace and Stone", Items.COBBLESTONE,
             "The Brick Furnace can smelt Cobblestone into Stone using Charcoal. Ordinary Stone, Cobblestone, Andesite, Granite and Diorite can be made into slabs or stairs at the Hardwood Crafting Table.",
             "Deepslate and all Deepslate Ore varieties cannot be mined with the tools available in the current progression. Keep other ores for a future mining tier.");

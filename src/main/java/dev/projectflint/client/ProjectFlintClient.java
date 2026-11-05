@@ -81,6 +81,7 @@ public final class ProjectFlintClient implements ClientModInitializer {
 		MenuScreens.register(ModMenus.FIRECLAY_FORGE, FireclayForgeScreen::new);
 		MenuScreens.register(ModMenus.HARDWOOD_CRAFTING, HardwoodCraftingScreen::new);
 		BlockEntityRenderers.register(ModBlockEntities.WOODEN_CHEST, WoodenChestRenderer::new);
+        BlockEntityRenderers.register(ModBlockEntities.BASIN, BasinItemRenderer::new);
 		EntityModelLayerRegistry.registerModelLayer(BlackBearModel.BODY_LAYER, () -> BlackBearModel.createBodyLayer(false));
 		EntityModelLayerRegistry.registerModelLayer(BlackBearModel.BODY_LAYER_BABY, () -> BlackBearModel.createBodyLayer(true));
 		EntityModelLayerRegistry.registerModelLayer(BrownBearModel.BODY_LAYER, () -> BrownBearModel.createBodyLayer(false));

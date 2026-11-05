@@ -28,10 +28,16 @@ For v0.31.37-b and later: player-facing station labels and hover text must descr
 
 For v0.31.38-b and beyond: Newly added player inventory crafting recipes belong in `PersonalCraftingGuideRegistry` AND their actual `data/projectflint/recipe` JSON. On every release check both the crafting grid and the global Guide. Basin processing has its own Guide station; Brick Furnace Sand-to-Glass is a machine-only recipe in `BrickFurnaceRecipeRegistry`, not a datapack `minecraft:smelting` recipe.
 
-For v0.31.39-b and later: The global Guide contains **recipe inputs and outputs only**. Put fuel durations, machine assembly steps, and control instructions in machine-specific UI help or a dedicated tutorial, not above guide rows. Condense equivalent recipe outputs into alternative variants and expose all accepted ingredient examples in hover tooltips. When an accepted tag contains many items, split its tooltip into short cycling pages. For the Basin, include every supported stripped Oak/Birch log and wood input, preserve its stored input in BlockEntity NBT, and verify the inserted item is visible through blockstate variants.
+For v0.31.39-b and later: The global Guide contains **recipe inputs and outputs only**. Put fuel durations, machine assembly steps, and control instructions in machine-specific UI help or a dedicated tutorial, not above guide rows. Condense equivalent recipe outputs into alternative variants and expose all accepted ingredient examples in hover tooltips. When an accepted tag contains many items, split its tooltip into short cycling pages. For the Basin, include every supported stripped Oak/Birch log and wood input, preserve its stored input in BlockEntity NBT, and verify the real inserted item is visible through a synced Basin block-entity item renderer (not blockstate wood-piece geometry).
 
 ## v0.31.54-b onward: mandatory guide and decision parity
 
 For **every gameplay release**, compare player-facing Field Guide (`G`) chapters with current mechanics. For recipe/station/input/output changes, also check the K-key Recipe Guide and gameplay recipe registry and run the guide parity validator. For non-recipe mining/permission patches, verify that the recipe guide remains correct but do not add fictitious recipe rows.
 
 Review `docs/CURRENT_SYSTEMS.md`, `docs/ARCHITECTURE.md`, `docs/PRIMITIVE_PROGRESSION_MATRIX.md`, `docs/ROADMAP.md` and relevant ADRs. When a gameplay decision supersedes a former mechanic, publish a new ADR and record the precise regression conditions. Historical release documents stay historical; in-game content remains up-to-date and free of dev notes.
+
+## v0.31.56-b — physical Basin inputs and Hardwood tool remainders
+
+- K/Basin must display the exact required stomp count dynamically alongside every primary or byproduct output. G/Basin describes the actual item model, repeated landings, removal reset, and single hunger point on completion.
+- Verify client rendering uses real `BasinInput` with packet updates and no static inserted wood shape. Test multiple inputs, different wood types, iron/copper, bare Basin, chunk reload, and multiplayer join.
+- Hardwood recipes live in a **different recipe type** from vanilla. Do not let the vanilla ResultSlot calculate remainders for Hardwood recipes: it filters to vanilla CRAFTING and deletes the knife/file. The matched Hardwood recipe supplies worn tool/container remainders; all clicks, shift-clicks and full inventories must be checked.

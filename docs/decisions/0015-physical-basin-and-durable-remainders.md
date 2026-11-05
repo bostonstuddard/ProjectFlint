@@ -1,0 +1,8 @@
+# ADR 0015 — Real Basin item rendering and recipe-owned Hardwood remainders
+
+- **Status:** Accepted for v0.31.56-b.
+- **Context:** The Basin had a wood-only display and consumed inputs with one landing regardless of hardness. Hardwood recipes were intentionally registered under a separate recipe type, but vanilla `ResultSlot` only finds remainder stacks in default crafting recipes. It silently discarded Bone Knives and Flint Files instead of reducing their durability.
+- **Decision:** Store per-item Basin stomp progress and sync/render its real inventory item using a 1.21.11 block-entity renderer, while retaining all Basin chances and charging 1 hunger point on *completion*. For Hardwood recipes, the result slot must resolve recipe remainders from the exact selected custom recipe and apply each remainder once before rearming the 60-tick craft timer. The official player guides and release docs must explain these interactions.
+- **Tradeoffs:** Client rendering requires a synchronized block-entity payload and a render-state implementation. The crafting menu duplicates vanilla ingredient/remainder placement logic for the custom recipe type, so future Minecraft upgrades must re-audit it against vanilla `ResultSlot` behavior.
+- **Rejected:** Fake input block textures; free repeated one-stomp ore processing; converting Hardwood recipes back to ordinary crafting to work around vanilla remainder lookups; compensating players with loose item drops after consuming tools.
+- **Verification gates:** Singleplayer and multiplayer render, exact stomp thresholds, persisted progress, item recovery, final durability use, shift-click, no item loss/dupes, full inventory fallback, no bypass of timed crafting.

@@ -1,6 +1,6 @@
 # Project Flint Primitive Progression Matrix — current snapshot through v0.31.54-b
 
-## v0.31.55-b — latest Wood/Stone progress gates
+## v0.31.56-b — latest Wood/Stone progress gates
 
 - Hardwood Sticks: two Hardwood -> two Hardwood Sticks at Hardwood Table. All Hardwood tools require Hardwood Sticks; Axle: eight Hardwood Sticks around Rope, then place along X/Y/Z axis.
 - Alternative Basin: five Wood Sheets and three Cobblestone (top middle empty); original recipe remains.
@@ -246,3 +246,7 @@ The Advanced Flint Multitool changes the requested utility yields to Gravel → 
 7. Wash Ground Leather against water to receive vanilla Leather. Right-click a Mortar Chest with a Woven Chest Frame to preserve its existing contents and upgrade it into a 9-slot Woven Chest.
 8. Leather Backpack is unbreakable, grants 2 armor, unlocks the full hotbar plus four main-inventory slots, and raises food exhaustion to 1.05× while equipped.
 9. Flint Axe supported-log break time is 6.5 seconds. Bone Brush has 160 durability. Maximum stacks are 16 Twig, 32 Plant Tool Binding, 16 Branch, and 32 Burnt Branch.
+
+### Basin pacing & durable hand-tools (v0.31.56-b)
+
+One material is processed at a time. 2–5 landed stomps depending on input (see `BASIN_MATERIAL_YIELDS.md`); 1 hunger point only at completion. Materials appear in the Basin before processing. Bone Knives and Flint Files are **reusable tools**, each wearing by one durability on crafts that use them; replacing them every craft is not an intended progression cost. Hardwood Table output remains locked for 60 server ticks per craft.

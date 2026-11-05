@@ -17,6 +17,17 @@ public final class BasinMaterialProcessingSystem {
             || input.is(ModItems.STONE_DUST) || input.is(Items.GRAVEL)
             || input.is(Items.SAND) || input.is(ModItems.SLAG);
     }
+    /** Required valid player landings for a single input. No extra cost until completion. */
+    public static int requiredStomps(ItemStack input) {
+        if (input.is(Items.RAW_IRON)) return 5;
+        if (input.is(Items.RAW_COPPER)) return 4;
+        if (input.is(Items.ANDESITE) || input.is(Items.GRANITE)
+            || input.is(Items.STONE) || input.is(Items.DIORITE)) return 4;
+        if (input.is(ModItems.SLAG)) return 3;
+        if (input.is(Items.GRAVEL) || input.is(ModItems.STONE_DUST)) return 2;
+        if (input.is(Items.SAND)) return 2;
+        return 2;
+    }
     private static void addChance(List<ItemStack> drops, ItemStack stack, float chance, RandomSource random) {
         if (random.nextFloat() < chance) drops.add(stack);
     }

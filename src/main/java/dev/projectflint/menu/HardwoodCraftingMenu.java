@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.core.NonNullList;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -38,6 +39,8 @@ public final class HardwoodCraftingMenu extends CraftingMenu {
     private final DataSlot progress = DataSlot.standalone();
     private List<ItemStack> lastInputs = List.of();
     private ItemStack pendingResult = ItemStack.EMPTY;
+    private RecipeHolder<CraftingRecipe> pendingRecipe;
+    private boolean consumingRecipe;
     private long readyAtTick = Long.MAX_VALUE;
 
     public HardwoodCraftingMenu(int id, Inventory inventory) {
@@ -50,8 +53,9 @@ public final class HardwoodCraftingMenu extends CraftingMenu {
         this.crafter = inventory.player;
         addDataSlot(progress);
 
-        // ResultSlot is left in charge of recipe achievements, container remainders and ingredient
-        // consumption. It may only be taken once the server publishes the timed result.
+        // Keep vanilla recipe achievements. For dedicated Hardwood recipes, this ResultSlot
+        // explicitly applies the matched recipe's remainders: vanilla only searches CRAFTING.
+        // The output stays unavailable until the server publishes its timed result.
         slots.set(0, new ResultSlot(inventory.player, craftSlots, resultSlots, 0, 124, 35) {
             @Override
             public boolean mayPickup(Player player) {
@@ -60,11 +64,24 @@ public final class HardwoodCraftingMenu extends CraftingMenu {
 
             @Override
             public void onTake(Player player, ItemStack crafted) {
-                super.onTake(player, crafted);
-                // Re-arm after *every* output, including recipe types whose grid remains intact.
-                if (!player.level().isClientSide()) {
-                    HardwoodCraftingMenu.this.refreshRecipe(true);
+                // The vanilla ResultSlot searches RecipeType.CRAFTING for remainders.
+                // Hardwood recipes live in a *different* recipe type, so calling
+                // super.onTake() would consume every knife/file/mold/bucket instead.
+                if (player.level().isClientSide()) return; // server owns all inventory mutations
+                RecipeHolder<CraftingRecipe> used = pendingRecipe;
+                if (used != null && used.value().getType() == ModRecipes.HARDWOOD_CRAFTING) {
+                    checkTakeAchievements(crafted);
+                    consumingRecipe = true;
+                    try {
+                        HardwoodCraftingMenu.this.consumeHardwoodInputs(player, used.value());
+                    } finally {
+                        consumingRecipe = false;
+                    }
+                } else {
+                    super.onTake(player, crafted);
                 }
+                // Always re-arm after one output, even for unchanged crafting grids.
+                HardwoodCraftingMenu.this.refreshRecipe(true);
             }
         });
     }
@@ -97,7 +114,7 @@ public final class HardwoodCraftingMenu extends CraftingMenu {
     public void slotsChanged(Container container) {
         // The default menu instantly sends its newly assembled result to the client. Never
         // invoke super.slotsChanged here; compute and reveal the result only on the server.
-        if (crafter != null && !crafter.level().isClientSide()) {
+        if (!consumingRecipe && crafter != null && !crafter.level().isClientSide()) {
             refreshRecipe(false);
         }
     }
@@ -111,6 +128,7 @@ public final class HardwoodCraftingMenu extends CraftingMenu {
         if (!forceRestart && sameGrid(lastInputs, current)) return;
         lastInputs = current;
         pendingResult = ItemStack.EMPTY;
+        pendingRecipe = null;
         readyAtTick = Long.MAX_VALUE;
         progress.set(0);
         resultSlots.setItem(0, ItemStack.EMPTY);
@@ -125,11 +143,43 @@ public final class HardwoodCraftingMenu extends CraftingMenu {
                 ItemStack assembled = holder.value().assemble(craftSlots.asCraftInput(), serverLevel.registryAccess());
                 if (!assembled.isEmpty() && assembled.isItemEnabled(serverLevel.enabledFeatures())) {
                     pendingResult = assembled.copy();
+                    pendingRecipe = holder;
                     readyAtTick = serverLevel.getGameTime() + CRAFT_TICKS;
                 }
             }
         }
         // A slot update is sent during the next menu broadcast, without any interim ghost item.
+    }
+
+    /** Vanilla's ResultSlot only queries the normal crafting recipe type. This uses
+     * the exact matched hardwood recipe to obtain its durable-tool/container remainders,
+     * then consumes one ordinary ingredient from each occupied slot.
+     */
+    private void consumeHardwoodInputs(Player player, CraftingRecipe matched) {
+        var positioned = craftSlots.asPositionedCraftInput();
+        var input = positioned.input();
+        NonNullList<ItemStack> leftovers = matched.getRemainingItems(input);
+        for (int row = 0; row < input.height(); row++) {
+            for (int col = 0; col < input.width(); col++) {
+                int slotIndex = (col + positioned.left()) + (row + positioned.top()) * craftSlots.getWidth();
+                int ingredientIndex = col + row * input.width();
+                ItemStack before = craftSlots.getItem(slotIndex);
+                ItemStack remainder = leftovers.get(ingredientIndex).copy();
+                if (!before.isEmpty()) craftSlots.removeItem(slotIndex, 1);
+                ItemStack after = craftSlots.getItem(slotIndex);
+                if (!remainder.isEmpty()) {
+                    if (after.isEmpty()) {
+                        craftSlots.setItem(slotIndex, remainder);
+                    } else if (ItemStack.isSameItemSameComponents(after, remainder)
+                               && after.getCount() + remainder.getCount() <= after.getMaxStackSize()) {
+                        after.grow(remainder.getCount());
+                        craftSlots.setItem(slotIndex, after);
+                    } else if (!player.getInventory().add(remainder)) {
+                        player.drop(remainder, false);
+                    }
+                }
+            }
+        }
     }
 
     @Override

@@ -318,8 +318,12 @@ public final class ProjectFlintRecipeGuideScreen extends Screen {
         result.add(new GuideRecipe(List.of(new ItemStack(Items.SAND)), new ItemStack(ModItems.GOLD_DUST)).withNote("1% chance, plus guaranteed Potassium Dust."));
         result.add(new GuideRecipe(List.of(new ItemStack(ModItems.SLAG)), new ItemStack(ModItems.COPPER_DUST)).withNote("33% chance; independent of Iron and Silicon Dust."));
         result.add(new GuideRecipe(List.of(new ItemStack(ModItems.SLAG)), new ItemStack(ModItems.SILICON_DUST)).withNote("33% chance; independent of Iron and Copper Dust."));
-		return result;
-	}
+        for (GuideRecipe recipe : result) {
+            int count = dev.projectflint.block.entity.BasinBlockEntity.requiredStompsFor(recipe.inputs.get(0));
+            recipe.withStomps(count);
+        }
+        return result;
+    }
 
 	private static List<GuideRecipe> personalCraftingRecipes() {
 		List<GuideRecipe> result = new ArrayList<>();
@@ -445,6 +449,10 @@ public final class ProjectFlintRecipeGuideScreen extends Screen {
 			for (List<ItemStack> choice : choices) accepted.add(new ArrayList<>(choice));
 		}
         private GuideRecipe withNote(String explanation) { this.note = explanation; return this; }
+        private GuideRecipe withStomps(int count) {
+            this.note = count + (count == 1 ? " stomp" : " stomps") + " per input. " + (this.note == null ? "" : this.note);
+            return this;
+        }
 		private void merge(GuideRecipe other) {
 			variants.addAll(other.variants);
 			for (int i = 0; i < accepted.size(); i++) {

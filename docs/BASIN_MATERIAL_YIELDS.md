@@ -1,6 +1,6 @@
-# Basin — exact material yields (v0.31.55-b)
+# Basin — exact material yields and stomp effort (v0.31.56-b)
 
-Jump on a Basin containing one input to process it. Each input costs **1 hunger point**. All chance-based extras are **independently rolled**, so more than one may appear. For fixed 1/2 outputs, the amounts are equally likely and mutually exclusive.
+Insert an input to see its exact item model sitting physically in the Basin. Land on it repeatedly until the required number of stomps completes. Each completed input costs **1 hunger point** (not one per stomp). Removing an input resets progress; partial stomps persist in block-entity saves. All chance-based extras are **independently rolled**, so more than one may appear. For fixed 1/2 outputs, the amounts are equally likely and mutually exclusive.
 
 | Input (1) | Guaranteed or exclusive base | Independent bonus rolls |
 |---|---|---|
@@ -16,3 +16,18 @@ Jump on a Basin containing one input to process it. Each input costs **1 hunger 
 Wood processing is retained: every Plank -> 1 Wood Dust, and stripped Oak/Birch Log/Wood -> 2 Tannin.
 
 In particular, Slag can yield zero, one, two, or three dust types. No byproduct is exclusive of another, except each fixed 1-versus-2 base quantity.
+
+## Stomps to complete one input
+
+| Input material | Landings required |
+|---|---:|
+| Sand | 2 |
+| Wooden Planks (any) | 2 |
+| Gravel / Stone Dust | 2 |
+| Stripped Oak/Birch Logs or Wood | 3 |
+| Slag | 3 |
+| Raw Copper | 4 |
+| Andesite / Granite / Stone / Diorite | 4 |
+| Raw Iron | 5 |
+
+Every completed input charges exactly one hunger point in Survival. A failed attempt with no available hunger at the final stomp leaves the partial progress intact; Creative players do not consume hunger. Additional inputs in the same Basin remain in a stack but are worked individually. Input is rendered at the basin floor and synced to clients, including multiplayer joins.

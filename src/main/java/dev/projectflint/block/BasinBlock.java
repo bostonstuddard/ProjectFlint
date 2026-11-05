@@ -29,7 +29,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-/** Input appears as a small wood piece on the basin floor. Land on it to process one piece. */
+/** The actual stored item is rendered on the basin floor. Repeated landings process one item. */
 public final class BasinBlock extends HorizontalDirectionalBlock implements EntityBlock {
 	public static final MapCodec<BasinBlock> CODEC = simpleCodec(BasinBlock::new);
 	public static final EnumProperty<Contents> CONTENTS = EnumProperty.create("contents", Contents.class);

@@ -660,3 +660,9 @@ Read `docs/CURRENT_SYSTEMS.md` and ADR 0010 before extending mining. `OreMiningR
 
 A vest only modifies vegetation hand-clearing. It does **not** allow mining blocks based on hardness or recovery of general player-placed stone. The old `PlayerPlacedBlockLedger` storage class is retained for existing worlds, but placement collection is disabled. Custom machine/brick recovery retains explicit tool handlers. New recipes belong in the Recipe Guide; new player harvesting rules belong in the Field Guide. ADR 0011 requires both documentation surfaces to be reviewed every release.
 
+
+## v0.31.56-b — physical Basin state and crafting remainder ownership
+
+`BasinBlockEntity` is authoritative for its input stack, stomp progress, processing completion and 1-point hunger cost. A client-only `BasinItemRenderer` uses the 1.21.11 `BlockEntityRenderer` render-state API to display a real `ItemStack` without changing block geometry. `getUpdatePacket`/`getUpdateTag` and block update notifications synchronize server input/progress with clients. A blockstate still tracks input category for backward compatibility; all visual variants resolve to the base Basin body. Do not restore hard-coded inset wood as it would render a duplicate above the actual item.
+
+`HardwoodCraftingMenu` owns the timed result slot and explicitly handles Hardwood crafting remainders using the selected `RecipeHolder`. Minecraft 1.21.11 `ResultSlot.getRemainingItems()` only searches vanilla `RecipeType.CRAFTING` and does not work for a separate recipe type. For Hardwood, snapshot the positioned input, resolve `getRemainingItems` on that recipe, consume each slot exactly once, and put each remainder in its input slot or return/drop it safely. Prevent re-entrant recipe refresh until the transaction finishes, then start a fresh 60-tick cycle.

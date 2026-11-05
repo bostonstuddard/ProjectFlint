@@ -1,6 +1,6 @@
 # Project Flint — Current implementation reference
 
-**Authoritative as of v0.31.55-b (Minecraft 1.21.11, Fabric, Mojang mappings).** This file summarizes current behavior, not the historical development path. More complete early-game pathways remain in `PRIMITIVE_PROGRESSION_MATRIX.md` and the corresponding gameplay source.
+**Authoritative as of v0.31.56-b (Minecraft 1.21.11, Fabric, Mojang mappings).** This file summarizes current behavior, not the historical development path. More complete early-game pathways remain in `PRIMITIVE_PROGRESSION_MATRIX.md` and the corresponding gameplay source.
 
 ## World editing and mining
 
@@ -47,3 +47,9 @@
 3. Keep exact timing and drops consistent between guides, tests and source.
 4. Update this document, appropriate ADR and release notes whenever a rule changes.
 5. Record testing separately as source-static, Java compilation, client/server world test; never conflate them.
+
+## v0.31.56-b: Basin and Hardwood crafting invariants
+
+The Basin owns a stack of processable inputs, an integer stomp counter for the top input, and the server-side processing action. Its block-entity renderer displays the *exact input item* at the basin floor, including plank varieties, raw ore and mineral blocks; the old static inset wood geometry must never be restored. Insertion/removal and processing sync BE state to the client. Processed inputs yield the same independent stochastic byproducts as v0.31.55-b. The input costs exactly 1 hunger point on completion; see `BASIN_MATERIAL_YIELDS.md` for stomp tiers and yields. Stomp progress resets on removal or completion and persists across chunk reload.
+
+The Hardwood Crafting Table uses a separate `projectflint:hardwood_crafting` recipe type with a 60-server-tick output gate. Its result slot must obtain remainders from the **actual matched Hardwood CraftingRecipe**, not from a `RecipeType.CRAFTING` lookup: the latter silently consumes Bone Knife, Flint File, and other reusable ingredients. Reinsert tools at +1 damage into their originating slot when possible; break at maximum damage. Apply these rules for normal clicks and shift-clicks, with the timer rearmed for each craft.
