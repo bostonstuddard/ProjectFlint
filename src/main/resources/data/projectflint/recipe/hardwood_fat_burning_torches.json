@@ -1,0 +1,13 @@
+{
+  "type": "projectflint:hardwood_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:stick",
+    "minecraft:string",
+    "minecraft:charcoal"
+  ],
+  "result": {
+    "id": "projectflint:fat_burning_torch",
+    "count": 2
+  }
+}

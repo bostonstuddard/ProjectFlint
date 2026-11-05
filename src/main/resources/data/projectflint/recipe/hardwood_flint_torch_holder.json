@@ -1,0 +1,12 @@
+{
+  "type": "projectflint:hardwood_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "projectflint:unlit_flint_torch",
+    "projectflint:torch_holder"
+  ],
+  "result": {
+    "id": "projectflint:flint_torch_holder",
+    "count": 1
+  }
+}

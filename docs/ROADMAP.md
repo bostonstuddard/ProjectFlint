@@ -1,3 +1,7 @@
+## v0.31.57-b — Follow-up
+
+Validate Pure Mica Insulated Glass visually and as a new progression material; eventually add power/axle machinery and recipes consuming it. Add PF-EMI display of dedicated hardwood recipes via PF-EMI rather than ProjectFlint. Confirm all new recipes in multiplayer and permanent/held Basin item model readability.
+
 # Project Flint — Development Roadmap
 
 ## Current focus after v0.31.56-b

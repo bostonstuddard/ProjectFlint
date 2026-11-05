@@ -69,13 +69,13 @@ public final class ProjectFlintFieldGuideContent {
             "Place a suitable Stripped Log on the Chopping Block. Fill the Water Pot using the Water Bearing Pot, select Boards or Beams, and use Flint Plant Cutters to start processing.");
         add(result, "WOODWORK", "Basin and Wood Dust", ModItems.WOOD_DUST,
             "Place Planks into the Basin to see them resting inside it. Jump and land on the Basin twice to crush each Plank into 1 Wood Dust. Stripped Oak/Birch Logs take 3 stomps for 2 Tannin.",
-            "Other materials also appear inside the Basin while being worked. Every completed input costs 1 hunger point, regardless of stomp count. Remove unfinished items by hand to recover them; removing one resets progress.");
+            "Other materials also appear inside the Basin while being worked. Each successful stomp costs 1 hunger point. Different inputs need 2 or 3 stomps at most. Remove unfinished items by hand to recover them; removing one resets progress.");
         add(result, "MATERIALS", "Ore Washing", ModItems.IRON_DUST,
             "At the Basin, 1 Raw Iron produces 1 Iron Dust, with a 75% chance for a second Iron Dust and 50% for Slag. Raw Copper produces 1 Copper Dust, then has independent 83% and 24% chances for two more, plus 10% Nickel Dust and 2% Silver Dust.",
-            "Iron takes 5 stomps, Copper takes 4, and Andesite, Granite, Stone and Diorite take 4. Each completed item costs 1 hunger point. Andesite and Granite yield 1 or 2 Fertilizer; Stone and Diorite yield 1 or 2 Stone Dust.");
+            "Iron, Copper, Stone, Cobblestone, Andesite and Granite each need 3 stomps. Every stomp costs 1 hunger point. Iron may also yield 3% Gold Dust; Copper has 5% Slag. Andesite and Granite yield 1 or 2 Fertilizer with 33% Stone Dust.");
         add(result, "MATERIALS", "Dust and Slag", ModItems.SLAG,
-            "Stone Dust has a 50% chance to yield Slag. Gravel always yields Flint and has a 20% chance for Quartz Dust and 1% for Iron Dust. Sand always yields Potassium Dust and has 5% for Mica Dust and 1% for Gold Dust.",
-            "Gravel and Stone Dust take 2 stomps, Slag takes 3, and Sand takes 1. Slag gives separate 33% chances each for Iron, Copper and Silicon Dust, so a single batch can yield several at once or nothing. K shows each recipe and its stomp count.");
+            "Stone and Cobblestone give independent chances of 66%, 44%, and 13.33% for up to 3 Stone Dust. Stone Dust may yield Slag (50%). Gravel always gives Flint and may give Quartz (20%) or Iron Dust (1%). Sand gives Potassium Dust, with 15% Tin, 5% Mica, and 1% Gold Dust.",
+            "Gravel, Stone Dust and Sand take 2 stomps; Slag takes 3. Slag gives independent 33% chances each for Iron, Copper and Silicon Dust. Clay Blocks take 3 stomps, with 5% Mica, 3.33% Rare Earth, 0.33% Silver and 2% Gold. Rare Earth Dust takes 3 stomps and can yield Lithium (22.3%), Iron (15%), Aluminum (4.8%), or Gallium (0.85%). These rolls are independent.");
         add(result, "MATERIALS", "Brick Furnace and Stone", Items.COBBLESTONE,
             "The Brick Furnace can smelt Cobblestone into Stone using Charcoal. Ordinary Stone, Cobblestone, Andesite, Granite and Diorite can be made into slabs or stairs at the Hardwood Crafting Table.",
             "Deepslate and all Deepslate Ore varieties cannot be mined with the tools available in the current progression. Keep other ores for a future mining tier.");
@@ -92,7 +92,7 @@ public final class ProjectFlintFieldGuideContent {
             "Obtain Wood Dust by processing Planks in the Basin. Collect Tannin through the Basin as well. Combine 2 Wood Dust, 1 Tannin and 1 filled Clay Water Bucket to craft 1 Hardwood.",
             "After crafting, the Clay Bucket is returned empty. Put 1 Hardwood into the Fireclay Forge and burn 1 Charcoal for five minutes to make 1 Hardwood Alloy.");
         add(result, "HARDWOOD", "Crafting Table", ModItems.HARDWOOD_CRAFTING_TABLE,
-            "Combine 2 Hardwood Alloy, 1 Cobblestone and 1 Bound Wood Processor to craft the Hardwood Crafting Table.",
+            "In your personal 2x2 crafting grid, combine 2 Hardwood Alloy, 1 Cobblestone and 1 Bound Wood Processor to make the Hardwood Crafting Table. You do not need a Hardwood Table to make your first one.",
             "The Hardwood Crafting Table makes Hardwood Sticks (2 Hardwood for 2 Sticks) and Axles (8 Hardwood Sticks around Rope), and provides a 3x3 crafting grid. Taking a crafting result requires three seconds. Pick the table up with a suitable axe if you need to move it.");
         add(result, "HARDWOOD", "Pickaxe and Axe", ModItems.HARDWOOD_PICKAXE,
             "The Wooden Pickaxe and Hardwood Pickaxe both mine ordinary Stone in about 13.5 seconds. Hardwood tools use Hardwood Sticks, with Leather Straps in their recipes except the Shovel.",
@@ -100,8 +100,17 @@ public final class ProjectFlintFieldGuideContent {
         add(result, "HARDWOOD", "Hardwood Hammer", ModItems.HARDWOOD_HAMMER,
             "Craft a Hardwood Hammer using 6 Hardwood Alloy in the top two rows of the Hardwood Crafting Table, then a Leather Strap, Hardwood Stick and Rope from left to right along the bottom row.",
             "The Hardwood Hammer mines Stone and related rock in about 12 seconds. It mines Coal Ore for 2 Coal, and ordinary Iron Ore or Copper Ore for 1 Raw Ore. It can also hurt fish. Deepslate ores and Deepslate itself cannot be mined at this stage.");
+        add(result, "MATERIALS", "Glass and Rare Earth", ModItems.RARE_EARTH_DUST,
+            "Clay Blocks in the Basin can yield Rare Earth Dust. The Basin can process Rare Earth Dust into Lithium, Iron, Aluminum and Gallium Dust, each with its own separate chance. Eight Rare Earth Dust surrounding a Clay Water Bucket yields 3 Aluminum Dust in the Hardwood Table.",
+            "Use a Bone Knife and Flint File on Glass to prepare Glass Dust. Combine 2 Silicon Dust, 1 Aluminum Dust and a filled Clay Water Bucket for Borosilicate Dust; the empty Clay Bucket returns.");
+        add(result, "MATERIALS", "Insulated Glass", ModItems.MBSSIG_DUST,
+            "Surround 1 Borosilicate Dust with 8 Glass Dust to make 4 BSIG Dust. Mix 4 BSIG Dust, 3 Iron Dust and 2 Charcoal to make 4 BSSIG Dust. Combine 4 BSSIG Dust with 1 Mica Dust to create MBSSIG Dust.",
+            "Place MBSSIG Dust into the Fireclay Forge and burn 1 Charcoal for an uninterrupted five minutes to obtain Pure Mica Insulated Glass. It is a new material for later progression.");
+        add(result, "HARDWOOD", "Tool Recipes", ModItems.FLINT_FILE,
+            "The Hardwood Crafting Table makes Bone Clubs, Bone Hoes, Flint Axes, Flint Plant Cutters, Advanced Flint Multitools and Flint Torches with shaped 3x3 patterns. See the Hardwood Table tab under Recipes (K) for ingredient lists and patterns.",
+            "Bone Knives and Flint Files lose durability rather than being consumed when cutting Wood Sheets, Boards, Leather Sheets, Fans and Glass Dust. Keep spare tools ready for larger batches.");
         add(result, "REFERENCE", "Finding Recipes", Items.CRAFTING_TABLE,
-            "Use the Recipes button or press K to browse processing recipes. Each machine has its own listing, including the Basin and Fireclay Forge.",
+            "Use the Recipes button or press K to browse processing and crafting recipes. The Hardwood Table now has its own Recipes tab, alongside the Basin and Fireclay Forge.",
             "Workstation recipes may require timed processing, fuel, water, tools or other conditions. Refer to the relevant chapter for the steps to operate a workstation.");
         add(result, "REFERENCE", "Item Atlas", Items.BOOK,
             "Browse Project Flint items by name and icon. Select the Item Atlas and turn pages to explore the available materials and tools.",

@@ -1,0 +1,17 @@
+{
+  "type": "projectflint:hardwood_shaped",
+  "category": "misc",
+  "pattern": [
+    "S F",
+    "SF ",
+    "S F"
+  ],
+  "key": {
+    "S": "minecraft:stick",
+    "F": "minecraft:flint"
+  },
+  "result": {
+    "id": "projectflint:flint_plant_cutters",
+    "count": 1
+  }
+}

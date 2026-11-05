@@ -1,0 +1,12 @@
+{
+  "type": "projectflint:hardwood_durable",
+  "category": "misc",
+  "ingredients": [
+    "projectflint:leather_sheet"
+  ],
+  "tool": "projectflint:bone_knife",
+  "result": {
+    "id": "projectflint:leather_strap",
+    "count": 3
+  }
+}

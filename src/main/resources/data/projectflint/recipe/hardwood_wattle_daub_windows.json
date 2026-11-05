@@ -1,0 +1,17 @@
+{
+  "type": "projectflint:hardwood_shaped",
+  "category": "misc",
+  "pattern": [
+    "BBB",
+    "BGB",
+    "BBB"
+  ],
+  "key": {
+    "B": "projectflint:wattled_daub_bricks",
+    "G": "minecraft:glass"
+  },
+  "result": {
+    "id": "projectflint:wattled_daub_window",
+    "count": 8
+  }
+}

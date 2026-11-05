@@ -1,3 +1,7 @@
+## v0.31.57-b dust visuals
+
+Tin, Rare Earth, Lithium, Aluminum, Gallium, Glass, Borosilicate, BSIG, BSSIG and MBSSIG dust art is a direct recolor of Project Flint's existing `textures/item/wood_dust.png` pixel data, retaining alpha and texture silhouette. No AI-generated or externally sourced textures were added. Pure Mica Insulated Glass temporarily reuses the existing Project Flint Advanced Kiln Glass sprite; replace with a human-produced glass sprite when available.
+
 # Temporary Asset Ledger
 
 Project Flint temporary art exists only to keep mechanics testable before final original art is supplied. A temporary asset must never silently become final.

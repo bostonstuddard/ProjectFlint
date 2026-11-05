@@ -45,7 +45,7 @@ public final class BasinBlockEntity extends BlockEntity {
         if (stack.is(Items.STRIPPED_OAK_LOG) || stack.is(Items.STRIPPED_OAK_WOOD)
             || stack.is(Items.STRIPPED_BIRCH_LOG) || stack.is(Items.STRIPPED_BIRCH_WOOD)) return 3;
         if (stack.is(net.minecraft.tags.ItemTags.PLANKS)) return 2;
-        return dev.projectflint.system.BasinMaterialProcessingSystem.requiredStomps(stack);
+        return Math.min(3, dev.projectflint.system.BasinMaterialProcessingSystem.requiredStomps(stack));
     }
 
 	public boolean insert(ItemStack offered, Player player) {
@@ -67,13 +67,18 @@ public final class BasinBlockEntity extends BlockEntity {
 		return removed;
 	}
 
-    /** Progress belongs to the current item. Each valid landing contributes one stomp.
-     * Hunger is charged ONCE, only when that item completes processing.
+    /** Progress belongs to one item. Each valid landing costs one food point.
+     * A player who cannot pay cannot advance the counter or complete processing.
      */
     public boolean jumpProcess(Level level, Player player) {
         if (input.isEmpty() || !supports(input)) return false;
         int required = requiredStomps();
         if (required <= 0) return false;
+        if (!player.isCreative() && player.getFoodData().getFoodLevel() < 1) {
+            player.displayClientMessage(Component.literal("You are too hungry to stomp the Basin."), true);
+            return false;
+        }
+        if (!player.isCreative()) player.getFoodData().setFoodLevel(player.getFoodData().getFoodLevel() - 1);
         if (stomps + 1 < required) {
             stomps++;
             refreshVisual();
@@ -81,11 +86,6 @@ public final class BasinBlockEntity extends BlockEntity {
             player.displayClientMessage(Component.literal("Basin: " + stomps + "/" + required + " stomps"), true);
             return true;
         }
-        if (!player.isCreative() && player.getFoodData().getFoodLevel() < 1) {
-            player.displayClientMessage(Component.literal("You need food to finish stomping."), true);
-            return false;
-        }
-        if (!player.isCreative()) player.getFoodData().setFoodLevel(player.getFoodData().getFoodLevel() - 1);
         ItemStack processed = input.copyWithCount(1);
         boolean inputWasPlank = processed.is(net.minecraft.tags.ItemTags.PLANKS);
         boolean isWood = inputWasPlank || processed.is(Items.STRIPPED_OAK_LOG) || processed.is(Items.STRIPPED_OAK_WOOD)

@@ -32,8 +32,8 @@ public final class PersonalCraftingGuideRegistry {
 	public static List<Definition> recipes() {
 		List<Definition> recipes = new ArrayList<>();
 		add(recipes, "leather_sheet_from_tanned", "projectflint:leather_sheet", 1, "projectflint:tanned_leather", "projectflint:bone_knife");
-		add(recipes, "leather_straps_from_sheet", "projectflint:leather_strap", 2, "projectflint:leather_sheet", "projectflint:bone_knife");
-		add(recipes, "leather_repair_kit", "projectflint:repair_kit", 1, "projectflint:leather_strap", "minecraft:string");
+		add(recipes, "leather_straps_from_sheet", "projectflint:leather_strap", 3, "projectflint:leather_sheet", "projectflint:bone_knife");
+		add(recipes, "leather_repair_kit", "projectflint:repair_kit", 2, "projectflint:leather_strap", "minecraft:string#2");
 		add(recipes, "wooden_pickaxe", "minecraft:wooden_pickaxe", 1, "minecraft:stick", "minecraft:string", "projectflint:leather_strap", "projectflint:wooden_sheet");
 		add(recipes, "wooden_axe", "minecraft:wooden_axe", 1, "projectflint:tannin", "projectflint:leather_sheet", "minecraft:stick", "projectflint:wooden_sheet");
 		add(recipes, "wooden_shovel", "minecraft:wooden_shovel", 1, "minecraft:oak_planks", "minecraft:stick", "projectflint:leather_strap");
@@ -117,6 +117,7 @@ public final class PersonalCraftingGuideRegistry {
 		add(recipes, "loose_soil_from_dirt", "projectflint:loose_soil", 1, "minecraft:dirt");
 		add(recipes, "dirt_piles_from_loose_soil", "projectflint:dirt_pile", 4, "projectflint:loose_soil", "minecraft:wooden_shovel");
 		add(recipes, "fat_burning_torch", "projectflint:fat_burning_torch", 1, "minecraft:stick", "minecraft:string", "minecraft:charcoal");
+		add(recipes, "hardwood_crafting_table", "projectflint:hardwood_crafting_table", 1, "projectflint:hardwood_alloy#2", "minecraft:cobblestone", "projectflint:bound_wood_processor");
 		// Special repair recipe: any damaged leather/tanned leather armor with one Repair Kit.
 		add(recipes, "repair_leather_armor", "minecraft:leather_chestplate", 1, "projectflint:repair_kit", "minecraft:leather_chestplate");
 		return Collections.unmodifiableList(recipes);

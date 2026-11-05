@@ -1,3 +1,7 @@
+## v0.31.57-b — New gates
+
+Personal 2×2: 2 Hardwood Alloy + Cobblestone + Bound Wood Processor → first Hardwood Crafting Table. At Hardwood Table: Rare Earth processing + Glass Dust + Silicon Dust + Aluminum Dust → Borosilicate → BSIG → BSSIG → MBSSIG Dust. At Fireclay Forge: MBSSIG Dust + 1 Charcoal, five minutes uninterrupted → Pure Mica Insulated Glass. Basin: Clay Block → chance for Rare Earth Dust (3.33%); Rare Earth Dust may give Aluminum Dust (4.8%) and Gallium Dust (0.85%). Guaranteed 3 Aluminum Dust alternative uses eight Rare Earth Dust surrounding a filled Clay Water Bucket.
+
 # Project Flint Primitive Progression Matrix — current snapshot through v0.31.54-b
 
 ## v0.31.56-b — latest Wood/Stone progress gates

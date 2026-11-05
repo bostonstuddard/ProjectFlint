@@ -1,3 +1,7 @@
+## v0.31.57-b — Required guide sync
+
+Each new hardwood recipe must be added to `data/projectflint/recipe` and regenerated in `HardwoodCraftingGuideRegistry.java`, then checked in K under `Hardwood Table`. Every Basin yield belongs in `BASIN_MATERIAL_YIELDS.md` and the Basin section of `ProjectFlintRecipeGuideScreen`, plus a current-player G handbook chapter. Forge inputs/outputs must also be visible in the K guide. Bootstrap Table recipe is deliberately not Hardwood-only.
+
 # Mandatory workstation and recipe-guide release check
 
 ## v0.31.55-b parity notes

@@ -1,0 +1,17 @@
+{
+  "type": "projectflint:hardwood_shaped",
+  "category": "misc",
+  "pattern": [
+    "GGG",
+    "GBG",
+    "GGG"
+  ],
+  "key": {
+    "G": "projectflint:glass_dust",
+    "B": "projectflint:borosilicate_dust"
+  },
+  "result": {
+    "id": "projectflint:bsig_dust",
+    "count": 4
+  }
+}

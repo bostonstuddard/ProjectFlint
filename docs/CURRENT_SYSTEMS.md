@@ -1,3 +1,7 @@
+## v0.31.57-b — Current Basin & Glass Progression
+
+Basin requires **2–3 landings**, **one hunger point per valid landing**. Clay Blocks, Rare Earth Dust and Cobblestone are accepted. See `docs/BASIN_MATERIAL_YIELDS.md` for all independent rolls. Hardwood Crafting Table must first be made in personal 2x2 with 2 Hardwood Alloy + 1 Cobblestone + 1 Bound Wood Processor. Hardwood-only recipes include the new dust/glass line; MBSSIG Dust becomes Pure Mica Insulated Glass in the Forge after **6000 ticks** of uninterrupted Charcoal fuel.
+
 # Project Flint — Current implementation reference
 
 **Authoritative as of v0.31.56-b (Minecraft 1.21.11, Fabric, Mojang mappings).** This file summarizes current behavior, not the historical development path. More complete early-game pathways remain in `PRIMITIVE_PROGRESSION_MATRIX.md` and the corresponding gameplay source.

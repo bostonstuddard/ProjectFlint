@@ -3,10 +3,11 @@
   "category": "misc",
   "ingredients": [
     "projectflint:leather_strap",
+    "minecraft:string",
     "minecraft:string"
   ],
   "result": {
     "id": "projectflint:repair_kit",
-    "count": 1
+    "count": 2
   }
 }

@@ -1,0 +1,17 @@
+{
+  "type": "projectflint:hardwood_shaped",
+  "category": "misc",
+  "pattern": [
+    "RRR",
+    "RWR",
+    "RRR"
+  ],
+  "key": {
+    "R": "projectflint:rare_earth_dust",
+    "W": "projectflint:clay_water_bucket"
+  },
+  "result": {
+    "id": "projectflint:aluminum_dust",
+    "count": 3
+  }
+}

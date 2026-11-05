@@ -3,8 +3,8 @@ setlocal EnableExtensions
 cd /d "%~dp0"
 
 REM ============================================================
-REM Project Flint v0.31.56-b builder
-REM v0.31.56-b: Persistent multi-stomp Basin renderer and durable hardwood tool remainders.
+REM Project Flint v0.31.57-b builder
+REM v0.31.57-b: Hunger per Basin stomp, new ore dust yields, glass chain, corrected hardwood recipes.
 REM v0.31.52-b: Fix Minecraft 1.21.11 RecipeDisplay import in Hardwood crafting recipe.
 REM - keeps woven chest/dispenser-style storage aligned
 REM - syncs placed/crafting sprites before each build
@@ -105,7 +105,7 @@ for /f "tokens=1,* delims==" %%A in ('findstr /b /c:"mod_version=" "gradle.prope
 for /f "tokens=1,* delims==" %%A in ('findstr /b /c:"archives_base_name=" "gradle.properties"') do set "ARCHIVES_BASE_NAME=%%B"
 for /f "tokens=1,* delims==" %%A in ('findstr /b /c:"minecraft_version=" "gradle.properties"') do set "MINECRAFT_VERSION=%%B"
 
-if not defined MOD_VERSION set "MOD_VERSION=0.31.56-b"
+if not defined MOD_VERSION set "MOD_VERSION=0.31.57-b"
 if not defined ARCHIVES_BASE_NAME set "ARCHIVES_BASE_NAME=projectflint"
 if not defined MINECRAFT_VERSION set "MINECRAFT_VERSION=1.21.11"
 

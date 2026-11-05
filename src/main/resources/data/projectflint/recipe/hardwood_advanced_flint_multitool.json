@@ -1,0 +1,17 @@
+{
+  "type": "projectflint:hardwood_shaped",
+  "category": "misc",
+  "pattern": [
+    "FFF",
+    " S ",
+    " S "
+  ],
+  "key": {
+    "S": "minecraft:stick",
+    "F": "minecraft:flint"
+  },
+  "result": {
+    "id": "projectflint:advanced_flint_multitool",
+    "count": 1
+  }
+}

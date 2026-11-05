@@ -1,26 +1,22 @@
-# Project Flint v0.31.56-b — Patch Manifest
+# Project Flint v0.31.57-b — Patch Manifest
 
-**Base:** v0.31.55-b Project Flint source, Minecraft 1.21.11 Fabric, Mojang mappings, Java 21.
+**Base:** apply on top of Project Flint v0.31.56-b.  
+**Format:** patch-only, no enclosing project directory and no compiled JAR.  
+**Minecraft:** 1.21.11, Fabric Loader 0.19.3, Java 21.  
+**Update:** per-stomp Basin hunger and 2–3 stomp cap; physical Basin item model transforms; Basin ore/clay/rare-earth yields; 10 dusts and insulated glass; Hardwood recipe expansion; bootstrap table craft; new Forge recipe; G/K guide and architectural documentation synchronization.
 
-**Output:** patch-only ZIP of changed/new source and release docs, placed at archive root (no nested ProjectFlint directory). **Files:** 25 including this manifest. The update must be extracted directly over the previous source.
+**Release checks:** `python tools/validate_03157.py` (stdlib only); full Gradle compilation attempted but blocked by unavailable offline Fabric Loom 1.14.10 plugin. No claim of client or server gameplay testing.
 
-## Functional changes
+**Installation:** extract every file here directly into your existing source tree, replacing matching paths. Use the new `APPLY_PROJECTFLINT_0_31_57_B.bat` cleanup script and `build.bat` for packaging on Windows.
 
-- Basin: real ItemStack block-entity rendering; synchronized inventory/partial stomp state; 2–5 stomp thresholds per input; 1 hunger point charged when the input completes; original output chances unchanged.
-- Hardwood Table: correct return/durability for Bone Knife, Flint File and other reusable inputs in separate hardwood recipe types. Preserve the 60-tick crafting timer and ordinary item consumption.
-- Guides, current-state docs, architecture, ADR 0015, release notes and cleanup/build scripts updated.
+**New small chance defaults:** Iron Gold Dust 3%; Copper Slag 5% (user supplied "small" but did not specify exact rates).
 
-## Verification
+## Modified/new files
 
-`python tools/validate_03156.py` passes source/JSON consistency checks. Mapped 1.21.11 API signatures for block-entity renderer and crafting result slot inspected. Offline Gradle compile attempted but blocked because Fabric Loom 1.14.10 plugin is not present in the local cache. In-game multiplayer/singleplayer tests pending.
-
-## File list
-
-- `APPLY_PROJECTFLINT_0_31_56_B.bat`
+- `APPLY_PROJECTFLINT_0_31_57_B.bat`
 - `CHANGELOG.md`
 - `README.md`
 - `build.bat`
-- `gradle.properties`
 - `docs/ARCHITECTURE.md`
 - `docs/BASIN_MATERIAL_YIELDS.md`
 - `docs/CURRENT_SYSTEMS.md`
@@ -28,16 +24,81 @@
 - `docs/RECIPE_GUIDE_RELEASE_CHECKLIST.md`
 - `docs/RELEASE_PROCESS.md`
 - `docs/ROADMAP.md`
-- `docs/decisions/0015-physical-basin-and-durable-remainders.md`
-- `docs/releases/0.31.56-b.md`
-- `src/main/java/dev/projectflint/block/BasinBlock.java`
+- `docs/TEMPORARY_ASSETS.md`
+- `docs/decisions/0016-basin-stomp-economy-and-mica-glass-chain.md`
+- `docs/releases/0.31.57-b.md`
+- `gradle.properties`
 - `src/main/java/dev/projectflint/block/entity/BasinBlockEntity.java`
-- `src/main/java/dev/projectflint/client/BasinItemRenderer.java`
-- `src/main/java/dev/projectflint/client/ProjectFlintClient.java`
+- `src/main/java/dev/projectflint/block/entity/FireclayForgeBlockEntity.java`
 - `src/main/java/dev/projectflint/client/screen/ProjectFlintFieldGuideContent.java`
 - `src/main/java/dev/projectflint/client/screen/ProjectFlintRecipeGuideScreen.java`
-- `src/main/java/dev/projectflint/menu/HardwoodCraftingMenu.java`
+- `src/main/java/dev/projectflint/recipe/HardwoodCraftingGuideRegistry.java`
+- `src/main/java/dev/projectflint/recipe/PersonalCraftingGuideRegistry.java`
+- `src/main/java/dev/projectflint/registry/ModCreativeTabs.java`
+- `src/main/java/dev/projectflint/registry/ModItems.java`
 - `src/main/java/dev/projectflint/system/BasinMaterialProcessingSystem.java`
-- `src/main/resources/assets/projectflint/blockstates/basin.json`
-- `tools/validate_03156.py`
-- `PATCH_MANIFEST.md`
+- `src/main/resources/assets/projectflint/items/aluminum_dust.json`
+- `src/main/resources/assets/projectflint/items/borosilicate_dust.json`
+- `src/main/resources/assets/projectflint/items/bsig_dust.json`
+- `src/main/resources/assets/projectflint/items/bssig_dust.json`
+- `src/main/resources/assets/projectflint/items/gallium_dust.json`
+- `src/main/resources/assets/projectflint/items/glass_dust.json`
+- `src/main/resources/assets/projectflint/items/lithium_dust.json`
+- `src/main/resources/assets/projectflint/items/mbssig_dust.json`
+- `src/main/resources/assets/projectflint/items/pure_mica_insulated_glass.json`
+- `src/main/resources/assets/projectflint/items/rare_earth_dust.json`
+- `src/main/resources/assets/projectflint/items/tin_dust.json`
+- `src/main/resources/assets/projectflint/lang/en_us.json`
+- `src/main/resources/assets/projectflint/models/item/aluminum_dust.json`
+- `src/main/resources/assets/projectflint/models/item/basin.json`
+- `src/main/resources/assets/projectflint/models/item/borosilicate_dust.json`
+- `src/main/resources/assets/projectflint/models/item/bsig_dust.json`
+- `src/main/resources/assets/projectflint/models/item/bssig_dust.json`
+- `src/main/resources/assets/projectflint/models/item/gallium_dust.json`
+- `src/main/resources/assets/projectflint/models/item/glass_dust.json`
+- `src/main/resources/assets/projectflint/models/item/lithium_dust.json`
+- `src/main/resources/assets/projectflint/models/item/mbssig_dust.json`
+- `src/main/resources/assets/projectflint/models/item/pure_mica_insulated_glass.json`
+- `src/main/resources/assets/projectflint/models/item/rare_earth_dust.json`
+- `src/main/resources/assets/projectflint/models/item/tin_dust.json`
+- `src/main/resources/assets/projectflint/textures/item/aluminum_dust.png`
+- `src/main/resources/assets/projectflint/textures/item/borosilicate_dust.png`
+- `src/main/resources/assets/projectflint/textures/item/bsig_dust.png`
+- `src/main/resources/assets/projectflint/textures/item/bssig_dust.png`
+- `src/main/resources/assets/projectflint/textures/item/gallium_dust.png`
+- `src/main/resources/assets/projectflint/textures/item/glass_dust.png`
+- `src/main/resources/assets/projectflint/textures/item/lithium_dust.png`
+- `src/main/resources/assets/projectflint/textures/item/mbssig_dust.png`
+- `src/main/resources/assets/projectflint/textures/item/rare_earth_dust.png`
+- `src/main/resources/assets/projectflint/textures/item/tin_dust.png`
+- `src/main/resources/data/projectflint/recipe/hardwood_advanced_flint_multitool.json`
+- `src/main/resources/data/projectflint/recipe/hardwood_aluminum_dust_from_rare_earth.json`
+- `src/main/resources/data/projectflint/recipe/hardwood_boards_any_planks.json`
+- `src/main/resources/data/projectflint/recipe/hardwood_bone_club.json`
+- `src/main/resources/data/projectflint/recipe/hardwood_bone_hoe.json`
+- `src/main/resources/data/projectflint/recipe/hardwood_borosilicate_dust.json`
+- `src/main/resources/data/projectflint/recipe/hardwood_bound_wood_processor.json`
+- `src/main/resources/data/projectflint/recipe/hardwood_brick_shingles.json`
+- `src/main/resources/data/projectflint/recipe/hardwood_bsig_dust.json`
+- `src/main/resources/data/projectflint/recipe/hardwood_bssig_dust.json`
+- `src/main/resources/data/projectflint/recipe/hardwood_clay_block.json`
+- `src/main/resources/data/projectflint/recipe/hardwood_crafting_table.json`
+- `src/main/resources/data/projectflint/recipe/hardwood_fat_burning_torches.json`
+- `src/main/resources/data/projectflint/recipe/hardwood_flint_axe.json`
+- `src/main/resources/data/projectflint/recipe/hardwood_flint_plant_cutters.json`
+- `src/main/resources/data/projectflint/recipe/hardwood_flint_torch_holder.json`
+- `src/main/resources/data/projectflint/recipe/hardwood_glass_dust.json`
+- `src/main/resources/data/projectflint/recipe/hardwood_leather_repair_kits.json`
+- `src/main/resources/data/projectflint/recipe/hardwood_leather_sheets.json`
+- `src/main/resources/data/projectflint/recipe/hardwood_leather_straps.json`
+- `src/main/resources/data/projectflint/recipe/hardwood_mbssig_dust.json`
+- `src/main/resources/data/projectflint/recipe/hardwood_sheets_any_planks.json`
+- `src/main/resources/data/projectflint/recipe/hardwood_tanned_leather.json`
+- `src/main/resources/data/projectflint/recipe/hardwood_torch_holder.json`
+- `src/main/resources/data/projectflint/recipe/hardwood_unlit_flint_torch.json`
+- `src/main/resources/data/projectflint/recipe/hardwood_wattle_daub_floor_tiles.json`
+- `src/main/resources/data/projectflint/recipe/hardwood_wattle_daub_windows.json`
+- `src/main/resources/data/projectflint/recipe/hardwood_woven_fans.json`
+- `src/main/resources/data/projectflint/recipe/leather_repair_kit.json`
+- `src/main/resources/data/projectflint/recipe/leather_straps_from_sheet.json`
+- `tools/validate_03157.py`

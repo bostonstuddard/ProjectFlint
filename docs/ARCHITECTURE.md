@@ -1,3 +1,7 @@
+## v0.31.57-b — Material flow rules
+
+Basin material chance logic remains centralized in `BasinMaterialProcessingSystem`, hunger/stomp persistence in `BasinBlockEntity`, and render transforms in the Basin item model. The 160 Hardwood Table recipe definitions use the custom type while the bootstrap Table recipe is standard 2x2. K guide is generated from active recipes in `HardwoodCraftingGuideRegistry`; MBSSIG processing shares the Fireclay Forge input with Hardwood Alloy via explicit recipe kinds, preventing cross-input progress exploits. See ADR 0016.
+
 # Architecture
 
 ## v0.31.55-b — explicit decor salvage, material processing and depth effects

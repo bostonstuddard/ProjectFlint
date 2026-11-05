@@ -1,3 +1,7 @@
+## v0.31.57-b — Release and regression obligations
+
+Use patch-only root-relative ZIP, incremented release versions and cleanup/apply BAT, updated CHANGLELOG/README/release notes/manifest, ADRs for mechanics, current systems/yields, and both G and K guide data. Check Java compile against Minecraft 1.21.11, screen regression, recipe probabilities, container returns, asset provenance and shift-click timer. No reapplication of obsolete playtests or replacement of approved textures with generated art.
+
 # Release Documentation Process
 
 ## v0.31.55-b additional release checks

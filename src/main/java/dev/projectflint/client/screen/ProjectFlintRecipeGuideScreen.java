@@ -4,6 +4,7 @@ import dev.projectflint.recipe.ClayGrinderRecipeGuideRegistry;
 import dev.projectflint.recipe.BookshelfRecipeRegistry;
 import dev.projectflint.recipe.BrickFurnaceRecipeRegistry;
 import dev.projectflint.recipe.PersonalCraftingGuideRegistry;
+import dev.projectflint.recipe.HardwoodCraftingGuideRegistry;
 import dev.projectflint.recipe.WoodenGrinderRecipeRegistry;
 import dev.projectflint.recipe.SandingStationRecipeRegistry;
 import dev.projectflint.recipe.PrimitiveStoveRecipeRegistry;
@@ -220,6 +221,7 @@ public final class ProjectFlintRecipeGuideScreen extends Screen {
 			case FIRECLAY_FORGE -> fireclayForgeRecipes();
 			case BASIN -> basinRecipes();
 			case PERSONAL_CRAFTING -> personalCraftingRecipes();
+            case HARDWOOD_CRAFTING -> hardwoodCraftingRecipes();
 		});
 	}
 
@@ -286,43 +288,63 @@ public final class ProjectFlintRecipeGuideScreen extends Screen {
 		return result;
 	}
 
-	private static List<GuideRecipe> basinRecipes() {
-		List<GuideRecipe> result = new ArrayList<>();
-		result.add(new GuideRecipe(List.of(new ItemStack(Items.OAK_PLANKS)), new ItemStack(ModItems.WOOD_DUST),
-			List.of(BuiltInRegistries.ITEM.stream().map(ItemStack::new)
-				.filter(stack -> stack.is(net.minecraft.tags.ItemTags.PLANKS)).toList())));
-		result.add(new GuideRecipe(List.of(new ItemStack(Items.STRIPPED_OAK_LOG)), new ItemStack(ModItems.TANNIN, 2)));
-		result.add(new GuideRecipe(List.of(new ItemStack(Items.STRIPPED_OAK_WOOD)), new ItemStack(ModItems.TANNIN, 2)));
-		result.add(new GuideRecipe(List.of(new ItemStack(Items.STRIPPED_BIRCH_LOG)), new ItemStack(ModItems.TANNIN, 2)));
-		result.add(new GuideRecipe(List.of(new ItemStack(Items.STRIPPED_BIRCH_WOOD)), new ItemStack(ModItems.TANNIN, 2)));
-        // Probabilistic byproducts: outputs below show the first guaranteed or principal yield;
-        // exact independent rates are documented in the Field Guide.
-        result.add(new GuideRecipe(List.of(new ItemStack(Items.RAW_IRON)), new ItemStack(ModItems.IRON_DUST)).withNote("100% Iron Dust; 75% bonus Iron Dust; 50% Slag."));
-        result.add(new GuideRecipe(List.of(new ItemStack(Items.RAW_COPPER)), new ItemStack(ModItems.COPPER_DUST)).withNote("100% Copper Dust; 83% bonus; 24% third; 10% Nickel; 2% Silver."));
-        result.add(new GuideRecipe(List.of(new ItemStack(Items.ANDESITE)), new ItemStack(ModItems.FERTILIZER)).withNote("1 or 2 Fertilizer, equally likely."));
-        result.add(new GuideRecipe(List.of(new ItemStack(Items.GRANITE)), new ItemStack(ModItems.FERTILIZER)).withNote("1 or 2 Fertilizer, equally likely."));
-        result.add(new GuideRecipe(List.of(new ItemStack(Items.STONE)), new ItemStack(ModItems.STONE_DUST)).withNote("1 or 2 Stone Dust, equally likely."));
-        result.add(new GuideRecipe(List.of(new ItemStack(Items.DIORITE)), new ItemStack(ModItems.STONE_DUST)).withNote("1 or 2 Stone Dust, equally likely."));
-        result.add(new GuideRecipe(List.of(new ItemStack(ModItems.STONE_DUST)), new ItemStack(ModItems.SLAG)).withNote("50% Slag; no drop otherwise."));
+    private static List<GuideRecipe> basinRecipes() {
+        List<GuideRecipe> result = new ArrayList<>();
+        result.add(new GuideRecipe(List.of(new ItemStack(Items.OAK_PLANKS)), new ItemStack(ModItems.WOOD_DUST),
+            List.of(BuiltInRegistries.ITEM.stream().map(ItemStack::new)
+                .filter(stack -> stack.is(net.minecraft.tags.ItemTags.PLANKS)).toList())));
+        result.add(new GuideRecipe(List.of(new ItemStack(Items.STRIPPED_OAK_LOG)), new ItemStack(ModItems.TANNIN, 2)));
+        result.add(new GuideRecipe(List.of(new ItemStack(Items.STRIPPED_OAK_WOOD)), new ItemStack(ModItems.TANNIN, 2)));
+        result.add(new GuideRecipe(List.of(new ItemStack(Items.STRIPPED_BIRCH_LOG)), new ItemStack(ModItems.TANNIN, 2)));
+        result.add(new GuideRecipe(List.of(new ItemStack(Items.STRIPPED_BIRCH_WOOD)), new ItemStack(ModItems.TANNIN, 2)));
+        // Each chance is an independent roll; 1 hunger point is charged on *every* stomp.
+        result.add(new GuideRecipe(List.of(new ItemStack(Items.RAW_IRON)), new ItemStack(ModItems.IRON_DUST)).withNote("100% 1st; 75% 2nd Iron Dust; 50% Slag; 3% Gold Dust."));
+        result.add(new GuideRecipe(List.of(new ItemStack(Items.RAW_IRON)), new ItemStack(ModItems.GOLD_DUST)).withNote("3% chance; independent of Iron Dust and Slag."));
+        result.add(new GuideRecipe(List.of(new ItemStack(Items.RAW_COPPER)), new ItemStack(ModItems.COPPER_DUST)).withNote("100% first; 83% second; 24% third; 10% Nickel; 2% Silver; 5% Slag."));
+        result.add(new GuideRecipe(List.of(new ItemStack(Items.RAW_COPPER)), new ItemStack(ModItems.NICKEL_DUST)).withNote("10% chance."));
+        result.add(new GuideRecipe(List.of(new ItemStack(Items.RAW_COPPER)), new ItemStack(ModItems.SILVER_DUST)).withNote("2% chance."));
+        result.add(new GuideRecipe(List.of(new ItemStack(Items.RAW_COPPER)), new ItemStack(ModItems.SLAG)).withNote("5% chance."));
+        result.add(new GuideRecipe(List.of(new ItemStack(Items.ANDESITE)), new ItemStack(ModItems.FERTILIZER)).withNote("1 or 2 Fertilizer (50/50), plus 33% Stone Dust."));
+        result.add(new GuideRecipe(List.of(new ItemStack(Items.GRANITE)), new ItemStack(ModItems.FERTILIZER)).withNote("1 or 2 Fertilizer (50/50), plus 33% Stone Dust."));
+        result.add(new GuideRecipe(List.of(new ItemStack(Items.ANDESITE)), new ItemStack(ModItems.STONE_DUST)).withNote("33% chance, independent of Fertilizer."));
+        result.add(new GuideRecipe(List.of(new ItemStack(Items.GRANITE)), new ItemStack(ModItems.STONE_DUST)).withNote("33% chance, independent of Fertilizer."));
+        result.add(new GuideRecipe(List.of(new ItemStack(Items.STONE)), new ItemStack(ModItems.STONE_DUST)).withNote("66% 1st, 44% 2nd, 13.33% 3rd; all independent."));
+        result.add(new GuideRecipe(List.of(new ItemStack(Items.COBBLESTONE)), new ItemStack(ModItems.STONE_DUST)).withNote("66% 1st, 44% 2nd, 13.33% 3rd; all independent."));
+        result.add(new GuideRecipe(List.of(new ItemStack(Items.DIORITE)), new ItemStack(ModItems.STONE_DUST)).withNote("1 or 2 Stone Dust, 50/50."));
+        result.add(new GuideRecipe(List.of(new ItemStack(ModItems.STONE_DUST)), new ItemStack(ModItems.SLAG)).withNote("50% chance."));
         result.add(new GuideRecipe(List.of(new ItemStack(Items.GRAVEL)), new ItemStack(Items.FLINT)).withNote("100% Flint; 20% Quartz Dust; 1% Iron Dust."));
-        result.add(new GuideRecipe(List.of(new ItemStack(Items.SAND)), new ItemStack(ModItems.POTASSIUM_DUST)).withNote("100% Potassium Dust; 5% Mica Dust; 1% Gold Dust."));
-        result.add(new GuideRecipe(List.of(new ItemStack(ModItems.SLAG)), new ItemStack(ModItems.IRON_DUST)).withNote("33% each Iron, Copper and Silicon Dust (independent)."));
-        // Show each stochastic byproduct as an actual searchable guide row, rather than
-        // burying the new materials inside a note on the primary output.
-        result.add(new GuideRecipe(List.of(new ItemStack(Items.RAW_IRON)), new ItemStack(ModItems.SLAG)).withNote("50% chance, independent of bonus Iron Dust."));
-        result.add(new GuideRecipe(List.of(new ItemStack(Items.RAW_COPPER)), new ItemStack(ModItems.NICKEL_DUST)).withNote("10% chance, independent of other Copper outputs."));
-        result.add(new GuideRecipe(List.of(new ItemStack(Items.RAW_COPPER)), new ItemStack(ModItems.SILVER_DUST)).withNote("2% chance, independent of other Copper outputs."));
-        result.add(new GuideRecipe(List.of(new ItemStack(Items.GRAVEL)), new ItemStack(ModItems.QUARTZ_DUST)).withNote("20% chance, plus guaranteed Flint."));
-        result.add(new GuideRecipe(List.of(new ItemStack(Items.GRAVEL)), new ItemStack(ModItems.IRON_DUST)).withNote("1% chance, plus guaranteed Flint."));
-        result.add(new GuideRecipe(List.of(new ItemStack(Items.SAND)), new ItemStack(ModItems.MICA_DUST)).withNote("5% chance, plus guaranteed Potassium Dust."));
-        result.add(new GuideRecipe(List.of(new ItemStack(Items.SAND)), new ItemStack(ModItems.GOLD_DUST)).withNote("1% chance, plus guaranteed Potassium Dust."));
-        result.add(new GuideRecipe(List.of(new ItemStack(ModItems.SLAG)), new ItemStack(ModItems.COPPER_DUST)).withNote("33% chance; independent of Iron and Silicon Dust."));
-        result.add(new GuideRecipe(List.of(new ItemStack(ModItems.SLAG)), new ItemStack(ModItems.SILICON_DUST)).withNote("33% chance; independent of Iron and Copper Dust."));
-        for (GuideRecipe recipe : result) {
-            int count = dev.projectflint.block.entity.BasinBlockEntity.requiredStompsFor(recipe.inputs.get(0));
-            recipe.withStomps(count);
-        }
+        result.add(new GuideRecipe(List.of(new ItemStack(Items.GRAVEL)), new ItemStack(ModItems.QUARTZ_DUST)).withNote("20% chance."));
+        result.add(new GuideRecipe(List.of(new ItemStack(Items.GRAVEL)), new ItemStack(ModItems.IRON_DUST)).withNote("1% chance."));
+        result.add(new GuideRecipe(List.of(new ItemStack(Items.SAND)), new ItemStack(ModItems.POTASSIUM_DUST)).withNote("100% Potassium; 15% Tin; 5% Mica; 1% Gold."));
+        result.add(new GuideRecipe(List.of(new ItemStack(Items.SAND)), new ItemStack(ModItems.TIN_DUST)).withNote("15% chance."));
+        result.add(new GuideRecipe(List.of(new ItemStack(Items.SAND)), new ItemStack(ModItems.MICA_DUST)).withNote("5% chance."));
+        result.add(new GuideRecipe(List.of(new ItemStack(Items.SAND)), new ItemStack(ModItems.GOLD_DUST)).withNote("1% chance."));
+        result.add(new GuideRecipe(List.of(new ItemStack(Items.CLAY)), new ItemStack(ModItems.MICA_DUST)).withNote("5% Mica; 3.33% Rare Earth; 0.33% Silver; 2% Gold."));
+        result.add(new GuideRecipe(List.of(new ItemStack(Items.CLAY)), new ItemStack(ModItems.RARE_EARTH_DUST)).withNote("3.33% chance."));
+        result.add(new GuideRecipe(List.of(new ItemStack(Items.CLAY)), new ItemStack(ModItems.SILVER_DUST)).withNote("0.33% chance."));
+        result.add(new GuideRecipe(List.of(new ItemStack(Items.CLAY)), new ItemStack(ModItems.GOLD_DUST)).withNote("2% chance."));
+        result.add(new GuideRecipe(List.of(new ItemStack(ModItems.RARE_EARTH_DUST)), new ItemStack(ModItems.LITHIUM_DUST)).withNote("22.3% Lithium; 15% Iron; 4.8% Aluminum; 0.85% Gallium."));
+        result.add(new GuideRecipe(List.of(new ItemStack(ModItems.RARE_EARTH_DUST)), new ItemStack(ModItems.IRON_DUST)).withNote("15% chance."));
+        result.add(new GuideRecipe(List.of(new ItemStack(ModItems.RARE_EARTH_DUST)), new ItemStack(ModItems.ALUMINUM_DUST)).withNote("4.8% chance."));
+        result.add(new GuideRecipe(List.of(new ItemStack(ModItems.RARE_EARTH_DUST)), new ItemStack(ModItems.GALLIUM_DUST)).withNote("0.85% chance."));
+        result.add(new GuideRecipe(List.of(new ItemStack(ModItems.SLAG)), new ItemStack(ModItems.IRON_DUST)).withNote("33% Iron, 33% Copper, 33% Silicon; independent."));
+        result.add(new GuideRecipe(List.of(new ItemStack(ModItems.SLAG)), new ItemStack(ModItems.COPPER_DUST)).withNote("33% chance."));
+        result.add(new GuideRecipe(List.of(new ItemStack(ModItems.SLAG)), new ItemStack(ModItems.SILICON_DUST)).withNote("33% chance."));
+        for (GuideRecipe recipe : result)
+            recipe.withStomps(dev.projectflint.block.entity.BasinBlockEntity.requiredStompsFor(recipe.inputs.get(0)));
         return result;
+    }
+
+    private static List<GuideRecipe> hardwoodCraftingRecipes() {
+        var entries = new ArrayList<GuideRecipe>();
+        for (HardwoodCraftingGuideRegistry.Definition d : HardwoodCraftingGuideRegistry.recipes()) {
+            var shown = d.ingredients().subList(0, Math.min(4, d.ingredients().size()));
+            var recipe = new GuideRecipe(shown, d.output());
+            if (!d.note().isBlank()) recipe.withNote(d.note());
+            entries.add(recipe);
+        }
+        entries.sort(Comparator.comparing(g -> g.output.getHoverName().getString()));
+        return entries;
     }
 
 	private static List<GuideRecipe> personalCraftingRecipes() {
@@ -351,6 +373,8 @@ public final class ProjectFlintRecipeGuideScreen extends Screen {
 		return List.of(
 			new GuideRecipe(List.of(new ItemStack(ModItems.HARDWOOD), new ItemStack(Items.CHARCOAL)),
 				new ItemStack(ModItems.HARDWOOD_ALLOY)),
+            new GuideRecipe(List.of(new ItemStack(ModItems.MBSSIG_DUST), new ItemStack(Items.CHARCOAL)),
+                new ItemStack(ModItems.PURE_MICA_INSULATED_GLASS)).withNote("Five minutes of uninterrupted Charcoal heat."),
 			new GuideRecipe(List.of(new ItemStack(Items.OAK_LOG, 4)), new ItemStack(Items.CHARCOAL, 4),
 				List.of(acceptedForgeWood())));
 	}
@@ -500,7 +524,8 @@ public final class ProjectFlintRecipeGuideScreen extends Screen {
 		BRICK_FURNACE(Component.literal("Brick Furnace")),
 		FIRECLAY_FORGE(Component.literal("Fireclay Forge")),
 		BASIN(Component.literal("Basin")),
-		PERSONAL_CRAFTING(Component.literal("Personal Crafting"));
+		PERSONAL_CRAFTING(Component.literal("Personal Crafting")),
+        HARDWOOD_CRAFTING(Component.literal("Hardwood Table"));
 
 		private final Component title;
 		Station(Component title) { this.title = title; }

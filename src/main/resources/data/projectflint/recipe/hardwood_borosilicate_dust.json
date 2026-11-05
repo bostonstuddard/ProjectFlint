@@ -1,0 +1,14 @@
+{
+  "type": "projectflint:hardwood_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "projectflint:silicon_dust",
+    "projectflint:silicon_dust",
+    "projectflint:clay_water_bucket",
+    "projectflint:aluminum_dust"
+  ],
+  "result": {
+    "id": "projectflint:borosilicate_dust",
+    "count": 1
+  }
+}

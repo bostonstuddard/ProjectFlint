@@ -1,0 +1,12 @@
+{
+  "type": "projectflint:hardwood_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:oak_planks",
+    "minecraft:leather"
+  ],
+  "result": {
+    "id": "projectflint:bound_wood_processor",
+    "count": 1
+  }
+}

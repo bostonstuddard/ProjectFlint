@@ -57,6 +57,7 @@ public final class FireclayForgeBlockEntity extends BaseContainerBlockEntity {
 	private boolean formed;
 	private int structureCheckCooldown;
 	private int alloyTicks;
+	private int processInputKind; // 0 none, 1 Hardwood, 2 MBSSIG Dust
 
 	private final ContainerData data = new ContainerData() {
 		@Override public int get(int index) {
@@ -93,7 +94,7 @@ public final class FireclayForgeBlockEntity extends BaseContainerBlockEntity {
 	@Override protected void setItems(NonNullList<ItemStack> stacks) { items = stacks; }
 	@Override public boolean canPlaceItem(int slot, ItemStack stack) {
 		return switch (slot) {
-			case INPUT_SLOT -> stack.is(ModItems.HARDWOOD);
+			case INPUT_SLOT -> stack.is(ModItems.HARDWOOD) || stack.is(ModItems.MBSSIG_DUST);
 			case FUEL_SLOT -> isFuel(stack);
 			case IGNITER_SLOT -> isFirestarter(stack);
 			default -> false;
@@ -115,10 +116,24 @@ public final class FireclayForgeBlockEntity extends BaseContainerBlockEntity {
 		if (result.isEmpty()) items.set(OUTPUT_SLOT, new ItemStack(Items.CHARCOAL));
 		else result.grow(1);
 	}
-	private boolean canOutputAlloy() {
-		ItemStack output = items.get(PRIMARY_OUTPUT_SLOT);
-		return output.isEmpty() || (output.is(ModItems.HARDWOOD_ALLOY) && output.getCount() < output.getMaxStackSize());
-	}
+	private int processingKind() {
+        if (items.get(INPUT_SLOT).is(ModItems.HARDWOOD)) return 1;
+        if (items.get(INPUT_SLOT).is(ModItems.MBSSIG_DUST)) return 2;
+        return 0;
+    }
+    private ItemStack processingOutput(int kind) {
+        return switch (kind) {
+            case 1 -> new ItemStack(ModItems.HARDWOOD_ALLOY);
+            case 2 -> new ItemStack(ModItems.PURE_MICA_INSULATED_GLASS);
+            default -> ItemStack.EMPTY;
+        };
+    }
+    private boolean canOutputProcessed(int kind) {
+        ItemStack wanted = processingOutput(kind);
+        ItemStack output = items.get(PRIMARY_OUTPUT_SLOT);
+        return !wanted.isEmpty() && (output.isEmpty()
+            || (ItemStack.isSameItemSameComponents(output, wanted) && output.getCount() < output.getMaxStackSize()));
+    }
 	private void replenishLegacyFuel() {
 		if (items.get(FUEL_SLOT).isEmpty() && !items.get(LEGACY_FUEL_SLOT).isEmpty()) {
 			items.set(FUEL_SLOT, items.get(LEGACY_FUEL_SLOT));
@@ -148,6 +163,7 @@ public final class FireclayForgeBlockEntity extends BaseContainerBlockEntity {
 		burnTicks = burnTotal;
 		woodByproductTicks = 0;
 		alloyTicks = 0; // A full 5-minute charcoal fire is required, not partial fuel reuse.
+		processInputKind = processingKind();
 		refreshBlockState();
 		level.playSound(null, getBlockPos(), SoundEvents.FIRECHARGE_USE, SoundSource.BLOCKS, 0.35F, 0.9F);
 		setChanged();
@@ -165,20 +181,27 @@ public final class FireclayForgeBlockEntity extends BaseContainerBlockEntity {
 			}
 		}
 		if (!formed || burnTicks <= 0) { alloyTicks = 0; return; }
-		// Hardwood alloy needs an uninterrupted charcoal fire for all 6000 ticks.
-		// Charcoal is consumed by ignite(); wood fires cannot advance this process.
-		if (!woodFuel && items.get(INPUT_SLOT).is(ModItems.HARDWOOD) && canOutputAlloy()) {
-			alloyTicks++;
-			if (alloyTicks >= CHARCOAL_BURN_TICKS) {
-				items.get(INPUT_SLOT).shrink(1);
-				if (items.get(INPUT_SLOT).isEmpty()) items.set(INPUT_SLOT, ItemStack.EMPTY);
-				ItemStack output = items.get(PRIMARY_OUTPUT_SLOT);
-				if (output.isEmpty()) items.set(PRIMARY_OUTPUT_SLOT, new ItemStack(ModItems.HARDWOOD_ALLOY));
-				else output.grow(1);
-				alloyTicks = 0;
-				setChanged();
-			}
-		} else alloyTicks = 0;
+        // Both Hardwood Alloy and Pure Mica Insulated Glass require 6000 uninterrupted ticks
+        // of a charcoal fire. Switching or removing input cancels progress, never preserves it.
+        int currentKind = processingKind();
+        if (currentKind != processInputKind) {
+            alloyTicks = 0;
+            processInputKind = currentKind;
+        }
+        if (!woodFuel && currentKind != 0 && canOutputProcessed(currentKind)) {
+            alloyTicks++;
+            if (alloyTicks >= CHARCOAL_BURN_TICKS) {
+                items.get(INPUT_SLOT).shrink(1);
+                if (items.get(INPUT_SLOT).isEmpty()) items.set(INPUT_SLOT, ItemStack.EMPTY);
+                ItemStack output = items.get(PRIMARY_OUTPUT_SLOT);
+                ItemStack product = processingOutput(currentKind);
+                if (output.isEmpty()) items.set(PRIMARY_OUTPUT_SLOT, product);
+                else output.grow(1);
+                alloyTicks = 0;
+                processInputKind = processingKind();
+                setChanged();
+            }
+        } else alloyTicks = 0;
 		// Stop *before* using fuel if this tick would generate a charcoal that cannot fit.
 		if (woodFuel && woodByproductTicks + 1 >= WOOD_BYPRODUCT_TICKS && !canOutputCharcoal()) return;
 		burnTicks--;
@@ -214,6 +237,7 @@ public final class FireclayForgeBlockEntity extends BaseContainerBlockEntity {
 		output.putInt("ForgeLayoutVersion", 3);
 		output.putInt("ForgeBurnTicks", burnTicks);
 		output.putInt("ForgeAlloyTicks", alloyTicks);
+		output.putInt("ForgeProcessInputKind", processInputKind);
 		output.putInt("ForgeBurnTotal", burnTotal);
 		output.putInt("ForgeByproductTicks", woodByproductTicks);
 		output.putBoolean("ForgeWoodFuel", woodFuel);
@@ -244,6 +268,7 @@ public final class FireclayForgeBlockEntity extends BaseContainerBlockEntity {
 			woodFuel = input.getBooleanOr("ForgeWoodFuel", false);
 		}
 		alloyTicks = Math.max(0, Math.min(CHARCOAL_BURN_TICKS - 1, input.getIntOr("ForgeAlloyTicks", 0)));
+		processInputKind = input.getIntOr("ForgeProcessInputKind", processingKind());
 		formed = false;
 		structureCheckCooldown = 0;
 	}

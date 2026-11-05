@@ -1,0 +1,15 @@
+{
+  "type": "projectflint:hardwood_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "projectflint:bssig_dust",
+    "projectflint:bssig_dust",
+    "projectflint:bssig_dust",
+    "projectflint:bssig_dust",
+    "projectflint:mica_dust"
+  ],
+  "result": {
+    "id": "projectflint:mbssig_dust",
+    "count": 1
+  }
+}

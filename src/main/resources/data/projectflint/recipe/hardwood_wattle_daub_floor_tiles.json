@@ -1,0 +1,11 @@
+{
+  "type": "projectflint:hardwood_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "projectflint:wattled_daub_bricks"
+  ],
+  "result": {
+    "id": "projectflint:wattled_daub_floor_tile",
+    "count": 3
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "type": "projectflint:hardwood_shaped",
+  "category": "misc",
+  "pattern": [
+    "BIB",
+    "IBC",
+    "BIC"
+  ],
+  "key": {
+    "B": "projectflint:bsig_dust",
+    "I": "projectflint:iron_dust",
+    "C": "minecraft:charcoal"
+  },
+  "result": {
+    "id": "projectflint:bssig_dust",
+    "count": 4
+  }
+}

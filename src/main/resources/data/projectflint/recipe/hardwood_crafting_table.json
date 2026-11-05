@@ -1,5 +1,5 @@
 {
-  "type": "projectflint:hardwood_shapeless",
+  "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
     "projectflint:hardwood_alloy",

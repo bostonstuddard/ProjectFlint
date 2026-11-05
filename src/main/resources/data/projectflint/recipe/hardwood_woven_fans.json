@@ -1,0 +1,13 @@
+{
+  "type": "projectflint:hardwood_durable",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:paper",
+    "projectflint:flint_file"
+  ],
+  "tool": "projectflint:bone_knife",
+  "result": {
+    "id": "projectflint:woven_fan",
+    "count": 6
+  }
+}

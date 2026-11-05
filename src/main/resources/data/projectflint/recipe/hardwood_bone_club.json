@@ -1,0 +1,17 @@
+{
+  "type": "projectflint:hardwood_shaped",
+  "category": "misc",
+  "pattern": [
+    "B",
+    "B",
+    "S"
+  ],
+  "key": {
+    "B": "projectflint:filed_bone",
+    "S": "minecraft:stick"
+  },
+  "result": {
+    "id": "projectflint:bone_club",
+    "count": 1
+  }
+}

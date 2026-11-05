@@ -1,0 +1,17 @@
+{
+  "type": "projectflint:hardwood_shaped",
+  "category": "misc",
+  "pattern": [
+    "LLL",
+    "LPL",
+    "LLL"
+  ],
+  "key": {
+    "L": "minecraft:leather",
+    "P": "projectflint:potassium_dust"
+  },
+  "result": {
+    "id": "projectflint:tanned_leather",
+    "count": 10
+  }
+}

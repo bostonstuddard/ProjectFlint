@@ -1,0 +1,13 @@
+{
+  "type": "projectflint:hardwood_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:brick_slab",
+    "minecraft:brick_slab",
+    "projectflint:wooden_board"
+  ],
+  "result": {
+    "id": "projectflint:brick_shingles",
+    "count": 4
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "type": "projectflint:hardwood_shaped",
+  "category": "misc",
+  "pattern": [
+    "F",
+    "S"
+  ],
+  "key": {
+    "F": "minecraft:flint",
+    "S": "minecraft:stick"
+  },
+  "result": {
+    "id": "projectflint:unlit_flint_torch",
+    "count": 1
+  }
+}

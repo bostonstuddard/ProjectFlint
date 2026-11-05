@@ -262,6 +262,17 @@ public final class ModItems {
 	private static final ToolMaterial HARDWOOD_HAMMER_MATERIAL = new ToolMaterial(
 		ToolMaterial.STONE.incorrectBlocksForDrops(), 560, 2.0F, 1.0F, 12, ToolMaterial.STONE.repairItems());
 	public static final Item WOOD_DUST = register("wood_dust", properties -> new Item(properties.stacksTo(64)));
+	public static final Item TIN_DUST = register("tin_dust", properties -> new Item(properties.stacksTo(64)));
+	public static final Item RARE_EARTH_DUST = register("rare_earth_dust", properties -> new Item(properties.stacksTo(64)));
+	public static final Item LITHIUM_DUST = register("lithium_dust", properties -> new Item(properties.stacksTo(64)));
+	public static final Item ALUMINUM_DUST = register("aluminum_dust", properties -> new Item(properties.stacksTo(64)));
+	public static final Item GALLIUM_DUST = register("gallium_dust", properties -> new Item(properties.stacksTo(64)));
+	public static final Item GLASS_DUST = register("glass_dust", properties -> new Item(properties.stacksTo(64)));
+	public static final Item BOROSILICATE_DUST = register("borosilicate_dust", properties -> new Item(properties.stacksTo(64)));
+	public static final Item BSIG_DUST = register("bsig_dust", properties -> new Item(properties.stacksTo(64)));
+	public static final Item BSSIG_DUST = register("bssig_dust", properties -> new Item(properties.stacksTo(64)));
+	public static final Item MBSSIG_DUST = register("mbssig_dust", properties -> new Item(properties.stacksTo(64)));
+	public static final Item PURE_MICA_INSULATED_GLASS = register("pure_mica_insulated_glass", properties -> new Item(properties.stacksTo(64)));
     public static final Item IRON_DUST = register("iron_dust", properties -> new Item(properties.stacksTo(64)));
     public static final Item COPPER_DUST = register("copper_dust", properties -> new Item(properties.stacksTo(64)));
     public static final Item NICKEL_DUST = register("nickel_dust", properties -> new Item(properties.stacksTo(64)));

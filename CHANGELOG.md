@@ -1,3 +1,13 @@
+## v0.31.57-b — Per-Stomp Basin Costs, Material Yields & Insulated Glass
+
+- Basin charges one hunger point **per stomp**; every material takes 2 or 3 stomps. Fixed Basin hand/inventory/dropped item-model transforms.
+- Added independent Iron Gold (3%), Copper Slag (5%), Sand Tin (15%), Andesite/Granite Stone Dust (33%) and Stone/Cobblestone 66%/44%/13.33% Stone Dust chances.
+- Clay Block and Rare Earth Dust processing adds Mica, Silver, Gold, Lithium, Iron, Aluminum and Gallium with documented independent probabilities.
+- Added Hardwood Table crafts for the requested leather, woodworking, bricks, bone/flint tools, windows, torches, woven fans and glass-dust items; 2x table Fat-Burning Torches, Leather Strap 3-per-cut and Repair Kit 2-per-recipe.
+- Added Glass Dust → Borosilicate Dust → BSIG → BSSIG → MBSSIG Dust and five-minute charcoal-forged Pure Mica Insulated Glass.
+- First Hardwood Crafting Table can now be made in the player's **2x2** grid (no workstation prerequisite loop).
+- Updated G Field Guide, new K Hardwood Table category, technical docs, yields table, ADR 0016, release files, and model/texture provenance.
+
 ## v0.31.56-b — Physical Basin inputs and durable crafting safeguards
 - Basin now renders its **actual stored item** on the basin floor, using synchronized block-entity inventory data instead of a fixed wood-only geometry. Input remains visible across relog, chunk reload and item type changes.
 - Basin processing now requires material-specific landings: Planks 2; stripped Oak/Birch 3; Raw Iron 5; Raw Copper 4; Andesite/Granite/Stone/Diorite 4; Slag 3; Gravel/Stone Dust 2; Sand 2. A single hunger point is spent only on completion, and existing independent yield rolls stay unchanged. Removing one input cancels that item's stomp progress. Progress persists while stored.

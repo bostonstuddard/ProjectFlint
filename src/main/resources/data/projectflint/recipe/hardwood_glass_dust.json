@@ -1,0 +1,13 @@
+{
+  "type": "projectflint:hardwood_durable",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:glass",
+    "projectflint:flint_file"
+  ],
+  "tool": "projectflint:bone_knife",
+  "result": {
+    "id": "projectflint:glass_dust",
+    "count": 2
+  }
+}
