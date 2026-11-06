@@ -1,3 +1,7 @@
+## v0.31.62-b opening-stage regression gate
+Before every release that modifies block mining or attack interception, test a fresh survival world: knap a Rock, assemble a Crude Stone Hammer, convert natural Stone into Crushed Stone and four Rocks, and verify durability. Also test crude Multitools, hand/food denial, Vest denial, Cobblestone and deepslate permissions, and Wooden/Hardwood Pickaxe drops. The milestone is not complete based on static checks alone; run the compiled mod in-game.
+
+
 ## v0.31.61-b — Required runtime checks
 - Compile v0.31.61-b with Mojang-mapped MC 1.21.11; confirm `TransparentBlock` resolves and no compile errors remain.
 - Apply on top of installed v0.31.60-b and confirm the stale personal recipe JSON is removed before build; personal 2×2 crafting cannot make PMI Sheets.

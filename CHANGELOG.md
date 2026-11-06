@@ -1,3 +1,9 @@
+## v0.31.62-b — Early Stone Hammering Restored
+- **Fixed** the Crude Stone Hammer being unable to work natural Stone: it now turns Stone into Crushed Stone and gives four Rocks again.
+- Early Multitools retain the same Stone-crushing ability at their own working speeds.
+- Wooden/Hardwood Pickaxes and the Hardwood Hammer retain normal stone mining. Hands, unrelated items and the Utility Vest still cannot mine Stone, Cobblestone or ore.
+- Other stone-family blocks, Deepslate and ore mining restrictions are unchanged. No crafting recipes or textures changed.
+
 ## v0.31.61-b — Glass compile fix and Hardwood-only PMI Sheets
 - Fixed the Pure Mica Insulated Glass compile error on Minecraft 1.21.11: the Mojang-mapped vanilla glass implementation is `TransparentBlock`, not the nonexistent `GlassBlock`. Preserve ordinary glass light transmission, the approved blue-gray texture, and Tanned Utility Vest recovery.
 - PMI Sheets now craft **only** at the Hardwood Crafting Table: 1 Pure Mica Insulated Glass + 1 Bone Knife → 2 PMI Sheets, consuming one Bone Knife durability. Removed the personal 2×2 recipe and its guide entry. The cleanup script deletes the old recipe JSON from previously patched installations.

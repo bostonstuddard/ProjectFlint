@@ -69,8 +69,9 @@ public final class PrimitiveInteractionSystem {
 		BlockState state = level.getBlockState(pos);
 		ItemStack held = player.getItemInHand(hand);
 		if (OreMiningRules.isRestricted(state)) {
-			// Stone blocks must never start a fast client-side attack with an invalid tool.
-			// Other ores retain deliberately slow, lootless removal.
+			// Primitive Stone processing is intentionally allowed before the general
+			// pickaxe restrictions; it is NOT permission to mine other rock or ore.
+			if (OreMiningRules.canPrimitiveStoneWork(state, held)) return InteractionResult.PASS;
 			return !OreMiningRules.isStoneFamily(state) || OreMiningRules.canGetDrops(state, held)
 				? InteractionResult.PASS : InteractionResult.FAIL;
 		}
@@ -816,6 +817,7 @@ public final class PrimitiveInteractionSystem {
 
 		ItemStack held = player.getMainHandItem();
 		if (OreMiningRules.isRestricted(state)) {
+			if (OreMiningRules.canPrimitiveStoneWork(state, held)) return true;
 			return !OreMiningRules.isStoneFamily(state) || OreMiningRules.canGetDrops(state, held);
 		}
 		if (PlayerPlacedBlockLedger.isHandRecoverableDecoration(state)) return true;

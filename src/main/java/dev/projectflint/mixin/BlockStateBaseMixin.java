@@ -326,10 +326,8 @@ public abstract class BlockStateBaseMixin {
 			cir.setReturnValue(Math.min(1.0F, progress));
 			return;
 		}
-		if (state.is(Blocks.STONE) && ModItems.isHammerLike(held)) {
-			cir.setReturnValue(projectflint$hammerProgress(held, GameplayTuning.CRUDE_HAMMER_STONE_PROGRESS_PER_TICK));
-			return;
-		}
+		// Natural Stone hammering is handled by OreMiningRules before this branch;
+		// keep its progress in sync with the server's early hammer permission.
 		if (held.is(ModItems.CRUDE_STONE_HAMMER) && state.is(Blocks.SUGAR_CANE)) {
 			cir.setReturnValue(GameplayTuning.CRUDE_HAMMER_REED_PROGRESS_PER_TICK);
 			return;

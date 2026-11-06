@@ -1,3 +1,7 @@
+## v0.31.62-b — Mandatory early-game break-action test
+Mining rules are incomplete until the Crude Stone Hammer can **complete** its Stone conversion (not merely display cracks). Verify progress/attack/pre-break/server handlers together: natural Stone + Crude Hammer and Crude/Flint/Advanced Multitools yield Crushed Stone + 4 Rocks, and 1 damage to the held tool; ordinary unqualified tools and the Vest cannot harvest Stone. Check the Hardwood Hammer uses its own normal mining route, and that Cobblestone, Coal, Iron/Copper, Deepslate and other ores retain their tier rules. Full runtime tests must be performed before declaring the release playtested.
+
+
 ## v0.31.61-b — Preflight compatibility and recipe removal
 Before shipping, verify glass class names against the actual **Mojang-mapped Minecraft 1.21.11 JAR** and run `:compileJava` in the user's Gradle environment. Verify that v0.31.60-b personal PMI Sheet recipe JSON is deleted by `APPLY_PROJECTFLINT_0_31_61_B.bat`; a patch-only ZIP overwrite cannot remove old files by itself. Check the live 2×2 personal grid rejects PMI Sheets, the Hardwood Table accepts them with 60-tick delay and tool wear, and glass lighting/vesting stays unchanged. Successful builds only copy runtime JAR to `dist/`. Older v0.31.60-b dual crafting instructions are superseded.
 

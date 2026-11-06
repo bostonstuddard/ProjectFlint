@@ -36,6 +36,7 @@ This document is the developer-facing source of truth for the currently implemen
 ## Stone mining and Utility Vest constraints (v0.31.54-b)
 
 - The Vest clears *vegetation only*. It never allows breaking stone, generic player-placed blocks, structural machines, or Well frames without a tool.
+- **Before pickaxes:** Crude Stone Hammer crushes natural Stone after 234 ticks (11.7s), replacing it with Crushed Stone and dropping 4 Rocks, costing 1 durability. Crude, Flint and Advanced Flint Multitools inherit this operation with their established Hammer speed multipliers. This does not mine Cobblestone or ores and grants no generic rock-harvesting permission.
 - Stone/Cobblestone/Andesite/Diorite/Granite and other vanilla pickaxe-rock targets: Wooden or Hardwood Pickaxe (13.5s), Hardwood Hammer (12s), or a correctly tiered vanilla Pickaxe. Unqualified hands/tools show no breaking progress.
 - Coal Ore uses the same early tools and speed; Hammer produces 2 Coal. Ordinary Iron/Copper Ore require Hardwood Hammer (13.5s) or vanilla Stone+ Pickaxe. Other ores need their vanilla appropriate pickaxe tier for drops.
 - Technical authority: `system/OreMiningRules.java` and `docs/CURRENT_SYSTEMS.md`. Earlier entries below are historical unless superseded by this current snapshot.

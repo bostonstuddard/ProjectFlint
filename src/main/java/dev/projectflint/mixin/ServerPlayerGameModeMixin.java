@@ -70,8 +70,18 @@ public abstract class ServerPlayerGameModeMixin {
 		}
 
 		// Resolve all natural ores/stone before the vest, hammer or vanilla destruction paths.
-        // Breaking an unauthorized ore is allowed at hand-speed, but NEVER yields any loot.
+        // Primitive hammering is a non-mining progression mechanic: it changes
+        // Stone to Crushed Stone and drops four Rocks, not Cobblestone or ore loot.
         if (OreMiningRules.isRestricted(state)) {
+            if (OreMiningRules.canPrimitiveStoneWork(state, held)) {
+                level.setBlockAndUpdate(pos, ModBlocks.CRUSHED_STONE.defaultBlockState());
+                for (int i = 0; i < 4; i++) projectflint$dropAtBlock(pos, new ItemStack(ModItems.ROCK));
+                held.hurtAndBreak(1, player, InteractionHand.MAIN_HAND);
+                ModAdvancements.award(player, "crushed_stone", "crushed_stone");
+                level.playSound(null, pos, SoundEvents.STONE_BREAK, SoundSource.BLOCKS, 0.9F, 0.7F);
+                cir.setReturnValue(false);
+                return;
+            }
             if (!OreMiningRules.canGetDrops(state, held)) {
                 level.removeBlock(pos, false);
                 cir.setReturnValue(false);
@@ -704,16 +714,6 @@ public abstract class ServerPlayerGameModeMixin {
 				ModAdvancements.award(player, "crude_reeds", "harvested_crude_reeds");
 				level.playSound(null, pos, SoundEvents.GRASS_BREAK, SoundSource.BLOCKS, 0.72F, 0.86F);
 			}
-			cir.setReturnValue(false);
-			return;
-		}
-
-		if (state.is(Blocks.STONE) && ModItems.isHammerLike(held)) {
-			level.setBlockAndUpdate(pos, ModBlocks.CRUSHED_STONE.defaultBlockState());
-			for (int i = 0; i < 4; i++) projectflint$dropAtBlock(pos, new ItemStack(ModItems.ROCK));
-			held.hurtAndBreak(1, player, InteractionHand.MAIN_HAND);
-			ModAdvancements.award(player, "crushed_stone", "crushed_stone");
-			level.playSound(null, pos, SoundEvents.STONE_BREAK, SoundSource.BLOCKS, 0.9F, 0.7F);
 			cir.setReturnValue(false);
 			return;
 		}

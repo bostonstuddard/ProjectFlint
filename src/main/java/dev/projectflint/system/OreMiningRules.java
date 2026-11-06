@@ -1,6 +1,7 @@
 package dev.projectflint.system;
 
 import dev.projectflint.registry.ModItems;
+import dev.projectflint.config.GameplayTuning;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.ItemStack;
@@ -68,6 +69,24 @@ public final class OreMiningRules {
     }
     public static boolean isRestricted(BlockState state) { return isForbiddenDeepslate(state) || isOre(state) || isStoneFamily(state); }
 
+    /**
+     * The first stone-working operation is NOT pickaxe mining: primitive hammers
+     * turn natural Stone into Crushed Stone and release four Rocks. Keep this
+     * exemption specific to Stone and these early hammer tools, never all rock,
+     * Cobblestone, ores, or deepslate. Hardwood Hammer mines as a pickaxe-tier tool.
+     *
+     * This must be checked consistently by the client mining progress, attack
+     * callback, pre-break guard and the server's completed-break handler.
+     */
+    public static boolean canPrimitiveStoneWork(BlockState state, ItemStack held) {
+        return state.is(Blocks.STONE) && (
+            held.is(ModItems.CRUDE_STONE_HAMMER)
+            || held.is(ModItems.CRUDE_MULTITOOL)
+            || held.is(ModItems.FLINT_MULTITOOL)
+            || held.is(ModItems.ADVANCED_FLINT_MULTITOOL)
+        );
+    }
+
     public static boolean isVanillaPickaxe(ItemStack stack) {
         return stack.is(Items.WOODEN_PICKAXE) || stack.is(Items.STONE_PICKAXE)
             || stack.is(Items.IRON_PICKAXE) || stack.is(Items.GOLDEN_PICKAXE)
@@ -96,7 +115,8 @@ public final class OreMiningRules {
     }
     public static boolean canGetDrops(BlockState state, ItemStack held) {
         if (isForbiddenDeepslate(state)) return false;
-        if (isStoneFamily(state)) return isEarlyRockTool(state, held) || isValidVanillaPickaxe(state, held);
+        if (isStoneFamily(state)) return canPrimitiveStoneWork(state, held)
+            || isEarlyRockTool(state, held) || isValidVanillaPickaxe(state, held);
         if (isCoal(state)) return isWoodenTier(held) || isValidVanillaPickaxe(state, held);
         if (isCopperOrIronStoneOre(state))
             return held.is(ModItems.HARDWOOD_HAMMER) || isValidVanillaPickaxe(state, held);
@@ -106,6 +126,11 @@ public final class OreMiningRules {
     public static float progress(BlockState state, ItemStack held, float vanilla) {
         if (isForbiddenDeepslate(state)) return 0.0F;
         if (isStoneFamily(state)) {
+            // This path must precede pickaxe-tier checks: a Crude Stone Hammer
+            // cannot mine rock, but it *can* process natural Stone into Rocks.
+            if (canPrimitiveStoneWork(state, held))
+                return GameplayTuning.CRUDE_HAMMER_STONE_PROGRESS_PER_TICK
+                    * ToolCapabilities.hammerSpeedMultiplier(held);
             if (isEarlyRockTool(state, held))
                 return held.is(ModItems.HARDWOOD_HAMMER) ? HAMMER_STONE_PROGRESS : WOODEN_PROGRESS;
             if (isValidVanillaPickaxe(state, held)) return vanilla;

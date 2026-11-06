@@ -1,3 +1,7 @@
+## v0.31.62-b — Primitive Stone operation is not a recipe
+The G-key Field Guide must explain Crude Stone Hammer -> natural Stone -> Crushed Stone + 4 Rocks. The K-key recipe guide has **no new crafting recipe** for this physical mining/processing interaction. Test the mechanic through client progress, AttackBlock callback, pre-break guard, and server completion. Do not move this into a crafting category or imply that the Crude Hammer can mine ore/Cobblestone.
+
+
 ## v0.31.61-b — PMI Sheet station exclusivity
 - Assert `data/projectflint/recipe/hardwood_pmi_sheets.json` exists with `projectflint:hardwood_durable`, 1 glass block + Bone Knife → 2 non-placeable sheets and one point of tool wear.
 - Assert `data/projectflint/recipe/personal_pmi_sheets.json` is **absent** after the apply script runs and has no `PersonalCraftingGuideRegistry` entry. Keep the K-key Hardwood Table display and G-key player's description synchronized.

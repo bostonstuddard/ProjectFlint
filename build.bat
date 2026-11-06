@@ -3,7 +3,8 @@ setlocal EnableExtensions
 cd /d "%~dp0"
 
 REM ============================================================
-REM Project Flint v0.31.61-b builder
+REM Project Flint v0.31.62-b builder
+REM v0.31.62-b: Restore primitive Stone hammering without loosening ore/rock mining tiers.
 REM v0.31.61-b: Mojang-mapped transparent glass and Hardwood-only PMI Sheets.
 REM v0.31.60-b: Light-passing Mica Glass, PMI Sheets, daemon-free Gradle and dist JAR.
 REM v0.31.58-b: Manual Forge fuel, 50-minute Fat Torches, Basin odds, cups, fertilizer.
@@ -80,7 +81,7 @@ REM - v0.31.49-b repairs Hardwood recipes, Fat Torch fuel, and player guide accu
 REM - v0.31.50-b replaces the Hardwood Table ghost-result menu with server timed crafting
 REM ============================================================
 
-IF EXIST "APPLY_PROJECTFLINT_0_31_61_B.bat" CALL "APPLY_PROJECTFLINT_0_31_61_B.bat" /quiet
+IF EXIST "APPLY_PROJECTFLINT_0_31_62_B.bat" CALL "APPLY_PROJECTFLINT_0_31_62_B.bat" /quiet
 
 if not exist "src\main\resources\assets\projectflint\textures\block\placed" mkdir "src\main\resources\assets\projectflint\textures\block\placed"
 copy /y "src\main\resources\assets\projectflint\textures\item\branch.png" "src\main\resources\assets\projectflint\textures\block\placed\branch.png" >nul
@@ -107,7 +108,7 @@ for /f "tokens=1,* delims==" %%A in ('findstr /b /c:"mod_version=" "gradle.prope
 for /f "tokens=1,* delims==" %%A in ('findstr /b /c:"archives_base_name=" "gradle.properties"') do set "ARCHIVES_BASE_NAME=%%B"
 for /f "tokens=1,* delims==" %%A in ('findstr /b /c:"minecraft_version=" "gradle.properties"') do set "MINECRAFT_VERSION=%%B"
 
-if not defined MOD_VERSION set "MOD_VERSION=0.31.61-b"
+if not defined MOD_VERSION set "MOD_VERSION=0.31.62-b"
 if not defined ARCHIVES_BASE_NAME set "ARCHIVES_BASE_NAME=projectflint"
 if not defined MINECRAFT_VERSION set "MINECRAFT_VERSION=1.21.11"
 

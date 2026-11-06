@@ -34,12 +34,13 @@ Basin requires **2–3 landings**, **one hunger point per valid landing**. Clay 
 
 # Project Flint — Current implementation reference
 
-**Authoritative through v0.31.58-b (Minecraft 1.21.11, Fabric, Mojang mappings).** This file summarizes current behavior, not the historical development path. More complete early-game pathways remain in `PRIMITIVE_PROGRESSION_MATRIX.md` and the corresponding gameplay source.
+**Authoritative through v0.31.62-b (Minecraft 1.21.11, Fabric, Mojang mappings).** This file summarizes current behavior, not the historical development path. More complete early-game pathways remain in `PRIMITIVE_PROGRESSION_MATRIX.md` and the corresponding gameplay source.
 
 ## World editing and mining
 
 | World interaction | Accepted tool/condition | Target speed and results |
 |---|---|---|
+| Natural vanilla Stone (early Stone-working operation) | Crude Stone Hammer, Crude Multitool, Flint Multitool or Advanced Flint Multitool | 234 ticks for Crude Hammer (11.7s); Multitools follow their established Hammer multipliers. **Converts Stone into Crushed Stone in-world, drops 4 Rocks, costs 1 tool durability**; does **not** mine ores or Cobblestone. |
 | Vanilla stone-family blocks (Stone, Cobblestone, Andesite, Diorite, Granite, Tuff, vanilla pickaxe stonework and equivalent placed blocks) | Wooden Pickaxe, Hardwood Pickaxe, Hardwood Hammer, correctly tiered vanilla Pickaxe | Wood/Hardwood Pickaxe 270 ticks (13.5s); Hardwood Hammer 240 ticks (12s); vanilla upgraded pickaxes use ordinary vanilla speed. Ordinary block drops. Stone drops Cobblestone and applies Flint's adjacent Stone effect. |
 | Same stone-family blocks with bare hand, food, cutters, vest, etc. | Not permitted | 0 progress; no ghost completion/drops |
 | Coal Ore | Wooden Pickaxe, Hardwood Pickaxe, Hardwood Hammer, compatible vanilla Pickaxe | 270 ticks with basic pickaxes / 240 ticks with Hammer; 1 Coal, or 2 with Hammer |

@@ -1,3 +1,10 @@
+## v0.31.62-b — Stone-working versus mining
+
+Natural Stone has two **distinct** player actions. Primitive Stone working (`OreMiningRules.canPrimitiveStoneWork`) accepts Crude Stone Hammer and the three early Multitools, returning controlled `GameplayTuning.CRUDE_HAMMER_STONE_PROGRESS_PER_TICK` progress; the completed server action replaces Stone with Crushed Stone, drops four Rocks, consumes one durability and awards the original event. Pickaxe-tier mining remains separate and returns conventional mined material.
+
+This special operation must be permitted by **all four** paths: `BlockStateBaseMixin.getDestroyProgress`, `PrimitiveInteractionSystem.onAttackBlock`, `PrimitiveInteractionSystem.beforeBlockBreak`, and `ServerPlayerGameModeMixin.destroyBlock`. It must be handled before generic `OreMiningRules.isRestricted` loot handling. Never widen `isWoodenTier` to include Crude Stone Hammer: doing so would enable Cobblestone, ore, and other rock mining. Stone conversion is limited to `Blocks.STONE` and the exact four primitive tools; the Hardwood Hammer stays on its mining path.
+
+
 ## v0.31.61-b — Mapped glass class and workstation-specific recipe
 MC 1.21.11 Mojang mappings expose vanilla glass implementation `net.minecraft.world.level.block.TransparentBlock` (not `GlassBlock`). Instantiate `TransparentBlock` with `BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).setId(key)` to retain ordinary glass behavior. `ProjectFlintClient` translucent render layer and existing vest permission/drops are unchanged.
 
