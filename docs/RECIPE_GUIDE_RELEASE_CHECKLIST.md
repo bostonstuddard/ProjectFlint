@@ -73,3 +73,10 @@ Review `docs/CURRENT_SYSTEMS.md`, `docs/ARCHITECTURE.md`, `docs/PRIMITIVE_PROGRE
 - K/Basin must display the exact required stomp count dynamically alongside every primary or byproduct output. G/Basin describes the actual item model, repeated landings, removal reset, and single hunger point on completion.
 - Verify client rendering uses real `BasinInput` with packet updates and no static inserted wood shape. Test multiple inputs, different wood types, iron/copper, bare Basin, chunk reload, and multiplayer join.
 - Hardwood recipes live in a **different recipe type** from vanilla. Do not let the vanilla ResultSlot calculate remainders for Hardwood recipes: it filters to vanilla CRAFTING and deletes the knife/file. The matched Hardwood recipe supplies worn tool/container remainders; all clicks, shift-clicks and full inventories must be checked.
+
+## v0.31.64-b checks
+- [ ] Personal K guide shows live 2×2 Wooden Axe, Pickaxe, all Wooden Shovel variants, Wooden Sword and Wooden Hoe. Check recipe JSON and the RecipeManager filter, not the display alone.
+- [ ] Oak Sheet and Board personal recipes use `durable_crafting` (outputs 3/1); Hardwood generic any-Planks recipes use `hardwood_durable` (outputs 4/2). No duplicate Oak entry in the Hardwood category.
+- [ ] Verify Bone Knife/Flint File durability remainders at both stations and through shift-click.
+- [ ] Fireclay Forge display matches guarded Charcoal auto-relight behavior.
+

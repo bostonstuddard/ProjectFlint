@@ -276,3 +276,7 @@ The Advanced Flint Multitool changes the requested utility yields to Gravel → 
 ### Basin pacing & durable hand-tools (v0.31.56-b)
 
 One material is processed at a time. 2–5 landed stomps depending on input (see `BASIN_MATERIAL_YIELDS.md`); 1 hunger point only at completion. Materials appear in the Basin before processing. Bone Knives and Flint Files are **reusable tools**, each wearing by one durability on crafts that use them; replacing them every craft is not an intended progression cost. Hardwood Table output remains locked for 60 server ticks per craft.
+
+## v0.31.64-b — Restored early Wooden Tool and Sheet/Board steps
+The personal 2×2 grid once again accepts the original Wooden Axe, Pickaxe and Shovel costs. Personal Sword and Hoe variants use Wooden Sheets, Stick and (for Hoe) Plant Tool Binding. Personal Oak Planks + Bone Knife produce 3 Wooden Sheets; Oak Planks + Flint File produce 1 Wooden Board, with each tool losing one durability. The Hardwood Table yields 4 Sheets or 2 Boards from any plank type. These stations must not compete with duplicate recipes. The Wooden Axe personal recipe must remain enabled: later Log → Planks → Basin Wood Dust → Hardwood must not be gated behind the Hardwood Table. Fireclay Charcoal refuels only when an actual recipe can process, and the Utility Vest clears vegetation but no rock.
+Flint Axe can produce the first 2 Planks from a Log without a Wooden Axe. That enables Bone Knife → Wooden Sheets and the personal Wooden Axe recipe; Flint Axe and Wooden Axe are both valid plank-working tools.

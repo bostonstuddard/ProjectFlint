@@ -141,7 +141,7 @@ public final class FireclayForgeBlockEntity extends BaseContainerBlockEntity {
 		}
 	}
 
-	/** Manual button and automatic next-fuel ignition use the exact same preflight. */
+	/** Manual ignition and guarded automatic relights use the same preflight. */
 	public boolean ignite() {
 		if (level == null || level.isClientSide()) return false;
 		Direction facing = getBlockState().getValue(HorizontalDirectionalBlock.FACING);
@@ -153,7 +153,7 @@ public final class FireclayForgeBlockEntity extends BaseContainerBlockEntity {
 		boolean nextWood = isCharcoalWood(fuel);
 		if (nextWood && fuel.getCount() < WOOD_FUEL_COST) return false;
 		if (nextWood && !canOutputCharcoal()) return false;
-        // Never waste charcoal on an empty/blocked recipe. The next charge must be started manually.
+        // Never waste charcoal on an empty/blocked recipe, even during automatic relight.
         if (!nextWood && (processingKind() == 0 || !canOutputProcessed(processingKind()))) return false;
 		ItemStack starter = items.get(IGNITER_SLOT);
 		int nextDamage = starter.getDamageValue() + 1;
@@ -182,7 +182,19 @@ public final class FireclayForgeBlockEntity extends BaseContainerBlockEntity {
 				setChanged();
 			}
 		}
-		if (!formed || burnTicks <= 0) { alloyTicks = 0; return; }
+        if (!formed) { alloyTicks = 0; return; }
+        if (burnTicks <= 0) {
+            alloyTicks = 0;
+            // Resume a valid charcoal-fueled operation automatically, but never
+            // spend fuel on empty inputs, full outputs, or an absent firestarter.
+            // Log-to-charcoal batches continue to require deliberate ignition.
+            int nextKind = processingKind();
+            if (items.get(FUEL_SLOT).is(Items.CHARCOAL) && nextKind != 0
+                && canOutputProcessed(nextKind) && isFirestarter(items.get(IGNITER_SLOT))) {
+                ignite();
+            }
+            return;
+        }
         // Both Hardwood Alloy and Pure Mica Insulated Glass require 6000 uninterrupted ticks
         // of a charcoal fire. Switching or removing input cancels progress, never preserves it.
         int currentKind = processingKind();
@@ -219,7 +231,7 @@ public final class FireclayForgeBlockEntity extends BaseContainerBlockEntity {
 			woodByproductTicks = 0;
 			refreshBlockState();
 			setChanged();
-			// Fuel is never ignited automatically. The player must manually relight the forge.
+            // Next tick may ignite another charge only for a valid, unblocked recipe.
 		} else if (burnTicks % 20 == 0) setChanged();
 	}
 

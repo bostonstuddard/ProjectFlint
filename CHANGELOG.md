@@ -1,3 +1,11 @@
+## v0.31.64-b — Personal Wooden Tools and Workstation Fixes
+- Restored the personal 2×2 recipes for Wooden Axes, Pickaxes, and all Wooden Shovel wood variants; added personal Wooden Sword and Hoe options. Earlier Wooden Tool costs stay unchanged.
+- Flint Axes can now process Logs into Planks in personal crafting, providing a pre-Wooden-Axe route that prevents a circular Wooden Sheet prerequisite.
+- Fixed Oak Wooden Sheets and Boards incorrectly being restricted to the Hardwood Table. Personal Oak Sheets yield 3 and Boards yield 1; the Hardwood Table's all-plank variants yield 4 and 2. Removed the duplicate Hardwood recipes shown for Oak.
+- Tanned Utility Vests can now clear vanilla Bushes, Firefly Bushes, and dry grass, in addition to existing foliage. This does not allow stone/ore mining or bypass the early Twig-harvesting rules.
+- Fireclay Forge now automatically starts a new Charcoal heating cycle only while a valid Hardwood/MBSSIG input, output room, available Charcoal and working Firestarter are all present. No idle Charcoal use. Log-to-Charcoal ignition remains manual.
+- Updated G/K guides, progression checks and release notes. Existing mining, Quest events, Basin yields and equipment costs remain unchanged.
+
 ## v0.31.63-b — Custom Block Breaks Count Toward Quests
 - Fixed Flint Quests block-breaking tasks not progressing when Project Flint transforms Stone into Crushed Stone with a Crude Stone Hammer or early Multitool.
 - Other successful Project Flint manual block removals and transformations now count as breaking the original block, just like ordinary mining.

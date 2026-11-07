@@ -67,8 +67,11 @@ public final class ProjectFlintFieldGuideContent {
             "Fire bricks for walls, ovens and more durable workstations. Brick Shingles and Wattle & Daub offer additional building materials.",
             "Brick structures need the appropriate tools to recover. A vest is not a substitute for a masonry tool.");
         add(c, "WOOD AGE", "Early Woodworking", ModItems.WOODEN_BOARD,
-            "Use the Wooden Grinder and Sanding Station to prepare Boards, Sheets and other useful materials.",
-            "Sanding uses the station's stored Sand Paper durability. Use suitable axes to process Logs into Planks.");
+            "Use a Flint Axe or Wooden Axe with Logs in personal crafting to make Planks. The Flint Axe is useful for getting your first Planks.",
+            "Use a Bone Knife on Oak Planks to make three Wooden Sheets, or a Flint File to make one Wooden Board. Both tools lose durability.");
+        add(c, "WOOD AGE", "Wooden Tools", Items.WOODEN_AXE,
+            "Craft Wooden Axes, Pickaxes and Shovels in your personal 2x2 crafting grid. You can also make Wooden Swords and Hoes there.",
+            "Wooden Axes work Logs into Planks, and Wooden Pickaxes mine ordinary Stone and Coal. Press K for the exact materials.");
         add(c, "WOOD AGE", "Lumber Processor", ModItems.LUMBER_PROCESSOR,
             "Build the Chopping Block, Water Pot and Crushed Stone parts together with support underneath each one.",
             "Place a supported Stripped Log, fill the Water Pot, choose Boards or Beams, then work it using Flint Plant Cutters.");
@@ -92,7 +95,7 @@ public final class ProjectFlintFieldGuideContent {
             "Deepslate and Deepslate Ores are unavailable for mining. Ordinary Iron and Copper Ore require the Hardwood Hammer at this stage.");
         add(c, "FIRECLAY", "Fireclay Forge", ModItems.FIRECLAY_FORGE_CONTROLLER,
             "Build the Forge and place its fuel, material and Firestarter in the correct slots. Ignite a fuel charge when you're ready to work.",
-            "Four Logs can be burned into Charcoal. Hardwood and MBSSIG Dust each need a five-minute charcoal-fueled Forge cycle. The Forge must be lit again for each new cycle.");
+            "Four Logs can be burned into Charcoal. Hardwood and MBSSIG Dust each need a five-minute charcoal-fueled Forge cycle. With input, Charcoal and a working Firestarter, the Forge starts its next cycle automatically.");
         add(c, "HARDWOOD", "Making Hardwood", ModItems.HARDWOOD,
             "Combine two Wood Dust, Tannin and a filled Clay Water Bucket to create Hardwood. You get the empty Clay Bucket back.",
             "Heat Hardwood with Charcoal in the Fireclay Forge for five minutes to make Hardwood Alloy.");

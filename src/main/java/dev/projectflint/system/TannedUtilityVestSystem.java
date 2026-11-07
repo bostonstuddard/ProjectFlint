@@ -34,6 +34,8 @@ public final class TannedUtilityVestSystem {
 				|| state.is(Blocks.WILDFLOWERS) || state.is(Blocks.LILY_PAD)
 				|| state.is(Blocks.SUGAR_CANE) || state.is(Blocks.VINE)
 				|| state.is(Blocks.GLOW_LICHEN) || state.is(Blocks.DEAD_BUSH)
+                || state.is(Blocks.BUSH) || state.is(Blocks.FIREFLY_BUSH)
+                || state.is(Blocks.SHORT_DRY_GRASS) || state.is(Blocks.TALL_DRY_GRASS)
 				|| state.is(Blocks.SEAGRASS) || state.is(Blocks.TALL_SEAGRASS));
 	}
 }

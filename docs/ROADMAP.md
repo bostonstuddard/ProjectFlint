@@ -1436,3 +1436,7 @@ Crude Multitool leaf harvesting is explicitly protected as a progression gate: l
 - Repeat with Crude, Flint, and Advanced Flint Multitools. Verify ordinary wooden-pickaxe Stone mining is counted once, not twice.
 - Verify hands/food and forbidden ore/deepslate do not grant break quest credit.
 - Apply the Project Flint fix to the 0.32.0 bundle before redistributing it; no Flint Quests API changes are necessary for this case.
+
+## v0.31.64-b regression gates
+Test a new Survival save from initial rocks through Wooden Axe → Log Planks → Basin Wood Dust → Hardwood Alloy. Verify all five Wooden Tools in personal 2×2, Sword/Hoe variants, and K guide. Confirm one Oak Sheet/Board recipe in each station with distinct output counts. Harvest vanilla Bush, Firefly Bush and dry grass with the Utility Vest (including empty hand) and verify Stone remains blocked. Test Forge auto-relights for valid input and enough space while consuming one Charcoal and one Firestarter use per cycle, but stays off when blocked or empty. Re-run earlier Stone Hammer/FlintQuests tests.
+Verify first Planks from Flint Axe + Log, then Bone Knife → Oak Sheets, then Wooden Axe. This is a prerequisite cycle guard.

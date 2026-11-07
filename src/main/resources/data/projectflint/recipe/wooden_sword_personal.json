@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    "projectflint:wooden_sheet",
+    "projectflint:wooden_sheet",
+    "minecraft:stick"
+  ],
+  "result": {
+    "id": "minecraft:wooden_sword",
+    "count": 1
+  }
+}

@@ -1,5 +1,5 @@
 {
-  "type": "projectflint:hardwood_durable",
+  "type": "projectflint:durable_crafting",
   "category": "misc",
   "ingredients": [
     "minecraft:oak_planks"
@@ -7,6 +7,6 @@
   "tool": "projectflint:bone_knife",
   "result": {
     "id": "projectflint:wooden_sheet",
-    "count": 4
+    "count": 3
   }
 }

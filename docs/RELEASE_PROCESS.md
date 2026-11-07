@@ -96,3 +96,7 @@ Every release must review `docs/CURRENT_SYSTEMS.md`, `docs/ARCHITECTURE.md`, `do
 ## v0.31.63-b — Break-event interoperability gate
 
 When customizing `ServerPlayerGameMode.destroyBlock` to return `false` after successful world mutation, regression-test Fabric `PlayerBlockBreakEvents.AFTER` consumers (especially Flint Quests `BREAK_BLOCK` tasks). Check original block identifier, exactly-one dispatch for custom breaks, no manual event for ordinary vanilla breaks, no quest credit for no-op/canceled forbidden mining, and no loot/tool/wear changes. Test Stone-to-Crushed-Stone with a near-broken Hammer and normal coal/stone mining as distinct paths.
+
+## v0.31.64-b — Survival progression and recipe-ownership gate
+Before packaging, compare K-key personal guide entries to actual recipe IDs and RecipeManager filters, and compare Hardwood Table recipes for duplicate ingredient/tool signatures. Test recipes in both the 2×2 and 3×3 inputs; guide entries alone do not prove that a recipe loads. A change to `RecipeManagerMixin` must not silently disable early tools. Verify vanilla plant variants (including newly added plants) against the Vest and both client/server break handlers. Auto-ignition must never spend fuel when output is blocked or input missing. Preserve existing cleanup lineage, build version, distribution behavior and root-relative patch ZIP.
+

@@ -18,15 +18,15 @@ public abstract class RecipeManagerMixin {
 		cir.setReturnValue(RecipeMap.create(recipes.values().stream()
             .filter(holder -> !(holder.value() instanceof CraftingRecipe && holder.id().identifier().getNamespace().equals("minecraft")))
             // The clay bucket / unfired bricks belong to kilns/forges, not a vanilla furnace.
-            // Hinged doors stay available as early progression recipes; wooden tools remain in the Hardwood Table.
+            // Preserve Project Flint personal Wooden Tool and hinged-door recipes.
+            // Their 2x2 unlocks must never depend on reaching the Hardwood Table.
             .filter(holder -> {
                 var id = holder.id().identifier();
                 if (!id.getNamespace().equals("projectflint")) return true;
                 String path = id.getPath();
                 if (path.startsWith("unfired_") && (path.endsWith("_smelting") || path.endsWith("_blasting")
                     || path.endsWith("_smoking") || path.endsWith("_campfire_cooking"))) return false;
-                return !path.equals("wooden_axe") && !path.equals("wooden_pickaxe")
-                    && !path.equals("wooden_shovel") && !path.startsWith("wooden_shovel_");
+                return true;
             })
 			.toList()));
 	}
