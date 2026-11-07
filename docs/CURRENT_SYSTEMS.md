@@ -34,7 +34,7 @@ Basin requires **2–3 landings**, **one hunger point per valid landing**. Clay 
 
 # Project Flint — Current implementation reference
 
-**Authoritative through v0.31.62-b (Minecraft 1.21.11, Fabric, Mojang mappings).** This file summarizes current behavior, not the historical development path. More complete early-game pathways remain in `PRIMITIVE_PROGRESSION_MATRIX.md` and the corresponding gameplay source.
+**Authoritative through v0.31.63-b (Minecraft 1.21.11, Fabric, Mojang mappings).** This file summarizes current behavior, not the historical development path. More complete early-game pathways remain in `PRIMITIVE_PROGRESSION_MATRIX.md` and the corresponding gameplay source.
 
 ## World editing and mining
 
@@ -60,7 +60,7 @@ Basin requires **2–3 landings**, **one hunger point per valid landing**. Clay 
 
 - `G` — Field Guide: current survival and progression, including stone mining tiers and Utility Vest limitations.
 - `K` — Recipe Guide: includes the new independent-probability Basin outputs (chance information on output hover), Wood Dust/Tannin, Fireclay Forge and Brick Furnace Stone recipe. Hardwood tools/crafts are driven by a separate dedicated recipe type.
-- Flint Quests owns tracked quests. Project Flint must not reintroduce its old advancement-based tree or EMI plugin.
+- Flint Quests owns tracked quests. Project Flint must not reintroduce its old advancement-based tree or EMI plugin. Successful Project Flint manual destruction and Stone-to-Crushed-Stone conversion emit Fabric's normal `PlayerBlockBreakEvents.AFTER` event with the **original broken block state** so `BREAK_BLOCK` tasks progress. Failed/forbidden mining never emits this event; unmodified vanilla block breaks are reported only by Fabric.
 - Player-facing descriptions must not discuss dev implementation, release numbers, or outdated functionality.
 
 ## Other active gameplay boundaries (audit pointers)

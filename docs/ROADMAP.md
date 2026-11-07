@@ -1429,3 +1429,10 @@ Crude Multitool leaf harvesting is explicitly protected as a progression gate: l
 - Playtest Basin rendering for all 11 eligible input types, including planks and both stripped wood species, across chunk unload/reload and multiplayer join.
 - Check exact per-item stomp thresholds, removal resets, stack processing, low-hunger interruption, and byproduct odds unchanged.
 - Craft with Bone Knife and Flint File at 1/2 durability and on their final use; test full inventory, shift-click, and bookshelf recipes that require both tool types at once.
+
+## v0.31.63-b integration regression follow-up
+
+- In-game test with bundled Flint Quests: a `BREAK_BLOCK minecraft:stone` task increments once when a Crude Stone Hammer transforms Stone into Crushed Stone.
+- Repeat with Crude, Flint, and Advanced Flint Multitools. Verify ordinary wooden-pickaxe Stone mining is counted once, not twice.
+- Verify hands/food and forbidden ore/deepslate do not grant break quest credit.
+- Apply the Project Flint fix to the 0.32.0 bundle before redistributing it; no Flint Quests API changes are necessary for this case.

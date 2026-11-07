@@ -92,3 +92,7 @@ Every release must review `docs/CURRENT_SYSTEMS.md`, `docs/ARCHITECTURE.md`, `do
 - For physical workstations check block-entity save/load, network update packet/tag, rendered item correctness for all accepted input types, and no stale static model geometry.
 - For timed crafts using custom recipe types check vanilla result slots' **hard-coded recipe lookups**. Use matched custom recipe for all remainders; test durable tools, emptied containers, filled grids, full inventory, shift-click, and cooldown reset.
 - For repeated actions require documented thresholds, cooldown, persistence, per-action cost timing, refund/removal behavior, server ownership, and a guide update.
+
+## v0.31.63-b — Break-event interoperability gate
+
+When customizing `ServerPlayerGameMode.destroyBlock` to return `false` after successful world mutation, regression-test Fabric `PlayerBlockBreakEvents.AFTER` consumers (especially Flint Quests `BREAK_BLOCK` tasks). Check original block identifier, exactly-one dispatch for custom breaks, no manual event for ordinary vanilla breaks, no quest credit for no-op/canceled forbidden mining, and no loot/tool/wear changes. Test Stone-to-Crushed-Stone with a near-broken Hammer and normal coal/stone mining as distinct paths.

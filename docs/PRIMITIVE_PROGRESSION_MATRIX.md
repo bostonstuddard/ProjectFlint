@@ -1,3 +1,7 @@
+## Flint Quests parity — v0.31.63-b
+
+The Crude Stone Hammer/Multitool natural Stone → Crushed Stone operation now satisfies `BREAK_BLOCK minecraft:stone` tasks, because it counts as breaking the **original Stone block**. All successful manual Project Flint block removals are similarly announced once. Failed attempts, unqualified ore removal, and untouched world blocks do not count. This does not change physical output, tool wear, timing, or mining permissions.
+
 ## v0.31.61-b — Current glass progression
 Make Pure Mica Insulated Glass in the Fireclay Forge using the existing MBSSIG/Charcoal processing chain. To cut PMI Sheets, unlock the **Hardwood Crafting Table**: 1 glass block + Bone Knife → 2 PMI Sheets. Personal crafting cannot perform this recipe. The Bone Knife loses one durability. Pure Mica Insulated Glass acts like light-passing Glass and can be recovered intact with the Tanned Utility Vest.
 

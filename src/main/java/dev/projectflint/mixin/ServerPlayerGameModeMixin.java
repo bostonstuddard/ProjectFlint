@@ -38,6 +38,8 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.Containers;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
 import net.minecraft.world.level.block.DoublePlantBlock;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.SegmentableBlock;
@@ -61,7 +63,13 @@ public abstract class ServerPlayerGameModeMixin {
 		if (player.isCreative()) return;
 
 		BlockState state = level.getBlockState(pos);
+		BlockEntity previousBlockEntity = level.getBlockEntity(pos);
 		ItemStack held = player.getMainHandItem();
+		// Capture the permission before the held tool can break from durability loss.
+		// Forbidden ore removal without the right tool must never satisfy quests.
+		boolean creditManualBreak = !OreMiningRules.isRestricted(state)
+			|| OreMiningRules.canGetDrops(state, held);
+		try {
 		// Authoritative mining permission: never let vanilla complete a harvest forbidden
 		// by the primitive mining system (regardless of hand item / spoofed completion).
 		if (state.getDestroyProgress(player, level, pos) <= 0.0F) {
@@ -878,6 +886,18 @@ public abstract class ServerPlayerGameModeMixin {
 			level.removeBlock(pos, false);
 			level.playSound(null, pos, SoundEvents.GRASS_BREAK, SoundSource.BLOCKS, 0.9F, 0.92F);
 			cir.setReturnValue(false);
+		}
+		} finally {
+			// Fabric only fires AFTER for vanilla destroyBlock successes. Project Flint
+			// returns false for successful custom breaks, so Flint Quests never sees
+			// Stone -> Crushed Stone (or other intentional custom removals).
+			// Publish exactly once, using the ORIGINAL state/BE, only if our canceled
+			// operation actually replaced/removed the targeted block. Vanilla breaks
+			// are left to Fabric to avoid double credit.
+			if (cir.isCancelled() && creditManualBreak
+				&& !level.getBlockState(pos).is(state.getBlock())) {
+				PlayerBlockBreakEvents.AFTER.invoker().afterBlockBreak(level, player, pos, state, previousBlockEntity);
+			}
 		}
 	}
 

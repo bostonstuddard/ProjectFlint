@@ -40,7 +40,7 @@ public final class ProjectFlintFieldGuideContent {
             "Combine Campfire Stones with the required burnt materials to build a permanent campfire.",
             "Permanent campfires can be relit. Keep spare fuel and ignition supplies nearby for cooking and early processing.");
         add(c, "FIRST TOOLS", "Stone Tools", ModItems.CRUDE_STONE_HAMMER,
-            "Use a Crude Stone Hammer on natural Stone to make Crushed Stone and collect four Rocks.",
+            "Use a Crude Stone Hammer on natural Stone to make Crushed Stone and collect four Rocks. This also counts as breaking Stone for Flint Quests.",
             "Early Multitools can also crush Stone. They cannot mine Cobblestone or ore; later Pickaxes and the Hardwood Hammer are needed for those.");
         add(c, "FIRST TOOLS", "Flint Tools", ModItems.FLINT_PLANT_CUTTERS,
             "Work toward the Flint Axe, Flint Plant Cutters and Advanced Flint Multitool to harvest more materials and shape wood.",

@@ -1,3 +1,9 @@
+## v0.31.63-b — Custom Block Breaks Count Toward Quests
+- Fixed Flint Quests block-breaking tasks not progressing when Project Flint transforms Stone into Crushed Stone with a Crude Stone Hammer or early Multitool.
+- Other successful Project Flint manual block removals and transformations now count as breaking the original block, just like ordinary mining.
+- Blocked mining attempts and tool-ineligible ore removal still cannot advance block-breaking quests. Normal vanilla mining does not count twice.
+- No mining speeds, item drops, tool durability, recipes, or progression unlocks changed.
+
 ## v0.31.62-b — Early Stone Hammering Restored
 - **Fixed** the Crude Stone Hammer being unable to work natural Stone: it now turns Stone into Crushed Stone and gives four Rocks again.
 - Early Multitools retain the same Stone-crushing ability at their own working speeds.
