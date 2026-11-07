@@ -1,3 +1,6 @@
+## v0.31.68-b status
+Weak Dynamite is intentionally small and limited to two ordinary ore blocks plus possibly one nearby stone block. Geology access beyond normal stone, including Dripstone, Tuff, Calcite and Amethyst, remains reserved for later mining/tool tiers. Preserve the independent 1.2× Basin blast-yield scaling and the 3-Copper-Dust Dynamite recipe in future releases. Runtime playtests still required.
+
 ## v0.31.65-b current behavior
 The Mud-building chain is part of the existing Hardwood stage. The Fireclay Forge can automatically process consecutive full batches of Logs into Charcoal, subject to firestarter and output constraints. No automatic lighting with invalid charcoal recipes. Future balancing must preserve personal-vs-Table yield separation and game-stage restrictions.
 ## v0.31.62-b opening-stage regression gate

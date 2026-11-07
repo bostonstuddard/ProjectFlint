@@ -112,7 +112,7 @@ public final class ProjectFlintFieldGuideContent {
             "The Hardwood Axe strips Logs by right-clicking. An appropriate axe can turn Logs into Planks in the crafting grid.");
         add(c, "HARDWOOD", "Hardwood Hammer", ModItems.HARDWOOD_HAMMER,
             "Fill the top two rows with six Hardwood Alloy. Put a Leather Strap, Hardwood Stick and Rope across the bottom row.",
-            "The Hammer mines ordinary Iron and Copper Ore for one raw ore, and Coal Ore for two Coal. It also breaks normal rock and can hurt fish. It cannot mine Deepslate.");
+            "The Hammer mines ordinary Iron and Copper Ore for one raw ore, and Coal Ore for two Coal. It breaks normal stone and can hurt fish. Dripstone, Tuff, Calcite and Deepslate are not mineable with early tools.");
         add(c, "HARDWOOD", "Axles and Doors", ModItems.AXLE,
             "Surround one Rope with eight Hardwood Sticks to make an Axle. Place it along the direction you need.",
             "Early door hinges are still useful. The Hardwood Table also makes wood components, screws, doors, furniture and tools.");
@@ -130,10 +130,10 @@ public final class ProjectFlintFieldGuideContent {
             "Heat Carbon Dust with Charcoal for 400 seconds in the Fireclay Forge to obtain Pure Carbon Dust.");
         add(c, "BLASTING", "Making Dynamite", ModItems.FUSE,
             "At the Hardwood Table, combine Silicon, Aluminum, Tin and Silver Dust to make Fuse-Ready Dust. Heat it for 200 seconds in the Brick Furnace to make Fine Fuse Powder, then combine it with Rope for a Fuse.",
-            "Black Powder comes from Potassium Dust, Sulfur and Charcoal, or from Gunpowder, Sulfur and Charcoal. Add four Black Powder, a Fuse, Red Dye and Copper Dust at the Hardwood Table to make Weak Dynamite.");
+            "Black Powder comes from Potassium Dust, Sulfur and Charcoal, or Gunpowder, Sulfur and Charcoal. Put Black Powder in the top corners and beside Red Dye, Fuse at the top center, and three Copper Dust across the bottom.");
         add(c, "BLASTING", "Using Dynamite", ModItems.DYNAMITE,
             "Hold Dynamite in your main hand and a Firestarter or Flint and Steel in your offhand. Right-click a block to place a lit charge against it. The fuse burns for four and a half seconds.",
-            "The blast hurts creatures and breaks only ordinary Stone, Cobblestone, Andesite, Diorite, Granite, and regular Coal, Iron or Copper Ore. It does not break Deepslate or machines. Broken rock and ore yield Basin materials at 50% better chances.");
+            "Weak Dynamite breaks up to two nearby regular Coal, Iron or Copper Ore blocks and may break one adjacent Stone, Cobblestone, Andesite, Diorite or Granite block. It cannot damage Deepslate or machinery. Each Basin drop chance is 20% higher (50% becomes 60%); chances above 100% can grant extra drops.");
         add(c, "REFERENCE", "Find Recipes", Items.CRAFTING_TABLE,
             "Press K or use Recipes below to see workstation recipes. Look for the workstation tab that matches what you're trying to make.",
             "Some recipes need fuel, water, a reusable tool or time to complete. Check the recipe's ingredients and any tool requirements.");

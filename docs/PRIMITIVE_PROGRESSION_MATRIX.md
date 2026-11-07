@@ -1,3 +1,8 @@
+## v0.31.68-b — Current explosives and geology gate
+- Wooden/Hardwood Pickaxes and the Hardwood Hammer may still mine ordinary Stone/Cobblestone/Andesite/Diorite/Granite at their designated pace, and approved ordinary Iron/Copper/Coal ores as already documented. Crude Stone Hammer Stone processing remains intact.
+- Dripstone/Pointed Dripstone, Tuff family, Calcite, Basalt, Blackstone, Amethyst and similar geological blocks are out of wooden-tier mining reach. Deepslate remains completely locked.
+- Weak Dynamite is a small surface ore harvesting aid, not a mining replacement: 2 ordinary ores maximum, 1 nearby stone maximum (50% success chance), 1.2× independent Basin yields, no Deepslate or machine damage. Craft it at the Hardwood Table: `PFP/PRP/CCC`.
+
 ## v0.31.65-b: Earth and masonry additions
 - Wood/Water: 4 Fired Clay + 8 Mud Piles → Loose Mud Bricks in the Wooden Grinder; 2 Loose Mud Bricks + 2 Wooden Screws → Bricks. Existing earlier wood-tool recipes remain intact.
 - Hardwood Table (3-second cycle): Dirt + Water → Mud → Mud Piles; Mud + Wheat → Packed Mud → Mud Bricks → Loose Mud Bricks; the reverse Mud Bricks conversion does not exist.

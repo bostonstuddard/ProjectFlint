@@ -121,7 +121,7 @@ public final class HardwoodCraftingGuideRegistry {
         add(all, "hardwood_fuse", "projectflint:fuse", 1, "Combine Fine Fuse Powder and Rope", "projectflint:fine_fuse_powder#1", "projectflint:rope#1");
         add(all, "hardwood_black_powder_potassium", "projectflint:black_powder", 3, "5 Potassium, 2 Sulfur, 1 Charcoal", "projectflint:potassium_dust#5", "projectflint:sulfur_dust#2", "minecraft:charcoal#1");
         add(all, "hardwood_black_powder_gunpowder", "projectflint:black_powder", 4, "3 Gunpowder, 1 Sulfur, 2 Charcoal", "minecraft:gunpowder#3", "projectflint:sulfur_dust#1", "minecraft:charcoal#2");
-        add(all, "hardwood_dynamite", "projectflint:dynamite", 1, "Fuse at top; Red Dye center; four Black Powder on sides; Copper Dust bottom", "projectflint:fuse#1", "minecraft:red_dye#1", "projectflint:black_powder#4", "projectflint:copper_dust#1");
+        add(all, "hardwood_dynamite", "projectflint:dynamite", 1, "Grid PFP/PRP/CCC; P=Black Powder, F=Fuse, R=Red Dye, C=Copper Dust", "projectflint:fuse#1", "minecraft:red_dye#1", "projectflint:black_powder#4", "projectflint:copper_dust#3");
         add(all, "hardwood_flint_file", "projectflint:flint_file", 1, "Grid FFF/FFF/S; F=flint, S=stick", "minecraft:flint#6", "minecraft:stick#1");
         add(all, "hardwood_flint_file_refine", "projectflint:flint_file", 1, "Tool used with durability; returned with wear", "minecraft:stick#1", "minecraft:flint#1", "projectflint:flint_file#1");
         add(all, "hardwood_flint_plant_cutters", "projectflint:flint_plant_cutters", 1, "Grid SF/S F/SF; S=stick (left), F=flint (curved right)", "minecraft:stick#3", "minecraft:flint#3");

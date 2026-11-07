@@ -1,3 +1,11 @@
+## v0.31.68-b — Weak Dynamite / geology regression gate
+1. Check top/middle/bottom Hardwood recipe shape is `PFP/PRP/CCC`; three Copper Dust consumed, no personal crafting route.
+2. Test a dynamite charge beside a large Stone wall and an ore cluster: max two ordinary ores, max one adjacent stone, some stone untouched, no machines/deepslate mined, consistent placement and 90-tick fuse.
+3. Test blast loot 1.2× **per independent Basin roll** (100% → guaranteed 1 + 20% extra; 50% → 60%; no bonus on normal Basin stomps).
+4. Verify Stone/Cobblestone/Andesite/Diorite/Granite remain wooden-tier mineable at approved speeds, while bare hands, vest and early tools cannot harvest Dripstone (block and pointed), Tuff, Calcite, Basalt, Blackstone or Amethyst. Validate original Crude Stone Hammer Stone conversion.
+5. Check v0.31.68-b versioning, direct-root patch ZIP, incremented cleanup BAT, `dist` JAR output, README, changelog, ADR, K Recipe Guide and G Field Guide.
+6. Runtime Minecraft launch, survival-world progression and dedicated server tests remain required before claiming readiness.
+
 > **v0.31.67-b woodworking correction:** The Wooden Grinder already makes four Wooden Sheets from one Wooden Beam and a Flint File (damages the File). The temporary `primitive_wooden_sheet_from_stripped_log` personal crafting recipe and its tag have been removed. Never reintroduce this shortcut solely based on a presumed progression dependency. Verify the existing workstation chain first.
 
 ## v0.31.65-b patch validation

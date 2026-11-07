@@ -67,7 +67,31 @@ public final class OreMiningRules {
             && state.is(BlockTags.MINEABLE_WITH_PICKAXE)
             && "minecraft".equals(BuiltInRegistries.BLOCK.getKey(state.getBlock()).getNamespace());
     }
-    public static boolean isRestricted(BlockState state) { return isForbiddenDeepslate(state) || isOre(state) || isStoneFamily(state); }
+    /** Fragile pointed dripstone does not use the pickaxe tag on every version;
+     * treat it as restricted geology anyway, to prevent bare-hand break exploits.
+     */
+    public static boolean isAdvancedGeology(BlockState state) {
+        return state.is(Blocks.POINTED_DRIPSTONE) || state.is(Blocks.DRIPSTONE_BLOCK)
+            || state.is(Blocks.TUFF) || state.is(Blocks.CALCITE)
+            || state.is(Blocks.TUFF_SLAB) || state.is(Blocks.TUFF_STAIRS)
+            || state.is(Blocks.TUFF_WALL) || state.is(Blocks.POLISHED_TUFF)
+            || state.is(Blocks.POLISHED_TUFF_SLAB) || state.is(Blocks.POLISHED_TUFF_STAIRS)
+            || state.is(Blocks.POLISHED_TUFF_WALL) || state.is(Blocks.CHISELED_TUFF)
+            || state.is(Blocks.TUFF_BRICKS) || state.is(Blocks.TUFF_BRICK_SLAB)
+            || state.is(Blocks.TUFF_BRICK_STAIRS) || state.is(Blocks.TUFF_BRICK_WALL)
+            || state.is(Blocks.CHISELED_TUFF_BRICKS)
+            || state.is(Blocks.BASALT) || state.is(Blocks.SMOOTH_BASALT)
+            || state.is(Blocks.BLACKSTONE) || state.is(Blocks.GILDED_BLACKSTONE)
+            || state.is(Blocks.NETHERRACK) || state.is(Blocks.END_STONE)
+            || state.is(Blocks.MAGMA_BLOCK)
+            || state.is(Blocks.AMETHYST_BLOCK) || state.is(Blocks.BUDDING_AMETHYST)
+            || state.is(Blocks.AMETHYST_CLUSTER) || state.is(Blocks.LARGE_AMETHYST_BUD)
+            || state.is(Blocks.MEDIUM_AMETHYST_BUD) || state.is(Blocks.SMALL_AMETHYST_BUD);
+    }
+    public static boolean isRestricted(BlockState state) {
+        return isForbiddenDeepslate(state) || isOre(state) || isStoneFamily(state) || isAdvancedGeology(state);
+    }
+
 
     /**
      * The first stone-working operation is NOT pickaxe mining: primitive hammers
@@ -113,8 +137,18 @@ public final class OreMiningRules {
             || state.is(BlockTags.NEEDS_DIAMOND_TOOL)) return false;
         return isWoodenTier(held);
     }
+    /** Higher-tier vanilla pickaxes can mine locked geology later; the current
+     * wooden-tier and Hardwood tools cannot. Gold is not a progression upgrade. */
+    private static boolean isUpgradedPickaxe(ItemStack held) {
+        return held.is(Items.STONE_PICKAXE) || held.is(Items.IRON_PICKAXE)
+            || held.is(Items.DIAMOND_PICKAXE) || held.is(Items.NETHERITE_PICKAXE);
+    }
+    private static boolean canMineAdvancedRock(BlockState state, ItemStack held) {
+        return isUpgradedPickaxe(held) && isValidVanillaPickaxe(state, held);
+    }
     public static boolean canGetDrops(BlockState state, ItemStack held) {
         if (isForbiddenDeepslate(state)) return false;
+        if (isAdvancedGeology(state)) return canMineAdvancedRock(state, held);
         if (isStoneFamily(state)) return canPrimitiveStoneWork(state, held)
             || isEarlyRockTool(state, held) || isValidVanillaPickaxe(state, held);
         if (isCoal(state)) return isWoodenTier(held) || isValidVanillaPickaxe(state, held);
@@ -125,6 +159,8 @@ public final class OreMiningRules {
     }
     public static float progress(BlockState state, ItemStack held, float vanilla) {
         if (isForbiddenDeepslate(state)) return 0.0F;
+        if (isAdvancedGeology(state))
+            return canMineAdvancedRock(state, held) ? vanilla : 0.0F;
         if (isStoneFamily(state)) {
             // This path must precede pickaxe-tier checks: a Crude Stone Hammer
             // cannot mine rock, but it *can* process natural Stone into Rocks.

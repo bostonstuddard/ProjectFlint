@@ -1,3 +1,13 @@
+## v0.31.68-b — Weak Dynamite Balancing
+### Explosives
+- Weak Dynamite now breaks at most 2 ordinary Coal/Iron/Copper Ores within 1.75 blocks of the charge.
+- Stone, Cobblestone, Andesite, Diorite and Granite now have a 50% chance to be destroyed per nearby block, within 1.25 blocks, capped at 1 stone-family block total.
+- Reduced the effective Basin yield improvement from 50% to **20%**; all outputs remain independent, and bonuses over 100% still grant guaranteed items plus extra fractional rolls.
+- Fixed Dynamite crafting: top PFP, middle PRP, bottom CCC (P=Black Powder, F=Fuse, R=Red Dye, C=Copper Dust).
+### Mining
+- Early Wooden/Hardwood Pickaxes and the Hardwood Hammer no longer harvest Dripstone, Pointed Dripstone, Tuff, Calcite, Basalt, Blackstone, Amethyst or other later-stage geology.
+- The existing Crude Stone Hammer Stone-to-Crushed-Stone progression and ordinary Stone/Cobblestone/Andesite/Diorite/Granite tool permissions are preserved.
+
 # Project Flint v0.31.67-b
 - Removed the unintended personal crafting recipe that turned a Stripped Log and Bone Knife into one Wooden Sheet.
 - The Wooden Grinder remains the intended route: one Wooden Beam and a Flint File produce four Wooden Sheets; the tool loses durability.

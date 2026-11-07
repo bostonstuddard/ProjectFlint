@@ -8,7 +8,7 @@ import net.minecraft.util.RandomSource;
 import java.util.ArrayList;
 import java.util.List;
 
-/** Independently rolls each material outcome. Dynamite boosts every roll by 1.5x. */
+/** Independently rolls each material outcome. Dynamite separately boosts every roll by 1.2x. */
 public final class BasinMaterialProcessingSystem {
     private BasinMaterialProcessingSystem() {}
 
@@ -30,8 +30,8 @@ public final class BasinMaterialProcessingSystem {
     }
 
     /**
-     * A 100% chance yields one item. At 150%, one is guaranteed and a second
-     * item has a separate 50% roll. Independent inputs never share a single roll.
+     * A 100% chance yields one item. At 120%, one is guaranteed and a second
+     * item has a separate 20% roll. Independent inputs never share a single roll.
      */
     private static void roll(List<ItemStack> drops, Item item, double chance, double multiplier, RandomSource random) {
         double expected = Math.max(0, chance * multiplier);

@@ -2,9 +2,9 @@
   "type": "projectflint:hardwood_shaped",
   "category": "misc",
   "pattern": [
-    " F ",
+    "PFP",
     "PRP",
-    "PCP"
+    "CCC"
   ],
   "key": {
     "F": "projectflint:fuse",
