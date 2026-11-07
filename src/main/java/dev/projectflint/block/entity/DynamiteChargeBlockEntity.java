@@ -25,15 +25,15 @@ import java.util.List;
 
 /** Server-controlled, stone-only fictional blasting. Does not use TNT block destruction. */
 public final class DynamiteChargeBlockEntity extends BlockEntity {
-    public static final int FUSE_TICKS = 90;
+    public static final int FUSE_TICKS = 60;
     // This weak contact charge is for isolated small ore veins, not excavation.
-    private static final double ORE_RADIUS = 1.75;
-    private static final double ROCK_RADIUS = 1.25;
+    private static final double ORE_RADIUS = 3.0;
+    private static final double ROCK_RADIUS = 2.25;
     private static final double ENTITY_RADIUS = 1.75;
-    private static final int MAX_ORE_BLOCKS = 2;
-    private static final int MAX_ROCK_BLOCKS = 1;
-    private static final double ROCK_BREAK_CHANCE = 0.50;
-    private static final float BASIN_YIELD_MULTIPLIER = 1.20F;
+    private static final int MAX_ORE_BLOCKS = 4;
+    private static final int MAX_ROCK_BLOCKS = 2;
+    private static final double ROCK_BREAK_CHANCE = 0.65;
+    private static final float BASIN_YIELD_MULTIPLIER = 1.25F;
     private int fuseTicks = FUSE_TICKS;
 
     public DynamiteChargeBlockEntity(BlockPos pos, BlockState state) {

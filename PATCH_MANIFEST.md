@@ -1,31 +1,35 @@
-# Project Flint v0.31.68-b — Patch Manifest
+# Project Flint v0.31.69-b — Patch Manifest
 
-**Baseline:** v0.31.67-b. Extract files directly into the project source root (no nested directory); run `build.bat`, which calls `APPLY_PROJECTFLINT_0_31_68_B.bat` for legacy cleanup.
+**Baseline:** v0.31.68-b. Extract directly into the source root; no nested folder.
 
-**No gameplay assets were replaced.** Existing Dynamite/Fuse images, all workstation recipes and crafting-time logic are preserved except for the specified Dynamite recipe pattern.
+**Note:** Only new/modified files are supplied. Prior release assets and code must remain in place.
 
-## Changed/new files
-- `APPLY_PROJECTFLINT_0_31_68_B.bat` — SHA-256 `786eff3ff6b95306`
-- `CHANGELOG.md` — SHA-256 `d6cb5461169b9977`
-- `README.md` — SHA-256 `a20e62074d4145ca`
-- `build.bat` — SHA-256 `f709fc6acaef2cde`
-- `docs/ARCHITECTURE.md` — SHA-256 `d2cf98faef2e2f9a`
-- `docs/CURRENT_SYSTEMS.md` — SHA-256 `9c4f4c2437b2dfaa`
-- `docs/PRIMITIVE_PROGRESSION_MATRIX.md` — SHA-256 `72cac3edc6317a58`
-- `docs/RELEASE_PROCESS.md` — SHA-256 `2aa41f1a4068fe8f`
-- `docs/ROADMAP.md` — SHA-256 `5c1b548512008046`
-- `docs/decisions/0027-small-dynamite-blast-and-later-geology.md` — SHA-256 `3b4cc6df85c1d785`
-- `docs/releases/0.31.68-b.md` — SHA-256 `0c3968f21ffdd0e9`
-- `gradle.properties` — SHA-256 `486e921155f84c56`
-- `src/main/java/dev/projectflint/block/entity/DynamiteChargeBlockEntity.java` — SHA-256 `28499727a71ee27e`
-- `src/main/java/dev/projectflint/client/screen/ProjectFlintFieldGuideContent.java` — SHA-256 `8531aea8553a4c57`
-- `src/main/java/dev/projectflint/recipe/HardwoodCraftingGuideRegistry.java` — SHA-256 `5dceab4698b000fd`
-- `src/main/java/dev/projectflint/system/BasinMaterialProcessingSystem.java` — SHA-256 `acdb7f5c89ab0945`
-- `src/main/java/dev/projectflint/system/OreMiningRules.java` — SHA-256 `2b5a3726440d6265`
-- `src/main/resources/data/projectflint/recipe/hardwood_dynamite.json` — SHA-256 `9d9fb5f673277e1d`
-- `tools/validate_03168.py` — SHA-256 `0e5643adc2e572c7`
+## Changed files
+- `APPLY_PROJECTFLINT_0_31_69_B.bat` — SHA-256 `bc596ed880f57899`
+- `CHANGELOG.md` — SHA-256 `07cdacaa3297db46`
+- `README.md` — SHA-256 `968131dbcf4e7d93`
+- `build.bat` — SHA-256 `36a839401b1d549c`
+- `docs/ARCHITECTURE.md` — SHA-256 `dd535b3fc0ccf6ab`
+- `docs/CURRENT_SYSTEMS.md` — SHA-256 `3905b7b0ed168a03`
+- `docs/PRIMITIVE_PROGRESSION_MATRIX.md` — SHA-256 `035908695a0244cd`
+- `docs/RELEASE_PROCESS.md` — SHA-256 `f713920a0f39c3e2`
+- `docs/ROADMAP.md` — SHA-256 `709be442dd02b41f`
+- `docs/decisions/0028-hardwood-table-wood-dust-recipe-and-controlled-dynamite-radius.md` — SHA-256 `8da3c873c97bdeb3`
+- `docs/releases/0.31.69-b.md` — SHA-256 `d000cb458386af9b`
+- `gradle.properties` — SHA-256 `461dee48eab8a40c`
+- `src/main/java/dev/projectflint/block/entity/DynamiteChargeBlockEntity.java` — SHA-256 `b00de7cae072c9b4`
+- `src/main/java/dev/projectflint/client/screen/ProjectFlintFieldGuideContent.java` — SHA-256 `81200be81e775490`
+- `src/main/java/dev/projectflint/mixin/ServerPlayerGameModeMixin.java` — SHA-256 `e8e33e5ae65b74f5`
+- `src/main/java/dev/projectflint/recipe/HardwoodCraftingGuideRegistry.java` — SHA-256 `b4de6d11c3fa14ae`
+- `src/main/java/dev/projectflint/system/OreMiningRules.java` — SHA-256 `149f45a7c3ce78a9`
+- `src/main/java/dev/projectflint/system/PrimitiveInteractionSystem.java` — SHA-256 `46ad2c1c771f11b5`
+- `src/main/java/dev/projectflint/system/WoodenToolTargets.java` — SHA-256 `c15962730a3a2e14`
+- `src/main/resources/data/projectflint/recipe/hardwood_hardwood_from_wood_dust.json` — SHA-256 `5192a1effbe0b081`
+- `src/main/resources/data/projectflint/recipe/hardwood_hardwood_from_wood_dust_vanilla_bucket.json` — SHA-256 `690abe526f9c4a63`
+- `tools/validate_03169.py` — SHA-256 `ff6447c6151318c9`
 
-## Validation
-- Isolated Java 21 compilation succeeded for `DynamiteChargeBlockEntity`, `OreMiningRules`, and `BasinMaterialProcessingSystem` against the mapped Minecraft 1.21.11 JAR, extracted Fabric API modules, and test-only registry stubs.
-- `python tools/validate_03168.py` passed 1,752 source/resource assertions.
-- Full Gradle build and Minecraft client/server smoke tests are **not** verified.
+## Verification
+- `python tools/validate_03169.py`: focused source, recipe, masonry and blast checks passed
+- Isolated Java 21 compile: `WoodenToolTargets`, `OreMiningRules`, Basin yield system and Dynamite block entity passed against MC 1.21.11 mapped classes
+- ZIP file integrity and root-relative patch paths checked
+- **Full Gradle compilation and in-game testing are still unverified.**

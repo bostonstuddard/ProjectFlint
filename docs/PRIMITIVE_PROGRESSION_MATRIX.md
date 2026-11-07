@@ -1,3 +1,7 @@
+## v0.31.69-b — Hardwood and small-blast progression
+- Hardwood has a new Hardwood Table recipe: `DDD / DWD / TTT` (5 Wood Dust, 1 filled bucket, 3 Tannin), returning the emptied bucket. The existing personal recipe remains available.
+- Weak Dynamite can affect up to 4 eligible ore blocks within 3 blocks and up to 2 eligible ordinary rock blocks within 2.25 blocks (65% chance each); Deepslate and nonallowlisted blocks remain blast-proof. Drops use independent 1.25× Basin chances.
+
 ## v0.31.68-b — Current explosives and geology gate
 - Wooden/Hardwood Pickaxes and the Hardwood Hammer may still mine ordinary Stone/Cobblestone/Andesite/Diorite/Granite at their designated pace, and approved ordinary Iron/Copper/Coal ores as already documented. Crude Stone Hammer Stone processing remains intact.
 - Dripstone/Pointed Dripstone, Tuff family, Calcite, Basalt, Blackstone, Amethyst and similar geological blocks are out of wooden-tier mining reach. Deepslate remains completely locked.

@@ -89,7 +89,7 @@ public final class OreMiningRules {
             || state.is(Blocks.MEDIUM_AMETHYST_BUD) || state.is(Blocks.SMALL_AMETHYST_BUD);
     }
     public static boolean isRestricted(BlockState state) {
-        return isForbiddenDeepslate(state) || isOre(state) || isStoneFamily(state) || isAdvancedGeology(state);
+        return isForbiddenDeepslate(state) || isOre(state) || isStoneFamily(state) || isAdvancedGeology(state) || WoodenToolTargets.mudMasonry(state);
     }
 
 
@@ -148,6 +148,7 @@ public final class OreMiningRules {
     }
     public static boolean canGetDrops(BlockState state, ItemStack held) {
         if (isForbiddenDeepslate(state)) return false;
+        if (WoodenToolTargets.mudMasonry(state)) return ToolCapabilities.canMineBrick(held);
         if (isAdvancedGeology(state)) return canMineAdvancedRock(state, held);
         if (isStoneFamily(state)) return canPrimitiveStoneWork(state, held)
             || isEarlyRockTool(state, held) || isValidVanillaPickaxe(state, held);
@@ -159,6 +160,8 @@ public final class OreMiningRules {
     }
     public static float progress(BlockState state, ItemStack held, float vanilla) {
         if (isForbiddenDeepslate(state)) return 0.0F;
+        if (WoodenToolTargets.mudMasonry(state))
+            return ToolCapabilities.canMineBrick(held) ? Math.max(vanilla, 0.025F) : 0.0F;
         if (isAdvancedGeology(state))
             return canMineAdvancedRock(state, held) ? vanilla : 0.0F;
         if (isStoneFamily(state)) {

@@ -1,3 +1,9 @@
+## v0.31.69-b regression checks
+1. Hardwood Table accepts `DDD / DWD / TTT` exactly: 5 Wood Dust, one filled bucket, 3 Tannin; returns the empty Clay or vanilla bucket; still takes 60 server ticks per craft.
+2. Preserve original personal Hardwood recipe and other Hardwood Table recipes; ensure no duplicate K-key reference entries.
+3. Dynamite radius: eligible ores up to 3 blocks (max 4); stone-family up to 2.25 (max 2, 65% chance). Deepslate and unrelated blocks untouched, damage radius unchanged, +25% independent Basin odds unchanged.
+4. Verify Java compilation, client launch, dedicated server, and in-world recipes/blast effects before public deployment. A static check is not a substitute for a runtime test.
+
 ## v0.31.68-b — Weak Dynamite / geology regression gate
 1. Check top/middle/bottom Hardwood recipe shape is `PFP/PRP/CCC`; three Copper Dust consumed, no personal crafting route.
 2. Test a dynamite charge beside a large Stone wall and an ore cluster: max two ordinary ores, max one adjacent stone, some stone untouched, no machines/deepslate mined, consistent placement and 90-tick fuse.

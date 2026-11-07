@@ -1,3 +1,9 @@
+## v0.31.69-b — Hardwood and Weak Dynamite
+- Packed Mud and Mud Bricks (including slabs, stairs and walls) now use the Fireclay Brick recovery tier: a qualifying pickaxe-capable tool is required, and recovered blocks drop intact. Bare hands and the Utility Vest cannot mine them.
+- Added a Hardwood Crafting Table recipe for Hardwood using 5 Wood Dust, a filled Water Bucket and 3 Tannin; the empty bucket is returned.
+- Increased Weak Dynamite reach to 3 blocks for regular Iron/Copper/Coal Ores (up to 4 blocks) and 2.25 for ordinary stone-family blocks (up to 2 blocks, still 65% chance to break each).
+- Kept existing Deepslate protection, 3-second fuse, damage, and independent +25% Basin material drop bonus.
+
 ## v0.31.68-b — Weak Dynamite Balancing
 ### Explosives
 - Weak Dynamite now breaks at most 2 ordinary Coal/Iron/Copper Ores within 1.75 blocks of the charge.

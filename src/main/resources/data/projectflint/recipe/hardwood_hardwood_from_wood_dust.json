@@ -1,0 +1,18 @@
+{
+  "type": "projectflint:hardwood_shaped",
+  "category": "misc",
+  "pattern": [
+    "DDD",
+    "DWD",
+    "TTT"
+  ],
+  "key": {
+    "D": "projectflint:wood_dust",
+    "W": "projectflint:clay_water_bucket",
+    "T": "projectflint:tannin"
+  },
+  "result": {
+    "id": "projectflint:hardwood",
+    "count": 1
+  }
+}

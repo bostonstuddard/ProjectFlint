@@ -1,3 +1,6 @@
+## v0.31.69-b implementation record
+Hardwood Table now offers 5 Wood Dust + filled bucket + 3 Tannin to produce Hardwood. The selective Weak Dynamite block radii are modestly larger but capped at 4 ore and 2 rock targets. Future balancing should review the complete survival progression and maintain independent Basin roll mathematics.
+
 ## v0.31.68-b status
 Weak Dynamite is intentionally small and limited to two ordinary ore blocks plus possibly one nearby stone block. Geology access beyond normal stone, including Dripstone, Tuff, Calcite and Amethyst, remains reserved for later mining/tool tiers. Preserve the independent 1.2× Basin blast-yield scaling and the 3-Copper-Dust Dynamite recipe in future releases. Runtime playtests still required.
 

@@ -81,6 +81,20 @@ public abstract class ServerPlayerGameModeMixin {
         // Primitive hammering is a non-mining progression mechanic: it changes
         // Stone to Crushed Stone and drops four Rocks, not Cobblestone or ore loot.
         if (OreMiningRules.isRestricted(state)) {
+            // Recover vanilla Packed Mud / Mud Bricks and their building shapes with
+            // precisely the same tools as Fireclay masonry, without Silk Touch.
+            if (WoodenToolTargets.mudMasonry(state)) {
+                if (ToolCapabilities.canMineBrick(held)) {
+                    int count = state.hasProperty(SlabBlock.TYPE) && state.getValue(SlabBlock.TYPE) == SlabType.DOUBLE ? 2 : 1;
+                    if (level.removeBlock(pos, false)) {
+                        projectflint$dropAtBlock(pos, new ItemStack(state.getBlock().asItem(), count));
+                        if (held.isDamageableItem()) held.hurtAndBreak(1, player, InteractionHand.MAIN_HAND);
+                        level.playSound(null, pos, SoundEvents.MUD_BREAK, SoundSource.BLOCKS, 0.75F, 0.9F);
+                    }
+                }
+                cir.setReturnValue(false);
+                return;
+            }
             if (OreMiningRules.canPrimitiveStoneWork(state, held)) {
                 level.setBlockAndUpdate(pos, ModBlocks.CRUSHED_STONE.defaultBlockState());
                 for (int i = 0; i < 4; i++) projectflint$dropAtBlock(pos, new ItemStack(ModItems.ROCK));

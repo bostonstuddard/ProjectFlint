@@ -132,6 +132,7 @@ public final class HardwoodCraftingGuideRegistry {
         add(all, "hardwood_granite_slabs", "minecraft:granite_slab", 6, "Grid SSS; S=granite", "minecraft:granite#3");
         add(all, "hardwood_granite_stairs", "minecraft:granite_stairs", 4, "Grid S/SS/SSS; S=granite", "minecraft:granite#6");
         add(all, "hardwood_hammer", "projectflint:hardwood_hammer", 1, "Grid AAA/AAA/LSR; A=hardwood alloy, L=leather strap, S=hardwood sticks, R=rope", "projectflint:hardwood_alloy#6", "projectflint:leather_strap#1", "projectflint:hardwood_sticks#1", "projectflint:rope#1");
+        add(all, "hardwood_hardwood_from_wood_dust", "projectflint:hardwood", 1, "Grid DDD/DWD/TTT; D=wood dust, W=filled clay or iron water bucket, T=tannin; empty bucket returned", "projectflint:wood_dust#5", "projectflint:clay_water_bucket#1", "projectflint:tannin#3");
         add(all, "hardwood_hoe", "projectflint:hardwood_hoe", 1, "Grid HHL/S/S; H=hardwood, S=hardwood sticks, L=leather strap", "projectflint:hardwood#2", "projectflint:leather_strap#1", "projectflint:hardwood_sticks#2");
         add(all, "hardwood_jungle_beam", "projectflint:jungle_wooden_beam", 1, "Tool used with durability; returned with wear", "minecraft:jungle_log#1", "projectflint:flint_plant_cutters#1");
         add(all, "hardwood_jungle_door", "minecraft:jungle_door", 1, "Grid PPS/PPS/PPS; P=jungle planks, S=wooden screw", "minecraft:jungle_planks#6", "projectflint:wooden_screw#3");

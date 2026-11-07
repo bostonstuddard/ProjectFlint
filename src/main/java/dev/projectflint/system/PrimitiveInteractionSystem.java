@@ -69,6 +69,8 @@ public final class PrimitiveInteractionSystem {
 		BlockState state = level.getBlockState(pos);
 		ItemStack held = player.getItemInHand(hand);
 		if (OreMiningRules.isRestricted(state)) {
+            if (WoodenToolTargets.mudMasonry(state))
+                return ToolCapabilities.canMineBrick(held) ? InteractionResult.PASS : InteractionResult.FAIL;
 			// Primitive Stone processing is intentionally allowed before the general
 			// pickaxe restrictions; it is NOT permission to mine other rock or ore.
 			if (OreMiningRules.canPrimitiveStoneWork(state, held)) return InteractionResult.PASS;
@@ -821,6 +823,7 @@ public final class PrimitiveInteractionSystem {
 
 		ItemStack held = player.getMainHandItem();
 		if (OreMiningRules.isRestricted(state)) {
+            if (WoodenToolTargets.mudMasonry(state)) return ToolCapabilities.canMineBrick(held);
 			if (OreMiningRules.canPrimitiveStoneWork(state, held)) return true;
 			return !OreMiningRules.isStoneFamily(state) || OreMiningRules.canGetDrops(state, held);
 		}

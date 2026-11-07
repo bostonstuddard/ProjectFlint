@@ -99,14 +99,14 @@ public final class ProjectFlintFieldGuideContent {
             "Four Logs can be burned into Charcoal. Hardwood and MBSSIG Dust each need a five-minute charcoal-fueled Forge cycle. With input, Charcoal and a working Firestarter, the Forge starts its next cycle automatically.");
         add(c, "HARDWOOD", "Making Hardwood", ModItems.HARDWOOD,
             "Combine two Wood Dust, Tannin and a filled Clay Water Bucket to create Hardwood. You get the empty Clay Bucket back.",
-            "Heat Hardwood with Charcoal in the Fireclay Forge for five minutes to make Hardwood Alloy.");
+            "At the Hardwood Table, you can also make Hardwood with five Wood Dust along the top and middle sides, a Water Bucket in the center, and three Tannin along the bottom. The empty bucket is returned. Heat Hardwood with Charcoal in the Fireclay Forge for five minutes to make Hardwood Alloy.");
         add(c, "HARDWOOD", "Crafting Table", ModItems.HARDWOOD_CRAFTING_TABLE,
             "Make the first Hardwood Crafting Table in your personal 2x2 grid from two Hardwood Alloy, Cobblestone and a Bound Wood Processor.",
             "Use its 3x3 grid for more complicated recipes. Each completed craft takes three seconds. Recipes are listed under Hardwood Table in Recipes (K).");
         add(c, "HARDWOOD", "Mud and Earth Building", Items.PACKED_MUD,
             "At the Hardwood Crafting Table, surround a Water Bucket with eight Dirt to make eight Mud. The bucket is returned. One Mud makes four Mud Piles.",
             "Combine Mud with Wheat for Packed Mud. Walking on Packed Mud makes you 10% faster. Four Packed Mud make four Mud Bricks. Mud Bricks can be made into Loose Mud Bricks, but not the other way around.",
-            "Use the table for Dirt, Loose Dirt and Loose Mud Brick Slabs, Dirt Stairs, and Mud Brick stairs, slabs and walls. A Fireclay Forge with four Logs, a Firestarter and room for Charcoal can light the next wood batch automatically.");
+            "Use the table for Dirt, Loose Dirt and Loose Mud Brick Slabs, Dirt Stairs, and Mud Brick stairs, slabs and walls. Packed Mud and Mud Bricks are recovered with the same tools used for Fireclay Bricks, not bare hands. A Fireclay Forge with four Logs, a Firestarter and room for Charcoal can light the next wood batch automatically.");
         add(c, "HARDWOOD", "Hardwood Tools", ModItems.HARDWOOD_PICKAXE,
             "Hardwood tools use Hardwood Sticks. Most also require Leather Straps. Make Hardwood Sticks from two Hardwood at the Hardwood Table.",
             "The Hardwood Axe strips Logs by right-clicking. An appropriate axe can turn Logs into Planks in the crafting grid.");
@@ -133,7 +133,7 @@ public final class ProjectFlintFieldGuideContent {
             "Black Powder comes from Potassium Dust, Sulfur and Charcoal, or Gunpowder, Sulfur and Charcoal. Put Black Powder in the top corners and beside Red Dye, Fuse at the top center, and three Copper Dust across the bottom.");
         add(c, "BLASTING", "Using Dynamite", ModItems.DYNAMITE,
             "Hold Dynamite in your main hand and a Firestarter or Flint and Steel in your offhand. Right-click a block to place a lit charge against it. The fuse burns for four and a half seconds.",
-            "Weak Dynamite breaks up to two nearby regular Coal, Iron or Copper Ore blocks and may break one adjacent Stone, Cobblestone, Andesite, Diorite or Granite block. It cannot damage Deepslate or machinery. Each Basin drop chance is 20% higher (50% becomes 60%); chances above 100% can grant extra drops.");
+            "Weak Dynamite reaches up to 3 blocks for ordinary Coal, Iron or Copper Ores (four at most) and 2.25 blocks for Stone, Cobblestone, Andesite and Granite (two at most, with a 65% chance to break each). It cannot damage Deepslate or machinery. Each Basin drop chance is 20% higher (50% becomes 60%); chances above 100% can grant extra drops.");
         add(c, "REFERENCE", "Find Recipes", Items.CRAFTING_TABLE,
             "Press K or use Recipes below to see workstation recipes. Look for the workstation tab that matches what you're trying to make.",
             "Some recipes need fuel, water, a reusable tool or time to complete. Check the recipe's ingredients and any tool requirements.");

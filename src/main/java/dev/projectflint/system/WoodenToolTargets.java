@@ -8,7 +8,14 @@ import net.minecraft.world.level.block.state.BlockState;
 /** One predicate used by attack permission, mining progress and completed drops. */
 public final class WoodenToolTargets {
 	private WoodenToolTargets() {}
-	public static boolean pickaxe(BlockState state) {
+	/** Packed Mud and vanilla Mud Brick variants require the same pickaxe-capable
+     * recovery tier as Fireclay Brick. No hand/vest/ordinary-tool bypass. */
+    public static boolean mudMasonry(BlockState state) {
+        return state.is(Blocks.PACKED_MUD) || state.is(Blocks.MUD_BRICKS)
+            || state.is(Blocks.MUD_BRICK_SLAB) || state.is(Blocks.MUD_BRICK_STAIRS)
+            || state.is(Blocks.MUD_BRICK_WALL);
+    }
+    public static boolean pickaxe(BlockState state) {
 		return state.is(Blocks.STONE) || state.is(ModBlocks.CRUSHED_STONE) || state.is(Blocks.COAL_ORE);
 	}
 	/** Ordinary masonry recoverable with the later Wooden Pickaxe. Not a blanket machine-dismantle permission. */
