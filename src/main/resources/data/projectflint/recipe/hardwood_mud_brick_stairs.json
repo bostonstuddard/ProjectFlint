@@ -1,0 +1,16 @@
+{
+  "type": "projectflint:hardwood_shaped",
+  "category": "misc",
+  "pattern": [
+    "M  ",
+    "MM ",
+    "MMM"
+  ],
+  "key": {
+    "M": "minecraft:mud_bricks"
+  },
+  "result": {
+    "id": "minecraft:mud_brick_stairs",
+    "count": 4
+  }
+}

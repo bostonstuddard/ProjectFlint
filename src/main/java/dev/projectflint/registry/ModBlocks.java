@@ -99,6 +99,8 @@ public final class ModBlocks {
 	public static final Block LOOSE_DIRT = registerLooseDirt("loose_dirt");
 	public static final Block LOOSE_SOIL = registerLooseSoil("loose_soil");
 	public static final SlabBlock LOOSE_DIRT_SLAB = registerLooseDirtSlab("loose_dirt_slab");
+    public static final SlabBlock DIRT_SLAB = registerDirtSlab("dirt_slab");
+    public static final StairBlock DIRT_STAIRS = registerDirtStairs("dirt_stairs");
 	public static final FlintToolAssemblyBlock FLINT_TOOL_ASSEMBLY = registerFlintToolAssembly("flint_tool_assembly");
 	public static final WovenBowlAssemblyBlock WOVEN_BOWL_ASSEMBLY = registerWovenBowlAssembly("woven_bowl_assembly");
 	public static final ClayFiringPileBlock CLAY_FIRING_PILE = registerClayFiringPile("clay_firing_pile");
@@ -594,6 +596,19 @@ public final class ModBlocks {
 				.lightLevel(state -> state.getValue(BrickBlastFurnaceBlock.LIT) ? 13 : 0)
 		));
 	}
+
+    private static SlabBlock registerDirtSlab(String name) {
+        ResourceKey<Block> key = ResourceKey.create(Registries.BLOCK, ProjectFlint.id(name));
+        return Registry.register(BuiltInRegistries.BLOCK, key, new SlabBlock(
+            BlockBehaviour.Properties.of().setId(key).strength(0.5F).sound(SoundType.GRAVEL)));
+    }
+
+    private static StairBlock registerDirtStairs(String name) {
+        ResourceKey<Block> key = ResourceKey.create(Registries.BLOCK, ProjectFlint.id(name));
+        return Registry.register(BuiltInRegistries.BLOCK, key, new StairBlock(
+            Blocks.DIRT.defaultBlockState(),
+            BlockBehaviour.Properties.of().setId(key).strength(0.5F).sound(SoundType.GRAVEL)));
+    }
 
 	private static Block registerLooseMudBricks(String name) {
 		ResourceKey<Block> key = ResourceKey.create(Registries.BLOCK, ProjectFlint.id(name));

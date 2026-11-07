@@ -29,6 +29,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(BlockBehaviour.BlockStateBase.class)
 public abstract class BlockStateBaseMixin {
+    @Inject(method = "getSpeedFactor", at = @At("HEAD"), cancellable = true)
+    private void projectflint$packedMudFooting(CallbackInfoReturnable<Float> cir) {
+        if (((BlockState) (Object) this).is(Blocks.PACKED_MUD)) {
+            cir.setReturnValue(1.10F);
+        }
+    }
+
 	@Inject(method = "getDestroyProgress", at = @At("RETURN"), cancellable = true)
 	private void projectflint$primitiveDestroyProgress(Player player, BlockGetter level, BlockPos pos, CallbackInfoReturnable<Float> cir) {
 		if (player.isCreative()) return;
@@ -46,6 +53,17 @@ public abstract class BlockStateBaseMixin {
         if (state.is(ModBlocks.PURE_MICA_INSULATED_GLASS)) {
             cir.setReturnValue(player.getItemBySlot(EquipmentSlot.CHEST).is(ModItems.TANNED_UTILITY_VEST)
                 ? 1.0F / 25.0F : 0.0F);
+            return;
+        }
+        // Dirt building shapes obey earth-tool progression, including player-placed blocks.
+        if (state.is(ModBlocks.DIRT_SLAB) || state.is(ModBlocks.DIRT_STAIRS)) {
+            if (held.is(net.minecraft.world.item.Items.WOODEN_SHOVEL) || held.is(ModItems.HARDWOOD_SHOVEL)) {
+                cir.setReturnValue(Math.max(vanillaProgress * 0.55F, 1.0F / 100.0F));
+            } else if (ModItems.isMultitool(held)) {
+                cir.setReturnValue(1.0F / 80.0F);
+            } else {
+                cir.setReturnValue(0.0F);
+            }
             return;
         }
         if (PlayerPlacedBlockLedger.isHandRecoverableDecoration(state)) {

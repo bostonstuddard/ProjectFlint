@@ -1,0 +1,15 @@
+{
+  "type": "projectflint:hardwood_shaped",
+  "category": "misc",
+  "pattern": [
+    "PP",
+    "PP"
+  ],
+  "key": {
+    "P": "minecraft:packed_mud"
+  },
+  "result": {
+    "id": "minecraft:mud_bricks",
+    "count": 4
+  }
+}

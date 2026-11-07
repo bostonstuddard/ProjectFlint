@@ -1,3 +1,8 @@
+## v0.31.65-b: Forge auto-processing and earth recipes
+- A stopped Forge calls the same `ignite()` preflight for all eligible fuels. Wood fuel qualifies as a job without a separate material input but needs four burnable Logs and room in its Charcoal byproduct slot. Charcoal needs an actual processing recipe and free product output space. Do not gate *wood* auto-ignition on `processingKind() != 0`.
+- Vanilla Minecraft crafting recipe IDs are filtered; timed Hardwood Table alternatives use `projectflint:hardwood_shaped`/`projectflint:hardwood_shapeless`. Vanilla-style Mud/Stone conversions must be explicitly implemented as new custom recipe IDs. Preserve filled bucket remainders through Hardwood result-slot logic.
+- Dirt Slab and Dirt Stairs are custom registered block-items reusing `minecraft:block/dirt` textures. Each has blockstate, model, item definition, loot table, translations and tool gating on both predicted progress and server permissions. Packed Mud's 1.10 speed factor applies only when standing on that block.
+- Recipe yield asymmetry is intentional. The 2x2 grid spends fewer seconds but yields fewer leather products and requires more Clay Balls than the Hardwood Table.
 ## v0.31.62-b — Stone-working versus mining
 
 Natural Stone has two **distinct** player actions. Primitive Stone working (`OreMiningRules.canPrimitiveStoneWork`) accepts Crude Stone Hammer and the three early Multitools, returning controlled `GameplayTuning.CRUDE_HAMMER_STONE_PROGRESS_PER_TICK` progress; the completed server action replaces Stone with Crushed Stone, drops four Rocks, consumes one durability and awards the original event. Pickaxe-tier mining remains separate and returns conventional mined material.

@@ -75,6 +75,10 @@ public final class PrimitiveInteractionSystem {
 			return !OreMiningRules.isStoneFamily(state) || OreMiningRules.canGetDrops(state, held)
 				? InteractionResult.PASS : InteractionResult.FAIL;
 		}
+        if (state.is(ModBlocks.DIRT_SLAB) || state.is(ModBlocks.DIRT_STAIRS)) {
+            return (held.is(Items.WOODEN_SHOVEL) || held.is(ModItems.HARDWOOD_SHOVEL) || ModItems.isMultitool(held))
+                ? InteractionResult.PASS : InteractionResult.FAIL;
+        }
 		if (PlayerPlacedBlockLedger.isHandRecoverableDecoration(state)) return InteractionResult.PASS;
 		if (TannedUtilityVestSystem.canHandClear(player, state)) return InteractionResult.PASS;
 		if (held.is(ModItems.HARDWOOD_HAMMER) && state.is(BlockTags.MINEABLE_WITH_PICKAXE) && !state.is(BlockTags.NEEDS_IRON_TOOL) && !state.is(BlockTags.NEEDS_DIAMOND_TOOL)) return InteractionResult.PASS;
@@ -820,6 +824,9 @@ public final class PrimitiveInteractionSystem {
 			if (OreMiningRules.canPrimitiveStoneWork(state, held)) return true;
 			return !OreMiningRules.isStoneFamily(state) || OreMiningRules.canGetDrops(state, held);
 		}
+        if (state.is(ModBlocks.DIRT_SLAB) || state.is(ModBlocks.DIRT_STAIRS)) {
+            return held.is(Items.WOODEN_SHOVEL) || held.is(ModItems.HARDWOOD_SHOVEL) || ModItems.isMultitool(held);
+        }
 		if (PlayerPlacedBlockLedger.isHandRecoverableDecoration(state)) return true;
 		if (TannedUtilityVestSystem.canHandClear(player, state)) return true;
 		if (held.is(ModItems.HARDWOOD_HAMMER) && state.is(BlockTags.MINEABLE_WITH_PICKAXE) && !state.is(BlockTags.NEEDS_IRON_TOOL) && !state.is(BlockTags.NEEDS_DIAMOND_TOOL)) return true;

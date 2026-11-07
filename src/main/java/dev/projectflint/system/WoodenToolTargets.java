@@ -31,6 +31,7 @@ public final class WoodenToolTargets {
 	public static boolean shovel(BlockState state) {
 		return state.is(BlockTags.MINEABLE_WITH_SHOVEL) || state.is(Blocks.DIRT) || state.is(Blocks.GRASS_BLOCK)
 			|| state.is(Blocks.GRAVEL) || state.is(Blocks.SAND) || state.is(Blocks.RED_SAND) || state.is(Blocks.CLAY)
-			|| state.is(ModBlocks.LOOSE_SOIL) || state.is(ModBlocks.LOOSE_DIRT);
+			|| state.is(ModBlocks.LOOSE_SOIL) || state.is(ModBlocks.LOOSE_DIRT)
+            || state.is(ModBlocks.DIRT_SLAB) || state.is(ModBlocks.DIRT_STAIRS);
 	}
 }

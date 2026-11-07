@@ -1,3 +1,9 @@
+## v0.31.65-b guide consistency
+- Check K-key Wooden Grinder shows 8 Mud Piles for Loose Mud Bricks and 2 Loose Mud Bricks for Bricks.
+- Check K-key personal recipes show 2 Leather Straps and 1 Repair Kit; the Hardwood Table shows 3 Straps and 2 Repair Kits.
+- Check K-key Hardwood Table shows both water-bucket variants, Mud Piles, Packed Mud, Mud Bricks, Loose Mud Bricks, Mud Brick slabs/stairs/walls, Dirt slab/stairs, Loose Dirt and Loose Mud Brick slabs, Dirt ↔ Loose Soil and cheaper Clay Block.
+- Check G-key mud chapter is purely player-facing and mentions 10% Packed Mud walking speed and Forge charcoal auto-burning.
+- Preserve actual Hardwood-only recipe types, not vanilla `minecraft:crafting_*` or EMI registration.
 ## v0.31.62-b — Primitive Stone operation is not a recipe
 The G-key Field Guide must explain Crude Stone Hammer -> natural Stone -> Crushed Stone + 4 Rocks. The K-key recipe guide has **no new crafting recipe** for this physical mining/processing interaction. Test the mechanic through client progress, AttackBlock callback, pre-break guard, and server completion. Do not move this into a crafting category or imply that the Crude Hammer can mine ore/Cobblestone.
 

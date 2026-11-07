@@ -1,3 +1,9 @@
+## v0.31.65-b: Earth and masonry additions
+- Wood/Water: 4 Fired Clay + 8 Mud Piles → Loose Mud Bricks in the Wooden Grinder; 2 Loose Mud Bricks + 2 Wooden Screws → Bricks. Existing earlier wood-tool recipes remain intact.
+- Hardwood Table (3-second cycle): Dirt + Water → Mud → Mud Piles; Mud + Wheat → Packed Mud → Mud Bricks → Loose Mud Bricks; the reverse Mud Bricks conversion does not exist.
+- Packed Mud gives +10% movement speed when walked upon; tooltips explain this. Mud/Dirt stonework shapes can be made at the Table, not prematurely in 2x2 crafting.
+- Personal Leather Strap and Repair Kit outputs are less than the table variants: 2 vs 3 and 1 vs 2. Personal Clay Block takes 4 Clay Balls; Table takes 3.
+- Forge Log-to-Charcoal can repeat with sufficient logs/output room and a working Firestarter. Charcoal fuel cannot repeat unless Hardwood or MBSSIG Dust can be processed.
 ## Flint Quests parity — v0.31.63-b
 
 The Crude Stone Hammer/Multitool natural Stone → Crushed Stone operation now satisfies `BREAK_BLOCK minecraft:stone` tasks, because it counts as breaking the **original Stone block**. All successful manual Project Flint block removals are similarly announced once. Failed attempts, unqualified ore removal, and untouched world blocks do not count. This does not change physical output, tool wear, timing, or mining permissions.

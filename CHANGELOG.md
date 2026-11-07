@@ -1,3 +1,10 @@
+## v0.31.65-b — Forge, Mud, Soil and Crafting
+- Fixed the Fireclay Forge automatically continuing Log → Charcoal batches when four Logs, a usable Firestarter and empty output space are available; it never auto-uses Charcoal on an empty/blocked recipe.
+- Reduced the Wooden Grinder Loose Mud Brick cost from 16 to 8 Mud Piles and the Bricks material cost from 4 to 2 Loose Mud Bricks.
+- Added Hardwood Table recipes for Dirt + a water bucket → Mud, Mud → Mud Piles, Packed Mud, Mud Bricks, Dirt/Loose Dirt/Mud Brick slabs and stairs, and Loose Soil/Dirt conversion.
+- Packed Mud now gives 10% faster walking speed, with a tooltip explaining the benefit.
+- Fixed personal Leather Straps (2 instead of 3) and Repair Kits (1 instead of 2); Hardwood Table keeps the improved 3 Strap and 2 Repair Kit yields.
+- Hardwood Table now forms Clay Blocks from 3 Clay Balls; personal crafting still takes 4.
 ## v0.31.64-b — Personal Wooden Tools and Workstation Fixes
 - Restored the personal 2×2 recipes for Wooden Axes, Pickaxes, and all Wooden Shovel wood variants; added personal Wooden Sword and Hoe options. Earlier Wooden Tool costs stay unchanged.
 - Flint Axes can now process Logs into Planks in personal crafting, providing a pre-Wooden-Axe route that prevents a circular Wooden Sheet prerequisite.

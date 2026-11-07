@@ -1,3 +1,8 @@
+## v0.31.65-b patch validation
+- Verify release version and source-only root-level patch application.
+- Regression-test 4 Logs -> 4 Charcoal, then a second batch starts automatically; a full byproduct slot or no Firestarter stops the cycle. An empty charcoal-fueled Forge must stay unlit.
+- Test personal vs Hardwood Table leather yields, custom block loot/recovery, all mud recipes, bucket returns, Packed Mud speed, and K/G guide entries.
+- Distinguish source/static validation from actual Gradle build and in-game tests. Do not claim a survival run without executing one.
 ## v0.31.62-b — Mandatory early-game break-action test
 Mining rules are incomplete until the Crude Stone Hammer can **complete** its Stone conversion (not merely display cracks). Verify progress/attack/pre-break/server handlers together: natural Stone + Crude Hammer and Crude/Flint/Advanced Multitools yield Crushed Stone + 4 Rocks, and 1 damage to the held tool; ordinary unqualified tools and the Vest cannot harvest Stone. Check the Hardwood Hammer uses its own normal mining route, and that Cobblestone, Coal, Iron/Copper, Deepslate and other ores retain their tier rules. Full runtime tests must be performed before declaring the release playtested.
 

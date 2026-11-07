@@ -1,0 +1,12 @@
+{
+  "type": "projectflint:hardwood_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:mud",
+    "minecraft:wheat"
+  ],
+  "result": {
+    "id": "minecraft:packed_mud",
+    "count": 1
+  }
+}

@@ -102,6 +102,10 @@ public final class ProjectFlintFieldGuideContent {
         add(c, "HARDWOOD", "Crafting Table", ModItems.HARDWOOD_CRAFTING_TABLE,
             "Make the first Hardwood Crafting Table in your personal 2x2 grid from two Hardwood Alloy, Cobblestone and a Bound Wood Processor.",
             "Use its 3x3 grid for more complicated recipes. Each completed craft takes three seconds. Recipes are listed under Hardwood Table in Recipes (K).");
+        add(c, "HARDWOOD", "Mud and Earth Building", Items.PACKED_MUD,
+            "At the Hardwood Crafting Table, surround a Water Bucket with eight Dirt to make eight Mud. The bucket is returned. One Mud makes four Mud Piles.",
+            "Combine Mud with Wheat for Packed Mud. Walking on Packed Mud makes you 10% faster. Four Packed Mud make four Mud Bricks. Mud Bricks can be made into Loose Mud Bricks, but not the other way around.",
+            "Use the table for Dirt, Loose Dirt and Loose Mud Brick Slabs, Dirt Stairs, and Mud Brick stairs, slabs and walls. A Fireclay Forge with four Logs, a Firestarter and room for Charcoal can light the next wood batch automatically.");
         add(c, "HARDWOOD", "Hardwood Tools", ModItems.HARDWOOD_PICKAXE,
             "Hardwood tools use Hardwood Sticks. Most also require Leather Straps. Make Hardwood Sticks from two Hardwood at the Hardwood Table.",
             "The Hardwood Axe strips Logs by right-clicking. An appropriate axe can turn Logs into Planks in the crafting grid.");

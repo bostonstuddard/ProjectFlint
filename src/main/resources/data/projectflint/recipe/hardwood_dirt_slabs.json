@@ -1,0 +1,14 @@
+{
+  "type": "projectflint:hardwood_shaped",
+  "category": "misc",
+  "pattern": [
+    "DD"
+  ],
+  "key": {
+    "D": "minecraft:dirt"
+  },
+  "result": {
+    "id": "projectflint:dirt_slab",
+    "count": 6
+  }
+}

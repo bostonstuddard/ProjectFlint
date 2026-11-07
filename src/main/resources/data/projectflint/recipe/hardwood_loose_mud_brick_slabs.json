@@ -1,0 +1,14 @@
+{
+  "type": "projectflint:hardwood_shaped",
+  "category": "misc",
+  "pattern": [
+    "MM"
+  ],
+  "key": {
+    "M": "projectflint:loose_mud_bricks"
+  },
+  "result": {
+    "id": "projectflint:loose_mud_brick_slab",
+    "count": 6
+  }
+}

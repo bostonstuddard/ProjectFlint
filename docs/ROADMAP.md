@@ -1,3 +1,5 @@
+## v0.31.65-b current behavior
+The Mud-building chain is part of the existing Hardwood stage. The Fireclay Forge can automatically process consecutive full batches of Logs into Charcoal, subject to firestarter and output constraints. No automatic lighting with invalid charcoal recipes. Future balancing must preserve personal-vs-Table yield separation and game-stage restrictions.
 ## v0.31.62-b opening-stage regression gate
 Before every release that modifies block mining or attack interception, test a fresh survival world: knap a Rock, assemble a Crude Stone Hammer, convert natural Stone into Crushed Stone and four Rocks, and verify durability. Also test crude Multitools, hand/food denial, Vest denial, Cobblestone and deepslate permissions, and Wooden/Hardwood Pickaxe drops. The milestone is not complete based on static checks alone; run the compiled mod in-game.
 

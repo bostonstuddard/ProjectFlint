@@ -139,6 +139,8 @@ public final class ModItems {
 	public static final Item LOOSE_DIRT = register("loose_dirt", properties -> new BlockItem(ModBlocks.LOOSE_DIRT, properties.stacksTo(8)));
 	public static final Item LOOSE_SOIL = register("loose_soil", properties -> new BlockItem(ModBlocks.LOOSE_SOIL, properties.stacksTo(8)));
 	public static final Item LOOSE_DIRT_SLAB = register("loose_dirt_slab", properties -> new BlockItem(ModBlocks.LOOSE_DIRT_SLAB, properties.stacksTo(8)));
+    public static final Item DIRT_SLAB = registerBlockItem("dirt_slab", ModBlocks.DIRT_SLAB, 64);
+    public static final Item DIRT_STAIRS = registerBlockItem("dirt_stairs", ModBlocks.DIRT_STAIRS, 64);
 	public static final Item FLINT_CHIP = register("flint_chip", properties -> new Item(properties.stacksTo(32)));
 	public static final Item CRUDELY_WOVEN_BOWL = register("crudely_woven_bowl", properties -> new Item(properties.stacksTo(1)));
 	public static final Item UNFIRED_WOVEN_BOWL = register("unfired_woven_bowl", properties -> new Item(properties.stacksTo(1)));

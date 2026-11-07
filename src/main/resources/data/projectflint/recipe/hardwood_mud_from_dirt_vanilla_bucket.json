@@ -1,0 +1,17 @@
+{
+  "type": "projectflint:hardwood_shaped",
+  "category": "misc",
+  "pattern": [
+    "DDD",
+    "DWD",
+    "DDD"
+  ],
+  "key": {
+    "D": "minecraft:dirt",
+    "W": "minecraft:water_bucket"
+  },
+  "result": {
+    "id": "minecraft:mud",
+    "count": 8
+  }
+}

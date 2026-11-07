@@ -1,0 +1,11 @@
+{
+  "type": "projectflint:hardwood_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:mud"
+  ],
+  "result": {
+    "id": "projectflint:mud_pile",
+    "count": 4
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "type": "projectflint:hardwood_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:mud_bricks"
+  ],
+  "result": {
+    "id": "projectflint:loose_mud_bricks",
+    "count": 1
+  }
+}

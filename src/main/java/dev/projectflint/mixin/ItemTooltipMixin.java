@@ -7,6 +7,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.TooltipDisplay;
 import org.spongepowered.asm.mixin.Mixin;
@@ -37,6 +38,10 @@ public abstract class ItemTooltipMixin {
 				"Saturation: " + formatHalf(food.saturation() / 2.0F)
 			).withStyle(ChatFormatting.GRAY));
 		}
+
+        if (stack.is(Items.PACKED_MUD)) {
+            textConsumer.accept(Component.literal("Walk 10% faster on Packed Mud.").withStyle(ChatFormatting.GRAY));
+        }
 
 		if (stack.is(ModItems.HARDWOOD_HAMMER)) {
             textConsumer.accept(Component.literal("Mines Iron Ore and Copper Ore (not Deepslate variants).").withStyle(ChatFormatting.GRAY));

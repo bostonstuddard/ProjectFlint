@@ -62,7 +62,7 @@ public final class HardwoodCraftingGuideRegistry {
         add(all, "hardwood_cherry_door", "minecraft:cherry_door", 1, "Grid PPS/PPS/PPS; P=cherry planks, S=wooden screw", "minecraft:cherry_planks#6", "projectflint:wooden_screw#3");
         add(all, "hardwood_cherry_slabs", "minecraft:cherry_slab", 6, "Grid PP; P=cherry planks", "minecraft:cherry_planks#2");
         add(all, "hardwood_chicken_nest", "projectflint:nest", 1, "Grid _/S/WWW; S=string, W=wheat", "minecraft:string#1", "minecraft:wheat#3");
-        add(all, "hardwood_clay_block", "minecraft:clay", 1, "", "minecraft:clay_ball#4");
+        add(all, "hardwood_clay_block", "minecraft:clay", 1, "Three Clay Balls instead of four in personal crafting", "minecraft:clay_ball#3");
         add(all, "hardwood_cobblestone_slabs", "minecraft:cobblestone_slab", 6, "Grid SSS; S=cobblestone", "minecraft:cobblestone#3");
         add(all, "hardwood_cobblestone_stairs", "minecraft:cobblestone_stairs", 4, "Grid S/SS/SSS; S=cobblestone", "minecraft:cobblestone#6");
         add(all, "hardwood_cobweb", "projectflint:cobweb", 1, "Grid SSS/SSS/SSS; S=string", "minecraft:string#9");
@@ -192,6 +192,21 @@ public final class HardwoodCraftingGuideRegistry {
         add(all, "hardwood_wooden_cups_raw_milk", "projectflint:wooden_cup_raw_milk", 6, "The Clay Milk Bucket returns empty", "projectflint:wooden_cup#2", "projectflint:clay_milk_bucket#1");
         add(all, "hardwood_flax_seeds_to_wheat", "minecraft:wheat_seeds", 6, "Grid FFF/FWF/FFF; F=flax seeds; W=clay water bucket (returns empty)", "projectflint:flax_seeds#8", "projectflint:clay_water_bucket#1");
         add(all, "hardwood_potassium_rich_fertilizer", "projectflint:potassium_rich_fertilizer", 12, "Grid FFF/FPF/FFF; F=fertilizer; P=potassium dust", "projectflint:fertilizer#8", "projectflint:potassium_dust#1");
+        add(all, "hardwood_mud_from_dirt", "minecraft:mud", 8, "8 Dirt around Clay Water Bucket (empty Clay Bucket returned)", "minecraft:dirt#8", "projectflint:clay_water_bucket#1");
+        add(all, "hardwood_mud_from_dirt_vanilla_bucket", "minecraft:mud", 8, "8 Dirt around Water Bucket (empty Bucket returned)", "minecraft:dirt#8", "minecraft:water_bucket#1");
+        add(all, "hardwood_mud_piles_from_mud", "projectflint:mud_pile", 4, "1 Mud makes 4 Mud Piles", "minecraft:mud#1");
+        add(all, "hardwood_packed_mud", "minecraft:packed_mud", 1, "1 Mud + 1 Wheat; grants 10% walking speed", "minecraft:mud#1", "minecraft:wheat#1");
+        add(all, "hardwood_mud_bricks", "minecraft:mud_bricks", 4, "2x2 Packed Mud makes 4 Mud Bricks", "minecraft:packed_mud#4");
+        add(all, "hardwood_loose_mud_bricks", "projectflint:loose_mud_bricks", 1, "Mud Bricks can be loosened; this cannot be reversed", "minecraft:mud_bricks#1");
+        add(all, "hardwood_mud_brick_slabs", "minecraft:mud_brick_slab", 6, "Three Mud Bricks horizontally", "minecraft:mud_bricks#3");
+        add(all, "hardwood_mud_brick_stairs", "minecraft:mud_brick_stairs", 4, "Six Mud Bricks in a stair shape", "minecraft:mud_bricks#6");
+        add(all, "hardwood_mud_brick_walls", "minecraft:mud_brick_wall", 6, "Six Mud Bricks in two rows", "minecraft:mud_bricks#6");
+        add(all, "hardwood_loose_mud_brick_slabs", "projectflint:loose_mud_brick_slab", 6, "Two Loose Mud Bricks horizontally", "projectflint:loose_mud_bricks#2");
+        add(all, "hardwood_loose_dirt_slabs", "projectflint:loose_dirt_slab", 6, "Two Loose Dirt blocks horizontally", "projectflint:loose_dirt#2");
+        add(all, "hardwood_dirt_slabs", "projectflint:dirt_slab", 6, "Two Dirt blocks horizontally", "minecraft:dirt#2");
+        add(all, "hardwood_dirt_stairs", "projectflint:dirt_stairs", 4, "Six Dirt in a stair shape", "minecraft:dirt#6");
+        add(all, "hardwood_loose_soil_from_dirt", "projectflint:loose_soil", 1, "Dirt to Loose Soil (takes three seconds)", "minecraft:dirt#1");
+        add(all, "hardwood_dirt_from_loose_soil", "minecraft:dirt", 1, "Loose Soil to Dirt (takes three seconds)", "projectflint:loose_soil#1");
         return List.copyOf(all);
     }
 }

@@ -62,6 +62,8 @@ public final class ModCreativeTabs {
 			output.accept(ModItems.LOOSE_DIRT);
 			output.accept(ModItems.LOOSE_SOIL);
 			output.accept(ModItems.LOOSE_DIRT_SLAB);
+            output.accept(ModItems.DIRT_SLAB);
+            output.accept(ModItems.DIRT_STAIRS);
 			output.accept(ModItems.FLINT_CHIP);
 			output.accept(ModItems.CRUDELY_WOVEN_BOWL);
 			output.accept(ModItems.UNFIRED_WOVEN_BOWL);

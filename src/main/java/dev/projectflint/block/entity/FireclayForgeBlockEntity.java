@@ -27,10 +27,10 @@ import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 
 /**
- * Fuel and recipe inputs are independent. This prototype has no smelting
- * recipe yet: burning four logs/wood as fuel lasts 60 seconds and produces one
- * charcoal byproduct every 15 seconds (four total); charcoal fuel lasts five minutes and
- * has no byproduct. One firestarter use is charged per unit of fuel ignited.
+ * Wood fuel is a charcoal-production recipe: four Logs burn for sixty seconds
+ * and yield one Charcoal every fifteen seconds. Charcoal fuel is reserved for
+ * five-minute Hardwood and MBSSIG processing and yields no fuel byproduct.
+ * One Firestarter durability is spent per ignited fuel batch.
  * All timers/inventory are saved. A full byproduct slot pauses a wood fire
  * before the next charcoal would be lost. A broken structure pauses the fire.
  */
@@ -185,12 +185,13 @@ public final class FireclayForgeBlockEntity extends BaseContainerBlockEntity {
         if (!formed) { alloyTicks = 0; return; }
         if (burnTicks <= 0) {
             alloyTicks = 0;
-            // Resume a valid charcoal-fueled operation automatically, but never
-            // spend fuel on empty inputs, full outputs, or an absent firestarter.
-            // Log-to-charcoal batches continue to require deliberate ignition.
-            int nextKind = processingKind();
-            if (items.get(FUEL_SLOT).is(Items.CHARCOAL) && nextKind != 0
-                && canOutputProcessed(nextKind) && isFirestarter(items.get(IGNITER_SLOT))) {
+            // A log batch is itself a valid charcoal-producing job, even when
+            // there is no material in INPUT_SLOT. ignite() checks for FOUR logs,
+            // available charcoal output space, an intact Firestarter and a
+            // formed Forge. Charcoal fuel still requires a supported input and
+            // available recipe output, so idle charcoal is never wasted.
+            if (isFirestarter(items.get(IGNITER_SLOT))
+                && (isFuel(items.get(FUEL_SLOT)) || isFuel(items.get(LEGACY_FUEL_SLOT)))) {
                 ignite();
             }
             return;
@@ -231,7 +232,7 @@ public final class FireclayForgeBlockEntity extends BaseContainerBlockEntity {
 			woodByproductTicks = 0;
 			refreshBlockState();
 			setChanged();
-            // Next tick may ignite another charge only for a valid, unblocked recipe.
+            // Next tick may ignite a valid log batch or charcoal processing cycle.
 		} else if (burnTicks % 20 == 0) setChanged();
 	}
 
