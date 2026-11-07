@@ -1,3 +1,5 @@
+> **Superseded in v0.31.67-b:** The temporary Stripped Log + Bone Knife -> Wooden Sheet personal recipe described below was removed after confirming the existing Wooden Grinder route. See ADR 0026.
+
 # ADR 0025 — Safe packed-mud movement and selective dynamite processing
 
 **Status:** Accepted in v0.31.66-b.

@@ -49,7 +49,6 @@ public final class PersonalCraftingGuideRegistry {
 		add(recipes, "wooden_shovel_pale_oak", "minecraft:wooden_shovel", 1, "minecraft:pale_oak_planks", "minecraft:stick", "projectflint:leather_strap");
 		add(recipes, "crushed_stone_from_cobblestone", "projectflint:crushed_stone", 1, "minecraft:cobblestone");
 		add(recipes, "basin_crafting", "projectflint:basin", 1, "projectflint:leather_sheet", "projectflint:wooden_sheet", "minecraft:cobblestone#2");
-		add(recipes, "primitive_wooden_sheet_from_stripped_log", "projectflint:wooden_sheet", 1, "minecraft:stripped_oak_log", "projectflint:bone_knife");
 		add(recipes, "oak_planks_from_log", "minecraft:oak_planks", 2, "minecraft:oak_log", "minecraft:wooden_axe");
 		add(recipes, "oak_planks_from_log_hardwood_axe", "minecraft:oak_planks", 2, "minecraft:oak_log", "projectflint:hardwood_axe");
 		add(recipes, "oak_planks_from_stripped_log", "minecraft:oak_planks", 2, "minecraft:stripped_oak_log", "minecraft:wooden_axe");

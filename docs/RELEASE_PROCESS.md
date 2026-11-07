@@ -1,3 +1,5 @@
+> **v0.31.67-b woodworking correction:** The Wooden Grinder already makes four Wooden Sheets from one Wooden Beam and a Flint File (damages the File). The temporary `primitive_wooden_sheet_from_stripped_log` personal crafting recipe and its tag have been removed. Never reintroduce this shortcut solely based on a presumed progression dependency. Verify the existing workstation chain first.
+
 ## v0.31.65-b patch validation
 - Verify release version and source-only root-level patch application.
 - Regression-test 4 Logs -> 4 Charcoal, then a second batch starts automatically; a full byproduct slot or no Firestarter stops the cycle. An empty charcoal-fueled Forge must stay unlit.

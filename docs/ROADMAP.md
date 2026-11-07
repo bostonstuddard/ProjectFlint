@@ -1441,7 +1441,7 @@ Crude Multitool leaf harvesting is explicitly protected as a progression gate: l
 
 ## v0.31.64-b regression gates
 Test a new Survival save from initial rocks through Wooden Axe → Log Planks → Basin Wood Dust → Hardwood Alloy. Verify all five Wooden Tools in personal 2×2, Sword/Hoe variants, and K guide. Confirm one Oak Sheet/Board recipe in each station with distinct output counts. Harvest vanilla Bush, Firefly Bush and dry grass with the Utility Vest (including empty hand) and verify Stone remains blocked. Test Forge auto-relights for valid input and enough space while consuming one Charcoal and one Firestarter use per cycle, but stays off when blocked or empty. Re-run earlier Stone Hammer/FlintQuests tests.
-Verify Bone Knife + Stripped Log → one Wooden Sheet in personal crafting, then build the first Wooden Axe, then Wooden Axe + Log → two Planks and Bone Knife + Plank → three Sheets. Do not use Flint Axe to generate Planks.
+Verify Wooden Grinder + Wooden Beam + Flint File → four Wooden Sheets (File loses durability), then make the first Wooden Axe and use it to turn Logs into Planks. Verify Stripped Log + Bone Knife no longer produces a Wooden Sheet. Flint Axe must not generate Planks.
 
 ### After 0.31.66-b
 

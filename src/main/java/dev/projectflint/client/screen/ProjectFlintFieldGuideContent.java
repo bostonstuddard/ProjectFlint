@@ -67,7 +67,7 @@ public final class ProjectFlintFieldGuideContent {
             "Fire bricks for walls, ovens and more durable workstations. Brick Shingles and Wattle & Daub offer additional building materials.",
             "Brick structures need the appropriate tools to recover. A vest is not a substitute for a masonry tool.");
         add(c, "WOOD AGE", "Early Woodworking", ModItems.WOODEN_BOARD,
-            "Cut a stripped Log with a Bone Knife to get one Wooden Sheet. Use this to make your first Wooden Axe. The Knife loses durability.",
+            "Use the Wooden Grinder with one Wooden Beam and a Flint File to make four Wooden Sheets. The File loses durability.",
             "Use a Wooden Axe or Hardwood Axe with Logs in personal crafting to make Planks. A Flint Axe cannot cut Planks.",
             "Use a Bone Knife on Oak Planks to make three Wooden Sheets, or a Flint File to make one Wooden Board. Both tools lose durability.");
         add(c, "WOOD AGE", "Wooden Tools", Items.WOODEN_AXE,

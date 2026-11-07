@@ -1,3 +1,9 @@
+# Project Flint v0.31.67-b
+- Removed the unintended personal crafting recipe that turned a Stripped Log and Bone Knife into one Wooden Sheet.
+- The Wooden Grinder remains the intended route: one Wooden Beam and a Flint File produce four Wooden Sheets; the tool loses durability.
+- Corrected the Field Guide and Recipe Guide so they no longer advertise the removed recipe.
+- Flint Axes still cannot turn Logs into Planks.
+
 ## v0.31.66-b — Stone Blasting, Fuse and Carbon Processing
 - Fixed a launch crash when Packed Mud movement speed tried to modify a nonexistent Minecraft 1.21.11 block-state method.
 - Removed Flint Axe from Log-to-Planks recipes; Wooden and Hardwood Axes remain usable. Added an early Bone Knife + Stripped Log → 1 Wooden Sheet personal recipe so the first Wooden Axe remains craftable.

@@ -1,3 +1,5 @@
+> **v0.31.67-b woodworking correction:** The Wooden Grinder already makes four Wooden Sheets from one Wooden Beam and a Flint File (damages the File). The temporary `primitive_wooden_sheet_from_stripped_log` personal crafting recipe and its tag have been removed. Never reintroduce this shortcut solely based on a presumed progression dependency. Verify the existing workstation chain first.
+
 ## v0.31.65-b: Forge auto-processing and earth recipes
 - A stopped Forge calls the same `ignite()` preflight for all eligible fuels. Wood fuel qualifies as a job without a separate material input but needs four burnable Logs and room in its Charcoal byproduct slot. Charcoal needs an actual processing recipe and free product output space. Do not gate *wood* auto-ignition on `processingKind() != 0`.
 - Vanilla Minecraft crafting recipe IDs are filtered; timed Hardwood Table alternatives use `projectflint:hardwood_shaped`/`projectflint:hardwood_shapeless`. Vanilla-style Mud/Stone conversions must be explicitly implemented as new custom recipe IDs. Preserve filled bucket remainders through Hardwood result-slot logic.
