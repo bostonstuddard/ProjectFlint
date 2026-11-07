@@ -491,5 +491,14 @@
   "key.projectflint.field_guide": "Open Flint Field Guide",
   "key.projectflint.place_in_world": "Place in World",
   "key.projectflint.recipe_guide": "Open Recipe Guide",
-  "tooltip.projectflint.hardwood_crafting_table": "Each craft takes 3 seconds."
+  "tooltip.projectflint.hardwood_crafting_table": "Each craft takes 3 seconds.",
+  "item.projectflint.fuse_ready_dust": "Fuse-Ready Dust",
+  "item.projectflint.fine_fuse_powder": "Fine Fuse Powder",
+  "item.projectflint.fuse": "Fuse",
+  "item.projectflint.black_powder": "Black Powder",
+  "item.projectflint.sulfur_dust": "Sulfur Dust",
+  "item.projectflint.carbon_dust": "Carbon Dust",
+  "item.projectflint.pure_carbon_dust": "Pure Carbon Dust",
+  "item.projectflint.dynamite": "Weak Dynamite",
+  "block.projectflint.dynamite_charge": "Lit Dynamite"
 }

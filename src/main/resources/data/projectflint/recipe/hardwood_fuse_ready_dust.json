@@ -1,0 +1,14 @@
+{
+  "type": "projectflint:hardwood_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "projectflint:silicon_dust",
+    "projectflint:aluminum_dust",
+    "projectflint:tin_dust",
+    "projectflint:silver_dust"
+  ],
+  "result": {
+    "id": "projectflint:fuse_ready_dust",
+    "count": 1
+  }
+}

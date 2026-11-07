@@ -29,12 +29,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(BlockBehaviour.BlockStateBase.class)
 public abstract class BlockStateBaseMixin {
-    @Inject(method = "getSpeedFactor", at = @At("HEAD"), cancellable = true)
-    private void projectflint$packedMudFooting(CallbackInfoReturnable<Float> cir) {
-        if (((BlockState) (Object) this).is(Blocks.PACKED_MUD)) {
-            cir.setReturnValue(1.10F);
-        }
-    }
 
 	@Inject(method = "getDestroyProgress", at = @At("RETURN"), cancellable = true)
 	private void projectflint$primitiveDestroyProgress(Player player, BlockGetter level, BlockPos pos, CallbackInfoReturnable<Float> cir) {

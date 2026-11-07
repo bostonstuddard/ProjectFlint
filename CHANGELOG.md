@@ -1,3 +1,13 @@
+## v0.31.66-b — Stone Blasting, Fuse and Carbon Processing
+- Fixed a launch crash when Packed Mud movement speed tried to modify a nonexistent Minecraft 1.21.11 block-state method.
+- Removed Flint Axe from Log-to-Planks recipes; Wooden and Hardwood Axes remain usable. Added an early Bone Knife + Stripped Log → 1 Wooden Sheet personal recipe so the first Wooden Axe remains craftable.
+- Added Weak Dynamite: place with Dynamite in the main hand and an offhand firestarter, then get clear before the 4.5-second blast. The blast affects only Stone, Cobblestone, Andesite, Diorite, Granite, and regular Coal/Iron/Copper Ore. It can deal up to 12 damage.
+- Stone and ore explosions use Basin byproduct tables with each independent chance multiplied by 1.5, including partial rolls above 100%; Deepslate is unaffected.
+- Basin processing: Charcoal can produce Sulfur Dust (20%) and Wood Dust (15%); Coal can produce Sulfur (45%), Stone Dust (43% + separate 23%) and Carbon Dust (2.4%).
+- Added Fuse-Ready Dust, Fine Fuse Powder, Fuse, Black Powder (two recipes), Dynamite, Sulfur Dust, Carbon Dust and Pure Carbon Dust, with Hardwood Table recipes and the supplied Fuse/Dynamite artwork.
+- Brick Furnace now makes Fine Fuse Powder from Fuse-Ready Dust in 200 seconds. Fireclay Forge can refine Carbon Dust to Pure Carbon Dust in 400 seconds of charcoal heat, spanning two fuel cycles.
+- Updated Field Guide, Recipe Guide, and source/release documentation.
+
 ## v0.31.65-b — Forge, Mud, Soil and Crafting
 - Fixed the Fireclay Forge automatically continuing Log → Charcoal batches when four Logs, a usable Firestarter and empty output space are available; it never auto-uses Charcoal on an empty/blocked recipe.
 - Reduced the Wooden Grinder Loose Mud Brick cost from 16 to 8 Mud Piles and the Bricks material cost from 4 to 2 Loose Mud Bricks.

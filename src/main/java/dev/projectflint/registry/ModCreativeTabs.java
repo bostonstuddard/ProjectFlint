@@ -161,7 +161,15 @@ public final class ModCreativeTabs {
 			output.accept(ModItems.FLINT_FILE);
 			output.accept(ModItems.WOODEN_SHEET);
 			output.accept(ModItems.WOOD_DUST);
-			output.accept(ModItems.TIN_DUST);
+			output.accept(ModItems.FUSE_READY_DUST);
+            output.accept(ModItems.FINE_FUSE_POWDER);
+            output.accept(ModItems.FUSE);
+            output.accept(ModItems.BLACK_POWDER);
+            output.accept(ModItems.SULFUR_DUST);
+            output.accept(ModItems.CARBON_DUST);
+            output.accept(ModItems.PURE_CARBON_DUST);
+            output.accept(ModItems.DYNAMITE);
+            output.accept(ModItems.TIN_DUST);
 			output.accept(ModItems.RARE_EARTH_DUST);
 			output.accept(ModItems.LITHIUM_DUST);
 			output.accept(ModItems.ALUMINUM_DUST);

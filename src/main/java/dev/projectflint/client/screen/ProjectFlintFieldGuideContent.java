@@ -67,7 +67,8 @@ public final class ProjectFlintFieldGuideContent {
             "Fire bricks for walls, ovens and more durable workstations. Brick Shingles and Wattle & Daub offer additional building materials.",
             "Brick structures need the appropriate tools to recover. A vest is not a substitute for a masonry tool.");
         add(c, "WOOD AGE", "Early Woodworking", ModItems.WOODEN_BOARD,
-            "Use a Flint Axe or Wooden Axe with Logs in personal crafting to make Planks. The Flint Axe is useful for getting your first Planks.",
+            "Cut a stripped Log with a Bone Knife to get one Wooden Sheet. Use this to make your first Wooden Axe. The Knife loses durability.",
+            "Use a Wooden Axe or Hardwood Axe with Logs in personal crafting to make Planks. A Flint Axe cannot cut Planks.",
             "Use a Bone Knife on Oak Planks to make three Wooden Sheets, or a Flint File to make one Wooden Board. Both tools lose durability.");
         add(c, "WOOD AGE", "Wooden Tools", Items.WOODEN_AXE,
             "Craft Wooden Axes, Pickaxes and Shovels in your personal 2x2 crafting grid. You can also make Wooden Swords and Hoes there.",
@@ -124,6 +125,15 @@ public final class ProjectFlintFieldGuideContent {
         add(c, "GLASS AGE", "Pure Mica Glass", ModItems.PURE_MICA_INSULATED_GLASS,
             "Pure Mica Insulated Glass is transparent blue-gray glass. It lets sunlight through like ordinary Glass.",
             "Wear a Tanned Utility Vest to collect it intact without Silk Touch. At the Hardwood Crafting Table, combine one glass block with a Bone Knife to make two PMI Sheets. The knife loses durability.");
+        add(c, "BLASTING", "Coal and Sulfur", ModItems.SULFUR_DUST,
+            "Stomp Charcoal in the Basin for a 20% Sulfur Dust chance or 15% Wood Dust. Coal has a 45% Sulfur Dust chance, plus separate 43% and 23% Stone Dust rolls and a 2.4% Carbon Dust chance.",
+            "Heat Carbon Dust with Charcoal for 400 seconds in the Fireclay Forge to obtain Pure Carbon Dust.");
+        add(c, "BLASTING", "Making Dynamite", ModItems.FUSE,
+            "At the Hardwood Table, combine Silicon, Aluminum, Tin and Silver Dust to make Fuse-Ready Dust. Heat it for 200 seconds in the Brick Furnace to make Fine Fuse Powder, then combine it with Rope for a Fuse.",
+            "Black Powder comes from Potassium Dust, Sulfur and Charcoal, or from Gunpowder, Sulfur and Charcoal. Add four Black Powder, a Fuse, Red Dye and Copper Dust at the Hardwood Table to make Weak Dynamite.");
+        add(c, "BLASTING", "Using Dynamite", ModItems.DYNAMITE,
+            "Hold Dynamite in your main hand and a Firestarter or Flint and Steel in your offhand. Right-click a block to place a lit charge against it. The fuse burns for four and a half seconds.",
+            "The blast hurts creatures and breaks only ordinary Stone, Cobblestone, Andesite, Diorite, Granite, and regular Coal, Iron or Copper Ore. It does not break Deepslate or machines. Broken rock and ore yield Basin materials at 50% better chances.");
         add(c, "REFERENCE", "Find Recipes", Items.CRAFTING_TABLE,
             "Press K or use Recipes below to see workstation recipes. Look for the workstation tab that matches what you're trying to make.",
             "Some recipes need fuel, water, a reusable tool or time to complete. Check the recipe's ingredients and any tool requirements.");

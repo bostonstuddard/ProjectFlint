@@ -1,0 +1,18 @@
+{
+  "type": "projectflint:hardwood_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "projectflint:potassium_dust",
+    "projectflint:potassium_dust",
+    "projectflint:potassium_dust",
+    "projectflint:potassium_dust",
+    "projectflint:potassium_dust",
+    "projectflint:sulfur_dust",
+    "projectflint:sulfur_dust",
+    "minecraft:charcoal"
+  ],
+  "result": {
+    "id": "projectflint:black_powder",
+    "count": 3
+  }
+}

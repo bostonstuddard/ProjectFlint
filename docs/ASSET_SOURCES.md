@@ -266,3 +266,6 @@ Source archive: `new update stuff(4).zip`, supplied directly by the Project Flin
 - New `textures/item/{iron,copper,nickel,silver,stone,quartz,potassium,mica,gold,silicon}_dust.png`, `fertilizer.png`, `slag.png` recolor the existing **user-approved Project Flint Wood Dust sprite** by RGB tinting while preserving per-pixel alpha. No new generative image source.
 - `hardwood_sticks.png`: recolor of Mojang's original vanilla Minecraft 1.21.11 Stick artwork extracted from the mapped Minecraft resource archive, not AI generated.
 - Axle `models/block/axle.json` uses existing Project Flint Wooden Beam top/side art; model geometry is authored source JSON, with no new photo or generated sprite.
+
+### 0.31.66-b user-supplied art
+The 16×16 Dynamite and Fuse textures were supplied directly by the user (`contact_dynamite.png`, `fuse.png`). New sulfur, carbon, fine powder and mixed dust textures are recolored from the existing approved Project Flint Wood Dust artwork. No AI-generated artwork was introduced.

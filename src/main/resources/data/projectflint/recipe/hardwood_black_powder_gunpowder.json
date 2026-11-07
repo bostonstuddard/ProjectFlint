@@ -1,0 +1,16 @@
+{
+  "type": "projectflint:hardwood_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:gunpowder",
+    "minecraft:gunpowder",
+    "minecraft:gunpowder",
+    "projectflint:sulfur_dust",
+    "minecraft:charcoal",
+    "minecraft:charcoal"
+  ],
+  "result": {
+    "id": "projectflint:black_powder",
+    "count": 4
+  }
+}

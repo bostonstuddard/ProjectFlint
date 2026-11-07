@@ -94,7 +94,7 @@ public final class FireclayForgeBlockEntity extends BaseContainerBlockEntity {
 	@Override protected void setItems(NonNullList<ItemStack> stacks) { items = stacks; }
 	@Override public boolean canPlaceItem(int slot, ItemStack stack) {
 		return switch (slot) {
-			case INPUT_SLOT -> stack.is(ModItems.HARDWOOD) || stack.is(ModItems.MBSSIG_DUST);
+			case INPUT_SLOT -> stack.is(ModItems.HARDWOOD) || stack.is(ModItems.MBSSIG_DUST) || stack.is(ModItems.CARBON_DUST);
 			case FUEL_SLOT -> isFuel(stack);
 			case IGNITER_SLOT -> isFirestarter(stack);
 			default -> false;
@@ -119,12 +119,14 @@ public final class FireclayForgeBlockEntity extends BaseContainerBlockEntity {
 	private int processingKind() {
         if (items.get(INPUT_SLOT).is(ModItems.HARDWOOD)) return 1;
         if (items.get(INPUT_SLOT).is(ModItems.MBSSIG_DUST)) return 2;
+        if (items.get(INPUT_SLOT).is(ModItems.CARBON_DUST)) return 3;
         return 0;
     }
     private ItemStack processingOutput(int kind) {
         return switch (kind) {
             case 1 -> new ItemStack(ModItems.HARDWOOD_ALLOY);
             case 2 -> new ItemStack(ModItems.PURE_MICA_INSULATED_GLASS);
+            case 3 -> new ItemStack(ModItems.PURE_CARBON_DUST);
             default -> ItemStack.EMPTY;
         };
     }
@@ -164,7 +166,9 @@ public final class FireclayForgeBlockEntity extends BaseContainerBlockEntity {
 		burnTotal = woodFuel ? WOOD_BURN_TICKS : CHARCOAL_BURN_TICKS;
 		burnTicks = burnTotal;
 		woodByproductTicks = 0;
-		alloyTicks = 0; // A full 5-minute charcoal fire is required, not partial fuel reuse.
+        // Carbon refining needs 400 seconds across consecutive 300-second charcoal fires.
+        // Other recipes must still complete in one uninterrupted five-minute cycle.
+        if (!(nextWood == false && processingKind() == 3 && processInputKind == 3)) alloyTicks = 0;
 		processInputKind = processingKind();
 		refreshBlockState();
 		level.playSound(null, getBlockPos(), SoundEvents.FIRECHARGE_USE, SoundSource.BLOCKS, 0.35F, 0.9F);
@@ -184,7 +188,7 @@ public final class FireclayForgeBlockEntity extends BaseContainerBlockEntity {
 		}
         if (!formed) { alloyTicks = 0; return; }
         if (burnTicks <= 0) {
-            alloyTicks = 0;
+            if (processingKind() != 3 || processingKind() != processInputKind) alloyTicks = 0;
             // A log batch is itself a valid charcoal-producing job, even when
             // there is no material in INPUT_SLOT. ignite() checks for FOUR logs,
             // available charcoal output space, an intact Firestarter and a
@@ -205,7 +209,7 @@ public final class FireclayForgeBlockEntity extends BaseContainerBlockEntity {
         }
         if (!woodFuel && currentKind != 0 && canOutputProcessed(currentKind)) {
             alloyTicks++;
-            if (alloyTicks >= CHARCOAL_BURN_TICKS) {
+            if (alloyTicks >= (currentKind == 3 ? 400 * 20 : CHARCOAL_BURN_TICKS)) {
                 items.get(INPUT_SLOT).shrink(1);
                 if (items.get(INPUT_SLOT).isEmpty()) items.set(INPUT_SLOT, ItemStack.EMPTY);
                 ItemStack output = items.get(PRIMARY_OUTPUT_SLOT);
@@ -282,7 +286,7 @@ public final class FireclayForgeBlockEntity extends BaseContainerBlockEntity {
 			woodByproductTicks = Math.max(0, Math.min(WOOD_BYPRODUCT_TICKS - 1, input.getIntOr("ForgeByproductTicks", 0)));
 			woodFuel = input.getBooleanOr("ForgeWoodFuel", false);
 		}
-		alloyTicks = Math.max(0, Math.min(CHARCOAL_BURN_TICKS - 1, input.getIntOr("ForgeAlloyTicks", 0)));
+		alloyTicks = Math.max(0, Math.min(400 * 20 - 1, input.getIntOr("ForgeAlloyTicks", 0)));
 		processInputKind = input.getIntOr("ForgeProcessInputKind", processingKind());
 		formed = false;
 		structureCheckCooldown = 0;

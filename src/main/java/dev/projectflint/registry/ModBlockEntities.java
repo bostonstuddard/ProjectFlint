@@ -21,6 +21,7 @@ import dev.projectflint.block.entity.NestBlockEntity;
 import dev.projectflint.block.entity.WellPulleyBlockEntity;
 import dev.projectflint.block.entity.FireclayForgeBlockEntity;
 import dev.projectflint.block.entity.BasinBlockEntity;
+import dev.projectflint.block.entity.DynamiteChargeBlockEntity;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -84,7 +85,9 @@ public final class ModBlockEntities {
 	public static final BlockEntityType<BrickFurnaceBlockEntity> BRICK_FURNACE = register("brick_furnace", FabricBlockEntityTypeBuilder.create(BrickFurnaceBlockEntity::new, ModBlocks.BRICK_FURNACE, ModBlocks.BRICK_BLAST_FURNACE).build());
 	public static final BlockEntityType<NestBlockEntity> NEST = register("nest", FabricBlockEntityTypeBuilder.create(NestBlockEntity::new, ModBlocks.NEST).build());
 	public static final BlockEntityType<WellPulleyBlockEntity> WELL_PULLEY = register("well_pulley", FabricBlockEntityTypeBuilder.create(WellPulleyBlockEntity::new, ModBlocks.WELL_PULLEY).build());
-	public static final BlockEntityType<BasinBlockEntity> BASIN = register("basin", FabricBlockEntityTypeBuilder.create(BasinBlockEntity::new, ModBlocks.BASIN).build());
+	public static final BlockEntityType<DynamiteChargeBlockEntity> DYNAMITE_CHARGE = register("dynamite_charge",
+        FabricBlockEntityTypeBuilder.create(DynamiteChargeBlockEntity::new, ModBlocks.DYNAMITE_CHARGE).build());
+    public static final BlockEntityType<BasinBlockEntity> BASIN = register("basin", FabricBlockEntityTypeBuilder.create(BasinBlockEntity::new, ModBlocks.BASIN).build());
 	public static final BlockEntityType<FireclayForgeBlockEntity> FIRECLAY_FORGE = register("fireclay_forge", FabricBlockEntityTypeBuilder.create(FireclayForgeBlockEntity::new, ModBlocks.FIRECLAY_FORGE_CONTROLLER).build());
 
 	public static final BlockEntityType<WovenChestBlockEntity> WOVEN_CHEST = register(

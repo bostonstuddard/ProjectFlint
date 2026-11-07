@@ -60,6 +60,7 @@ import dev.projectflint.block.PrototypeStationBlock;
 import dev.projectflint.block.BasinBlock;
 import dev.projectflint.block.HardwoodCraftingTableBlock;
 import dev.projectflint.block.AxleBlock;
+import dev.projectflint.block.DynamiteChargeBlock;
 import dev.projectflint.block.FireclayForgeControllerBlock;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -87,6 +88,7 @@ public final class ModBlocks {
 	public static final FatBurningTorchBlock FAT_BURNING_TORCH = registerFatTorch("fat_burning_torch");
 	public static final Block HARDWOOD_CRAFTING_TABLE = registerHardwoodTable("hardwood_crafting_table");
     public static final AxleBlock AXLE = registerAxle("axle");
+    public static final DynamiteChargeBlock DYNAMITE_CHARGE = registerDynamiteCharge("dynamite_charge");
 	public static final FiberWorkPileBlock FIBER_WORK_PILE = registerFiberWorkPile("fiber_work_pile");
 	public static final HammerAssemblyBlock HAMMER_ASSEMBLY = registerHammerAssembly("hammer_assembly");
 	public static final BindingAssemblyBlock BINDING_ASSEMBLY = registerBindingAssembly("binding_assembly");
@@ -263,7 +265,14 @@ public final class ModBlocks {
 		));
 	}
 
-	private static FlintTorchBlock registerFlintTorch(String name) {
+	private static DynamiteChargeBlock registerDynamiteCharge(String name) {
+        ResourceKey<Block> key = ResourceKey.create(Registries.BLOCK, ProjectFlint.id(name));
+        return Registry.register(BuiltInRegistries.BLOCK, key, new DynamiteChargeBlock(
+            BlockBehaviour.Properties.of().setId(key).noCollision().noOcclusion().noLootTable()
+                .strength(-1.0F, 3600000.0F).sound(SoundType.WOOD)));
+    }
+
+    private static FlintTorchBlock registerFlintTorch(String name) {
 		ResourceKey<Block> key = ResourceKey.create(Registries.BLOCK, ProjectFlint.id(name));
 		return Registry.register(BuiltInRegistries.BLOCK, key, new FlintTorchBlock(
 			BlockBehaviour.Properties.of().setId(key).noCollision().noOcclusion().noLootTable()

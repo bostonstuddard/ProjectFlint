@@ -1,0 +1,19 @@
+{
+  "type": "projectflint:hardwood_shaped",
+  "category": "misc",
+  "pattern": [
+    " F ",
+    "PRP",
+    "PCP"
+  ],
+  "key": {
+    "F": "projectflint:fuse",
+    "P": "projectflint:black_powder",
+    "R": "minecraft:red_dye",
+    "C": "projectflint:copper_dust"
+  },
+  "result": {
+    "id": "projectflint:dynamite",
+    "count": 1
+  }
+}

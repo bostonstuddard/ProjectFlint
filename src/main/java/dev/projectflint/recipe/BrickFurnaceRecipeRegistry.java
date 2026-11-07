@@ -22,6 +22,10 @@ public final class BrickFurnaceRecipeRegistry {
 		"glass", Ingredient.of(Items.SAND), new ItemStack(Items.GLASS),
 		GameplayTuning.KILN_MEAT_COOK_TICKS * 2, Set.of(PrimitiveProcessor.KILN)
 	);
+    public static final PrimitiveProcessingRecipe FINE_FUSE_POWDER = new PrimitiveProcessingRecipe(
+        "fine_fuse_powder", Ingredient.of(ModItems.FUSE_READY_DUST), new ItemStack(ModItems.FINE_FUSE_POWDER),
+        200 * 20, Set.of(PrimitiveProcessor.KILN)
+    );
     public static final PrimitiveProcessingRecipe STONE = new PrimitiveProcessingRecipe(
         "stone_from_cobblestone", Ingredient.of(Items.COBBLESTONE), new ItemStack(Items.STONE),
         GameplayTuning.KILN_MEAT_COOK_TICKS, Set.of(PrimitiveProcessor.KILN)

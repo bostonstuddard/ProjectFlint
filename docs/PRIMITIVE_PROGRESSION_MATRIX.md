@@ -285,4 +285,8 @@ One material is processed at a time. 2–5 landed stomps depending on input (see
 
 ## v0.31.64-b — Restored early Wooden Tool and Sheet/Board steps
 The personal 2×2 grid once again accepts the original Wooden Axe, Pickaxe and Shovel costs. Personal Sword and Hoe variants use Wooden Sheets, Stick and (for Hoe) Plant Tool Binding. Personal Oak Planks + Bone Knife produce 3 Wooden Sheets; Oak Planks + Flint File produce 1 Wooden Board, with each tool losing one durability. The Hardwood Table yields 4 Sheets or 2 Boards from any plank type. These stations must not compete with duplicate recipes. The Wooden Axe personal recipe must remain enabled: later Log → Planks → Basin Wood Dust → Hardwood must not be gated behind the Hardwood Table. Fireclay Charcoal refuels only when an actual recipe can process, and the Utility Vest clears vegetation but no rock.
-Flint Axe can produce the first 2 Planks from a Log without a Wooden Axe. That enables Bone Knife → Wooden Sheets and the personal Wooden Axe recipe; Flint Axe and Wooden Axe are both valid plank-working tools.
+Flint Axe no longer cuts Logs into Planks. Wooden and Hardwood Axes are eligible, and a one-Stripped-Log plus Bone Knife personal 2×2 craft now yields one Wooden Sheet for the first Wooden Axe. Live fresh-start survival validation is still required.
+
+### Weak blasting stage (v0.31.66-b)
+
+Basin Charcoal/Coal → Sulfur and rare Carbon Dust → fuse ingredients (Silicon, Aluminum, Tin, Silver) → 200-second Brick Furnace → Fuse + either Black Powder route → Weak Dynamite. Black Powder and Dynamite are Hardwood Table crafts. Dynamite is primed with an offhand Firestarter, detonates after 4.5 seconds, damages players and creatures up to 12, and processes only ordinary rock and iron/copper/coal surface ores with 150% Basin odds. Deepslate and machines are immune. Carbon Dust → 400-second Fireclay Forge → Pure Carbon Dust.

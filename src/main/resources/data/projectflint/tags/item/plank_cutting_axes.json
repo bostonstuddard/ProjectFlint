@@ -1,7 +1,6 @@
 {
   "replace": false,
   "values": [
-    "projectflint:flint_axe",
     "minecraft:wooden_axe",
     "projectflint:hardwood_axe"
   ]

@@ -333,6 +333,11 @@ public final class ProjectFlintRecipeGuideScreen extends Screen {
         result.add(new GuideRecipe(List.of(new ItemStack(ModItems.SLAG)), new ItemStack(ModItems.COPPER_DUST)).withNote("33% chance."));
         result.add(new GuideRecipe(List.of(new ItemStack(ModItems.SLAG)), new ItemStack(ModItems.SILICON_DUST)).withNote("33% chance."));
         result.add(new GuideRecipe(List.of(new ItemStack(ModItems.SLAG)), new ItemStack(ModItems.RARE_EARTH_DUST)).withNote("1.8% chance, independent of all other drops."));
+        result.add(new GuideRecipe(List.of(new ItemStack(Items.CHARCOAL)), new ItemStack(ModItems.SULFUR_DUST)).withNote("20% chance; Wood Dust 15%."));
+        result.add(new GuideRecipe(List.of(new ItemStack(Items.CHARCOAL)), new ItemStack(ModItems.WOOD_DUST)).withNote("15% chance; Sulfur Dust 20%."));
+        result.add(new GuideRecipe(List.of(new ItemStack(Items.COAL)), new ItemStack(ModItems.SULFUR_DUST)).withNote("45% chance."));
+        result.add(new GuideRecipe(List.of(new ItemStack(Items.COAL)), new ItemStack(ModItems.STONE_DUST)).withNote("43% chance, plus a separate 23% roll."));
+        result.add(new GuideRecipe(List.of(new ItemStack(Items.COAL)), new ItemStack(ModItems.CARBON_DUST)).withNote("2.4% chance."));
         for (GuideRecipe recipe : result)
             recipe.withStomps(dev.projectflint.block.entity.BasinBlockEntity.requiredStompsFor(recipe.inputs.get(0)));
         return result;
@@ -367,6 +372,7 @@ public final class ProjectFlintRecipeGuideScreen extends Screen {
 		results.add(new GuideRecipe(List.of(new ItemStack(Items.LEATHER)), BrickFurnaceRecipeRegistry.TANNED_LEATHER.resultCopy()));
 		results.add(new GuideRecipe(List.of(new ItemStack(Items.SAND)), BrickFurnaceRecipeRegistry.GLASS.resultCopy()));
         results.add(new GuideRecipe(List.of(new ItemStack(Items.COBBLESTONE)), BrickFurnaceRecipeRegistry.STONE.resultCopy()));
+        results.add(new GuideRecipe(List.of(new ItemStack(ModItems.FUSE_READY_DUST)), BrickFurnaceRecipeRegistry.FINE_FUSE_POWDER.resultCopy()));
 		results.sort(Comparator.comparing(recipe -> recipe.output.getHoverName().getString()));
 		return results;
 	}
@@ -378,6 +384,8 @@ public final class ProjectFlintRecipeGuideScreen extends Screen {
 				new ItemStack(ModItems.HARDWOOD_ALLOY)),
             new GuideRecipe(List.of(new ItemStack(ModItems.MBSSIG_DUST), new ItemStack(Items.CHARCOAL)),
                 new ItemStack(ModItems.PURE_MICA_INSULATED_GLASS)).withNote("Five minutes of uninterrupted Charcoal heat."),
+            new GuideRecipe(List.of(new ItemStack(ModItems.CARBON_DUST), new ItemStack(Items.CHARCOAL, 2)),
+                new ItemStack(ModItems.PURE_CARBON_DUST)).withNote("400 seconds of charcoal heat across two fuel cycles."),
 			new GuideRecipe(List.of(new ItemStack(Items.OAK_LOG, 4)), new ItemStack(Items.CHARCOAL, 4),
 				List.of(acceptedForgeWood())));
 	}

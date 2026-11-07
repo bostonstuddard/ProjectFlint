@@ -29,6 +29,7 @@ import dev.projectflint.item.ClayBucketItem;
 import dev.projectflint.item.ClayWaterBucketItem;
 import dev.projectflint.item.ScrewedBeamBlockItem;
 import dev.projectflint.item.BoneHoeItem;
+import dev.projectflint.item.DynamiteItem;
 import dev.projectflint.item.BookshelfItem;
 import dev.projectflint.item.RecipeParchmentItem;
 import dev.projectflint.system.ToolCapabilities;
@@ -264,7 +265,15 @@ public final class ModItems {
 	private static final ToolMaterial HARDWOOD_HAMMER_MATERIAL = new ToolMaterial(
 		ToolMaterial.STONE.incorrectBlocksForDrops(), 560, 2.0F, 1.0F, 12, ToolMaterial.STONE.repairItems());
 	public static final Item WOOD_DUST = register("wood_dust", properties -> new Item(properties.stacksTo(64)));
-	public static final Item TIN_DUST = register("tin_dust", properties -> new Item(properties.stacksTo(64)));
+	public static final Item FUSE_READY_DUST = register("fuse_ready_dust", properties -> new Item(properties.stacksTo(64)));
+    public static final Item FINE_FUSE_POWDER = register("fine_fuse_powder", properties -> new Item(properties.stacksTo(64)));
+    public static final Item FUSE = register("fuse", properties -> new Item(properties.stacksTo(64)));
+    public static final Item BLACK_POWDER = register("black_powder", properties -> new Item(properties.stacksTo(64)));
+    public static final Item SULFUR_DUST = register("sulfur_dust", properties -> new Item(properties.stacksTo(64)));
+    public static final Item CARBON_DUST = register("carbon_dust", properties -> new Item(properties.stacksTo(64)));
+    public static final Item PURE_CARBON_DUST = register("pure_carbon_dust", properties -> new Item(properties.stacksTo(64)));
+    public static final Item DYNAMITE = register("dynamite", properties -> new DynamiteItem(properties.stacksTo(16)));
+    public static final Item TIN_DUST = register("tin_dust", properties -> new Item(properties.stacksTo(64)));
 	public static final Item RARE_EARTH_DUST = register("rare_earth_dust", properties -> new Item(properties.stacksTo(64)));
 	public static final Item LITHIUM_DUST = register("lithium_dust", properties -> new Item(properties.stacksTo(64)));
 	public static final Item ALUMINUM_DUST = register("aluminum_dust", properties -> new Item(properties.stacksTo(64)));

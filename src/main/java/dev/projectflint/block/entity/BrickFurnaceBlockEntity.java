@@ -103,7 +103,7 @@ public final class BrickFurnaceBlockEntity extends BaseContainerBlockEntity {
 	public boolean canPlaceItem(int slot, ItemStack stack) {
 		if (slot >= OUTPUT_START) return false;
 		if (slot == FUEL_SLOT) return stack.is(Items.CHARCOAL);
-		return slot == INPUT_SLOT && (PrimitiveProcessingRegistry.isProcessable(PrimitiveProcessor.KILN, stack) || (!isBlastFurnace() && (stack.is(Items.LEATHER) || stack.is(Items.SAND) || stack.is(Items.COBBLESTONE))));
+		return slot == INPUT_SLOT && (PrimitiveProcessingRegistry.isProcessable(PrimitiveProcessor.KILN, stack) || (!isBlastFurnace() && (stack.is(Items.LEATHER) || stack.is(Items.SAND) || stack.is(Items.COBBLESTONE) || stack.is(dev.projectflint.registry.ModItems.FUSE_READY_DUST))));
 	}
 
 	public boolean ignite() {
@@ -141,7 +141,8 @@ public final class BrickFurnaceBlockEntity extends BaseContainerBlockEntity {
 				changed = true;
 			}
 		} else {
-			int target = Math.max(1, (int)Math.ceil(recipe.get().processingTicks() / speedMultiplier()));
+			int target = recipe.get() == BrickFurnaceRecipeRegistry.FINE_FUSE_POWDER
+                ? 200 * 20 : Math.max(1, (int)Math.ceil(recipe.get().processingTicks() / speedMultiplier()));
 			if (progressMax != target) {
 				progressMax = target;
 				progress = Math.min(progress, target);
@@ -165,6 +166,8 @@ public final class BrickFurnaceBlockEntity extends BaseContainerBlockEntity {
 		if (!isBlastFurnace() && input.is(Items.LEATHER)) return Optional.of(BrickFurnaceRecipeRegistry.TANNED_LEATHER);
 		if (!isBlastFurnace() && input.is(Items.SAND)) return Optional.of(BrickFurnaceRecipeRegistry.GLASS);
         if (!isBlastFurnace() && input.is(Items.COBBLESTONE)) return Optional.of(BrickFurnaceRecipeRegistry.STONE);
+        if (!isBlastFurnace() && input.is(dev.projectflint.registry.ModItems.FUSE_READY_DUST))
+            return Optional.of(BrickFurnaceRecipeRegistry.FINE_FUSE_POWDER);
 		return PrimitiveProcessingRegistry.find(PrimitiveProcessor.KILN, input);
 	}
 

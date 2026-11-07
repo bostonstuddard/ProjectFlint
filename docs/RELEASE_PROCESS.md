@@ -105,3 +105,7 @@ When customizing `ServerPlayerGameMode.destroyBlock` to return `false` after suc
 ## v0.31.64-b — Survival progression and recipe-ownership gate
 Before packaging, compare K-key personal guide entries to actual recipe IDs and RecipeManager filters, and compare Hardwood Table recipes for duplicate ingredient/tool signatures. Test recipes in both the 2×2 and 3×3 inputs; guide entries alone do not prove that a recipe loads. A change to `RecipeManagerMixin` must not silently disable early tools. Verify vanilla plant variants (including newly added plants) against the Vest and both client/server break handlers. Auto-ignition must never spend fuel when output is blocked or input missing. Preserve existing cleanup lineage, build version, distribution behavior and root-relative patch ZIP.
 
+
+### v0.31.66-b — Runtime mixin and blast test gate
+
+Mixin targets must be confirmed against mapped Minecraft 1.21.11 class owners AND launched before release. For the dynamite milestone test: all six placement faces, insufficient/absent offhand lighter, fuse save/reload, 90-tick detonation, player damage, radius, full allowlist, blocked deepslate and machines, Basin probability scaling including >100%, no unintended vanilla TNT drops, both Hardwood recipes and Forge/Furnace timing. Run tool and guide parity checks.
