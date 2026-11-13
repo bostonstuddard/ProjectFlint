@@ -105,7 +105,7 @@ public abstract class ServerPlayerGameModeMixin {
                 return;
             }
             if (!OreMiningRules.canGetDrops(state, held)) {
-                level.removeBlock(pos, false);
+                // Never remove a forbidden ore or rock: denied mining must be a true no-op.
                 cir.setReturnValue(false);
                 return;
             }
@@ -137,6 +137,21 @@ public abstract class ServerPlayerGameModeMixin {
             // Legitimate vanilla pickaxes keep their own mining speed and vanilla loot checks.
         }
 
+        // Paired flowers must be removed as one harvest. Vanilla neighbor updates can
+        // otherwise detach the other half and spawn a duplicate drop.
+        if (projectflint$isTallFlower(state) && !ModItems.isPlantCutterLike(held)) {
+            BlockPos lowerPos = state.getValue(DoublePlantBlock.HALF) == DoubleBlockHalf.UPPER ? pos.below() : pos;
+            BlockState lower = level.getBlockState(lowerPos);
+            if (lower.is(state.getBlock())) {
+                java.util.List<ItemStack> flowerDrops = Block.getDrops(lower, level, lowerPos,
+                    level.getBlockEntity(lowerPos), player, held);
+                projectflint$removeFlowerWithoutDrops(pos, state);
+                for (ItemStack flowerDrop : flowerDrops) projectflint$dropAtBlock(lowerPos, flowerDrop);
+                cir.setReturnValue(false);
+                return;
+            }
+        }
+
         // Only the Tanned Utility Vest (or later eligible gear) permits recovery.
         // Always return the glass intact without Silk Touch; never break it bare-handed.
         if (state.is(ModBlocks.PURE_MICA_INSULATED_GLASS)) {
@@ -156,7 +171,8 @@ public abstract class ServerPlayerGameModeMixin {
             if (state.is(ModBlocks.NEST) && level.getBlockEntity(pos) instanceof dev.projectflint.block.entity.NestBlockEntity nest)
                 Containers.dropContents(level, pos, nest);
             level.removeBlock(pos, false);
-            ItemStack recovered = state.is(Blocks.WALL_TORCH) ? new ItemStack(Items.TORCH)
+            ItemStack recovered = state.is(Blocks.TRIPWIRE) ? new ItemStack(Items.STRING)
+                : state.is(Blocks.WALL_TORCH) ? new ItemStack(Items.TORCH)
                 : state.is(Blocks.SOUL_WALL_TORCH) ? new ItemStack(Items.SOUL_TORCH)
                 : state.is(Blocks.REDSTONE_WALL_TORCH) ? new ItemStack(Items.REDSTONE_TORCH)
                 : new ItemStack(state.getBlock().asItem());
@@ -797,6 +813,7 @@ public abstract class ServerPlayerGameModeMixin {
 
 		if (state.is(BlockTags.LEAVES) && held.is(ModItems.FLINT_PLANT_CUTTERS)) {
 			level.removeBlock(pos, false);
+            projectflint$dropAtBlock(pos, new ItemStack(ModItems.BRANCH, 5));
 			ItemStack sapling = projectflint$saplingForLeaves(state);
 			if (!sapling.isEmpty() && level.getRandom().nextFloat() < 0.25F) projectflint$dropAtBlock(pos, sapling);
 			if (level.getRandom().nextFloat() < 0.10F) projectflint$dropAtBlock(pos, new ItemStack(Items.STICK));
@@ -1035,13 +1052,18 @@ public abstract class ServerPlayerGameModeMixin {
 		return harvested;
 	}
 
+    private static boolean projectflint$isTallFlower(BlockState state) {
+        return state.is(Blocks.SUNFLOWER) || state.is(Blocks.LILAC)
+            || state.is(Blocks.ROSE_BUSH) || state.is(Blocks.PEONY);
+    }
+
 	private void projectflint$removeFlowerWithoutDrops(BlockPos pos, BlockState state) {
 		if (state.hasProperty(DoublePlantBlock.HALF)) {
 			DoubleBlockHalf half = state.getValue(DoublePlantBlock.HALF);
 			BlockPos otherPos = half == DoubleBlockHalf.LOWER ? pos.above() : pos.below();
 			BlockState otherState = level.getBlockState(otherPos);
-			if (otherState.is(state.getBlock()) && otherState.hasProperty(DoublePlantBlock.HALF)) level.removeBlock(otherPos, false);
+			if (otherState.is(state.getBlock()) && otherState.hasProperty(DoublePlantBlock.HALF)) level.setBlock(otherPos, Blocks.AIR.defaultBlockState(), Block.UPDATE_CLIENTS | Block.UPDATE_SUPPRESS_DROPS);
 		}
-		level.removeBlock(pos, false);
+		level.setBlock(pos, Blocks.AIR.defaultBlockState(), Block.UPDATE_CLIENTS | Block.UPDATE_SUPPRESS_DROPS);
 	}
 }

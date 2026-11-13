@@ -67,6 +67,15 @@ public final class PrimitiveAnimalDropSystem {
 
 			boolean defaultLootTable = entity.getType().getDefaultLootTable().isPresent()
 				&& entry.is(entity.getType().getDefaultLootTable().get());
+            // Only eligible adult default animal deaths get the extra hides.
+            boolean eligibleAdultDeath = defaultLootTable && context.hasParameter(LootContextParams.DAMAGE_SOURCE)
+                && (!(entity instanceof AgeableMob ageable) || !ageable.isBaby());
+            if (eligibleAdultDeath && entity instanceof Cow
+                && drops.stream().noneMatch(stack -> stack.is(ModItems.RAW_LEATHER)))
+                drops.add(new ItemStack(ModItems.RAW_LEATHER));
+            if (eligibleAdultDeath && (entity instanceof BlackBear || entity instanceof BrownBear))
+                drops.add(new ItemStack(ModItems.RAW_LEATHER, 2 + entity.getRandom().nextInt(2)));
+
 			if (defaultLootTable && entity instanceof Squid) {
 				drops.add(new ItemStack(ModItems.RAW_CALAMARI));
 			}

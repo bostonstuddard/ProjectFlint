@@ -2,8 +2,8 @@
   "parent": "minecraft:block/block",
   "ambientocclusion": false,
   "textures": {
-    "particle": "projectflint:block/placed/refined_flint_multitool_piece",
-    "piece": "projectflint:block/placed/refined_flint_multitool_piece"
+    "particle": "projectflint:item/refined_flint_multitool_piece",
+    "piece": "projectflint:item/refined_flint_multitool_piece"
   },
   "elements": [
     {

@@ -1,0 +1,14 @@
+{
+  "type": "projectflint:hardwood_durable",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:clay_ball",
+    "minecraft:clay_ball",
+    "minecraft:clay_ball"
+  ],
+  "tool": "projectflint:bone_knife",
+  "result": {
+    "id": "projectflint:unfired_clay_bucket",
+    "count": 1
+  }
+}

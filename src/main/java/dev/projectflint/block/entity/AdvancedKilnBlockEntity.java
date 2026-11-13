@@ -143,14 +143,14 @@ public final class AdvancedKilnBlockEntity extends BaseContainerBlockEntity {
 		}
 		ItemStack result = outputFor(mold);
 		if (result.isEmpty()) return null;
-		return new ProcessDefinition(3, result, 8, 8, ModItems.FIRED_CLAY, 4, DEFAULT_PROCESS_TICKS, true, mold.is(ModItems.FIRED_CLAY_POT_MOLD));
+		return new ProcessDefinition(3, result, 8, 6, ModItems.FIRED_CLAY, 4, DEFAULT_PROCESS_TICKS, true, mold.is(ModItems.FIRED_CLAY_POT_MOLD));
 	}
 
 	private ProcessDefinition activeDefinition() {
 		if (activeProcess == 1) return new ProcessDefinition(1, new ItemStack(ModItems.BURNT_BRANCH_BLOCK), 4, 4, null, 0, BURNT_BRANCH_BLOCK_PROCESS_TICKS, false, false);
 		if (activeProcess == 2) return new ProcessDefinition(2, new ItemStack(ModItems.CRUDE_CLAY_BLOCK, 3), 8, 0, ModItems.UNFIRED_CLAY_BALL, 8, CRUDE_CLAY_BLOCK_PROCESS_TICKS, true, false);
 		ItemStack result = outputFor(items.get(MOLD_SLOT));
-		return result.isEmpty() ? null : new ProcessDefinition(3, result, 8, 8, ModItems.FIRED_CLAY, 4, DEFAULT_PROCESS_TICKS, true, items.get(MOLD_SLOT).is(ModItems.FIRED_CLAY_POT_MOLD));
+		return result.isEmpty() ? null : new ProcessDefinition(3, result, 8, 6, ModItems.FIRED_CLAY, 4, DEFAULT_PROCESS_TICKS, true, items.get(MOLD_SLOT).is(ModItems.FIRED_CLAY_POT_MOLD));
 	}
 
 	private boolean canStartProcess(ProcessDefinition process) {

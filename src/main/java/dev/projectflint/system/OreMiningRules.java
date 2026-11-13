@@ -178,9 +178,9 @@ public final class OreMiningRules {
         }
         if (isCoal(state)) {
             if (isWoodenTier(held)) return held.is(ModItems.HARDWOOD_HAMMER) ? HAMMER_STONE_PROGRESS : WOODEN_PROGRESS;
-            return isValidVanillaPickaxe(state, held) ? vanilla : UNQUALIFIED_ORE_PROGRESS;
+            return isValidVanillaPickaxe(state, held) ? vanilla : 0.0F;
         }
         if (isCopperOrIronStoneOre(state) && held.is(ModItems.HARDWOOD_HAMMER)) return WOODEN_PROGRESS;
-        return isValidVanillaPickaxe(state, held) ? vanilla : UNQUALIFIED_ORE_PROGRESS;
+        return isValidVanillaPickaxe(state, held) ? vanilla : 0.0F;
     }
 }

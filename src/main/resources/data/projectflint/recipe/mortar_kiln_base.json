@@ -1,7 +1,7 @@
 {
   "type": "projectflint:clay_grinding",
   "ingredient": "projectflint:mortar_bricks",
-  "input_count": 32,
+  "input_count": 24,
   "result": {
     "id": "projectflint:mortar_kiln_base",
     "count": 1

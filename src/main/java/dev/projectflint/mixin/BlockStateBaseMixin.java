@@ -224,7 +224,7 @@ public abstract class BlockStateBaseMixin {
 			if (canChop && level instanceof net.minecraft.world.level.Level actualLevel && !actualLevel.isClientSide()) {
 				canChop = LumberProcessorSystem.canChop(actualLevel, pos.below());
 			}
-			cir.setReturnValue(canChop ? 1.0F / 150.0F : 0.0F);
+			cir.setReturnValue(canChop ? 1.0F / 90.0F : 0.0F);
 			return;
 		}
 		if (state.is(ModBlocks.MORTAR_BRICKS)) {
@@ -271,7 +271,7 @@ public abstract class BlockStateBaseMixin {
 			return;
 		}
 		if (held.is(ModItems.FLINT_AXE) && (projectflint$isSupportedFlintAxeLog(state) || projectflint$isStrippedFlintAxeLog(state))) {
-			cir.setReturnValue(1.0F / 130.0F);
+			cir.setReturnValue(1.0F / 125.0F);
 			return;
 		}
 		if (held.is(ModItems.FLINT_AXE) && (projectflint$isVanillaPlankSlab(state) || projectflint$isProcessedWood(state))) {

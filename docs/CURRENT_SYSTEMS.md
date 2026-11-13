@@ -1,3 +1,7 @@
+## 0.32.1 approved maintenance changes
+
+Stone/ore denial is non-destructive and strictly tool-gated; tall flowers drop only once; Tripwire returns String when recovered by hand; Clay Water Buckets fill empty Water Pots completely. Wooden Grinder and Hardwood Table recipes have the approved costs and benefits, while slab-to-log reverse conversion is removed. Current player-facing specifics are in `docs/releases/0.32.1.md`; proposal-only changes #17/#25 are in `docs/proposals/`.
+
 ## Current gameplay: v0.31.69-b (Hardwood Table alternative and restricted Dynamite reach)
 - **Hardwood Table Hardwood**: pattern `DDD / DWD / TTT`, with Wood Dust in the five upper outer slots, a filled Clay Water Bucket (or vanilla Water Bucket) in the center, and Tannin in the bottom three slots. Produces 1 Hardwood, returning the emptied bucket. The personal Hardwood recipe is unchanged. Three-second table timer applies.
 - Packed Mud and Mud Bricks (including slabs, stairs and walls) now use the Fireclay Brick recovery tier: a qualifying pickaxe-capable tool is required, and recovered blocks drop intact. Bare hands and the Utility Vest cannot mine them.

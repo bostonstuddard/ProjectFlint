@@ -14,7 +14,7 @@ import net.minecraft.world.item.Items;
 /** Project Flint behavior attached only to the special 512-durability vanilla Brush. */
 public final class ProjectFlintBrushSystem {
 	public static final int DURABILITY = 512;
-	public static final int BRUSH_TICKS = 50; // 2.5 seconds: one second faster than Bone Brush.
+	public static final int BRUSH_TICKS = 35; // 1.75 seconds for the 512-durability Project Flint Brush only.
 
 	private ProjectFlintBrushSystem() {}
 

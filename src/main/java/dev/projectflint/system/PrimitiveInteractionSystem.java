@@ -74,7 +74,7 @@ public final class PrimitiveInteractionSystem {
 			// Primitive Stone processing is intentionally allowed before the general
 			// pickaxe restrictions; it is NOT permission to mine other rock or ore.
 			if (OreMiningRules.canPrimitiveStoneWork(state, held)) return InteractionResult.PASS;
-			return !OreMiningRules.isStoneFamily(state) || OreMiningRules.canGetDrops(state, held)
+			return OreMiningRules.canGetDrops(state, held)
 				? InteractionResult.PASS : InteractionResult.FAIL;
 		}
         if (state.is(ModBlocks.DIRT_SLAB) || state.is(ModBlocks.DIRT_STAIRS)) {
@@ -825,7 +825,7 @@ public final class PrimitiveInteractionSystem {
 		if (OreMiningRules.isRestricted(state)) {
             if (WoodenToolTargets.mudMasonry(state)) return ToolCapabilities.canMineBrick(held);
 			if (OreMiningRules.canPrimitiveStoneWork(state, held)) return true;
-			return !OreMiningRules.isStoneFamily(state) || OreMiningRules.canGetDrops(state, held);
+			return OreMiningRules.canGetDrops(state, held);
 		}
         if (state.is(ModBlocks.DIRT_SLAB) || state.is(ModBlocks.DIRT_STAIRS)) {
             return held.is(Items.WOODEN_SHOVEL) || held.is(ModItems.HARDWOOD_SHOVEL) || ModItems.isMultitool(held);

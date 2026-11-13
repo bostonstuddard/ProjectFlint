@@ -2,8 +2,8 @@
   "parent": "minecraft:block/block",
   "ambientocclusion": false,
   "textures": {
-    "particle": "projectflint:block/placed/flint_axe_pieces",
-    "piece": "projectflint:block/placed/flint_axe_pieces"
+    "particle": "projectflint:item/flint_axe_pieces",
+    "piece": "projectflint:item/flint_axe_pieces"
   },
   "elements": [
     {

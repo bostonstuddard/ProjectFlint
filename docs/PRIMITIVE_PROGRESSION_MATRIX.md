@@ -1,3 +1,7 @@
+## 0.32.1 approved maintenance changes
+
+Stone/ore denial is non-destructive and strictly tool-gated; tall flowers drop only once; Tripwire returns String when recovered by hand; Clay Water Buckets fill empty Water Pots completely. Wooden Grinder and Hardwood Table recipes have the approved costs and benefits, while slab-to-log reverse conversion is removed. Current player-facing specifics are in `docs/releases/0.32.1.md`; proposal-only changes #17/#25 are in `docs/proposals/`.
+
 ## v0.31.69-b — Hardwood and small-blast progression
 - Hardwood has a new Hardwood Table recipe: `DDD / DWD / TTT` (5 Wood Dust, 1 filled bucket, 3 Tannin), returning the emptied bucket. The existing personal recipe remains available.
 - Weak Dynamite can affect up to 4 eligible ore blocks within 3 blocks and up to 2 eligible ordinary rock blocks within 2.25 blocks (65% chance each); Deepslate and nonallowlisted blocks remain blast-proof. Drops use independent 1.25× Basin chances.

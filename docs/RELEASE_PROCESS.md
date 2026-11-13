@@ -1,3 +1,7 @@
+## v0.32.1 — Approved issue release gate
+
+Apply the versioned `APPLY_PROJECTFLINT_0_32_1.bat` before building. It removes all wood slab-to-stripped-log reverse recipes and calls prior cleanup; a ZIP overwrite alone does not remove them. Validate gameplay rules and recipe guide parity against the exact issues documented in `docs/releases/0.32.1.md`. Issue #25 and #17 documents contain proposals **only**. Do not implement their entries without approval. Verify a full Minecraft 1.21.11 launch, early survival crafting, and FlintQuests custom-break reporting before deployment.
+
 ## v0.31.69-b regression checks
 1. Hardwood Table accepts `DDD / DWD / TTT` exactly: 5 Wood Dust, one filled bucket, 3 Tannin; returns the empty Clay or vanilla bucket; still takes 60 server ticks per craft.
 2. Preserve original personal Hardwood recipe and other Hardwood Table recipes; ensure no duplicate K-key reference entries.

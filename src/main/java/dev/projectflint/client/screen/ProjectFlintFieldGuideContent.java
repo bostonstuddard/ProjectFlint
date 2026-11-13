@@ -43,11 +43,14 @@ public final class ProjectFlintFieldGuideContent {
             "Use a Crude Stone Hammer on natural Stone to make Crushed Stone and collect four Rocks. This also counts as breaking Stone for Flint Quests.",
             "Early Multitools can also crush Stone. They cannot mine Cobblestone or ore; later Pickaxes and the Hardwood Hammer are needed for those.");
         add(c, "FIRST TOOLS", "Flint Tools", ModItems.FLINT_PLANT_CUTTERS,
-            "Work toward the Flint Axe, Flint Plant Cutters and Advanced Flint Multitool to harvest more materials and shape wood.",
+            "Work toward the Flint Axe, Flint Plant Cutters and Advanced Flint Multitool to harvest more materials and shape wood. Flint Plant Cutters yield five Branches from leaves, plus other leaf drops.",
             "Different tools have different uses. Press K and look under the relevant workstations for exact ingredients.");
         add(c, "SURVIVAL", "Food and Wildlife", Items.COOKED_BEEF,
             "Keep food ready before working. The Basin uses one hunger point for each successful stomp.",
             "Some animals fight back. Fish can be killed with the Hardwood Hammer. Fish buckets transport fish; they are not food.");
+        add(c, "SURVIVAL", "Cooking and Preserves", ModItems.SWEET_BERRY_JAM,
+            "Use the Primitive Stove to prepare food using the recipe parchments. Sweet Berry Jam and Strawberry Jam now make four servings per batch.",
+            "Mutton Pie uses four Cooked Mutton and two Sugar to make three pies. Look under the Stove tab for exact ingredients and fuel needs.");
         add(c, "SURVIVAL", "Darkness and Shelter", ModItems.FLINT_FIRESTARTER,
             "Nights are exceptionally dark. Carry light, set up shelter and use a Sleeping Bag to rest.",
             "Spending too long in deep darkness can cause Terrified. Torches and permanent fires help keep the surroundings safe.");
@@ -58,10 +61,10 @@ public final class ProjectFlintFieldGuideContent {
             "Mortar and Woven Chests provide early storage. Backpacks and other clothing extend what you can carry.",
             "The Tanned Utility Vest helps clear vegetation. It does not allow you to mine stone or dismantle masonry. It does allow you to recover Pure Mica Insulated Glass intact.");
         add(c, "CLAY AGE", "Clay and Pottery", ModItems.UNFIRED_CLAY_BALL,
-            "Collect clay, shape unfired vessels, and prepare them for firing. Fired containers last longer and can hold liquids.",
-            "Start with simple clay processing, then build more capable kilns as your materials improve.");
+            "Collect clay, shape unfired vessels, and prepare them for firing. The Hardwood Table can shape three Clay Balls into an Unfired Clay Bucket using a Bone Knife; the Knife loses durability.",
+            "Pour one full Clay Water Bucket into an empty Water Pot to fill it completely and recover your empty Clay Bucket. A partly filled pot cannot be topped off this way.");
         add(c, "CLAY AGE", "Kilns", ModItems.CRUDE_CLAY_KILN,
-            "Use a Clay Kiln to fire pottery and other early clay objects. Larger kilns require correctly assembled blocks.",
+            "Use a Clay Kiln to fire pottery and other early clay objects. Standard Advanced Kiln mold processing uses six Flint. Larger kilns require correctly assembled blocks.",
             "Most firing jobs need fuel. Check the kiln pages in Recipes for the required input and output.");
         add(c, "CLAY AGE", "Bricks and Shelter", ModItems.MORTAR_BRICKS,
             "Fire bricks for walls, ovens and more durable workstations. Brick Shingles and Wattle & Daub offer additional building materials.",
@@ -70,12 +73,18 @@ public final class ProjectFlintFieldGuideContent {
             "Use the Wooden Grinder with one Wooden Beam and a Flint File to make four Wooden Sheets. The File loses durability.",
             "Use a Wooden Axe or Hardwood Axe with Logs in personal crafting to make Planks. A Flint Axe cannot cut Planks.",
             "Use a Bone Knife on Oak Planks to make three Wooden Sheets, or a Flint File to make one Wooden Board. Both tools lose durability.");
+        add(c, "WOOD AGE", "Improved Wood Processing", ModItems.WOVEN_WOOD,
+            "In the Wooden Grinder, three Sanded Wood Slabs and a Flint File make two Grinded Wood Slabs. The File loses one durability.",
+            "Combine three Grinded Wood Slabs and three Woven Fans in the same Grinder to make two Woven Wood. Three Sugar Cane and two Branches also make four Wattle there.");
         add(c, "WOOD AGE", "Wooden Tools", Items.WOODEN_AXE,
             "Craft Wooden Axes, Pickaxes and Shovels in your personal 2x2 crafting grid. You can also make Wooden Swords and Hoes there.",
             "Wooden Axes work Logs into Planks, and Wooden Pickaxes mine ordinary Stone and Coal. Press K for the exact materials.");
+        add(c, "WOOD AGE", "Books and Research", Items.BOOK,
+            "At the Bookshelf, combine eight Sugarcane Rolls and one Leather to make a Book.",
+            "A Flint File and Bone Knife help with other bookwork at the Hardwood Table. See the Recipes tab for each station.");
         add(c, "WOOD AGE", "Lumber Processor", ModItems.LUMBER_PROCESSOR,
             "Build the Chopping Block, Water Pot and Crushed Stone parts together with support underneath each one.",
-            "Place a supported Stripped Log, fill the Water Pot, choose Boards or Beams, then work it using Flint Plant Cutters.");
+            "Place a supported Stripped Log, fill the Water Pot, choose Boards or Beams, then chop it with Flint Plant Cutters for 4.5 seconds. Washing still takes ten seconds.");
         add(c, "WOOD AGE", "Basin", ModItems.BASIN,
             "Put up to four materials in the Basin. All four appear inside it. Jump and land on the Basin to crush the first material.",
             "Each stomp costs one hunger point. Materials take two or three stomps. Empty-hand interaction returns an unfinished item. Breaking the Basin returns its contents.");
@@ -86,7 +95,7 @@ public final class ProjectFlintFieldGuideContent {
             "Raw Iron and Raw Copper can be crushed in the Basin. Each always produces one matching dust, with chances for bonus dust and other minerals.",
             "Sand, Gravel, Clay and Slag can also produce useful dusts. Each possible bonus is rolled separately, so more than one may appear from the same input.");
         add(c, "WOOD AGE", "Leather and Rope", ModItems.WOVEN_WOOL,
-            "Process hides into Leather and Tanned Leather. Prepare Leather Straps, Wool and Rope for stronger tools and machines.",
+            "Process hides into Leather and Tanned Leather. The Wooden Grinder can make a Woven Chest Frame from two Leather and four Woven Wood. Prepare straps, Wool and Rope for stronger tools.",
             "Use the Sanding Station and Hardwood Table for more advanced leather and rope recipes.");
         add(c, "WOOD AGE", "Torches and Fuel", ModItems.FAT_BURNING_TORCH,
             "Place a Fat-Burning Torch on the floor or a wall. New torches contain no Fat. Add Fat, then ignite the torch with a Firestarter.",
@@ -99,7 +108,7 @@ public final class ProjectFlintFieldGuideContent {
             "Four Logs can be burned into Charcoal. Hardwood and MBSSIG Dust each need a five-minute charcoal-fueled Forge cycle. With input, Charcoal and a working Firestarter, the Forge starts its next cycle automatically.");
         add(c, "HARDWOOD", "Making Hardwood", ModItems.HARDWOOD,
             "Combine two Wood Dust, Tannin and a filled Clay Water Bucket to create Hardwood. You get the empty Clay Bucket back.",
-            "At the Hardwood Table, you can also make Hardwood with five Wood Dust along the top and middle sides, a Water Bucket in the center, and three Tannin along the bottom. The empty bucket is returned. Heat Hardwood with Charcoal in the Fireclay Forge for five minutes to make Hardwood Alloy.");
+            "At the Hardwood Table, five Wood Dust, one Clay Water Bucket and three Tannin make three Hardwood. The empty bucket is returned. Heat Hardwood with Charcoal in the Fireclay Forge for five minutes to make Hardwood Alloy.");
         add(c, "HARDWOOD", "Crafting Table", ModItems.HARDWOOD_CRAFTING_TABLE,
             "Make the first Hardwood Crafting Table in your personal 2x2 grid from two Hardwood Alloy, Cobblestone and a Bound Wood Processor.",
             "Use its 3x3 grid for more complicated recipes. Each completed craft takes three seconds. Recipes are listed under Hardwood Table in Recipes (K).");
@@ -132,8 +141,8 @@ public final class ProjectFlintFieldGuideContent {
             "At the Hardwood Table, combine Silicon, Aluminum, Tin and Silver Dust to make Fuse-Ready Dust. Heat it for 200 seconds in the Brick Furnace to make Fine Fuse Powder, then combine it with Rope for a Fuse.",
             "Black Powder comes from Potassium Dust, Sulfur and Charcoal, or Gunpowder, Sulfur and Charcoal. Put Black Powder in the top corners and beside Red Dye, Fuse at the top center, and three Copper Dust across the bottom.");
         add(c, "BLASTING", "Using Dynamite", ModItems.DYNAMITE,
-            "Hold Dynamite in your main hand and a Firestarter or Flint and Steel in your offhand. Right-click a block to place a lit charge against it. The fuse burns for four and a half seconds.",
-            "Weak Dynamite reaches up to 3 blocks for ordinary Coal, Iron or Copper Ores (four at most) and 2.25 blocks for Stone, Cobblestone, Andesite and Granite (two at most, with a 65% chance to break each). It cannot damage Deepslate or machinery. Each Basin drop chance is 20% higher (50% becomes 60%); chances above 100% can grant extra drops.");
+            "Hold Dynamite in your main hand and a Firestarter or Flint and Steel in your offhand. Right-click a block to place a lit charge against it. The fuse burns for three seconds.",
+            "Weak Dynamite reaches up to 3 blocks for ordinary Coal, Iron or Copper Ores (four at most) and 2.25 blocks for Stone, Cobblestone, Andesite and Granite (two at most, with a 65% chance to break each). It cannot damage Deepslate or machinery. Each Basin drop chance is 25% higher (50% becomes 62.5%); chances above 100% can grant extra drops.");
         add(c, "REFERENCE", "Find Recipes", Items.CRAFTING_TABLE,
             "Press K or use Recipes below to see workstation recipes. Look for the workstation tab that matches what you're trying to make.",
             "Some recipes need fuel, water, a reusable tool or time to complete. Check the recipe's ingredients and any tool requirements.");

@@ -2,8 +2,8 @@
   "parent": "minecraft:block/block",
   "ambientocclusion": false,
   "textures": {
-    "particle": "projectflint:block/placed/flint_cutter_piece",
-    "piece": "projectflint:block/placed/flint_cutter_piece"
+    "particle": "projectflint:item/flint_cutter_piece",
+    "piece": "projectflint:item/flint_cutter_piece"
   },
   "elements": [
     {

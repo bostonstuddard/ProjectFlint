@@ -15,7 +15,7 @@ public final class BookshelfRecipeRegistry {
 	private BookshelfRecipeRegistry() {}
 
 	private static final List<Definition> RECIPES = List.of(
-		recipe(Ingredient.of(ModItems.SUGARCANE_ROLL), 8, Ingredient.of(Items.LEATHER), 2, new ItemStack(Items.BOOK), 0),
+		recipe(Ingredient.of(ModItems.SUGARCANE_ROLL), 8, Ingredient.of(Items.LEATHER), 1, new ItemStack(Items.BOOK), 0),
 		recipe(Ingredient.of(Items.BOOK), 1, Ingredient.of(Items.BLACK_DYE), 2, new ItemStack(Items.WRITABLE_BOOK), 4),
 		parchment(Ingredient.of(Items.SUGAR_CANE), 16, "projectflint:sugar"),
 		parchment(Ingredient.of(Items.SWEET_BERRIES), 16, "projectflint:sweet_berry_jam"),

@@ -34,3 +34,7 @@ Current release example: `0.31.36-b`.
 - `0.31.32-b`: introduced wheat/dairy/fat/fireclay and Brick Furnace food-progression changes.
 
 - `0.31.36-b`: Tanned Leather gear and Utility Vest milestone; Charcoal-only Brick Furnace fuel.
+
+## Public v0.32.x numbered updates
+
+The owner explicitly designates the current player-facing update as **0.32.1** (three numeric components, no channel suffix). This release line may use `0.32.x` identifiers while historical `-a`/`-b` development builds retain their original names. Do not create a fourth component.

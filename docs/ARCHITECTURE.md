@@ -1,3 +1,7 @@
+## 0.32.1 approved maintenance changes
+
+Stone/ore denial is non-destructive and strictly tool-gated; tall flowers drop only once; Tripwire returns String when recovered by hand; Clay Water Buckets fill empty Water Pots completely. Wooden Grinder and Hardwood Table recipes have the approved costs and benefits, while slab-to-log reverse conversion is removed. Current player-facing specifics are in `docs/releases/0.32.1.md`; proposal-only changes #17/#25 are in `docs/proposals/`.
+
 ## v0.31.69-b — Hardwood Table and Dynamite blast bounds
 Hardwood-only `hardwood_shaped` recipes add the five Wood Dust / one filled bucket / three Tannin arrangement; both vanilla and Clay buckets retain their empty crafting remainders. See ADR 0028 and the generated K-key guide entry.
 `DynamiteChargeBlockEntity` limits the expanded **block** radius (3 ore, 2.25 rock) with destruction caps (4 ore, 2 rock). Blast entity radius and 12 damage are unchanged; fuse is 60 ticks, rock break chance is 65%, and the Basin yield factor is 1.25×. Maintain all block allowlists and distinct client/server progression rules.

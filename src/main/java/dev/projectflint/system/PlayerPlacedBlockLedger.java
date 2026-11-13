@@ -64,7 +64,7 @@ public final class PlayerPlacedBlockLedger extends SavedData {
 
 	/** Explicitly limited to small, safely recoverable decorations. No structural salvage shortcut. */
     public static boolean isHandRecoverableDecoration(BlockState state) {
-        return state.is(ModBlocks.AXLE) || state.is(ModBlocks.FAT_BURNING_TORCH) || state.is(ModBlocks.FLINT_TORCH)
+        return state.is(Blocks.TRIPWIRE) || state.is(ModBlocks.AXLE) || state.is(ModBlocks.FAT_BURNING_TORCH) || state.is(ModBlocks.FLINT_TORCH)
             || state.is(ModBlocks.NEST) || state.is(Blocks.TORCH) || state.is(Blocks.WALL_TORCH)
             || state.is(Blocks.SOUL_TORCH) || state.is(Blocks.SOUL_WALL_TORCH)
             || state.is(Blocks.REDSTONE_TORCH) || state.is(Blocks.REDSTONE_WALL_TORCH);

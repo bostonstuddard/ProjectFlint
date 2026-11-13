@@ -46,6 +46,7 @@ public final class HardwoodCraftingGuideRegistry {
         add(all, "hardwood_bone_club", "projectflint:bone_club", 1, "Grid B/B/S; B=filed bone, S=stick", "projectflint:filed_bone#2", "minecraft:stick#1");
         add(all, "hardwood_bone_helmet", "projectflint:bone_helmet", 1, "Grid MMM/M M; M=filed bone", "projectflint:filed_bone#5");
         add(all, "hardwood_bone_hoe", "projectflint:bone_hoe", 1, "Grid BB/S/S; B=filed bone, S=stick", "projectflint:filed_bone#2", "minecraft:stick#2");
+        add(all, "hardwood_unfired_clay_bucket_knife", "projectflint:unfired_clay_bucket", 1, "Bone Knife loses one durability and is returned", "minecraft:clay_ball#3", "projectflint:bone_knife#1");
         add(all, "hardwood_bone_knife", "projectflint:bone_knife", 1, "", "minecraft:stick#1", "projectflint:filed_bone#1");
         add(all, "hardwood_bone_leggings", "projectflint:bone_leggings", 1, "Grid MMM/M M/M M; M=filed bone", "projectflint:filed_bone#7");
         add(all, "hardwood_book_and_quill", "minecraft:writable_book", 1, "", "minecraft:book#1", "minecraft:black_dye#1");
@@ -132,7 +133,7 @@ public final class HardwoodCraftingGuideRegistry {
         add(all, "hardwood_granite_slabs", "minecraft:granite_slab", 6, "Grid SSS; S=granite", "minecraft:granite#3");
         add(all, "hardwood_granite_stairs", "minecraft:granite_stairs", 4, "Grid S/SS/SSS; S=granite", "minecraft:granite#6");
         add(all, "hardwood_hammer", "projectflint:hardwood_hammer", 1, "Grid AAA/AAA/LSR; A=hardwood alloy, L=leather strap, S=hardwood sticks, R=rope", "projectflint:hardwood_alloy#6", "projectflint:leather_strap#1", "projectflint:hardwood_sticks#1", "projectflint:rope#1");
-        add(all, "hardwood_hardwood_from_wood_dust", "projectflint:hardwood", 1, "Grid DDD/DWD/TTT; D=wood dust, W=filled clay or iron water bucket, T=tannin; empty bucket returned", "projectflint:wood_dust#5", "projectflint:clay_water_bucket#1", "projectflint:tannin#3");
+        add(all, "hardwood_hardwood_from_wood_dust", "projectflint:hardwood", 3, "Grid DDD/DWD/TTT; D=wood dust, W=filled clay or iron water bucket, T=tannin; empty bucket returned", "projectflint:wood_dust#5", "projectflint:clay_water_bucket#1", "projectflint:tannin#3");
         add(all, "hardwood_hoe", "projectflint:hardwood_hoe", 1, "Grid HHL/S/S; H=hardwood, S=hardwood sticks, L=leather strap", "projectflint:hardwood#2", "projectflint:leather_strap#1", "projectflint:hardwood_sticks#2");
         add(all, "hardwood_jungle_beam", "projectflint:jungle_wooden_beam", 1, "Tool used with durability; returned with wear", "minecraft:jungle_log#1", "projectflint:flint_plant_cutters#1");
         add(all, "hardwood_jungle_door", "minecraft:jungle_door", 1, "Grid PPS/PPS/PPS; P=jungle planks, S=wooden screw", "minecraft:jungle_planks#6", "projectflint:wooden_screw#3");
@@ -190,7 +191,7 @@ public final class HardwoodCraftingGuideRegistry {
         add(all, "hardwood_wattle_daub_windows", "projectflint:wattled_daub_window", 8, "Grid BBB/BGB/BBB; B=wattled daub bricks, G=glass", "projectflint:wattled_daub_bricks#8", "minecraft:glass#1");
         add(all, "hardwood_wattled_daub_door", "projectflint:wattled_daub_door", 1, "Grid PPS/PPS/PPS; P=wattled daub bricks, S=wooden screw", "projectflint:wattled_daub_bricks#6", "projectflint:wooden_screw#3");
         add(all, "hardwood_well_pulley", "projectflint:well_pulley", 1, "Grid HHH/HRH/HHH; H=hardwood, R=rope", "projectflint:hardwood#8", "projectflint:rope#1");
-        add(all, "hardwood_wooden_cabinet", "projectflint:wooden_cabinet", 1, "Grid CCC/SLS/WSW; C=cobblestone, L=oak log, S=wooden sheet, W=wooden screw", "minecraft:cobblestone#3", "projectflint:wooden_sheet#3", "minecraft:oak_log#1", "projectflint:wooden_screw#2");
+        add(all, "hardwood_wooden_cabinet", "projectflint:wooden_cabinet", 4, "Grid CCC/SLS/WSW; C=cobblestone, L=oak log, S=wooden sheet, W=wooden screw", "minecraft:cobblestone#3", "projectflint:wooden_sheet#3", "minecraft:oak_log#1", "projectflint:wooden_screw#2");
         add(all, "hardwood_wooden_chest", "projectflint:wooden_chest", 2, "Grid WSW/SLS/WSW; W=wooden screw, S=wooden sheet, L=leather strap", "projectflint:wooden_screw#4", "projectflint:wooden_sheet#4", "projectflint:leather_strap#1");
         add(all, "hardwood_wooden_screws", "projectflint:wooden_screw", 4, "Tool used with durability; returned with wear", "projectflint:wooden_board#1", "projectflint:flint_file#1");
         add(all, "hardwood_woven_fans", "projectflint:woven_fan", 6, "Tool used with durability; returned with wear", "minecraft:paper#1", "projectflint:flint_file#1", "projectflint:bone_knife#1");
