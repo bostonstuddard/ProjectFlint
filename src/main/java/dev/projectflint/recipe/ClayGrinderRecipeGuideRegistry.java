@@ -45,14 +45,12 @@ public final class ClayGrinderRecipeGuideRegistry {
 		new Definition("projectflint:flint_chip", 4, "minecraft:flint", 1),
 		new Definition("projectflint:sanded_wood_slab", 2, "projectflint:grinded_wood_slab", 1),
 		new Definition("minecraft:stripped_jungle_log", 1, "minecraft:jungle_slab", 2),
-		new Definition("projectflint:loose_dirt_slab", 2, "projectflint:loose_dirt", 1),
 		new Definition("minecraft:stripped_mangrove_log", 1, "minecraft:mangrove_slab", 2),
 		new Definition("projectflint:mortar_bricks", 1, "projectflint:mortar_brick_slab", 2),
 		new Definition("projectflint:mortar_brick_slab", 2, "projectflint:mortar_bricks", 1),
 		new Definition("projectflint:mortar_bricks", 24, "projectflint:mortar_kiln_base", 1),
 		new Definition("minecraft:stripped_oak_log", 1, "minecraft:oak_slab", 2),
 		new Definition("minecraft:stripped_pale_oak_log", 1, "minecraft:pale_oak_slab", 2),
-		new Definition("projectflint:grinded_wood_slab", 1, "projectflint:sanded_wood_slab", 2),
 		new Definition("projectflint:sugarcane_roll", 4, "projectflint:sanding_paper", 1),
 		new Definition("minecraft:stripped_spruce_log", 1, "minecraft:spruce_slab", 2),
 		new Definition("projectflint:crushed_stone", 8, "projectflint:stone_grindsaw", 1),
@@ -74,8 +72,7 @@ public final class ClayGrinderRecipeGuideRegistry {
 		new Definition("projectflint:woven_wood", 12, "projectflint:wooden_grinder_base", 1),
 		new Definition("projectflint:woven_wood_slab", 2, "projectflint:woven_wood", 1),
 		new Definition("projectflint:woven_wood", 1, "projectflint:woven_wood_slab", 2),
-		new Definition("projectflint:loose_mud_bricks", 1, "projectflint:loose_mud_brick_slab", 2),
-		new Definition("projectflint:loose_mud_brick_slab", 2, "projectflint:loose_mud_bricks", 1)
+		new Definition("projectflint:loose_mud_bricks", 1, "projectflint:loose_mud_brick_slab", 2)
 	);
 
 	private ClayGrinderRecipeGuideRegistry() {}

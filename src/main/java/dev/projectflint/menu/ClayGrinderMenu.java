@@ -2,6 +2,7 @@ package dev.projectflint.menu;
 
 import dev.projectflint.compat.flintquests.FlintQuestsBridge;
 import dev.projectflint.recipe.ClayGrinderRecipe;
+import dev.projectflint.recipe.RetiredRecipePolicy;
 import dev.projectflint.registry.ModBlocks;
 import dev.projectflint.registry.ModMenus;
 import dev.projectflint.registry.ModRecipes;
@@ -159,6 +160,7 @@ public final class ClayGrinderMenu extends AbstractContainerMenu {
 			SingleRecipeInput recipeInput = new SingleRecipeInput(inputStack);
 			for (RecipeHolder<?> holder : serverLevel.getServer().getRecipeManager().getRecipes()) {
 				if (!(holder.value() instanceof ClayGrinderRecipe recipe)) continue;
+				if (RetiredRecipePolicy.isRetired(holder.id().identifier().getNamespace(), holder.id().identifier().getPath())) continue;
 				if (recipe.getType() != ModRecipes.CLAY_GRINDING || !recipe.matches(recipeInput, serverLevel)) continue;
 				recipes.add(new RecipeHolder<>(holder.id(), recipe));
 				if (recipes.size() >= RECIPE_PREVIEW_COUNT) break;

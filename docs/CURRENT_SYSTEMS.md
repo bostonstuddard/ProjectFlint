@@ -1,3 +1,7 @@
+## 0.32.2 active Grinder recipe policy
+
+Clay and Wooden Grinders still accept forward Stripped Log -> Wood Slab processing. The legacy reverse Wood Slab -> Stripped Log ID is retired for all 10 wood variants. Removed reverse Loose Dirt, Loose Mud Brick, and Grinded -> Sanded Slab conversions. Fireclay/Mortar/Crude Clay equal-volume slab reconstructions remain.
+
 ## 0.32.1 approved maintenance changes
 
 Stone/ore denial is non-destructive and strictly tool-gated; tall flowers drop only once; Tripwire returns String when recovered by hand; Clay Water Buckets fill empty Water Pots completely. Wooden Grinder and Hardwood Table recipes have the approved costs and benefits, while slab-to-log reverse conversion is removed. Current player-facing specifics are in `docs/releases/0.32.1.md`; proposal-only changes #17/#25 are in `docs/proposals/`.

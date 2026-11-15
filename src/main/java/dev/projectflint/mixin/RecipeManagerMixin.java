@@ -1,5 +1,7 @@
 package dev.projectflint.mixin;
 
+import dev.projectflint.recipe.RetiredRecipePolicy;
+
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.util.profiling.ProfilerFiller;
 import net.minecraft.world.item.crafting.CraftingRecipe;
@@ -17,6 +19,10 @@ public abstract class RecipeManagerMixin {
 		RecipeMap recipes = cir.getReturnValue();
 		cir.setReturnValue(RecipeMap.create(recipes.values().stream()
             .filter(holder -> !(holder.value() instanceof CraftingRecipe && holder.id().identifier().getNamespace().equals("minecraft")))
+            // Disable retired recipes in the actual server recipe map, not merely the guide.
+            // Applies even if an obsolete JSON survives an incremental source overwrite.
+            .filter(holder -> !RetiredRecipePolicy.isRetired(
+                holder.id().identifier().getNamespace(), holder.id().identifier().getPath()))
             // The clay bucket / unfired bricks belong to kilns/forges, not a vanilla furnace.
             // Preserve Project Flint personal Wooden Tool and hinged-door recipes.
             // Their 2x2 unlocks must never depend on reaching the Hardwood Table.

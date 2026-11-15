@@ -1,3 +1,7 @@
+## v0.32.3
+
+Compilation-only hotfix for the Clay Grinder recipe guide initializer; v0.32.2 material-conservation recipe policy is unchanged.
+
 # Project Flint Versioning
 
 Project Flint uses exactly three numeric components followed by one channel suffix:
@@ -38,3 +42,7 @@ Current release example: `0.31.36-b`.
 ## Public v0.32.x numbered updates
 
 The owner explicitly designates the current player-facing update as **0.32.1** (three numeric components, no channel suffix). This release line may use `0.32.x` identifiers while historical `-a`/`-b` development builds retain their original names. Do not create a fourth component.
+
+## 0.32.2 source hotfix
+
+The next patch release on the 0.32 line is `0.32.2`. Never replace the prior `0.32.1` archive with different bytes. The new release applies over the `0.32.1` source and publishes `projectflint-0.32.2.jar`.

@@ -1,3 +1,7 @@
+## 0.32.2 no material-multiplying reverse recipes
+
+Hardwood Table 2 Planks -> 6 Slabs must not cycle through old 2 Slabs -> 1 Stripped Log grinder JSON. Keep improved 2 Loose Dirt/Loose Mud Bricks -> 6 Slabs and the Sanded -> Grinded Wooden Grinder upgrade without the duplicating reverse conversion.
+
 ## 0.32.1 approved maintenance changes
 
 Stone/ore denial is non-destructive and strictly tool-gated; tall flowers drop only once; Tripwire returns String when recovered by hand; Clay Water Buckets fill empty Water Pots completely. Wooden Grinder and Hardwood Table recipes have the approved costs and benefits, while slab-to-log reverse conversion is removed. Current player-facing specifics are in `docs/releases/0.32.1.md`; proposal-only changes #17/#25 are in `docs/proposals/`.

@@ -1,3 +1,7 @@
+## 0.32.2 server recipe retirement
+
+`RecipeManagerMixin` uses `RetiredRecipePolicy` before recipe-book synchronization to exclude retired ProjectFlint IDs from the actual RecipeMap. Both Grinder menu recipe lookups use the same policy. Guide mirrors are display-only. See ADR 0030.
+
 ## 0.32.1 approved maintenance changes
 
 Stone/ore denial is non-destructive and strictly tool-gated; tall flowers drop only once; Tripwire returns String when recovered by hand; Clay Water Buckets fill empty Water Pots completely. Wooden Grinder and Hardwood Table recipes have the approved costs and benefits, while slab-to-log reverse conversion is removed. Current player-facing specifics are in `docs/releases/0.32.1.md`; proposal-only changes #17/#25 are in `docs/proposals/`.

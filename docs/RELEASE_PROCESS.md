@@ -1,3 +1,7 @@
+## 0.32.2 recipe-removal release gate
+
+Do not treat removal from a guide as recipe removal. When retiring a recipe: delete JSON from source/build outputs through apply/cleanup; deny its ID in server recipe registration; guard the station menu; run the new regression validator; verify the JAR is a clean build and in-world recipe is absent. Release ZIPs do not directly delete old files.
+
 ## v0.32.1 — Approved issue release gate
 
 Apply the versioned `APPLY_PROJECTFLINT_0_32_1.bat` before building. It removes all wood slab-to-stripped-log reverse recipes and calls prior cleanup; a ZIP overwrite alone does not remove them. Validate gameplay rules and recipe guide parity against the exact issues documented in `docs/releases/0.32.1.md`. Issue #25 and #17 documents contain proposals **only**. Do not implement their entries without approval. Verify a full Minecraft 1.21.11 launch, early survival crafting, and FlintQuests custom-break reporting before deployment.
